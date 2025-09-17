@@ -146,6 +146,50 @@ class TestGroundImagery:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_aodr(self, client: Unifieddatalibrary) -> None:
+        ground_imagery = client.ground_imagery.aodr(
+            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert ground_imagery is None
+
+    @parametrize
+    def test_method_aodr_with_all_params(self, client: Unifieddatalibrary) -> None:
+        ground_imagery = client.ground_imagery.aodr(
+            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            columns="columns",
+            first_result=0,
+            max_results=0,
+            notification="notification",
+            output_delimiter="outputDelimiter",
+            output_format="outputFormat",
+        )
+        assert ground_imagery is None
+
+    @parametrize
+    def test_raw_response_aodr(self, client: Unifieddatalibrary) -> None:
+        response = client.ground_imagery.with_raw_response.aodr(
+            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ground_imagery = response.parse()
+        assert ground_imagery is None
+
+    @parametrize
+    def test_streaming_response_aodr(self, client: Unifieddatalibrary) -> None:
+        with client.ground_imagery.with_streaming_response.aodr(
+            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ground_imagery = response.parse()
+            assert ground_imagery is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         ground_imagery = client.ground_imagery.count(
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -295,50 +339,6 @@ class TestGroundImagery:
             client.ground_imagery.with_raw_response.get_file(
                 id="",
             )
-
-    @parametrize
-    def test_method_history_aodr(self, client: Unifieddatalibrary) -> None:
-        ground_imagery = client.ground_imagery.history_aodr(
-            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-        assert ground_imagery is None
-
-    @parametrize
-    def test_method_history_aodr_with_all_params(self, client: Unifieddatalibrary) -> None:
-        ground_imagery = client.ground_imagery.history_aodr(
-            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            columns="columns",
-            first_result=0,
-            max_results=0,
-            notification="notification",
-            output_delimiter="outputDelimiter",
-            output_format="outputFormat",
-        )
-        assert ground_imagery is None
-
-    @parametrize
-    def test_raw_response_history_aodr(self, client: Unifieddatalibrary) -> None:
-        response = client.ground_imagery.with_raw_response.history_aodr(
-            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ground_imagery = response.parse()
-        assert ground_imagery is None
-
-    @parametrize
-    def test_streaming_response_history_aodr(self, client: Unifieddatalibrary) -> None:
-        with client.ground_imagery.with_streaming_response.history_aodr(
-            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ground_imagery = response.parse()
-            assert ground_imagery is None
-
-        assert cast(Any, response.is_closed) is True
 
     @parametrize
     def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
@@ -560,6 +560,50 @@ class TestAsyncGroundImagery:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    async def test_method_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ground_imagery = await async_client.ground_imagery.aodr(
+            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert ground_imagery is None
+
+    @parametrize
+    async def test_method_aodr_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        ground_imagery = await async_client.ground_imagery.aodr(
+            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            columns="columns",
+            first_result=0,
+            max_results=0,
+            notification="notification",
+            output_delimiter="outputDelimiter",
+            output_format="outputFormat",
+        )
+        assert ground_imagery is None
+
+    @parametrize
+    async def test_raw_response_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.ground_imagery.with_raw_response.aodr(
+            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        ground_imagery = await response.parse()
+        assert ground_imagery is None
+
+    @parametrize
+    async def test_streaming_response_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.ground_imagery.with_streaming_response.aodr(
+            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            ground_imagery = await response.parse()
+            assert ground_imagery is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         ground_imagery = await async_client.ground_imagery.count(
             image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -713,50 +757,6 @@ class TestAsyncGroundImagery:
             await async_client.ground_imagery.with_raw_response.get_file(
                 id="",
             )
-
-    @parametrize
-    async def test_method_history_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
-        ground_imagery = await async_client.ground_imagery.history_aodr(
-            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-        assert ground_imagery is None
-
-    @parametrize
-    async def test_method_history_aodr_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        ground_imagery = await async_client.ground_imagery.history_aodr(
-            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            columns="columns",
-            first_result=0,
-            max_results=0,
-            notification="notification",
-            output_delimiter="outputDelimiter",
-            output_format="outputFormat",
-        )
-        assert ground_imagery is None
-
-    @parametrize
-    async def test_raw_response_history_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.ground_imagery.with_raw_response.history_aodr(
-            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        ground_imagery = await response.parse()
-        assert ground_imagery is None
-
-    @parametrize
-    async def test_streaming_response_history_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.ground_imagery.with_streaming_response.history_aodr(
-            image_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            ground_imagery = await response.parse()
-            assert ground_imagery is None
-
-        assert cast(Any, response.is_closed) is True
 
     @parametrize
     async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:

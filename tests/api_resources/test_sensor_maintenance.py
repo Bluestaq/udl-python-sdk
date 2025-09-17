@@ -13,7 +13,7 @@ from unifieddatalibrary.types import (
     SensorMaintenanceGetResponse,
     SensorMaintenanceListResponse,
     SensorMaintenanceTupleResponse,
-    SensorMaintenanceQueryhelpResponse,
+    SensorMaintenanceQueryHelpResponse,
     SensorMaintenanceListCurrentResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
@@ -488,27 +488,27 @@ class TestSensorMaintenance:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_queryhelp(self, client: Unifieddatalibrary) -> None:
-        sensor_maintenance = client.sensor_maintenance.queryhelp()
-        assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
+    def test_method_query_help(self, client: Unifieddatalibrary) -> None:
+        sensor_maintenance = client.sensor_maintenance.query_help()
+        assert_matches_type(SensorMaintenanceQueryHelpResponse, sensor_maintenance, path=["response"])
 
     @parametrize
-    def test_raw_response_queryhelp(self, client: Unifieddatalibrary) -> None:
-        response = client.sensor_maintenance.with_raw_response.queryhelp()
+    def test_raw_response_query_help(self, client: Unifieddatalibrary) -> None:
+        response = client.sensor_maintenance.with_raw_response.query_help()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sensor_maintenance = response.parse()
-        assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
+        assert_matches_type(SensorMaintenanceQueryHelpResponse, sensor_maintenance, path=["response"])
 
     @parametrize
-    def test_streaming_response_queryhelp(self, client: Unifieddatalibrary) -> None:
-        with client.sensor_maintenance.with_streaming_response.queryhelp() as response:
+    def test_streaming_response_query_help(self, client: Unifieddatalibrary) -> None:
+        with client.sensor_maintenance.with_streaming_response.query_help() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sensor_maintenance = response.parse()
-            assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
+            assert_matches_type(SensorMaintenanceQueryHelpResponse, sensor_maintenance, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -1029,27 +1029,27 @@ class TestAsyncSensorMaintenance:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        sensor_maintenance = await async_client.sensor_maintenance.queryhelp()
-        assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
+    async def test_method_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sensor_maintenance = await async_client.sensor_maintenance.query_help()
+        assert_matches_type(SensorMaintenanceQueryHelpResponse, sensor_maintenance, path=["response"])
 
     @parametrize
-    async def test_raw_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sensor_maintenance.with_raw_response.queryhelp()
+    async def test_raw_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sensor_maintenance.with_raw_response.query_help()
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         sensor_maintenance = await response.parse()
-        assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
+        assert_matches_type(SensorMaintenanceQueryHelpResponse, sensor_maintenance, path=["response"])
 
     @parametrize
-    async def test_streaming_response_queryhelp(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sensor_maintenance.with_streaming_response.queryhelp() as response:
+    async def test_streaming_response_query_help(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sensor_maintenance.with_streaming_response.query_help() as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             sensor_maintenance = await response.parse()
-            assert_matches_type(SensorMaintenanceQueryhelpResponse, sensor_maintenance, path=["response"])
+            assert_matches_type(SensorMaintenanceQueryHelpResponse, sensor_maintenance, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

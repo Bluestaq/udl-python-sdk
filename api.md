@@ -145,21 +145,30 @@ Types:
 from unifieddatalibrary.types.air_operations import (
     AircraftsortieAbridged,
     AircraftSortyCountResponse,
-    AircraftSortyHistoryCountResponse,
-    AircraftSortyHistoryQueryResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /udl/aircraftsortie">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/aircraftsortie">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/air_operations/aircraftsortie_abridged.py">SyncOffsetPage[AircraftsortieAbridged]</a></code>
-- <code title="get /udl/aircraftsortie/count">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/aircraftsortie/createBulk">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/aircraftsortie/history/aodr">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties.py">history_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/aircraftsortie/history/count">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties.py">history_count</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/aircraftsortie/history">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties.py">history_query</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/air_operations/aircraft_sorty_history_query_response.py">AircraftSortyHistoryQueryResponse</a></code>
-- <code title="post /filedrop/udl-aircraftsortie">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_unvalidated_publish_params.py">params</a>) -> None</code>
+- <code title="post /udl/aircraftsortie">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties/aircraft_sorties.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/aircraftsortie">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties/aircraft_sorties.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/air_operations/aircraftsortie_abridged.py">SyncOffsetPage[AircraftsortieAbridged]</a></code>
+- <code title="get /udl/aircraftsortie/count">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties/aircraft_sorties.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/aircraftsortie/createBulk">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties/aircraft_sorties.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-aircraftsortie">client.air_operations.aircraft_sorties.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties/aircraft_sorties.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorty_unvalidated_publish_params.py">params</a>) -> None</code>
+
+### History
+
+Types:
+
+```python
+from unifieddatalibrary.types.air_operations.aircraft_sorties import HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/aircraftsortie/history">client.air_operations.aircraft_sorties.history.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorties/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/aircraftsortie_full.py">SyncOffsetPage[AircraftsortieFull]</a></code>
+- <code title="get /udl/aircraftsortie/history/aodr">client.air_operations.aircraft_sorties.history.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorties/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/aircraftsortie/history/count">client.air_operations.aircraft_sorties.history.<a href="./src/unifieddatalibrary/resources/air_operations/aircraft_sorties/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/air_operations/aircraft_sorties/history_count_params.py">params</a>) -> str</code>
 
 ## AirspaceControlOrders
 
@@ -232,7 +241,7 @@ from unifieddatalibrary.types import (
     AircraftAbridged,
     AircraftCountResponse,
     AircraftQueryhelpResponse,
-    AircraftTupleQueryResponse,
+    AircraftTupleResponse,
 )
 ```
 
@@ -244,7 +253,7 @@ Methods:
 - <code title="get /udl/aircraft">client.aircraft.<a href="./src/unifieddatalibrary/resources/aircraft.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/aircraft_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aircraft_abridged.py">SyncOffsetPage[AircraftAbridged]</a></code>
 - <code title="get /udl/aircraft/count">client.aircraft.<a href="./src/unifieddatalibrary/resources/aircraft.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/aircraft_count_params.py">params</a>) -> str</code>
 - <code title="get /udl/aircraft/queryhelp">client.aircraft.<a href="./src/unifieddatalibrary/resources/aircraft.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/aircraft_queryhelp_response.py">AircraftQueryhelpResponse</a></code>
-- <code title="get /udl/aircraft/tuple">client.aircraft.<a href="./src/unifieddatalibrary/resources/aircraft.py">tuple_query</a>(\*\*<a href="src/unifieddatalibrary/types/aircraft_tuple_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aircraft_tuple_query_response.py">AircraftTupleQueryResponse</a></code>
+- <code title="get /udl/aircraft/tuple">client.aircraft.<a href="./src/unifieddatalibrary/resources/aircraft.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/aircraft_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aircraft_tuple_response.py">AircraftTupleResponse</a></code>
 
 # AircraftSorties
 
@@ -321,6 +330,30 @@ Methods:
 
 - <code title="get /udl/aircraftstatus/history">client.aircraft_statuses.history.<a href="./src/unifieddatalibrary/resources/aircraft_statuses/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/aircraft_statuses/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/aircraftstatus_full.py">SyncOffsetPage[AircraftstatusFull]</a></code>
 - <code title="get /udl/aircraftstatus/history/count">client.aircraft_statuses.history.<a href="./src/unifieddatalibrary/resources/aircraft_statuses/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/aircraft_statuses/history_count_params.py">params</a>) -> str</code>
+
+# AirfieldSlotConsumptions
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    AirfieldslotconsumptionAbridged,
+    AirfieldSlotConsumptionCountResponse,
+    AirfieldSlotConsumptionQueryhelpResponse,
+    AirfieldSlotConsumptionTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/airfieldslotconsumption">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/airfieldslotconsumption/{id}">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/airfieldslotconsumption_full.py">AirfieldslotconsumptionFull</a></code>
+- <code title="put /udl/airfieldslotconsumption/{id}">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/airfieldslotconsumption">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/airfieldslotconsumption_abridged.py">SyncOffsetPage[AirfieldslotconsumptionAbridged]</a></code>
+- <code title="delete /udl/airfieldslotconsumption/{id}">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">delete</a>(id) -> None</code>
+- <code title="get /udl/airfieldslotconsumption/count">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/airfieldslotconsumption/queryhelp">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/airfield_slot_consumption_queryhelp_response.py">AirfieldSlotConsumptionQueryhelpResponse</a></code>
+- <code title="get /udl/airfieldslotconsumption/tuple">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/airfield_slot_consumption_tuple_response.py">AirfieldSlotConsumptionTupleResponse</a></code>
 
 # AirfieldSlots
 
@@ -406,30 +439,6 @@ Methods:
 - <code title="get /udl/airfield/queryhelp">client.airfields.<a href="./src/unifieddatalibrary/resources/airfields.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/airfield_queryhelp_response.py">AirfieldQueryhelpResponse</a></code>
 - <code title="get /udl/airfield/tuple">client.airfields.<a href="./src/unifieddatalibrary/resources/airfields.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/airfield_tuple_response.py">AirfieldTupleResponse</a></code>
 
-# AirfieldSlotConsumptions
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    AirfieldslotconsumptionAbridged,
-    AirfieldSlotConsumptionCountResponse,
-    AirfieldSlotConsumptionQueryhelpResponse,
-    AirfieldSlotConsumptionTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="post /udl/airfieldslotconsumption">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/airfieldslotconsumption/{id}">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/airfieldslotconsumption_full.py">AirfieldslotconsumptionFull</a></code>
-- <code title="put /udl/airfieldslotconsumption/{id}">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_update_params.py">params</a>) -> None</code>
-- <code title="get /udl/airfieldslotconsumption">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/airfieldslotconsumption_abridged.py">SyncOffsetPage[AirfieldslotconsumptionAbridged]</a></code>
-- <code title="delete /udl/airfieldslotconsumption/{id}">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">delete</a>(id) -> None</code>
-- <code title="get /udl/airfieldslotconsumption/count">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/airfieldslotconsumption/queryhelp">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/airfield_slot_consumption_queryhelp_response.py">AirfieldSlotConsumptionQueryhelpResponse</a></code>
-- <code title="get /udl/airfieldslotconsumption/tuple">client.airfield_slot_consumptions.<a href="./src/unifieddatalibrary/resources/airfield_slot_consumptions.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/airfield_slot_consumption_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/airfield_slot_consumption_tuple_response.py">AirfieldSlotConsumptionTupleResponse</a></code>
-
 # AirloadPlans
 
 Types:
@@ -485,7 +494,6 @@ Types:
 from unifieddatalibrary.types import (
     AIsAbridged,
     AICountResponse,
-    AIHistoryCountResponse,
     AIQueryhelpResponse,
     AITupleResponse,
 )
@@ -496,16 +504,22 @@ Methods:
 - <code title="get /udl/ais">client.ais.<a href="./src/unifieddatalibrary/resources/ais/ais.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/ai_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ais_abridged.py">SyncOffsetPage[AIsAbridged]</a></code>
 - <code title="get /udl/ais/count">client.ais.<a href="./src/unifieddatalibrary/resources/ais/ais.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/ai_count_params.py">params</a>) -> str</code>
 - <code title="post /udl/ais/createBulk">client.ais.<a href="./src/unifieddatalibrary/resources/ais/ais.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/ai_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/ais/history/count">client.ais.<a href="./src/unifieddatalibrary/resources/ais/ais.py">history_count</a>(\*\*<a href="src/unifieddatalibrary/types/ai_history_count_params.py">params</a>) -> str</code>
 - <code title="get /udl/ais/queryhelp">client.ais.<a href="./src/unifieddatalibrary/resources/ais/ais.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/ai_queryhelp_response.py">AIQueryhelpResponse</a></code>
 - <code title="get /udl/ais/tuple">client.ais.<a href="./src/unifieddatalibrary/resources/ais/ais.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/ai_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ai_tuple_response.py">AITupleResponse</a></code>
 
 ## History
 
+Types:
+
+```python
+from unifieddatalibrary.types.ais import HistoryCountResponse
+```
+
 Methods:
 
 - <code title="get /udl/ais/history">client.ais.history.<a href="./src/unifieddatalibrary/resources/ais/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/ais/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/ais_full.py">SyncOffsetPage[AIsFull]</a></code>
 - <code title="get /udl/ais/history/aodr">client.ais.history.<a href="./src/unifieddatalibrary/resources/ais/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/ais/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/ais/history/count">client.ais.history.<a href="./src/unifieddatalibrary/resources/ais/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/ais/history_count_params.py">params</a>) -> str</code>
 
 # AIsObjects
 
@@ -521,8 +535,6 @@ Types:
 from unifieddatalibrary.types import (
     AnalyticImageryAbridged,
     AnalyticImageryCountResponse,
-    AnalyticImageryHistoryResponse,
-    AnalyticImageryHistoryCountResponse,
     AnalyticImageryQueryhelpResponse,
     AnalyticImageryTupleResponse,
 )
@@ -530,16 +542,27 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="get /udl/analyticimagery/{id}">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/analytic_imagery_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/analytic_imagery_full.py">AnalyticImageryFull</a></code>
-- <code title="get /udl/analyticimagery">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/analytic_imagery_abridged.py">SyncOffsetPage[AnalyticImageryAbridged]</a></code>
-- <code title="get /udl/analyticimagery/count">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/analyticimagery/getFile/{id}">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">file_get</a>(id, \*\*<a href="src/unifieddatalibrary/types/analytic_imagery_file_get_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="get /udl/analyticimagery/history">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">history</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_history_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/analytic_imagery_history_response.py">AnalyticImageryHistoryResponse</a></code>
-- <code title="get /udl/analyticimagery/history/aodr">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">history_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/analyticimagery/history/count">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">history_count</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/analyticimagery/queryhelp">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/analytic_imagery_queryhelp_response.py">AnalyticImageryQueryhelpResponse</a></code>
-- <code title="get /udl/analyticimagery/tuple">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/analytic_imagery_tuple_response.py">AnalyticImageryTupleResponse</a></code>
-- <code title="post /filedrop/udl-analyticimagery">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_unvalidated_publish_params.py">params</a>) -> None</code>
+- <code title="get /udl/analyticimagery/{id}">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery/analytic_imagery.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/analytic_imagery_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/analytic_imagery_full.py">AnalyticImageryFull</a></code>
+- <code title="get /udl/analyticimagery">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery/analytic_imagery.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/analytic_imagery_abridged.py">SyncOffsetPage[AnalyticImageryAbridged]</a></code>
+- <code title="get /udl/analyticimagery/count">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery/analytic_imagery.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/analyticimagery/getFile/{id}">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery/analytic_imagery.py">file_get</a>(id, \*\*<a href="src/unifieddatalibrary/types/analytic_imagery_file_get_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="get /udl/analyticimagery/queryhelp">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery/analytic_imagery.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/analytic_imagery_queryhelp_response.py">AnalyticImageryQueryhelpResponse</a></code>
+- <code title="get /udl/analyticimagery/tuple">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery/analytic_imagery.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/analytic_imagery_tuple_response.py">AnalyticImageryTupleResponse</a></code>
+- <code title="post /filedrop/udl-analyticimagery">client.analytic_imagery.<a href="./src/unifieddatalibrary/resources/analytic_imagery/analytic_imagery.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.analytic_imagery import HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/analyticimagery/history">client.analytic_imagery.history.<a href="./src/unifieddatalibrary/resources/analytic_imagery/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/analytic_imagery_abridged.py">SyncOffsetPage[AnalyticImageryAbridged]</a></code>
+- <code title="get /udl/analyticimagery/history/aodr">client.analytic_imagery.history.<a href="./src/unifieddatalibrary/resources/analytic_imagery/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/analyticimagery/history/count">client.analytic_imagery.history.<a href="./src/unifieddatalibrary/resources/analytic_imagery/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/analytic_imagery/history_count_params.py">params</a>) -> str</code>
 
 # Antennas
 
@@ -614,6 +637,33 @@ Methods:
 - <code title="get /udl/attitudeset/history">client.attitude_sets.history.<a href="./src/unifieddatalibrary/resources/attitude_sets/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/attitude_sets/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/attitudeset_full.py">SyncOffsetPage[AttitudesetFull]</a></code>
 - <code title="get /udl/attitudeset/history/aodr">client.attitude_sets.history.<a href="./src/unifieddatalibrary/resources/attitude_sets/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/attitude_sets/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/attitudeset/history/count">client.attitude_sets.history.<a href="./src/unifieddatalibrary/resources/attitude_sets/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/attitude_sets/history_count_params.py">params</a>) -> str</code>
+
+# AviationRiskManagement
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    AviationRiskManagementRetrieveResponse,
+    AviationRiskManagementListResponse,
+    AviationRiskManagementCountResponse,
+    AviationRiskManagementQueryHelpResponse,
+    AviationRiskManagementTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/aviationriskmanagement">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/aviationriskmanagement/{id}">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aviation_risk_management_retrieve_response.py">AviationRiskManagementRetrieveResponse</a></code>
+- <code title="put /udl/aviationriskmanagement/{id}">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/aviationriskmanagement">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aviation_risk_management_list_response.py">SyncOffsetPage[AviationRiskManagementListResponse]</a></code>
+- <code title="delete /udl/aviationriskmanagement/{id}">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">delete</a>(id) -> None</code>
+- <code title="get /udl/aviationriskmanagement/count">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/aviationriskmanagement/createBulk">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/aviationriskmanagement/queryhelp">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/aviation_risk_management_query_help_response.py">AviationRiskManagementQueryHelpResponse</a></code>
+- <code title="get /udl/aviationriskmanagement/tuple">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aviation_risk_management_tuple_response.py">AviationRiskManagementTupleResponse</a></code>
+- <code title="post /filedrop/udl-aviationriskmanagement">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_unvalidated_publish_params.py">params</a>) -> None</code>
 
 # Batteries
 
@@ -822,14 +872,9 @@ from unifieddatalibrary.types.collect_responses import HistoryCountResponse
 
 Methods:
 
-- <code title="get /udl/collectresponse/history">client.collect_responses.history.<a href="./src/unifieddatalibrary/resources/collect_responses/history/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/collect_responses/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/collect_response_full.py">SyncOffsetPage[CollectResponseFull]</a></code>
-- <code title="get /udl/collectresponse/history/count">client.collect_responses.history.<a href="./src/unifieddatalibrary/resources/collect_responses/history/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/collect_responses/history_count_params.py">params</a>) -> str</code>
-
-### Aodr
-
-Methods:
-
-- <code title="get /udl/collectresponse/history/aodr">client.collect_responses.history.aodr.<a href="./src/unifieddatalibrary/resources/collect_responses/history/aodr.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/collect_responses/history/aodr_list_params.py">params</a>) -> None</code>
+- <code title="get /udl/collectresponse/history">client.collect_responses.history.<a href="./src/unifieddatalibrary/resources/collect_responses/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/collect_responses/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/collect_response_full.py">SyncOffsetPage[CollectResponseFull]</a></code>
+- <code title="get /udl/collectresponse/history/aodr">client.collect_responses.history.<a href="./src/unifieddatalibrary/resources/collect_responses/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/collect_responses/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/collectresponse/history/count">client.collect_responses.history.<a href="./src/unifieddatalibrary/resources/collect_responses/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/collect_responses/history_count_params.py">params</a>) -> str</code>
 
 ## Tuple
 
@@ -907,193 +952,6 @@ Methods:
 
 - <code title="post /udl/cot">client.cots.<a href="./src/unifieddatalibrary/resources/cots.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/cot_create_params.py">params</a>) -> None</code>
 
-# AviationRiskManagement
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    AviationRiskManagementRetrieveResponse,
-    AviationRiskManagementCountResponse,
-    AviationRiskManagementQueryResponse,
-    AviationRiskManagementQueryHelpResponse,
-    AviationRiskManagementTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="post /udl/aviationriskmanagement">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/aviationriskmanagement/{id}">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aviation_risk_management_retrieve_response.py">AviationRiskManagementRetrieveResponse</a></code>
-- <code title="put /udl/aviationriskmanagement/{id}">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_update_params.py">params</a>) -> None</code>
-- <code title="delete /udl/aviationriskmanagement/{id}">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">delete</a>(id) -> None</code>
-- <code title="get /udl/aviationriskmanagement/count">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/aviationriskmanagement/createBulk">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/aviationriskmanagement">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aviation_risk_management_query_response.py">AviationRiskManagementQueryResponse</a></code>
-- <code title="get /udl/aviationriskmanagement/queryhelp">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/aviation_risk_management_query_help_response.py">AviationRiskManagementQueryHelpResponse</a></code>
-- <code title="get /udl/aviationriskmanagement/tuple">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/aviation_risk_management_tuple_response.py">AviationRiskManagementTupleResponse</a></code>
-- <code title="post /filedrop/udl-aviationriskmanagement">client.aviation_risk_management.<a href="./src/unifieddatalibrary/resources/aviation_risk_management.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/aviation_risk_management_unvalidated_publish_params.py">params</a>) -> None</code>
-
-# Dropzone
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    DropzoneRetrieveResponse,
-    DropzoneCountResponse,
-    DropzoneQueryResponse,
-    DropzoneQueryHelpResponse,
-    DropzoneTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="post /udl/dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/dropzone_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/dropzone_retrieve_response.py">DropzoneRetrieveResponse</a></code>
-- <code title="put /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/dropzone_update_params.py">params</a>) -> None</code>
-- <code title="delete /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">delete</a>(id) -> None</code>
-- <code title="get /udl/dropzone/count">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/dropzone/createBulk">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/dropzone_query_response.py">DropzoneQueryResponse</a></code>
-- <code title="get /udl/dropzone/queryhelp">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/dropzone_query_help_response.py">DropzoneQueryHelpResponse</a></code>
-- <code title="get /udl/dropzone/tuple">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/dropzone_tuple_response.py">DropzoneTupleResponse</a></code>
-- <code title="post /filedrop/udl-dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_unvalidated_publish_params.py">params</a>) -> None</code>
-
-# EmitterGeolocation
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    EmitterGeolocationRetrieveResponse,
-    EmitterGeolocationCountResponse,
-    EmitterGeolocationQueryResponse,
-    EmitterGeolocationQueryHelpResponse,
-    EmitterGeolocationTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="post /udl/emittergeolocation">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/emittergeolocation/{id}">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emitter_geolocation_retrieve_response.py">EmitterGeolocationRetrieveResponse</a></code>
-- <code title="delete /udl/emittergeolocation/{id}">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">delete</a>(id) -> None</code>
-- <code title="get /udl/emittergeolocation/count">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/emittergeolocation/createBulk">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/emittergeolocation">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emitter_geolocation_query_response.py">EmitterGeolocationQueryResponse</a></code>
-- <code title="get /udl/emittergeolocation/queryhelp">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/emitter_geolocation_query_help_response.py">EmitterGeolocationQueryHelpResponse</a></code>
-- <code title="get /udl/emittergeolocation/tuple">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emitter_geolocation_tuple_response.py">EmitterGeolocationTupleResponse</a></code>
-- <code title="post /filedrop/udl-emittergeolocation">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_unvalidated_publish_params.py">params</a>) -> None</code>
-
-# FeatureAssessment
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    FeatureAssessmentRetrieveResponse,
-    FeatureAssessmentCountResponse,
-    FeatureAssessmentQueryResponse,
-    FeatureAssessmentQueryHelpResponse,
-    FeatureAssessmentTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="post /udl/featureassessment">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/featureassessment/{id}">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/feature_assessment_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/feature_assessment_retrieve_response.py">FeatureAssessmentRetrieveResponse</a></code>
-- <code title="get /udl/featureassessment/count">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/featureassessment/createBulk">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/featureassessment">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/feature_assessment_query_response.py">FeatureAssessmentQueryResponse</a></code>
-- <code title="get /udl/featureassessment/queryhelp">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/feature_assessment_query_help_response.py">FeatureAssessmentQueryHelpResponse</a></code>
-- <code title="get /udl/featureassessment/tuple">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/feature_assessment_tuple_response.py">FeatureAssessmentTupleResponse</a></code>
-- <code title="post /filedrop/udl-featureassessment">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_unvalidated_publish_params.py">params</a>) -> None</code>
-
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.feature_assessment import HistoryCountResponse, HistoryQueryResponse
-```
-
-Methods:
-
-- <code title="get /udl/featureassessment/history/count">client.feature_assessment.history.<a href="./src/unifieddatalibrary/resources/feature_assessment/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/featureassessment/history">client.feature_assessment.history.<a href="./src/unifieddatalibrary/resources/feature_assessment/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/feature_assessment/history_query_response.py">HistoryQueryResponse</a></code>
-- <code title="get /udl/featureassessment/history/aodr">client.feature_assessment.history.<a href="./src/unifieddatalibrary/resources/feature_assessment/history.py">write_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment/history_write_aodr_params.py">params</a>) -> None</code>
-
-# GlobalAtmosphericModel
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    GlobalAtmosphericModelRetrieveResponse,
-    GlobalAtmosphericModelCountResponse,
-    GlobalAtmosphericModelQueryResponse,
-    GlobalAtmosphericModelQueryHelpResponse,
-    GlobalAtmosphericModelTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="get /udl/globalatmosphericmodel/{id}">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model_retrieve_response.py">GlobalAtmosphericModelRetrieveResponse</a></code>
-- <code title="get /udl/globalatmosphericmodel/count">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/globalatmosphericmodel/getFile/{id}">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">get_file</a>(id, \*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_get_file_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="get /udl/globalatmosphericmodel">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model_query_response.py">GlobalAtmosphericModelQueryResponse</a></code>
-- <code title="get /udl/globalatmosphericmodel/queryhelp">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model_query_help_response.py">GlobalAtmosphericModelQueryHelpResponse</a></code>
-- <code title="get /udl/globalatmosphericmodel/tuple">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model_tuple_response.py">GlobalAtmosphericModelTupleResponse</a></code>
-- <code title="post /filedrop/udl-globalatmosphericmodel">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_unvalidated_publish_params.py">params</a>) -> None</code>
-
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.global_atmospheric_model import (
-    HistoryCountResponse,
-    HistoryQueryResponse,
-)
-```
-
-Methods:
-
-- <code title="get /udl/globalatmosphericmodel/history/count">client.global_atmospheric_model.history.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/globalatmosphericmodel/history">client.global_atmospheric_model.history.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model/history_query_response.py">HistoryQueryResponse</a></code>
-- <code title="get /udl/globalatmosphericmodel/history/aodr">client.global_atmospheric_model.history.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/history.py">write_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model/history_write_aodr_params.py">params</a>) -> None</code>
-
-# RouteStats
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    RouteStatRetrieveResponse,
-    RouteStatCountResponse,
-    RouteStatQueryResponse,
-    RouteStatQueryHelpResponse,
-    RouteStatTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="post /udl/routestats">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/routestats/{id}">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/route_stat_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/route_stat_retrieve_response.py">RouteStatRetrieveResponse</a></code>
-- <code title="put /udl/routestats/{id}">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/route_stat_update_params.py">params</a>) -> None</code>
-- <code title="delete /udl/routestats/{id}">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">delete</a>(id) -> None</code>
-- <code title="get /udl/routestats/count">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/routestats/createBulk">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/routestats">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/route_stat_query_response.py">RouteStatQueryResponse</a></code>
-- <code title="get /udl/routestats/queryhelp">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/route_stat_query_help_response.py">RouteStatQueryHelpResponse</a></code>
-- <code title="get /udl/routestats/tuple">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/route_stat_tuple_response.py">RouteStatTupleResponse</a></code>
-- <code title="post /filedrop/udl-routestats">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_unvalidated_publish_params.py">params</a>) -> None</code>
-
 # Countries
 
 Types:
@@ -1141,6 +999,44 @@ Methods:
 - <code title="get /udl/crew/queryhelp">client.crew.<a href="./src/unifieddatalibrary/resources/crew.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/crew_queryhelp_response.py">CrewQueryhelpResponse</a></code>
 - <code title="get /udl/crew/tuple">client.crew.<a href="./src/unifieddatalibrary/resources/crew.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/crew_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/crew_tuple_response.py">CrewTupleResponse</a></code>
 - <code title="post /filedrop/udl-crew">client.crew.<a href="./src/unifieddatalibrary/resources/crew.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/crew_unvalidated_publish_params.py">params</a>) -> None</code>
+
+# Deconflictset
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    DeconflictsetListResponse,
+    DeconflictsetCountResponse,
+    DeconflictsetGetResponse,
+    DeconflictsetQueryhelpResponse,
+    DeconflictsetTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/deconflictset">client.deconflictset.<a href="./src/unifieddatalibrary/resources/deconflictset/deconflictset.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/deconflictset_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/deconflictset">client.deconflictset.<a href="./src/unifieddatalibrary/resources/deconflictset/deconflictset.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/deconflictset_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/deconflictset_list_response.py">SyncOffsetPage[DeconflictsetListResponse]</a></code>
+- <code title="get /udl/deconflictset/count">client.deconflictset.<a href="./src/unifieddatalibrary/resources/deconflictset/deconflictset.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/deconflictset_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/deconflictset/{id}">client.deconflictset.<a href="./src/unifieddatalibrary/resources/deconflictset/deconflictset.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/deconflictset_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/deconflictset_get_response.py">DeconflictsetGetResponse</a></code>
+- <code title="get /udl/deconflictset/queryhelp">client.deconflictset.<a href="./src/unifieddatalibrary/resources/deconflictset/deconflictset.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/deconflictset_queryhelp_response.py">DeconflictsetQueryhelpResponse</a></code>
+- <code title="get /udl/deconflictset/tuple">client.deconflictset.<a href="./src/unifieddatalibrary/resources/deconflictset/deconflictset.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/deconflictset_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/deconflictset_tuple_response.py">DeconflictsetTupleResponse</a></code>
+- <code title="post /filedrop/udl-deconflictset">client.deconflictset.<a href="./src/unifieddatalibrary/resources/deconflictset/deconflictset.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/deconflictset_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.deconflictset import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/deconflictset/history">client.deconflictset.history.<a href="./src/unifieddatalibrary/resources/deconflictset/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/deconflictset/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/deconflictset/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/deconflictset/history/aodr">client.deconflictset.history.<a href="./src/unifieddatalibrary/resources/deconflictset/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/deconflictset/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/deconflictset/history/count">client.deconflictset.history.<a href="./src/unifieddatalibrary/resources/deconflictset/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/deconflictset/history_count_params.py">params</a>) -> str</code>
 
 # DiffOfArrival
 
@@ -1193,20 +1089,6 @@ Methods:
 - <code title="get /udl/diplomaticclearance/queryhelp">client.diplomatic_clearance.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/diplomatic_clearance.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/diplomatic_clearance_queryhelp_response.py">DiplomaticClearanceQueryhelpResponse</a></code>
 - <code title="get /udl/diplomaticclearance/tuple">client.diplomatic_clearance.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/diplomatic_clearance.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/diplomatic_clearance_tuple_response.py">DiplomaticClearanceTupleResponse</a></code>
 
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.diplomatic_clearance import HistoryCountResponse
-```
-
-Methods:
-
-- <code title="get /udl/diplomaticclearance/history">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/diplomaticclearance_full.py">SyncOffsetPage[DiplomaticclearanceFull]</a></code>
-- <code title="get /udl/diplomaticclearance/history/aodr">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/diplomaticclearance/history/count">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_count_params.py">params</a>) -> str</code>
-
 ## Country
 
 Types:
@@ -1234,6 +1116,20 @@ Methods:
 - <code title="get /udl/diplomaticclearancecountry/tuple">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/country_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/diplomatic_clearance/country_tuple_response.py">CountryTupleResponse</a></code>
 - <code title="post /filedrop/udl-diplomaticclearancecountry">client.diplomatic_clearance.country.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/country.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/country_unvalidated_publish_params.py">params</a>) -> None</code>
 
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.diplomatic_clearance import HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/diplomaticclearance/history">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/diplomaticclearance_full.py">SyncOffsetPage[DiplomaticclearanceFull]</a></code>
+- <code title="get /udl/diplomaticclearance/history/aodr">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/diplomaticclearance/history/count">client.diplomatic_clearance.history.<a href="./src/unifieddatalibrary/resources/diplomatic_clearance/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/diplomatic_clearance/history_count_params.py">params</a>) -> str</code>
+
 # DriftHistory
 
 Types:
@@ -1254,11 +1150,69 @@ Methods:
 - <code title="get /udl/drifthistory/queryhelp">client.drift_history.<a href="./src/unifieddatalibrary/resources/drift_history.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/drift_history_queryhelp_response.py">DriftHistoryQueryhelpResponse</a></code>
 - <code title="get /udl/drifthistory/tuple">client.drift_history.<a href="./src/unifieddatalibrary/resources/drift_history.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/drift_history_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/drift_history_tuple_response.py">DriftHistoryTupleResponse</a></code>
 
-# EcpSdr
+# Dropzone
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    DropzoneRetrieveResponse,
+    DropzoneListResponse,
+    DropzoneCountResponse,
+    DropzoneQueryHelpResponse,
+    DropzoneTupleResponse,
+)
+```
 
 Methods:
 
-- <code title="post /filedrop/udl-ecpsdr">client.ecp_sdr.<a href="./src/unifieddatalibrary/resources/ecp_sdr.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/ecp_sdr_unvalidated_publish_params.py">params</a>) -> None</code>
+- <code title="post /udl/dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/dropzone_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/dropzone_retrieve_response.py">DropzoneRetrieveResponse</a></code>
+- <code title="put /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/dropzone_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/dropzone_list_response.py">SyncOffsetPage[DropzoneListResponse]</a></code>
+- <code title="delete /udl/dropzone/{id}">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">delete</a>(id) -> None</code>
+- <code title="get /udl/dropzone/count">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/dropzone/createBulk">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/dropzone/queryhelp">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/dropzone_query_help_response.py">DropzoneQueryHelpResponse</a></code>
+- <code title="get /udl/dropzone/tuple">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/dropzone_tuple_response.py">DropzoneTupleResponse</a></code>
+- <code title="post /filedrop/udl-dropzone">client.dropzone.<a href="./src/unifieddatalibrary/resources/dropzone.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/dropzone_unvalidated_publish_params.py">params</a>) -> None</code>
+
+# Ecpedr
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    EcpedrListResponse,
+    EcpedrCountResponse,
+    EcpedrQueryhelpResponse,
+    EcpedrTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/ecpedr">client.ecpedr.<a href="./src/unifieddatalibrary/resources/ecpedr/ecpedr.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/ecpedr">client.ecpedr.<a href="./src/unifieddatalibrary/resources/ecpedr/ecpedr.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ecpedr_list_response.py">SyncOffsetPage[EcpedrListResponse]</a></code>
+- <code title="get /udl/ecpedr/count">client.ecpedr.<a href="./src/unifieddatalibrary/resources/ecpedr/ecpedr.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/ecpedr/createBulk">client.ecpedr.<a href="./src/unifieddatalibrary/resources/ecpedr/ecpedr.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/ecpedr/queryhelp">client.ecpedr.<a href="./src/unifieddatalibrary/resources/ecpedr/ecpedr.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/ecpedr_queryhelp_response.py">EcpedrQueryhelpResponse</a></code>
+- <code title="get /udl/ecpedr/tuple">client.ecpedr.<a href="./src/unifieddatalibrary/resources/ecpedr/ecpedr.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ecpedr_tuple_response.py">EcpedrTupleResponse</a></code>
+- <code title="post /filedrop/udl-ecpedr">client.ecpedr.<a href="./src/unifieddatalibrary/resources/ecpedr/ecpedr.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.ecpedr import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/ecpedr/history">client.ecpedr.history.<a href="./src/unifieddatalibrary/resources/ecpedr/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ecpedr/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/ecpedr/history/aodr">client.ecpedr.history.<a href="./src/unifieddatalibrary/resources/ecpedr/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/ecpedr/history/count">client.ecpedr.history.<a href="./src/unifieddatalibrary/resources/ecpedr/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/ecpedr/history_count_params.py">params</a>) -> str</code>
 
 # EffectRequests
 
@@ -1395,6 +1349,71 @@ Methods:
 - <code title="get /udl/elset/history">client.elsets.history.<a href="./src/unifieddatalibrary/resources/elsets/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/elsets/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/elset.py">SyncOffsetPage[Elset]</a></code>
 - <code title="get /udl/elset/history/aodr">client.elsets.history.<a href="./src/unifieddatalibrary/resources/elsets/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/elsets/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/elset/history/count">client.elsets.history.<a href="./src/unifieddatalibrary/resources/elsets/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/elsets/history_count_params.py">params</a>) -> str</code>
+
+# Emireport
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    EmireportListResponse,
+    EmireportCountResponse,
+    EmireportGetResponse,
+    EmireportQueryhelpResponse,
+    EmireportTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/emireport">client.emireport.<a href="./src/unifieddatalibrary/resources/emireport/emireport.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/emireport_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/emireport">client.emireport.<a href="./src/unifieddatalibrary/resources/emireport/emireport.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/emireport_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emireport_list_response.py">SyncOffsetPage[EmireportListResponse]</a></code>
+- <code title="get /udl/emireport/count">client.emireport.<a href="./src/unifieddatalibrary/resources/emireport/emireport.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/emireport_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/emireport/createBulk">client.emireport.<a href="./src/unifieddatalibrary/resources/emireport/emireport.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/emireport_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/emireport/{id}">client.emireport.<a href="./src/unifieddatalibrary/resources/emireport/emireport.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/emireport_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emireport_get_response.py">EmireportGetResponse</a></code>
+- <code title="get /udl/emireport/queryhelp">client.emireport.<a href="./src/unifieddatalibrary/resources/emireport/emireport.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/emireport_queryhelp_response.py">EmireportQueryhelpResponse</a></code>
+- <code title="get /udl/emireport/tuple">client.emireport.<a href="./src/unifieddatalibrary/resources/emireport/emireport.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/emireport_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emireport_tuple_response.py">EmireportTupleResponse</a></code>
+- <code title="post /filedrop/udl-emireport">client.emireport.<a href="./src/unifieddatalibrary/resources/emireport/emireport.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/emireport_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.emireport import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/emireport/history">client.emireport.history.<a href="./src/unifieddatalibrary/resources/emireport/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/emireport/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emireport/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/emireport/history/aodr">client.emireport.history.<a href="./src/unifieddatalibrary/resources/emireport/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/emireport/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/emireport/history/count">client.emireport.history.<a href="./src/unifieddatalibrary/resources/emireport/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/emireport/history_count_params.py">params</a>) -> str</code>
+
+# EmitterGeolocation
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    EmitterGeolocationRetrieveResponse,
+    EmitterGeolocationListResponse,
+    EmitterGeolocationCountResponse,
+    EmitterGeolocationQueryHelpResponse,
+    EmitterGeolocationTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/emittergeolocation">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/emittergeolocation/{id}">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emitter_geolocation_retrieve_response.py">EmitterGeolocationRetrieveResponse</a></code>
+- <code title="get /udl/emittergeolocation">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emitter_geolocation_list_response.py">SyncOffsetPage[EmitterGeolocationListResponse]</a></code>
+- <code title="delete /udl/emittergeolocation/{id}">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">delete</a>(id) -> None</code>
+- <code title="get /udl/emittergeolocation/count">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/emittergeolocation/createBulk">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/emittergeolocation/queryhelp">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/emitter_geolocation_query_help_response.py">EmitterGeolocationQueryHelpResponse</a></code>
+- <code title="get /udl/emittergeolocation/tuple">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/emitter_geolocation_tuple_response.py">EmitterGeolocationTupleResponse</a></code>
+- <code title="post /filedrop/udl-emittergeolocation">client.emitter_geolocation.<a href="./src/unifieddatalibrary/resources/emitter_geolocation.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/emitter_geolocation_unvalidated_publish_params.py">params</a>) -> None</code>
 
 # EngineDetails
 
@@ -1730,6 +1749,45 @@ Methods:
 - <code title="get /udl/eventevolution/history/aodr">client.event_evolution.history.<a href="./src/unifieddatalibrary/resources/event_evolution/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/event_evolution/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/eventevolution/history/count">client.event_evolution.history.<a href="./src/unifieddatalibrary/resources/event_evolution/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/event_evolution/history_count_params.py">params</a>) -> str</code>
 
+# FeatureAssessment
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    FeatureAssessmentRetrieveResponse,
+    FeatureAssessmentListResponse,
+    FeatureAssessmentCountResponse,
+    FeatureAssessmentQueryHelpResponse,
+    FeatureAssessmentTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/featureassessment">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/featureassessment/{id}">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/feature_assessment_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/feature_assessment_retrieve_response.py">FeatureAssessmentRetrieveResponse</a></code>
+- <code title="get /udl/featureassessment">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/feature_assessment_list_response.py">SyncOffsetPage[FeatureAssessmentListResponse]</a></code>
+- <code title="get /udl/featureassessment/count">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/featureassessment/createBulk">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/featureassessment/queryhelp">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/feature_assessment_query_help_response.py">FeatureAssessmentQueryHelpResponse</a></code>
+- <code title="get /udl/featureassessment/tuple">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/feature_assessment_tuple_response.py">FeatureAssessmentTupleResponse</a></code>
+- <code title="post /filedrop/udl-featureassessment">client.feature_assessment.<a href="./src/unifieddatalibrary/resources/feature_assessment/feature_assessment.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.feature_assessment import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/featureassessment/history">client.feature_assessment.history.<a href="./src/unifieddatalibrary/resources/feature_assessment/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/feature_assessment/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/featureassessment/history/aodr">client.feature_assessment.history.<a href="./src/unifieddatalibrary/resources/feature_assessment/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/featureassessment/history/count">client.feature_assessment.history.<a href="./src/unifieddatalibrary/resources/feature_assessment/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/feature_assessment/history_count_params.py">params</a>) -> str</code>
+
 # Flightplan
 
 Types:
@@ -1792,6 +1850,61 @@ Methods:
 - <code title="get /udl/geostatus/history/aodr">client.geo_status.history.<a href="./src/unifieddatalibrary/resources/geo_status/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/geo_status/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/geostatus/history/count">client.geo_status.history.<a href="./src/unifieddatalibrary/resources/geo_status/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/geo_status/history_count_params.py">params</a>) -> str</code>
 
+# GlobalAtmosphericModel
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    GlobalAtmosphericModelRetrieveResponse,
+    GlobalAtmosphericModelListResponse,
+    GlobalAtmosphericModelCountResponse,
+    GlobalAtmosphericModelQueryHelpResponse,
+    GlobalAtmosphericModelTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/globalatmosphericmodel/{id}">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model_retrieve_response.py">GlobalAtmosphericModelRetrieveResponse</a></code>
+- <code title="get /udl/globalatmosphericmodel">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model_list_response.py">SyncOffsetPage[GlobalAtmosphericModelListResponse]</a></code>
+- <code title="get /udl/globalatmosphericmodel/count">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/globalatmosphericmodel/getFile/{id}">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">get_file</a>(id, \*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_get_file_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="get /udl/globalatmosphericmodel/queryhelp">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model_query_help_response.py">GlobalAtmosphericModelQueryHelpResponse</a></code>
+- <code title="get /udl/globalatmosphericmodel/tuple">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model_tuple_response.py">GlobalAtmosphericModelTupleResponse</a></code>
+- <code title="post /filedrop/udl-globalatmosphericmodel">client.global_atmospheric_model.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/global_atmospheric_model.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.global_atmospheric_model import (
+    HistoryListResponse,
+    HistoryCountResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/globalatmosphericmodel/history">client.global_atmospheric_model.history.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/global_atmospheric_model/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/globalatmosphericmodel/history/aodr">client.global_atmospheric_model.history.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/globalatmosphericmodel/history/count">client.global_atmospheric_model.history.<a href="./src/unifieddatalibrary/resources/global_atmospheric_model/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/global_atmospheric_model/history_count_params.py">params</a>) -> str</code>
+
+# GnssObservations
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.gnss_observations import HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/gnssobservationset/history/count">client.gnss_observations.history.<a href="./src/unifieddatalibrary/resources/gnss_observations/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_observations/history_count_params.py">params</a>) -> str</code>
+
 # GnssObservationset
 
 Types:
@@ -1827,6 +1940,44 @@ Methods:
 - <code title="get /udl/gnssobservationset/history">client.gnss_observationset.history.<a href="./src/unifieddatalibrary/resources/gnss_observationset/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_observationset/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_observationset/gnss_observation_set_full.py">SyncOffsetPage[GnssObservationSetFull]</a></code>
 - <code title="get /udl/gnssobservationset/history/aodr">client.gnss_observationset.history.<a href="./src/unifieddatalibrary/resources/gnss_observationset/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_observationset/history_aodr_params.py">params</a>) -> None</code>
 
+# GnssRawIf
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    GnssRawIfListResponse,
+    GnssRawIfCountResponse,
+    GnssRawIfGetResponse,
+    GnssRawIfQueryhelpResponse,
+    GnssRawIfTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/gnssrawif">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if_list_response.py">SyncOffsetPage[GnssRawIfListResponse]</a></code>
+- <code title="get /udl/gnssrawif/count">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/gnssrawif/getFile/{id}">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">file_get</a>(id, \*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_file_get_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="get /udl/gnssrawif/{id}">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if_get_response.py">GnssRawIfGetResponse</a></code>
+- <code title="get /udl/gnssrawif/queryhelp">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/gnss_raw_if_queryhelp_response.py">GnssRawIfQueryhelpResponse</a></code>
+- <code title="get /udl/gnssrawif/tuple">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if_tuple_response.py">GnssRawIfTupleResponse</a></code>
+- <code title="post /filedrop/udl-gnssrawif">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">upload_zip</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_upload_zip_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.gnss_raw_if import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/gnssrawif/history">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/gnssrawif/history/aodr">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/gnssrawif/history/count">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_count_params.py">params</a>) -> str</code>
+
 # GroundImagery
 
 Types:
@@ -1845,10 +1996,10 @@ Methods:
 
 - <code title="post /udl/groundimagery">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery_create_params.py">params</a>) -> None</code>
 - <code title="get /udl/groundimagery">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ground_imagery_list_response.py">SyncOffsetPage[GroundImageryListResponse]</a></code>
+- <code title="get /udl/groundimagery/history/aodr">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/groundimagery/count">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery_count_params.py">params</a>) -> str</code>
 - <code title="get /udl/groundimagery/{id}">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/ground_imagery_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ground_imagery_get_response.py">GroundImageryGetResponse</a></code>
 - <code title="get /udl/groundimagery/getFile/{id}">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">get_file</a>(id, \*\*<a href="src/unifieddatalibrary/types/ground_imagery_get_file_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="get /udl/groundimagery/history/aodr">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">history_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery_history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/groundimagery/queryhelp">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/ground_imagery_queryhelp_response.py">GroundImageryQueryhelpResponse</a></code>
 - <code title="get /udl/groundimagery/tuple">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ground_imagery_tuple_response.py">GroundImageryTupleResponse</a></code>
 - <code title="post /filedrop/udl-groundimagery">client.ground_imagery.<a href="./src/unifieddatalibrary/resources/ground_imagery/ground_imagery.py">upload_zip</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery_upload_zip_params.py">params</a>) -> None</code>
@@ -1858,13 +2009,13 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.ground_imagery import HistoryCountResponse, HistoryQueryResponse
+from unifieddatalibrary.types.ground_imagery import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
 
+- <code title="get /udl/groundimagery/history">client.ground_imagery.history.<a href="./src/unifieddatalibrary/resources/ground_imagery/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ground_imagery/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/groundimagery/history/count">client.ground_imagery.history.<a href="./src/unifieddatalibrary/resources/ground_imagery/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/groundimagery/history">client.ground_imagery.history.<a href="./src/unifieddatalibrary/resources/ground_imagery/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/ground_imagery/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/ground_imagery/history_query_response.py">HistoryQueryResponse</a></code>
 
 # H3Geo
 
@@ -1894,14 +2045,14 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.h3_geo import HistoryCountResponse, HistoryQueryResponse
+from unifieddatalibrary.types.h3_geo import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
 
+- <code title="get /udl/h3geo/history">client.h3_geo.history.<a href="./src/unifieddatalibrary/resources/h3_geo/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/h3_geo/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/h3_geo/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/h3geo/history/aodr">client.h3_geo.history.<a href="./src/unifieddatalibrary/resources/h3_geo/history.py">ador</a>(\*\*<a href="src/unifieddatalibrary/types/h3_geo/history_ador_params.py">params</a>) -> None</code>
 - <code title="get /udl/h3geo/history/count">client.h3_geo.history.<a href="./src/unifieddatalibrary/resources/h3_geo/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/h3_geo/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/h3geo/history">client.h3_geo.history.<a href="./src/unifieddatalibrary/resources/h3_geo/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/h3_geo/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/h3_geo/history_query_response.py">HistoryQueryResponse</a></code>
 
 # H3GeoHexCell
 
@@ -1952,14 +2103,50 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.hazard import HistoryCountResponse, HistoryQueryResponse
+from unifieddatalibrary.types.hazard import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
 
+- <code title="get /udl/hazard/history">client.hazard.history.<a href="./src/unifieddatalibrary/resources/hazard/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/hazard/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/hazard/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/hazard/history/aodr">client.hazard.history.<a href="./src/unifieddatalibrary/resources/hazard/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/hazard/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/hazard/history/count">client.hazard.history.<a href="./src/unifieddatalibrary/resources/hazard/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/hazard/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/hazard/history">client.hazard.history.<a href="./src/unifieddatalibrary/resources/hazard/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/hazard/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/hazard/history_query_response.py">HistoryQueryResponse</a></code>
+
+# IonoObservations
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    IonoObservationListResponse,
+    IonoObservationCountResponse,
+    IonoObservationQueryhelpResponse,
+    IonoObservationTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/ionoobservation">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/iono_observation_list_response.py">SyncOffsetPage[IonoObservationListResponse]</a></code>
+- <code title="get /udl/ionoobservation/count">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/ionoobservation/createBulk">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/ionoobservation/queryhelp">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/iono_observation_queryhelp_response.py">IonoObservationQueryhelpResponse</a></code>
+- <code title="get /udl/ionoobservation/tuple">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/iono_observation_tuple_response.py">IonoObservationTupleResponse</a></code>
+- <code title="post /filedrop/udl-ionoobs">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.iono_observations import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/ionoobservation/history">client.iono_observations.history.<a href="./src/unifieddatalibrary/resources/iono_observations/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observations/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/iono_observations/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/ionoobservation/history/aodr">client.iono_observations.history.<a href="./src/unifieddatalibrary/resources/iono_observations/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observations/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/ionoobservation/history/count">client.iono_observations.history.<a href="./src/unifieddatalibrary/resources/iono_observations/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observations/history_count_params.py">params</a>) -> str</code>
 
 # Ir
 
@@ -2089,6 +2276,73 @@ Methods:
 
 - <code title="get /udl/itemtracking/history">client.item_trackings.history.<a href="./src/unifieddatalibrary/resources/item_trackings/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/item_trackings/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/item_trackings/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/itemtracking/history/count">client.item_trackings.history.<a href="./src/unifieddatalibrary/resources/item_trackings/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/item_trackings/history_count_params.py">params</a>) -> str</code>
+
+# Laserdeconflictrequest
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    FixedPointFull,
+    LaserdeconflictrequestListResponse,
+    LaserdeconflictrequestCountResponse,
+    LaserdeconflictrequestGetResponse,
+    LaserdeconflictrequestQueryhelpResponse,
+    LaserdeconflictrequestTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/laserdeconflictrequest">client.laserdeconflictrequest.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/laserdeconflictrequest.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/laserdeconflictrequest">client.laserdeconflictrequest.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/laserdeconflictrequest.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laserdeconflictrequest_list_response.py">SyncOffsetPage[LaserdeconflictrequestListResponse]</a></code>
+- <code title="get /udl/laserdeconflictrequest/count">client.laserdeconflictrequest.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/laserdeconflictrequest.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/laserdeconflictrequest/{id}">client.laserdeconflictrequest.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/laserdeconflictrequest.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laserdeconflictrequest_get_response.py">LaserdeconflictrequestGetResponse</a></code>
+- <code title="get /udl/laserdeconflictrequest/queryhelp">client.laserdeconflictrequest.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/laserdeconflictrequest.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/laserdeconflictrequest_queryhelp_response.py">LaserdeconflictrequestQueryhelpResponse</a></code>
+- <code title="get /udl/laserdeconflictrequest/tuple">client.laserdeconflictrequest.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/laserdeconflictrequest.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laserdeconflictrequest_tuple_response.py">LaserdeconflictrequestTupleResponse</a></code>
+- <code title="post /filedrop/udl-laserdeconflictrequest">client.laserdeconflictrequest.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/laserdeconflictrequest.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.laserdeconflictrequest import (
+    HistoryListResponse,
+    HistoryCountResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/laserdeconflictrequest/history">client.laserdeconflictrequest.history.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laserdeconflictrequest/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/laserdeconflictrequest/history/aodr">client.laserdeconflictrequest.history.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/laserdeconflictrequest/history/count">client.laserdeconflictrequest.history.<a href="./src/unifieddatalibrary/resources/laserdeconflictrequest/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/laserdeconflictrequest/history_count_params.py">params</a>) -> str</code>
+
+# Laseremitter
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    LaseremitterListResponse,
+    LaseremitterCountResponse,
+    LaseremitterGetResponse,
+    LaseremitterQueryhelpResponse,
+    LaseremitterTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/laseremitter">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_create_params.py">params</a>) -> None</code>
+- <code title="put /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/laseremitter_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/laseremitter">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_list_response.py">SyncOffsetPage[LaseremitterListResponse]</a></code>
+- <code title="delete /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">delete</a>(id) -> None</code>
+- <code title="get /udl/laseremitter/count">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/laseremitter_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_get_response.py">LaseremitterGetResponse</a></code>
+- <code title="get /udl/laseremitter/queryhelp">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/laseremitter_queryhelp_response.py">LaseremitterQueryhelpResponse</a></code>
+- <code title="get /udl/laseremitter/tuple">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_tuple_response.py">LaseremitterTupleResponse</a></code>
 
 # LaunchDetection
 
@@ -2301,6 +2555,13 @@ Methods:
 - <code title="get /udl/linkstatus/history/aodr">client.link_status.history.<a href="./src/unifieddatalibrary/resources/link_status/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/link_status/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/linkstatus/history/count">client.link_status.history.<a href="./src/unifieddatalibrary/resources/link_status/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/link_status/history_count_params.py">params</a>) -> str</code>
 
+# Linkstatus
+
+Methods:
+
+- <code title="put /udl/linkstatus/{id}">client.linkstatus.<a href="./src/unifieddatalibrary/resources/linkstatus.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/linkstatus_update_params.py">params</a>) -> None</code>
+- <code title="delete /udl/linkstatus/{id}">client.linkstatus.<a href="./src/unifieddatalibrary/resources/linkstatus.py">delete</a>(id) -> None</code>
+
 # Location
 
 Types:
@@ -2493,14 +2754,14 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.missile_tracks import HistoryCountResponse, HistoryQueryResponse
+from unifieddatalibrary.types.missile_tracks import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
 
+- <code title="get /udl/missiletrack/history">client.missile_tracks.history.<a href="./src/unifieddatalibrary/resources/missile_tracks/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/missile_tracks/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/missile_tracks/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/missiletrack/history/aodr">client.missile_tracks.history.<a href="./src/unifieddatalibrary/resources/missile_tracks/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/missile_tracks/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/missiletrack/history/count">client.missile_tracks.history.<a href="./src/unifieddatalibrary/resources/missile_tracks/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/missile_tracks/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/missiletrack/history">client.missile_tracks.history.<a href="./src/unifieddatalibrary/resources/missile_tracks/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/missile_tracks/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/missile_tracks/history_query_response.py">HistoryQueryResponse</a></code>
 
 # MissionAssignment
 
@@ -2533,14 +2794,14 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.mission_assignment import HistoryCountResponse, HistoryQueryResponse
+from unifieddatalibrary.types.mission_assignment import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
 
+- <code title="get /udl/missionassignment/history">client.mission_assignment.history.<a href="./src/unifieddatalibrary/resources/mission_assignment/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/mission_assignment/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/mission_assignment/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/missionassignment/history/aodr">client.mission_assignment.history.<a href="./src/unifieddatalibrary/resources/mission_assignment/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/mission_assignment/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/missionassignment/history/count">client.mission_assignment.history.<a href="./src/unifieddatalibrary/resources/mission_assignment/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/mission_assignment/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/missionassignment/history">client.mission_assignment.history.<a href="./src/unifieddatalibrary/resources/mission_assignment/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/mission_assignment/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/mission_assignment/history_query_response.py">HistoryQueryResponse</a></code>
 
 # Mti
 
@@ -2715,6 +2976,45 @@ Methods:
 - <code title="post /udl/ecpsdr/createBulk">client.observations.ecpsdr.<a href="./src/unifieddatalibrary/resources/observations/ecpsdr.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/observations/ecpsdr_create_bulk_params.py">params</a>) -> None</code>
 - <code title="get /udl/ecpsdr/queryhelp">client.observations.ecpsdr.<a href="./src/unifieddatalibrary/resources/observations/ecpsdr.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/observations/ecpsdr_query_help_response.py">EcpsdrQueryHelpResponse</a></code>
 - <code title="get /udl/ecpsdr/tuple">client.observations.ecpsdr.<a href="./src/unifieddatalibrary/resources/observations/ecpsdr.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/observations/ecpsdr_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/ecpsdr_tuple_response.py">EcpsdrTupleResponse</a></code>
+- <code title="post /filedrop/udl-ecpsdr">client.observations.ecpsdr.<a href="./src/unifieddatalibrary/resources/observations/ecpsdr.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/observations/ecpsdr_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## EoObservations
+
+Types:
+
+```python
+from unifieddatalibrary.types.observations import (
+    EoObservationAbridged,
+    EoObservationCountResponse,
+    EoObservationQueryhelpResponse,
+    EoObservationTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/eoobservation">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/eoobservation/{id}">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/eo_observation_full.py">EoObservationFull</a></code>
+- <code title="get /udl/eoobservation">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/eo_observation_abridged.py">SyncOffsetPage[EoObservationAbridged]</a></code>
+- <code title="get /udl/eoobservation/count">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/eoobservation/createBulk">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/eoobservation/queryhelp">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/observations/eo_observation_queryhelp_response.py">EoObservationQueryhelpResponse</a></code>
+- <code title="get /udl/eoobservation/tuple">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/eo_observation_tuple_response.py">EoObservationTupleResponse</a></code>
+- <code title="post /filedrop/udl-eo">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_unvalidated_publish_params.py">params</a>) -> None</code>
+
+### History
+
+Types:
+
+```python
+from unifieddatalibrary.types.observations.eo_observations import HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/eoobservation/history">client.observations.eo_observations.history.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observations/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/eo_observation_full.py">SyncOffsetPage[EoObservationFull]</a></code>
+- <code title="get /udl/eoobservation/history/aodr">client.observations.eo_observations.history.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observations/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/eoobservation/history/count">client.observations.eo_observations.history.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observations/history_count_params.py">params</a>) -> str</code>
 
 ## Monoradar
 
@@ -2744,22 +3044,58 @@ Types:
 
 ```python
 from unifieddatalibrary.types.observations.monoradar import (
+    HistoryListResponse,
     HistoryCountResponse,
-    HistoryQueryResponse,
 )
 ```
 
 Methods:
 
+- <code title="get /udl/monoradar/history">client.observations.monoradar.history.<a href="./src/unifieddatalibrary/resources/observations/monoradar/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/monoradar/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/monoradar/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/monoradar/history/aodr">client.observations.monoradar.history.<a href="./src/unifieddatalibrary/resources/observations/monoradar/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/observations/monoradar/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/monoradar/history/count">client.observations.monoradar.history.<a href="./src/unifieddatalibrary/resources/observations/monoradar/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/monoradar/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/monoradar/history">client.observations.monoradar.history.<a href="./src/unifieddatalibrary/resources/observations/monoradar/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/observations/monoradar/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/monoradar/history_query_response.py">HistoryQueryResponse</a></code>
 
-## Swir
+## PassiveRadarObservation
+
+Types:
+
+```python
+from unifieddatalibrary.types.observations import (
+    PassiveRadarObservationListResponse,
+    PassiveRadarObservationCountResponse,
+    PassiveRadarObservationGetResponse,
+    PassiveRadarObservationQueryhelpResponse,
+    PassiveRadarObservationTupleResponse,
+)
+```
 
 Methods:
 
-- <code title="post /filedrop/swir">client.observations.swir.<a href="./src/unifieddatalibrary/resources/observations/swir.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/observations/swir_unvalidated_publish_params.py">params</a>) -> None</code>
+- <code title="post /udl/passiveradarobservation">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/passiveradarobservation">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation_list_response.py">SyncOffsetPage[PassiveRadarObservationListResponse]</a></code>
+- <code title="get /udl/passiveradarobservation/count">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/passiveradarobservation/createBulk">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_create_bulk_params.py">params</a>) -> None</code>
+- <code title="post /filedrop/udl-passiveradar">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_file_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/passiveradarobservation/{id}">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation_get_response.py">PassiveRadarObservationGetResponse</a></code>
+- <code title="get /udl/passiveradarobservation/queryhelp">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation_queryhelp_response.py">PassiveRadarObservationQueryhelpResponse</a></code>
+- <code title="get /udl/passiveradarobservation/tuple">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation_tuple_response.py">PassiveRadarObservationTupleResponse</a></code>
+
+### History
+
+Types:
+
+```python
+from unifieddatalibrary.types.observations.passive_radar_observation import (
+    HistoryListResponse,
+    HistoryCountResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/passiveradarobservation/history">client.observations.passive_radar_observation.history.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/passiveradarobservation/history/aodr">client.observations.passive_radar_observation.history.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/passiveradarobservation/history/count">client.observations.passive_radar_observation.history.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation/history_count_params.py">params</a>) -> str</code>
 
 ## Radarobservation
 
@@ -2845,85 +3181,11 @@ Methods:
 - <code title="get /udl/rfobservation/history/aodr">client.observations.rf_observation.history.<a href="./src/unifieddatalibrary/resources/observations/rf_observation/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/observations/rf_observation/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/rfobservation/history/count">client.observations.rf_observation.history.<a href="./src/unifieddatalibrary/resources/observations/rf_observation/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/rf_observation/history_count_params.py">params</a>) -> str</code>
 
-## PassiveRadarObservation
-
-Types:
-
-```python
-from unifieddatalibrary.types.observations import (
-    PassiveRadarObservationListResponse,
-    PassiveRadarObservationCountResponse,
-    PassiveRadarObservationGetResponse,
-    PassiveRadarObservationQueryhelpResponse,
-    PassiveRadarObservationTupleResponse,
-)
-```
+## Swir
 
 Methods:
 
-- <code title="post /udl/passiveradarobservation">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/passiveradarobservation">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation_list_response.py">SyncOffsetPage[PassiveRadarObservationListResponse]</a></code>
-- <code title="get /udl/passiveradarobservation/count">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/passiveradarobservation/createBulk">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_create_bulk_params.py">params</a>) -> None</code>
-- <code title="post /filedrop/udl-passiveradar">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">file_create</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_file_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/passiveradarobservation/{id}">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation_get_response.py">PassiveRadarObservationGetResponse</a></code>
-- <code title="get /udl/passiveradarobservation/queryhelp">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation_queryhelp_response.py">PassiveRadarObservationQueryhelpResponse</a></code>
-- <code title="get /udl/passiveradarobservation/tuple">client.observations.passive_radar_observation.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/passive_radar_observation.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation_tuple_response.py">PassiveRadarObservationTupleResponse</a></code>
-
-### History
-
-Types:
-
-```python
-from unifieddatalibrary.types.observations.passive_radar_observation import (
-    HistoryListResponse,
-    HistoryCountResponse,
-)
-```
-
-Methods:
-
-- <code title="get /udl/passiveradarobservation/history">client.observations.passive_radar_observation.history.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/passive_radar_observation/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
-- <code title="get /udl/passiveradarobservation/history/aodr">client.observations.passive_radar_observation.history.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation/history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/passiveradarobservation/history/count">client.observations.passive_radar_observation.history.<a href="./src/unifieddatalibrary/resources/observations/passive_radar_observation/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/passive_radar_observation/history_count_params.py">params</a>) -> str</code>
-
-## EoObservations
-
-Types:
-
-```python
-from unifieddatalibrary.types.observations import (
-    EoObservationAbridged,
-    EoObservationCountResponse,
-    EoObservationQueryhelpResponse,
-    EoObservationTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="post /udl/eoobservation">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/eoobservation/{id}">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/eo_observation_full.py">EoObservationFull</a></code>
-- <code title="get /udl/eoobservation">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/eo_observation_abridged.py">SyncOffsetPage[EoObservationAbridged]</a></code>
-- <code title="get /udl/eoobservation/count">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/eoobservation/createBulk">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/eoobservation/queryhelp">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/observations/eo_observation_queryhelp_response.py">EoObservationQueryhelpResponse</a></code>
-- <code title="get /udl/eoobservation/tuple">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/eo_observation_tuple_response.py">EoObservationTupleResponse</a></code>
-- <code title="post /filedrop/udl-eo">client.observations.eo_observations.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/eo_observations.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observation_unvalidated_publish_params.py">params</a>) -> None</code>
-
-### History
-
-Types:
-
-```python
-from unifieddatalibrary.types.observations.eo_observations import HistoryCountResponse
-```
-
-Methods:
-
-- <code title="get /udl/eoobservation/history">client.observations.eo_observations.history.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observations/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/eo_observation_full.py">SyncOffsetPage[EoObservationFull]</a></code>
-- <code title="get /udl/eoobservation/history/aodr">client.observations.eo_observations.history.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observations/history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/eoobservation/history/count">client.observations.eo_observations.history.<a href="./src/unifieddatalibrary/resources/observations/eo_observations/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/eo_observations/history_count_params.py">params</a>) -> str</code>
+- <code title="post /filedrop/swir">client.observations.swir.<a href="./src/unifieddatalibrary/resources/observations/swir.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/observations/swir_unvalidated_publish_params.py">params</a>) -> None</code>
 
 # Onboardnavigation
 
@@ -3429,6 +3691,40 @@ Methods:
 - <code title="get /udl/port/queryhelp">client.port.<a href="./src/unifieddatalibrary/resources/port.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/port_queryhelp_response.py">PortQueryhelpResponse</a></code>
 - <code title="get /udl/port/tuple">client.port.<a href="./src/unifieddatalibrary/resources/port.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/port_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/port_tuple_response.py">PortTupleResponse</a></code>
 
+# ReportAndActivities
+
+## Poi
+
+### History
+
+Types:
+
+```python
+from unifieddatalibrary.types.report_and_activities.poi import (
+    HistoryListResponse,
+    HistoryCountResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/poi/history">client.report_and_activities.poi.history.<a href="./src/unifieddatalibrary/resources/report_and_activities/poi/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/poi/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/report_and_activities/poi/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/poi/history/aodr">client.report_and_activities.poi.history.<a href="./src/unifieddatalibrary/resources/report_and_activities/poi/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/poi/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/poi/history/count">client.report_and_activities.poi.history.<a href="./src/unifieddatalibrary/resources/report_and_activities/poi/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/poi/history_count_params.py">params</a>) -> str</code>
+
+## UdlH3geo
+
+Methods:
+
+- <code title="post /filedrop/udl-h3geo">client.report_and_activities.udl_h3geo.<a href="./src/unifieddatalibrary/resources/report_and_activities/udl_h3geo.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/udl_h3geo_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## UdlSigact
+
+Methods:
+
+- <code title="get /udl/sigact/getFile/{id}">client.report_and_activities.udl_sigact.<a href="./src/unifieddatalibrary/resources/report_and_activities/udl_sigact.py">file_get</a>(id, \*\*<a href="src/unifieddatalibrary/types/report_and_activities/udl_sigact_file_get_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /filedrop/udl-sigact">client.report_and_activities.udl_sigact.<a href="./src/unifieddatalibrary/resources/report_and_activities/udl_sigact.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/udl_sigact_unvalidated_publish_params.py">params</a>) -> None</code>
+
 # RfBand
 
 Types:
@@ -3528,6 +3824,33 @@ Methods:
 - <code title="get /udl/rfemitterdetails/queryhelp">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/rf_emitter_detail_queryhelp_response.py">RfEmitterDetailQueryhelpResponse</a></code>
 - <code title="get /udl/rfemitterdetails/tuple">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_detail_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_detail_tuple_response.py">RfEmitterDetailTupleResponse</a></code>
 
+# RouteStats
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    RouteStatRetrieveResponse,
+    RouteStatListResponse,
+    RouteStatCountResponse,
+    RouteStatQueryHelpResponse,
+    RouteStatTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/routestats">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/routestats/{id}">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/route_stat_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/route_stat_retrieve_response.py">RouteStatRetrieveResponse</a></code>
+- <code title="put /udl/routestats/{id}">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/route_stat_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/routestats">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/route_stat_list_response.py">SyncOffsetPage[RouteStatListResponse]</a></code>
+- <code title="delete /udl/routestats/{id}">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">delete</a>(id) -> None</code>
+- <code title="get /udl/routestats/count">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/routestats/createBulk">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/routestats/queryhelp">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/route_stat_query_help_response.py">RouteStatQueryHelpResponse</a></code>
+- <code title="get /udl/routestats/tuple">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/route_stat_tuple_response.py">RouteStatTupleResponse</a></code>
+- <code title="post /filedrop/udl-routestats">client.route_stats.<a href="./src/unifieddatalibrary/resources/route_stats.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/route_stat_unvalidated_publish_params.py">params</a>) -> None</code>
+
 # SarObservation
 
 Types:
@@ -3592,6 +3915,135 @@ Methods:
 - <code title="get /udl/scientific/queryhelp">client.scientific.<a href="./src/unifieddatalibrary/resources/scientific.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/scientific_queryhelp_response.py">ScientificQueryhelpResponse</a></code>
 - <code title="get /udl/scientific/tuple">client.scientific.<a href="./src/unifieddatalibrary/resources/scientific.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/scientific_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scientific_tuple_response.py">ScientificTupleResponse</a></code>
 
+# Scs
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    SearchCriterion,
+    SearchLogicalCriterion,
+    ScAllowableFileExtensionsResponse,
+    ScAllowableFileMimesResponse,
+    ScCopyResponse,
+    ScFileUploadResponse,
+    ScMoveResponse,
+    ScSearchResponse,
+)
+```
+
+Methods:
+
+- <code title="delete /scs/delete">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">delete</a>(\*\*<a href="src/unifieddatalibrary/types/sc_delete_params.py">params</a>) -> None</code>
+- <code title="get /scs/allowableFileExtensions">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_extensions</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_extensions_response.py">ScAllowableFileExtensionsResponse</a></code>
+- <code title="get /scs/allowableFileMimes">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_mimes</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_mimes_response.py">ScAllowableFileMimesResponse</a></code>
+- <code title="post /scs/copy">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/sc_copy_params.py">params</a>) -> str</code>
+- <code title="post /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_download_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="get /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_file_download_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /scs/file">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_upload</a>(file_content, \*\*<a href="src/unifieddatalibrary/types/sc_file_upload_params.py">params</a>) -> str</code>
+- <code title="put /scs/move">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/sc_move_params.py">params</a>) -> str</code>
+- <code title="put /scs/rename">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">rename</a>(\*\*<a href="src/unifieddatalibrary/types/sc_rename_params.py">params</a>) -> None</code>
+- <code title="post /scs/search">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">search</a>(\*\*<a href="src/unifieddatalibrary/types/sc_search_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sc_search_response.py">ScSearchResponse</a></code>
+
+## Notifications
+
+Types:
+
+```python
+from unifieddatalibrary.types.scs import NotificationListResponse
+```
+
+Methods:
+
+- <code title="get /scs/notifications/{offset}">client.scs.notifications.<a href="./src/unifieddatalibrary/resources/scs/notifications/notifications.py">list</a>(offset, \*\*<a href="src/unifieddatalibrary/types/scs/notification_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scs/notification_list_response.py">SyncOffsetPage[NotificationListResponse]</a></code>
+
+### Offset
+
+Types:
+
+```python
+from unifieddatalibrary.types.scs.notifications import OffsetGetResponse
+```
+
+Methods:
+
+- <code title="get /scs/notifications/offsets">client.scs.notifications.offset.<a href="./src/unifieddatalibrary/resources/scs/notifications/offset.py">get</a>() -> <a href="./src/unifieddatalibrary/types/scs/notifications/offset_get_response.py">OffsetGetResponse</a></code>
+- <code title="get /scs/notifications/getLatestOffset">client.scs.notifications.offset.<a href="./src/unifieddatalibrary/resources/scs/notifications/offset.py">get_latest</a>() -> None</code>
+
+## File
+
+Methods:
+
+- <code title="get /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
+- <code title="patch /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_update_params.py">params</a>) -> None</code>
+- <code title="get /scs/list">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">SyncOffsetPage[FileData]</a></code>
+
+## Folders
+
+Types:
+
+```python
+from unifieddatalibrary.types.scs import FolderCreateResponse
+```
+
+Methods:
+
+- <code title="post /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_create_params.py">params</a>) -> str</code>
+- <code title="get /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
+- <code title="patch /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_update_params.py">params</a>) -> None</code>
+
+## Paths
+
+Types:
+
+```python
+from unifieddatalibrary.types.scs import PathCreateWithFileResponse
+```
+
+Methods:
+
+- <code title="post /scs/path">client.scs.paths.<a href="./src/unifieddatalibrary/resources/scs/paths.py">create_with_file</a>(file_content, \*\*<a href="src/unifieddatalibrary/types/scs/path_create_with_file_params.py">params</a>) -> str</code>
+
+## View
+
+Methods:
+
+- <code title="get /scs/view/{id}">client.scs.view.<a href="./src/unifieddatalibrary/resources/scs/view.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/scs/view_get_params.py">params</a>) -> BinaryAPIResponse</code>
+
+## V2
+
+Types:
+
+```python
+from unifieddatalibrary.types.scs import Attachment, ScsEntity, V2SearchResponse
+```
+
+Methods:
+
+- <code title="patch /scs/v2/update">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_update_params.py">params</a>) -> None</code>
+- <code title="get /scs/v2/list">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scs/scs_entity.py">SyncOffsetPage[ScsEntity]</a></code>
+- <code title="delete /scs/v2/delete">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">delete</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_delete_params.py">params</a>) -> None</code>
+- <code title="post /scs/v2/copy">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_copy_params.py">params</a>) -> None</code>
+- <code title="post /scs/v2/file">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">file_upload</a>(file_content, \*\*<a href="src/unifieddatalibrary/types/scs/v2_file_upload_params.py">params</a>) -> None</code>
+- <code title="post /scs/v2/folder">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">folder_create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_folder_create_params.py">params</a>) -> None</code>
+- <code title="put /scs/v2/move">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_move_params.py">params</a>) -> None</code>
+- <code title="post /scs/v2/search">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">search</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_search_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scs/v2_search_response.py">V2SearchResponse</a></code>
+
+# SecureMessaging
+
+Types:
+
+```python
+from unifieddatalibrary.types import TopicDetails, SecureMessagingListTopicsResponse
+```
+
+Methods:
+
+- <code title="get /sm/describeTopic/{topic}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">describe_topic</a>(topic, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_describe_topic_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/topic_details.py">TopicDetails</a></code>
+- <code title="get /sm/getLatestOffset/{topic}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">get_latest_offset</a>(topic, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_get_latest_offset_params.py">params</a>) -> None</code>
+- <code title="get /sm/getMessages/{topic}/{offset}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">get_messages</a>(offset, \*, topic, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_get_messages_params.py">params</a>) -> None</code>
+- <code title="get /sm/listTopics">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">list_topics</a>() -> <a href="./src/unifieddatalibrary/types/secure_messaging_list_topics_response.py">SecureMessagingListTopicsResponse</a></code>
+
 # Sensor
 
 Types:
@@ -3624,8 +4076,8 @@ Types:
 ```python
 from unifieddatalibrary.types.sensor import (
     CalibrationRetrieveResponse,
+    CalibrationListResponse,
     CalibrationCountResponse,
-    CalibrationQueryResponse,
     CalibrationQueryHelpResponse,
     CalibrationTupleResponse,
 )
@@ -3635,9 +4087,9 @@ Methods:
 
 - <code title="post /udl/sensorcalibration">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_create_params.py">params</a>) -> None</code>
 - <code title="get /udl/sensorcalibration/{id}">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/sensor/calibration_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration_retrieve_response.py">CalibrationRetrieveResponse</a></code>
+- <code title="get /udl/sensorcalibration">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration_list_response.py">SyncOffsetPage[CalibrationListResponse]</a></code>
 - <code title="get /udl/sensorcalibration/count">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_count_params.py">params</a>) -> str</code>
 - <code title="post /udl/sensorcalibration/createBulk">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/sensorcalibration">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration_query_response.py">CalibrationQueryResponse</a></code>
 - <code title="get /udl/sensorcalibration/queryhelp">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/sensor/calibration_query_help_response.py">CalibrationQueryHelpResponse</a></code>
 - <code title="get /udl/sensorcalibration/tuple">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration_tuple_response.py">CalibrationTupleResponse</a></code>
 - <code title="post /filedrop/udl-sensorcalibration">client.sensor.calibration.<a href="./src/unifieddatalibrary/resources/sensor/calibration/calibration.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration_unvalidated_publish_params.py">params</a>) -> None</code>
@@ -3647,14 +4099,14 @@ Methods:
 Types:
 
 ```python
-from unifieddatalibrary.types.sensor.calibration import HistoryCountResponse, HistoryQueryResponse
+from unifieddatalibrary.types.sensor.calibration import HistoryListResponse, HistoryCountResponse
 ```
 
 Methods:
 
+- <code title="get /udl/sensorcalibration/history">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/sensorcalibration/history/aodr">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/sensorcalibration/history/count">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/sensorcalibration/history">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration/history_query_response.py">HistoryQueryResponse</a></code>
-- <code title="get /udl/sensorcalibration/history/aodr">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">write_aodr</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_write_aodr_params.py">params</a>) -> None</code>
 
 # SensorMaintenance
 
@@ -3666,7 +4118,7 @@ from unifieddatalibrary.types import (
     SensorMaintenanceCountResponse,
     SensorMaintenanceGetResponse,
     SensorMaintenanceListCurrentResponse,
-    SensorMaintenanceQueryhelpResponse,
+    SensorMaintenanceQueryHelpResponse,
     SensorMaintenanceTupleResponse,
 )
 ```
@@ -3681,7 +4133,7 @@ Methods:
 - <code title="post /udl/sensormaintenance/createBulk">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_create_bulk_params.py">params</a>) -> None</code>
 - <code title="get /udl/sensormaintenance/{id}">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_get_response.py">SensorMaintenanceGetResponse</a></code>
 - <code title="get /udl/sensormaintenance/current">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">list_current</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_list_current_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_list_current_response.py">SyncOffsetPage[SensorMaintenanceListCurrentResponse]</a></code>
-- <code title="get /udl/sensormaintenance/queryhelp">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_queryhelp_response.py">SensorMaintenanceQueryhelpResponse</a></code>
+- <code title="get /udl/sensormaintenance/queryhelp">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_query_help_response.py">SensorMaintenanceQueryHelpResponse</a></code>
 - <code title="get /udl/sensormaintenance/tuple">client.sensor_maintenance.<a href="./src/unifieddatalibrary/resources/sensor_maintenance/sensor_maintenance.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_maintenance_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_maintenance_tuple_response.py">SensorMaintenanceTupleResponse</a></code>
 
 ## History
@@ -4409,6 +4861,19 @@ Methods:
 - <code title="get /udl/statevector/tuple">client.state_vector.<a href="./src/unifieddatalibrary/resources/state_vector/state_vector.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/state_vector_tuple_response.py">StateVectorTupleResponse</a></code>
 - <code title="post /filedrop/udl-sv">client.state_vector.<a href="./src/unifieddatalibrary/resources/state_vector/state_vector.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector_unvalidated_publish_params.py">params</a>) -> None</code>
 
+## Current
+
+Types:
+
+```python
+from unifieddatalibrary.types.state_vector import CurrentTupleResponse
+```
+
+Methods:
+
+- <code title="get /udl/statevector/current">client.state_vector.current.<a href="./src/unifieddatalibrary/resources/state_vector/current.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector/current_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/state_vector_abridged.py">SyncOffsetPage[StateVectorAbridged]</a></code>
+- <code title="get /udl/statevector/current/tuple">client.state_vector.current.<a href="./src/unifieddatalibrary/resources/state_vector/current.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector/current_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/state_vector/current_tuple_response.py">CurrentTupleResponse</a></code>
+
 ## History
 
 Types:
@@ -4422,19 +4887,6 @@ Methods:
 - <code title="get /udl/statevector/history">client.state_vector.history.<a href="./src/unifieddatalibrary/resources/state_vector/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/state_vector_full.py">SyncOffsetPage[StateVectorFull]</a></code>
 - <code title="get /udl/statevector/history/aodr">client.state_vector.history.<a href="./src/unifieddatalibrary/resources/state_vector/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/statevector/history/count">client.state_vector.history.<a href="./src/unifieddatalibrary/resources/state_vector/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector/history_count_params.py">params</a>) -> str</code>
-
-## Current
-
-Types:
-
-```python
-from unifieddatalibrary.types.state_vector import CurrentTupleResponse
-```
-
-Methods:
-
-- <code title="get /udl/statevector/current">client.state_vector.current.<a href="./src/unifieddatalibrary/resources/state_vector/current.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector/current_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/state_vector_abridged.py">SyncOffsetPage[StateVectorAbridged]</a></code>
-- <code title="get /udl/statevector/current/tuple">client.state_vector.current.<a href="./src/unifieddatalibrary/resources/state_vector/current.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/state_vector/current_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/state_vector/current_tuple_response.py">CurrentTupleResponse</a></code>
 
 # Status
 
@@ -4959,226 +5411,3 @@ Methods:
 - <code title="get /udl/weatherreport/history">client.weather_report.history.<a href="./src/unifieddatalibrary/resources/weather_report/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/weather_report/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/weather_report/weather_report_full.py">SyncOffsetPage[WeatherReportFull]</a></code>
 - <code title="get /udl/weatherreport/history/aodr">client.weather_report.history.<a href="./src/unifieddatalibrary/resources/weather_report/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/weather_report/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/weatherreport/history/count">client.weather_report.history.<a href="./src/unifieddatalibrary/resources/weather_report/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/weather_report/history_count_params.py">params</a>) -> str</code>
-
-# GnssObservations
-
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.gnss_observations import HistoryCountResponse
-```
-
-Methods:
-
-- <code title="get /udl/gnssobservationset/history/count">client.gnss_observations.history.<a href="./src/unifieddatalibrary/resources/gnss_observations/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_observations/history_count_params.py">params</a>) -> str</code>
-
-# GnssRawIf
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    GnssRawIfListResponse,
-    GnssRawIfCountResponse,
-    GnssRawIfGetResponse,
-    GnssRawIfQueryhelpResponse,
-    GnssRawIfTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="get /udl/gnssrawif">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if_list_response.py">SyncOffsetPage[GnssRawIfListResponse]</a></code>
-- <code title="get /udl/gnssrawif/count">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/gnssrawif/getFile/{id}">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">file_get</a>(id, \*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_file_get_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="get /udl/gnssrawif/{id}">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if_get_response.py">GnssRawIfGetResponse</a></code>
-- <code title="get /udl/gnssrawif/queryhelp">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/gnss_raw_if_queryhelp_response.py">GnssRawIfQueryhelpResponse</a></code>
-- <code title="get /udl/gnssrawif/tuple">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if_tuple_response.py">GnssRawIfTupleResponse</a></code>
-- <code title="post /filedrop/udl-gnssrawif">client.gnss_raw_if.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/gnss_raw_if.py">upload_zip</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if_upload_zip_params.py">params</a>) -> None</code>
-
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.gnss_raw_if import HistoryCountResponse, HistoryQueryResponse
-```
-
-Methods:
-
-- <code title="get /udl/gnssrawif/history/aodr">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/gnssrawif/history/count">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/gnssrawif/history">client.gnss_raw_if.history.<a href="./src/unifieddatalibrary/resources/gnss_raw_if/history.py">query</a>(\*\*<a href="src/unifieddatalibrary/types/gnss_raw_if/history_query_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/gnss_raw_if/history_query_response.py">HistoryQueryResponse</a></code>
-
-# IonoObservations
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    IonoObservationListResponse,
-    IonoObservationCountResponse,
-    IonoObservationQueryhelpResponse,
-    IonoObservationTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="get /udl/ionoobservation">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/iono_observation_list_response.py">SyncOffsetPage[IonoObservationListResponse]</a></code>
-- <code title="get /udl/ionoobservation/count">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_count_params.py">params</a>) -> str</code>
-- <code title="post /udl/ionoobservation/createBulk">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_create_bulk_params.py">params</a>) -> None</code>
-- <code title="get /udl/ionoobservation/queryhelp">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/iono_observation_queryhelp_response.py">IonoObservationQueryhelpResponse</a></code>
-- <code title="get /udl/ionoobservation/tuple">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/iono_observation_tuple_response.py">IonoObservationTupleResponse</a></code>
-- <code title="post /filedrop/udl-ionoobs">client.iono_observations.<a href="./src/unifieddatalibrary/resources/iono_observations/iono_observations.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observation_unvalidated_publish_params.py">params</a>) -> None</code>
-
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.iono_observations import HistoryListResponse, HistoryCountResponse
-```
-
-Methods:
-
-- <code title="get /udl/ionoobservation/history">client.iono_observations.history.<a href="./src/unifieddatalibrary/resources/iono_observations/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observations/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/iono_observations/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
-- <code title="get /udl/ionoobservation/history/aodr">client.iono_observations.history.<a href="./src/unifieddatalibrary/resources/iono_observations/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observations/history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/ionoobservation/history/count">client.iono_observations.history.<a href="./src/unifieddatalibrary/resources/iono_observations/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/iono_observations/history_count_params.py">params</a>) -> str</code>
-
-# ReportAndActivities
-
-## Poi
-
-### History
-
-Types:
-
-```python
-from unifieddatalibrary.types.report_and_activities.poi import (
-    HistoryListResponse,
-    HistoryCountResponse,
-)
-```
-
-Methods:
-
-- <code title="get /udl/poi/history">client.report_and_activities.poi.history.<a href="./src/unifieddatalibrary/resources/report_and_activities/poi/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/poi/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/report_and_activities/poi/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
-- <code title="get /udl/poi/history/aodr">client.report_and_activities.poi.history.<a href="./src/unifieddatalibrary/resources/report_and_activities/poi/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/poi/history_aodr_params.py">params</a>) -> None</code>
-- <code title="get /udl/poi/history/count">client.report_and_activities.poi.history.<a href="./src/unifieddatalibrary/resources/report_and_activities/poi/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/poi/history_count_params.py">params</a>) -> str</code>
-
-## UdlH3geo
-
-Methods:
-
-- <code title="post /filedrop/udl-h3geo">client.report_and_activities.udl_h3geo.<a href="./src/unifieddatalibrary/resources/report_and_activities/udl_h3geo.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/udl_h3geo_unvalidated_publish_params.py">params</a>) -> None</code>
-
-## UdlSigact
-
-Methods:
-
-- <code title="get /udl/sigact/getFile/{id}">client.report_and_activities.udl_sigact.<a href="./src/unifieddatalibrary/resources/report_and_activities/udl_sigact.py">file_get</a>(id, \*\*<a href="src/unifieddatalibrary/types/report_and_activities/udl_sigact_file_get_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="post /filedrop/udl-sigact">client.report_and_activities.udl_sigact.<a href="./src/unifieddatalibrary/resources/report_and_activities/udl_sigact.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/report_and_activities/udl_sigact_unvalidated_publish_params.py">params</a>) -> None</code>
-
-# SecureMessaging
-
-Types:
-
-```python
-from unifieddatalibrary.types import TopicDetails, SecureMessagingListTopicsResponse
-```
-
-Methods:
-
-- <code title="get /sm/describeTopic/{topic}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">describe_topic</a>(topic, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_describe_topic_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/topic_details.py">TopicDetails</a></code>
-- <code title="get /sm/getLatestOffset/{topic}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">get_latest_offset</a>(topic, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_get_latest_offset_params.py">params</a>) -> None</code>
-- <code title="get /sm/getMessages/{topic}/{offset}">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">get_messages</a>(offset, \*, topic, \*\*<a href="src/unifieddatalibrary/types/secure_messaging_get_messages_params.py">params</a>) -> None</code>
-- <code title="get /sm/listTopics">client.secure_messaging.<a href="./src/unifieddatalibrary/resources/secure_messaging.py">list_topics</a>() -> <a href="./src/unifieddatalibrary/types/secure_messaging_list_topics_response.py">SecureMessagingListTopicsResponse</a></code>
-
-# Scs
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    ScAllowableFileExtensionsResponse,
-    ScAllowableFileMimesResponse,
-    ScCopyResponse,
-    ScFileUploadResponse,
-    ScMoveResponse,
-    ScSearchResponse,
-)
-```
-
-Methods:
-
-- <code title="delete /scs/delete">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">delete</a>(\*\*<a href="src/unifieddatalibrary/types/sc_delete_params.py">params</a>) -> None</code>
-- <code title="get /scs/allowableFileExtensions">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_extensions</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_extensions_response.py">ScAllowableFileExtensionsResponse</a></code>
-- <code title="get /scs/allowableFileMimes">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">allowable_file_mimes</a>() -> <a href="./src/unifieddatalibrary/types/sc_allowable_file_mimes_response.py">ScAllowableFileMimesResponse</a></code>
-- <code title="post /scs/copy">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/sc_copy_params.py">params</a>) -> str</code>
-- <code title="post /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_download_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="get /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_file_download_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="post /scs/file">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_upload</a>(file_content, \*\*<a href="src/unifieddatalibrary/types/sc_file_upload_params.py">params</a>) -> str</code>
-- <code title="put /scs/move">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/sc_move_params.py">params</a>) -> str</code>
-- <code title="put /scs/rename">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">rename</a>(\*\*<a href="src/unifieddatalibrary/types/sc_rename_params.py">params</a>) -> None</code>
-- <code title="post /scs/search">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">search</a>(\*\*<a href="src/unifieddatalibrary/types/sc_search_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sc_search_response.py">ScSearchResponse</a></code>
-
-## Folders
-
-Types:
-
-```python
-from unifieddatalibrary.types.scs import FolderCreateResponse
-```
-
-Methods:
-
-- <code title="post /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_create_params.py">params</a>) -> str</code>
-- <code title="get /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
-- <code title="patch /scs/folder">client.scs.folders.<a href="./src/unifieddatalibrary/resources/scs/folders.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/folder_update_params.py">params</a>) -> None</code>
-
-## Paths
-
-Types:
-
-```python
-from unifieddatalibrary.types.scs import PathCreateWithFileResponse
-```
-
-Methods:
-
-- <code title="post /scs/path">client.scs.paths.<a href="./src/unifieddatalibrary/resources/scs/paths.py">create_with_file</a>(file_content, \*\*<a href="src/unifieddatalibrary/types/scs/path_create_with_file_params.py">params</a>) -> str</code>
-
-## V2
-
-Types:
-
-```python
-from unifieddatalibrary.types.scs import Attachment, ScsEntity
-```
-
-Methods:
-
-- <code title="patch /scs/v2/update">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_update_params.py">params</a>) -> None</code>
-- <code title="get /scs/v2/list">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/scs/scs_entity.py">SyncOffsetPage[ScsEntity]</a></code>
-- <code title="delete /scs/v2/delete">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">delete</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_delete_params.py">params</a>) -> None</code>
-- <code title="post /scs/v2/copy">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">copy</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_copy_params.py">params</a>) -> None</code>
-- <code title="post /scs/v2/file">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">file_upload</a>(file_content, \*\*<a href="src/unifieddatalibrary/types/scs/v2_file_upload_params.py">params</a>) -> None</code>
-- <code title="post /scs/v2/folder">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">folder_create</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_folder_create_params.py">params</a>) -> None</code>
-- <code title="put /scs/v2/move">client.scs.v2.<a href="./src/unifieddatalibrary/resources/scs/v2.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/scs/v2_move_params.py">params</a>) -> None</code>
-
-## File
-
-Methods:
-
-- <code title="get /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">retrieve</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">FileData</a></code>
-- <code title="patch /scs/file">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">update</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_update_params.py">params</a>) -> None</code>
-- <code title="get /scs/list">client.scs.file.<a href="./src/unifieddatalibrary/resources/scs/file.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/scs/file_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/file_data.py">SyncOffsetPage[FileData]</a></code>
-
-# ScsViews
-
-Methods:
-
-- <code title="get /scs/view/{id}">client.scs_views.<a href="./src/unifieddatalibrary/resources/scs_views.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/scs_view_retrieve_params.py">params</a>) -> BinaryAPIResponse</code>

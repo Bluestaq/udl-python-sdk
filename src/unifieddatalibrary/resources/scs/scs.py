@@ -23,6 +23,14 @@ from .file import (
     FileResourceWithStreamingResponse,
     AsyncFileResourceWithStreamingResponse,
 )
+from .view import (
+    ViewResource,
+    AsyncViewResource,
+    ViewResourceWithRawResponse,
+    AsyncViewResourceWithRawResponse,
+    ViewResourceWithStreamingResponse,
+    AsyncViewResourceWithStreamingResponse,
+)
 from .paths import (
     PathsResource,
     AsyncPathsResource,
@@ -69,6 +77,14 @@ from ..._response import (
 )
 from ..._base_client import make_request_options
 from ...types.sc_search_response import ScSearchResponse
+from .notifications.notifications import (
+    NotificationsResource,
+    AsyncNotificationsResource,
+    NotificationsResourceWithRawResponse,
+    AsyncNotificationsResourceWithRawResponse,
+    NotificationsResourceWithStreamingResponse,
+    AsyncNotificationsResourceWithStreamingResponse,
+)
 from ...types.sc_allowable_file_mimes_response import ScAllowableFileMimesResponse
 from ...types.sc_allowable_file_extensions_response import ScAllowableFileExtensionsResponse
 
@@ -76,6 +92,14 @@ __all__ = ["ScsResource", "AsyncScsResource"]
 
 
 class ScsResource(SyncAPIResource):
+    @cached_property
+    def notifications(self) -> NotificationsResource:
+        return NotificationsResource(self._client)
+
+    @cached_property
+    def file(self) -> FileResource:
+        return FileResource(self._client)
+
     @cached_property
     def folders(self) -> FoldersResource:
         return FoldersResource(self._client)
@@ -85,12 +109,12 @@ class ScsResource(SyncAPIResource):
         return PathsResource(self._client)
 
     @cached_property
-    def v2(self) -> V2Resource:
-        return V2Resource(self._client)
+    def view(self) -> ViewResource:
+        return ViewResource(self._client)
 
     @cached_property
-    def file(self) -> FileResource:
-        return FileResource(self._client)
+    def v2(self) -> V2Resource:
+        return V2Resource(self._client)
 
     @cached_property
     def with_raw_response(self) -> ScsResourceWithRawResponse:
@@ -563,6 +587,14 @@ class ScsResource(SyncAPIResource):
 
 class AsyncScsResource(AsyncAPIResource):
     @cached_property
+    def notifications(self) -> AsyncNotificationsResource:
+        return AsyncNotificationsResource(self._client)
+
+    @cached_property
+    def file(self) -> AsyncFileResource:
+        return AsyncFileResource(self._client)
+
+    @cached_property
     def folders(self) -> AsyncFoldersResource:
         return AsyncFoldersResource(self._client)
 
@@ -571,12 +603,12 @@ class AsyncScsResource(AsyncAPIResource):
         return AsyncPathsResource(self._client)
 
     @cached_property
-    def v2(self) -> AsyncV2Resource:
-        return AsyncV2Resource(self._client)
+    def view(self) -> AsyncViewResource:
+        return AsyncViewResource(self._client)
 
     @cached_property
-    def file(self) -> AsyncFileResource:
-        return AsyncFileResource(self._client)
+    def v2(self) -> AsyncV2Resource:
+        return AsyncV2Resource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncScsResourceWithRawResponse:
@@ -1097,6 +1129,14 @@ class ScsResourceWithRawResponse:
         )
 
     @cached_property
+    def notifications(self) -> NotificationsResourceWithRawResponse:
+        return NotificationsResourceWithRawResponse(self._scs.notifications)
+
+    @cached_property
+    def file(self) -> FileResourceWithRawResponse:
+        return FileResourceWithRawResponse(self._scs.file)
+
+    @cached_property
     def folders(self) -> FoldersResourceWithRawResponse:
         return FoldersResourceWithRawResponse(self._scs.folders)
 
@@ -1105,12 +1145,12 @@ class ScsResourceWithRawResponse:
         return PathsResourceWithRawResponse(self._scs.paths)
 
     @cached_property
-    def v2(self) -> V2ResourceWithRawResponse:
-        return V2ResourceWithRawResponse(self._scs.v2)
+    def view(self) -> ViewResourceWithRawResponse:
+        return ViewResourceWithRawResponse(self._scs.view)
 
     @cached_property
-    def file(self) -> FileResourceWithRawResponse:
-        return FileResourceWithRawResponse(self._scs.file)
+    def v2(self) -> V2ResourceWithRawResponse:
+        return V2ResourceWithRawResponse(self._scs.v2)
 
 
 class AsyncScsResourceWithRawResponse:
@@ -1163,6 +1203,14 @@ class AsyncScsResourceWithRawResponse:
         )
 
     @cached_property
+    def notifications(self) -> AsyncNotificationsResourceWithRawResponse:
+        return AsyncNotificationsResourceWithRawResponse(self._scs.notifications)
+
+    @cached_property
+    def file(self) -> AsyncFileResourceWithRawResponse:
+        return AsyncFileResourceWithRawResponse(self._scs.file)
+
+    @cached_property
     def folders(self) -> AsyncFoldersResourceWithRawResponse:
         return AsyncFoldersResourceWithRawResponse(self._scs.folders)
 
@@ -1171,12 +1219,12 @@ class AsyncScsResourceWithRawResponse:
         return AsyncPathsResourceWithRawResponse(self._scs.paths)
 
     @cached_property
-    def v2(self) -> AsyncV2ResourceWithRawResponse:
-        return AsyncV2ResourceWithRawResponse(self._scs.v2)
+    def view(self) -> AsyncViewResourceWithRawResponse:
+        return AsyncViewResourceWithRawResponse(self._scs.view)
 
     @cached_property
-    def file(self) -> AsyncFileResourceWithRawResponse:
-        return AsyncFileResourceWithRawResponse(self._scs.file)
+    def v2(self) -> AsyncV2ResourceWithRawResponse:
+        return AsyncV2ResourceWithRawResponse(self._scs.v2)
 
 
 class ScsResourceWithStreamingResponse:
@@ -1229,6 +1277,14 @@ class ScsResourceWithStreamingResponse:
         )
 
     @cached_property
+    def notifications(self) -> NotificationsResourceWithStreamingResponse:
+        return NotificationsResourceWithStreamingResponse(self._scs.notifications)
+
+    @cached_property
+    def file(self) -> FileResourceWithStreamingResponse:
+        return FileResourceWithStreamingResponse(self._scs.file)
+
+    @cached_property
     def folders(self) -> FoldersResourceWithStreamingResponse:
         return FoldersResourceWithStreamingResponse(self._scs.folders)
 
@@ -1237,12 +1293,12 @@ class ScsResourceWithStreamingResponse:
         return PathsResourceWithStreamingResponse(self._scs.paths)
 
     @cached_property
-    def v2(self) -> V2ResourceWithStreamingResponse:
-        return V2ResourceWithStreamingResponse(self._scs.v2)
+    def view(self) -> ViewResourceWithStreamingResponse:
+        return ViewResourceWithStreamingResponse(self._scs.view)
 
     @cached_property
-    def file(self) -> FileResourceWithStreamingResponse:
-        return FileResourceWithStreamingResponse(self._scs.file)
+    def v2(self) -> V2ResourceWithStreamingResponse:
+        return V2ResourceWithStreamingResponse(self._scs.v2)
 
 
 class AsyncScsResourceWithStreamingResponse:
@@ -1295,6 +1351,14 @@ class AsyncScsResourceWithStreamingResponse:
         )
 
     @cached_property
+    def notifications(self) -> AsyncNotificationsResourceWithStreamingResponse:
+        return AsyncNotificationsResourceWithStreamingResponse(self._scs.notifications)
+
+    @cached_property
+    def file(self) -> AsyncFileResourceWithStreamingResponse:
+        return AsyncFileResourceWithStreamingResponse(self._scs.file)
+
+    @cached_property
     def folders(self) -> AsyncFoldersResourceWithStreamingResponse:
         return AsyncFoldersResourceWithStreamingResponse(self._scs.folders)
 
@@ -1303,9 +1367,9 @@ class AsyncScsResourceWithStreamingResponse:
         return AsyncPathsResourceWithStreamingResponse(self._scs.paths)
 
     @cached_property
-    def v2(self) -> AsyncV2ResourceWithStreamingResponse:
-        return AsyncV2ResourceWithStreamingResponse(self._scs.v2)
+    def view(self) -> AsyncViewResourceWithStreamingResponse:
+        return AsyncViewResourceWithStreamingResponse(self._scs.view)
 
     @cached_property
-    def file(self) -> AsyncFileResourceWithStreamingResponse:
-        return AsyncFileResourceWithStreamingResponse(self._scs.file)
+    def v2(self) -> AsyncV2ResourceWithStreamingResponse:
+        return AsyncV2ResourceWithStreamingResponse(self._scs.v2)

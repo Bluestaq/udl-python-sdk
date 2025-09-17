@@ -9,10 +9,10 @@ import httpx
 from ..types import (
     aircraft_list_params,
     aircraft_count_params,
+    aircraft_tuple_params,
     aircraft_create_params,
     aircraft_update_params,
     aircraft_retrieve_params,
-    aircraft_tuple_query_params,
 )
 from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from .._utils import maybe_transform, async_maybe_transform
@@ -29,8 +29,8 @@ from .._base_client import AsyncPaginator, make_request_options
 from ..types.aircraft_abridged import AircraftAbridged
 from ..types.entity_ingest_param import EntityIngestParam
 from ..types.shared.aircraft_full import AircraftFull
+from ..types.aircraft_tuple_response import AircraftTupleResponse
 from ..types.aircraft_queryhelp_response import AircraftQueryhelpResponse
-from ..types.aircraft_tuple_query_response import AircraftTupleQueryResponse
 
 __all__ = ["AircraftResource", "AsyncAircraftResource"]
 
@@ -511,7 +511,7 @@ class AircraftResource(SyncAPIResource):
             cast_to=AircraftQueryhelpResponse,
         )
 
-    def tuple_query(
+    def tuple(
         self,
         *,
         columns: str,
@@ -523,7 +523,7 @@ class AircraftResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftTupleQueryResponse:
+    ) -> AircraftTupleResponse:
         """
         Service operation to dynamically query data and only return specified
         columns/fields. Requested columns are specified by the 'columns' query parameter
@@ -561,10 +561,10 @@ class AircraftResource(SyncAPIResource):
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    aircraft_tuple_query_params.AircraftTupleQueryParams,
+                    aircraft_tuple_params.AircraftTupleParams,
                 ),
             ),
-            cast_to=AircraftTupleQueryResponse,
+            cast_to=AircraftTupleResponse,
         )
 
 
@@ -1044,7 +1044,7 @@ class AsyncAircraftResource(AsyncAPIResource):
             cast_to=AircraftQueryhelpResponse,
         )
 
-    async def tuple_query(
+    async def tuple(
         self,
         *,
         columns: str,
@@ -1056,7 +1056,7 @@ class AsyncAircraftResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AircraftTupleQueryResponse:
+    ) -> AircraftTupleResponse:
         """
         Service operation to dynamically query data and only return specified
         columns/fields. Requested columns are specified by the 'columns' query parameter
@@ -1094,10 +1094,10 @@ class AsyncAircraftResource(AsyncAPIResource):
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    aircraft_tuple_query_params.AircraftTupleQueryParams,
+                    aircraft_tuple_params.AircraftTupleParams,
                 ),
             ),
-            cast_to=AircraftTupleQueryResponse,
+            cast_to=AircraftTupleResponse,
         )
 
 
@@ -1123,8 +1123,8 @@ class AircraftResourceWithRawResponse:
         self.queryhelp = to_raw_response_wrapper(
             aircraft.queryhelp,
         )
-        self.tuple_query = to_raw_response_wrapper(
-            aircraft.tuple_query,
+        self.tuple = to_raw_response_wrapper(
+            aircraft.tuple,
         )
 
 
@@ -1150,8 +1150,8 @@ class AsyncAircraftResourceWithRawResponse:
         self.queryhelp = async_to_raw_response_wrapper(
             aircraft.queryhelp,
         )
-        self.tuple_query = async_to_raw_response_wrapper(
-            aircraft.tuple_query,
+        self.tuple = async_to_raw_response_wrapper(
+            aircraft.tuple,
         )
 
 
@@ -1177,8 +1177,8 @@ class AircraftResourceWithStreamingResponse:
         self.queryhelp = to_streamed_response_wrapper(
             aircraft.queryhelp,
         )
-        self.tuple_query = to_streamed_response_wrapper(
-            aircraft.tuple_query,
+        self.tuple = to_streamed_response_wrapper(
+            aircraft.tuple,
         )
 
 
@@ -1204,6 +1204,6 @@ class AsyncAircraftResourceWithStreamingResponse:
         self.queryhelp = async_to_streamed_response_wrapper(
             aircraft.queryhelp,
         )
-        self.tuple_query = async_to_streamed_response_wrapper(
-            aircraft.tuple_query,
+        self.tuple = async_to_streamed_response_wrapper(
+            aircraft.tuple,
         )

@@ -19,16 +19,7 @@ from .air_tasking_order_count_response import AirTaskingOrderCountResponse as Ai
 from .air_tasking_order_tuple_response import AirTaskingOrderTupleResponse as AirTaskingOrderTupleResponse
 from .air_tasking_order_retrieve_params import AirTaskingOrderRetrieveParams as AirTaskingOrderRetrieveParams
 from .aircraft_sorty_create_bulk_params import AircraftSortyCreateBulkParams as AircraftSortyCreateBulkParams
-from .aircraft_sorty_history_aodr_params import AircraftSortyHistoryAodrParams as AircraftSortyHistoryAodrParams
-from .aircraft_sorty_history_count_params import AircraftSortyHistoryCountParams as AircraftSortyHistoryCountParams
-from .aircraft_sorty_history_query_params import AircraftSortyHistoryQueryParams as AircraftSortyHistoryQueryParams
 from .air_tasking_order_query_help_response import AirTaskingOrderQueryHelpResponse as AirTaskingOrderQueryHelpResponse
-from .aircraft_sorty_history_count_response import (
-    AircraftSortyHistoryCountResponse as AircraftSortyHistoryCountResponse,
-)
-from .aircraft_sorty_history_query_response import (
-    AircraftSortyHistoryQueryResponse as AircraftSortyHistoryQueryResponse,
-)
 from .aircraft_sorty_unvalidated_publish_params import (
     AircraftSortyUnvalidatedPublishParams as AircraftSortyUnvalidatedPublishParams,
 )

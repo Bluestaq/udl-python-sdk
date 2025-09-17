@@ -10,13 +10,13 @@ import httpx
 
 from ...types import (
     ground_imagery_get_params,
+    ground_imagery_aodr_params,
     ground_imagery_list_params,
     ground_imagery_count_params,
     ground_imagery_tuple_params,
     ground_imagery_create_params,
     ground_imagery_get_file_params,
     ground_imagery_upload_zip_params,
-    ground_imagery_history_aodr_params,
 )
 from .history import (
     HistoryResource,
@@ -299,6 +299,80 @@ class GroundImageryResource(SyncAPIResource):
             model=GroundImageryListResponse,
         )
 
+    def aodr(
+        self,
+        *,
+        image_time: Union[str, datetime],
+        columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        notification: str | NotGiven = NOT_GIVEN,
+        output_delimiter: str | NotGiven = NOT_GIVEN,
+        output_format: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to dynamically query historical data by a variety of query
+        parameters not specified in this API documentation, then write that data to the
+        Secure Content Store. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          image_time: Timestamp the image was captured/produced. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
+              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              query fields that can be selected.
+
+          notification: optional, notification method for the created file link. When omitted, EMAIL is
+              assumed. Current valid values are: EMAIL, SMS.
+
+          output_delimiter: optional, field delimiter when the created file is not JSON. Must be a single
+              character chosen from this set: (',', ';', ':', '|'). When omitted, "," is used.
+              It is strongly encouraged that your field delimiter be a character unlikely to
+              occur within the data.
+
+          output_format: optional, output format for the file. When omitted, JSON is assumed. Current
+              valid values are: JSON and CSV.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/groundimagery/history/aodr",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "image_time": image_time,
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                        "notification": notification,
+                        "output_delimiter": output_delimiter,
+                        "output_format": output_format,
+                    },
+                    ground_imagery_aodr_params.GroundImageryAodrParams,
+                ),
+            ),
+            cast_to=NoneType,
+        )
+
     def count(
         self,
         *,
@@ -443,80 +517,6 @@ class GroundImageryResource(SyncAPIResource):
                 ),
             ),
             cast_to=BinaryAPIResponse,
-        )
-
-    def history_aodr(
-        self,
-        *,
-        image_time: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        notification: str | NotGiven = NOT_GIVEN,
-        output_delimiter: str | NotGiven = NOT_GIVEN,
-        output_format: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to dynamically query historical data by a variety of query
-        parameters not specified in this API documentation, then write that data to the
-        Secure Content Store. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          image_time: Timestamp the image was captured/produced. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
-              query fields that can be selected.
-
-          notification: optional, notification method for the created file link. When omitted, EMAIL is
-              assumed. Current valid values are: EMAIL, SMS.
-
-          output_delimiter: optional, field delimiter when the created file is not JSON. Must be a single
-              character chosen from this set: (',', ';', ':', '|'). When omitted, "," is used.
-              It is strongly encouraged that your field delimiter be a character unlikely to
-              occur within the data.
-
-          output_format: optional, output format for the file. When omitted, JSON is assumed. Current
-              valid values are: JSON and CSV.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
-            "/udl/groundimagery/history/aodr",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "image_time": image_time,
-                        "columns": columns,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                        "notification": notification,
-                        "output_delimiter": output_delimiter,
-                        "output_format": output_format,
-                    },
-                    ground_imagery_history_aodr_params.GroundImageryHistoryAodrParams,
-                ),
-            ),
-            cast_to=NoneType,
         )
 
     def queryhelp(
@@ -906,6 +906,80 @@ class AsyncGroundImageryResource(AsyncAPIResource):
             model=GroundImageryListResponse,
         )
 
+    async def aodr(
+        self,
+        *,
+        image_time: Union[str, datetime],
+        columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        notification: str | NotGiven = NOT_GIVEN,
+        output_delimiter: str | NotGiven = NOT_GIVEN,
+        output_format: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to dynamically query historical data by a variety of query
+        parameters not specified in this API documentation, then write that data to the
+        Secure Content Store. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          image_time: Timestamp the image was captured/produced. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
+              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              query fields that can be selected.
+
+          notification: optional, notification method for the created file link. When omitted, EMAIL is
+              assumed. Current valid values are: EMAIL, SMS.
+
+          output_delimiter: optional, field delimiter when the created file is not JSON. Must be a single
+              character chosen from this set: (',', ';', ':', '|'). When omitted, "," is used.
+              It is strongly encouraged that your field delimiter be a character unlikely to
+              occur within the data.
+
+          output_format: optional, output format for the file. When omitted, JSON is assumed. Current
+              valid values are: JSON and CSV.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._get(
+            "/udl/groundimagery/history/aodr",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "image_time": image_time,
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                        "notification": notification,
+                        "output_delimiter": output_delimiter,
+                        "output_format": output_format,
+                    },
+                    ground_imagery_aodr_params.GroundImageryAodrParams,
+                ),
+            ),
+            cast_to=NoneType,
+        )
+
     async def count(
         self,
         *,
@@ -1050,80 +1124,6 @@ class AsyncGroundImageryResource(AsyncAPIResource):
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
-        )
-
-    async def history_aodr(
-        self,
-        *,
-        image_time: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        notification: str | NotGiven = NOT_GIVEN,
-        output_delimiter: str | NotGiven = NOT_GIVEN,
-        output_format: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to dynamically query historical data by a variety of query
-        parameters not specified in this API documentation, then write that data to the
-        Secure Content Store. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          image_time: Timestamp the image was captured/produced. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
-              query fields that can be selected.
-
-          notification: optional, notification method for the created file link. When omitted, EMAIL is
-              assumed. Current valid values are: EMAIL, SMS.
-
-          output_delimiter: optional, field delimiter when the created file is not JSON. Must be a single
-              character chosen from this set: (',', ';', ':', '|'). When omitted, "," is used.
-              It is strongly encouraged that your field delimiter be a character unlikely to
-              occur within the data.
-
-          output_format: optional, output format for the file. When omitted, JSON is assumed. Current
-              valid values are: JSON and CSV.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/groundimagery/history/aodr",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "image_time": image_time,
-                        "columns": columns,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                        "notification": notification,
-                        "output_delimiter": output_delimiter,
-                        "output_format": output_format,
-                    },
-                    ground_imagery_history_aodr_params.GroundImageryHistoryAodrParams,
-                ),
-            ),
-            cast_to=NoneType,
         )
 
     async def queryhelp(
@@ -1278,6 +1278,9 @@ class GroundImageryResourceWithRawResponse:
         self.list = to_raw_response_wrapper(
             ground_imagery.list,
         )
+        self.aodr = to_raw_response_wrapper(
+            ground_imagery.aodr,
+        )
         self.count = to_raw_response_wrapper(
             ground_imagery.count,
         )
@@ -1287,9 +1290,6 @@ class GroundImageryResourceWithRawResponse:
         self.get_file = to_custom_raw_response_wrapper(
             ground_imagery.get_file,
             BinaryAPIResponse,
-        )
-        self.history_aodr = to_raw_response_wrapper(
-            ground_imagery.history_aodr,
         )
         self.queryhelp = to_raw_response_wrapper(
             ground_imagery.queryhelp,
@@ -1316,6 +1316,9 @@ class AsyncGroundImageryResourceWithRawResponse:
         self.list = async_to_raw_response_wrapper(
             ground_imagery.list,
         )
+        self.aodr = async_to_raw_response_wrapper(
+            ground_imagery.aodr,
+        )
         self.count = async_to_raw_response_wrapper(
             ground_imagery.count,
         )
@@ -1325,9 +1328,6 @@ class AsyncGroundImageryResourceWithRawResponse:
         self.get_file = async_to_custom_raw_response_wrapper(
             ground_imagery.get_file,
             AsyncBinaryAPIResponse,
-        )
-        self.history_aodr = async_to_raw_response_wrapper(
-            ground_imagery.history_aodr,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             ground_imagery.queryhelp,
@@ -1354,6 +1354,9 @@ class GroundImageryResourceWithStreamingResponse:
         self.list = to_streamed_response_wrapper(
             ground_imagery.list,
         )
+        self.aodr = to_streamed_response_wrapper(
+            ground_imagery.aodr,
+        )
         self.count = to_streamed_response_wrapper(
             ground_imagery.count,
         )
@@ -1363,9 +1366,6 @@ class GroundImageryResourceWithStreamingResponse:
         self.get_file = to_custom_streamed_response_wrapper(
             ground_imagery.get_file,
             StreamedBinaryAPIResponse,
-        )
-        self.history_aodr = to_streamed_response_wrapper(
-            ground_imagery.history_aodr,
         )
         self.queryhelp = to_streamed_response_wrapper(
             ground_imagery.queryhelp,
@@ -1392,6 +1392,9 @@ class AsyncGroundImageryResourceWithStreamingResponse:
         self.list = async_to_streamed_response_wrapper(
             ground_imagery.list,
         )
+        self.aodr = async_to_streamed_response_wrapper(
+            ground_imagery.aodr,
+        )
         self.count = async_to_streamed_response_wrapper(
             ground_imagery.count,
         )
@@ -1401,9 +1404,6 @@ class AsyncGroundImageryResourceWithStreamingResponse:
         self.get_file = async_to_custom_streamed_response_wrapper(
             ground_imagery.get_file,
             AsyncStreamedBinaryAPIResponse,
-        )
-        self.history_aodr = async_to_streamed_response_wrapper(
-            ground_imagery.history_aodr,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             ground_imagery.queryhelp,

@@ -10,12 +10,13 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
-    DropzoneQueryResponse,
+    DropzoneListResponse,
     DropzoneTupleResponse,
     DropzoneRetrieveResponse,
     DropzoneQueryHelpResponse,
 )
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
 
@@ -254,6 +255,39 @@ class TestDropzone:
             )
 
     @parametrize
+    def test_method_list(self, client: Unifieddatalibrary) -> None:
+        dropzone = client.dropzone.list()
+        assert_matches_type(SyncOffsetPage[DropzoneListResponse], dropzone, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        dropzone = client.dropzone.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[DropzoneListResponse], dropzone, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
+        response = client.dropzone.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        dropzone = response.parse()
+        assert_matches_type(SyncOffsetPage[DropzoneListResponse], dropzone, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
+        with client.dropzone.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            dropzone = response.parse()
+            assert_matches_type(SyncOffsetPage[DropzoneListResponse], dropzone, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_delete(self, client: Unifieddatalibrary) -> None:
         dropzone = client.dropzone.delete(
             "id",
@@ -379,39 +413,6 @@ class TestDropzone:
 
             dropzone = response.parse()
             assert dropzone is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_query(self, client: Unifieddatalibrary) -> None:
-        dropzone = client.dropzone.query()
-        assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
-
-    @parametrize
-    def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
-        dropzone = client.dropzone.query(
-            first_result=0,
-            max_results=0,
-        )
-        assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
-
-    @parametrize
-    def test_raw_response_query(self, client: Unifieddatalibrary) -> None:
-        response = client.dropzone.with_raw_response.query()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        dropzone = response.parse()
-        assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
-
-    @parametrize
-    def test_streaming_response_query(self, client: Unifieddatalibrary) -> None:
-        with client.dropzone.with_streaming_response.query() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            dropzone = response.parse()
-            assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -775,6 +776,39 @@ class TestAsyncDropzone:
             )
 
     @parametrize
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dropzone = await async_client.dropzone.list()
+        assert_matches_type(AsyncOffsetPage[DropzoneListResponse], dropzone, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        dropzone = await async_client.dropzone.list(
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[DropzoneListResponse], dropzone, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.dropzone.with_raw_response.list()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        dropzone = await response.parse()
+        assert_matches_type(AsyncOffsetPage[DropzoneListResponse], dropzone, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.dropzone.with_streaming_response.list() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            dropzone = await response.parse()
+            assert_matches_type(AsyncOffsetPage[DropzoneListResponse], dropzone, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     async def test_method_delete(self, async_client: AsyncUnifieddatalibrary) -> None:
         dropzone = await async_client.dropzone.delete(
             "id",
@@ -900,39 +934,6 @@ class TestAsyncDropzone:
 
             dropzone = await response.parse()
             assert dropzone is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        dropzone = await async_client.dropzone.query()
-        assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
-
-    @parametrize
-    async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        dropzone = await async_client.dropzone.query(
-            first_result=0,
-            max_results=0,
-        )
-        assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
-
-    @parametrize
-    async def test_raw_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.dropzone.with_raw_response.query()
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        dropzone = await response.parse()
-        assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.dropzone.with_streaming_response.query() as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            dropzone = await response.parse()
-            assert_matches_type(DropzoneQueryResponse, dropzone, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

@@ -24,6 +24,14 @@ from ...types import (
     collect_response_create_bulk_params,
     collect_response_unvalidated_publish_params,
 )
+from .history import (
+    HistoryResource,
+    AsyncHistoryResource,
+    HistoryResourceWithRawResponse,
+    AsyncHistoryResourceWithRawResponse,
+    HistoryResourceWithStreamingResponse,
+    AsyncHistoryResourceWithStreamingResponse,
+)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
@@ -36,14 +44,6 @@ from ..._response import (
 )
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
-from .history.history import (
-    HistoryResource,
-    AsyncHistoryResource,
-    HistoryResourceWithRawResponse,
-    AsyncHistoryResourceWithRawResponse,
-    HistoryResourceWithStreamingResponse,
-    AsyncHistoryResourceWithStreamingResponse,
-)
 from ...types.collect_response_abridged import CollectResponseAbridged
 from ...types.shared.collect_response_full import CollectResponseFull
 from ...types.collect_response_query_help_response import CollectResponseQueryHelpResponse

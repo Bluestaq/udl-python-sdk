@@ -27,6 +27,7 @@ from ...types.observations import (
     ecpsdr_create_params,
     ecpsdr_retrieve_params,
     ecpsdr_create_bulk_params,
+    ecpsdr_unvalidated_publish_params,
 )
 from ...types.observations.ecpsdr import Ecpsdr
 from ...types.observations.ecpsdr_abridged import EcpsdrAbridged
@@ -598,6 +599,42 @@ class EcpsdrResource(SyncAPIResource):
             cast_to=EcpsdrTupleResponse,
         )
 
+    def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[ecpsdr_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple ECPSDR as a POST body and ingest into the
+        database. This operation is intended to be used for automated feeds into UDL. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._post(
+            "/filedrop/udl-ecpsdr",
+            body=maybe_transform(body, Iterable[ecpsdr_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class AsyncEcpsdrResource(AsyncAPIResource):
     @cached_property
@@ -1161,6 +1198,42 @@ class AsyncEcpsdrResource(AsyncAPIResource):
             cast_to=EcpsdrTupleResponse,
         )
 
+    async def unvalidated_publish(
+        self,
+        *,
+        body: Iterable[ecpsdr_unvalidated_publish_params.Body],
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to take multiple ECPSDR as a POST body and ingest into the
+        database. This operation is intended to be used for automated feeds into UDL. A
+        specific role is required to perform this service operation. Please contact the
+        UDL team for assistance.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return await self._post(
+            "/filedrop/udl-ecpsdr",
+            body=await async_maybe_transform(body, Iterable[ecpsdr_unvalidated_publish_params.Body]),
+            options=make_request_options(
+                extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
+            ),
+            cast_to=NoneType,
+        )
+
 
 class EcpsdrResourceWithRawResponse:
     def __init__(self, ecpsdr: EcpsdrResource) -> None:
@@ -1186,6 +1259,9 @@ class EcpsdrResourceWithRawResponse:
         )
         self.tuple = to_raw_response_wrapper(
             ecpsdr.tuple,
+        )
+        self.unvalidated_publish = to_raw_response_wrapper(
+            ecpsdr.unvalidated_publish,
         )
 
 
@@ -1214,6 +1290,9 @@ class AsyncEcpsdrResourceWithRawResponse:
         self.tuple = async_to_raw_response_wrapper(
             ecpsdr.tuple,
         )
+        self.unvalidated_publish = async_to_raw_response_wrapper(
+            ecpsdr.unvalidated_publish,
+        )
 
 
 class EcpsdrResourceWithStreamingResponse:
@@ -1241,6 +1320,9 @@ class EcpsdrResourceWithStreamingResponse:
         self.tuple = to_streamed_response_wrapper(
             ecpsdr.tuple,
         )
+        self.unvalidated_publish = to_streamed_response_wrapper(
+            ecpsdr.unvalidated_publish,
+        )
 
 
 class AsyncEcpsdrResourceWithStreamingResponse:
@@ -1267,4 +1349,7 @@ class AsyncEcpsdrResourceWithStreamingResponse:
         )
         self.tuple = async_to_streamed_response_wrapper(
             ecpsdr.tuple,
+        )
+        self.unvalidated_publish = async_to_streamed_response_wrapper(
+            ecpsdr.unvalidated_publish,
         )

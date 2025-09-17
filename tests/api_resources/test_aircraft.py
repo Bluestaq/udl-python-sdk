@@ -11,8 +11,8 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     AircraftAbridged,
+    AircraftTupleResponse,
     AircraftQueryhelpResponse,
-    AircraftTupleQueryResponse,
 )
 from unifieddatalibrary._utils import parse_date, parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
@@ -404,42 +404,42 @@ class TestAircraft:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    def test_method_tuple_query(self, client: Unifieddatalibrary) -> None:
-        aircraft = client.aircraft.tuple_query(
+    def test_method_tuple(self, client: Unifieddatalibrary) -> None:
+        aircraft = client.aircraft.tuple(
             columns="columns",
         )
-        assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
+        assert_matches_type(AircraftTupleResponse, aircraft, path=["response"])
 
     @parametrize
-    def test_method_tuple_query_with_all_params(self, client: Unifieddatalibrary) -> None:
-        aircraft = client.aircraft.tuple_query(
+    def test_method_tuple_with_all_params(self, client: Unifieddatalibrary) -> None:
+        aircraft = client.aircraft.tuple(
             columns="columns",
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
+        assert_matches_type(AircraftTupleResponse, aircraft, path=["response"])
 
     @parametrize
-    def test_raw_response_tuple_query(self, client: Unifieddatalibrary) -> None:
-        response = client.aircraft.with_raw_response.tuple_query(
+    def test_raw_response_tuple(self, client: Unifieddatalibrary) -> None:
+        response = client.aircraft.with_raw_response.tuple(
             columns="columns",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft = response.parse()
-        assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
+        assert_matches_type(AircraftTupleResponse, aircraft, path=["response"])
 
     @parametrize
-    def test_streaming_response_tuple_query(self, client: Unifieddatalibrary) -> None:
-        with client.aircraft.with_streaming_response.tuple_query(
+    def test_streaming_response_tuple(self, client: Unifieddatalibrary) -> None:
+        with client.aircraft.with_streaming_response.tuple(
             columns="columns",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft = response.parse()
-            assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
+            assert_matches_type(AircraftTupleResponse, aircraft, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -829,41 +829,41 @@ class TestAsyncAircraft:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
-    async def test_method_tuple_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        aircraft = await async_client.aircraft.tuple_query(
+    async def test_method_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aircraft = await async_client.aircraft.tuple(
             columns="columns",
         )
-        assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
+        assert_matches_type(AircraftTupleResponse, aircraft, path=["response"])
 
     @parametrize
-    async def test_method_tuple_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        aircraft = await async_client.aircraft.tuple_query(
+    async def test_method_tuple_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        aircraft = await async_client.aircraft.tuple(
             columns="columns",
             first_result=0,
             max_results=0,
         )
-        assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
+        assert_matches_type(AircraftTupleResponse, aircraft, path=["response"])
 
     @parametrize
-    async def test_raw_response_tuple_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.aircraft.with_raw_response.tuple_query(
+    async def test_raw_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.aircraft.with_raw_response.tuple(
             columns="columns",
         )
 
         assert response.is_closed is True
         assert response.http_request.headers.get("X-Stainless-Lang") == "python"
         aircraft = await response.parse()
-        assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
+        assert_matches_type(AircraftTupleResponse, aircraft, path=["response"])
 
     @parametrize
-    async def test_streaming_response_tuple_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.aircraft.with_streaming_response.tuple_query(
+    async def test_streaming_response_tuple(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.aircraft.with_streaming_response.tuple(
             columns="columns",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
 
             aircraft = await response.parse()
-            assert_matches_type(AircraftTupleQueryResponse, aircraft, path=["response"])
+            assert_matches_type(AircraftTupleResponse, aircraft, path=["response"])
 
         assert cast(Any, response.is_closed) is True

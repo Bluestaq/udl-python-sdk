@@ -9,8 +9,8 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    route_stat_list_params,
     route_stat_count_params,
-    route_stat_query_params,
     route_stat_tuple_params,
     route_stat_create_params,
     route_stat_update_params,
@@ -28,8 +28,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.route_stat_query_response import RouteStatQueryResponse
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
+from ..types.route_stat_list_response import RouteStatListResponse
 from ..types.route_stat_tuple_response import RouteStatTupleResponse
 from ..types.route_stat_retrieve_response import RouteStatRetrieveResponse
 from ..types.route_stat_query_help_response import RouteStatQueryHelpResponse
@@ -482,6 +483,52 @@ class RouteStatsResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def list(
+        self,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[RouteStatListResponse]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/routestats",
+            page=SyncOffsetPage[RouteStatListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    route_stat_list_params.RouteStatListParams,
+                ),
+            ),
+            model=RouteStatListResponse,
+        )
+
     def delete(
         self,
         id: str,
@@ -600,51 +647,6 @@ class RouteStatsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def query(
-        self,
-        *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RouteStatQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/routestats",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    route_stat_query_params.RouteStatQueryParams,
-                ),
-            ),
-            cast_to=RouteStatQueryResponse,
         )
 
     def query_help(
@@ -1207,6 +1209,52 @@ class AsyncRouteStatsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    def list(
+        self,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[RouteStatListResponse, AsyncOffsetPage[RouteStatListResponse]]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/routestats",
+            page=AsyncOffsetPage[RouteStatListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    route_stat_list_params.RouteStatListParams,
+                ),
+            ),
+            model=RouteStatListResponse,
+        )
+
     async def delete(
         self,
         id: str,
@@ -1325,51 +1373,6 @@ class AsyncRouteStatsResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def query(
-        self,
-        *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> RouteStatQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/routestats",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    route_stat_query_params.RouteStatQueryParams,
-                ),
-            ),
-            cast_to=RouteStatQueryResponse,
         )
 
     async def query_help(
@@ -1500,6 +1503,9 @@ class RouteStatsResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             route_stats.update,
         )
+        self.list = to_raw_response_wrapper(
+            route_stats.list,
+        )
         self.delete = to_raw_response_wrapper(
             route_stats.delete,
         )
@@ -1508,9 +1514,6 @@ class RouteStatsResourceWithRawResponse:
         )
         self.create_bulk = to_raw_response_wrapper(
             route_stats.create_bulk,
-        )
-        self.query = to_raw_response_wrapper(
-            route_stats.query,
         )
         self.query_help = to_raw_response_wrapper(
             route_stats.query_help,
@@ -1536,6 +1539,9 @@ class AsyncRouteStatsResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             route_stats.update,
         )
+        self.list = async_to_raw_response_wrapper(
+            route_stats.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             route_stats.delete,
         )
@@ -1544,9 +1550,6 @@ class AsyncRouteStatsResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             route_stats.create_bulk,
-        )
-        self.query = async_to_raw_response_wrapper(
-            route_stats.query,
         )
         self.query_help = async_to_raw_response_wrapper(
             route_stats.query_help,
@@ -1572,6 +1575,9 @@ class RouteStatsResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             route_stats.update,
         )
+        self.list = to_streamed_response_wrapper(
+            route_stats.list,
+        )
         self.delete = to_streamed_response_wrapper(
             route_stats.delete,
         )
@@ -1580,9 +1586,6 @@ class RouteStatsResourceWithStreamingResponse:
         )
         self.create_bulk = to_streamed_response_wrapper(
             route_stats.create_bulk,
-        )
-        self.query = to_streamed_response_wrapper(
-            route_stats.query,
         )
         self.query_help = to_streamed_response_wrapper(
             route_stats.query_help,
@@ -1608,6 +1611,9 @@ class AsyncRouteStatsResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             route_stats.update,
         )
+        self.list = async_to_streamed_response_wrapper(
+            route_stats.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             route_stats.delete,
         )
@@ -1616,9 +1622,6 @@ class AsyncRouteStatsResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             route_stats.create_bulk,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            route_stats.query,
         )
         self.query_help = async_to_streamed_response_wrapper(
             route_stats.query_help,

@@ -9,8 +9,8 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    emitter_geolocation_list_params,
     emitter_geolocation_count_params,
-    emitter_geolocation_query_params,
     emitter_geolocation_tuple_params,
     emitter_geolocation_create_params,
     emitter_geolocation_retrieve_params,
@@ -27,8 +27,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.emitter_geolocation_query_response import EmitterGeolocationQueryResponse
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
+from ..types.emitter_geolocation_list_response import EmitterGeolocationListResponse
 from ..types.emitter_geolocation_tuple_response import EmitterGeolocationTupleResponse
 from ..types.emitter_geolocation_retrieve_response import EmitterGeolocationRetrieveResponse
 from ..types.emitter_geolocation_query_help_response import EmitterGeolocationQueryHelpResponse
@@ -354,6 +355,57 @@ class EmitterGeolocationResource(SyncAPIResource):
             cast_to=EmitterGeolocationRetrieveResponse,
         )
 
+    def list(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[EmitterGeolocationListResponse]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          start_time: The start time for this Emitter Geo Location data set in ISO 8601 UTC with
+              microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/emittergeolocation",
+            page=SyncOffsetPage[EmitterGeolocationListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    emitter_geolocation_list_params.EmitterGeolocationListParams,
+                ),
+            ),
+            model=EmitterGeolocationListResponse,
+        )
+
     def delete(
         self,
         id: str,
@@ -478,56 +530,6 @@ class EmitterGeolocationResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def query(
-        self,
-        *,
-        start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EmitterGeolocationQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          start_time: The start time for this Emitter Geo Location data set in ISO 8601 UTC with
-              microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/emittergeolocation",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "start_time": start_time,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    emitter_geolocation_query_params.EmitterGeolocationQueryParams,
-                ),
-            ),
-            cast_to=EmitterGeolocationQueryResponse,
         )
 
     def query_help(
@@ -968,6 +970,57 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
             cast_to=EmitterGeolocationRetrieveResponse,
         )
 
+    def list(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[EmitterGeolocationListResponse, AsyncOffsetPage[EmitterGeolocationListResponse]]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          start_time: The start time for this Emitter Geo Location data set in ISO 8601 UTC with
+              microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/emittergeolocation",
+            page=AsyncOffsetPage[EmitterGeolocationListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    emitter_geolocation_list_params.EmitterGeolocationListParams,
+                ),
+            ),
+            model=EmitterGeolocationListResponse,
+        )
+
     async def delete(
         self,
         id: str,
@@ -1092,56 +1145,6 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def query(
-        self,
-        *,
-        start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> EmitterGeolocationQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          start_time: The start time for this Emitter Geo Location data set in ISO 8601 UTC with
-              microsecond precision. (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/emittergeolocation",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "start_time": start_time,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    emitter_geolocation_query_params.EmitterGeolocationQueryParams,
-                ),
-            ),
-            cast_to=EmitterGeolocationQueryResponse,
         )
 
     async def query_help(
@@ -1274,6 +1277,9 @@ class EmitterGeolocationResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             emitter_geolocation.retrieve,
         )
+        self.list = to_raw_response_wrapper(
+            emitter_geolocation.list,
+        )
         self.delete = to_raw_response_wrapper(
             emitter_geolocation.delete,
         )
@@ -1282,9 +1288,6 @@ class EmitterGeolocationResourceWithRawResponse:
         )
         self.create_bulk = to_raw_response_wrapper(
             emitter_geolocation.create_bulk,
-        )
-        self.query = to_raw_response_wrapper(
-            emitter_geolocation.query,
         )
         self.query_help = to_raw_response_wrapper(
             emitter_geolocation.query_help,
@@ -1307,6 +1310,9 @@ class AsyncEmitterGeolocationResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             emitter_geolocation.retrieve,
         )
+        self.list = async_to_raw_response_wrapper(
+            emitter_geolocation.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             emitter_geolocation.delete,
         )
@@ -1315,9 +1321,6 @@ class AsyncEmitterGeolocationResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             emitter_geolocation.create_bulk,
-        )
-        self.query = async_to_raw_response_wrapper(
-            emitter_geolocation.query,
         )
         self.query_help = async_to_raw_response_wrapper(
             emitter_geolocation.query_help,
@@ -1340,6 +1343,9 @@ class EmitterGeolocationResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             emitter_geolocation.retrieve,
         )
+        self.list = to_streamed_response_wrapper(
+            emitter_geolocation.list,
+        )
         self.delete = to_streamed_response_wrapper(
             emitter_geolocation.delete,
         )
@@ -1348,9 +1354,6 @@ class EmitterGeolocationResourceWithStreamingResponse:
         )
         self.create_bulk = to_streamed_response_wrapper(
             emitter_geolocation.create_bulk,
-        )
-        self.query = to_streamed_response_wrapper(
-            emitter_geolocation.query,
         )
         self.query_help = to_streamed_response_wrapper(
             emitter_geolocation.query_help,
@@ -1373,6 +1376,9 @@ class AsyncEmitterGeolocationResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             emitter_geolocation.retrieve,
         )
+        self.list = async_to_streamed_response_wrapper(
+            emitter_geolocation.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             emitter_geolocation.delete,
         )
@@ -1381,9 +1387,6 @@ class AsyncEmitterGeolocationResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             emitter_geolocation.create_bulk,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            emitter_geolocation.query,
         )
         self.query_help = async_to_streamed_response_wrapper(
             emitter_geolocation.query_help,

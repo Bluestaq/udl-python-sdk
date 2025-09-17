@@ -61,6 +61,50 @@ class TestHistory:
         assert cast(Any, response.is_closed) is True
 
     @parametrize
+    def test_method_aodr(self, client: Unifieddatalibrary) -> None:
+        history = client.collect_responses.history.aodr(
+            created_at=parse_date("2019-12-27"),
+        )
+        assert history is None
+
+    @parametrize
+    def test_method_aodr_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.collect_responses.history.aodr(
+            created_at=parse_date("2019-12-27"),
+            columns="columns",
+            first_result=0,
+            max_results=0,
+            notification="notification",
+            output_delimiter="outputDelimiter",
+            output_format="outputFormat",
+        )
+        assert history is None
+
+    @parametrize
+    def test_raw_response_aodr(self, client: Unifieddatalibrary) -> None:
+        response = client.collect_responses.history.with_raw_response.aodr(
+            created_at=parse_date("2019-12-27"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        history = response.parse()
+        assert history is None
+
+    @parametrize
+    def test_streaming_response_aodr(self, client: Unifieddatalibrary) -> None:
+        with client.collect_responses.history.with_streaming_response.aodr(
+            created_at=parse_date("2019-12-27"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            history = response.parse()
+            assert history is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         history = client.collect_responses.history.count(
             created_at=parse_date("2019-12-27"),
@@ -144,6 +188,50 @@ class TestAsyncHistory:
 
             history = await response.parse()
             assert_matches_type(AsyncOffsetPage[CollectResponseFull], history, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.collect_responses.history.aodr(
+            created_at=parse_date("2019-12-27"),
+        )
+        assert history is None
+
+    @parametrize
+    async def test_method_aodr_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.collect_responses.history.aodr(
+            created_at=parse_date("2019-12-27"),
+            columns="columns",
+            first_result=0,
+            max_results=0,
+            notification="notification",
+            output_delimiter="outputDelimiter",
+            output_format="outputFormat",
+        )
+        assert history is None
+
+    @parametrize
+    async def test_raw_response_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.collect_responses.history.with_raw_response.aodr(
+            created_at=parse_date("2019-12-27"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        history = await response.parse()
+        assert history is None
+
+    @parametrize
+    async def test_streaming_response_aodr(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.collect_responses.history.with_streaming_response.aodr(
+            created_at=parse_date("2019-12-27"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            history = await response.parse()
+            assert history is None
 
         assert cast(Any, response.is_closed) is True
 
