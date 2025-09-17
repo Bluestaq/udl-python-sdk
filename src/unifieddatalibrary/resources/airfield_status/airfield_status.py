@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -84,12 +84,12 @@ class AirfieldStatusResource(SyncAPIResource):
         fleet_service_mog: int | NotGiven = NOT_GIVEN,
         fuel_mog: int | NotGiven = NOT_GIVEN,
         fuel_qtys: Iterable[float] | NotGiven = NOT_GIVEN,
-        fuel_types: List[str] | NotGiven = NOT_GIVEN,
+        fuel_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         gse_time: int | NotGiven = NOT_GIVEN,
         med_cap: str | NotGiven = NOT_GIVEN,
         message: str | NotGiven = NOT_GIVEN,
         mhe_qtys: Iterable[int] | NotGiven = NOT_GIVEN,
-        mhe_types: List[str] | NotGiven = NOT_GIVEN,
+        mhe_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         mx_mog: int | NotGiven = NOT_GIVEN,
         narrow_parking_mog: int | NotGiven = NOT_GIVEN,
         narrow_working_mog: int | NotGiven = NOT_GIVEN,
@@ -103,8 +103,8 @@ class AirfieldStatusResource(SyncAPIResource):
         reviewed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         rwy_cond_reading: int | NotGiven = NOT_GIVEN,
         rwy_friction_factor: int | NotGiven = NOT_GIVEN,
-        rwy_markings: List[str] | NotGiven = NOT_GIVEN,
-        slot_types_req: List[str] | NotGiven = NOT_GIVEN,
+        rwy_markings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        slot_types_req: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         wide_parking_mog: int | NotGiven = NOT_GIVEN,
         wide_working_mog: int | NotGiven = NOT_GIVEN,
@@ -370,12 +370,12 @@ class AirfieldStatusResource(SyncAPIResource):
         fleet_service_mog: int | NotGiven = NOT_GIVEN,
         fuel_mog: int | NotGiven = NOT_GIVEN,
         fuel_qtys: Iterable[float] | NotGiven = NOT_GIVEN,
-        fuel_types: List[str] | NotGiven = NOT_GIVEN,
+        fuel_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         gse_time: int | NotGiven = NOT_GIVEN,
         med_cap: str | NotGiven = NOT_GIVEN,
         message: str | NotGiven = NOT_GIVEN,
         mhe_qtys: Iterable[int] | NotGiven = NOT_GIVEN,
-        mhe_types: List[str] | NotGiven = NOT_GIVEN,
+        mhe_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         mx_mog: int | NotGiven = NOT_GIVEN,
         narrow_parking_mog: int | NotGiven = NOT_GIVEN,
         narrow_working_mog: int | NotGiven = NOT_GIVEN,
@@ -389,8 +389,8 @@ class AirfieldStatusResource(SyncAPIResource):
         reviewed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         rwy_cond_reading: int | NotGiven = NOT_GIVEN,
         rwy_friction_factor: int | NotGiven = NOT_GIVEN,
-        rwy_markings: List[str] | NotGiven = NOT_GIVEN,
-        slot_types_req: List[str] | NotGiven = NOT_GIVEN,
+        rwy_markings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        slot_types_req: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         wide_parking_mog: int | NotGiven = NOT_GIVEN,
         wide_working_mog: int | NotGiven = NOT_GIVEN,
@@ -842,12 +842,12 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
         fleet_service_mog: int | NotGiven = NOT_GIVEN,
         fuel_mog: int | NotGiven = NOT_GIVEN,
         fuel_qtys: Iterable[float] | NotGiven = NOT_GIVEN,
-        fuel_types: List[str] | NotGiven = NOT_GIVEN,
+        fuel_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         gse_time: int | NotGiven = NOT_GIVEN,
         med_cap: str | NotGiven = NOT_GIVEN,
         message: str | NotGiven = NOT_GIVEN,
         mhe_qtys: Iterable[int] | NotGiven = NOT_GIVEN,
-        mhe_types: List[str] | NotGiven = NOT_GIVEN,
+        mhe_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         mx_mog: int | NotGiven = NOT_GIVEN,
         narrow_parking_mog: int | NotGiven = NOT_GIVEN,
         narrow_working_mog: int | NotGiven = NOT_GIVEN,
@@ -861,8 +861,8 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
         reviewed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         rwy_cond_reading: int | NotGiven = NOT_GIVEN,
         rwy_friction_factor: int | NotGiven = NOT_GIVEN,
-        rwy_markings: List[str] | NotGiven = NOT_GIVEN,
-        slot_types_req: List[str] | NotGiven = NOT_GIVEN,
+        rwy_markings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        slot_types_req: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         wide_parking_mog: int | NotGiven = NOT_GIVEN,
         wide_working_mog: int | NotGiven = NOT_GIVEN,
@@ -1128,12 +1128,12 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
         fleet_service_mog: int | NotGiven = NOT_GIVEN,
         fuel_mog: int | NotGiven = NOT_GIVEN,
         fuel_qtys: Iterable[float] | NotGiven = NOT_GIVEN,
-        fuel_types: List[str] | NotGiven = NOT_GIVEN,
+        fuel_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         gse_time: int | NotGiven = NOT_GIVEN,
         med_cap: str | NotGiven = NOT_GIVEN,
         message: str | NotGiven = NOT_GIVEN,
         mhe_qtys: Iterable[int] | NotGiven = NOT_GIVEN,
-        mhe_types: List[str] | NotGiven = NOT_GIVEN,
+        mhe_types: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         mx_mog: int | NotGiven = NOT_GIVEN,
         narrow_parking_mog: int | NotGiven = NOT_GIVEN,
         narrow_working_mog: int | NotGiven = NOT_GIVEN,
@@ -1147,8 +1147,8 @@ class AsyncAirfieldStatusResource(AsyncAPIResource):
         reviewed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         rwy_cond_reading: int | NotGiven = NOT_GIVEN,
         rwy_friction_factor: int | NotGiven = NOT_GIVEN,
-        rwy_markings: List[str] | NotGiven = NOT_GIVEN,
-        slot_types_req: List[str] | NotGiven = NOT_GIVEN,
+        rwy_markings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        slot_types_req: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
         wide_parking_mog: int | NotGiven = NOT_GIVEN,
         wide_working_mog: int | NotGiven = NOT_GIVEN,

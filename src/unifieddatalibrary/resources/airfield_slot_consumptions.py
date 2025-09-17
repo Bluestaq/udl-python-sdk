@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -16,7 +16,7 @@ from ..types import (
     airfield_slot_consumption_update_params,
     airfield_slot_consumption_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -71,7 +71,7 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         app_comment: str | NotGiven = NOT_GIVEN,
         app_initials: str | NotGiven = NOT_GIVEN,
         app_org: str | NotGiven = NOT_GIVEN,
-        call_signs: List[str] | NotGiven = NOT_GIVEN,
+        call_signs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
@@ -318,7 +318,7 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         app_comment: str | NotGiven = NOT_GIVEN,
         app_initials: str | NotGiven = NOT_GIVEN,
         app_org: str | NotGiven = NOT_GIVEN,
-        call_signs: List[str] | NotGiven = NOT_GIVEN,
+        call_signs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
@@ -761,7 +761,7 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         app_comment: str | NotGiven = NOT_GIVEN,
         app_initials: str | NotGiven = NOT_GIVEN,
         app_org: str | NotGiven = NOT_GIVEN,
-        call_signs: List[str] | NotGiven = NOT_GIVEN,
+        call_signs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,
@@ -1008,7 +1008,7 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         app_comment: str | NotGiven = NOT_GIVEN,
         app_initials: str | NotGiven = NOT_GIVEN,
         app_org: str | NotGiven = NOT_GIVEN,
-        call_signs: List[str] | NotGiven = NOT_GIVEN,
+        call_signs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         consumer: str | NotGiven = NOT_GIVEN,
         end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         id_arr_sortie: str | NotGiven = NOT_GIVEN,

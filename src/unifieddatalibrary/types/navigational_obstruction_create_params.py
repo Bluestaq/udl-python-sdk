@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["NavigationalObstructionCreateParams"]
@@ -209,7 +210,7 @@ class NavigationalObstructionCreateParams(TypedDict, total=False):
     format (ex. YYYY-MM-DD).
     """
 
-    keys: List[str]
+    keys: SequenceNotStr[str]
     """
     This field provides an array of keys that can be added to any obstruction
     feature to provide information that is not already supported. The entries in
@@ -362,7 +363,7 @@ class NavigationalObstructionCreateParams(TypedDict, total=False):
     validation_code: Annotated[int, PropertyInfo(alias="validationCode")]
     """Method used to confirm the existence of this obstacle."""
 
-    values: List[str]
+    values: SequenceNotStr[str]
     """
     This field provides an array of values that can be added to any obstruction
     feature to provide information that is not already supported. The entries in

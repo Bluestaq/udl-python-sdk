@@ -2,12 +2,25 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
-__all__ = ["RfEmitterDetailCreateParams"]
+__all__ = [
+    "RfEmitterDetailCreateParams",
+    "Amplifier",
+    "Antenna",
+    "AntennaFeed",
+    "AntennaReceiverChannel",
+    "AntennaTransmitChannel",
+    "PowerOffset",
+    "Service",
+    "Ttp",
+    "TtpTechniqueDefinition",
+    "TtpTechniqueDefinitionParamDefinition",
+]
 
 
 class RfEmitterDetailCreateParams(TypedDict, total=False):
@@ -46,17 +59,20 @@ class RfEmitterDetailCreateParams(TypedDict, total=False):
     alt_name: Annotated[str, PropertyInfo(alias="altName")]
     """Optional alternate name or alias for this RF Emitter."""
 
-    antenna_diameter: Annotated[float, PropertyInfo(alias="antennaDiameter")]
-    """For parabolic/dish antennas, the diameter of the antenna in meters."""
+    amplifier: Amplifier
+    """An RF Amplifier associated with an RF Emitter Details."""
 
-    antenna_size: Annotated[Iterable[float], PropertyInfo(alias="antennaSize")]
-    """
-    Array with 1-2 values specifying the length and width (for rectangular) and just
-    length for dipole antennas in meters.
-    """
+    antennas: Iterable[Antenna]
+    """The set of antennas hosted on this EW Emitter system."""
 
     barrage_noise_bandwidth: Annotated[float, PropertyInfo(alias="barrageNoiseBandwidth")]
-    """Barrage noise bandwidth in Mhz."""
+    """Barrage noise bandwidth, in megahertz."""
+
+    bit_run_time: Annotated[float, PropertyInfo(alias="bitRunTime")]
+    """
+    The length of time, in seconds, for the RF Emitter built-in test to run to
+    completion.
+    """
 
     description: str
     """Detailed description of the RF Emitter."""
@@ -65,16 +81,35 @@ class RfEmitterDetailCreateParams(TypedDict, total=False):
     """Designator of this RF Emitter."""
 
     doppler_noise: Annotated[float, PropertyInfo(alias="dopplerNoise")]
-    """Doppler noise value in Mhz."""
+    """Doppler noise value, in megahertz."""
 
     drfm_instantaneous_bandwidth: Annotated[float, PropertyInfo(alias="drfmInstantaneousBandwidth")]
-    """Digital Form Radio Memory instantaneous bandwidth in Mhz."""
+    """Digital Form Radio Memory instantaneous bandwidth in megahertz."""
 
     family: str
     """Family of this RF Emitter type."""
 
-    manufacturer_org_id: Annotated[str, PropertyInfo(alias="manufacturerOrgId")]
-    """Unique identifier of the organization which manufactures this RF Emitter."""
+    fixed_attenuation: Annotated[float, PropertyInfo(alias="fixedAttenuation")]
+    """
+    A fixed attenuation value to be set on the SRF Emitter HPA when commanding an
+    Electronic Attack/Techniques Tactics and Procedures task, in decibels.
+    """
+
+    id_manufacturer_org: Annotated[str, PropertyInfo(alias="idManufacturerOrg")]
+    """Unique identifier of the organization which manufactured this RF Emitter."""
+
+    id_production_facility_location: Annotated[str, PropertyInfo(alias="idProductionFacilityLocation")]
+    """
+    Unique identifier of the location of the production facility for this RF
+    Emitter.
+    """
+
+    loaned_to_cocom: Annotated[str, PropertyInfo(alias="loanedToCocom")]
+    """
+    COCOM that has temporary responsibility for scheduling and management of the RF
+    Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+    SPACEFOR-STRATNORTH, SPACESOC, NONE).
+    """
 
     notes: str
     """Notes on the RF Emitter."""
@@ -93,20 +128,27 @@ class RfEmitterDetailCreateParams(TypedDict, total=False):
     null, the source may be assumed to be the origin.
     """
 
-    production_facility_location_id: Annotated[str, PropertyInfo(alias="productionFacilityLocationId")]
+    power_offsets: Annotated[Iterable[PowerOffset], PropertyInfo(alias="powerOffsets")]
     """
-    Unique identifier of the location of the production facility for this RF
-    Emitter.
+    A set of system/frequency band adjustments to the power offset commanded in an
+    EA/TTP task.
+    """
+
+    prep_time: Annotated[float, PropertyInfo(alias="prepTime")]
+    """
+    The length of time, in seconds, for the RF Emitter to prepare for a task,
+    including sufficient time to slew the antenna and configure the equipment.
+    """
+
+    primary_cocom: Annotated[str, PropertyInfo(alias="primaryCocom")]
+    """
+    Primary COCOM that is responsible for scheduling and management of the RF
+    Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+    SPACEFOR-STRATNORTH, SPACESOC, NONE).
     """
 
     production_facility_name: Annotated[str, PropertyInfo(alias="productionFacilityName")]
     """Name of the production facility for this RF Emitter."""
-
-    receiver_bandwidth: Annotated[float, PropertyInfo(alias="receiverBandwidth")]
-    """Receiver bandwidth in Mhz."""
-
-    receiver_sensitivity: Annotated[float, PropertyInfo(alias="receiverSensitivity")]
-    """Receiver sensitivity in dBm."""
 
     receiver_type: Annotated[str, PropertyInfo(alias="receiverType")]
     """Type or name of receiver."""
@@ -114,28 +156,256 @@ class RfEmitterDetailCreateParams(TypedDict, total=False):
     secondary_notes: Annotated[str, PropertyInfo(alias="secondaryNotes")]
     """Secondary notes on the RF Emitter."""
 
+    services: Iterable[Service]
+    """The set of software services running on this EW Emitter system."""
+
     system_sensitivity_end: Annotated[float, PropertyInfo(alias="systemSensitivityEnd")]
     """
     Receiver sensitivity is the lowest power level at which the receiver can detect
     an RF signal and demodulate data. Sensitivity is purely a receiver specification
-    and is independent of the transmitter. End sensitivity range, in dBm.
+    and is independent of the transmitter. End sensitivity range, in
+    decibel-milliwatts.
     """
 
     system_sensitivity_start: Annotated[float, PropertyInfo(alias="systemSensitivityStart")]
     """
     Receiver sensitivity is the lowest power level at which the receiver can detect
     an RF signal and demodulate data. Sensitivity is purely a receiver specification
-    and is independent of the transmitter. Start sensitivity range, in dBm.
+    and is independent of the transmitter. Start sensitivity range, in
+    decibel-milliwatts.
     """
 
-    transmit_power: Annotated[float, PropertyInfo(alias="transmitPower")]
-    """Transmit power in Watts."""
+    ttps: Iterable[Ttp]
+    """The set of EA/TTP techniques that are supported by this EW Emitter system."""
 
-    transmitter_bandwidth: Annotated[float, PropertyInfo(alias="transmitterBandwidth")]
-    """Transmitter bandwidth in Mhz."""
-
-    transmitter_frequency: Annotated[float, PropertyInfo(alias="transmitterFrequency")]
-    """Transmitter frequency in Mhz."""
-
-    urls: List[str]
+    urls: SequenceNotStr[str]
     """Array of URLs containing additional information on this RF Emitter."""
+
+
+class Amplifier(TypedDict, total=False):
+    device_identifier: Annotated[str, PropertyInfo(alias="deviceIdentifier")]
+    """The device identifier of the amplifier."""
+
+    manufacturer: str
+    """The manufacturer of the amplifier."""
+
+    model_name: Annotated[str, PropertyInfo(alias="modelName")]
+    """The model name of the amplifier."""
+
+    power: float
+    """The amplifier power level, in watts."""
+
+
+class AntennaFeed(TypedDict, total=False):
+    freq_max: Annotated[float, PropertyInfo(alias="freqMax")]
+    """Maximum frequency, in megahertz."""
+
+    freq_min: Annotated[float, PropertyInfo(alias="freqMin")]
+    """Minimum frequency, in megahertz."""
+
+    name: str
+    """The feed name."""
+
+    polarization: str
+    """The antenna feed linear/circular polarization (e.g.
+
+    HORIZONTAL, VERTICAL, LEFT_HAND_CIRCULAR, RIGHT_HAND_CIRCULAR).
+    """
+
+
+class AntennaReceiverChannel(TypedDict, total=False):
+    bandwidth: float
+    """
+    The receiver bandwidth, in megahertz, must satisfy the constraint: minBandwidth
+    ≤ bandwidth ≤ maxBandwidth.
+    """
+
+    channel_num: Annotated[str, PropertyInfo(alias="channelNum")]
+    """The receive channel number."""
+
+    device_identifier: Annotated[str, PropertyInfo(alias="deviceIdentifier")]
+    """The receive channel device identifier."""
+
+    freq_max: Annotated[float, PropertyInfo(alias="freqMax")]
+    """Maximum frequency, in megahertz."""
+
+    freq_min: Annotated[float, PropertyInfo(alias="freqMin")]
+    """Minimum frequency, in megahertz."""
+
+    max_bandwidth: Annotated[float, PropertyInfo(alias="maxBandwidth")]
+    """
+    The maximum receiver bandwidth, in megahertz, must satisfy the constraint:
+    minBandwidth ≤ bandwidth ≤ maxBandwidth.
+    """
+
+    min_bandwidth: Annotated[float, PropertyInfo(alias="minBandwidth")]
+    """
+    The receiver bandwidth, in megahertz, must satisfy the constraint: minBandwidth
+    ≤ bandwidth ≤ maxBandwidth.
+    """
+
+    sensitivity: float
+    """Receiver sensitivity, in decibel-milliwatts."""
+
+
+class AntennaTransmitChannel(TypedDict, total=False):
+    power: Required[float]
+    """Transmit power, in watts."""
+
+    bandwidth: float
+    """
+    The transmitter bandwidth, in megahertz, must satisfy the constraint:
+    minBandwidth ≤ bandwidth ≤ maxBandwidth.
+    """
+
+    channel_num: Annotated[str, PropertyInfo(alias="channelNum")]
+    """The transmit channel number."""
+
+    device_identifier: Annotated[str, PropertyInfo(alias="deviceIdentifier")]
+    """The transmit channel device identifier."""
+
+    freq: float
+    """
+    The transmitter frequency, in megahertz, must satisfy the constraint: freqMin <=
+    freq <= freqMax.
+    """
+
+    freq_max: Annotated[float, PropertyInfo(alias="freqMax")]
+    """
+    The maximum transmitter frequency, in megahertz, must satisfy the constraint:
+    freqMin ≤ freq ≤ freqMax.
+    """
+
+    freq_min: Annotated[float, PropertyInfo(alias="freqMin")]
+    """
+    The minimum transmitter frequency, in megahertz, must satisfy the constraint:
+    freqMin ≤ freq ≤ freqMax.
+    """
+
+    hardware_sample_rate: Annotated[int, PropertyInfo(alias="hardwareSampleRate")]
+    """The hardware sample rate, in bits per second for this transmit channel."""
+
+    max_bandwidth: Annotated[float, PropertyInfo(alias="maxBandwidth")]
+    """
+    The maximum transmitter bandwidth, in megahertz, must satisfy the constraint:
+    minBandwidth ≤ bandwidth ≤ maxBandwidth.
+    """
+
+    max_gain: Annotated[float, PropertyInfo(alias="maxGain")]
+    """Maximum gain, in decibels."""
+
+    min_bandwidth: Annotated[float, PropertyInfo(alias="minBandwidth")]
+    """
+    The minimum transmitter bandwidth, in megahertz, must satisfy the constraint:
+    minBandwidth ≤ bandwidth ≤ maxBandwidth.
+    """
+
+    min_gain: Annotated[float, PropertyInfo(alias="minGain")]
+    """Minimum gain, in decibels."""
+
+    sample_rates: Annotated[Iterable[float], PropertyInfo(alias="sampleRates")]
+    """The set of sample rates supported by this transmit channel, in bits per second."""
+
+
+class Antenna(TypedDict, total=False):
+    antenna_diameter: Annotated[float, PropertyInfo(alias="antennaDiameter")]
+    """For parabolic/dish antennas, the diameter of the antenna in meters."""
+
+    antenna_size: Annotated[Iterable[float], PropertyInfo(alias="antennaSize")]
+    """
+    Array with 1-2 values specifying the length and width (for rectangular) and just
+    length for dipole antennas in meters.
+    """
+
+    az_el_fixed: Annotated[bool, PropertyInfo(alias="azElFixed")]
+    """A flag to indicate whether the antenna points at a fixed azimuth/elevation."""
+
+    feeds: Iterable[AntennaFeed]
+    """The set of antenna feeds for this antenna."""
+
+    fixed_azimuth: Annotated[float, PropertyInfo(alias="fixedAzimuth")]
+    """Antenna azimuth, in degrees clockwise from true North, for a fixed antenna."""
+
+    fixed_elevation: Annotated[float, PropertyInfo(alias="fixedElevation")]
+    """Antenna elevation, in degrees, for a fixed antenna."""
+
+    max_azimuths: Annotated[Iterable[float], PropertyInfo(alias="maxAzimuths")]
+    """Array of maximum azimuths, in degrees."""
+
+    max_elevation: Annotated[float, PropertyInfo(alias="maxElevation")]
+    """Maximum elevation, in degrees."""
+
+    min_azimuths: Annotated[Iterable[float], PropertyInfo(alias="minAzimuths")]
+    """Array of minimum azimuths, in degrees."""
+
+    min_elevation: Annotated[float, PropertyInfo(alias="minElevation")]
+    """Minimum elevation, in degrees."""
+
+    name: str
+    """The name of the antenna."""
+
+    receiver_channels: Annotated[Iterable[AntennaReceiverChannel], PropertyInfo(alias="receiverChannels")]
+    """The set of receiver channels for this antenna."""
+
+    transmit_channels: Annotated[Iterable[AntennaTransmitChannel], PropertyInfo(alias="transmitChannels")]
+    """The set of transmit channels for this antenna."""
+
+
+class PowerOffset(TypedDict, total=False):
+    frequency_band: Annotated[str, PropertyInfo(alias="frequencyBand")]
+    """The RF frequency band (e.g. HF, VHF, P, UHF, L, S, C, X, KU, K, KA, V, W, MM)."""
+
+    power_offset: Annotated[float, PropertyInfo(alias="powerOffset")]
+    """Power offset, in decibels."""
+
+
+class Service(TypedDict, total=False):
+    name: str
+    """The name for this software service."""
+
+    version: str
+    """The version for this software service."""
+
+
+class TtpTechniqueDefinitionParamDefinition(TypedDict, total=False):
+    default_value: Annotated[str, PropertyInfo(alias="defaultValue")]
+    """Default parameter value used if not overridden in a SEW task definition."""
+
+    max: float
+    """Maximum allowable value for a numeric parameter."""
+
+    min: float
+    """Minimum allowable value for a numeric parameter."""
+
+    name: str
+    """The name of the parameter."""
+
+    optional: bool
+    """A flag to specify that a parameter is optional."""
+
+    type: str
+    """The type of parameter (e.g. STRING, DOUBLE, INT, LIST)."""
+
+    units: str
+    """Units (degrees, seconds, decibels, etc.) for a numeric parameter."""
+
+    valid_values: Annotated[SequenceNotStr[str], PropertyInfo(alias="validValues")]
+    """Valid values for strictly defined parameters."""
+
+
+class TtpTechniqueDefinition(TypedDict, total=False):
+    name: str
+    """The EW Emitter system technique name."""
+
+    param_definitions: Annotated[
+        Iterable[TtpTechniqueDefinitionParamDefinition], PropertyInfo(alias="paramDefinitions")
+    ]
+    """The set of required/optional parameters for this technique."""
+
+
+class Ttp(TypedDict, total=False):
+    output_signal_name: Annotated[str, PropertyInfo(alias="outputSignalName")]
+    """The name of the output signal."""
+
+    technique_definitions: Annotated[Iterable[TtpTechniqueDefinition], PropertyInfo(alias="techniqueDefinitions")]
+    """The set of TTPs affected by this signal."""

@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import date
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EquipmentUpdateParams"]
@@ -410,7 +411,7 @@ class EquipmentUpdateParams(TypedDict, total=False):
     seq_num: Annotated[int, PropertyInfo(alias="seqNum")]
     """Provider specific sequential number assigned to the equipment."""
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """
     Array of UUID(s) of the UDL data record(s) that are related to this equipment
     record. See the associated 'srcTyps' array for the specific types of data,
@@ -420,7 +421,7 @@ class EquipmentUpdateParams(TypedDict, total=False):
     that object.
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """
     Array of UDL record types such as AIRCRAFT, VESSEL, EO, MTI that are related to
     this equipment record. See the associated 'srcIds' array for the record UUIDs,

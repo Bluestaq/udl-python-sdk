@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-alpha.21 (2025-09-16)
+
+Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
+
+### Features
+
+* **api:** api update ([47053ef](https://github.com/Bluestaq/udl-python-sdk/commit/47053ef07519bb0fcbdd081405740e36da24e7b6))
+* **api:** api update ([a36d9ff](https://github.com/Bluestaq/udl-python-sdk/commit/a36d9ff3b1a5b6f80367fbceb8890ee203033846))
+* **api:** manual updates ([9e07772](https://github.com/Bluestaq/udl-python-sdk/commit/9e0777236e07afc44a929e5392de717061fc9bb3))
+* improve future compat with pydantic v3 ([c6391c9](https://github.com/Bluestaq/udl-python-sdk/commit/c6391c9cb6aa18a0ee3498377c84697e28ac2057))
+* **types:** replace List[str] with SequenceNotStr in params ([d39cfc1](https://github.com/Bluestaq/udl-python-sdk/commit/d39cfc1b1686ab369ee536ac8326bdc63398e138))
+
+
+### Chores
+
+* **internal:** codegen related update ([f1023bc](https://github.com/Bluestaq/udl-python-sdk/commit/f1023bc952e8016d720410127746ae14909cf512))
+* **internal:** move mypy configurations to `pyproject.toml` file ([7cbeeee](https://github.com/Bluestaq/udl-python-sdk/commit/7cbeeeeb601972aa8d791c95601fb7c64037fbc1))
+* **internal:** update pydantic dependency ([9c2b83d](https://github.com/Bluestaq/udl-python-sdk/commit/9c2b83d8c3970caaa0d5bd06d8ac2a34b25e96ed))
+
 ## 0.1.0-alpha.20 (2025-08-29)
 
 Full Changelog: [v0.1.0-alpha.19...v0.1.0-alpha.20](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.19...v0.1.0-alpha.20)

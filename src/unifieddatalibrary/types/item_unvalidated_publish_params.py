@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date, datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["ItemUnvalidatedPublishParams", "Body"]
@@ -55,7 +56,7 @@ class Body(TypedDict, total=False):
     create operations.
     """
 
-    acc_sys_keys: Annotated[List[str], PropertyInfo(alias="accSysKeys")]
+    acc_sys_keys: Annotated[SequenceNotStr[str], PropertyInfo(alias="accSysKeys")]
     """Array of keys that may be associated to the accepting system data.
 
     The entries in this array must correspond to the position index in accSysValues
@@ -71,7 +72,7 @@ class Body(TypedDict, total=False):
     Where a user or application could go look for additional information.
     """
 
-    acc_sys_values: Annotated[List[str], PropertyInfo(alias="accSysValues")]
+    acc_sys_values: Annotated[SequenceNotStr[str], PropertyInfo(alias="accSysValues")]
     """Array of values for the keys that may be associated to the accepting system
     data.
 
@@ -148,10 +149,10 @@ class Body(TypedDict, total=False):
     id_air_load_plan: Annotated[str, PropertyInfo(alias="idAirLoadPlan")]
     """The UDL ID of the air load plan this item is associated with."""
 
-    item_contains: Annotated[List[str], PropertyInfo(alias="itemContains")]
+    item_contains: Annotated[SequenceNotStr[str], PropertyInfo(alias="itemContains")]
     """Array of tracking identifiers that are contained within this item."""
 
-    keys: List[str]
+    keys: SequenceNotStr[str]
     """Array of keys that may be associated to this item.
 
     The entries in this array must correspond to the position index in the values
@@ -227,7 +228,7 @@ class Body(TypedDict, total=False):
     uln: str
     """The unit line number of this item."""
 
-    values: List[str]
+    values: SequenceNotStr[str]
     """Array of values for the keys that may be associated to this tracked item.
 
     The entries in this array must correspond to the position index in the keys

@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -65,14 +66,20 @@ class RfBandResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         band: str | NotGiven = NOT_GIVEN,
         bandwidth: float | NotGiven = NOT_GIVEN,
+        bandwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         beamwidth: float | NotGiven = NOT_GIVEN,
+        beamwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         center_freq: float | NotGiven = NOT_GIVEN,
+        delay_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         edge_gain: float | NotGiven = NOT_GIVEN,
         eirp: float | NotGiven = NOT_GIVEN,
         erp: float | NotGiven = NOT_GIVEN,
         freq_max: float | NotGiven = NOT_GIVEN,
         freq_min: float | NotGiven = NOT_GIVEN,
+        frequency_settings: Iterable[float] | NotGiven = NOT_GIVEN,
+        gain_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
+        noise_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         peak_gain: float | NotGiven = NOT_GIVEN,
         polarization: Literal["H", "V", "R", "L"] | NotGiven = NOT_GIVEN,
@@ -85,9 +92,9 @@ class RfBandResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take a single RFBand as a POST body and ingest into the
-        database. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
+        Service operation to take a single RFBand record as a POST body and ingest into
+        the database. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -120,14 +127,30 @@ class RfBandResource(SyncAPIResource):
               X,K,Ku,Ka,L,S,C,UHF,VHF,EHF,SHF,UNK,VLF,HF,E,Q,V,W). See RFBandType for more
               details and descriptions of each band name.
 
-          bandwidth: RF Band frequency range bandwidth in Mhz.
+          bandwidth: RF Band frequency range bandwidth in megahertz.
+
+          bandwidth_settings: Array of frequency range bandwidth settings, in megahertz for this RFBand. If
+              this array is specified then it must be the same size as the frequencySettings
+              array. A null value may be used for one or more of the frequencies in the
+              frequencySettings array if there is no corresponding value for a given
+              frequency.
 
           beamwidth: Angle between the half-power (-3 dB) points of the main lobe of the antenna, in
               degrees.
 
-          center_freq: Center frequency of RF frequency range, if applicable, in Mhz.
+          beamwidth_settings: Array of beamwidth settings, in degrees for this RFBand. If this array is
+              specified then it must be the same size as the frequencySettings array. A null
+              value may be used for one or more of the frequencies in the frequencySettings
+              array if there is no corresponding value for a given frequency.
 
-          edge_gain: RF Range edge gain, in dBi.
+          center_freq: Center frequency of RF frequency range, if applicable, in megahertz.
+
+          delay_settings: Array of delay settings, in seconds for this RFBand. If this array is specified
+              then it must be the same size as the frequencySettings array. A null value may
+              be used for one or more of the frequencies in the frequencySettings array if
+              there is no corresponding value for a given frequency.
+
+          edge_gain: RF Range edge gain, in decibel relative to isotrope.
 
           eirp: EIRP is defined as the RMS power input in decibel watts required to a lossless
               half-wave dipole antenna to give the same maximum power density far from the
@@ -136,7 +159,7 @@ class RfBandResource(SyncAPIResource):
               dipole. Effective radiated power and effective isotropic radiated power both
               measure the amount of power a radio transmitter and antenna (or other source of
               electromagnetic waves) radiates in a specific direction: in the direction of
-              maximum signal strength (the "main lobe") of its radiation pattern.
+              maximum signal strength (the main lobe) of its radiation pattern.
 
           erp: Effective Radiated Power (ERP) is the total power in decibel watts radiated by
               an actual antenna relative to a half-wave dipole rather than a theoretical
@@ -145,20 +168,33 @@ class RfBandResource(SyncAPIResource):
               Effective radiated power and effective isotropic radiated power both measure the
               amount of power a radio transmitter and antenna (or other source of
               electromagnetic waves) radiates in a specific direction: in the direction of
-              maximum signal strength (the "main lobe") of its radiation pattern.
+              maximum signal strength (the main lobe) of its radiation pattern.
 
-          freq_max: End/maximum of transmit RF frequency range, if applicable, in Mhz.
+          freq_max: End/maximum of transmit RF frequency range, if applicable, in megahertz.
 
-          freq_min: Start/minimum of transmit RF frequency range, if applicable, in Mhz.
+          freq_min: Start/minimum of transmit RF frequency range, if applicable, in megahertz.
+
+          frequency_settings: Array of frequency settings, in megahertz for this RFBand. This array and the
+              settings arrays must match in size.
+
+          gain_settings: Array of gain settings, in decibels for this RFBand. If this array is specified
+              then it must be the same size as the frequencySettings array. A null value may
+              be used for one or more of the frequencies in the frequencySettings array if
+              there is no corresponding value for a given frequency.
 
           mode: RF Band mode (e.g. TX, RX).
+
+          noise_settings: Array of signal noise settings, in decibels for this RFBand. If this array is
+              specified then it must be the same size as the frequencySettings array. A null
+              value may be used for one or more of the frequencies in the frequencySettings
+              array if there is no corresponding value for a given frequency.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          peak_gain: RF Range maximum gain, in dBi.
+          peak_gain: RF Range maximum gain, in decibel relative to isotrope.
 
           polarization: Transponder polarization e.g. H - (Horizontally Polarized) Perpendicular to
               Earth's surface, V - (Vertically Polarized) Parallel to Earth's surface, L -
@@ -167,7 +203,7 @@ class RfBandResource(SyncAPIResource):
               surface.
 
           purpose: Purpose or use of the RF Band -- COMM = communications, TTC =
-              Telemetry/Tracking/Control, OPS = Operations, OTHER = Other).
+              Telemetry/Tracking/Control, OPS = Operations, OTHER = Other.
 
           extra_headers: Send extra headers
 
@@ -190,14 +226,20 @@ class RfBandResource(SyncAPIResource):
                     "id": id,
                     "band": band,
                     "bandwidth": bandwidth,
+                    "bandwidth_settings": bandwidth_settings,
                     "beamwidth": beamwidth,
+                    "beamwidth_settings": beamwidth_settings,
                     "center_freq": center_freq,
+                    "delay_settings": delay_settings,
                     "edge_gain": edge_gain,
                     "eirp": eirp,
                     "erp": erp,
                     "freq_max": freq_max,
                     "freq_min": freq_min,
+                    "frequency_settings": frequency_settings,
+                    "gain_settings": gain_settings,
                     "mode": mode,
+                    "noise_settings": noise_settings,
                     "origin": origin,
                     "peak_gain": peak_gain,
                     "polarization": polarization,
@@ -223,14 +265,20 @@ class RfBandResource(SyncAPIResource):
         body_id: str | NotGiven = NOT_GIVEN,
         band: str | NotGiven = NOT_GIVEN,
         bandwidth: float | NotGiven = NOT_GIVEN,
+        bandwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         beamwidth: float | NotGiven = NOT_GIVEN,
+        beamwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         center_freq: float | NotGiven = NOT_GIVEN,
+        delay_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         edge_gain: float | NotGiven = NOT_GIVEN,
         eirp: float | NotGiven = NOT_GIVEN,
         erp: float | NotGiven = NOT_GIVEN,
         freq_max: float | NotGiven = NOT_GIVEN,
         freq_min: float | NotGiven = NOT_GIVEN,
+        frequency_settings: Iterable[float] | NotGiven = NOT_GIVEN,
+        gain_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
+        noise_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         peak_gain: float | NotGiven = NOT_GIVEN,
         polarization: Literal["H", "V", "R", "L"] | NotGiven = NOT_GIVEN,
@@ -242,10 +290,10 @@ class RfBandResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
-        """Service operation to update an RFBand.
+        """Service operation to update a single RFBand record.
 
-        A specific role is required to perform
-        this service operation. Please contact the UDL team for assistance.
+        A specific role is required
+        to perform this service operation. Please contact the UDL team for assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -278,14 +326,30 @@ class RfBandResource(SyncAPIResource):
               X,K,Ku,Ka,L,S,C,UHF,VHF,EHF,SHF,UNK,VLF,HF,E,Q,V,W). See RFBandType for more
               details and descriptions of each band name.
 
-          bandwidth: RF Band frequency range bandwidth in Mhz.
+          bandwidth: RF Band frequency range bandwidth in megahertz.
+
+          bandwidth_settings: Array of frequency range bandwidth settings, in megahertz for this RFBand. If
+              this array is specified then it must be the same size as the frequencySettings
+              array. A null value may be used for one or more of the frequencies in the
+              frequencySettings array if there is no corresponding value for a given
+              frequency.
 
           beamwidth: Angle between the half-power (-3 dB) points of the main lobe of the antenna, in
               degrees.
 
-          center_freq: Center frequency of RF frequency range, if applicable, in Mhz.
+          beamwidth_settings: Array of beamwidth settings, in degrees for this RFBand. If this array is
+              specified then it must be the same size as the frequencySettings array. A null
+              value may be used for one or more of the frequencies in the frequencySettings
+              array if there is no corresponding value for a given frequency.
 
-          edge_gain: RF Range edge gain, in dBi.
+          center_freq: Center frequency of RF frequency range, if applicable, in megahertz.
+
+          delay_settings: Array of delay settings, in seconds for this RFBand. If this array is specified
+              then it must be the same size as the frequencySettings array. A null value may
+              be used for one or more of the frequencies in the frequencySettings array if
+              there is no corresponding value for a given frequency.
+
+          edge_gain: RF Range edge gain, in decibel relative to isotrope.
 
           eirp: EIRP is defined as the RMS power input in decibel watts required to a lossless
               half-wave dipole antenna to give the same maximum power density far from the
@@ -294,7 +358,7 @@ class RfBandResource(SyncAPIResource):
               dipole. Effective radiated power and effective isotropic radiated power both
               measure the amount of power a radio transmitter and antenna (or other source of
               electromagnetic waves) radiates in a specific direction: in the direction of
-              maximum signal strength (the "main lobe") of its radiation pattern.
+              maximum signal strength (the main lobe) of its radiation pattern.
 
           erp: Effective Radiated Power (ERP) is the total power in decibel watts radiated by
               an actual antenna relative to a half-wave dipole rather than a theoretical
@@ -303,20 +367,33 @@ class RfBandResource(SyncAPIResource):
               Effective radiated power and effective isotropic radiated power both measure the
               amount of power a radio transmitter and antenna (or other source of
               electromagnetic waves) radiates in a specific direction: in the direction of
-              maximum signal strength (the "main lobe") of its radiation pattern.
+              maximum signal strength (the main lobe) of its radiation pattern.
 
-          freq_max: End/maximum of transmit RF frequency range, if applicable, in Mhz.
+          freq_max: End/maximum of transmit RF frequency range, if applicable, in megahertz.
 
-          freq_min: Start/minimum of transmit RF frequency range, if applicable, in Mhz.
+          freq_min: Start/minimum of transmit RF frequency range, if applicable, in megahertz.
+
+          frequency_settings: Array of frequency settings, in megahertz for this RFBand. This array and the
+              settings arrays must match in size.
+
+          gain_settings: Array of gain settings, in decibels for this RFBand. If this array is specified
+              then it must be the same size as the frequencySettings array. A null value may
+              be used for one or more of the frequencies in the frequencySettings array if
+              there is no corresponding value for a given frequency.
 
           mode: RF Band mode (e.g. TX, RX).
+
+          noise_settings: Array of signal noise settings, in decibels for this RFBand. If this array is
+              specified then it must be the same size as the frequencySettings array. A null
+              value may be used for one or more of the frequencies in the frequencySettings
+              array if there is no corresponding value for a given frequency.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          peak_gain: RF Range maximum gain, in dBi.
+          peak_gain: RF Range maximum gain, in decibel relative to isotrope.
 
           polarization: Transponder polarization e.g. H - (Horizontally Polarized) Perpendicular to
               Earth's surface, V - (Vertically Polarized) Parallel to Earth's surface, L -
@@ -325,7 +402,7 @@ class RfBandResource(SyncAPIResource):
               surface.
 
           purpose: Purpose or use of the RF Band -- COMM = communications, TTC =
-              Telemetry/Tracking/Control, OPS = Operations, OTHER = Other).
+              Telemetry/Tracking/Control, OPS = Operations, OTHER = Other.
 
           extra_headers: Send extra headers
 
@@ -350,14 +427,20 @@ class RfBandResource(SyncAPIResource):
                     "body_id": body_id,
                     "band": band,
                     "bandwidth": bandwidth,
+                    "bandwidth_settings": bandwidth_settings,
                     "beamwidth": beamwidth,
+                    "beamwidth_settings": beamwidth_settings,
                     "center_freq": center_freq,
+                    "delay_settings": delay_settings,
                     "edge_gain": edge_gain,
                     "eirp": eirp,
                     "erp": erp,
                     "freq_max": freq_max,
                     "freq_min": freq_min,
+                    "frequency_settings": frequency_settings,
+                    "gain_settings": gain_settings,
                     "mode": mode,
+                    "noise_settings": noise_settings,
                     "origin": origin,
                     "peak_gain": peak_gain,
                     "polarization": polarization,
@@ -429,9 +512,9 @@ class RfBandResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to delete an RFBand specified by the passed ID path parameter.
-        A specific role is required to perform this service operation. Please contact
-        the UDL team for assistance.
+        Service operation to delete a RFBand record specified by the passed ID path
+        parameter. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers
@@ -514,8 +597,8 @@ class RfBandResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RfBandFull:
         """
-        Service operation to get a single RFBand by its unique ID passed as a path
-        parameter.
+        Service operation to get a single RFBand record by its unique ID passed as a
+        path parameter.
 
         Args:
           extra_headers: Send extra headers
@@ -656,14 +739,20 @@ class AsyncRfBandResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         band: str | NotGiven = NOT_GIVEN,
         bandwidth: float | NotGiven = NOT_GIVEN,
+        bandwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         beamwidth: float | NotGiven = NOT_GIVEN,
+        beamwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         center_freq: float | NotGiven = NOT_GIVEN,
+        delay_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         edge_gain: float | NotGiven = NOT_GIVEN,
         eirp: float | NotGiven = NOT_GIVEN,
         erp: float | NotGiven = NOT_GIVEN,
         freq_max: float | NotGiven = NOT_GIVEN,
         freq_min: float | NotGiven = NOT_GIVEN,
+        frequency_settings: Iterable[float] | NotGiven = NOT_GIVEN,
+        gain_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
+        noise_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         peak_gain: float | NotGiven = NOT_GIVEN,
         polarization: Literal["H", "V", "R", "L"] | NotGiven = NOT_GIVEN,
@@ -676,9 +765,9 @@ class AsyncRfBandResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to take a single RFBand as a POST body and ingest into the
-        database. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
+        Service operation to take a single RFBand record as a POST body and ingest into
+        the database. A specific role is required to perform this service operation.
+        Please contact the UDL team for assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -711,14 +800,30 @@ class AsyncRfBandResource(AsyncAPIResource):
               X,K,Ku,Ka,L,S,C,UHF,VHF,EHF,SHF,UNK,VLF,HF,E,Q,V,W). See RFBandType for more
               details and descriptions of each band name.
 
-          bandwidth: RF Band frequency range bandwidth in Mhz.
+          bandwidth: RF Band frequency range bandwidth in megahertz.
+
+          bandwidth_settings: Array of frequency range bandwidth settings, in megahertz for this RFBand. If
+              this array is specified then it must be the same size as the frequencySettings
+              array. A null value may be used for one or more of the frequencies in the
+              frequencySettings array if there is no corresponding value for a given
+              frequency.
 
           beamwidth: Angle between the half-power (-3 dB) points of the main lobe of the antenna, in
               degrees.
 
-          center_freq: Center frequency of RF frequency range, if applicable, in Mhz.
+          beamwidth_settings: Array of beamwidth settings, in degrees for this RFBand. If this array is
+              specified then it must be the same size as the frequencySettings array. A null
+              value may be used for one or more of the frequencies in the frequencySettings
+              array if there is no corresponding value for a given frequency.
 
-          edge_gain: RF Range edge gain, in dBi.
+          center_freq: Center frequency of RF frequency range, if applicable, in megahertz.
+
+          delay_settings: Array of delay settings, in seconds for this RFBand. If this array is specified
+              then it must be the same size as the frequencySettings array. A null value may
+              be used for one or more of the frequencies in the frequencySettings array if
+              there is no corresponding value for a given frequency.
+
+          edge_gain: RF Range edge gain, in decibel relative to isotrope.
 
           eirp: EIRP is defined as the RMS power input in decibel watts required to a lossless
               half-wave dipole antenna to give the same maximum power density far from the
@@ -727,7 +832,7 @@ class AsyncRfBandResource(AsyncAPIResource):
               dipole. Effective radiated power and effective isotropic radiated power both
               measure the amount of power a radio transmitter and antenna (or other source of
               electromagnetic waves) radiates in a specific direction: in the direction of
-              maximum signal strength (the "main lobe") of its radiation pattern.
+              maximum signal strength (the main lobe) of its radiation pattern.
 
           erp: Effective Radiated Power (ERP) is the total power in decibel watts radiated by
               an actual antenna relative to a half-wave dipole rather than a theoretical
@@ -736,20 +841,33 @@ class AsyncRfBandResource(AsyncAPIResource):
               Effective radiated power and effective isotropic radiated power both measure the
               amount of power a radio transmitter and antenna (or other source of
               electromagnetic waves) radiates in a specific direction: in the direction of
-              maximum signal strength (the "main lobe") of its radiation pattern.
+              maximum signal strength (the main lobe) of its radiation pattern.
 
-          freq_max: End/maximum of transmit RF frequency range, if applicable, in Mhz.
+          freq_max: End/maximum of transmit RF frequency range, if applicable, in megahertz.
 
-          freq_min: Start/minimum of transmit RF frequency range, if applicable, in Mhz.
+          freq_min: Start/minimum of transmit RF frequency range, if applicable, in megahertz.
+
+          frequency_settings: Array of frequency settings, in megahertz for this RFBand. This array and the
+              settings arrays must match in size.
+
+          gain_settings: Array of gain settings, in decibels for this RFBand. If this array is specified
+              then it must be the same size as the frequencySettings array. A null value may
+              be used for one or more of the frequencies in the frequencySettings array if
+              there is no corresponding value for a given frequency.
 
           mode: RF Band mode (e.g. TX, RX).
+
+          noise_settings: Array of signal noise settings, in decibels for this RFBand. If this array is
+              specified then it must be the same size as the frequencySettings array. A null
+              value may be used for one or more of the frequencies in the frequencySettings
+              array if there is no corresponding value for a given frequency.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          peak_gain: RF Range maximum gain, in dBi.
+          peak_gain: RF Range maximum gain, in decibel relative to isotrope.
 
           polarization: Transponder polarization e.g. H - (Horizontally Polarized) Perpendicular to
               Earth's surface, V - (Vertically Polarized) Parallel to Earth's surface, L -
@@ -758,7 +876,7 @@ class AsyncRfBandResource(AsyncAPIResource):
               surface.
 
           purpose: Purpose or use of the RF Band -- COMM = communications, TTC =
-              Telemetry/Tracking/Control, OPS = Operations, OTHER = Other).
+              Telemetry/Tracking/Control, OPS = Operations, OTHER = Other.
 
           extra_headers: Send extra headers
 
@@ -781,14 +899,20 @@ class AsyncRfBandResource(AsyncAPIResource):
                     "id": id,
                     "band": band,
                     "bandwidth": bandwidth,
+                    "bandwidth_settings": bandwidth_settings,
                     "beamwidth": beamwidth,
+                    "beamwidth_settings": beamwidth_settings,
                     "center_freq": center_freq,
+                    "delay_settings": delay_settings,
                     "edge_gain": edge_gain,
                     "eirp": eirp,
                     "erp": erp,
                     "freq_max": freq_max,
                     "freq_min": freq_min,
+                    "frequency_settings": frequency_settings,
+                    "gain_settings": gain_settings,
                     "mode": mode,
+                    "noise_settings": noise_settings,
                     "origin": origin,
                     "peak_gain": peak_gain,
                     "polarization": polarization,
@@ -814,14 +938,20 @@ class AsyncRfBandResource(AsyncAPIResource):
         body_id: str | NotGiven = NOT_GIVEN,
         band: str | NotGiven = NOT_GIVEN,
         bandwidth: float | NotGiven = NOT_GIVEN,
+        bandwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         beamwidth: float | NotGiven = NOT_GIVEN,
+        beamwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         center_freq: float | NotGiven = NOT_GIVEN,
+        delay_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         edge_gain: float | NotGiven = NOT_GIVEN,
         eirp: float | NotGiven = NOT_GIVEN,
         erp: float | NotGiven = NOT_GIVEN,
         freq_max: float | NotGiven = NOT_GIVEN,
         freq_min: float | NotGiven = NOT_GIVEN,
+        frequency_settings: Iterable[float] | NotGiven = NOT_GIVEN,
+        gain_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
+        noise_settings: Iterable[float] | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
         peak_gain: float | NotGiven = NOT_GIVEN,
         polarization: Literal["H", "V", "R", "L"] | NotGiven = NOT_GIVEN,
@@ -833,10 +963,10 @@ class AsyncRfBandResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
-        """Service operation to update an RFBand.
+        """Service operation to update a single RFBand record.
 
-        A specific role is required to perform
-        this service operation. Please contact the UDL team for assistance.
+        A specific role is required
+        to perform this service operation. Please contact the UDL team for assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -869,14 +999,30 @@ class AsyncRfBandResource(AsyncAPIResource):
               X,K,Ku,Ka,L,S,C,UHF,VHF,EHF,SHF,UNK,VLF,HF,E,Q,V,W). See RFBandType for more
               details and descriptions of each band name.
 
-          bandwidth: RF Band frequency range bandwidth in Mhz.
+          bandwidth: RF Band frequency range bandwidth in megahertz.
+
+          bandwidth_settings: Array of frequency range bandwidth settings, in megahertz for this RFBand. If
+              this array is specified then it must be the same size as the frequencySettings
+              array. A null value may be used for one or more of the frequencies in the
+              frequencySettings array if there is no corresponding value for a given
+              frequency.
 
           beamwidth: Angle between the half-power (-3 dB) points of the main lobe of the antenna, in
               degrees.
 
-          center_freq: Center frequency of RF frequency range, if applicable, in Mhz.
+          beamwidth_settings: Array of beamwidth settings, in degrees for this RFBand. If this array is
+              specified then it must be the same size as the frequencySettings array. A null
+              value may be used for one or more of the frequencies in the frequencySettings
+              array if there is no corresponding value for a given frequency.
 
-          edge_gain: RF Range edge gain, in dBi.
+          center_freq: Center frequency of RF frequency range, if applicable, in megahertz.
+
+          delay_settings: Array of delay settings, in seconds for this RFBand. If this array is specified
+              then it must be the same size as the frequencySettings array. A null value may
+              be used for one or more of the frequencies in the frequencySettings array if
+              there is no corresponding value for a given frequency.
+
+          edge_gain: RF Range edge gain, in decibel relative to isotrope.
 
           eirp: EIRP is defined as the RMS power input in decibel watts required to a lossless
               half-wave dipole antenna to give the same maximum power density far from the
@@ -885,7 +1031,7 @@ class AsyncRfBandResource(AsyncAPIResource):
               dipole. Effective radiated power and effective isotropic radiated power both
               measure the amount of power a radio transmitter and antenna (or other source of
               electromagnetic waves) radiates in a specific direction: in the direction of
-              maximum signal strength (the "main lobe") of its radiation pattern.
+              maximum signal strength (the main lobe) of its radiation pattern.
 
           erp: Effective Radiated Power (ERP) is the total power in decibel watts radiated by
               an actual antenna relative to a half-wave dipole rather than a theoretical
@@ -894,20 +1040,33 @@ class AsyncRfBandResource(AsyncAPIResource):
               Effective radiated power and effective isotropic radiated power both measure the
               amount of power a radio transmitter and antenna (or other source of
               electromagnetic waves) radiates in a specific direction: in the direction of
-              maximum signal strength (the "main lobe") of its radiation pattern.
+              maximum signal strength (the main lobe) of its radiation pattern.
 
-          freq_max: End/maximum of transmit RF frequency range, if applicable, in Mhz.
+          freq_max: End/maximum of transmit RF frequency range, if applicable, in megahertz.
 
-          freq_min: Start/minimum of transmit RF frequency range, if applicable, in Mhz.
+          freq_min: Start/minimum of transmit RF frequency range, if applicable, in megahertz.
+
+          frequency_settings: Array of frequency settings, in megahertz for this RFBand. This array and the
+              settings arrays must match in size.
+
+          gain_settings: Array of gain settings, in decibels for this RFBand. If this array is specified
+              then it must be the same size as the frequencySettings array. A null value may
+              be used for one or more of the frequencies in the frequencySettings array if
+              there is no corresponding value for a given frequency.
 
           mode: RF Band mode (e.g. TX, RX).
+
+          noise_settings: Array of signal noise settings, in decibels for this RFBand. If this array is
+              specified then it must be the same size as the frequencySettings array. A null
+              value may be used for one or more of the frequencies in the frequencySettings
+              array if there is no corresponding value for a given frequency.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          peak_gain: RF Range maximum gain, in dBi.
+          peak_gain: RF Range maximum gain, in decibel relative to isotrope.
 
           polarization: Transponder polarization e.g. H - (Horizontally Polarized) Perpendicular to
               Earth's surface, V - (Vertically Polarized) Parallel to Earth's surface, L -
@@ -916,7 +1075,7 @@ class AsyncRfBandResource(AsyncAPIResource):
               surface.
 
           purpose: Purpose or use of the RF Band -- COMM = communications, TTC =
-              Telemetry/Tracking/Control, OPS = Operations, OTHER = Other).
+              Telemetry/Tracking/Control, OPS = Operations, OTHER = Other.
 
           extra_headers: Send extra headers
 
@@ -941,14 +1100,20 @@ class AsyncRfBandResource(AsyncAPIResource):
                     "body_id": body_id,
                     "band": band,
                     "bandwidth": bandwidth,
+                    "bandwidth_settings": bandwidth_settings,
                     "beamwidth": beamwidth,
+                    "beamwidth_settings": beamwidth_settings,
                     "center_freq": center_freq,
+                    "delay_settings": delay_settings,
                     "edge_gain": edge_gain,
                     "eirp": eirp,
                     "erp": erp,
                     "freq_max": freq_max,
                     "freq_min": freq_min,
+                    "frequency_settings": frequency_settings,
+                    "gain_settings": gain_settings,
                     "mode": mode,
+                    "noise_settings": noise_settings,
                     "origin": origin,
                     "peak_gain": peak_gain,
                     "polarization": polarization,
@@ -1020,9 +1185,9 @@ class AsyncRfBandResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to delete an RFBand specified by the passed ID path parameter.
-        A specific role is required to perform this service operation. Please contact
-        the UDL team for assistance.
+        Service operation to delete a RFBand record specified by the passed ID path
+        parameter. A specific role is required to perform this service operation. Please
+        contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers
@@ -1105,8 +1270,8 @@ class AsyncRfBandResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RfBandFull:
         """
-        Service operation to get a single RFBand by its unique ID passed as a path
-        parameter.
+        Service operation to get a single RFBand record by its unique ID passed as a
+        path parameter.
 
         Args:
           extra_headers: Send extra headers

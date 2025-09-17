@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -71,7 +71,7 @@ class HazardResource(SyncAPIResource):
     def create(
         self,
         *,
-        alarms: List[str],
+        alarms: SequenceNotStr[str],
         alarm_values: Iterable[float],
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
@@ -104,8 +104,8 @@ class HazardResource(SyncAPIResource):
         origin: str | NotGiven = NOT_GIVEN,
         ppm: int | NotGiven = NOT_GIVEN,
         rad_ctrn: float | NotGiven = NOT_GIVEN,
-        readings: List[str] | NotGiven = NOT_GIVEN,
-        reading_units: List[str] | NotGiven = NOT_GIVEN,
+        readings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        reading_units: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         reading_values: Iterable[float] | NotGiven = NOT_GIVEN,
         z: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -627,7 +627,7 @@ class AsyncHazardResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        alarms: List[str],
+        alarms: SequenceNotStr[str],
         alarm_values: Iterable[float],
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
@@ -660,8 +660,8 @@ class AsyncHazardResource(AsyncAPIResource):
         origin: str | NotGiven = NOT_GIVEN,
         ppm: int | NotGiven = NOT_GIVEN,
         rad_ctrn: float | NotGiven = NOT_GIVEN,
-        readings: List[str] | NotGiven = NOT_GIVEN,
-        reading_units: List[str] | NotGiven = NOT_GIVEN,
+        readings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        reading_units: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         reading_values: Iterable[float] | NotGiven = NOT_GIVEN,
         z: int | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.

@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import date, datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from ...types import (
     collect_response_create_bulk_params,
     collect_response_unvalidated_publish_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -100,10 +100,10 @@ class CollectResponsesResource(SyncAPIResource):
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -577,10 +577,10 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         orig_object_id: str | NotGiven = NOT_GIVEN,
         orig_sensor_id: str | NotGiven = NOT_GIVEN,
         sat_no: int | NotGiven = NOT_GIVEN,
-        src_ids: List[str] | NotGiven = NOT_GIVEN,
-        src_typs: List[str] | NotGiven = NOT_GIVEN,
+        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         status: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         task_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

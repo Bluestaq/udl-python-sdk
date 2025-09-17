@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = [
@@ -543,7 +544,7 @@ class CasualtyInfo(TypedDict, total=False):
     UNKNOWN SERVICE).
     """
 
-    spec_med_equip: Annotated[List[str], PropertyInfo(alias="specMedEquip")]
+    spec_med_equip: Annotated[SequenceNotStr[str], PropertyInfo(alias="specMedEquip")]
     """
     Array specifying if any special equipment is need for each of the evacuation of
     this patient (EXTRACTION EQUIPMENT, SEMI RIGID LITTER, BACKBOARD, CERVICAL

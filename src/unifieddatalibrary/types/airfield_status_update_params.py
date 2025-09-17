@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["AirfieldStatusUpdateParams"]
@@ -85,7 +86,7 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     This array must be the same length as fuelTypes.
     """
 
-    fuel_types: Annotated[List[str], PropertyInfo(alias="fuelTypes")]
+    fuel_types: Annotated[SequenceNotStr[str], PropertyInfo(alias="fuelTypes")]
     """Array of fuel types available at the airfield.
 
     This array must be the same length as fuelQtys.
@@ -110,7 +111,7 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     array must be the same length as mheTypes.
     """
 
-    mhe_types: Annotated[List[str], PropertyInfo(alias="mheTypes")]
+    mhe_types: Annotated[SequenceNotStr[str], PropertyInfo(alias="mheTypes")]
     """Array of material handling equipment types at the airfield.
 
     This array must be the same length as mheQtys.
@@ -189,10 +190,10 @@ class AirfieldStatusUpdateParams(TypedDict, total=False):
     number indicates less friction and less braking response.
     """
 
-    rwy_markings: Annotated[List[str], PropertyInfo(alias="rwyMarkings")]
+    rwy_markings: Annotated[SequenceNotStr[str], PropertyInfo(alias="rwyMarkings")]
     """Array of markings currently on the primary runway."""
 
-    slot_types_req: Annotated[List[str], PropertyInfo(alias="slotTypesReq")]
+    slot_types_req: Annotated[SequenceNotStr[str], PropertyInfo(alias="slotTypesReq")]
     """
     Array of slot types that an airfield requires a particular aircraft provide in
     order to consume a slot at this location.

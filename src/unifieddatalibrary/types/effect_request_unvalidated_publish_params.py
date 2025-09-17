@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["EffectRequestUnvalidatedPublishParams", "Body"]
@@ -36,7 +37,7 @@ class Body(TypedDict, total=False):
     characteristics.
     """
 
-    effect_list: Required[Annotated[List[str], PropertyInfo(alias="effectList")]]
+    effect_list: Required[Annotated[SequenceNotStr[str], PropertyInfo(alias="effectList")]]
     """List of effects to be achieved on the target (e.g.
 
     COVER, DECEIVE, DEGRADE, DENY, DESTROY, DISRUPT, DIVERSION, DIVERT, FIX,
@@ -71,7 +72,7 @@ class Body(TypedDict, total=False):
     external_request_id: Annotated[str, PropertyInfo(alias="externalRequestId")]
     """The extenal system identifier of this request. A human readable unique id."""
 
-    metric_types: Annotated[List[str], PropertyInfo(alias="metricTypes")]
+    metric_types: Annotated[SequenceNotStr[str], PropertyInfo(alias="metricTypes")]
     """Array of the the metric classes to be evaluated (e.g.
 
     Cost, GoalAchievement, OpportunityCost, Risk, Timeliness, Unavailable, etc.).

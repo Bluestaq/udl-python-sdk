@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["SpaceEnvObservationUnvalidatedPublishParams", "Body", "BodySeoList"]
@@ -266,7 +267,7 @@ class Body(TypedDict, total=False):
     seo_list: Annotated[Iterable[BodySeoList], PropertyInfo(alias="seoList")]
     """A collection of individual space environment observations."""
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """
     Array of UUIDs of the UDL data records that are related to this observation
     record. See the associated 'srcTyps' array for specific types of data,
@@ -276,7 +277,7 @@ class Body(TypedDict, total=False):
     that object.
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """
     Array of UDL record types (AIS, CONJUNCTION, DOA, ELSET, EO, ESID, GROUNDIMAGE,
     POI, MANEUVER, MTI, NOTIFICATION, RADAR, RF, SGI, SIGACT, SKYIMAGE, SPACEENVOB,

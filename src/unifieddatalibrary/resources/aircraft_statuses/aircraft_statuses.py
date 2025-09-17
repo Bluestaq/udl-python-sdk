@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -76,7 +76,7 @@ class AircraftStatusesResource(SyncAPIResource):
         id_aircraft: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        additional_sys: List[str] | NotGiven = NOT_GIVEN,
+        additional_sys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         air_to_air_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         air_to_ground_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         alpha_status_code: str | NotGiven = NOT_GIVEN,
@@ -98,7 +98,7 @@ class AircraftStatusesResource(SyncAPIResource):
         gun_rds_type: str | NotGiven = NOT_GIVEN,
         id_airfield: str | NotGiven = NOT_GIVEN,
         id_poi: str | NotGiven = NOT_GIVEN,
-        inventory: List[str] | NotGiven = NOT_GIVEN,
+        inventory: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         inventory_max: Iterable[int] | NotGiven = NOT_GIVEN,
         inventory_min: Iterable[int] | NotGiven = NOT_GIVEN,
         last_inspection_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -118,7 +118,7 @@ class AircraftStatusesResource(SyncAPIResource):
         previous_icao: str | NotGiven = NOT_GIVEN,
         ta_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         troubleshoot_etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        unavailable_sys: List[str] | NotGiven = NOT_GIVEN,
+        unavailable_sys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -402,7 +402,7 @@ class AircraftStatusesResource(SyncAPIResource):
         id_aircraft: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        additional_sys: List[str] | NotGiven = NOT_GIVEN,
+        additional_sys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         air_to_air_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         air_to_ground_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         alpha_status_code: str | NotGiven = NOT_GIVEN,
@@ -424,7 +424,7 @@ class AircraftStatusesResource(SyncAPIResource):
         gun_rds_type: str | NotGiven = NOT_GIVEN,
         id_airfield: str | NotGiven = NOT_GIVEN,
         id_poi: str | NotGiven = NOT_GIVEN,
-        inventory: List[str] | NotGiven = NOT_GIVEN,
+        inventory: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         inventory_max: Iterable[int] | NotGiven = NOT_GIVEN,
         inventory_min: Iterable[int] | NotGiven = NOT_GIVEN,
         last_inspection_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -444,7 +444,7 @@ class AircraftStatusesResource(SyncAPIResource):
         previous_icao: str | NotGiven = NOT_GIVEN,
         ta_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         troubleshoot_etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        unavailable_sys: List[str] | NotGiven = NOT_GIVEN,
+        unavailable_sys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -915,7 +915,7 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         id_aircraft: str,
         source: str,
         id: str | NotGiven = NOT_GIVEN,
-        additional_sys: List[str] | NotGiven = NOT_GIVEN,
+        additional_sys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         air_to_air_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         air_to_ground_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         alpha_status_code: str | NotGiven = NOT_GIVEN,
@@ -937,7 +937,7 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         gun_rds_type: str | NotGiven = NOT_GIVEN,
         id_airfield: str | NotGiven = NOT_GIVEN,
         id_poi: str | NotGiven = NOT_GIVEN,
-        inventory: List[str] | NotGiven = NOT_GIVEN,
+        inventory: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         inventory_max: Iterable[int] | NotGiven = NOT_GIVEN,
         inventory_min: Iterable[int] | NotGiven = NOT_GIVEN,
         last_inspection_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -957,7 +957,7 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         previous_icao: str | NotGiven = NOT_GIVEN,
         ta_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         troubleshoot_etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        unavailable_sys: List[str] | NotGiven = NOT_GIVEN,
+        unavailable_sys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1241,7 +1241,7 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         id_aircraft: str,
         source: str,
         body_id: str | NotGiven = NOT_GIVEN,
-        additional_sys: List[str] | NotGiven = NOT_GIVEN,
+        additional_sys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         air_to_air_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         air_to_ground_status: Literal["OPERATIONAL", "NON-OPERATIONAL", "OFF"] | NotGiven = NOT_GIVEN,
         alpha_status_code: str | NotGiven = NOT_GIVEN,
@@ -1263,7 +1263,7 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         gun_rds_type: str | NotGiven = NOT_GIVEN,
         id_airfield: str | NotGiven = NOT_GIVEN,
         id_poi: str | NotGiven = NOT_GIVEN,
-        inventory: List[str] | NotGiven = NOT_GIVEN,
+        inventory: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         inventory_max: Iterable[int] | NotGiven = NOT_GIVEN,
         inventory_min: Iterable[int] | NotGiven = NOT_GIVEN,
         last_inspection_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
@@ -1283,7 +1283,7 @@ class AsyncAircraftStatusesResource(AsyncAPIResource):
         previous_icao: str | NotGiven = NOT_GIVEN,
         ta_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
         troubleshoot_etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        unavailable_sys: List[str] | NotGiven = NOT_GIVEN,
+        unavailable_sys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,

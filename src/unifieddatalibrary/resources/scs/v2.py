@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent
+from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent, SequenceNotStr
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -62,7 +60,7 @@ class V2Resource(SyncAPIResource):
         delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -140,6 +138,10 @@ class V2Resource(SyncAPIResource):
         path: str,
         first_result: int | NotGiven = NOT_GIVEN,
         max_results: int | NotGiven = NOT_GIVEN,
+        order: str | NotGiven = NOT_GIVEN,
+        search_after: str | NotGiven = NOT_GIVEN,
+        size: int | NotGiven = NOT_GIVEN,
+        sort: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -153,6 +155,15 @@ class V2Resource(SyncAPIResource):
 
         Args:
           path: The base path to list
+
+          order: The order in which entries should be sorted
+
+          search_after: The starting point for pagination results, usually set to the value of the
+              SEARCH_AFTER header returned in the previous request.
+
+          size: The number of results to retrieve.
+
+          sort: The field on which to sort entries
 
           extra_headers: Send extra headers
 
@@ -175,6 +186,10 @@ class V2Resource(SyncAPIResource):
                         "path": path,
                         "first_result": first_result,
                         "max_results": max_results,
+                        "order": order,
+                        "search_after": search_after,
+                        "size": size,
+                        "sort": sort,
                     },
                     v2_list_params.V2ListParams,
                 ),
@@ -356,7 +371,7 @@ class V2Resource(SyncAPIResource):
         delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -512,7 +527,7 @@ class AsyncV2Resource(AsyncAPIResource):
         delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -590,6 +605,10 @@ class AsyncV2Resource(AsyncAPIResource):
         path: str,
         first_result: int | NotGiven = NOT_GIVEN,
         max_results: int | NotGiven = NOT_GIVEN,
+        order: str | NotGiven = NOT_GIVEN,
+        search_after: str | NotGiven = NOT_GIVEN,
+        size: int | NotGiven = NOT_GIVEN,
+        sort: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -603,6 +622,15 @@ class AsyncV2Resource(AsyncAPIResource):
 
         Args:
           path: The base path to list
+
+          order: The order in which entries should be sorted
+
+          search_after: The starting point for pagination results, usually set to the value of the
+              SEARCH_AFTER header returned in the previous request.
+
+          size: The number of results to retrieve.
+
+          sort: The field on which to sort entries
 
           extra_headers: Send extra headers
 
@@ -625,6 +653,10 @@ class AsyncV2Resource(AsyncAPIResource):
                         "path": path,
                         "first_result": first_result,
                         "max_results": max_results,
+                        "order": order,
+                        "search_after": search_after,
+                        "size": size,
+                        "sort": sort,
                     },
                     v2_list_params.V2ListParams,
                 ),
@@ -806,7 +838,7 @@ class AsyncV2Resource(AsyncAPIResource):
         delete_on: int | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         read_acl: str | NotGiven = NOT_GIVEN,
-        tags: List[str] | NotGiven = NOT_GIVEN,
+        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         write_acl: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.

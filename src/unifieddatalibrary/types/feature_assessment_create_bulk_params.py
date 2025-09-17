@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["FeatureAssessmentCreateBulkParams", "Body"]
@@ -81,7 +82,7 @@ class Body(TypedDict, total=False):
     annText array.
     """
 
-    ann_text: Annotated[List[str], PropertyInfo(alias="annText")]
+    ann_text: Annotated[SequenceNotStr[str], PropertyInfo(alias="annText")]
     """
     Annotation text, a string array of annotation(s) corresponding to the
     rectangular areas specified in annLims. This array contains the annotation text
@@ -151,7 +152,7 @@ class Body(TypedDict, total=False):
     array of numeric observation values (featureArray), or any combination of these.
     """
 
-    feature_string_array: Annotated[List[str], PropertyInfo(alias="featureStringArray")]
+    feature_string_array: Annotated[SequenceNotStr[str], PropertyInfo(alias="featureStringArray")]
     """An array of string feature/assessment expressions.
 
     Because of the variability of the Feature Assessment data types, each record may
@@ -199,7 +200,7 @@ class Body(TypedDict, total=False):
     speed: float
     """Feature's speed of travel, in meters per second."""
 
-    src_ids: Annotated[List[str], PropertyInfo(alias="srcIds")]
+    src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """
     Array of UUIDs of the UDL data records that are related to the determination of
     this activity or event. See the associated 'srcTyps' array for the specific
@@ -209,7 +210,7 @@ class Body(TypedDict, total=False):
     UUID and use the appropriate API operation to retrieve that object.
     """
 
-    src_ts: Annotated[List[Union[str, datetime]], PropertyInfo(alias="srcTs", format="iso8601")]
+    src_ts: Annotated[SequenceNotStr[Union[str, datetime]], PropertyInfo(alias="srcTs", format="iso8601")]
     """
     Array of the primary timestamps, in ISO 8601 UTC format, with appropriate
     precision for the datatype of each correspondng srcTyp/srcId record. See the
@@ -222,7 +223,7 @@ class Body(TypedDict, total=False):
     null.
     """
 
-    src_typs: Annotated[List[str], PropertyInfo(alias="srcTyps")]
+    src_typs: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcTyps")]
     """
     Array of UDL record types (AIS, GROUNDIMAGE, MTI, ONORBIT, POI, SAR, SKYIMAGE,
     SOI, TRACK) related to this feature assessment. See the associated 'srcIds' and
@@ -231,7 +232,7 @@ class Body(TypedDict, total=False):
     'srcTs' arrays must contain the same number of elements.
     """
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner

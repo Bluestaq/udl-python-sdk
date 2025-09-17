@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
+from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from ..._types import SequenceNotStr
 from ..._utils import PropertyInfo
 
 __all__ = ["MonoradarCreateBulkParams", "Body"]
@@ -244,7 +245,7 @@ class Body(TypedDict, total=False):
     ssrl: float
     """Runlength of the secondary surveillance radar track, in degrees."""
 
-    tags: List[str]
+    tags: SequenceNotStr[str]
     """
     Optional array of provider/source specific tags for this data, where each
     element is no longer than 32 characters, used for implementing data owner
@@ -281,5 +282,5 @@ class Body(TypedDict, total=False):
     tti: str
     """Test target indicator."""
 
-    wectc: List[str]
+    wectc: SequenceNotStr[str]
     """Warning/Error Conditions and Target Classification."""

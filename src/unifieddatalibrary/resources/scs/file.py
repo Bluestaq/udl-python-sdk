@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import typing_extensions
 from typing import Iterable
 
 import httpx
@@ -45,6 +46,7 @@ class FileResource(SyncAPIResource):
         """
         return FileResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     def retrieve(
         self,
         *,
@@ -92,6 +94,7 @@ class FileResource(SyncAPIResource):
             cast_to=SharedFileData,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def update(
         self,
         *,
@@ -127,6 +130,7 @@ class FileResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -205,6 +209,7 @@ class AsyncFileResource(AsyncAPIResource):
         """
         return AsyncFileResourceWithStreamingResponse(self)
 
+    @typing_extensions.deprecated("deprecated")
     async def retrieve(
         self,
         *,
@@ -252,6 +257,7 @@ class AsyncFileResource(AsyncAPIResource):
             cast_to=SharedFileData,
         )
 
+    @typing_extensions.deprecated("deprecated")
     async def update(
         self,
         *,
@@ -287,6 +293,7 @@ class AsyncFileResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    @typing_extensions.deprecated("deprecated")
     def list(
         self,
         *,
@@ -349,14 +356,20 @@ class FileResourceWithRawResponse:
     def __init__(self, file: FileResource) -> None:
         self._file = file
 
-        self.retrieve = to_raw_response_wrapper(
-            file.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                file.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update = to_raw_response_wrapper(
-            file.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                file.update,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list = to_raw_response_wrapper(
-            file.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_raw_response_wrapper(
+                file.list,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -364,14 +377,20 @@ class AsyncFileResourceWithRawResponse:
     def __init__(self, file: AsyncFileResource) -> None:
         self._file = file
 
-        self.retrieve = async_to_raw_response_wrapper(
-            file.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                file.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update = async_to_raw_response_wrapper(
-            file.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                file.update,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list = async_to_raw_response_wrapper(
-            file.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_raw_response_wrapper(
+                file.list,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -379,14 +398,20 @@ class FileResourceWithStreamingResponse:
     def __init__(self, file: FileResource) -> None:
         self._file = file
 
-        self.retrieve = to_streamed_response_wrapper(
-            file.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                file.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update = to_streamed_response_wrapper(
-            file.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                file.update,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list = to_streamed_response_wrapper(
-            file.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            to_streamed_response_wrapper(
+                file.list,  # pyright: ignore[reportDeprecated],
+            )
         )
 
 
@@ -394,12 +419,18 @@ class AsyncFileResourceWithStreamingResponse:
     def __init__(self, file: AsyncFileResource) -> None:
         self._file = file
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            file.retrieve,
+        self.retrieve = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                file.retrieve,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.update = async_to_streamed_response_wrapper(
-            file.update,
+        self.update = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                file.update,  # pyright: ignore[reportDeprecated],
+            )
         )
-        self.list = async_to_streamed_response_wrapper(
-            file.list,
+        self.list = (  # pyright: ignore[reportDeprecated]
+            async_to_streamed_response_wrapper(
+                file.list,  # pyright: ignore[reportDeprecated],
+            )
         )

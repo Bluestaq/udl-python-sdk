@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
+from typing import Iterable
 from typing_extensions import Literal
 
 import httpx
@@ -15,7 +15,7 @@ from ..types import (
     rf_emitter_detail_create_params,
     rf_emitter_detail_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -65,31 +65,34 @@ class RfEmitterDetailsResource(SyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         alternate_facility_name: str | NotGiven = NOT_GIVEN,
         alt_name: str | NotGiven = NOT_GIVEN,
-        antenna_diameter: float | NotGiven = NOT_GIVEN,
-        antenna_size: Iterable[float] | NotGiven = NOT_GIVEN,
+        amplifier: rf_emitter_detail_create_params.Amplifier | NotGiven = NOT_GIVEN,
+        antennas: Iterable[rf_emitter_detail_create_params.Antenna] | NotGiven = NOT_GIVEN,
         barrage_noise_bandwidth: float | NotGiven = NOT_GIVEN,
+        bit_run_time: float | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         designator: str | NotGiven = NOT_GIVEN,
         doppler_noise: float | NotGiven = NOT_GIVEN,
         drfm_instantaneous_bandwidth: float | NotGiven = NOT_GIVEN,
         family: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
+        fixed_attenuation: float | NotGiven = NOT_GIVEN,
+        id_manufacturer_org: str | NotGiven = NOT_GIVEN,
+        id_production_facility_location: str | NotGiven = NOT_GIVEN,
+        loaned_to_cocom: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         num_bits: int | NotGiven = NOT_GIVEN,
         num_channels: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        production_facility_location_id: str | NotGiven = NOT_GIVEN,
+        power_offsets: Iterable[rf_emitter_detail_create_params.PowerOffset] | NotGiven = NOT_GIVEN,
+        prep_time: float | NotGiven = NOT_GIVEN,
+        primary_cocom: str | NotGiven = NOT_GIVEN,
         production_facility_name: str | NotGiven = NOT_GIVEN,
-        receiver_bandwidth: float | NotGiven = NOT_GIVEN,
-        receiver_sensitivity: float | NotGiven = NOT_GIVEN,
         receiver_type: str | NotGiven = NOT_GIVEN,
         secondary_notes: str | NotGiven = NOT_GIVEN,
+        services: Iterable[rf_emitter_detail_create_params.Service] | NotGiven = NOT_GIVEN,
         system_sensitivity_end: float | NotGiven = NOT_GIVEN,
         system_sensitivity_start: float | NotGiven = NOT_GIVEN,
-        transmit_power: float | NotGiven = NOT_GIVEN,
-        transmitter_bandwidth: float | NotGiven = NOT_GIVEN,
-        transmitter_frequency: float | NotGiven = NOT_GIVEN,
-        urls: List[str] | NotGiven = NOT_GIVEN,
+        ttps: Iterable[rf_emitter_detail_create_params.Ttp] | NotGiven = NOT_GIVEN,
+        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -131,24 +134,36 @@ class RfEmitterDetailsResource(SyncAPIResource):
 
           alt_name: Optional alternate name or alias for this RF Emitter.
 
-          antenna_diameter: For parabolic/dish antennas, the diameter of the antenna in meters.
+          amplifier: An RF Amplifier associated with an RF Emitter Details.
 
-          antenna_size: Array with 1-2 values specifying the length and width (for rectangular) and just
-              length for dipole antennas in meters.
+          antennas: The set of antennas hosted on this EW Emitter system.
 
-          barrage_noise_bandwidth: Barrage noise bandwidth in Mhz.
+          barrage_noise_bandwidth: Barrage noise bandwidth, in megahertz.
+
+          bit_run_time: The length of time, in seconds, for the RF Emitter built-in test to run to
+              completion.
 
           description: Detailed description of the RF Emitter.
 
           designator: Designator of this RF Emitter.
 
-          doppler_noise: Doppler noise value in Mhz.
+          doppler_noise: Doppler noise value, in megahertz.
 
-          drfm_instantaneous_bandwidth: Digital Form Radio Memory instantaneous bandwidth in Mhz.
+          drfm_instantaneous_bandwidth: Digital Form Radio Memory instantaneous bandwidth in megahertz.
 
           family: Family of this RF Emitter type.
 
-          manufacturer_org_id: Unique identifier of the organization which manufactures this RF Emitter.
+          fixed_attenuation: A fixed attenuation value to be set on the SRF Emitter HPA when commanding an
+              Electronic Attack/Techniques Tactics and Procedures task, in decibels.
+
+          id_manufacturer_org: Unique identifier of the organization which manufactured this RF Emitter.
+
+          id_production_facility_location: Unique identifier of the location of the production facility for this RF
+              Emitter.
+
+          loaned_to_cocom: COCOM that has temporary responsibility for scheduling and management of the RF
+              Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+              SPACEFOR-STRATNORTH, SPACESOC, NONE).
 
           notes: Notes on the RF Emitter.
 
@@ -161,32 +176,35 @@ class RfEmitterDetailsResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          production_facility_location_id: Unique identifier of the location of the production facility for this RF
-              Emitter.
+          power_offsets: A set of system/frequency band adjustments to the power offset commanded in an
+              EA/TTP task.
+
+          prep_time: The length of time, in seconds, for the RF Emitter to prepare for a task,
+              including sufficient time to slew the antenna and configure the equipment.
+
+          primary_cocom: Primary COCOM that is responsible for scheduling and management of the RF
+              Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+              SPACEFOR-STRATNORTH, SPACESOC, NONE).
 
           production_facility_name: Name of the production facility for this RF Emitter.
-
-          receiver_bandwidth: Receiver bandwidth in Mhz.
-
-          receiver_sensitivity: Receiver sensitivity in dBm.
 
           receiver_type: Type or name of receiver.
 
           secondary_notes: Secondary notes on the RF Emitter.
 
+          services: The set of software services running on this EW Emitter system.
+
           system_sensitivity_end: Receiver sensitivity is the lowest power level at which the receiver can detect
               an RF signal and demodulate data. Sensitivity is purely a receiver specification
-              and is independent of the transmitter. End sensitivity range, in dBm.
+              and is independent of the transmitter. End sensitivity range, in
+              decibel-milliwatts.
 
           system_sensitivity_start: Receiver sensitivity is the lowest power level at which the receiver can detect
               an RF signal and demodulate data. Sensitivity is purely a receiver specification
-              and is independent of the transmitter. Start sensitivity range, in dBm.
+              and is independent of the transmitter. Start sensitivity range, in
+              decibel-milliwatts.
 
-          transmit_power: Transmit power in Watts.
-
-          transmitter_bandwidth: Transmitter bandwidth in Mhz.
-
-          transmitter_frequency: Transmitter frequency in Mhz.
+          ttps: The set of EA/TTP techniques that are supported by this EW Emitter system.
 
           urls: Array of URLs containing additional information on this RF Emitter.
 
@@ -210,30 +228,33 @@ class RfEmitterDetailsResource(SyncAPIResource):
                     "id": id,
                     "alternate_facility_name": alternate_facility_name,
                     "alt_name": alt_name,
-                    "antenna_diameter": antenna_diameter,
-                    "antenna_size": antenna_size,
+                    "amplifier": amplifier,
+                    "antennas": antennas,
                     "barrage_noise_bandwidth": barrage_noise_bandwidth,
+                    "bit_run_time": bit_run_time,
                     "description": description,
                     "designator": designator,
                     "doppler_noise": doppler_noise,
                     "drfm_instantaneous_bandwidth": drfm_instantaneous_bandwidth,
                     "family": family,
-                    "manufacturer_org_id": manufacturer_org_id,
+                    "fixed_attenuation": fixed_attenuation,
+                    "id_manufacturer_org": id_manufacturer_org,
+                    "id_production_facility_location": id_production_facility_location,
+                    "loaned_to_cocom": loaned_to_cocom,
                     "notes": notes,
                     "num_bits": num_bits,
                     "num_channels": num_channels,
                     "origin": origin,
-                    "production_facility_location_id": production_facility_location_id,
+                    "power_offsets": power_offsets,
+                    "prep_time": prep_time,
+                    "primary_cocom": primary_cocom,
                     "production_facility_name": production_facility_name,
-                    "receiver_bandwidth": receiver_bandwidth,
-                    "receiver_sensitivity": receiver_sensitivity,
                     "receiver_type": receiver_type,
                     "secondary_notes": secondary_notes,
+                    "services": services,
                     "system_sensitivity_end": system_sensitivity_end,
                     "system_sensitivity_start": system_sensitivity_start,
-                    "transmit_power": transmit_power,
-                    "transmitter_bandwidth": transmitter_bandwidth,
-                    "transmitter_frequency": transmitter_frequency,
+                    "ttps": ttps,
                     "urls": urls,
                 },
                 rf_emitter_detail_create_params.RfEmitterDetailCreateParams,
@@ -255,31 +276,34 @@ class RfEmitterDetailsResource(SyncAPIResource):
         body_id: str | NotGiven = NOT_GIVEN,
         alternate_facility_name: str | NotGiven = NOT_GIVEN,
         alt_name: str | NotGiven = NOT_GIVEN,
-        antenna_diameter: float | NotGiven = NOT_GIVEN,
-        antenna_size: Iterable[float] | NotGiven = NOT_GIVEN,
+        amplifier: rf_emitter_detail_update_params.Amplifier | NotGiven = NOT_GIVEN,
+        antennas: Iterable[rf_emitter_detail_update_params.Antenna] | NotGiven = NOT_GIVEN,
         barrage_noise_bandwidth: float | NotGiven = NOT_GIVEN,
+        bit_run_time: float | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         designator: str | NotGiven = NOT_GIVEN,
         doppler_noise: float | NotGiven = NOT_GIVEN,
         drfm_instantaneous_bandwidth: float | NotGiven = NOT_GIVEN,
         family: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
+        fixed_attenuation: float | NotGiven = NOT_GIVEN,
+        id_manufacturer_org: str | NotGiven = NOT_GIVEN,
+        id_production_facility_location: str | NotGiven = NOT_GIVEN,
+        loaned_to_cocom: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         num_bits: int | NotGiven = NOT_GIVEN,
         num_channels: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        production_facility_location_id: str | NotGiven = NOT_GIVEN,
+        power_offsets: Iterable[rf_emitter_detail_update_params.PowerOffset] | NotGiven = NOT_GIVEN,
+        prep_time: float | NotGiven = NOT_GIVEN,
+        primary_cocom: str | NotGiven = NOT_GIVEN,
         production_facility_name: str | NotGiven = NOT_GIVEN,
-        receiver_bandwidth: float | NotGiven = NOT_GIVEN,
-        receiver_sensitivity: float | NotGiven = NOT_GIVEN,
         receiver_type: str | NotGiven = NOT_GIVEN,
         secondary_notes: str | NotGiven = NOT_GIVEN,
+        services: Iterable[rf_emitter_detail_update_params.Service] | NotGiven = NOT_GIVEN,
         system_sensitivity_end: float | NotGiven = NOT_GIVEN,
         system_sensitivity_start: float | NotGiven = NOT_GIVEN,
-        transmit_power: float | NotGiven = NOT_GIVEN,
-        transmitter_bandwidth: float | NotGiven = NOT_GIVEN,
-        transmitter_frequency: float | NotGiven = NOT_GIVEN,
-        urls: List[str] | NotGiven = NOT_GIVEN,
+        ttps: Iterable[rf_emitter_detail_update_params.Ttp] | NotGiven = NOT_GIVEN,
+        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -287,10 +311,11 @@ class RfEmitterDetailsResource(SyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
-        """Service operation to update an RFEmitterDetails.
+        """Service operation to update a single RFEmitterDetails record.
 
-        A specific role is required to
-        perform this service operation. Please contact the UDL team for assistance.
+        A specific role is
+        required to perform this service operation. Please contact the UDL team for
+        assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -321,24 +346,36 @@ class RfEmitterDetailsResource(SyncAPIResource):
 
           alt_name: Optional alternate name or alias for this RF Emitter.
 
-          antenna_diameter: For parabolic/dish antennas, the diameter of the antenna in meters.
+          amplifier: An RF Amplifier associated with an RF Emitter Details.
 
-          antenna_size: Array with 1-2 values specifying the length and width (for rectangular) and just
-              length for dipole antennas in meters.
+          antennas: The set of antennas hosted on this EW Emitter system.
 
-          barrage_noise_bandwidth: Barrage noise bandwidth in Mhz.
+          barrage_noise_bandwidth: Barrage noise bandwidth, in megahertz.
+
+          bit_run_time: The length of time, in seconds, for the RF Emitter built-in test to run to
+              completion.
 
           description: Detailed description of the RF Emitter.
 
           designator: Designator of this RF Emitter.
 
-          doppler_noise: Doppler noise value in Mhz.
+          doppler_noise: Doppler noise value, in megahertz.
 
-          drfm_instantaneous_bandwidth: Digital Form Radio Memory instantaneous bandwidth in Mhz.
+          drfm_instantaneous_bandwidth: Digital Form Radio Memory instantaneous bandwidth in megahertz.
 
           family: Family of this RF Emitter type.
 
-          manufacturer_org_id: Unique identifier of the organization which manufactures this RF Emitter.
+          fixed_attenuation: A fixed attenuation value to be set on the SRF Emitter HPA when commanding an
+              Electronic Attack/Techniques Tactics and Procedures task, in decibels.
+
+          id_manufacturer_org: Unique identifier of the organization which manufactured this RF Emitter.
+
+          id_production_facility_location: Unique identifier of the location of the production facility for this RF
+              Emitter.
+
+          loaned_to_cocom: COCOM that has temporary responsibility for scheduling and management of the RF
+              Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+              SPACEFOR-STRATNORTH, SPACESOC, NONE).
 
           notes: Notes on the RF Emitter.
 
@@ -351,32 +388,35 @@ class RfEmitterDetailsResource(SyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          production_facility_location_id: Unique identifier of the location of the production facility for this RF
-              Emitter.
+          power_offsets: A set of system/frequency band adjustments to the power offset commanded in an
+              EA/TTP task.
+
+          prep_time: The length of time, in seconds, for the RF Emitter to prepare for a task,
+              including sufficient time to slew the antenna and configure the equipment.
+
+          primary_cocom: Primary COCOM that is responsible for scheduling and management of the RF
+              Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+              SPACEFOR-STRATNORTH, SPACESOC, NONE).
 
           production_facility_name: Name of the production facility for this RF Emitter.
-
-          receiver_bandwidth: Receiver bandwidth in Mhz.
-
-          receiver_sensitivity: Receiver sensitivity in dBm.
 
           receiver_type: Type or name of receiver.
 
           secondary_notes: Secondary notes on the RF Emitter.
 
+          services: The set of software services running on this EW Emitter system.
+
           system_sensitivity_end: Receiver sensitivity is the lowest power level at which the receiver can detect
               an RF signal and demodulate data. Sensitivity is purely a receiver specification
-              and is independent of the transmitter. End sensitivity range, in dBm.
+              and is independent of the transmitter. End sensitivity range, in
+              decibel-milliwatts.
 
           system_sensitivity_start: Receiver sensitivity is the lowest power level at which the receiver can detect
               an RF signal and demodulate data. Sensitivity is purely a receiver specification
-              and is independent of the transmitter. Start sensitivity range, in dBm.
+              and is independent of the transmitter. Start sensitivity range, in
+              decibel-milliwatts.
 
-          transmit_power: Transmit power in Watts.
-
-          transmitter_bandwidth: Transmitter bandwidth in Mhz.
-
-          transmitter_frequency: Transmitter frequency in Mhz.
+          ttps: The set of EA/TTP techniques that are supported by this EW Emitter system.
 
           urls: Array of URLs containing additional information on this RF Emitter.
 
@@ -402,30 +442,33 @@ class RfEmitterDetailsResource(SyncAPIResource):
                     "body_id": body_id,
                     "alternate_facility_name": alternate_facility_name,
                     "alt_name": alt_name,
-                    "antenna_diameter": antenna_diameter,
-                    "antenna_size": antenna_size,
+                    "amplifier": amplifier,
+                    "antennas": antennas,
                     "barrage_noise_bandwidth": barrage_noise_bandwidth,
+                    "bit_run_time": bit_run_time,
                     "description": description,
                     "designator": designator,
                     "doppler_noise": doppler_noise,
                     "drfm_instantaneous_bandwidth": drfm_instantaneous_bandwidth,
                     "family": family,
-                    "manufacturer_org_id": manufacturer_org_id,
+                    "fixed_attenuation": fixed_attenuation,
+                    "id_manufacturer_org": id_manufacturer_org,
+                    "id_production_facility_location": id_production_facility_location,
+                    "loaned_to_cocom": loaned_to_cocom,
                     "notes": notes,
                     "num_bits": num_bits,
                     "num_channels": num_channels,
                     "origin": origin,
-                    "production_facility_location_id": production_facility_location_id,
+                    "power_offsets": power_offsets,
+                    "prep_time": prep_time,
+                    "primary_cocom": primary_cocom,
                     "production_facility_name": production_facility_name,
-                    "receiver_bandwidth": receiver_bandwidth,
-                    "receiver_sensitivity": receiver_sensitivity,
                     "receiver_type": receiver_type,
                     "secondary_notes": secondary_notes,
+                    "services": services,
                     "system_sensitivity_end": system_sensitivity_end,
                     "system_sensitivity_start": system_sensitivity_start,
-                    "transmit_power": transmit_power,
-                    "transmitter_bandwidth": transmitter_bandwidth,
-                    "transmitter_frequency": transmitter_frequency,
+                    "ttps": ttps,
                     "urls": urls,
                 },
                 rf_emitter_detail_update_params.RfEmitterDetailUpdateParams,
@@ -494,9 +537,9 @@ class RfEmitterDetailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to delete an RFEmitterDetails specified by the passed ID path
-        parameter. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
+        Service operation to delete a single RFEmitterDetails record specified by the
+        passed ID path parameter. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers
@@ -579,8 +622,8 @@ class RfEmitterDetailsResource(SyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RfEmitterDetailGetResponse:
         """
-        Service operation to get a single RFEmitterDetails by its unique ID passed as a
-        path parameter.
+        Service operation to get a single RFEmitterDetails record by its unique ID
+        passed as a path parameter.
 
         Args:
           extra_headers: Send extra headers
@@ -720,31 +763,34 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         id: str | NotGiven = NOT_GIVEN,
         alternate_facility_name: str | NotGiven = NOT_GIVEN,
         alt_name: str | NotGiven = NOT_GIVEN,
-        antenna_diameter: float | NotGiven = NOT_GIVEN,
-        antenna_size: Iterable[float] | NotGiven = NOT_GIVEN,
+        amplifier: rf_emitter_detail_create_params.Amplifier | NotGiven = NOT_GIVEN,
+        antennas: Iterable[rf_emitter_detail_create_params.Antenna] | NotGiven = NOT_GIVEN,
         barrage_noise_bandwidth: float | NotGiven = NOT_GIVEN,
+        bit_run_time: float | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         designator: str | NotGiven = NOT_GIVEN,
         doppler_noise: float | NotGiven = NOT_GIVEN,
         drfm_instantaneous_bandwidth: float | NotGiven = NOT_GIVEN,
         family: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
+        fixed_attenuation: float | NotGiven = NOT_GIVEN,
+        id_manufacturer_org: str | NotGiven = NOT_GIVEN,
+        id_production_facility_location: str | NotGiven = NOT_GIVEN,
+        loaned_to_cocom: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         num_bits: int | NotGiven = NOT_GIVEN,
         num_channels: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        production_facility_location_id: str | NotGiven = NOT_GIVEN,
+        power_offsets: Iterable[rf_emitter_detail_create_params.PowerOffset] | NotGiven = NOT_GIVEN,
+        prep_time: float | NotGiven = NOT_GIVEN,
+        primary_cocom: str | NotGiven = NOT_GIVEN,
         production_facility_name: str | NotGiven = NOT_GIVEN,
-        receiver_bandwidth: float | NotGiven = NOT_GIVEN,
-        receiver_sensitivity: float | NotGiven = NOT_GIVEN,
         receiver_type: str | NotGiven = NOT_GIVEN,
         secondary_notes: str | NotGiven = NOT_GIVEN,
+        services: Iterable[rf_emitter_detail_create_params.Service] | NotGiven = NOT_GIVEN,
         system_sensitivity_end: float | NotGiven = NOT_GIVEN,
         system_sensitivity_start: float | NotGiven = NOT_GIVEN,
-        transmit_power: float | NotGiven = NOT_GIVEN,
-        transmitter_bandwidth: float | NotGiven = NOT_GIVEN,
-        transmitter_frequency: float | NotGiven = NOT_GIVEN,
-        urls: List[str] | NotGiven = NOT_GIVEN,
+        ttps: Iterable[rf_emitter_detail_create_params.Ttp] | NotGiven = NOT_GIVEN,
+        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -786,24 +832,36 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
 
           alt_name: Optional alternate name or alias for this RF Emitter.
 
-          antenna_diameter: For parabolic/dish antennas, the diameter of the antenna in meters.
+          amplifier: An RF Amplifier associated with an RF Emitter Details.
 
-          antenna_size: Array with 1-2 values specifying the length and width (for rectangular) and just
-              length for dipole antennas in meters.
+          antennas: The set of antennas hosted on this EW Emitter system.
 
-          barrage_noise_bandwidth: Barrage noise bandwidth in Mhz.
+          barrage_noise_bandwidth: Barrage noise bandwidth, in megahertz.
+
+          bit_run_time: The length of time, in seconds, for the RF Emitter built-in test to run to
+              completion.
 
           description: Detailed description of the RF Emitter.
 
           designator: Designator of this RF Emitter.
 
-          doppler_noise: Doppler noise value in Mhz.
+          doppler_noise: Doppler noise value, in megahertz.
 
-          drfm_instantaneous_bandwidth: Digital Form Radio Memory instantaneous bandwidth in Mhz.
+          drfm_instantaneous_bandwidth: Digital Form Radio Memory instantaneous bandwidth in megahertz.
 
           family: Family of this RF Emitter type.
 
-          manufacturer_org_id: Unique identifier of the organization which manufactures this RF Emitter.
+          fixed_attenuation: A fixed attenuation value to be set on the SRF Emitter HPA when commanding an
+              Electronic Attack/Techniques Tactics and Procedures task, in decibels.
+
+          id_manufacturer_org: Unique identifier of the organization which manufactured this RF Emitter.
+
+          id_production_facility_location: Unique identifier of the location of the production facility for this RF
+              Emitter.
+
+          loaned_to_cocom: COCOM that has temporary responsibility for scheduling and management of the RF
+              Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+              SPACEFOR-STRATNORTH, SPACESOC, NONE).
 
           notes: Notes on the RF Emitter.
 
@@ -816,32 +874,35 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          production_facility_location_id: Unique identifier of the location of the production facility for this RF
-              Emitter.
+          power_offsets: A set of system/frequency band adjustments to the power offset commanded in an
+              EA/TTP task.
+
+          prep_time: The length of time, in seconds, for the RF Emitter to prepare for a task,
+              including sufficient time to slew the antenna and configure the equipment.
+
+          primary_cocom: Primary COCOM that is responsible for scheduling and management of the RF
+              Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+              SPACEFOR-STRATNORTH, SPACESOC, NONE).
 
           production_facility_name: Name of the production facility for this RF Emitter.
-
-          receiver_bandwidth: Receiver bandwidth in Mhz.
-
-          receiver_sensitivity: Receiver sensitivity in dBm.
 
           receiver_type: Type or name of receiver.
 
           secondary_notes: Secondary notes on the RF Emitter.
 
+          services: The set of software services running on this EW Emitter system.
+
           system_sensitivity_end: Receiver sensitivity is the lowest power level at which the receiver can detect
               an RF signal and demodulate data. Sensitivity is purely a receiver specification
-              and is independent of the transmitter. End sensitivity range, in dBm.
+              and is independent of the transmitter. End sensitivity range, in
+              decibel-milliwatts.
 
           system_sensitivity_start: Receiver sensitivity is the lowest power level at which the receiver can detect
               an RF signal and demodulate data. Sensitivity is purely a receiver specification
-              and is independent of the transmitter. Start sensitivity range, in dBm.
+              and is independent of the transmitter. Start sensitivity range, in
+              decibel-milliwatts.
 
-          transmit_power: Transmit power in Watts.
-
-          transmitter_bandwidth: Transmitter bandwidth in Mhz.
-
-          transmitter_frequency: Transmitter frequency in Mhz.
+          ttps: The set of EA/TTP techniques that are supported by this EW Emitter system.
 
           urls: Array of URLs containing additional information on this RF Emitter.
 
@@ -865,30 +926,33 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
                     "id": id,
                     "alternate_facility_name": alternate_facility_name,
                     "alt_name": alt_name,
-                    "antenna_diameter": antenna_diameter,
-                    "antenna_size": antenna_size,
+                    "amplifier": amplifier,
+                    "antennas": antennas,
                     "barrage_noise_bandwidth": barrage_noise_bandwidth,
+                    "bit_run_time": bit_run_time,
                     "description": description,
                     "designator": designator,
                     "doppler_noise": doppler_noise,
                     "drfm_instantaneous_bandwidth": drfm_instantaneous_bandwidth,
                     "family": family,
-                    "manufacturer_org_id": manufacturer_org_id,
+                    "fixed_attenuation": fixed_attenuation,
+                    "id_manufacturer_org": id_manufacturer_org,
+                    "id_production_facility_location": id_production_facility_location,
+                    "loaned_to_cocom": loaned_to_cocom,
                     "notes": notes,
                     "num_bits": num_bits,
                     "num_channels": num_channels,
                     "origin": origin,
-                    "production_facility_location_id": production_facility_location_id,
+                    "power_offsets": power_offsets,
+                    "prep_time": prep_time,
+                    "primary_cocom": primary_cocom,
                     "production_facility_name": production_facility_name,
-                    "receiver_bandwidth": receiver_bandwidth,
-                    "receiver_sensitivity": receiver_sensitivity,
                     "receiver_type": receiver_type,
                     "secondary_notes": secondary_notes,
+                    "services": services,
                     "system_sensitivity_end": system_sensitivity_end,
                     "system_sensitivity_start": system_sensitivity_start,
-                    "transmit_power": transmit_power,
-                    "transmitter_bandwidth": transmitter_bandwidth,
-                    "transmitter_frequency": transmitter_frequency,
+                    "ttps": ttps,
                     "urls": urls,
                 },
                 rf_emitter_detail_create_params.RfEmitterDetailCreateParams,
@@ -910,31 +974,34 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         body_id: str | NotGiven = NOT_GIVEN,
         alternate_facility_name: str | NotGiven = NOT_GIVEN,
         alt_name: str | NotGiven = NOT_GIVEN,
-        antenna_diameter: float | NotGiven = NOT_GIVEN,
-        antenna_size: Iterable[float] | NotGiven = NOT_GIVEN,
+        amplifier: rf_emitter_detail_update_params.Amplifier | NotGiven = NOT_GIVEN,
+        antennas: Iterable[rf_emitter_detail_update_params.Antenna] | NotGiven = NOT_GIVEN,
         barrage_noise_bandwidth: float | NotGiven = NOT_GIVEN,
+        bit_run_time: float | NotGiven = NOT_GIVEN,
         description: str | NotGiven = NOT_GIVEN,
         designator: str | NotGiven = NOT_GIVEN,
         doppler_noise: float | NotGiven = NOT_GIVEN,
         drfm_instantaneous_bandwidth: float | NotGiven = NOT_GIVEN,
         family: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
+        fixed_attenuation: float | NotGiven = NOT_GIVEN,
+        id_manufacturer_org: str | NotGiven = NOT_GIVEN,
+        id_production_facility_location: str | NotGiven = NOT_GIVEN,
+        loaned_to_cocom: str | NotGiven = NOT_GIVEN,
         notes: str | NotGiven = NOT_GIVEN,
         num_bits: int | NotGiven = NOT_GIVEN,
         num_channels: int | NotGiven = NOT_GIVEN,
         origin: str | NotGiven = NOT_GIVEN,
-        production_facility_location_id: str | NotGiven = NOT_GIVEN,
+        power_offsets: Iterable[rf_emitter_detail_update_params.PowerOffset] | NotGiven = NOT_GIVEN,
+        prep_time: float | NotGiven = NOT_GIVEN,
+        primary_cocom: str | NotGiven = NOT_GIVEN,
         production_facility_name: str | NotGiven = NOT_GIVEN,
-        receiver_bandwidth: float | NotGiven = NOT_GIVEN,
-        receiver_sensitivity: float | NotGiven = NOT_GIVEN,
         receiver_type: str | NotGiven = NOT_GIVEN,
         secondary_notes: str | NotGiven = NOT_GIVEN,
+        services: Iterable[rf_emitter_detail_update_params.Service] | NotGiven = NOT_GIVEN,
         system_sensitivity_end: float | NotGiven = NOT_GIVEN,
         system_sensitivity_start: float | NotGiven = NOT_GIVEN,
-        transmit_power: float | NotGiven = NOT_GIVEN,
-        transmitter_bandwidth: float | NotGiven = NOT_GIVEN,
-        transmitter_frequency: float | NotGiven = NOT_GIVEN,
-        urls: List[str] | NotGiven = NOT_GIVEN,
+        ttps: Iterable[rf_emitter_detail_update_params.Ttp] | NotGiven = NOT_GIVEN,
+        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -942,10 +1009,11 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
-        """Service operation to update an RFEmitterDetails.
+        """Service operation to update a single RFEmitterDetails record.
 
-        A specific role is required to
-        perform this service operation. Please contact the UDL team for assistance.
+        A specific role is
+        required to perform this service operation. Please contact the UDL team for
+        assistance.
 
         Args:
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
@@ -976,24 +1044,36 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
 
           alt_name: Optional alternate name or alias for this RF Emitter.
 
-          antenna_diameter: For parabolic/dish antennas, the diameter of the antenna in meters.
+          amplifier: An RF Amplifier associated with an RF Emitter Details.
 
-          antenna_size: Array with 1-2 values specifying the length and width (for rectangular) and just
-              length for dipole antennas in meters.
+          antennas: The set of antennas hosted on this EW Emitter system.
 
-          barrage_noise_bandwidth: Barrage noise bandwidth in Mhz.
+          barrage_noise_bandwidth: Barrage noise bandwidth, in megahertz.
+
+          bit_run_time: The length of time, in seconds, for the RF Emitter built-in test to run to
+              completion.
 
           description: Detailed description of the RF Emitter.
 
           designator: Designator of this RF Emitter.
 
-          doppler_noise: Doppler noise value in Mhz.
+          doppler_noise: Doppler noise value, in megahertz.
 
-          drfm_instantaneous_bandwidth: Digital Form Radio Memory instantaneous bandwidth in Mhz.
+          drfm_instantaneous_bandwidth: Digital Form Radio Memory instantaneous bandwidth in megahertz.
 
           family: Family of this RF Emitter type.
 
-          manufacturer_org_id: Unique identifier of the organization which manufactures this RF Emitter.
+          fixed_attenuation: A fixed attenuation value to be set on the SRF Emitter HPA when commanding an
+              Electronic Attack/Techniques Tactics and Procedures task, in decibels.
+
+          id_manufacturer_org: Unique identifier of the organization which manufactured this RF Emitter.
+
+          id_production_facility_location: Unique identifier of the location of the production facility for this RF
+              Emitter.
+
+          loaned_to_cocom: COCOM that has temporary responsibility for scheduling and management of the RF
+              Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+              SPACEFOR-STRATNORTH, SPACESOC, NONE).
 
           notes: Notes on the RF Emitter.
 
@@ -1006,32 +1086,35 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
-          production_facility_location_id: Unique identifier of the location of the production facility for this RF
-              Emitter.
+          power_offsets: A set of system/frequency band adjustments to the power offset commanded in an
+              EA/TTP task.
+
+          prep_time: The length of time, in seconds, for the RF Emitter to prepare for a task,
+              including sufficient time to slew the antenna and configure the equipment.
+
+          primary_cocom: Primary COCOM that is responsible for scheduling and management of the RF
+              Emitter (e.g. SPACEFOR-CENT, SPACEFOR-EURAF, SPACEFOR-INDOPAC, SPACEFOR-KOR,
+              SPACEFOR-STRATNORTH, SPACESOC, NONE).
 
           production_facility_name: Name of the production facility for this RF Emitter.
-
-          receiver_bandwidth: Receiver bandwidth in Mhz.
-
-          receiver_sensitivity: Receiver sensitivity in dBm.
 
           receiver_type: Type or name of receiver.
 
           secondary_notes: Secondary notes on the RF Emitter.
 
+          services: The set of software services running on this EW Emitter system.
+
           system_sensitivity_end: Receiver sensitivity is the lowest power level at which the receiver can detect
               an RF signal and demodulate data. Sensitivity is purely a receiver specification
-              and is independent of the transmitter. End sensitivity range, in dBm.
+              and is independent of the transmitter. End sensitivity range, in
+              decibel-milliwatts.
 
           system_sensitivity_start: Receiver sensitivity is the lowest power level at which the receiver can detect
               an RF signal and demodulate data. Sensitivity is purely a receiver specification
-              and is independent of the transmitter. Start sensitivity range, in dBm.
+              and is independent of the transmitter. Start sensitivity range, in
+              decibel-milliwatts.
 
-          transmit_power: Transmit power in Watts.
-
-          transmitter_bandwidth: Transmitter bandwidth in Mhz.
-
-          transmitter_frequency: Transmitter frequency in Mhz.
+          ttps: The set of EA/TTP techniques that are supported by this EW Emitter system.
 
           urls: Array of URLs containing additional information on this RF Emitter.
 
@@ -1057,30 +1140,33 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
                     "body_id": body_id,
                     "alternate_facility_name": alternate_facility_name,
                     "alt_name": alt_name,
-                    "antenna_diameter": antenna_diameter,
-                    "antenna_size": antenna_size,
+                    "amplifier": amplifier,
+                    "antennas": antennas,
                     "barrage_noise_bandwidth": barrage_noise_bandwidth,
+                    "bit_run_time": bit_run_time,
                     "description": description,
                     "designator": designator,
                     "doppler_noise": doppler_noise,
                     "drfm_instantaneous_bandwidth": drfm_instantaneous_bandwidth,
                     "family": family,
-                    "manufacturer_org_id": manufacturer_org_id,
+                    "fixed_attenuation": fixed_attenuation,
+                    "id_manufacturer_org": id_manufacturer_org,
+                    "id_production_facility_location": id_production_facility_location,
+                    "loaned_to_cocom": loaned_to_cocom,
                     "notes": notes,
                     "num_bits": num_bits,
                     "num_channels": num_channels,
                     "origin": origin,
-                    "production_facility_location_id": production_facility_location_id,
+                    "power_offsets": power_offsets,
+                    "prep_time": prep_time,
+                    "primary_cocom": primary_cocom,
                     "production_facility_name": production_facility_name,
-                    "receiver_bandwidth": receiver_bandwidth,
-                    "receiver_sensitivity": receiver_sensitivity,
                     "receiver_type": receiver_type,
                     "secondary_notes": secondary_notes,
+                    "services": services,
                     "system_sensitivity_end": system_sensitivity_end,
                     "system_sensitivity_start": system_sensitivity_start,
-                    "transmit_power": transmit_power,
-                    "transmitter_bandwidth": transmitter_bandwidth,
-                    "transmitter_frequency": transmitter_frequency,
+                    "ttps": ttps,
                     "urls": urls,
                 },
                 rf_emitter_detail_update_params.RfEmitterDetailUpdateParams,
@@ -1149,9 +1235,9 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> None:
         """
-        Service operation to delete an RFEmitterDetails specified by the passed ID path
-        parameter. A specific role is required to perform this service operation. Please
-        contact the UDL team for assistance.
+        Service operation to delete a single RFEmitterDetails record specified by the
+        passed ID path parameter. A specific role is required to perform this service
+        operation. Please contact the UDL team for assistance.
 
         Args:
           extra_headers: Send extra headers
@@ -1234,8 +1320,8 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
     ) -> RfEmitterDetailGetResponse:
         """
-        Service operation to get a single RFEmitterDetails by its unique ID passed as a
-        path parameter.
+        Service operation to get a single RFEmitterDetails record by its unique ID
+        passed as a path parameter.
 
         Args:
           extra_headers: Send extra headers

@@ -2,10 +2,11 @@
 
 from __future__ import annotations
 
-from typing import List, Union
+from typing import Union
 from datetime import datetime
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 
 __all__ = ["ItemTrackingCreateParams"]
@@ -59,7 +60,7 @@ class ItemTrackingCreateParams(TypedDict, total=False):
     id_item: Annotated[str, PropertyInfo(alias="idItem")]
     """The UDL ID of the item this record is associated with."""
 
-    keys: List[str]
+    keys: SequenceNotStr[str]
     """Array of keys that may be associated with this tracked item."""
 
     lat: float
@@ -100,7 +101,7 @@ class ItemTrackingCreateParams(TypedDict, total=False):
     CARGO, PERSON, MAIL, MICAP, OTHER).
     """
 
-    values: List[str]
+    values: SequenceNotStr[str]
     """Array of values for the keys that may be associated to this tracked item.
 
     The entries in this array must correspond to the position index in the keys

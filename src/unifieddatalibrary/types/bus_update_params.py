@@ -2,9 +2,9 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Literal, Required, Annotated, TypedDict
 
+from .._types import SequenceNotStr
 from .._utils import PropertyInfo
 from .entity_ingest_param import EntityIngestParam
 
@@ -185,7 +185,7 @@ class BusUpdateParams(TypedDict, total=False):
     in kilowatts.
     """
 
-    orbit_types: Annotated[List[str], PropertyInfo(alias="orbitTypes")]
+    orbit_types: Annotated[SequenceNotStr[str], PropertyInfo(alias="orbitTypes")]
     """Array of orbit types this bus can support (e.g.
 
     GEO, LEO, etc.). Must contain the same number of elements as the value of
