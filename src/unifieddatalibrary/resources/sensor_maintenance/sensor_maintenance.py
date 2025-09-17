@@ -41,7 +41,7 @@ from ..._base_client import AsyncPaginator, make_request_options
 from ...types.sensor_maintenance_get_response import SensorMaintenanceGetResponse
 from ...types.sensor_maintenance_list_response import SensorMaintenanceListResponse
 from ...types.sensor_maintenance_tuple_response import SensorMaintenanceTupleResponse
-from ...types.sensor_maintenance_queryhelp_response import SensorMaintenanceQueryhelpResponse
+from ...types.sensor_maintenance_query_help_response import SensorMaintenanceQueryHelpResponse
 from ...types.sensor_maintenance_list_current_response import SensorMaintenanceListCurrentResponse
 
 __all__ = ["SensorMaintenanceResource", "AsyncSensorMaintenanceResource"]
@@ -699,7 +699,7 @@ class SensorMaintenanceResource(SyncAPIResource):
             model=SensorMaintenanceListCurrentResponse,
         )
 
-    def queryhelp(
+    def query_help(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -708,7 +708,7 @@ class SensorMaintenanceResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorMaintenanceQueryhelpResponse:
+    ) -> SensorMaintenanceQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
@@ -718,7 +718,7 @@ class SensorMaintenanceResource(SyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SensorMaintenanceQueryhelpResponse,
+            cast_to=SensorMaintenanceQueryHelpResponse,
         )
 
     def tuple(
@@ -1440,7 +1440,7 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
             model=SensorMaintenanceListCurrentResponse,
         )
 
-    async def queryhelp(
+    async def query_help(
         self,
         *,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
@@ -1449,7 +1449,7 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> SensorMaintenanceQueryhelpResponse:
+    ) -> SensorMaintenanceQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
         parameters for a particular data type.
@@ -1459,7 +1459,7 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
-            cast_to=SensorMaintenanceQueryhelpResponse,
+            cast_to=SensorMaintenanceQueryHelpResponse,
         )
 
     async def tuple(
@@ -1557,8 +1557,8 @@ class SensorMaintenanceResourceWithRawResponse:
         self.list_current = to_raw_response_wrapper(
             sensor_maintenance.list_current,
         )
-        self.queryhelp = to_raw_response_wrapper(
-            sensor_maintenance.queryhelp,
+        self.query_help = to_raw_response_wrapper(
+            sensor_maintenance.query_help,
         )
         self.tuple = to_raw_response_wrapper(
             sensor_maintenance.tuple,
@@ -1597,8 +1597,8 @@ class AsyncSensorMaintenanceResourceWithRawResponse:
         self.list_current = async_to_raw_response_wrapper(
             sensor_maintenance.list_current,
         )
-        self.queryhelp = async_to_raw_response_wrapper(
-            sensor_maintenance.queryhelp,
+        self.query_help = async_to_raw_response_wrapper(
+            sensor_maintenance.query_help,
         )
         self.tuple = async_to_raw_response_wrapper(
             sensor_maintenance.tuple,
@@ -1637,8 +1637,8 @@ class SensorMaintenanceResourceWithStreamingResponse:
         self.list_current = to_streamed_response_wrapper(
             sensor_maintenance.list_current,
         )
-        self.queryhelp = to_streamed_response_wrapper(
-            sensor_maintenance.queryhelp,
+        self.query_help = to_streamed_response_wrapper(
+            sensor_maintenance.query_help,
         )
         self.tuple = to_streamed_response_wrapper(
             sensor_maintenance.tuple,
@@ -1677,8 +1677,8 @@ class AsyncSensorMaintenanceResourceWithStreamingResponse:
         self.list_current = async_to_streamed_response_wrapper(
             sensor_maintenance.list_current,
         )
-        self.queryhelp = async_to_streamed_response_wrapper(
-            sensor_maintenance.queryhelp,
+        self.query_help = async_to_streamed_response_wrapper(
+            sensor_maintenance.query_help,
         )
         self.tuple = async_to_streamed_response_wrapper(
             sensor_maintenance.tuple,

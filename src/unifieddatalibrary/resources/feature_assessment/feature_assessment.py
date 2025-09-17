@@ -9,8 +9,8 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    feature_assessment_list_params,
     feature_assessment_count_params,
-    feature_assessment_query_params,
     feature_assessment_tuple_params,
     feature_assessment_create_params,
     feature_assessment_retrieve_params,
@@ -35,8 +35,9 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.feature_assessment_query_response import FeatureAssessmentQueryResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.feature_assessment_list_response import FeatureAssessmentListResponse
 from ...types.feature_assessment_tuple_response import FeatureAssessmentTupleResponse
 from ...types.feature_assessment_retrieve_response import FeatureAssessmentRetrieveResponse
 from ...types.feature_assessment_query_help_response import FeatureAssessmentQueryHelpResponse
@@ -382,6 +383,57 @@ class FeatureAssessmentResource(SyncAPIResource):
             cast_to=FeatureAssessmentRetrieveResponse,
         )
 
+    def list(
+        self,
+        *,
+        id_analytic_imagery: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[FeatureAssessmentListResponse]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          id_analytic_imagery: Unique identifier of the Analytic Imagery associated with this Feature
+              Assessment record.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/featureassessment",
+            page=SyncOffsetPage[FeatureAssessmentListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "id_analytic_imagery": id_analytic_imagery,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    feature_assessment_list_params.FeatureAssessmentListParams,
+                ),
+            ),
+            model=FeatureAssessmentListResponse,
+        )
+
     def count(
         self,
         *,
@@ -469,56 +521,6 @@ class FeatureAssessmentResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def query(
-        self,
-        *,
-        id_analytic_imagery: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FeatureAssessmentQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          id_analytic_imagery: Unique identifier of the Analytic Imagery associated with this Feature
-              Assessment record.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/featureassessment",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "id_analytic_imagery": id_analytic_imagery,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    feature_assessment_query_params.FeatureAssessmentQueryParams,
-                ),
-            ),
-            cast_to=FeatureAssessmentQueryResponse,
         )
 
     def query_help(
@@ -979,6 +981,57 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
             cast_to=FeatureAssessmentRetrieveResponse,
         )
 
+    def list(
+        self,
+        *,
+        id_analytic_imagery: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[FeatureAssessmentListResponse, AsyncOffsetPage[FeatureAssessmentListResponse]]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          id_analytic_imagery: Unique identifier of the Analytic Imagery associated with this Feature
+              Assessment record.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/featureassessment",
+            page=AsyncOffsetPage[FeatureAssessmentListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "id_analytic_imagery": id_analytic_imagery,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    feature_assessment_list_params.FeatureAssessmentListParams,
+                ),
+            ),
+            model=FeatureAssessmentListResponse,
+        )
+
     async def count(
         self,
         *,
@@ -1066,56 +1119,6 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def query(
-        self,
-        *,
-        id_analytic_imagery: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> FeatureAssessmentQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          id_analytic_imagery: Unique identifier of the Analytic Imagery associated with this Feature
-              Assessment record.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/featureassessment",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "id_analytic_imagery": id_analytic_imagery,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    feature_assessment_query_params.FeatureAssessmentQueryParams,
-                ),
-            ),
-            cast_to=FeatureAssessmentQueryResponse,
         )
 
     async def query_help(
@@ -1248,14 +1251,14 @@ class FeatureAssessmentResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             feature_assessment.retrieve,
         )
+        self.list = to_raw_response_wrapper(
+            feature_assessment.list,
+        )
         self.count = to_raw_response_wrapper(
             feature_assessment.count,
         )
         self.create_bulk = to_raw_response_wrapper(
             feature_assessment.create_bulk,
-        )
-        self.query = to_raw_response_wrapper(
-            feature_assessment.query,
         )
         self.query_help = to_raw_response_wrapper(
             feature_assessment.query_help,
@@ -1282,14 +1285,14 @@ class AsyncFeatureAssessmentResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             feature_assessment.retrieve,
         )
+        self.list = async_to_raw_response_wrapper(
+            feature_assessment.list,
+        )
         self.count = async_to_raw_response_wrapper(
             feature_assessment.count,
         )
         self.create_bulk = async_to_raw_response_wrapper(
             feature_assessment.create_bulk,
-        )
-        self.query = async_to_raw_response_wrapper(
-            feature_assessment.query,
         )
         self.query_help = async_to_raw_response_wrapper(
             feature_assessment.query_help,
@@ -1316,14 +1319,14 @@ class FeatureAssessmentResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             feature_assessment.retrieve,
         )
+        self.list = to_streamed_response_wrapper(
+            feature_assessment.list,
+        )
         self.count = to_streamed_response_wrapper(
             feature_assessment.count,
         )
         self.create_bulk = to_streamed_response_wrapper(
             feature_assessment.create_bulk,
-        )
-        self.query = to_streamed_response_wrapper(
-            feature_assessment.query,
         )
         self.query_help = to_streamed_response_wrapper(
             feature_assessment.query_help,
@@ -1350,14 +1353,14 @@ class AsyncFeatureAssessmentResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             feature_assessment.retrieve,
         )
+        self.list = async_to_streamed_response_wrapper(
+            feature_assessment.list,
+        )
         self.count = async_to_streamed_response_wrapper(
             feature_assessment.count,
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             feature_assessment.create_bulk,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            feature_assessment.query,
         )
         self.query_help = async_to_streamed_response_wrapper(
             feature_assessment.query_help,

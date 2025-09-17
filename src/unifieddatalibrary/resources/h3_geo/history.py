@@ -17,9 +17,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.h3_geo import history_ador_params, history_count_params, history_query_params
-from ...types.h3_geo.history_query_response import HistoryQueryResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.h3_geo import history_ador_params, history_list_params, history_count_params
+from ...types.h3_geo.history_list_response import HistoryListResponse
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
@@ -43,6 +44,63 @@ class HistoryResource(SyncAPIResource):
         For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return HistoryResourceWithStreamingResponse(self)
+
+    def list(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[HistoryListResponse]:
+        """
+        Service operation to dynamically query historical data by a variety of query
+        parameters not specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          start_time: Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
+              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              query fields that can be selected.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/h3geo/history",
+            page=SyncOffsetPage[HistoryListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    history_list_params.HistoryListParams,
+                ),
+            ),
+            model=HistoryListResponse,
+        )
 
     def ador(
         self,
@@ -171,7 +229,28 @@ class HistoryResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def query(
+
+class AsyncHistoryResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        """
+        return AsyncHistoryResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
+        """
+        return AsyncHistoryResourceWithStreamingResponse(self)
+
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -184,7 +263,7 @@ class HistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryQueryResponse:
+    ) -> AsyncPaginator[HistoryListResponse, AsyncOffsetPage[HistoryListResponse]]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -207,8 +286,9 @@ class HistoryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/h3geo/history",
+            page=AsyncOffsetPage[HistoryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -221,32 +301,11 @@ class HistoryResource(SyncAPIResource):
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    history_query_params.HistoryQueryParams,
+                    history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryQueryResponse,
+            model=HistoryListResponse,
         )
-
-
-class AsyncHistoryResource(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
-        """
-        This property can be used as a prefix for any HTTP method call to return
-        the raw response object instead of the parsed content.
-
-        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
-        """
-        return AsyncHistoryResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncHistoryResourceWithStreamingResponse:
-        """
-        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
-
-        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
-        """
-        return AsyncHistoryResourceWithStreamingResponse(self)
 
     async def ador(
         self,
@@ -375,75 +434,19 @@ class AsyncHistoryResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def query(
-        self,
-        *,
-        start_time: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryQueryResponse:
-        """
-        Service operation to dynamically query historical data by a variety of query
-        parameters not specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          start_time: Start time for this H3 Geo data set in ISO 8601 UTC with millisecond precision.
-              (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
-              query fields that can be selected.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/h3geo/history",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "start_time": start_time,
-                        "columns": columns,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    history_query_params.HistoryQueryParams,
-                ),
-            ),
-            cast_to=HistoryQueryResponse,
-        )
-
 
 class HistoryResourceWithRawResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
+        self.list = to_raw_response_wrapper(
+            history.list,
+        )
         self.ador = to_raw_response_wrapper(
             history.ador,
         )
         self.count = to_raw_response_wrapper(
             history.count,
-        )
-        self.query = to_raw_response_wrapper(
-            history.query,
         )
 
 
@@ -451,14 +454,14 @@ class AsyncHistoryResourceWithRawResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
+        self.list = async_to_raw_response_wrapper(
+            history.list,
+        )
         self.ador = async_to_raw_response_wrapper(
             history.ador,
         )
         self.count = async_to_raw_response_wrapper(
             history.count,
-        )
-        self.query = async_to_raw_response_wrapper(
-            history.query,
         )
 
 
@@ -466,14 +469,14 @@ class HistoryResourceWithStreamingResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
+        self.list = to_streamed_response_wrapper(
+            history.list,
+        )
         self.ador = to_streamed_response_wrapper(
             history.ador,
         )
         self.count = to_streamed_response_wrapper(
             history.count,
-        )
-        self.query = to_streamed_response_wrapper(
-            history.query,
         )
 
 
@@ -481,12 +484,12 @@ class AsyncHistoryResourceWithStreamingResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
+        self.list = async_to_streamed_response_wrapper(
+            history.list,
+        )
         self.ador = async_to_streamed_response_wrapper(
             history.ador,
         )
         self.count = async_to_streamed_response_wrapper(
             history.count,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            history.query,
         )

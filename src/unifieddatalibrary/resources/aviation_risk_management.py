@@ -8,8 +8,8 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    aviation_risk_management_list_params,
     aviation_risk_management_count_params,
-    aviation_risk_management_query_params,
     aviation_risk_management_tuple_params,
     aviation_risk_management_create_params,
     aviation_risk_management_update_params,
@@ -27,8 +27,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.aviation_risk_management_query_response import AviationRiskManagementQueryResponse
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
+from ..types.aviation_risk_management_list_response import AviationRiskManagementListResponse
 from ..types.aviation_risk_management_tuple_response import AviationRiskManagementTupleResponse
 from ..types.aviation_risk_management_retrieve_response import AviationRiskManagementRetrieveResponse
 from ..types.aviation_risk_management_query_help_response import AviationRiskManagementQueryHelpResponse
@@ -318,6 +319,57 @@ class AviationRiskManagementResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def list(
+        self,
+        *,
+        id_mission: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[AviationRiskManagementListResponse]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          id_mission: The unique identifier of the mission to which this risk management record is
+              assigned.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/aviationriskmanagement",
+            page=SyncOffsetPage[AviationRiskManagementListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "id_mission": id_mission,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aviation_risk_management_list_params.AviationRiskManagementListParams,
+                ),
+            ),
+            model=AviationRiskManagementListResponse,
+        )
+
     def delete(
         self,
         id: str,
@@ -441,56 +493,6 @@ class AviationRiskManagementResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def query(
-        self,
-        *,
-        id_mission: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AviationRiskManagementQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          id_mission: The unique identifier of the mission to which this risk management record is
-              assigned.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/aviationriskmanagement",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "id_mission": id_mission,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    aviation_risk_management_query_params.AviationRiskManagementQueryParams,
-                ),
-            ),
-            cast_to=AviationRiskManagementQueryResponse,
         )
 
     def query_help(
@@ -895,6 +897,57 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    def list(
+        self,
+        *,
+        id_mission: str,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[AviationRiskManagementListResponse, AsyncOffsetPage[AviationRiskManagementListResponse]]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          id_mission: The unique identifier of the mission to which this risk management record is
+              assigned.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/aviationriskmanagement",
+            page=AsyncOffsetPage[AviationRiskManagementListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "id_mission": id_mission,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    aviation_risk_management_list_params.AviationRiskManagementListParams,
+                ),
+            ),
+            model=AviationRiskManagementListResponse,
+        )
+
     async def delete(
         self,
         id: str,
@@ -1018,56 +1071,6 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def query(
-        self,
-        *,
-        id_mission: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> AviationRiskManagementQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          id_mission: The unique identifier of the mission to which this risk management record is
-              assigned.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/aviationriskmanagement",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "id_mission": id_mission,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    aviation_risk_management_query_params.AviationRiskManagementQueryParams,
-                ),
-            ),
-            cast_to=AviationRiskManagementQueryResponse,
         )
 
     async def query_help(
@@ -1203,6 +1206,9 @@ class AviationRiskManagementResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             aviation_risk_management.update,
         )
+        self.list = to_raw_response_wrapper(
+            aviation_risk_management.list,
+        )
         self.delete = to_raw_response_wrapper(
             aviation_risk_management.delete,
         )
@@ -1211,9 +1217,6 @@ class AviationRiskManagementResourceWithRawResponse:
         )
         self.create_bulk = to_raw_response_wrapper(
             aviation_risk_management.create_bulk,
-        )
-        self.query = to_raw_response_wrapper(
-            aviation_risk_management.query,
         )
         self.query_help = to_raw_response_wrapper(
             aviation_risk_management.query_help,
@@ -1239,6 +1242,9 @@ class AsyncAviationRiskManagementResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             aviation_risk_management.update,
         )
+        self.list = async_to_raw_response_wrapper(
+            aviation_risk_management.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             aviation_risk_management.delete,
         )
@@ -1247,9 +1253,6 @@ class AsyncAviationRiskManagementResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             aviation_risk_management.create_bulk,
-        )
-        self.query = async_to_raw_response_wrapper(
-            aviation_risk_management.query,
         )
         self.query_help = async_to_raw_response_wrapper(
             aviation_risk_management.query_help,
@@ -1275,6 +1278,9 @@ class AviationRiskManagementResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             aviation_risk_management.update,
         )
+        self.list = to_streamed_response_wrapper(
+            aviation_risk_management.list,
+        )
         self.delete = to_streamed_response_wrapper(
             aviation_risk_management.delete,
         )
@@ -1283,9 +1289,6 @@ class AviationRiskManagementResourceWithStreamingResponse:
         )
         self.create_bulk = to_streamed_response_wrapper(
             aviation_risk_management.create_bulk,
-        )
-        self.query = to_streamed_response_wrapper(
-            aviation_risk_management.query,
         )
         self.query_help = to_streamed_response_wrapper(
             aviation_risk_management.query_help,
@@ -1311,6 +1314,9 @@ class AsyncAviationRiskManagementResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             aviation_risk_management.update,
         )
+        self.list = async_to_streamed_response_wrapper(
+            aviation_risk_management.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             aviation_risk_management.delete,
         )
@@ -1319,9 +1325,6 @@ class AsyncAviationRiskManagementResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             aviation_risk_management.create_bulk,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            aviation_risk_management.query,
         )
         self.query_help = async_to_streamed_response_wrapper(
             aviation_risk_management.query_help,

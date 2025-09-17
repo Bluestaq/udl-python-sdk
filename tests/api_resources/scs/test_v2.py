@@ -11,6 +11,7 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types.scs import (
     ScsEntity,
+    V2SearchResponse,
 )
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
@@ -304,6 +305,46 @@ class TestV2:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_search(self, client: Unifieddatalibrary) -> None:
+        v2 = client.scs.v2.search()
+        assert_matches_type(V2SearchResponse, v2, path=["response"])
+
+    @parametrize
+    def test_method_search_with_all_params(self, client: Unifieddatalibrary) -> None:
+        v2 = client.scs.v2.search(
+            order="order",
+            search_after="searchAfter",
+            size=0,
+            sort="sort",
+            query={
+                "field": "attachment.content",
+                "operator": "EXACT_MATCH",
+                "value": "This is a very cool file.",
+            },
+        )
+        assert_matches_type(V2SearchResponse, v2, path=["response"])
+
+    @parametrize
+    def test_raw_response_search(self, client: Unifieddatalibrary) -> None:
+        response = client.scs.v2.with_raw_response.search()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        v2 = response.parse()
+        assert_matches_type(V2SearchResponse, v2, path=["response"])
+
+    @parametrize
+    def test_streaming_response_search(self, client: Unifieddatalibrary) -> None:
+        with client.scs.v2.with_streaming_response.search() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            v2 = response.parse()
+            assert_matches_type(V2SearchResponse, v2, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncV2:
     parametrize = pytest.mark.parametrize(
@@ -591,5 +632,45 @@ class TestAsyncV2:
 
             v2 = await response.parse()
             assert v2 is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_search(self, async_client: AsyncUnifieddatalibrary) -> None:
+        v2 = await async_client.scs.v2.search()
+        assert_matches_type(V2SearchResponse, v2, path=["response"])
+
+    @parametrize
+    async def test_method_search_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        v2 = await async_client.scs.v2.search(
+            order="order",
+            search_after="searchAfter",
+            size=0,
+            sort="sort",
+            query={
+                "field": "attachment.content",
+                "operator": "EXACT_MATCH",
+                "value": "This is a very cool file.",
+            },
+        )
+        assert_matches_type(V2SearchResponse, v2, path=["response"])
+
+    @parametrize
+    async def test_raw_response_search(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.scs.v2.with_raw_response.search()
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        v2 = await response.parse()
+        assert_matches_type(V2SearchResponse, v2, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_search(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.scs.v2.with_streaming_response.search() as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            v2 = await response.parse()
+            assert_matches_type(V2SearchResponse, v2, path=["response"])
 
         assert cast(Any, response.is_closed) is True
