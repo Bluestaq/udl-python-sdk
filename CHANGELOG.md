@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.22 (2025-09-17)
+
+Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)
+
+### Features
+
+* **api:** removing old routes ([cd68a5a](https://github.com/Bluestaq/udl-python-sdk/commit/cd68a5a83acebc8536f6c13c747eb7a636734531))
+* **api:** Support for latest UDL release ([15d8834](https://github.com/Bluestaq/udl-python-sdk/commit/15d8834c0694876831f4583ddf9edefd5e24742c))
+
 ## 0.1.0-alpha.21 (2025-09-16)
 
 Full Changelog: [v0.1.0-alpha.20...v0.1.0-alpha.21](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.20...v0.1.0-alpha.21)
