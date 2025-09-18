@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -78,42 +78,42 @@ class FeatureAssessmentResource(SyncAPIResource):
         feature_uo_m: str,
         id_analytic_imagery: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        agjson: str | NotGiven = NOT_GIVEN,
-        andims: int | NotGiven = NOT_GIVEN,
-        ann_lims: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        ann_text: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        area: str | NotGiven = NOT_GIVEN,
-        asrid: int | NotGiven = NOT_GIVEN,
-        assessment: str | NotGiven = NOT_GIVEN,
-        atext: str | NotGiven = NOT_GIVEN,
-        atype: str | NotGiven = NOT_GIVEN,
-        confidence: float | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        feature_array: Iterable[float] | NotGiven = NOT_GIVEN,
-        feature_bool: bool | NotGiven = NOT_GIVEN,
-        feature_string: str | NotGiven = NOT_GIVEN,
-        feature_string_array: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        feature_value: float | NotGiven = NOT_GIVEN,
-        heading: float | NotGiven = NOT_GIVEN,
-        height: float | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        speed: float | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_ts: SequenceNotStr[Union[str, datetime]] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        agjson: str | Omit = omit,
+        andims: int | Omit = omit,
+        ann_lims: Iterable[Iterable[int]] | Omit = omit,
+        ann_text: SequenceNotStr[str] | Omit = omit,
+        area: str | Omit = omit,
+        asrid: int | Omit = omit,
+        assessment: str | Omit = omit,
+        atext: str | Omit = omit,
+        atype: str | Omit = omit,
+        confidence: float | Omit = omit,
+        external_id: str | Omit = omit,
+        feature_array: Iterable[float] | Omit = omit,
+        feature_bool: bool | Omit = omit,
+        feature_string: str | Omit = omit,
+        feature_string_array: SequenceNotStr[str] | Omit = omit,
+        feature_value: float | Omit = omit,
+        heading: float | Omit = omit,
+        height: float | Omit = omit,
+        length: float | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        speed: float | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_ts: SequenceNotStr[Union[str, datetime]] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        type: str | Omit = omit,
+        width: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single FeatureAssessment record as a POST body and
@@ -341,14 +341,14 @@ class FeatureAssessmentResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FeatureAssessmentRetrieveResponse:
         """
         Service operation to get a single FeatureAssessment record by its unique ID
@@ -387,14 +387,14 @@ class FeatureAssessmentResource(SyncAPIResource):
         self,
         *,
         id_analytic_imagery: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[FeatureAssessmentListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -438,14 +438,14 @@ class FeatureAssessmentResource(SyncAPIResource):
         self,
         *,
         id_analytic_imagery: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -495,7 +495,7 @@ class FeatureAssessmentResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -531,7 +531,7 @@ class FeatureAssessmentResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FeatureAssessmentQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -550,14 +550,14 @@ class FeatureAssessmentResource(SyncAPIResource):
         *,
         columns: str,
         id_analytic_imagery: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FeatureAssessmentTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -615,7 +615,7 @@ class FeatureAssessmentResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple FeatureAssessment records as a POST body and
@@ -676,42 +676,42 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         feature_uo_m: str,
         id_analytic_imagery: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        agjson: str | NotGiven = NOT_GIVEN,
-        andims: int | NotGiven = NOT_GIVEN,
-        ann_lims: Iterable[Iterable[int]] | NotGiven = NOT_GIVEN,
-        ann_text: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        area: str | NotGiven = NOT_GIVEN,
-        asrid: int | NotGiven = NOT_GIVEN,
-        assessment: str | NotGiven = NOT_GIVEN,
-        atext: str | NotGiven = NOT_GIVEN,
-        atype: str | NotGiven = NOT_GIVEN,
-        confidence: float | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        feature_array: Iterable[float] | NotGiven = NOT_GIVEN,
-        feature_bool: bool | NotGiven = NOT_GIVEN,
-        feature_string: str | NotGiven = NOT_GIVEN,
-        feature_string_array: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        feature_value: float | NotGiven = NOT_GIVEN,
-        heading: float | NotGiven = NOT_GIVEN,
-        height: float | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        speed: float | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_ts: SequenceNotStr[Union[str, datetime]] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        agjson: str | Omit = omit,
+        andims: int | Omit = omit,
+        ann_lims: Iterable[Iterable[int]] | Omit = omit,
+        ann_text: SequenceNotStr[str] | Omit = omit,
+        area: str | Omit = omit,
+        asrid: int | Omit = omit,
+        assessment: str | Omit = omit,
+        atext: str | Omit = omit,
+        atype: str | Omit = omit,
+        confidence: float | Omit = omit,
+        external_id: str | Omit = omit,
+        feature_array: Iterable[float] | Omit = omit,
+        feature_bool: bool | Omit = omit,
+        feature_string: str | Omit = omit,
+        feature_string_array: SequenceNotStr[str] | Omit = omit,
+        feature_value: float | Omit = omit,
+        heading: float | Omit = omit,
+        height: float | Omit = omit,
+        length: float | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        speed: float | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_ts: SequenceNotStr[Union[str, datetime]] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        type: str | Omit = omit,
+        width: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single FeatureAssessment record as a POST body and
@@ -939,14 +939,14 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FeatureAssessmentRetrieveResponse:
         """
         Service operation to get a single FeatureAssessment record by its unique ID
@@ -985,14 +985,14 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         self,
         *,
         id_analytic_imagery: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[FeatureAssessmentListResponse, AsyncOffsetPage[FeatureAssessmentListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1036,14 +1036,14 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         self,
         *,
         id_analytic_imagery: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1093,7 +1093,7 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1129,7 +1129,7 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FeatureAssessmentQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1148,14 +1148,14 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         *,
         columns: str,
         id_analytic_imagery: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FeatureAssessmentTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1213,7 +1213,7 @@ class AsyncFeatureAssessmentResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple FeatureAssessment records as a POST body and

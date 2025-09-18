@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -78,33 +78,33 @@ class EventEvolutionResource(SyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         summary: str,
-        id: str | NotGiven = NOT_GIVEN,
-        agjson: str | NotGiven = NOT_GIVEN,
-        andims: int | NotGiven = NOT_GIVEN,
-        area: str | NotGiven = NOT_GIVEN,
-        asrid: int | NotGiven = NOT_GIVEN,
-        atext: str | NotGiven = NOT_GIVEN,
-        atype: str | NotGiven = NOT_GIVEN,
-        category: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        data_description: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        geo_admin_level1: str | NotGiven = NOT_GIVEN,
-        geo_admin_level2: str | NotGiven = NOT_GIVEN,
-        geo_admin_level3: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        redact: bool | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        url: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        agjson: str | Omit = omit,
+        andims: int | Omit = omit,
+        area: str | Omit = omit,
+        asrid: int | Omit = omit,
+        atext: str | Omit = omit,
+        atype: str | Omit = omit,
+        category: str | Omit = omit,
+        country_code: str | Omit = omit,
+        data_description: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        geo_admin_level1: str | Omit = omit,
+        geo_admin_level2: str | Omit = omit,
+        geo_admin_level3: str | Omit = omit,
+        origin: str | Omit = omit,
+        redact: bool | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        status: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        url: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single EventEvolution object as a POST body and
@@ -283,14 +283,14 @@ class EventEvolutionResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventEvolutionFull:
         """
         Service operation to get a single EventEvolution by its unique ID passed as a
@@ -328,16 +328,16 @@ class EventEvolutionResource(SyncAPIResource):
     def list(
         self,
         *,
-        event_id: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        event_id: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[EventEvolutionListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -387,16 +387,16 @@ class EventEvolutionResource(SyncAPIResource):
     def count(
         self,
         *,
-        event_id: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        event_id: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -453,7 +453,7 @@ class EventEvolutionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -490,7 +490,7 @@ class EventEvolutionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventEvolutionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -508,16 +508,16 @@ class EventEvolutionResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        event_id: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        event_id: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventEvolutionTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -582,7 +582,7 @@ class EventEvolutionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of EventEvolution records as a POST body and
@@ -643,33 +643,33 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         summary: str,
-        id: str | NotGiven = NOT_GIVEN,
-        agjson: str | NotGiven = NOT_GIVEN,
-        andims: int | NotGiven = NOT_GIVEN,
-        area: str | NotGiven = NOT_GIVEN,
-        asrid: int | NotGiven = NOT_GIVEN,
-        atext: str | NotGiven = NOT_GIVEN,
-        atype: str | NotGiven = NOT_GIVEN,
-        category: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        data_description: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        geo_admin_level1: str | NotGiven = NOT_GIVEN,
-        geo_admin_level2: str | NotGiven = NOT_GIVEN,
-        geo_admin_level3: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        redact: bool | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        url: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        agjson: str | Omit = omit,
+        andims: int | Omit = omit,
+        area: str | Omit = omit,
+        asrid: int | Omit = omit,
+        atext: str | Omit = omit,
+        atype: str | Omit = omit,
+        category: str | Omit = omit,
+        country_code: str | Omit = omit,
+        data_description: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        geo_admin_level1: str | Omit = omit,
+        geo_admin_level2: str | Omit = omit,
+        geo_admin_level3: str | Omit = omit,
+        origin: str | Omit = omit,
+        redact: bool | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        status: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        url: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single EventEvolution object as a POST body and
@@ -848,14 +848,14 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventEvolutionFull:
         """
         Service operation to get a single EventEvolution by its unique ID passed as a
@@ -893,16 +893,16 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
     def list(
         self,
         *,
-        event_id: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        event_id: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EventEvolutionListResponse, AsyncOffsetPage[EventEvolutionListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -952,16 +952,16 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        event_id: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        event_id: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1018,7 +1018,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1055,7 +1055,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventEvolutionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1073,16 +1073,16 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        event_id: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        event_id: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EventEvolutionTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1147,7 +1147,7 @@ class AsyncEventEvolutionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of EventEvolution records as a POST body and

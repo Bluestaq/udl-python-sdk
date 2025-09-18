@@ -14,7 +14,7 @@ from ..types import (
     sera_data_early_warning_create_params,
     sera_data_early_warning_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -61,27 +61,27 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         spacecraft_id: str,
-        id: str | NotGiven = NOT_GIVEN,
-        best_resolution: float | NotGiven = NOT_GIVEN,
-        earth_pointing: bool | NotGiven = NOT_GIVEN,
-        frequency_limits: str | NotGiven = NOT_GIVEN,
-        ground_station_locations: str | NotGiven = NOT_GIVEN,
-        ground_stations: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_ir: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        missile_launch_phase_detection_ability: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partner_spacecraft_id: str | NotGiven = NOT_GIVEN,
-        payload_notes: str | NotGiven = NOT_GIVEN,
-        spectral_bands: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        best_resolution: float | Omit = omit,
+        earth_pointing: bool | Omit = omit,
+        frequency_limits: str | Omit = omit,
+        ground_station_locations: str | Omit = omit,
+        ground_stations: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_ir: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        missile_launch_phase_detection_ability: str | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        partner_spacecraft_id: str | Omit = omit,
+        payload_notes: str | Omit = omit,
+        spectral_bands: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SeradataEarlyWarning as a POST body and
@@ -193,27 +193,27 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         spacecraft_id: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        best_resolution: float | NotGiven = NOT_GIVEN,
-        earth_pointing: bool | NotGiven = NOT_GIVEN,
-        frequency_limits: str | NotGiven = NOT_GIVEN,
-        ground_station_locations: str | NotGiven = NOT_GIVEN,
-        ground_stations: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_ir: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        missile_launch_phase_detection_ability: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partner_spacecraft_id: str | NotGiven = NOT_GIVEN,
-        payload_notes: str | NotGiven = NOT_GIVEN,
-        spectral_bands: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        best_resolution: float | Omit = omit,
+        earth_pointing: bool | Omit = omit,
+        frequency_limits: str | Omit = omit,
+        ground_station_locations: str | Omit = omit,
+        ground_stations: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_ir: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        missile_launch_phase_detection_ability: str | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        partner_spacecraft_id: str | Omit = omit,
+        payload_notes: str | Omit = omit,
+        spectral_bands: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update an SeradataEarlyWarning.
 
@@ -322,14 +322,14 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SeraDataEarlyWarningListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -374,7 +374,7 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an SeradataEarlyWarning specified by the passed ID
@@ -404,14 +404,14 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -452,14 +452,14 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataEarlyWarningGetResponse:
         """
         Service operation to get a single SeradataEarlyWarning by its unique ID passed
@@ -502,7 +502,7 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataEarlyWarningQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -520,14 +520,14 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataEarlyWarningTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -600,27 +600,27 @@ class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         spacecraft_id: str,
-        id: str | NotGiven = NOT_GIVEN,
-        best_resolution: float | NotGiven = NOT_GIVEN,
-        earth_pointing: bool | NotGiven = NOT_GIVEN,
-        frequency_limits: str | NotGiven = NOT_GIVEN,
-        ground_station_locations: str | NotGiven = NOT_GIVEN,
-        ground_stations: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_ir: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        missile_launch_phase_detection_ability: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partner_spacecraft_id: str | NotGiven = NOT_GIVEN,
-        payload_notes: str | NotGiven = NOT_GIVEN,
-        spectral_bands: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        best_resolution: float | Omit = omit,
+        earth_pointing: bool | Omit = omit,
+        frequency_limits: str | Omit = omit,
+        ground_station_locations: str | Omit = omit,
+        ground_stations: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_ir: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        missile_launch_phase_detection_ability: str | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        partner_spacecraft_id: str | Omit = omit,
+        payload_notes: str | Omit = omit,
+        spectral_bands: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SeradataEarlyWarning as a POST body and
@@ -732,27 +732,27 @@ class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         spacecraft_id: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        best_resolution: float | NotGiven = NOT_GIVEN,
-        earth_pointing: bool | NotGiven = NOT_GIVEN,
-        frequency_limits: str | NotGiven = NOT_GIVEN,
-        ground_station_locations: str | NotGiven = NOT_GIVEN,
-        ground_stations: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_ir: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        missile_launch_phase_detection_ability: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partner_spacecraft_id: str | NotGiven = NOT_GIVEN,
-        payload_notes: str | NotGiven = NOT_GIVEN,
-        spectral_bands: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        best_resolution: float | Omit = omit,
+        earth_pointing: bool | Omit = omit,
+        frequency_limits: str | Omit = omit,
+        ground_station_locations: str | Omit = omit,
+        ground_stations: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_ir: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        missile_launch_phase_detection_ability: str | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        partner_spacecraft_id: str | Omit = omit,
+        payload_notes: str | Omit = omit,
+        spectral_bands: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update an SeradataEarlyWarning.
 
@@ -861,14 +861,14 @@ class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SeraDataEarlyWarningListResponse, AsyncOffsetPage[SeraDataEarlyWarningListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -913,7 +913,7 @@ class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an SeradataEarlyWarning specified by the passed ID
@@ -943,14 +943,14 @@ class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -991,14 +991,14 @@ class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataEarlyWarningGetResponse:
         """
         Service operation to get a single SeradataEarlyWarning by its unique ID passed
@@ -1041,7 +1041,7 @@ class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataEarlyWarningQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1059,14 +1059,14 @@ class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataEarlyWarningTupleResponse:
         """
         Service operation to dynamically query data and only return specified

@@ -14,7 +14,7 @@ from ..types import (
     channel_update_params,
     channel_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -62,26 +62,26 @@ class ChannelsResource(SyncAPIResource):
         id_transponder: str,
         name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        apid: str | NotGiven = NOT_GIVEN,
-        beam_name: str | NotGiven = NOT_GIVEN,
-        compression: str | NotGiven = NOT_GIVEN,
-        encryption: str | NotGiven = NOT_GIVEN,
-        id_beam: str | NotGiven = NOT_GIVEN,
-        id_rf_band: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner: str | NotGiven = NOT_GIVEN,
-        pkg: str | NotGiven = NOT_GIVEN,
-        res: str | NotGiven = NOT_GIVEN,
-        sid: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        vpid: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        apid: str | Omit = omit,
+        beam_name: str | Omit = omit,
+        compression: str | Omit = omit,
+        encryption: str | Omit = omit,
+        id_beam: str | Omit = omit,
+        id_rf_band: str | Omit = omit,
+        origin: str | Omit = omit,
+        owner: str | Omit = omit,
+        pkg: str | Omit = omit,
+        res: str | Omit = omit,
+        sid: str | Omit = omit,
+        type: str | Omit = omit,
+        vpid: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Channel as a POST body and ingest into the
@@ -191,14 +191,14 @@ class ChannelsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelFull:
         """
         Service operation to get a single Channel record by its unique ID passed as a
@@ -243,26 +243,26 @@ class ChannelsResource(SyncAPIResource):
         id_transponder: str,
         name: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        apid: str | NotGiven = NOT_GIVEN,
-        beam_name: str | NotGiven = NOT_GIVEN,
-        compression: str | NotGiven = NOT_GIVEN,
-        encryption: str | NotGiven = NOT_GIVEN,
-        id_beam: str | NotGiven = NOT_GIVEN,
-        id_rf_band: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner: str | NotGiven = NOT_GIVEN,
-        pkg: str | NotGiven = NOT_GIVEN,
-        res: str | NotGiven = NOT_GIVEN,
-        sid: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        vpid: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        apid: str | Omit = omit,
+        beam_name: str | Omit = omit,
+        compression: str | Omit = omit,
+        encryption: str | Omit = omit,
+        id_beam: str | Omit = omit,
+        id_rf_band: str | Omit = omit,
+        origin: str | Omit = omit,
+        owner: str | Omit = omit,
+        pkg: str | Omit = omit,
+        res: str | Omit = omit,
+        sid: str | Omit = omit,
+        type: str | Omit = omit,
+        vpid: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Channel.
 
@@ -374,14 +374,14 @@ class ChannelsResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[ChannelAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -426,7 +426,7 @@ class ChannelsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a Channel object specified by the passed ID path
@@ -457,14 +457,14 @@ class ChannelsResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -509,7 +509,7 @@ class ChannelsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -527,14 +527,14 @@ class ChannelsResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -608,26 +608,26 @@ class AsyncChannelsResource(AsyncAPIResource):
         id_transponder: str,
         name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        apid: str | NotGiven = NOT_GIVEN,
-        beam_name: str | NotGiven = NOT_GIVEN,
-        compression: str | NotGiven = NOT_GIVEN,
-        encryption: str | NotGiven = NOT_GIVEN,
-        id_beam: str | NotGiven = NOT_GIVEN,
-        id_rf_band: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner: str | NotGiven = NOT_GIVEN,
-        pkg: str | NotGiven = NOT_GIVEN,
-        res: str | NotGiven = NOT_GIVEN,
-        sid: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        vpid: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        apid: str | Omit = omit,
+        beam_name: str | Omit = omit,
+        compression: str | Omit = omit,
+        encryption: str | Omit = omit,
+        id_beam: str | Omit = omit,
+        id_rf_band: str | Omit = omit,
+        origin: str | Omit = omit,
+        owner: str | Omit = omit,
+        pkg: str | Omit = omit,
+        res: str | Omit = omit,
+        sid: str | Omit = omit,
+        type: str | Omit = omit,
+        vpid: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Channel as a POST body and ingest into the
@@ -737,14 +737,14 @@ class AsyncChannelsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelFull:
         """
         Service operation to get a single Channel record by its unique ID passed as a
@@ -789,26 +789,26 @@ class AsyncChannelsResource(AsyncAPIResource):
         id_transponder: str,
         name: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        apid: str | NotGiven = NOT_GIVEN,
-        beam_name: str | NotGiven = NOT_GIVEN,
-        compression: str | NotGiven = NOT_GIVEN,
-        encryption: str | NotGiven = NOT_GIVEN,
-        id_beam: str | NotGiven = NOT_GIVEN,
-        id_rf_band: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner: str | NotGiven = NOT_GIVEN,
-        pkg: str | NotGiven = NOT_GIVEN,
-        res: str | NotGiven = NOT_GIVEN,
-        sid: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        vpid: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        apid: str | Omit = omit,
+        beam_name: str | Omit = omit,
+        compression: str | Omit = omit,
+        encryption: str | Omit = omit,
+        id_beam: str | Omit = omit,
+        id_rf_band: str | Omit = omit,
+        origin: str | Omit = omit,
+        owner: str | Omit = omit,
+        pkg: str | Omit = omit,
+        res: str | Omit = omit,
+        sid: str | Omit = omit,
+        type: str | Omit = omit,
+        vpid: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Channel.
 
@@ -920,14 +920,14 @@ class AsyncChannelsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ChannelAbridged, AsyncOffsetPage[ChannelAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -972,7 +972,7 @@ class AsyncChannelsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a Channel object specified by the passed ID path
@@ -1003,14 +1003,14 @@ class AsyncChannelsResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1055,7 +1055,7 @@ class AsyncChannelsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1073,14 +1073,14 @@ class AsyncChannelsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ChannelTupleResponse:
         """
         Service operation to dynamically query data and only return specified

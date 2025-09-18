@@ -5,7 +5,18 @@ from __future__ import annotations
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent, SequenceNotStr
+from ..._types import (
+    Body,
+    Omit,
+    Query,
+    Headers,
+    NoneType,
+    NotGiven,
+    FileContent,
+    SequenceNotStr,
+    omit,
+    not_given,
+)
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -58,19 +69,19 @@ class V2Resource(SyncAPIResource):
         self,
         *,
         path: str,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        classification_marking: str | NotGiven = NOT_GIVEN,
-        delete_on: int | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        read_acl: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        write_acl: str | NotGiven = NOT_GIVEN,
+        send_notification: bool | Omit = omit,
+        classification_marking: str | Omit = omit,
+        delete_on: int | Omit = omit,
+        description: str | Omit = omit,
+        read_acl: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        write_acl: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Update folders and files.
 
@@ -139,18 +150,18 @@ class V2Resource(SyncAPIResource):
         self,
         *,
         path: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        order: str | NotGiven = NOT_GIVEN,
-        search_after: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
-        sort: str | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        order: str | Omit = omit,
+        search_after: str | Omit = omit,
+        size: int | Omit = omit,
+        sort: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[ScsEntity]:
         """
         Returns a list of ScsEntity objects, each directly nested under the provided
@@ -209,7 +220,7 @@ class V2Resource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to delete a folder or file.
 
@@ -250,7 +261,7 @@ class V2Resource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to copy a folder or file.
 
@@ -295,17 +306,17 @@ class V2Resource(SyncAPIResource):
         *,
         classification_marking: str,
         path: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        delete_after: str | Omit = omit,
+        description: str | Omit = omit,
+        overwrite: bool | Omit = omit,
+        send_notification: bool | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to upload a file.
 
@@ -369,19 +380,19 @@ class V2Resource(SyncAPIResource):
         self,
         *,
         path: str,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        classification_marking: str | NotGiven = NOT_GIVEN,
-        delete_on: int | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        read_acl: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        write_acl: str | NotGiven = NOT_GIVEN,
+        send_notification: bool | Omit = omit,
+        classification_marking: str | Omit = omit,
+        delete_on: int | Omit = omit,
+        description: str | Omit = omit,
+        read_acl: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        write_acl: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Creates all folders in provided path that don't exist.
 
@@ -460,7 +471,7 @@ class V2Resource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to move or rename a folder or file.
 
@@ -503,17 +514,17 @@ class V2Resource(SyncAPIResource):
     def search(
         self,
         *,
-        order: str | NotGiven = NOT_GIVEN,
-        search_after: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
-        sort: str | NotGiven = NOT_GIVEN,
-        query: SearchCriterionParam | NotGiven = NOT_GIVEN,
+        order: str | Omit = omit,
+        search_after: str | Omit = omit,
+        size: int | Omit = omit,
+        sort: str | Omit = omit,
+        query: SearchCriterionParam | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> V2SearchResponse:
         """
         Operation to search for files in the Secure Content Store.
@@ -585,19 +596,19 @@ class AsyncV2Resource(AsyncAPIResource):
         self,
         *,
         path: str,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        classification_marking: str | NotGiven = NOT_GIVEN,
-        delete_on: int | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        read_acl: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        write_acl: str | NotGiven = NOT_GIVEN,
+        send_notification: bool | Omit = omit,
+        classification_marking: str | Omit = omit,
+        delete_on: int | Omit = omit,
+        description: str | Omit = omit,
+        read_acl: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        write_acl: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Update folders and files.
 
@@ -666,18 +677,18 @@ class AsyncV2Resource(AsyncAPIResource):
         self,
         *,
         path: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        order: str | NotGiven = NOT_GIVEN,
-        search_after: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
-        sort: str | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        order: str | Omit = omit,
+        search_after: str | Omit = omit,
+        size: int | Omit = omit,
+        sort: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ScsEntity, AsyncOffsetPage[ScsEntity]]:
         """
         Returns a list of ScsEntity objects, each directly nested under the provided
@@ -736,7 +747,7 @@ class AsyncV2Resource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to delete a folder or file.
 
@@ -777,7 +788,7 @@ class AsyncV2Resource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to copy a folder or file.
 
@@ -822,17 +833,17 @@ class AsyncV2Resource(AsyncAPIResource):
         *,
         classification_marking: str,
         path: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        delete_after: str | Omit = omit,
+        description: str | Omit = omit,
+        overwrite: bool | Omit = omit,
+        send_notification: bool | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to upload a file.
 
@@ -896,19 +907,19 @@ class AsyncV2Resource(AsyncAPIResource):
         self,
         *,
         path: str,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        classification_marking: str | NotGiven = NOT_GIVEN,
-        delete_on: int | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        read_acl: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        write_acl: str | NotGiven = NOT_GIVEN,
+        send_notification: bool | Omit = omit,
+        classification_marking: str | Omit = omit,
+        delete_on: int | Omit = omit,
+        description: str | Omit = omit,
+        read_acl: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        write_acl: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Creates all folders in provided path that don't exist.
 
@@ -987,7 +998,7 @@ class AsyncV2Resource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to move or rename a folder or file.
 
@@ -1030,17 +1041,17 @@ class AsyncV2Resource(AsyncAPIResource):
     async def search(
         self,
         *,
-        order: str | NotGiven = NOT_GIVEN,
-        search_after: str | NotGiven = NOT_GIVEN,
-        size: int | NotGiven = NOT_GIVEN,
-        sort: str | NotGiven = NOT_GIVEN,
-        query: SearchCriterionParam | NotGiven = NOT_GIVEN,
+        order: str | Omit = omit,
+        search_after: str | Omit = omit,
+        size: int | Omit = omit,
+        sort: str | Omit = omit,
+        query: SearchCriterionParam | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> V2SearchResponse:
         """
         Operation to search for files in the Secure Content Store.

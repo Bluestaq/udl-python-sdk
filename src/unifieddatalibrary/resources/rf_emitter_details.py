@@ -15,7 +15,7 @@ from ..types import (
     rf_emitter_detail_create_params,
     rf_emitter_detail_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -62,43 +62,43 @@ class RfEmitterDetailsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_rf_emitter: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        alternate_facility_name: str | NotGiven = NOT_GIVEN,
-        alt_name: str | NotGiven = NOT_GIVEN,
-        amplifier: rf_emitter_detail_create_params.Amplifier | NotGiven = NOT_GIVEN,
-        antennas: Iterable[rf_emitter_detail_create_params.Antenna] | NotGiven = NOT_GIVEN,
-        barrage_noise_bandwidth: float | NotGiven = NOT_GIVEN,
-        bit_run_time: float | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        designator: str | NotGiven = NOT_GIVEN,
-        doppler_noise: float | NotGiven = NOT_GIVEN,
-        drfm_instantaneous_bandwidth: float | NotGiven = NOT_GIVEN,
-        family: str | NotGiven = NOT_GIVEN,
-        fixed_attenuation: float | NotGiven = NOT_GIVEN,
-        id_manufacturer_org: str | NotGiven = NOT_GIVEN,
-        id_production_facility_location: str | NotGiven = NOT_GIVEN,
-        loaned_to_cocom: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        num_bits: int | NotGiven = NOT_GIVEN,
-        num_channels: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        power_offsets: Iterable[rf_emitter_detail_create_params.PowerOffset] | NotGiven = NOT_GIVEN,
-        prep_time: float | NotGiven = NOT_GIVEN,
-        primary_cocom: str | NotGiven = NOT_GIVEN,
-        production_facility_name: str | NotGiven = NOT_GIVEN,
-        receiver_type: str | NotGiven = NOT_GIVEN,
-        secondary_notes: str | NotGiven = NOT_GIVEN,
-        services: Iterable[rf_emitter_detail_create_params.Service] | NotGiven = NOT_GIVEN,
-        system_sensitivity_end: float | NotGiven = NOT_GIVEN,
-        system_sensitivity_start: float | NotGiven = NOT_GIVEN,
-        ttps: Iterable[rf_emitter_detail_create_params.Ttp] | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        alternate_facility_name: str | Omit = omit,
+        alt_name: str | Omit = omit,
+        amplifier: rf_emitter_detail_create_params.Amplifier | Omit = omit,
+        antennas: Iterable[rf_emitter_detail_create_params.Antenna] | Omit = omit,
+        barrage_noise_bandwidth: float | Omit = omit,
+        bit_run_time: float | Omit = omit,
+        description: str | Omit = omit,
+        designator: str | Omit = omit,
+        doppler_noise: float | Omit = omit,
+        drfm_instantaneous_bandwidth: float | Omit = omit,
+        family: str | Omit = omit,
+        fixed_attenuation: float | Omit = omit,
+        id_manufacturer_org: str | Omit = omit,
+        id_production_facility_location: str | Omit = omit,
+        loaned_to_cocom: str | Omit = omit,
+        notes: str | Omit = omit,
+        num_bits: int | Omit = omit,
+        num_channels: int | Omit = omit,
+        origin: str | Omit = omit,
+        power_offsets: Iterable[rf_emitter_detail_create_params.PowerOffset] | Omit = omit,
+        prep_time: float | Omit = omit,
+        primary_cocom: str | Omit = omit,
+        production_facility_name: str | Omit = omit,
+        receiver_type: str | Omit = omit,
+        secondary_notes: str | Omit = omit,
+        services: Iterable[rf_emitter_detail_create_params.Service] | Omit = omit,
+        system_sensitivity_end: float | Omit = omit,
+        system_sensitivity_start: float | Omit = omit,
+        ttps: Iterable[rf_emitter_detail_create_params.Ttp] | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single RFEmitterDetails as a POST body and ingest
@@ -273,43 +273,43 @@ class RfEmitterDetailsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_rf_emitter: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        alternate_facility_name: str | NotGiven = NOT_GIVEN,
-        alt_name: str | NotGiven = NOT_GIVEN,
-        amplifier: rf_emitter_detail_update_params.Amplifier | NotGiven = NOT_GIVEN,
-        antennas: Iterable[rf_emitter_detail_update_params.Antenna] | NotGiven = NOT_GIVEN,
-        barrage_noise_bandwidth: float | NotGiven = NOT_GIVEN,
-        bit_run_time: float | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        designator: str | NotGiven = NOT_GIVEN,
-        doppler_noise: float | NotGiven = NOT_GIVEN,
-        drfm_instantaneous_bandwidth: float | NotGiven = NOT_GIVEN,
-        family: str | NotGiven = NOT_GIVEN,
-        fixed_attenuation: float | NotGiven = NOT_GIVEN,
-        id_manufacturer_org: str | NotGiven = NOT_GIVEN,
-        id_production_facility_location: str | NotGiven = NOT_GIVEN,
-        loaned_to_cocom: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        num_bits: int | NotGiven = NOT_GIVEN,
-        num_channels: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        power_offsets: Iterable[rf_emitter_detail_update_params.PowerOffset] | NotGiven = NOT_GIVEN,
-        prep_time: float | NotGiven = NOT_GIVEN,
-        primary_cocom: str | NotGiven = NOT_GIVEN,
-        production_facility_name: str | NotGiven = NOT_GIVEN,
-        receiver_type: str | NotGiven = NOT_GIVEN,
-        secondary_notes: str | NotGiven = NOT_GIVEN,
-        services: Iterable[rf_emitter_detail_update_params.Service] | NotGiven = NOT_GIVEN,
-        system_sensitivity_end: float | NotGiven = NOT_GIVEN,
-        system_sensitivity_start: float | NotGiven = NOT_GIVEN,
-        ttps: Iterable[rf_emitter_detail_update_params.Ttp] | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        alternate_facility_name: str | Omit = omit,
+        alt_name: str | Omit = omit,
+        amplifier: rf_emitter_detail_update_params.Amplifier | Omit = omit,
+        antennas: Iterable[rf_emitter_detail_update_params.Antenna] | Omit = omit,
+        barrage_noise_bandwidth: float | Omit = omit,
+        bit_run_time: float | Omit = omit,
+        description: str | Omit = omit,
+        designator: str | Omit = omit,
+        doppler_noise: float | Omit = omit,
+        drfm_instantaneous_bandwidth: float | Omit = omit,
+        family: str | Omit = omit,
+        fixed_attenuation: float | Omit = omit,
+        id_manufacturer_org: str | Omit = omit,
+        id_production_facility_location: str | Omit = omit,
+        loaned_to_cocom: str | Omit = omit,
+        notes: str | Omit = omit,
+        num_bits: int | Omit = omit,
+        num_channels: int | Omit = omit,
+        origin: str | Omit = omit,
+        power_offsets: Iterable[rf_emitter_detail_update_params.PowerOffset] | Omit = omit,
+        prep_time: float | Omit = omit,
+        primary_cocom: str | Omit = omit,
+        production_facility_name: str | Omit = omit,
+        receiver_type: str | Omit = omit,
+        secondary_notes: str | Omit = omit,
+        services: Iterable[rf_emitter_detail_update_params.Service] | Omit = omit,
+        system_sensitivity_end: float | Omit = omit,
+        system_sensitivity_start: float | Omit = omit,
+        ttps: Iterable[rf_emitter_detail_update_params.Ttp] | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single RFEmitterDetails record.
 
@@ -482,14 +482,14 @@ class RfEmitterDetailsResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[RfEmitterDetailListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -534,7 +534,7 @@ class RfEmitterDetailsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a single RFEmitterDetails record specified by the
@@ -564,14 +564,14 @@ class RfEmitterDetailsResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -612,14 +612,14 @@ class RfEmitterDetailsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfEmitterDetailGetResponse:
         """
         Service operation to get a single RFEmitterDetails record by its unique ID
@@ -662,7 +662,7 @@ class RfEmitterDetailsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfEmitterDetailQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -680,14 +680,14 @@ class RfEmitterDetailsResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfEmitterDetailTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -760,43 +760,43 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_rf_emitter: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        alternate_facility_name: str | NotGiven = NOT_GIVEN,
-        alt_name: str | NotGiven = NOT_GIVEN,
-        amplifier: rf_emitter_detail_create_params.Amplifier | NotGiven = NOT_GIVEN,
-        antennas: Iterable[rf_emitter_detail_create_params.Antenna] | NotGiven = NOT_GIVEN,
-        barrage_noise_bandwidth: float | NotGiven = NOT_GIVEN,
-        bit_run_time: float | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        designator: str | NotGiven = NOT_GIVEN,
-        doppler_noise: float | NotGiven = NOT_GIVEN,
-        drfm_instantaneous_bandwidth: float | NotGiven = NOT_GIVEN,
-        family: str | NotGiven = NOT_GIVEN,
-        fixed_attenuation: float | NotGiven = NOT_GIVEN,
-        id_manufacturer_org: str | NotGiven = NOT_GIVEN,
-        id_production_facility_location: str | NotGiven = NOT_GIVEN,
-        loaned_to_cocom: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        num_bits: int | NotGiven = NOT_GIVEN,
-        num_channels: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        power_offsets: Iterable[rf_emitter_detail_create_params.PowerOffset] | NotGiven = NOT_GIVEN,
-        prep_time: float | NotGiven = NOT_GIVEN,
-        primary_cocom: str | NotGiven = NOT_GIVEN,
-        production_facility_name: str | NotGiven = NOT_GIVEN,
-        receiver_type: str | NotGiven = NOT_GIVEN,
-        secondary_notes: str | NotGiven = NOT_GIVEN,
-        services: Iterable[rf_emitter_detail_create_params.Service] | NotGiven = NOT_GIVEN,
-        system_sensitivity_end: float | NotGiven = NOT_GIVEN,
-        system_sensitivity_start: float | NotGiven = NOT_GIVEN,
-        ttps: Iterable[rf_emitter_detail_create_params.Ttp] | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        alternate_facility_name: str | Omit = omit,
+        alt_name: str | Omit = omit,
+        amplifier: rf_emitter_detail_create_params.Amplifier | Omit = omit,
+        antennas: Iterable[rf_emitter_detail_create_params.Antenna] | Omit = omit,
+        barrage_noise_bandwidth: float | Omit = omit,
+        bit_run_time: float | Omit = omit,
+        description: str | Omit = omit,
+        designator: str | Omit = omit,
+        doppler_noise: float | Omit = omit,
+        drfm_instantaneous_bandwidth: float | Omit = omit,
+        family: str | Omit = omit,
+        fixed_attenuation: float | Omit = omit,
+        id_manufacturer_org: str | Omit = omit,
+        id_production_facility_location: str | Omit = omit,
+        loaned_to_cocom: str | Omit = omit,
+        notes: str | Omit = omit,
+        num_bits: int | Omit = omit,
+        num_channels: int | Omit = omit,
+        origin: str | Omit = omit,
+        power_offsets: Iterable[rf_emitter_detail_create_params.PowerOffset] | Omit = omit,
+        prep_time: float | Omit = omit,
+        primary_cocom: str | Omit = omit,
+        production_facility_name: str | Omit = omit,
+        receiver_type: str | Omit = omit,
+        secondary_notes: str | Omit = omit,
+        services: Iterable[rf_emitter_detail_create_params.Service] | Omit = omit,
+        system_sensitivity_end: float | Omit = omit,
+        system_sensitivity_start: float | Omit = omit,
+        ttps: Iterable[rf_emitter_detail_create_params.Ttp] | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single RFEmitterDetails as a POST body and ingest
@@ -971,43 +971,43 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_rf_emitter: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        alternate_facility_name: str | NotGiven = NOT_GIVEN,
-        alt_name: str | NotGiven = NOT_GIVEN,
-        amplifier: rf_emitter_detail_update_params.Amplifier | NotGiven = NOT_GIVEN,
-        antennas: Iterable[rf_emitter_detail_update_params.Antenna] | NotGiven = NOT_GIVEN,
-        barrage_noise_bandwidth: float | NotGiven = NOT_GIVEN,
-        bit_run_time: float | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        designator: str | NotGiven = NOT_GIVEN,
-        doppler_noise: float | NotGiven = NOT_GIVEN,
-        drfm_instantaneous_bandwidth: float | NotGiven = NOT_GIVEN,
-        family: str | NotGiven = NOT_GIVEN,
-        fixed_attenuation: float | NotGiven = NOT_GIVEN,
-        id_manufacturer_org: str | NotGiven = NOT_GIVEN,
-        id_production_facility_location: str | NotGiven = NOT_GIVEN,
-        loaned_to_cocom: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        num_bits: int | NotGiven = NOT_GIVEN,
-        num_channels: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        power_offsets: Iterable[rf_emitter_detail_update_params.PowerOffset] | NotGiven = NOT_GIVEN,
-        prep_time: float | NotGiven = NOT_GIVEN,
-        primary_cocom: str | NotGiven = NOT_GIVEN,
-        production_facility_name: str | NotGiven = NOT_GIVEN,
-        receiver_type: str | NotGiven = NOT_GIVEN,
-        secondary_notes: str | NotGiven = NOT_GIVEN,
-        services: Iterable[rf_emitter_detail_update_params.Service] | NotGiven = NOT_GIVEN,
-        system_sensitivity_end: float | NotGiven = NOT_GIVEN,
-        system_sensitivity_start: float | NotGiven = NOT_GIVEN,
-        ttps: Iterable[rf_emitter_detail_update_params.Ttp] | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        alternate_facility_name: str | Omit = omit,
+        alt_name: str | Omit = omit,
+        amplifier: rf_emitter_detail_update_params.Amplifier | Omit = omit,
+        antennas: Iterable[rf_emitter_detail_update_params.Antenna] | Omit = omit,
+        barrage_noise_bandwidth: float | Omit = omit,
+        bit_run_time: float | Omit = omit,
+        description: str | Omit = omit,
+        designator: str | Omit = omit,
+        doppler_noise: float | Omit = omit,
+        drfm_instantaneous_bandwidth: float | Omit = omit,
+        family: str | Omit = omit,
+        fixed_attenuation: float | Omit = omit,
+        id_manufacturer_org: str | Omit = omit,
+        id_production_facility_location: str | Omit = omit,
+        loaned_to_cocom: str | Omit = omit,
+        notes: str | Omit = omit,
+        num_bits: int | Omit = omit,
+        num_channels: int | Omit = omit,
+        origin: str | Omit = omit,
+        power_offsets: Iterable[rf_emitter_detail_update_params.PowerOffset] | Omit = omit,
+        prep_time: float | Omit = omit,
+        primary_cocom: str | Omit = omit,
+        production_facility_name: str | Omit = omit,
+        receiver_type: str | Omit = omit,
+        secondary_notes: str | Omit = omit,
+        services: Iterable[rf_emitter_detail_update_params.Service] | Omit = omit,
+        system_sensitivity_end: float | Omit = omit,
+        system_sensitivity_start: float | Omit = omit,
+        ttps: Iterable[rf_emitter_detail_update_params.Ttp] | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single RFEmitterDetails record.
 
@@ -1180,14 +1180,14 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[RfEmitterDetailListResponse, AsyncOffsetPage[RfEmitterDetailListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1232,7 +1232,7 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a single RFEmitterDetails record specified by the
@@ -1262,14 +1262,14 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1310,14 +1310,14 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfEmitterDetailGetResponse:
         """
         Service operation to get a single RFEmitterDetails record by its unique ID
@@ -1360,7 +1360,7 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfEmitterDetailQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1378,14 +1378,14 @@ class AsyncRfEmitterDetailsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfEmitterDetailTupleResponse:
         """
         Service operation to dynamically query data and only return specified

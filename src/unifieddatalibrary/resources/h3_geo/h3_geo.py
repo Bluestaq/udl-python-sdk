@@ -23,7 +23,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -76,19 +76,19 @@ class H3GeoResource(SyncAPIResource):
         num_cells: int,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        resolution: int | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        center_freq: float | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        resolution: int | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single H3Geo record as a POST body and ingest into
@@ -189,14 +189,14 @@ class H3GeoResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[H3GeoListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -240,14 +240,14 @@ class H3GeoResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -292,14 +292,14 @@ class H3GeoResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> H3GeoGetResponse:
         """
         Service operation to get a single RF geolocation by its unique ID passed as a
@@ -342,7 +342,7 @@ class H3GeoResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> H3GeoQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -361,14 +361,14 @@ class H3GeoResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> H3GeoTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -451,19 +451,19 @@ class AsyncH3GeoResource(AsyncAPIResource):
         num_cells: int,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        resolution: int | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        center_freq: float | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        resolution: int | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single H3Geo record as a POST body and ingest into
@@ -564,14 +564,14 @@ class AsyncH3GeoResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[H3GeoListResponse, AsyncOffsetPage[H3GeoListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -615,14 +615,14 @@ class AsyncH3GeoResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -667,14 +667,14 @@ class AsyncH3GeoResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> H3GeoGetResponse:
         """
         Service operation to get a single RF geolocation by its unique ID passed as a
@@ -717,7 +717,7 @@ class AsyncH3GeoResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> H3GeoQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -736,14 +736,14 @@ class AsyncH3GeoResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> H3GeoTupleResponse:
         """
         Service operation to dynamically query data and only return specified

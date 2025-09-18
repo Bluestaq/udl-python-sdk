@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -78,25 +78,25 @@ class SensorPlanResource(SyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        collect_requests: Iterable[sensor_plan_create_params.CollectRequest] | NotGiven = NOT_GIVEN,
-        customer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        purpose: str | NotGiven = NOT_GIVEN,
-        req_total: int | NotGiven = NOT_GIVEN,
-        sen_network: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        collect_requests: Iterable[sensor_plan_create_params.CollectRequest] | Omit = omit,
+        customer: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        id_sensor: str | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        purpose: str | Omit = omit,
+        req_total: int | Omit = omit,
+        sen_network: str | Omit = omit,
+        status: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single sensor plan as a POST body and ingest into
@@ -222,25 +222,25 @@ class SensorPlanResource(SyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         type: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        collect_requests: Iterable[sensor_plan_update_params.CollectRequest] | NotGiven = NOT_GIVEN,
-        customer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        purpose: str | NotGiven = NOT_GIVEN,
-        req_total: int | NotGiven = NOT_GIVEN,
-        sen_network: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        collect_requests: Iterable[sensor_plan_update_params.CollectRequest] | Omit = omit,
+        customer: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        id_sensor: str | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        purpose: str | Omit = omit,
+        req_total: int | Omit = omit,
+        sen_network: str | Omit = omit,
+        status: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single SensorPlan.
 
@@ -362,14 +362,14 @@ class SensorPlanResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SensorPlanListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -413,14 +413,14 @@ class SensorPlanResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -465,14 +465,14 @@ class SensorPlanResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorPlanGetResponse:
         """
         Service operation to get a single SensorPlan by its unique ID passed as a path
@@ -515,7 +515,7 @@ class SensorPlanResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorPlanQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -534,14 +534,14 @@ class SensorPlanResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorPlanTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -599,7 +599,7 @@ class SensorPlanResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take one or more sensorplan record(s) as a POST body and
@@ -660,25 +660,25 @@ class AsyncSensorPlanResource(AsyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        collect_requests: Iterable[sensor_plan_create_params.CollectRequest] | NotGiven = NOT_GIVEN,
-        customer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        purpose: str | NotGiven = NOT_GIVEN,
-        req_total: int | NotGiven = NOT_GIVEN,
-        sen_network: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        collect_requests: Iterable[sensor_plan_create_params.CollectRequest] | Omit = omit,
+        customer: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        id_sensor: str | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        purpose: str | Omit = omit,
+        req_total: int | Omit = omit,
+        sen_network: str | Omit = omit,
+        status: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single sensor plan as a POST body and ingest into
@@ -804,25 +804,25 @@ class AsyncSensorPlanResource(AsyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         type: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        collect_requests: Iterable[sensor_plan_update_params.CollectRequest] | NotGiven = NOT_GIVEN,
-        customer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        purpose: str | NotGiven = NOT_GIVEN,
-        req_total: int | NotGiven = NOT_GIVEN,
-        sen_network: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        collect_requests: Iterable[sensor_plan_update_params.CollectRequest] | Omit = omit,
+        customer: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        id_sensor: str | Omit = omit,
+        name: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        purpose: str | Omit = omit,
+        req_total: int | Omit = omit,
+        sen_network: str | Omit = omit,
+        status: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single SensorPlan.
 
@@ -944,14 +944,14 @@ class AsyncSensorPlanResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SensorPlanListResponse, AsyncOffsetPage[SensorPlanListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -995,14 +995,14 @@ class AsyncSensorPlanResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1047,14 +1047,14 @@ class AsyncSensorPlanResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorPlanGetResponse:
         """
         Service operation to get a single SensorPlan by its unique ID passed as a path
@@ -1097,7 +1097,7 @@ class AsyncSensorPlanResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorPlanQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1116,14 +1116,14 @@ class AsyncSensorPlanResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorPlanTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1181,7 +1181,7 @@ class AsyncSensorPlanResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take one or more sensorplan record(s) as a POST body and

@@ -17,7 +17,7 @@ from ..types import (
     emitter_geolocation_create_bulk_params,
     emitter_geolocation_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -65,46 +65,46 @@ class EmitterGeolocationResource(SyncAPIResource):
         signal_of_interest_type: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        agjson: str | NotGiven = NOT_GIVEN,
-        alg_version: str | NotGiven = NOT_GIVEN,
-        andims: int | NotGiven = NOT_GIVEN,
-        area: str | NotGiven = NOT_GIVEN,
-        asrid: int | NotGiven = NOT_GIVEN,
-        atext: str | NotGiven = NOT_GIVEN,
-        atype: str | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        cluster: str | NotGiven = NOT_GIVEN,
-        conf_area: float | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        created_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        detect_alt: float | NotGiven = NOT_GIVEN,
-        detect_lat: float | NotGiven = NOT_GIVEN,
-        detect_lon: float | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        err_ellp: Iterable[float] | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        id_rf_emitter: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        max_freq: float | NotGiven = NOT_GIVEN,
-        min_freq: float | NotGiven = NOT_GIVEN,
-        num_bursts: int | NotGiven = NOT_GIVEN,
-        order_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_rf_emitter_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        pass_group_id: str | NotGiven = NOT_GIVEN,
-        received_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        signal_of_interest: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        agjson: str | Omit = omit,
+        alg_version: str | Omit = omit,
+        andims: int | Omit = omit,
+        area: str | Omit = omit,
+        asrid: int | Omit = omit,
+        atext: str | Omit = omit,
+        atype: str | Omit = omit,
+        center_freq: float | Omit = omit,
+        cluster: str | Omit = omit,
+        conf_area: float | Omit = omit,
+        constellation: str | Omit = omit,
+        created_ts: Union[str, datetime] | Omit = omit,
+        detect_alt: float | Omit = omit,
+        detect_lat: float | Omit = omit,
+        detect_lon: float | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        err_ellp: Iterable[float] | Omit = omit,
+        external_id: str | Omit = omit,
+        id_rf_emitter: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        max_freq: float | Omit = omit,
+        min_freq: float | Omit = omit,
+        num_bursts: int | Omit = omit,
+        order_id: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_rf_emitter_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        pass_group_id: str | Omit = omit,
+        received_ts: Union[str, datetime] | Omit = omit,
+        sat_no: int | Omit = omit,
+        signal_of_interest: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single RF geolocation as a POST body and ingest into
@@ -313,14 +313,14 @@ class EmitterGeolocationResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EmitterGeolocationRetrieveResponse:
         """
         Service operation to get a single RF geolocation by its unique ID passed as a
@@ -359,14 +359,14 @@ class EmitterGeolocationResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[EmitterGeolocationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -415,7 +415,7 @@ class EmitterGeolocationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a RF geolocation specified by the passed ID path
@@ -447,14 +447,14 @@ class EmitterGeolocationResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -504,7 +504,7 @@ class EmitterGeolocationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of RF
@@ -540,7 +540,7 @@ class EmitterGeolocationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EmitterGeolocationQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -559,14 +559,14 @@ class EmitterGeolocationResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EmitterGeolocationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -624,7 +624,7 @@ class EmitterGeolocationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple emittergeolocation records as a POST body and
@@ -680,46 +680,46 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         signal_of_interest_type: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        agjson: str | NotGiven = NOT_GIVEN,
-        alg_version: str | NotGiven = NOT_GIVEN,
-        andims: int | NotGiven = NOT_GIVEN,
-        area: str | NotGiven = NOT_GIVEN,
-        asrid: int | NotGiven = NOT_GIVEN,
-        atext: str | NotGiven = NOT_GIVEN,
-        atype: str | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        cluster: str | NotGiven = NOT_GIVEN,
-        conf_area: float | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        created_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        detect_alt: float | NotGiven = NOT_GIVEN,
-        detect_lat: float | NotGiven = NOT_GIVEN,
-        detect_lon: float | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        err_ellp: Iterable[float] | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        id_rf_emitter: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        max_freq: float | NotGiven = NOT_GIVEN,
-        min_freq: float | NotGiven = NOT_GIVEN,
-        num_bursts: int | NotGiven = NOT_GIVEN,
-        order_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_rf_emitter_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        pass_group_id: str | NotGiven = NOT_GIVEN,
-        received_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        signal_of_interest: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        agjson: str | Omit = omit,
+        alg_version: str | Omit = omit,
+        andims: int | Omit = omit,
+        area: str | Omit = omit,
+        asrid: int | Omit = omit,
+        atext: str | Omit = omit,
+        atype: str | Omit = omit,
+        center_freq: float | Omit = omit,
+        cluster: str | Omit = omit,
+        conf_area: float | Omit = omit,
+        constellation: str | Omit = omit,
+        created_ts: Union[str, datetime] | Omit = omit,
+        detect_alt: float | Omit = omit,
+        detect_lat: float | Omit = omit,
+        detect_lon: float | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        err_ellp: Iterable[float] | Omit = omit,
+        external_id: str | Omit = omit,
+        id_rf_emitter: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        max_freq: float | Omit = omit,
+        min_freq: float | Omit = omit,
+        num_bursts: int | Omit = omit,
+        order_id: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_rf_emitter_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        pass_group_id: str | Omit = omit,
+        received_ts: Union[str, datetime] | Omit = omit,
+        sat_no: int | Omit = omit,
+        signal_of_interest: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single RF geolocation as a POST body and ingest into
@@ -928,14 +928,14 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EmitterGeolocationRetrieveResponse:
         """
         Service operation to get a single RF geolocation by its unique ID passed as a
@@ -974,14 +974,14 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EmitterGeolocationListResponse, AsyncOffsetPage[EmitterGeolocationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1030,7 +1030,7 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a RF geolocation specified by the passed ID path
@@ -1062,14 +1062,14 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1119,7 +1119,7 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of RF
@@ -1155,7 +1155,7 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EmitterGeolocationQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1174,14 +1174,14 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EmitterGeolocationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1239,7 +1239,7 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple emittergeolocation records as a POST body and

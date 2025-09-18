@@ -16,7 +16,7 @@ from ..types import (
     launch_detection_create_params,
     launch_detection_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -67,26 +67,26 @@ class LaunchDetectionResource(SyncAPIResource):
         observation_time: Union[str, datetime],
         sequence_number: int,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        event_id: str | NotGiven = NOT_GIVEN,
-        high_zenith_azimuth: bool | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        launch_azimuth: float | NotGiven = NOT_GIVEN,
-        launch_latitude: float | NotGiven = NOT_GIVEN,
-        launch_longitude: float | NotGiven = NOT_GIVEN,
-        launch_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        observation_altitude: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        stereo_flag: bool | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        descriptor: str | Omit = omit,
+        event_id: str | Omit = omit,
+        high_zenith_azimuth: bool | Omit = omit,
+        inclination: float | Omit = omit,
+        launch_azimuth: float | Omit = omit,
+        launch_latitude: float | Omit = omit,
+        launch_longitude: float | Omit = omit,
+        launch_time: Union[str, datetime] | Omit = omit,
+        observation_altitude: float | Omit = omit,
+        origin: str | Omit = omit,
+        raan: float | Omit = omit,
+        stereo_flag: bool | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single launch detection as a POST body and ingest
@@ -219,26 +219,26 @@ class LaunchDetectionResource(SyncAPIResource):
         observation_time: Union[str, datetime],
         sequence_number: int,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        event_id: str | NotGiven = NOT_GIVEN,
-        high_zenith_azimuth: bool | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        launch_azimuth: float | NotGiven = NOT_GIVEN,
-        launch_latitude: float | NotGiven = NOT_GIVEN,
-        launch_longitude: float | NotGiven = NOT_GIVEN,
-        launch_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        observation_altitude: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        stereo_flag: bool | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        descriptor: str | Omit = omit,
+        event_id: str | Omit = omit,
+        high_zenith_azimuth: bool | Omit = omit,
+        inclination: float | Omit = omit,
+        launch_azimuth: float | Omit = omit,
+        launch_latitude: float | Omit = omit,
+        launch_longitude: float | Omit = omit,
+        launch_time: Union[str, datetime] | Omit = omit,
+        observation_altitude: float | Omit = omit,
+        origin: str | Omit = omit,
+        raan: float | Omit = omit,
+        stereo_flag: bool | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single launch detection.
 
@@ -365,14 +365,14 @@ class LaunchDetectionResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[LaunchDetectionListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -417,7 +417,7 @@ class LaunchDetectionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a launch detection object specified by the passed ID
@@ -447,14 +447,14 @@ class LaunchDetectionResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -495,14 +495,14 @@ class LaunchDetectionResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchDetectionGetResponse:
         """
         Service operation to get a single launch detection record by its unique ID
@@ -545,7 +545,7 @@ class LaunchDetectionResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchDetectionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -563,14 +563,14 @@ class LaunchDetectionResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchDetectionTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -647,26 +647,26 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
         observation_time: Union[str, datetime],
         sequence_number: int,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        event_id: str | NotGiven = NOT_GIVEN,
-        high_zenith_azimuth: bool | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        launch_azimuth: float | NotGiven = NOT_GIVEN,
-        launch_latitude: float | NotGiven = NOT_GIVEN,
-        launch_longitude: float | NotGiven = NOT_GIVEN,
-        launch_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        observation_altitude: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        stereo_flag: bool | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        descriptor: str | Omit = omit,
+        event_id: str | Omit = omit,
+        high_zenith_azimuth: bool | Omit = omit,
+        inclination: float | Omit = omit,
+        launch_azimuth: float | Omit = omit,
+        launch_latitude: float | Omit = omit,
+        launch_longitude: float | Omit = omit,
+        launch_time: Union[str, datetime] | Omit = omit,
+        observation_altitude: float | Omit = omit,
+        origin: str | Omit = omit,
+        raan: float | Omit = omit,
+        stereo_flag: bool | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single launch detection as a POST body and ingest
@@ -799,26 +799,26 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
         observation_time: Union[str, datetime],
         sequence_number: int,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        event_id: str | NotGiven = NOT_GIVEN,
-        high_zenith_azimuth: bool | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        launch_azimuth: float | NotGiven = NOT_GIVEN,
-        launch_latitude: float | NotGiven = NOT_GIVEN,
-        launch_longitude: float | NotGiven = NOT_GIVEN,
-        launch_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        observation_altitude: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        stereo_flag: bool | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        descriptor: str | Omit = omit,
+        event_id: str | Omit = omit,
+        high_zenith_azimuth: bool | Omit = omit,
+        inclination: float | Omit = omit,
+        launch_azimuth: float | Omit = omit,
+        launch_latitude: float | Omit = omit,
+        launch_longitude: float | Omit = omit,
+        launch_time: Union[str, datetime] | Omit = omit,
+        observation_altitude: float | Omit = omit,
+        origin: str | Omit = omit,
+        raan: float | Omit = omit,
+        stereo_flag: bool | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single launch detection.
 
@@ -945,14 +945,14 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[LaunchDetectionListResponse, AsyncOffsetPage[LaunchDetectionListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -997,7 +997,7 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a launch detection object specified by the passed ID
@@ -1027,14 +1027,14 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1075,14 +1075,14 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchDetectionGetResponse:
         """
         Service operation to get a single launch detection record by its unique ID
@@ -1125,7 +1125,7 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchDetectionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1143,14 +1143,14 @@ class AsyncLaunchDetectionResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchDetectionTupleResponse:
         """
         Service operation to dynamically query data and only return specified

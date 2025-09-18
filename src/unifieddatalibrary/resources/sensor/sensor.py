@@ -15,7 +15,7 @@ from ...types import (
     sensor_create_params,
     sensor_update_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -74,27 +74,27 @@ class SensorResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         sensor_name: str,
         source: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        af_id: str | NotGiven = NOT_GIVEN,
-        asr_type: str | NotGiven = NOT_GIVEN,
-        data_control: str | NotGiven = NOT_GIVEN,
-        entity: sensor_create_params.Entity | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        sensorcharacteristics: Iterable[sensor_create_params.Sensorcharacteristic] | NotGiven = NOT_GIVEN,
-        sensorlimits_collection: Iterable[sensor_create_params.SensorlimitsCollection] | NotGiven = NOT_GIVEN,
-        sensor_number: int | NotGiven = NOT_GIVEN,
-        sensor_observation_type: sensor_create_params.SensorObservationType | NotGiven = NOT_GIVEN,
-        sensor_stats: Iterable[sensor_create_params.SensorStat] | NotGiven = NOT_GIVEN,
-        sensor_type: sensor_create_params.SensorType | NotGiven = NOT_GIVEN,
-        short_name: str | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        af_id: str | Omit = omit,
+        asr_type: str | Omit = omit,
+        data_control: str | Omit = omit,
+        entity: sensor_create_params.Entity | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        origin: str | Omit = omit,
+        sensorcharacteristics: Iterable[sensor_create_params.Sensorcharacteristic] | Omit = omit,
+        sensorlimits_collection: Iterable[sensor_create_params.SensorlimitsCollection] | Omit = omit,
+        sensor_number: int | Omit = omit,
+        sensor_observation_type: sensor_create_params.SensorObservationType | Omit = omit,
+        sensor_stats: Iterable[sensor_create_params.SensorStat] | Omit = omit,
+        sensor_type: sensor_create_params.SensorType | Omit = omit,
+        short_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single sensor as a POST body and ingest into the
@@ -211,27 +211,27 @@ class SensorResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         sensor_name: str,
         source: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        af_id: str | NotGiven = NOT_GIVEN,
-        asr_type: str | NotGiven = NOT_GIVEN,
-        data_control: str | NotGiven = NOT_GIVEN,
-        entity: sensor_update_params.Entity | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        sensorcharacteristics: Iterable[sensor_update_params.Sensorcharacteristic] | NotGiven = NOT_GIVEN,
-        sensorlimits_collection: Iterable[sensor_update_params.SensorlimitsCollection] | NotGiven = NOT_GIVEN,
-        sensor_number: int | NotGiven = NOT_GIVEN,
-        sensor_observation_type: sensor_update_params.SensorObservationType | NotGiven = NOT_GIVEN,
-        sensor_stats: Iterable[sensor_update_params.SensorStat] | NotGiven = NOT_GIVEN,
-        sensor_type: sensor_update_params.SensorType | NotGiven = NOT_GIVEN,
-        short_name: str | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        af_id: str | Omit = omit,
+        asr_type: str | Omit = omit,
+        data_control: str | Omit = omit,
+        entity: sensor_update_params.Entity | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        origin: str | Omit = omit,
+        sensorcharacteristics: Iterable[sensor_update_params.Sensorcharacteristic] | Omit = omit,
+        sensorlimits_collection: Iterable[sensor_update_params.SensorlimitsCollection] | Omit = omit,
+        sensor_number: int | Omit = omit,
+        sensor_observation_type: sensor_update_params.SensorObservationType | Omit = omit,
+        sensor_stats: Iterable[sensor_update_params.SensorStat] | Omit = omit,
+        sensor_type: sensor_update_params.SensorType | Omit = omit,
+        short_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Sensor.
 
@@ -345,14 +345,14 @@ class SensorResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SensorListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -397,7 +397,7 @@ class SensorResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a Sensor specified by the passed ID path parameter.
@@ -427,14 +427,14 @@ class SensorResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -475,14 +475,14 @@ class SensorResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorGetResponse:
         """
         Service operation to get a single Sensor by its unique ID passed as a path
@@ -525,7 +525,7 @@ class SensorResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -543,14 +543,14 @@ class SensorResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -627,27 +627,27 @@ class AsyncSensorResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         sensor_name: str,
         source: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        af_id: str | NotGiven = NOT_GIVEN,
-        asr_type: str | NotGiven = NOT_GIVEN,
-        data_control: str | NotGiven = NOT_GIVEN,
-        entity: sensor_create_params.Entity | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        sensorcharacteristics: Iterable[sensor_create_params.Sensorcharacteristic] | NotGiven = NOT_GIVEN,
-        sensorlimits_collection: Iterable[sensor_create_params.SensorlimitsCollection] | NotGiven = NOT_GIVEN,
-        sensor_number: int | NotGiven = NOT_GIVEN,
-        sensor_observation_type: sensor_create_params.SensorObservationType | NotGiven = NOT_GIVEN,
-        sensor_stats: Iterable[sensor_create_params.SensorStat] | NotGiven = NOT_GIVEN,
-        sensor_type: sensor_create_params.SensorType | NotGiven = NOT_GIVEN,
-        short_name: str | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        af_id: str | Omit = omit,
+        asr_type: str | Omit = omit,
+        data_control: str | Omit = omit,
+        entity: sensor_create_params.Entity | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        origin: str | Omit = omit,
+        sensorcharacteristics: Iterable[sensor_create_params.Sensorcharacteristic] | Omit = omit,
+        sensorlimits_collection: Iterable[sensor_create_params.SensorlimitsCollection] | Omit = omit,
+        sensor_number: int | Omit = omit,
+        sensor_observation_type: sensor_create_params.SensorObservationType | Omit = omit,
+        sensor_stats: Iterable[sensor_create_params.SensorStat] | Omit = omit,
+        sensor_type: sensor_create_params.SensorType | Omit = omit,
+        short_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single sensor as a POST body and ingest into the
@@ -764,27 +764,27 @@ class AsyncSensorResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         sensor_name: str,
         source: str,
-        active: bool | NotGiven = NOT_GIVEN,
-        af_id: str | NotGiven = NOT_GIVEN,
-        asr_type: str | NotGiven = NOT_GIVEN,
-        data_control: str | NotGiven = NOT_GIVEN,
-        entity: sensor_update_params.Entity | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        sensorcharacteristics: Iterable[sensor_update_params.Sensorcharacteristic] | NotGiven = NOT_GIVEN,
-        sensorlimits_collection: Iterable[sensor_update_params.SensorlimitsCollection] | NotGiven = NOT_GIVEN,
-        sensor_number: int | NotGiven = NOT_GIVEN,
-        sensor_observation_type: sensor_update_params.SensorObservationType | NotGiven = NOT_GIVEN,
-        sensor_stats: Iterable[sensor_update_params.SensorStat] | NotGiven = NOT_GIVEN,
-        sensor_type: sensor_update_params.SensorType | NotGiven = NOT_GIVEN,
-        short_name: str | NotGiven = NOT_GIVEN,
+        active: bool | Omit = omit,
+        af_id: str | Omit = omit,
+        asr_type: str | Omit = omit,
+        data_control: str | Omit = omit,
+        entity: sensor_update_params.Entity | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        origin: str | Omit = omit,
+        sensorcharacteristics: Iterable[sensor_update_params.Sensorcharacteristic] | Omit = omit,
+        sensorlimits_collection: Iterable[sensor_update_params.SensorlimitsCollection] | Omit = omit,
+        sensor_number: int | Omit = omit,
+        sensor_observation_type: sensor_update_params.SensorObservationType | Omit = omit,
+        sensor_stats: Iterable[sensor_update_params.SensorStat] | Omit = omit,
+        sensor_type: sensor_update_params.SensorType | Omit = omit,
+        short_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Sensor.
 
@@ -898,14 +898,14 @@ class AsyncSensorResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SensorListResponse, AsyncOffsetPage[SensorListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -950,7 +950,7 @@ class AsyncSensorResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a Sensor specified by the passed ID path parameter.
@@ -980,14 +980,14 @@ class AsyncSensorResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1028,14 +1028,14 @@ class AsyncSensorResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorGetResponse:
         """
         Service operation to get a single Sensor by its unique ID passed as a path
@@ -1078,7 +1078,7 @@ class AsyncSensorResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1096,14 +1096,14 @@ class AsyncSensorResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorTupleResponse:
         """
         Service operation to dynamically query data and only return specified

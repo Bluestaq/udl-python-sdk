@@ -9,7 +9,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import linkstatus_update_params
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -60,26 +60,26 @@ class LinkstatusResource(SyncAPIResource):
         link_start_time: Union[str, datetime],
         link_stop_time: Union[str, datetime],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        data_rate1_to2: float | NotGiven = NOT_GIVEN,
-        data_rate2_to1: float | NotGiven = NOT_GIVEN,
-        id_beam1: str | NotGiven = NOT_GIVEN,
-        id_beam2: str | NotGiven = NOT_GIVEN,
-        link_state: str | NotGiven = NOT_GIVEN,
-        link_type: str | NotGiven = NOT_GIVEN,
-        ops_cap: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        sat_no1: int | NotGiven = NOT_GIVEN,
-        sat_no2: int | NotGiven = NOT_GIVEN,
-        sys_cap: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        band: str | Omit = omit,
+        constellation: str | Omit = omit,
+        data_rate1_to2: float | Omit = omit,
+        data_rate2_to1: float | Omit = omit,
+        id_beam1: str | Omit = omit,
+        id_beam2: str | Omit = omit,
+        link_state: str | Omit = omit,
+        link_type: str | Omit = omit,
+        ops_cap: str | Omit = omit,
+        origin: str | Omit = omit,
+        sat_no1: int | Omit = omit,
+        sat_no2: int | Omit = omit,
+        sys_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single LinkStatus.
 
@@ -224,7 +224,7 @@ class LinkstatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a LinkStatus object specified by the passed ID path
@@ -288,26 +288,26 @@ class AsyncLinkstatusResource(AsyncAPIResource):
         link_start_time: Union[str, datetime],
         link_stop_time: Union[str, datetime],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        data_rate1_to2: float | NotGiven = NOT_GIVEN,
-        data_rate2_to1: float | NotGiven = NOT_GIVEN,
-        id_beam1: str | NotGiven = NOT_GIVEN,
-        id_beam2: str | NotGiven = NOT_GIVEN,
-        link_state: str | NotGiven = NOT_GIVEN,
-        link_type: str | NotGiven = NOT_GIVEN,
-        ops_cap: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        sat_no1: int | NotGiven = NOT_GIVEN,
-        sat_no2: int | NotGiven = NOT_GIVEN,
-        sys_cap: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        band: str | Omit = omit,
+        constellation: str | Omit = omit,
+        data_rate1_to2: float | Omit = omit,
+        data_rate2_to1: float | Omit = omit,
+        id_beam1: str | Omit = omit,
+        id_beam2: str | Omit = omit,
+        link_state: str | Omit = omit,
+        link_type: str | Omit = omit,
+        ops_cap: str | Omit = omit,
+        origin: str | Omit = omit,
+        sat_no1: int | Omit = omit,
+        sat_no2: int | Omit = omit,
+        sys_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single LinkStatus.
 
@@ -452,7 +452,7 @@ class AsyncLinkstatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a LinkStatus object specified by the passed ID path

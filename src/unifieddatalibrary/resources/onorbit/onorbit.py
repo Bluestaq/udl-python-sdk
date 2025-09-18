@@ -17,7 +17,7 @@ from ...types import (
     onorbit_update_params,
     onorbit_get_signature_params,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -77,7 +77,7 @@ class OnorbitResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         sat_no: int,
         source: str,
-        alt_name: str | NotGiven = NOT_GIVEN,
+        alt_name: str | Omit = omit,
         category: Literal[
             "Unknown",
             "On-Orbit",
@@ -93,26 +93,25 @@ class OnorbitResource(SyncAPIResource):
             "Lagrangian",
             "Docked",
         ]
-        | NotGiven = NOT_GIVEN,
-        common_name: str | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        decay_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        intl_des: str | NotGiven = NOT_GIVEN,
-        launch_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        launch_site_id: str | NotGiven = NOT_GIVEN,
-        lifetime_years: int | NotGiven = NOT_GIVEN,
-        mission_number: str | NotGiven = NOT_GIVEN,
-        object_type: Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"]
-        | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        common_name: str | Omit = omit,
+        constellation: str | Omit = omit,
+        country_code: str | Omit = omit,
+        decay_date: Union[str, datetime] | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        intl_des: str | Omit = omit,
+        launch_date: Union[str, date] | Omit = omit,
+        launch_site_id: str | Omit = omit,
+        lifetime_years: int | Omit = omit,
+        mission_number: str | Omit = omit,
+        object_type: Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"] | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single onorbit object as a POST body and ingest into
@@ -233,7 +232,7 @@ class OnorbitResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         sat_no: int,
         source: str,
-        alt_name: str | NotGiven = NOT_GIVEN,
+        alt_name: str | Omit = omit,
         category: Literal[
             "Unknown",
             "On-Orbit",
@@ -249,26 +248,25 @@ class OnorbitResource(SyncAPIResource):
             "Lagrangian",
             "Docked",
         ]
-        | NotGiven = NOT_GIVEN,
-        common_name: str | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        decay_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        intl_des: str | NotGiven = NOT_GIVEN,
-        launch_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        launch_site_id: str | NotGiven = NOT_GIVEN,
-        lifetime_years: int | NotGiven = NOT_GIVEN,
-        mission_number: str | NotGiven = NOT_GIVEN,
-        object_type: Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"]
-        | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        common_name: str | Omit = omit,
+        constellation: str | Omit = omit,
+        country_code: str | Omit = omit,
+        decay_date: Union[str, datetime] | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        intl_des: str | Omit = omit,
+        launch_date: Union[str, date] | Omit = omit,
+        launch_site_id: str | Omit = omit,
+        lifetime_years: int | Omit = omit,
+        mission_number: str | Omit = omit,
+        object_type: Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"] | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single OnOrbit object.
 
@@ -386,14 +384,14 @@ class OnorbitResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[OnorbitListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -438,7 +436,7 @@ class OnorbitResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an OnOrbit object specified by the passed ID path
@@ -468,14 +466,14 @@ class OnorbitResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -516,14 +514,14 @@ class OnorbitResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitFull:
         """
         Service operation to get a single OnOrbit object by its unique ID passed as a
@@ -562,14 +560,14 @@ class OnorbitResource(SyncAPIResource):
         self,
         *,
         id_on_orbit: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitGetSignatureResponse:
         """
         This service queries common information across Radar, EO, and RF observations.
@@ -612,7 +610,7 @@ class OnorbitResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -630,14 +628,14 @@ class OnorbitResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -714,7 +712,7 @@ class AsyncOnorbitResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         sat_no: int,
         source: str,
-        alt_name: str | NotGiven = NOT_GIVEN,
+        alt_name: str | Omit = omit,
         category: Literal[
             "Unknown",
             "On-Orbit",
@@ -730,26 +728,25 @@ class AsyncOnorbitResource(AsyncAPIResource):
             "Lagrangian",
             "Docked",
         ]
-        | NotGiven = NOT_GIVEN,
-        common_name: str | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        decay_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        intl_des: str | NotGiven = NOT_GIVEN,
-        launch_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        launch_site_id: str | NotGiven = NOT_GIVEN,
-        lifetime_years: int | NotGiven = NOT_GIVEN,
-        mission_number: str | NotGiven = NOT_GIVEN,
-        object_type: Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"]
-        | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        common_name: str | Omit = omit,
+        constellation: str | Omit = omit,
+        country_code: str | Omit = omit,
+        decay_date: Union[str, datetime] | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        intl_des: str | Omit = omit,
+        launch_date: Union[str, date] | Omit = omit,
+        launch_site_id: str | Omit = omit,
+        lifetime_years: int | Omit = omit,
+        mission_number: str | Omit = omit,
+        object_type: Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"] | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single onorbit object as a POST body and ingest into
@@ -870,7 +867,7 @@ class AsyncOnorbitResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         sat_no: int,
         source: str,
-        alt_name: str | NotGiven = NOT_GIVEN,
+        alt_name: str | Omit = omit,
         category: Literal[
             "Unknown",
             "On-Orbit",
@@ -886,26 +883,25 @@ class AsyncOnorbitResource(AsyncAPIResource):
             "Lagrangian",
             "Docked",
         ]
-        | NotGiven = NOT_GIVEN,
-        common_name: str | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        decay_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        intl_des: str | NotGiven = NOT_GIVEN,
-        launch_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        launch_site_id: str | NotGiven = NOT_GIVEN,
-        lifetime_years: int | NotGiven = NOT_GIVEN,
-        mission_number: str | NotGiven = NOT_GIVEN,
-        object_type: Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"]
-        | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        common_name: str | Omit = omit,
+        constellation: str | Omit = omit,
+        country_code: str | Omit = omit,
+        decay_date: Union[str, datetime] | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        intl_des: str | Omit = omit,
+        launch_date: Union[str, date] | Omit = omit,
+        launch_site_id: str | Omit = omit,
+        lifetime_years: int | Omit = omit,
+        mission_number: str | Omit = omit,
+        object_type: Literal["ROCKET BODY", "DEBRIS", "PAYLOAD", "PLATFORM", "MANNED", "UNKNOWN"] | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single OnOrbit object.
 
@@ -1023,14 +1019,14 @@ class AsyncOnorbitResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[OnorbitListResponse, AsyncOffsetPage[OnorbitListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1075,7 +1071,7 @@ class AsyncOnorbitResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an OnOrbit object specified by the passed ID path
@@ -1105,14 +1101,14 @@ class AsyncOnorbitResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1153,14 +1149,14 @@ class AsyncOnorbitResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitFull:
         """
         Service operation to get a single OnOrbit object by its unique ID passed as a
@@ -1199,14 +1195,14 @@ class AsyncOnorbitResource(AsyncAPIResource):
         self,
         *,
         id_on_orbit: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitGetSignatureResponse:
         """
         This service queries common information across Radar, EO, and RF observations.
@@ -1249,7 +1245,7 @@ class AsyncOnorbitResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1267,14 +1263,14 @@ class AsyncOnorbitResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitTupleResponse:
         """
         Service operation to dynamically query data and only return specified

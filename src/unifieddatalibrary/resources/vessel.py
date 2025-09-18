@@ -17,7 +17,7 @@ from ..types import (
     vessel_update_params,
     vessel_create_bulk_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -64,41 +64,41 @@ class VesselResource(SyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        alt_vessel_id: str | NotGiven = NOT_GIVEN,
-        callsign: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        first_seen: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        hull_num: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_organization: str | NotGiven = NOT_GIVEN,
-        imon: int | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        max_draught: float | NotGiven = NOT_GIVEN,
-        max_speed: float | NotGiven = NOT_GIVEN,
-        mmsi: str | NotGiven = NOT_GIVEN,
-        num_blades: int | NotGiven = NOT_GIVEN,
-        num_shafts: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        prop_type: str | NotGiven = NOT_GIVEN,
-        sconum: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        stern_type: str | NotGiven = NOT_GIVEN,
-        vessel_builder: str | NotGiven = NOT_GIVEN,
-        vessel_class: str | NotGiven = NOT_GIVEN,
-        vessel_description: str | NotGiven = NOT_GIVEN,
-        vessel_flag: str | NotGiven = NOT_GIVEN,
-        vessel_name: str | NotGiven = NOT_GIVEN,
-        vessel_type: str | NotGiven = NOT_GIVEN,
-        vsl_wt: float | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
-        year_built: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        alt_vessel_id: str | Omit = omit,
+        callsign: str | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        first_seen: Union[str, datetime] | Omit = omit,
+        hull_num: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_organization: str | Omit = omit,
+        imon: int | Omit = omit,
+        length: float | Omit = omit,
+        max_draught: float | Omit = omit,
+        max_speed: float | Omit = omit,
+        mmsi: str | Omit = omit,
+        num_blades: int | Omit = omit,
+        num_shafts: int | Omit = omit,
+        origin: str | Omit = omit,
+        prop_type: str | Omit = omit,
+        sconum: str | Omit = omit,
+        status: str | Omit = omit,
+        stern_type: str | Omit = omit,
+        vessel_builder: str | Omit = omit,
+        vessel_class: str | Omit = omit,
+        vessel_description: str | Omit = omit,
+        vessel_flag: str | Omit = omit,
+        vessel_name: str | Omit = omit,
+        vessel_type: str | Omit = omit,
+        vsl_wt: float | Omit = omit,
+        width: float | Omit = omit,
+        year_built: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single vessel record as a POST body and ingest into
@@ -264,41 +264,41 @@ class VesselResource(SyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        alt_vessel_id: str | NotGiven = NOT_GIVEN,
-        callsign: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        first_seen: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        hull_num: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_organization: str | NotGiven = NOT_GIVEN,
-        imon: int | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        max_draught: float | NotGiven = NOT_GIVEN,
-        max_speed: float | NotGiven = NOT_GIVEN,
-        mmsi: str | NotGiven = NOT_GIVEN,
-        num_blades: int | NotGiven = NOT_GIVEN,
-        num_shafts: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        prop_type: str | NotGiven = NOT_GIVEN,
-        sconum: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        stern_type: str | NotGiven = NOT_GIVEN,
-        vessel_builder: str | NotGiven = NOT_GIVEN,
-        vessel_class: str | NotGiven = NOT_GIVEN,
-        vessel_description: str | NotGiven = NOT_GIVEN,
-        vessel_flag: str | NotGiven = NOT_GIVEN,
-        vessel_name: str | NotGiven = NOT_GIVEN,
-        vessel_type: str | NotGiven = NOT_GIVEN,
-        vsl_wt: float | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
-        year_built: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        alt_vessel_id: str | Omit = omit,
+        callsign: str | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        first_seen: Union[str, datetime] | Omit = omit,
+        hull_num: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_organization: str | Omit = omit,
+        imon: int | Omit = omit,
+        length: float | Omit = omit,
+        max_draught: float | Omit = omit,
+        max_speed: float | Omit = omit,
+        mmsi: str | Omit = omit,
+        num_blades: int | Omit = omit,
+        num_shafts: int | Omit = omit,
+        origin: str | Omit = omit,
+        prop_type: str | Omit = omit,
+        sconum: str | Omit = omit,
+        status: str | Omit = omit,
+        stern_type: str | Omit = omit,
+        vessel_builder: str | Omit = omit,
+        vessel_class: str | Omit = omit,
+        vessel_description: str | Omit = omit,
+        vessel_flag: str | Omit = omit,
+        vessel_name: str | Omit = omit,
+        vessel_type: str | Omit = omit,
+        vsl_wt: float | Omit = omit,
+        width: float | Omit = omit,
+        year_built: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single vessel record.
 
@@ -462,14 +462,14 @@ class VesselResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[VesselListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -508,14 +508,14 @@ class VesselResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -561,7 +561,7 @@ class VesselResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -593,14 +593,14 @@ class VesselResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VesselGetResponse:
         """
         Service operation to get a single vessel record by its unique ID passed as a
@@ -643,7 +643,7 @@ class VesselResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VesselQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -661,14 +661,14 @@ class VesselResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VesselTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -740,41 +740,41 @@ class AsyncVesselResource(AsyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        alt_vessel_id: str | NotGiven = NOT_GIVEN,
-        callsign: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        first_seen: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        hull_num: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_organization: str | NotGiven = NOT_GIVEN,
-        imon: int | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        max_draught: float | NotGiven = NOT_GIVEN,
-        max_speed: float | NotGiven = NOT_GIVEN,
-        mmsi: str | NotGiven = NOT_GIVEN,
-        num_blades: int | NotGiven = NOT_GIVEN,
-        num_shafts: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        prop_type: str | NotGiven = NOT_GIVEN,
-        sconum: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        stern_type: str | NotGiven = NOT_GIVEN,
-        vessel_builder: str | NotGiven = NOT_GIVEN,
-        vessel_class: str | NotGiven = NOT_GIVEN,
-        vessel_description: str | NotGiven = NOT_GIVEN,
-        vessel_flag: str | NotGiven = NOT_GIVEN,
-        vessel_name: str | NotGiven = NOT_GIVEN,
-        vessel_type: str | NotGiven = NOT_GIVEN,
-        vsl_wt: float | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
-        year_built: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        alt_vessel_id: str | Omit = omit,
+        callsign: str | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        first_seen: Union[str, datetime] | Omit = omit,
+        hull_num: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_organization: str | Omit = omit,
+        imon: int | Omit = omit,
+        length: float | Omit = omit,
+        max_draught: float | Omit = omit,
+        max_speed: float | Omit = omit,
+        mmsi: str | Omit = omit,
+        num_blades: int | Omit = omit,
+        num_shafts: int | Omit = omit,
+        origin: str | Omit = omit,
+        prop_type: str | Omit = omit,
+        sconum: str | Omit = omit,
+        status: str | Omit = omit,
+        stern_type: str | Omit = omit,
+        vessel_builder: str | Omit = omit,
+        vessel_class: str | Omit = omit,
+        vessel_description: str | Omit = omit,
+        vessel_flag: str | Omit = omit,
+        vessel_name: str | Omit = omit,
+        vessel_type: str | Omit = omit,
+        vsl_wt: float | Omit = omit,
+        width: float | Omit = omit,
+        year_built: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single vessel record as a POST body and ingest into
@@ -940,41 +940,41 @@ class AsyncVesselResource(AsyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        alt_vessel_id: str | NotGiven = NOT_GIVEN,
-        callsign: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        first_seen: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        hull_num: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_organization: str | NotGiven = NOT_GIVEN,
-        imon: int | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        max_draught: float | NotGiven = NOT_GIVEN,
-        max_speed: float | NotGiven = NOT_GIVEN,
-        mmsi: str | NotGiven = NOT_GIVEN,
-        num_blades: int | NotGiven = NOT_GIVEN,
-        num_shafts: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        prop_type: str | NotGiven = NOT_GIVEN,
-        sconum: str | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        stern_type: str | NotGiven = NOT_GIVEN,
-        vessel_builder: str | NotGiven = NOT_GIVEN,
-        vessel_class: str | NotGiven = NOT_GIVEN,
-        vessel_description: str | NotGiven = NOT_GIVEN,
-        vessel_flag: str | NotGiven = NOT_GIVEN,
-        vessel_name: str | NotGiven = NOT_GIVEN,
-        vessel_type: str | NotGiven = NOT_GIVEN,
-        vsl_wt: float | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
-        year_built: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        alt_vessel_id: str | Omit = omit,
+        callsign: str | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        first_seen: Union[str, datetime] | Omit = omit,
+        hull_num: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_organization: str | Omit = omit,
+        imon: int | Omit = omit,
+        length: float | Omit = omit,
+        max_draught: float | Omit = omit,
+        max_speed: float | Omit = omit,
+        mmsi: str | Omit = omit,
+        num_blades: int | Omit = omit,
+        num_shafts: int | Omit = omit,
+        origin: str | Omit = omit,
+        prop_type: str | Omit = omit,
+        sconum: str | Omit = omit,
+        status: str | Omit = omit,
+        stern_type: str | Omit = omit,
+        vessel_builder: str | Omit = omit,
+        vessel_class: str | Omit = omit,
+        vessel_description: str | Omit = omit,
+        vessel_flag: str | Omit = omit,
+        vessel_name: str | Omit = omit,
+        vessel_type: str | Omit = omit,
+        vsl_wt: float | Omit = omit,
+        width: float | Omit = omit,
+        year_built: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single vessel record.
 
@@ -1138,14 +1138,14 @@ class AsyncVesselResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[VesselListResponse, AsyncOffsetPage[VesselListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1184,14 +1184,14 @@ class AsyncVesselResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1237,7 +1237,7 @@ class AsyncVesselResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1269,14 +1269,14 @@ class AsyncVesselResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VesselGetResponse:
         """
         Service operation to get a single vessel record by its unique ID passed as a
@@ -1319,7 +1319,7 @@ class AsyncVesselResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VesselQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1337,14 +1337,14 @@ class AsyncVesselResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> VesselTupleResponse:
         """
         Service operation to dynamically query data and only return specified

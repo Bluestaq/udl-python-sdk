@@ -14,7 +14,7 @@ from ..types import (
     sera_data_navigation_create_params,
     sera_data_navigation_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -61,26 +61,26 @@ class SeraDataNavigationResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         spacecraft_id: str,
-        id: str | NotGiven = NOT_GIVEN,
-        area_coverage: str | NotGiven = NOT_GIVEN,
-        clock_type: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_navigation: str | NotGiven = NOT_GIVEN,
-        location_accuracy: float | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        mode_frequency: str | NotGiven = NOT_GIVEN,
-        modes: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partner_spacecraft_id: str | NotGiven = NOT_GIVEN,
-        payload_type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        area_coverage: str | Omit = omit,
+        clock_type: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_navigation: str | Omit = omit,
+        location_accuracy: float | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        mode_frequency: str | Omit = omit,
+        modes: str | Omit = omit,
+        name: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        partner_spacecraft_id: str | Omit = omit,
+        payload_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SeradataNavigation as a POST body and ingest
@@ -189,26 +189,26 @@ class SeraDataNavigationResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         spacecraft_id: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        area_coverage: str | NotGiven = NOT_GIVEN,
-        clock_type: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_navigation: str | NotGiven = NOT_GIVEN,
-        location_accuracy: float | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        mode_frequency: str | NotGiven = NOT_GIVEN,
-        modes: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partner_spacecraft_id: str | NotGiven = NOT_GIVEN,
-        payload_type: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        area_coverage: str | Omit = omit,
+        clock_type: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_navigation: str | Omit = omit,
+        location_accuracy: float | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        mode_frequency: str | Omit = omit,
+        modes: str | Omit = omit,
+        name: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        partner_spacecraft_id: str | Omit = omit,
+        payload_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update an SeradataNavigation.
 
@@ -314,14 +314,14 @@ class SeraDataNavigationResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SeraDataNavigationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -366,7 +366,7 @@ class SeraDataNavigationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an SeradataNavigation specified by the passed ID
@@ -396,14 +396,14 @@ class SeraDataNavigationResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -444,14 +444,14 @@ class SeraDataNavigationResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataNavigationGetResponse:
         """
         Service operation to get a single SeradataNavigation by its unique ID passed as
@@ -494,7 +494,7 @@ class SeraDataNavigationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataNavigationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -512,14 +512,14 @@ class SeraDataNavigationResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataNavigationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -592,26 +592,26 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         spacecraft_id: str,
-        id: str | NotGiven = NOT_GIVEN,
-        area_coverage: str | NotGiven = NOT_GIVEN,
-        clock_type: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_navigation: str | NotGiven = NOT_GIVEN,
-        location_accuracy: float | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        mode_frequency: str | NotGiven = NOT_GIVEN,
-        modes: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partner_spacecraft_id: str | NotGiven = NOT_GIVEN,
-        payload_type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        area_coverage: str | Omit = omit,
+        clock_type: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_navigation: str | Omit = omit,
+        location_accuracy: float | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        mode_frequency: str | Omit = omit,
+        modes: str | Omit = omit,
+        name: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        partner_spacecraft_id: str | Omit = omit,
+        payload_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SeradataNavigation as a POST body and ingest
@@ -720,26 +720,26 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         spacecraft_id: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        area_coverage: str | NotGiven = NOT_GIVEN,
-        clock_type: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_navigation: str | NotGiven = NOT_GIVEN,
-        location_accuracy: float | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        mode_frequency: str | NotGiven = NOT_GIVEN,
-        modes: str | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partner_spacecraft_id: str | NotGiven = NOT_GIVEN,
-        payload_type: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        area_coverage: str | Omit = omit,
+        clock_type: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_navigation: str | Omit = omit,
+        location_accuracy: float | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        mode_frequency: str | Omit = omit,
+        modes: str | Omit = omit,
+        name: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        partner_spacecraft_id: str | Omit = omit,
+        payload_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update an SeradataNavigation.
 
@@ -845,14 +845,14 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SeraDataNavigationListResponse, AsyncOffsetPage[SeraDataNavigationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -897,7 +897,7 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an SeradataNavigation specified by the passed ID
@@ -927,14 +927,14 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -975,14 +975,14 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataNavigationGetResponse:
         """
         Service operation to get a single SeradataNavigation by its unique ID passed as
@@ -1025,7 +1025,7 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataNavigationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1043,14 +1043,14 @@ class AsyncSeraDataNavigationResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataNavigationTupleResponse:
         """
         Service operation to dynamically query data and only return specified

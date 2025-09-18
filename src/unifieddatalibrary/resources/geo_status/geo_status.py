@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -74,29 +74,29 @@ class GeoStatusResource(SyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        confidence_level: str | NotGiven = NOT_GIVEN,
-        longitude_max: float | NotGiven = NOT_GIVEN,
-        longitude_min: float | NotGiven = NOT_GIVEN,
-        longitude_rate: float | NotGiven = NOT_GIVEN,
-        lost_flag: bool | NotGiven = NOT_GIVEN,
-        object_status: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        plane_change_status: str | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
-        relative_energy: float | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        sc: float | NotGiven = NOT_GIVEN,
-        semi_annual_corr_flag: bool | NotGiven = NOT_GIVEN,
-        ss: float | NotGiven = NOT_GIVEN,
-        trough_type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        confidence_level: str | Omit = omit,
+        longitude_max: float | Omit = omit,
+        longitude_min: float | Omit = omit,
+        longitude_rate: float | Omit = omit,
+        lost_flag: bool | Omit = omit,
+        object_status: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        plane_change_status: str | Omit = omit,
+        raw_file_uri: str | Omit = omit,
+        relative_energy: float | Omit = omit,
+        sat_no: int | Omit = omit,
+        sc: float | Omit = omit,
+        semi_annual_corr_flag: bool | Omit = omit,
+        ss: float | Omit = omit,
+        trough_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single GEOStatus record as a POST body and ingest
@@ -227,14 +227,14 @@ class GeoStatusResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[GeoStatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -278,14 +278,14 @@ class GeoStatusResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -335,7 +335,7 @@ class GeoStatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -367,14 +367,14 @@ class GeoStatusResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeoStatusFull:
         """
         Service operation to get a single GEOStatus record by its unique ID passed as a
@@ -417,7 +417,7 @@ class GeoStatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeoStatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -436,14 +436,14 @@ class GeoStatusResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeoStatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -523,29 +523,29 @@ class AsyncGeoStatusResource(AsyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        confidence_level: str | NotGiven = NOT_GIVEN,
-        longitude_max: float | NotGiven = NOT_GIVEN,
-        longitude_min: float | NotGiven = NOT_GIVEN,
-        longitude_rate: float | NotGiven = NOT_GIVEN,
-        lost_flag: bool | NotGiven = NOT_GIVEN,
-        object_status: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        plane_change_status: str | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
-        relative_energy: float | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        sc: float | NotGiven = NOT_GIVEN,
-        semi_annual_corr_flag: bool | NotGiven = NOT_GIVEN,
-        ss: float | NotGiven = NOT_GIVEN,
-        trough_type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        confidence_level: str | Omit = omit,
+        longitude_max: float | Omit = omit,
+        longitude_min: float | Omit = omit,
+        longitude_rate: float | Omit = omit,
+        lost_flag: bool | Omit = omit,
+        object_status: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        plane_change_status: str | Omit = omit,
+        raw_file_uri: str | Omit = omit,
+        relative_energy: float | Omit = omit,
+        sat_no: int | Omit = omit,
+        sc: float | Omit = omit,
+        semi_annual_corr_flag: bool | Omit = omit,
+        ss: float | Omit = omit,
+        trough_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single GEOStatus record as a POST body and ingest
@@ -676,14 +676,14 @@ class AsyncGeoStatusResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[GeoStatusListResponse, AsyncOffsetPage[GeoStatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -727,14 +727,14 @@ class AsyncGeoStatusResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -784,7 +784,7 @@ class AsyncGeoStatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -816,14 +816,14 @@ class AsyncGeoStatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeoStatusFull:
         """
         Service operation to get a single GEOStatus record by its unique ID passed as a
@@ -866,7 +866,7 @@ class AsyncGeoStatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeoStatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -885,14 +885,14 @@ class AsyncGeoStatusResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GeoStatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified

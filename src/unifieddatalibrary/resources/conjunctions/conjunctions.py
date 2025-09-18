@@ -28,7 +28,18 @@ from .history import (
     AsyncHistoryResourceWithStreamingResponse,
 )
 from ..._files import read_file_content, async_read_file_content
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent, SequenceNotStr
+from ..._types import (
+    Body,
+    Omit,
+    Query,
+    Headers,
+    NoneType,
+    NotGiven,
+    FileContent,
+    SequenceNotStr,
+    omit,
+    not_given,
+)
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -77,14 +88,14 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConjunctionFull:
         """
         Service operation to get a single conjunction by its unique ID passed as a path
@@ -123,14 +134,14 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[ConjunctionAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -173,14 +184,14 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -227,73 +238,73 @@ class ConjunctionsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         tca: Union[str, datetime],
-        convert_pos_vel: bool | NotGiven = NOT_GIVEN,
-        id: str | NotGiven = NOT_GIVEN,
-        ccir: str | NotGiven = NOT_GIVEN,
-        cd_ao_m1: float | NotGiven = NOT_GIVEN,
-        cd_ao_m2: float | NotGiven = NOT_GIVEN,
-        collision_prob: float | NotGiven = NOT_GIVEN,
-        collision_prob_method: str | NotGiven = NOT_GIVEN,
-        comments: str | NotGiven = NOT_GIVEN,
-        concern_notes: str | NotGiven = NOT_GIVEN,
-        cr_ao_m1: float | NotGiven = NOT_GIVEN,
-        cr_ao_m2: float | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        ephem_name1: str | NotGiven = NOT_GIVEN,
-        ephem_name2: str | NotGiven = NOT_GIVEN,
-        es_id1: str | NotGiven = NOT_GIVEN,
-        es_id2: str | NotGiven = NOT_GIVEN,
-        event_id: str | NotGiven = NOT_GIVEN,
-        id_state_vector1: str | NotGiven = NOT_GIVEN,
-        id_state_vector2: str | NotGiven = NOT_GIVEN,
-        large_cov_warning: bool | NotGiven = NOT_GIVEN,
-        large_rel_pos_warning: bool | NotGiven = NOT_GIVEN,
-        last_ob_time1: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        last_ob_time2: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        message_for: str | NotGiven = NOT_GIVEN,
-        message_id: str | NotGiven = NOT_GIVEN,
-        miss_distance: float | NotGiven = NOT_GIVEN,
-        orig_id_on_orbit1: str | NotGiven = NOT_GIVEN,
-        orig_id_on_orbit2: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        originator: str | NotGiven = NOT_GIVEN,
-        owner_contacted: bool | NotGiven = NOT_GIVEN,
-        penetration_level_sigma: float | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
-        rel_pos_n: float | NotGiven = NOT_GIVEN,
-        rel_pos_r: float | NotGiven = NOT_GIVEN,
-        rel_pos_t: float | NotGiven = NOT_GIVEN,
-        rel_vel_mag: float | NotGiven = NOT_GIVEN,
-        rel_vel_n: float | NotGiven = NOT_GIVEN,
-        rel_vel_r: float | NotGiven = NOT_GIVEN,
-        rel_vel_t: float | NotGiven = NOT_GIVEN,
-        sat_no1: int | NotGiven = NOT_GIVEN,
-        sat_no2: int | NotGiven = NOT_GIVEN,
-        screen_entry_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        screen_exit_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        screen_volume_x: float | NotGiven = NOT_GIVEN,
-        screen_volume_y: float | NotGiven = NOT_GIVEN,
-        screen_volume_z: float | NotGiven = NOT_GIVEN,
-        small_cov_warning: bool | NotGiven = NOT_GIVEN,
-        small_rel_vel_warning: bool | NotGiven = NOT_GIVEN,
-        state_dept_notified: bool | NotGiven = NOT_GIVEN,
-        state_vector1: conjunction_create_udl_params.StateVector1 | NotGiven = NOT_GIVEN,
-        state_vector2: conjunction_create_udl_params.StateVector2 | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        thrust_accel1: float | NotGiven = NOT_GIVEN,
-        thrust_accel2: float | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        uvw_warn: bool | NotGiven = NOT_GIVEN,
-        vol_entry_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        vol_exit_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        vol_shape: str | NotGiven = NOT_GIVEN,
+        convert_pos_vel: bool | Omit = omit,
+        id: str | Omit = omit,
+        ccir: str | Omit = omit,
+        cd_ao_m1: float | Omit = omit,
+        cd_ao_m2: float | Omit = omit,
+        collision_prob: float | Omit = omit,
+        collision_prob_method: str | Omit = omit,
+        comments: str | Omit = omit,
+        concern_notes: str | Omit = omit,
+        cr_ao_m1: float | Omit = omit,
+        cr_ao_m2: float | Omit = omit,
+        descriptor: str | Omit = omit,
+        ephem_name1: str | Omit = omit,
+        ephem_name2: str | Omit = omit,
+        es_id1: str | Omit = omit,
+        es_id2: str | Omit = omit,
+        event_id: str | Omit = omit,
+        id_state_vector1: str | Omit = omit,
+        id_state_vector2: str | Omit = omit,
+        large_cov_warning: bool | Omit = omit,
+        large_rel_pos_warning: bool | Omit = omit,
+        last_ob_time1: Union[str, datetime] | Omit = omit,
+        last_ob_time2: Union[str, datetime] | Omit = omit,
+        message_for: str | Omit = omit,
+        message_id: str | Omit = omit,
+        miss_distance: float | Omit = omit,
+        orig_id_on_orbit1: str | Omit = omit,
+        orig_id_on_orbit2: str | Omit = omit,
+        origin: str | Omit = omit,
+        originator: str | Omit = omit,
+        owner_contacted: bool | Omit = omit,
+        penetration_level_sigma: float | Omit = omit,
+        raw_file_uri: str | Omit = omit,
+        rel_pos_n: float | Omit = omit,
+        rel_pos_r: float | Omit = omit,
+        rel_pos_t: float | Omit = omit,
+        rel_vel_mag: float | Omit = omit,
+        rel_vel_n: float | Omit = omit,
+        rel_vel_r: float | Omit = omit,
+        rel_vel_t: float | Omit = omit,
+        sat_no1: int | Omit = omit,
+        sat_no2: int | Omit = omit,
+        screen_entry_time: Union[str, datetime] | Omit = omit,
+        screen_exit_time: Union[str, datetime] | Omit = omit,
+        screen_volume_x: float | Omit = omit,
+        screen_volume_y: float | Omit = omit,
+        screen_volume_z: float | Omit = omit,
+        small_cov_warning: bool | Omit = omit,
+        small_rel_vel_warning: bool | Omit = omit,
+        state_dept_notified: bool | Omit = omit,
+        state_vector1: conjunction_create_udl_params.StateVector1 | Omit = omit,
+        state_vector2: conjunction_create_udl_params.StateVector2 | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        thrust_accel1: float | Omit = omit,
+        thrust_accel2: float | Omit = omit,
+        transaction_id: str | Omit = omit,
+        type: str | Omit = omit,
+        uvw_warn: bool | Omit = omit,
+        vol_entry_time: Union[str, datetime] | Omit = omit,
+        vol_exit_time: Union[str, datetime] | Omit = omit,
+        vol_shape: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Conjunction as a POST body and ingest into
@@ -609,7 +620,7 @@ class ConjunctionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -643,15 +654,15 @@ class ConjunctionsResource(SyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        columns: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConjunctionGetHistoryResponse:
         """
         Service operation to dynamically query historical data by a variety of query
@@ -702,7 +713,7 @@ class ConjunctionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConjunctionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -721,14 +732,14 @@ class ConjunctionsResource(SyncAPIResource):
         *,
         columns: str,
         tca: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConjunctionTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -785,7 +796,7 @@ class ConjunctionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of Conjunctions as a POST body and ingest into
@@ -821,13 +832,13 @@ class ConjunctionsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         filename: str,
         source: str,
-        tags: str | NotGiven = NOT_GIVEN,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service to accept multiple CDMs in as zip file or a single CDM as payload.
 
@@ -916,14 +927,14 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConjunctionFull:
         """
         Service operation to get a single conjunction by its unique ID passed as a path
@@ -962,14 +973,14 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ConjunctionAbridged, AsyncOffsetPage[ConjunctionAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1012,14 +1023,14 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1066,73 +1077,73 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         tca: Union[str, datetime],
-        convert_pos_vel: bool | NotGiven = NOT_GIVEN,
-        id: str | NotGiven = NOT_GIVEN,
-        ccir: str | NotGiven = NOT_GIVEN,
-        cd_ao_m1: float | NotGiven = NOT_GIVEN,
-        cd_ao_m2: float | NotGiven = NOT_GIVEN,
-        collision_prob: float | NotGiven = NOT_GIVEN,
-        collision_prob_method: str | NotGiven = NOT_GIVEN,
-        comments: str | NotGiven = NOT_GIVEN,
-        concern_notes: str | NotGiven = NOT_GIVEN,
-        cr_ao_m1: float | NotGiven = NOT_GIVEN,
-        cr_ao_m2: float | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        ephem_name1: str | NotGiven = NOT_GIVEN,
-        ephem_name2: str | NotGiven = NOT_GIVEN,
-        es_id1: str | NotGiven = NOT_GIVEN,
-        es_id2: str | NotGiven = NOT_GIVEN,
-        event_id: str | NotGiven = NOT_GIVEN,
-        id_state_vector1: str | NotGiven = NOT_GIVEN,
-        id_state_vector2: str | NotGiven = NOT_GIVEN,
-        large_cov_warning: bool | NotGiven = NOT_GIVEN,
-        large_rel_pos_warning: bool | NotGiven = NOT_GIVEN,
-        last_ob_time1: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        last_ob_time2: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        message_for: str | NotGiven = NOT_GIVEN,
-        message_id: str | NotGiven = NOT_GIVEN,
-        miss_distance: float | NotGiven = NOT_GIVEN,
-        orig_id_on_orbit1: str | NotGiven = NOT_GIVEN,
-        orig_id_on_orbit2: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        originator: str | NotGiven = NOT_GIVEN,
-        owner_contacted: bool | NotGiven = NOT_GIVEN,
-        penetration_level_sigma: float | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
-        rel_pos_n: float | NotGiven = NOT_GIVEN,
-        rel_pos_r: float | NotGiven = NOT_GIVEN,
-        rel_pos_t: float | NotGiven = NOT_GIVEN,
-        rel_vel_mag: float | NotGiven = NOT_GIVEN,
-        rel_vel_n: float | NotGiven = NOT_GIVEN,
-        rel_vel_r: float | NotGiven = NOT_GIVEN,
-        rel_vel_t: float | NotGiven = NOT_GIVEN,
-        sat_no1: int | NotGiven = NOT_GIVEN,
-        sat_no2: int | NotGiven = NOT_GIVEN,
-        screen_entry_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        screen_exit_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        screen_volume_x: float | NotGiven = NOT_GIVEN,
-        screen_volume_y: float | NotGiven = NOT_GIVEN,
-        screen_volume_z: float | NotGiven = NOT_GIVEN,
-        small_cov_warning: bool | NotGiven = NOT_GIVEN,
-        small_rel_vel_warning: bool | NotGiven = NOT_GIVEN,
-        state_dept_notified: bool | NotGiven = NOT_GIVEN,
-        state_vector1: conjunction_create_udl_params.StateVector1 | NotGiven = NOT_GIVEN,
-        state_vector2: conjunction_create_udl_params.StateVector2 | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        thrust_accel1: float | NotGiven = NOT_GIVEN,
-        thrust_accel2: float | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        uvw_warn: bool | NotGiven = NOT_GIVEN,
-        vol_entry_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        vol_exit_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        vol_shape: str | NotGiven = NOT_GIVEN,
+        convert_pos_vel: bool | Omit = omit,
+        id: str | Omit = omit,
+        ccir: str | Omit = omit,
+        cd_ao_m1: float | Omit = omit,
+        cd_ao_m2: float | Omit = omit,
+        collision_prob: float | Omit = omit,
+        collision_prob_method: str | Omit = omit,
+        comments: str | Omit = omit,
+        concern_notes: str | Omit = omit,
+        cr_ao_m1: float | Omit = omit,
+        cr_ao_m2: float | Omit = omit,
+        descriptor: str | Omit = omit,
+        ephem_name1: str | Omit = omit,
+        ephem_name2: str | Omit = omit,
+        es_id1: str | Omit = omit,
+        es_id2: str | Omit = omit,
+        event_id: str | Omit = omit,
+        id_state_vector1: str | Omit = omit,
+        id_state_vector2: str | Omit = omit,
+        large_cov_warning: bool | Omit = omit,
+        large_rel_pos_warning: bool | Omit = omit,
+        last_ob_time1: Union[str, datetime] | Omit = omit,
+        last_ob_time2: Union[str, datetime] | Omit = omit,
+        message_for: str | Omit = omit,
+        message_id: str | Omit = omit,
+        miss_distance: float | Omit = omit,
+        orig_id_on_orbit1: str | Omit = omit,
+        orig_id_on_orbit2: str | Omit = omit,
+        origin: str | Omit = omit,
+        originator: str | Omit = omit,
+        owner_contacted: bool | Omit = omit,
+        penetration_level_sigma: float | Omit = omit,
+        raw_file_uri: str | Omit = omit,
+        rel_pos_n: float | Omit = omit,
+        rel_pos_r: float | Omit = omit,
+        rel_pos_t: float | Omit = omit,
+        rel_vel_mag: float | Omit = omit,
+        rel_vel_n: float | Omit = omit,
+        rel_vel_r: float | Omit = omit,
+        rel_vel_t: float | Omit = omit,
+        sat_no1: int | Omit = omit,
+        sat_no2: int | Omit = omit,
+        screen_entry_time: Union[str, datetime] | Omit = omit,
+        screen_exit_time: Union[str, datetime] | Omit = omit,
+        screen_volume_x: float | Omit = omit,
+        screen_volume_y: float | Omit = omit,
+        screen_volume_z: float | Omit = omit,
+        small_cov_warning: bool | Omit = omit,
+        small_rel_vel_warning: bool | Omit = omit,
+        state_dept_notified: bool | Omit = omit,
+        state_vector1: conjunction_create_udl_params.StateVector1 | Omit = omit,
+        state_vector2: conjunction_create_udl_params.StateVector2 | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        thrust_accel1: float | Omit = omit,
+        thrust_accel2: float | Omit = omit,
+        transaction_id: str | Omit = omit,
+        type: str | Omit = omit,
+        uvw_warn: bool | Omit = omit,
+        vol_entry_time: Union[str, datetime] | Omit = omit,
+        vol_exit_time: Union[str, datetime] | Omit = omit,
+        vol_shape: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Conjunction as a POST body and ingest into
@@ -1448,7 +1459,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1482,15 +1493,15 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         self,
         *,
         tca: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        columns: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConjunctionGetHistoryResponse:
         """
         Service operation to dynamically query historical data by a variety of query
@@ -1541,7 +1552,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConjunctionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1560,14 +1571,14 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         *,
         columns: str,
         tca: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ConjunctionTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1624,7 +1635,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of Conjunctions as a POST body and ingest into
@@ -1660,13 +1671,13 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         filename: str,
         source: str,
-        tags: str | NotGiven = NOT_GIVEN,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service to accept multiple CDMs in as zip file or a single CDM as payload.
 

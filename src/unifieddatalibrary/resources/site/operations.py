@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -65,27 +65,27 @@ class OperationsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_site: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        daily_operations: Iterable[operation_create_params.DailyOperation] | NotGiven = NOT_GIVEN,
-        dops_last_changed_by: str | NotGiven = NOT_GIVEN,
-        dops_last_changed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        dops_last_changed_reason: str | NotGiven = NOT_GIVEN,
-        id_launch_site: str | NotGiven = NOT_GIVEN,
-        maximum_on_grounds: Iterable[operation_create_params.MaximumOnGround] | NotGiven = NOT_GIVEN,
-        mogs_last_changed_by: str | NotGiven = NOT_GIVEN,
-        mogs_last_changed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        mogs_last_changed_reason: str | NotGiven = NOT_GIVEN,
-        operational_deviations: Iterable[operation_create_params.OperationalDeviation] | NotGiven = NOT_GIVEN,
-        operational_plannings: Iterable[operation_create_params.OperationalPlanning] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pathways: Iterable[operation_create_params.Pathway] | NotGiven = NOT_GIVEN,
-        waivers: Iterable[operation_create_params.Waiver] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        daily_operations: Iterable[operation_create_params.DailyOperation] | Omit = omit,
+        dops_last_changed_by: str | Omit = omit,
+        dops_last_changed_date: Union[str, datetime] | Omit = omit,
+        dops_last_changed_reason: str | Omit = omit,
+        id_launch_site: str | Omit = omit,
+        maximum_on_grounds: Iterable[operation_create_params.MaximumOnGround] | Omit = omit,
+        mogs_last_changed_by: str | Omit = omit,
+        mogs_last_changed_date: Union[str, datetime] | Omit = omit,
+        mogs_last_changed_reason: str | Omit = omit,
+        operational_deviations: Iterable[operation_create_params.OperationalDeviation] | Omit = omit,
+        operational_plannings: Iterable[operation_create_params.OperationalPlanning] | Omit = omit,
+        origin: str | Omit = omit,
+        pathways: Iterable[operation_create_params.Pathway] | Omit = omit,
+        waivers: Iterable[operation_create_params.Waiver] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single siteoperations object as a POST body and
@@ -203,14 +203,14 @@ class OperationsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OperationRetrieveResponse:
         """
         Service operation to get a single siteoperations record by its unique ID passed
@@ -253,27 +253,27 @@ class OperationsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_site: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        daily_operations: Iterable[operation_update_params.DailyOperation] | NotGiven = NOT_GIVEN,
-        dops_last_changed_by: str | NotGiven = NOT_GIVEN,
-        dops_last_changed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        dops_last_changed_reason: str | NotGiven = NOT_GIVEN,
-        id_launch_site: str | NotGiven = NOT_GIVEN,
-        maximum_on_grounds: Iterable[operation_update_params.MaximumOnGround] | NotGiven = NOT_GIVEN,
-        mogs_last_changed_by: str | NotGiven = NOT_GIVEN,
-        mogs_last_changed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        mogs_last_changed_reason: str | NotGiven = NOT_GIVEN,
-        operational_deviations: Iterable[operation_update_params.OperationalDeviation] | NotGiven = NOT_GIVEN,
-        operational_plannings: Iterable[operation_update_params.OperationalPlanning] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pathways: Iterable[operation_update_params.Pathway] | NotGiven = NOT_GIVEN,
-        waivers: Iterable[operation_update_params.Waiver] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        daily_operations: Iterable[operation_update_params.DailyOperation] | Omit = omit,
+        dops_last_changed_by: str | Omit = omit,
+        dops_last_changed_date: Union[str, datetime] | Omit = omit,
+        dops_last_changed_reason: str | Omit = omit,
+        id_launch_site: str | Omit = omit,
+        maximum_on_grounds: Iterable[operation_update_params.MaximumOnGround] | Omit = omit,
+        mogs_last_changed_by: str | Omit = omit,
+        mogs_last_changed_date: Union[str, datetime] | Omit = omit,
+        mogs_last_changed_reason: str | Omit = omit,
+        operational_deviations: Iterable[operation_update_params.OperationalDeviation] | Omit = omit,
+        operational_plannings: Iterable[operation_update_params.OperationalPlanning] | Omit = omit,
+        origin: str | Omit = omit,
+        pathways: Iterable[operation_update_params.Pathway] | Omit = omit,
+        waivers: Iterable[operation_update_params.Waiver] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single siteoperations record.
 
@@ -394,14 +394,14 @@ class OperationsResource(SyncAPIResource):
         self,
         *,
         id_site: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[OperationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -449,7 +449,7 @@ class OperationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a siteoperations record specified by the passed ID
@@ -480,14 +480,14 @@ class OperationsResource(SyncAPIResource):
         self,
         *,
         id_site: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -536,7 +536,7 @@ class OperationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -572,7 +572,7 @@ class OperationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OperationQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -591,14 +591,14 @@ class OperationsResource(SyncAPIResource):
         *,
         columns: str,
         id_site: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OperationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -655,7 +655,7 @@ class OperationsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple siteoperations records as a POST body and
@@ -710,27 +710,27 @@ class AsyncOperationsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_site: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        daily_operations: Iterable[operation_create_params.DailyOperation] | NotGiven = NOT_GIVEN,
-        dops_last_changed_by: str | NotGiven = NOT_GIVEN,
-        dops_last_changed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        dops_last_changed_reason: str | NotGiven = NOT_GIVEN,
-        id_launch_site: str | NotGiven = NOT_GIVEN,
-        maximum_on_grounds: Iterable[operation_create_params.MaximumOnGround] | NotGiven = NOT_GIVEN,
-        mogs_last_changed_by: str | NotGiven = NOT_GIVEN,
-        mogs_last_changed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        mogs_last_changed_reason: str | NotGiven = NOT_GIVEN,
-        operational_deviations: Iterable[operation_create_params.OperationalDeviation] | NotGiven = NOT_GIVEN,
-        operational_plannings: Iterable[operation_create_params.OperationalPlanning] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pathways: Iterable[operation_create_params.Pathway] | NotGiven = NOT_GIVEN,
-        waivers: Iterable[operation_create_params.Waiver] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        daily_operations: Iterable[operation_create_params.DailyOperation] | Omit = omit,
+        dops_last_changed_by: str | Omit = omit,
+        dops_last_changed_date: Union[str, datetime] | Omit = omit,
+        dops_last_changed_reason: str | Omit = omit,
+        id_launch_site: str | Omit = omit,
+        maximum_on_grounds: Iterable[operation_create_params.MaximumOnGround] | Omit = omit,
+        mogs_last_changed_by: str | Omit = omit,
+        mogs_last_changed_date: Union[str, datetime] | Omit = omit,
+        mogs_last_changed_reason: str | Omit = omit,
+        operational_deviations: Iterable[operation_create_params.OperationalDeviation] | Omit = omit,
+        operational_plannings: Iterable[operation_create_params.OperationalPlanning] | Omit = omit,
+        origin: str | Omit = omit,
+        pathways: Iterable[operation_create_params.Pathway] | Omit = omit,
+        waivers: Iterable[operation_create_params.Waiver] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single siteoperations object as a POST body and
@@ -848,14 +848,14 @@ class AsyncOperationsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OperationRetrieveResponse:
         """
         Service operation to get a single siteoperations record by its unique ID passed
@@ -898,27 +898,27 @@ class AsyncOperationsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_site: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        daily_operations: Iterable[operation_update_params.DailyOperation] | NotGiven = NOT_GIVEN,
-        dops_last_changed_by: str | NotGiven = NOT_GIVEN,
-        dops_last_changed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        dops_last_changed_reason: str | NotGiven = NOT_GIVEN,
-        id_launch_site: str | NotGiven = NOT_GIVEN,
-        maximum_on_grounds: Iterable[operation_update_params.MaximumOnGround] | NotGiven = NOT_GIVEN,
-        mogs_last_changed_by: str | NotGiven = NOT_GIVEN,
-        mogs_last_changed_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        mogs_last_changed_reason: str | NotGiven = NOT_GIVEN,
-        operational_deviations: Iterable[operation_update_params.OperationalDeviation] | NotGiven = NOT_GIVEN,
-        operational_plannings: Iterable[operation_update_params.OperationalPlanning] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pathways: Iterable[operation_update_params.Pathway] | NotGiven = NOT_GIVEN,
-        waivers: Iterable[operation_update_params.Waiver] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        daily_operations: Iterable[operation_update_params.DailyOperation] | Omit = omit,
+        dops_last_changed_by: str | Omit = omit,
+        dops_last_changed_date: Union[str, datetime] | Omit = omit,
+        dops_last_changed_reason: str | Omit = omit,
+        id_launch_site: str | Omit = omit,
+        maximum_on_grounds: Iterable[operation_update_params.MaximumOnGround] | Omit = omit,
+        mogs_last_changed_by: str | Omit = omit,
+        mogs_last_changed_date: Union[str, datetime] | Omit = omit,
+        mogs_last_changed_reason: str | Omit = omit,
+        operational_deviations: Iterable[operation_update_params.OperationalDeviation] | Omit = omit,
+        operational_plannings: Iterable[operation_update_params.OperationalPlanning] | Omit = omit,
+        origin: str | Omit = omit,
+        pathways: Iterable[operation_update_params.Pathway] | Omit = omit,
+        waivers: Iterable[operation_update_params.Waiver] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single siteoperations record.
 
@@ -1039,14 +1039,14 @@ class AsyncOperationsResource(AsyncAPIResource):
         self,
         *,
         id_site: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[OperationListResponse, AsyncOffsetPage[OperationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1094,7 +1094,7 @@ class AsyncOperationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a siteoperations record specified by the passed ID
@@ -1125,14 +1125,14 @@ class AsyncOperationsResource(AsyncAPIResource):
         self,
         *,
         id_site: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1181,7 +1181,7 @@ class AsyncOperationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1217,7 +1217,7 @@ class AsyncOperationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OperationQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1236,14 +1236,14 @@ class AsyncOperationsResource(AsyncAPIResource):
         *,
         columns: str,
         id_site: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OperationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1300,7 +1300,7 @@ class AsyncOperationsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple siteoperations records as a POST body and

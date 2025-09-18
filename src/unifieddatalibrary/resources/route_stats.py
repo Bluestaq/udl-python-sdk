@@ -18,7 +18,7 @@ from ..types import (
     route_stat_create_bulk_params,
     route_stat_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -66,36 +66,36 @@ class RouteStatsResource(SyncAPIResource):
         location_end: str,
         location_start: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        avg_duration: float | NotGiven = NOT_GIVEN,
-        avg_speed: float | NotGiven = NOT_GIVEN,
-        data_pts_used: int | NotGiven = NOT_GIVEN,
-        distance: float | NotGiven = NOT_GIVEN,
-        dist_unit: str | NotGiven = NOT_GIVEN,
-        first_pt: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ideal_desc: str | NotGiven = NOT_GIVEN,
-        ideal_duration: float | NotGiven = NOT_GIVEN,
-        id_site_end: str | NotGiven = NOT_GIVEN,
-        id_site_start: str | NotGiven = NOT_GIVEN,
-        last_pt: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        location_type: str | NotGiven = NOT_GIVEN,
-        max_duration: float | NotGiven = NOT_GIVEN,
-        max_speed: float | NotGiven = NOT_GIVEN,
-        min_duration: float | NotGiven = NOT_GIVEN,
-        min_speed: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partial_desc: str | NotGiven = NOT_GIVEN,
-        partial_duration: float | NotGiven = NOT_GIVEN,
-        speed_unit: str | NotGiven = NOT_GIVEN,
-        time_period: str | NotGiven = NOT_GIVEN,
-        vehicle_category: str | NotGiven = NOT_GIVEN,
-        vehicle_type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        avg_duration: float | Omit = omit,
+        avg_speed: float | Omit = omit,
+        data_pts_used: int | Omit = omit,
+        distance: float | Omit = omit,
+        dist_unit: str | Omit = omit,
+        first_pt: Union[str, datetime] | Omit = omit,
+        ideal_desc: str | Omit = omit,
+        ideal_duration: float | Omit = omit,
+        id_site_end: str | Omit = omit,
+        id_site_start: str | Omit = omit,
+        last_pt: Union[str, datetime] | Omit = omit,
+        location_type: str | Omit = omit,
+        max_duration: float | Omit = omit,
+        max_speed: float | Omit = omit,
+        min_duration: float | Omit = omit,
+        min_speed: float | Omit = omit,
+        origin: str | Omit = omit,
+        partial_desc: str | Omit = omit,
+        partial_duration: float | Omit = omit,
+        speed_unit: str | Omit = omit,
+        time_period: str | Omit = omit,
+        vehicle_category: str | Omit = omit,
+        vehicle_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single routeStats record as a POST body and ingest
@@ -250,14 +250,14 @@ class RouteStatsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteStatRetrieveResponse:
         """
         Service operation to get a single routeStats record by its unique ID passed as a
@@ -301,36 +301,36 @@ class RouteStatsResource(SyncAPIResource):
         location_end: str,
         location_start: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        avg_duration: float | NotGiven = NOT_GIVEN,
-        avg_speed: float | NotGiven = NOT_GIVEN,
-        data_pts_used: int | NotGiven = NOT_GIVEN,
-        distance: float | NotGiven = NOT_GIVEN,
-        dist_unit: str | NotGiven = NOT_GIVEN,
-        first_pt: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ideal_desc: str | NotGiven = NOT_GIVEN,
-        ideal_duration: float | NotGiven = NOT_GIVEN,
-        id_site_end: str | NotGiven = NOT_GIVEN,
-        id_site_start: str | NotGiven = NOT_GIVEN,
-        last_pt: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        location_type: str | NotGiven = NOT_GIVEN,
-        max_duration: float | NotGiven = NOT_GIVEN,
-        max_speed: float | NotGiven = NOT_GIVEN,
-        min_duration: float | NotGiven = NOT_GIVEN,
-        min_speed: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partial_desc: str | NotGiven = NOT_GIVEN,
-        partial_duration: float | NotGiven = NOT_GIVEN,
-        speed_unit: str | NotGiven = NOT_GIVEN,
-        time_period: str | NotGiven = NOT_GIVEN,
-        vehicle_category: str | NotGiven = NOT_GIVEN,
-        vehicle_type: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        avg_duration: float | Omit = omit,
+        avg_speed: float | Omit = omit,
+        data_pts_used: int | Omit = omit,
+        distance: float | Omit = omit,
+        dist_unit: str | Omit = omit,
+        first_pt: Union[str, datetime] | Omit = omit,
+        ideal_desc: str | Omit = omit,
+        ideal_duration: float | Omit = omit,
+        id_site_end: str | Omit = omit,
+        id_site_start: str | Omit = omit,
+        last_pt: Union[str, datetime] | Omit = omit,
+        location_type: str | Omit = omit,
+        max_duration: float | Omit = omit,
+        max_speed: float | Omit = omit,
+        min_duration: float | Omit = omit,
+        min_speed: float | Omit = omit,
+        origin: str | Omit = omit,
+        partial_desc: str | Omit = omit,
+        partial_duration: float | Omit = omit,
+        speed_unit: str | Omit = omit,
+        time_period: str | Omit = omit,
+        vehicle_category: str | Omit = omit,
+        vehicle_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single RouteStats.
 
@@ -486,14 +486,14 @@ class RouteStatsResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[RouteStatListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -538,7 +538,7 @@ class RouteStatsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a routeStats record specified by the passed ID path
@@ -568,14 +568,14 @@ class RouteStatsResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -621,7 +621,7 @@ class RouteStatsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -657,7 +657,7 @@ class RouteStatsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteStatQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -675,14 +675,14 @@ class RouteStatsResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteStatTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -736,7 +736,7 @@ class RouteStatsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple routestats records as a POST body and ingest
@@ -792,36 +792,36 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         location_end: str,
         location_start: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        avg_duration: float | NotGiven = NOT_GIVEN,
-        avg_speed: float | NotGiven = NOT_GIVEN,
-        data_pts_used: int | NotGiven = NOT_GIVEN,
-        distance: float | NotGiven = NOT_GIVEN,
-        dist_unit: str | NotGiven = NOT_GIVEN,
-        first_pt: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ideal_desc: str | NotGiven = NOT_GIVEN,
-        ideal_duration: float | NotGiven = NOT_GIVEN,
-        id_site_end: str | NotGiven = NOT_GIVEN,
-        id_site_start: str | NotGiven = NOT_GIVEN,
-        last_pt: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        location_type: str | NotGiven = NOT_GIVEN,
-        max_duration: float | NotGiven = NOT_GIVEN,
-        max_speed: float | NotGiven = NOT_GIVEN,
-        min_duration: float | NotGiven = NOT_GIVEN,
-        min_speed: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partial_desc: str | NotGiven = NOT_GIVEN,
-        partial_duration: float | NotGiven = NOT_GIVEN,
-        speed_unit: str | NotGiven = NOT_GIVEN,
-        time_period: str | NotGiven = NOT_GIVEN,
-        vehicle_category: str | NotGiven = NOT_GIVEN,
-        vehicle_type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        avg_duration: float | Omit = omit,
+        avg_speed: float | Omit = omit,
+        data_pts_used: int | Omit = omit,
+        distance: float | Omit = omit,
+        dist_unit: str | Omit = omit,
+        first_pt: Union[str, datetime] | Omit = omit,
+        ideal_desc: str | Omit = omit,
+        ideal_duration: float | Omit = omit,
+        id_site_end: str | Omit = omit,
+        id_site_start: str | Omit = omit,
+        last_pt: Union[str, datetime] | Omit = omit,
+        location_type: str | Omit = omit,
+        max_duration: float | Omit = omit,
+        max_speed: float | Omit = omit,
+        min_duration: float | Omit = omit,
+        min_speed: float | Omit = omit,
+        origin: str | Omit = omit,
+        partial_desc: str | Omit = omit,
+        partial_duration: float | Omit = omit,
+        speed_unit: str | Omit = omit,
+        time_period: str | Omit = omit,
+        vehicle_category: str | Omit = omit,
+        vehicle_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single routeStats record as a POST body and ingest
@@ -976,14 +976,14 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteStatRetrieveResponse:
         """
         Service operation to get a single routeStats record by its unique ID passed as a
@@ -1027,36 +1027,36 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         location_end: str,
         location_start: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        avg_duration: float | NotGiven = NOT_GIVEN,
-        avg_speed: float | NotGiven = NOT_GIVEN,
-        data_pts_used: int | NotGiven = NOT_GIVEN,
-        distance: float | NotGiven = NOT_GIVEN,
-        dist_unit: str | NotGiven = NOT_GIVEN,
-        first_pt: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ideal_desc: str | NotGiven = NOT_GIVEN,
-        ideal_duration: float | NotGiven = NOT_GIVEN,
-        id_site_end: str | NotGiven = NOT_GIVEN,
-        id_site_start: str | NotGiven = NOT_GIVEN,
-        last_pt: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        location_type: str | NotGiven = NOT_GIVEN,
-        max_duration: float | NotGiven = NOT_GIVEN,
-        max_speed: float | NotGiven = NOT_GIVEN,
-        min_duration: float | NotGiven = NOT_GIVEN,
-        min_speed: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        partial_desc: str | NotGiven = NOT_GIVEN,
-        partial_duration: float | NotGiven = NOT_GIVEN,
-        speed_unit: str | NotGiven = NOT_GIVEN,
-        time_period: str | NotGiven = NOT_GIVEN,
-        vehicle_category: str | NotGiven = NOT_GIVEN,
-        vehicle_type: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        avg_duration: float | Omit = omit,
+        avg_speed: float | Omit = omit,
+        data_pts_used: int | Omit = omit,
+        distance: float | Omit = omit,
+        dist_unit: str | Omit = omit,
+        first_pt: Union[str, datetime] | Omit = omit,
+        ideal_desc: str | Omit = omit,
+        ideal_duration: float | Omit = omit,
+        id_site_end: str | Omit = omit,
+        id_site_start: str | Omit = omit,
+        last_pt: Union[str, datetime] | Omit = omit,
+        location_type: str | Omit = omit,
+        max_duration: float | Omit = omit,
+        max_speed: float | Omit = omit,
+        min_duration: float | Omit = omit,
+        min_speed: float | Omit = omit,
+        origin: str | Omit = omit,
+        partial_desc: str | Omit = omit,
+        partial_duration: float | Omit = omit,
+        speed_unit: str | Omit = omit,
+        time_period: str | Omit = omit,
+        vehicle_category: str | Omit = omit,
+        vehicle_type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single RouteStats.
 
@@ -1212,14 +1212,14 @@ class AsyncRouteStatsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[RouteStatListResponse, AsyncOffsetPage[RouteStatListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1264,7 +1264,7 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a routeStats record specified by the passed ID path
@@ -1294,14 +1294,14 @@ class AsyncRouteStatsResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1347,7 +1347,7 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1383,7 +1383,7 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteStatQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1401,14 +1401,14 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RouteStatTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1462,7 +1462,7 @@ class AsyncRouteStatsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple routestats records as a POST body and ingest
