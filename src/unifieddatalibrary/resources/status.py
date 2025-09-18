@@ -18,7 +18,7 @@ from ..types import (
     status_get_by_entity_id_params,
     status_get_by_entity_type_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -68,22 +68,22 @@ class StatusResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_entity: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        declassification_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        declassification_string: str | NotGiven = NOT_GIVEN,
-        derived_from: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | NotGiven = NOT_GIVEN,
-        sub_status_collection: Iterable[SubStatusIngest] | NotGiven = NOT_GIVEN,
-        sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        declassification_date: Union[str, datetime] | Omit = omit,
+        declassification_string: str | Omit = omit,
+        derived_from: str | Omit = omit,
+        notes: str | Omit = omit,
+        ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | Omit = omit,
+        origin: str | Omit = omit,
+        state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | Omit = omit,
+        sub_status_collection: Iterable[SubStatusIngest] | Omit = omit,
+        sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Status as a POST body and ingest into the
@@ -180,22 +180,22 @@ class StatusResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_entity: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        declassification_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        declassification_string: str | NotGiven = NOT_GIVEN,
-        derived_from: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | NotGiven = NOT_GIVEN,
-        sub_status_collection: Iterable[SubStatusIngest] | NotGiven = NOT_GIVEN,
-        sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        declassification_date: Union[str, datetime] | Omit = omit,
+        declassification_string: str | Omit = omit,
+        derived_from: str | Omit = omit,
+        notes: str | Omit = omit,
+        ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | Omit = omit,
+        origin: str | Omit = omit,
+        state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | Omit = omit,
+        sub_status_collection: Iterable[SubStatusIngest] | Omit = omit,
+        sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Status.
 
@@ -289,14 +289,14 @@ class StatusResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[StatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -341,7 +341,7 @@ class StatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a Status object specified by the passed ID path
@@ -371,14 +371,14 @@ class StatusResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -419,14 +419,14 @@ class StatusResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusFull:
         """
         Service operation to get a single Status record by its unique ID passed as a
@@ -465,14 +465,14 @@ class StatusResource(SyncAPIResource):
         self,
         id_entity: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusGetByEntityIDResponse:
         """
         Service operation to get all statuses related to a particular entity.
@@ -510,14 +510,14 @@ class StatusResource(SyncAPIResource):
         self,
         entity_type: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusGetByEntityTypeResponse:
         """
         Service operation to get all statuses related to a particular entity type.
@@ -559,7 +559,7 @@ class StatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -577,14 +577,14 @@ class StatusResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -657,22 +657,22 @@ class AsyncStatusResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_entity: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        declassification_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        declassification_string: str | NotGiven = NOT_GIVEN,
-        derived_from: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | NotGiven = NOT_GIVEN,
-        sub_status_collection: Iterable[SubStatusIngest] | NotGiven = NOT_GIVEN,
-        sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        declassification_date: Union[str, datetime] | Omit = omit,
+        declassification_string: str | Omit = omit,
+        derived_from: str | Omit = omit,
+        notes: str | Omit = omit,
+        ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | Omit = omit,
+        origin: str | Omit = omit,
+        state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | Omit = omit,
+        sub_status_collection: Iterable[SubStatusIngest] | Omit = omit,
+        sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Status as a POST body and ingest into the
@@ -769,22 +769,22 @@ class AsyncStatusResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_entity: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        declassification_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        declassification_string: str | NotGiven = NOT_GIVEN,
-        derived_from: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | NotGiven = NOT_GIVEN,
-        sub_status_collection: Iterable[SubStatusIngest] | NotGiven = NOT_GIVEN,
-        sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        declassification_date: Union[str, datetime] | Omit = omit,
+        declassification_string: str | Omit = omit,
+        derived_from: str | Omit = omit,
+        notes: str | Omit = omit,
+        ops_cap: Literal["FMC", "NMC", "PMC", "UNK"] | Omit = omit,
+        origin: str | Omit = omit,
+        state: Literal["UNKNOWN", "DEAD", "ACTIVE", "RF ACTIVE", "STANDBY"] | Omit = omit,
+        sub_status_collection: Iterable[SubStatusIngest] | Omit = omit,
+        sys_cap: Literal["FMC", "NMC", "PMC", "UNK"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Status.
 
@@ -878,14 +878,14 @@ class AsyncStatusResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[StatusListResponse, AsyncOffsetPage[StatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -930,7 +930,7 @@ class AsyncStatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a Status object specified by the passed ID path
@@ -960,14 +960,14 @@ class AsyncStatusResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1008,14 +1008,14 @@ class AsyncStatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusFull:
         """
         Service operation to get a single Status record by its unique ID passed as a
@@ -1054,14 +1054,14 @@ class AsyncStatusResource(AsyncAPIResource):
         self,
         id_entity: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusGetByEntityIDResponse:
         """
         Service operation to get all statuses related to a particular entity.
@@ -1099,14 +1099,14 @@ class AsyncStatusResource(AsyncAPIResource):
         self,
         entity_type: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusGetByEntityTypeResponse:
         """
         Service operation to get all statuses related to a particular entity type.
@@ -1148,7 +1148,7 @@ class AsyncStatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1166,14 +1166,14 @@ class AsyncStatusResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> StatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified

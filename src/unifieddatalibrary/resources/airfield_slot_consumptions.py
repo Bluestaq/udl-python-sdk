@@ -16,7 +16,7 @@ from ..types import (
     airfield_slot_consumption_update_params,
     airfield_slot_consumption_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -65,39 +65,39 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         num_aircraft: int,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        alt_arr_sortie_id: str | NotGiven = NOT_GIVEN,
-        alt_dep_sortie_id: str | NotGiven = NOT_GIVEN,
-        app_comment: str | NotGiven = NOT_GIVEN,
-        app_initials: str | NotGiven = NOT_GIVEN,
-        app_org: str | NotGiven = NOT_GIVEN,
-        call_signs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        consumer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_arr_sortie: str | NotGiven = NOT_GIVEN,
-        id_dep_sortie: str | NotGiven = NOT_GIVEN,
-        mission_id: str | NotGiven = NOT_GIVEN,
-        occ_aircraft_mds: str | NotGiven = NOT_GIVEN,
-        occ_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        occ_tail_number: str | NotGiven = NOT_GIVEN,
-        occupied: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        req_comment: str | NotGiven = NOT_GIVEN,
-        req_initials: str | NotGiven = NOT_GIVEN,
-        req_org: str | NotGiven = NOT_GIVEN,
-        res_aircraft_mds: str | NotGiven = NOT_GIVEN,
-        res_mission_id: str | NotGiven = NOT_GIVEN,
-        res_reason: str | NotGiven = NOT_GIVEN,
-        res_tail_number: str | NotGiven = NOT_GIVEN,
-        res_type: str | NotGiven = NOT_GIVEN,
-        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | NotGiven = NOT_GIVEN,
-        target_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        alt_arr_sortie_id: str | Omit = omit,
+        alt_dep_sortie_id: str | Omit = omit,
+        app_comment: str | Omit = omit,
+        app_initials: str | Omit = omit,
+        app_org: str | Omit = omit,
+        call_signs: SequenceNotStr[str] | Omit = omit,
+        consumer: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        id_arr_sortie: str | Omit = omit,
+        id_dep_sortie: str | Omit = omit,
+        mission_id: str | Omit = omit,
+        occ_aircraft_mds: str | Omit = omit,
+        occ_start_time: Union[str, datetime] | Omit = omit,
+        occ_tail_number: str | Omit = omit,
+        occupied: bool | Omit = omit,
+        origin: str | Omit = omit,
+        req_comment: str | Omit = omit,
+        req_initials: str | Omit = omit,
+        req_org: str | Omit = omit,
+        res_aircraft_mds: str | Omit = omit,
+        res_mission_id: str | Omit = omit,
+        res_reason: str | Omit = omit,
+        res_tail_number: str | Omit = omit,
+        res_type: str | Omit = omit,
+        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | Omit = omit,
+        target_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single airfieldslotconsumption record as a POST body
@@ -260,14 +260,14 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldslotconsumptionFull:
         """
         Service operation to get a single airfieldslotconsumption record by its unique
@@ -312,39 +312,39 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         num_aircraft: int,
         source: str,
         start_time: Union[str, datetime],
-        body_id: str | NotGiven = NOT_GIVEN,
-        alt_arr_sortie_id: str | NotGiven = NOT_GIVEN,
-        alt_dep_sortie_id: str | NotGiven = NOT_GIVEN,
-        app_comment: str | NotGiven = NOT_GIVEN,
-        app_initials: str | NotGiven = NOT_GIVEN,
-        app_org: str | NotGiven = NOT_GIVEN,
-        call_signs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        consumer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_arr_sortie: str | NotGiven = NOT_GIVEN,
-        id_dep_sortie: str | NotGiven = NOT_GIVEN,
-        mission_id: str | NotGiven = NOT_GIVEN,
-        occ_aircraft_mds: str | NotGiven = NOT_GIVEN,
-        occ_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        occ_tail_number: str | NotGiven = NOT_GIVEN,
-        occupied: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        req_comment: str | NotGiven = NOT_GIVEN,
-        req_initials: str | NotGiven = NOT_GIVEN,
-        req_org: str | NotGiven = NOT_GIVEN,
-        res_aircraft_mds: str | NotGiven = NOT_GIVEN,
-        res_mission_id: str | NotGiven = NOT_GIVEN,
-        res_reason: str | NotGiven = NOT_GIVEN,
-        res_tail_number: str | NotGiven = NOT_GIVEN,
-        res_type: str | NotGiven = NOT_GIVEN,
-        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | NotGiven = NOT_GIVEN,
-        target_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        alt_arr_sortie_id: str | Omit = omit,
+        alt_dep_sortie_id: str | Omit = omit,
+        app_comment: str | Omit = omit,
+        app_initials: str | Omit = omit,
+        app_org: str | Omit = omit,
+        call_signs: SequenceNotStr[str] | Omit = omit,
+        consumer: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        id_arr_sortie: str | Omit = omit,
+        id_dep_sortie: str | Omit = omit,
+        mission_id: str | Omit = omit,
+        occ_aircraft_mds: str | Omit = omit,
+        occ_start_time: Union[str, datetime] | Omit = omit,
+        occ_tail_number: str | Omit = omit,
+        occupied: bool | Omit = omit,
+        origin: str | Omit = omit,
+        req_comment: str | Omit = omit,
+        req_initials: str | Omit = omit,
+        req_org: str | Omit = omit,
+        res_aircraft_mds: str | Omit = omit,
+        res_mission_id: str | Omit = omit,
+        res_reason: str | Omit = omit,
+        res_tail_number: str | Omit = omit,
+        res_type: str | Omit = omit,
+        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | Omit = omit,
+        target_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single AirfieldSlotConsumption.
 
@@ -510,14 +510,14 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[AirfieldslotconsumptionAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -565,7 +565,7 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an airfieldslotconsumption record specified by the
@@ -596,14 +596,14 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -651,7 +651,7 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldSlotConsumptionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -670,14 +670,14 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldSlotConsumptionTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -755,39 +755,39 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         num_aircraft: int,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        alt_arr_sortie_id: str | NotGiven = NOT_GIVEN,
-        alt_dep_sortie_id: str | NotGiven = NOT_GIVEN,
-        app_comment: str | NotGiven = NOT_GIVEN,
-        app_initials: str | NotGiven = NOT_GIVEN,
-        app_org: str | NotGiven = NOT_GIVEN,
-        call_signs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        consumer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_arr_sortie: str | NotGiven = NOT_GIVEN,
-        id_dep_sortie: str | NotGiven = NOT_GIVEN,
-        mission_id: str | NotGiven = NOT_GIVEN,
-        occ_aircraft_mds: str | NotGiven = NOT_GIVEN,
-        occ_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        occ_tail_number: str | NotGiven = NOT_GIVEN,
-        occupied: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        req_comment: str | NotGiven = NOT_GIVEN,
-        req_initials: str | NotGiven = NOT_GIVEN,
-        req_org: str | NotGiven = NOT_GIVEN,
-        res_aircraft_mds: str | NotGiven = NOT_GIVEN,
-        res_mission_id: str | NotGiven = NOT_GIVEN,
-        res_reason: str | NotGiven = NOT_GIVEN,
-        res_tail_number: str | NotGiven = NOT_GIVEN,
-        res_type: str | NotGiven = NOT_GIVEN,
-        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | NotGiven = NOT_GIVEN,
-        target_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        alt_arr_sortie_id: str | Omit = omit,
+        alt_dep_sortie_id: str | Omit = omit,
+        app_comment: str | Omit = omit,
+        app_initials: str | Omit = omit,
+        app_org: str | Omit = omit,
+        call_signs: SequenceNotStr[str] | Omit = omit,
+        consumer: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        id_arr_sortie: str | Omit = omit,
+        id_dep_sortie: str | Omit = omit,
+        mission_id: str | Omit = omit,
+        occ_aircraft_mds: str | Omit = omit,
+        occ_start_time: Union[str, datetime] | Omit = omit,
+        occ_tail_number: str | Omit = omit,
+        occupied: bool | Omit = omit,
+        origin: str | Omit = omit,
+        req_comment: str | Omit = omit,
+        req_initials: str | Omit = omit,
+        req_org: str | Omit = omit,
+        res_aircraft_mds: str | Omit = omit,
+        res_mission_id: str | Omit = omit,
+        res_reason: str | Omit = omit,
+        res_tail_number: str | Omit = omit,
+        res_type: str | Omit = omit,
+        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | Omit = omit,
+        target_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single airfieldslotconsumption record as a POST body
@@ -950,14 +950,14 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldslotconsumptionFull:
         """
         Service operation to get a single airfieldslotconsumption record by its unique
@@ -1002,39 +1002,39 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         num_aircraft: int,
         source: str,
         start_time: Union[str, datetime],
-        body_id: str | NotGiven = NOT_GIVEN,
-        alt_arr_sortie_id: str | NotGiven = NOT_GIVEN,
-        alt_dep_sortie_id: str | NotGiven = NOT_GIVEN,
-        app_comment: str | NotGiven = NOT_GIVEN,
-        app_initials: str | NotGiven = NOT_GIVEN,
-        app_org: str | NotGiven = NOT_GIVEN,
-        call_signs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        consumer: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        id_arr_sortie: str | NotGiven = NOT_GIVEN,
-        id_dep_sortie: str | NotGiven = NOT_GIVEN,
-        mission_id: str | NotGiven = NOT_GIVEN,
-        occ_aircraft_mds: str | NotGiven = NOT_GIVEN,
-        occ_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        occ_tail_number: str | NotGiven = NOT_GIVEN,
-        occupied: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        req_comment: str | NotGiven = NOT_GIVEN,
-        req_initials: str | NotGiven = NOT_GIVEN,
-        req_org: str | NotGiven = NOT_GIVEN,
-        res_aircraft_mds: str | NotGiven = NOT_GIVEN,
-        res_mission_id: str | NotGiven = NOT_GIVEN,
-        res_reason: str | NotGiven = NOT_GIVEN,
-        res_tail_number: str | NotGiven = NOT_GIVEN,
-        res_type: str | NotGiven = NOT_GIVEN,
-        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | NotGiven = NOT_GIVEN,
-        target_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        alt_arr_sortie_id: str | Omit = omit,
+        alt_dep_sortie_id: str | Omit = omit,
+        app_comment: str | Omit = omit,
+        app_initials: str | Omit = omit,
+        app_org: str | Omit = omit,
+        call_signs: SequenceNotStr[str] | Omit = omit,
+        consumer: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        id_arr_sortie: str | Omit = omit,
+        id_dep_sortie: str | Omit = omit,
+        mission_id: str | Omit = omit,
+        occ_aircraft_mds: str | Omit = omit,
+        occ_start_time: Union[str, datetime] | Omit = omit,
+        occ_tail_number: str | Omit = omit,
+        occupied: bool | Omit = omit,
+        origin: str | Omit = omit,
+        req_comment: str | Omit = omit,
+        req_initials: str | Omit = omit,
+        req_org: str | Omit = omit,
+        res_aircraft_mds: str | Omit = omit,
+        res_mission_id: str | Omit = omit,
+        res_reason: str | Omit = omit,
+        res_tail_number: str | Omit = omit,
+        res_type: str | Omit = omit,
+        status: Literal["REQUESTED", "APPROVED", "DENIED", "BLOCKED", "OTHER"] | Omit = omit,
+        target_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single AirfieldSlotConsumption.
 
@@ -1200,14 +1200,14 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AirfieldslotconsumptionAbridged, AsyncOffsetPage[AirfieldslotconsumptionAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1255,7 +1255,7 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an airfieldslotconsumption record specified by the
@@ -1286,14 +1286,14 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1341,7 +1341,7 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldSlotConsumptionQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1360,14 +1360,14 @@ class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldSlotConsumptionTupleResponse:
         """
         Service operation to dynamically query data and only return specified

@@ -32,7 +32,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -89,42 +89,42 @@ class EvacResource(SyncAPIResource):
         req_time: Union[str, datetime],
         source: str,
         type: Literal["REQUEST", "RESPONSE"],
-        id: str | NotGiven = NOT_GIVEN,
-        casualty_info: Iterable[evac_create_params.CasualtyInfo] | NotGiven = NOT_GIVEN,
-        ce: float | NotGiven = NOT_GIVEN,
-        cntct_freq: float | NotGiven = NOT_GIVEN,
-        comments: str | NotGiven = NOT_GIVEN,
-        enemy_data: Iterable[evac_create_params.EnemyData] | NotGiven = NOT_GIVEN,
-        id_weather_report: str | NotGiven = NOT_GIVEN,
-        le: float | NotGiven = NOT_GIVEN,
-        medevac_id: str | NotGiven = NOT_GIVEN,
-        medic_req: bool | NotGiven = NOT_GIVEN,
-        mission_type: str | NotGiven = NOT_GIVEN,
-        num_ambulatory: int | NotGiven = NOT_GIVEN,
-        num_casualties: int | NotGiven = NOT_GIVEN,
-        num_kia: int | NotGiven = NOT_GIVEN,
-        num_litter: int | NotGiven = NOT_GIVEN,
-        num_wia: int | NotGiven = NOT_GIVEN,
-        obstacles_remarks: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pickup_alt: float | NotGiven = NOT_GIVEN,
-        pickup_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        req_call_sign: str | NotGiven = NOT_GIVEN,
-        req_num: str | NotGiven = NOT_GIVEN,
-        terrain: str | NotGiven = NOT_GIVEN,
-        terrain_remarks: str | NotGiven = NOT_GIVEN,
-        zone_contr_call_sign: str | NotGiven = NOT_GIVEN,
-        zone_hot: bool | NotGiven = NOT_GIVEN,
-        zone_marking: str | NotGiven = NOT_GIVEN,
-        zone_marking_color: str | NotGiven = NOT_GIVEN,
-        zone_name: str | NotGiven = NOT_GIVEN,
-        zone_security: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        casualty_info: Iterable[evac_create_params.CasualtyInfo] | Omit = omit,
+        ce: float | Omit = omit,
+        cntct_freq: float | Omit = omit,
+        comments: str | Omit = omit,
+        enemy_data: Iterable[evac_create_params.EnemyData] | Omit = omit,
+        id_weather_report: str | Omit = omit,
+        le: float | Omit = omit,
+        medevac_id: str | Omit = omit,
+        medic_req: bool | Omit = omit,
+        mission_type: str | Omit = omit,
+        num_ambulatory: int | Omit = omit,
+        num_casualties: int | Omit = omit,
+        num_kia: int | Omit = omit,
+        num_litter: int | Omit = omit,
+        num_wia: int | Omit = omit,
+        obstacles_remarks: str | Omit = omit,
+        origin: str | Omit = omit,
+        pickup_alt: float | Omit = omit,
+        pickup_time: Union[str, datetime] | Omit = omit,
+        req_call_sign: str | Omit = omit,
+        req_num: str | Omit = omit,
+        terrain: str | Omit = omit,
+        terrain_remarks: str | Omit = omit,
+        zone_contr_call_sign: str | Omit = omit,
+        zone_hot: bool | Omit = omit,
+        zone_marking: str | Omit = omit,
+        zone_marking_color: str | Omit = omit,
+        zone_name: str | Omit = omit,
+        zone_security: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single evac as a POST body and ingest into the
@@ -301,14 +301,14 @@ class EvacResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EvacFull:
         """
         Service operation to get a single Evac by its unique ID passed as a path
@@ -347,14 +347,14 @@ class EvacResource(SyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[EvacAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -397,14 +397,14 @@ class EvacResource(SyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -453,7 +453,7 @@ class EvacResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of Evac
@@ -489,7 +489,7 @@ class EvacResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EvacQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -512,7 +512,7 @@ class EvacResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of Evac events as a POST body and ingest into
@@ -577,42 +577,42 @@ class AsyncEvacResource(AsyncAPIResource):
         req_time: Union[str, datetime],
         source: str,
         type: Literal["REQUEST", "RESPONSE"],
-        id: str | NotGiven = NOT_GIVEN,
-        casualty_info: Iterable[evac_create_params.CasualtyInfo] | NotGiven = NOT_GIVEN,
-        ce: float | NotGiven = NOT_GIVEN,
-        cntct_freq: float | NotGiven = NOT_GIVEN,
-        comments: str | NotGiven = NOT_GIVEN,
-        enemy_data: Iterable[evac_create_params.EnemyData] | NotGiven = NOT_GIVEN,
-        id_weather_report: str | NotGiven = NOT_GIVEN,
-        le: float | NotGiven = NOT_GIVEN,
-        medevac_id: str | NotGiven = NOT_GIVEN,
-        medic_req: bool | NotGiven = NOT_GIVEN,
-        mission_type: str | NotGiven = NOT_GIVEN,
-        num_ambulatory: int | NotGiven = NOT_GIVEN,
-        num_casualties: int | NotGiven = NOT_GIVEN,
-        num_kia: int | NotGiven = NOT_GIVEN,
-        num_litter: int | NotGiven = NOT_GIVEN,
-        num_wia: int | NotGiven = NOT_GIVEN,
-        obstacles_remarks: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pickup_alt: float | NotGiven = NOT_GIVEN,
-        pickup_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        req_call_sign: str | NotGiven = NOT_GIVEN,
-        req_num: str | NotGiven = NOT_GIVEN,
-        terrain: str | NotGiven = NOT_GIVEN,
-        terrain_remarks: str | NotGiven = NOT_GIVEN,
-        zone_contr_call_sign: str | NotGiven = NOT_GIVEN,
-        zone_hot: bool | NotGiven = NOT_GIVEN,
-        zone_marking: str | NotGiven = NOT_GIVEN,
-        zone_marking_color: str | NotGiven = NOT_GIVEN,
-        zone_name: str | NotGiven = NOT_GIVEN,
-        zone_security: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        casualty_info: Iterable[evac_create_params.CasualtyInfo] | Omit = omit,
+        ce: float | Omit = omit,
+        cntct_freq: float | Omit = omit,
+        comments: str | Omit = omit,
+        enemy_data: Iterable[evac_create_params.EnemyData] | Omit = omit,
+        id_weather_report: str | Omit = omit,
+        le: float | Omit = omit,
+        medevac_id: str | Omit = omit,
+        medic_req: bool | Omit = omit,
+        mission_type: str | Omit = omit,
+        num_ambulatory: int | Omit = omit,
+        num_casualties: int | Omit = omit,
+        num_kia: int | Omit = omit,
+        num_litter: int | Omit = omit,
+        num_wia: int | Omit = omit,
+        obstacles_remarks: str | Omit = omit,
+        origin: str | Omit = omit,
+        pickup_alt: float | Omit = omit,
+        pickup_time: Union[str, datetime] | Omit = omit,
+        req_call_sign: str | Omit = omit,
+        req_num: str | Omit = omit,
+        terrain: str | Omit = omit,
+        terrain_remarks: str | Omit = omit,
+        zone_contr_call_sign: str | Omit = omit,
+        zone_hot: bool | Omit = omit,
+        zone_marking: str | Omit = omit,
+        zone_marking_color: str | Omit = omit,
+        zone_name: str | Omit = omit,
+        zone_security: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single evac as a POST body and ingest into the
@@ -789,14 +789,14 @@ class AsyncEvacResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EvacFull:
         """
         Service operation to get a single Evac by its unique ID passed as a path
@@ -835,14 +835,14 @@ class AsyncEvacResource(AsyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EvacAbridged, AsyncOffsetPage[EvacAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -885,14 +885,14 @@ class AsyncEvacResource(AsyncAPIResource):
         self,
         *,
         req_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -941,7 +941,7 @@ class AsyncEvacResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of Evac
@@ -977,7 +977,7 @@ class AsyncEvacResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EvacQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1000,7 +1000,7 @@ class AsyncEvacResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of Evac events as a POST body and ingest into

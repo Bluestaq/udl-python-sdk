@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -53,19 +53,19 @@ class UdlH3geoResource(SyncAPIResource):
         num_cells: int,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        resolution: int | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        center_freq: float | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        resolution: int | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single H3Geo record and many associated H3Geo hex
@@ -190,19 +190,19 @@ class AsyncUdlH3geoResource(AsyncAPIResource):
         num_cells: int,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        resolution: int | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        center_freq: float | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        resolution: int | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        type: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single H3Geo record and many associated H3Geo hex

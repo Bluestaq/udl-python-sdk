@@ -26,7 +26,18 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileTypes, SequenceNotStr
+from ..._types import (
+    Body,
+    Omit,
+    Query,
+    Headers,
+    NoneType,
+    NotGiven,
+    FileTypes,
+    SequenceNotStr,
+    omit,
+    not_given,
+)
 from ..._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -86,31 +97,31 @@ class GroundImageryResource(SyncAPIResource):
         filename: str,
         image_time: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        checksum_value: str | NotGiven = NOT_GIVEN,
-        filesize: int | NotGiven = NOT_GIVEN,
-        format: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        keywords: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        region: str | NotGiven = NOT_GIVEN,
-        region_geo_json: str | NotGiven = NOT_GIVEN,
-        region_n_dims: int | NotGiven = NOT_GIVEN,
-        region_s_rid: int | NotGiven = NOT_GIVEN,
-        region_text: str | NotGiven = NOT_GIVEN,
-        region_type: str | NotGiven = NOT_GIVEN,
-        subject_id: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        checksum_value: str | Omit = omit,
+        filesize: int | Omit = omit,
+        format: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        keywords: SequenceNotStr[str] | Omit = omit,
+        name: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        region: str | Omit = omit,
+        region_geo_json: str | Omit = omit,
+        region_n_dims: int | Omit = omit,
+        region_s_rid: int | Omit = omit,
+        region_text: str | Omit = omit,
+        region_type: str | Omit = omit,
+        subject_id: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single GroundImagery object as a POST body and
@@ -253,14 +264,14 @@ class GroundImageryResource(SyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[GroundImageryListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -303,18 +314,18 @@ class GroundImageryResource(SyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        notification: str | NotGiven = NOT_GIVEN,
-        output_delimiter: str | NotGiven = NOT_GIVEN,
-        output_format: str | NotGiven = NOT_GIVEN,
+        columns: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        notification: str | Omit = omit,
+        output_delimiter: str | Omit = omit,
+        output_format: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to dynamically query historical data by a variety of query
@@ -377,14 +388,14 @@ class GroundImageryResource(SyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -428,14 +439,14 @@ class GroundImageryResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GroundImageryGetResponse:
         """
         Service operation to get a single GroundImagery record by its unique ID passed
@@ -475,14 +486,14 @@ class GroundImageryResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
         Service operation to get a single GroundImagery binary image by its unique ID
@@ -527,7 +538,7 @@ class GroundImageryResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GroundImageryQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -546,14 +557,14 @@ class GroundImageryResource(SyncAPIResource):
         *,
         columns: str,
         image_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GroundImageryTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -610,7 +621,7 @@ class GroundImageryResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Upload a new image with its metadata.
@@ -693,31 +704,31 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         filename: str,
         image_time: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        checksum_value: str | NotGiven = NOT_GIVEN,
-        filesize: int | NotGiven = NOT_GIVEN,
-        format: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        keywords: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        region: str | NotGiven = NOT_GIVEN,
-        region_geo_json: str | NotGiven = NOT_GIVEN,
-        region_n_dims: int | NotGiven = NOT_GIVEN,
-        region_s_rid: int | NotGiven = NOT_GIVEN,
-        region_text: str | NotGiven = NOT_GIVEN,
-        region_type: str | NotGiven = NOT_GIVEN,
-        subject_id: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        checksum_value: str | Omit = omit,
+        filesize: int | Omit = omit,
+        format: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        keywords: SequenceNotStr[str] | Omit = omit,
+        name: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        region: str | Omit = omit,
+        region_geo_json: str | Omit = omit,
+        region_n_dims: int | Omit = omit,
+        region_s_rid: int | Omit = omit,
+        region_text: str | Omit = omit,
+        region_type: str | Omit = omit,
+        subject_id: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single GroundImagery object as a POST body and
@@ -860,14 +871,14 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[GroundImageryListResponse, AsyncOffsetPage[GroundImageryListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -910,18 +921,18 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        notification: str | NotGiven = NOT_GIVEN,
-        output_delimiter: str | NotGiven = NOT_GIVEN,
-        output_format: str | NotGiven = NOT_GIVEN,
+        columns: str | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        notification: str | Omit = omit,
+        output_delimiter: str | Omit = omit,
+        output_format: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to dynamically query historical data by a variety of query
@@ -984,14 +995,14 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         self,
         *,
         image_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1035,14 +1046,14 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GroundImageryGetResponse:
         """
         Service operation to get a single GroundImagery record by its unique ID passed
@@ -1082,14 +1093,14 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
         Service operation to get a single GroundImagery binary image by its unique ID
@@ -1134,7 +1145,7 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GroundImageryQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1153,14 +1164,14 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         *,
         columns: str,
         image_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GroundImageryTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1217,7 +1228,7 @@ class AsyncGroundImageryResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Upload a new image with its metadata.

@@ -14,7 +14,7 @@ from ..types import (
     sera_data_comm_detail_create_params,
     sera_data_comm_detail_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -60,43 +60,43 @@ class SeraDataCommDetailsResource(SyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        bandwidth: float | NotGiven = NOT_GIVEN,
-        eirp: float | NotGiven = NOT_GIVEN,
-        est_hts_total_capacity: float | NotGiven = NOT_GIVEN,
-        est_hts_total_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        est_hts_total_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        gateway_downlink_from: float | NotGiven = NOT_GIVEN,
-        gateway_downlink_to: float | NotGiven = NOT_GIVEN,
-        gateway_uplink_from: float | NotGiven = NOT_GIVEN,
-        gateway_uplink_to: float | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        hts_num_user_spot_beams: int | NotGiven = NOT_GIVEN,
-        hts_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        hts_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        id_comm: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        num36_mhz_equivalent_transponders: int | NotGiven = NOT_GIVEN,
-        num_operational_transponders: int | NotGiven = NOT_GIVEN,
-        num_spare_transponders: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        payload_notes: str | NotGiven = NOT_GIVEN,
-        polarization: str | NotGiven = NOT_GIVEN,
-        solid_state_power_amp: float | NotGiven = NOT_GIVEN,
-        spacecraft_id: str | NotGiven = NOT_GIVEN,
-        trade_lease_org_id: str | NotGiven = NOT_GIVEN,
-        traveling_wave_tube_amplifier: float | NotGiven = NOT_GIVEN,
-        user_downlink_from: float | NotGiven = NOT_GIVEN,
-        user_downlink_to: float | NotGiven = NOT_GIVEN,
-        user_uplink_from: float | NotGiven = NOT_GIVEN,
-        user_uplink_to: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        band: str | Omit = omit,
+        bandwidth: float | Omit = omit,
+        eirp: float | Omit = omit,
+        est_hts_total_capacity: float | Omit = omit,
+        est_hts_total_user_downlink_bandwidth_per_beam: float | Omit = omit,
+        est_hts_total_user_uplink_bandwidth_per_beam: float | Omit = omit,
+        gateway_downlink_from: float | Omit = omit,
+        gateway_downlink_to: float | Omit = omit,
+        gateway_uplink_from: float | Omit = omit,
+        gateway_uplink_to: float | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        hts_num_user_spot_beams: int | Omit = omit,
+        hts_user_downlink_bandwidth_per_beam: float | Omit = omit,
+        hts_user_uplink_bandwidth_per_beam: float | Omit = omit,
+        id_comm: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        num36_mhz_equivalent_transponders: int | Omit = omit,
+        num_operational_transponders: int | Omit = omit,
+        num_spare_transponders: int | Omit = omit,
+        origin: str | Omit = omit,
+        payload_notes: str | Omit = omit,
+        polarization: str | Omit = omit,
+        solid_state_power_amp: float | Omit = omit,
+        spacecraft_id: str | Omit = omit,
+        trade_lease_org_id: str | Omit = omit,
+        traveling_wave_tube_amplifier: float | Omit = omit,
+        user_downlink_from: float | Omit = omit,
+        user_downlink_to: float | Omit = omit,
+        user_uplink_from: float | Omit = omit,
+        user_uplink_to: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SeradataCommDetails as a POST body and ingest
@@ -254,43 +254,43 @@ class SeraDataCommDetailsResource(SyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        bandwidth: float | NotGiven = NOT_GIVEN,
-        eirp: float | NotGiven = NOT_GIVEN,
-        est_hts_total_capacity: float | NotGiven = NOT_GIVEN,
-        est_hts_total_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        est_hts_total_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        gateway_downlink_from: float | NotGiven = NOT_GIVEN,
-        gateway_downlink_to: float | NotGiven = NOT_GIVEN,
-        gateway_uplink_from: float | NotGiven = NOT_GIVEN,
-        gateway_uplink_to: float | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        hts_num_user_spot_beams: int | NotGiven = NOT_GIVEN,
-        hts_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        hts_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        id_comm: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        num36_mhz_equivalent_transponders: int | NotGiven = NOT_GIVEN,
-        num_operational_transponders: int | NotGiven = NOT_GIVEN,
-        num_spare_transponders: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        payload_notes: str | NotGiven = NOT_GIVEN,
-        polarization: str | NotGiven = NOT_GIVEN,
-        solid_state_power_amp: float | NotGiven = NOT_GIVEN,
-        spacecraft_id: str | NotGiven = NOT_GIVEN,
-        trade_lease_org_id: str | NotGiven = NOT_GIVEN,
-        traveling_wave_tube_amplifier: float | NotGiven = NOT_GIVEN,
-        user_downlink_from: float | NotGiven = NOT_GIVEN,
-        user_downlink_to: float | NotGiven = NOT_GIVEN,
-        user_uplink_from: float | NotGiven = NOT_GIVEN,
-        user_uplink_to: float | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        band: str | Omit = omit,
+        bandwidth: float | Omit = omit,
+        eirp: float | Omit = omit,
+        est_hts_total_capacity: float | Omit = omit,
+        est_hts_total_user_downlink_bandwidth_per_beam: float | Omit = omit,
+        est_hts_total_user_uplink_bandwidth_per_beam: float | Omit = omit,
+        gateway_downlink_from: float | Omit = omit,
+        gateway_downlink_to: float | Omit = omit,
+        gateway_uplink_from: float | Omit = omit,
+        gateway_uplink_to: float | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        hts_num_user_spot_beams: int | Omit = omit,
+        hts_user_downlink_bandwidth_per_beam: float | Omit = omit,
+        hts_user_uplink_bandwidth_per_beam: float | Omit = omit,
+        id_comm: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        num36_mhz_equivalent_transponders: int | Omit = omit,
+        num_operational_transponders: int | Omit = omit,
+        num_spare_transponders: int | Omit = omit,
+        origin: str | Omit = omit,
+        payload_notes: str | Omit = omit,
+        polarization: str | Omit = omit,
+        solid_state_power_amp: float | Omit = omit,
+        spacecraft_id: str | Omit = omit,
+        trade_lease_org_id: str | Omit = omit,
+        traveling_wave_tube_amplifier: float | Omit = omit,
+        user_downlink_from: float | Omit = omit,
+        user_downlink_to: float | Omit = omit,
+        user_uplink_from: float | Omit = omit,
+        user_uplink_to: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update an SeradataCommDetails.
 
@@ -446,14 +446,14 @@ class SeraDataCommDetailsResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SeraDataCommDetailListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -498,7 +498,7 @@ class SeraDataCommDetailsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an SeradataCommDetails specified by the passed ID
@@ -528,14 +528,14 @@ class SeraDataCommDetailsResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -576,14 +576,14 @@ class SeraDataCommDetailsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataCommDetailGetResponse:
         """
         Service operation to get a single SeradataCommDetails by its unique ID passed as
@@ -626,7 +626,7 @@ class SeraDataCommDetailsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataCommDetailQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -644,14 +644,14 @@ class SeraDataCommDetailsResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataCommDetailTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -723,43 +723,43 @@ class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        bandwidth: float | NotGiven = NOT_GIVEN,
-        eirp: float | NotGiven = NOT_GIVEN,
-        est_hts_total_capacity: float | NotGiven = NOT_GIVEN,
-        est_hts_total_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        est_hts_total_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        gateway_downlink_from: float | NotGiven = NOT_GIVEN,
-        gateway_downlink_to: float | NotGiven = NOT_GIVEN,
-        gateway_uplink_from: float | NotGiven = NOT_GIVEN,
-        gateway_uplink_to: float | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        hts_num_user_spot_beams: int | NotGiven = NOT_GIVEN,
-        hts_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        hts_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        id_comm: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        num36_mhz_equivalent_transponders: int | NotGiven = NOT_GIVEN,
-        num_operational_transponders: int | NotGiven = NOT_GIVEN,
-        num_spare_transponders: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        payload_notes: str | NotGiven = NOT_GIVEN,
-        polarization: str | NotGiven = NOT_GIVEN,
-        solid_state_power_amp: float | NotGiven = NOT_GIVEN,
-        spacecraft_id: str | NotGiven = NOT_GIVEN,
-        trade_lease_org_id: str | NotGiven = NOT_GIVEN,
-        traveling_wave_tube_amplifier: float | NotGiven = NOT_GIVEN,
-        user_downlink_from: float | NotGiven = NOT_GIVEN,
-        user_downlink_to: float | NotGiven = NOT_GIVEN,
-        user_uplink_from: float | NotGiven = NOT_GIVEN,
-        user_uplink_to: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        band: str | Omit = omit,
+        bandwidth: float | Omit = omit,
+        eirp: float | Omit = omit,
+        est_hts_total_capacity: float | Omit = omit,
+        est_hts_total_user_downlink_bandwidth_per_beam: float | Omit = omit,
+        est_hts_total_user_uplink_bandwidth_per_beam: float | Omit = omit,
+        gateway_downlink_from: float | Omit = omit,
+        gateway_downlink_to: float | Omit = omit,
+        gateway_uplink_from: float | Omit = omit,
+        gateway_uplink_to: float | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        hts_num_user_spot_beams: int | Omit = omit,
+        hts_user_downlink_bandwidth_per_beam: float | Omit = omit,
+        hts_user_uplink_bandwidth_per_beam: float | Omit = omit,
+        id_comm: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        num36_mhz_equivalent_transponders: int | Omit = omit,
+        num_operational_transponders: int | Omit = omit,
+        num_spare_transponders: int | Omit = omit,
+        origin: str | Omit = omit,
+        payload_notes: str | Omit = omit,
+        polarization: str | Omit = omit,
+        solid_state_power_amp: float | Omit = omit,
+        spacecraft_id: str | Omit = omit,
+        trade_lease_org_id: str | Omit = omit,
+        traveling_wave_tube_amplifier: float | Omit = omit,
+        user_downlink_from: float | Omit = omit,
+        user_downlink_to: float | Omit = omit,
+        user_uplink_from: float | Omit = omit,
+        user_uplink_to: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SeradataCommDetails as a POST body and ingest
@@ -917,43 +917,43 @@ class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
         classification_marking: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        bandwidth: float | NotGiven = NOT_GIVEN,
-        eirp: float | NotGiven = NOT_GIVEN,
-        est_hts_total_capacity: float | NotGiven = NOT_GIVEN,
-        est_hts_total_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        est_hts_total_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        gateway_downlink_from: float | NotGiven = NOT_GIVEN,
-        gateway_downlink_to: float | NotGiven = NOT_GIVEN,
-        gateway_uplink_from: float | NotGiven = NOT_GIVEN,
-        gateway_uplink_to: float | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        hts_num_user_spot_beams: int | NotGiven = NOT_GIVEN,
-        hts_user_downlink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        hts_user_uplink_bandwidth_per_beam: float | NotGiven = NOT_GIVEN,
-        id_comm: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        num36_mhz_equivalent_transponders: int | NotGiven = NOT_GIVEN,
-        num_operational_transponders: int | NotGiven = NOT_GIVEN,
-        num_spare_transponders: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        payload_notes: str | NotGiven = NOT_GIVEN,
-        polarization: str | NotGiven = NOT_GIVEN,
-        solid_state_power_amp: float | NotGiven = NOT_GIVEN,
-        spacecraft_id: str | NotGiven = NOT_GIVEN,
-        trade_lease_org_id: str | NotGiven = NOT_GIVEN,
-        traveling_wave_tube_amplifier: float | NotGiven = NOT_GIVEN,
-        user_downlink_from: float | NotGiven = NOT_GIVEN,
-        user_downlink_to: float | NotGiven = NOT_GIVEN,
-        user_uplink_from: float | NotGiven = NOT_GIVEN,
-        user_uplink_to: float | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        band: str | Omit = omit,
+        bandwidth: float | Omit = omit,
+        eirp: float | Omit = omit,
+        est_hts_total_capacity: float | Omit = omit,
+        est_hts_total_user_downlink_bandwidth_per_beam: float | Omit = omit,
+        est_hts_total_user_uplink_bandwidth_per_beam: float | Omit = omit,
+        gateway_downlink_from: float | Omit = omit,
+        gateway_downlink_to: float | Omit = omit,
+        gateway_uplink_from: float | Omit = omit,
+        gateway_uplink_to: float | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        hts_num_user_spot_beams: int | Omit = omit,
+        hts_user_downlink_bandwidth_per_beam: float | Omit = omit,
+        hts_user_uplink_bandwidth_per_beam: float | Omit = omit,
+        id_comm: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        num36_mhz_equivalent_transponders: int | Omit = omit,
+        num_operational_transponders: int | Omit = omit,
+        num_spare_transponders: int | Omit = omit,
+        origin: str | Omit = omit,
+        payload_notes: str | Omit = omit,
+        polarization: str | Omit = omit,
+        solid_state_power_amp: float | Omit = omit,
+        spacecraft_id: str | Omit = omit,
+        trade_lease_org_id: str | Omit = omit,
+        traveling_wave_tube_amplifier: float | Omit = omit,
+        user_downlink_from: float | Omit = omit,
+        user_downlink_to: float | Omit = omit,
+        user_uplink_from: float | Omit = omit,
+        user_uplink_to: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update an SeradataCommDetails.
 
@@ -1109,14 +1109,14 @@ class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SeraDataCommDetailListResponse, AsyncOffsetPage[SeraDataCommDetailListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1161,7 +1161,7 @@ class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an SeradataCommDetails specified by the passed ID
@@ -1191,14 +1191,14 @@ class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1239,14 +1239,14 @@ class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataCommDetailGetResponse:
         """
         Service operation to get a single SeradataCommDetails by its unique ID passed as
@@ -1289,7 +1289,7 @@ class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataCommDetailQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1307,14 +1307,14 @@ class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SeraDataCommDetailTupleResponse:
         """
         Service operation to dynamically query data and only return specified

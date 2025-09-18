@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -76,30 +76,30 @@ class EffectResponsesResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        actions_list: Iterable[effect_response_create_params.ActionsList] | NotGiven = NOT_GIVEN,
-        actor_src_id: str | NotGiven = NOT_GIVEN,
-        actor_src_type: str | NotGiven = NOT_GIVEN,
-        coa_metrics: Iterable[effect_response_create_params.CoaMetric] | NotGiven = NOT_GIVEN,
-        collateral_damage_est: float | NotGiven = NOT_GIVEN,
-        decision_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_actions: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        external_request_id: str | NotGiven = NOT_GIVEN,
-        id_effect_request: str | NotGiven = NOT_GIVEN,
-        munition_id: str | NotGiven = NOT_GIVEN,
-        munition_type: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        probability_of_kill: float | NotGiven = NOT_GIVEN,
-        red_target_src_id: str | NotGiven = NOT_GIVEN,
-        red_target_src_type: str | NotGiven = NOT_GIVEN,
-        red_time_to_overhead: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        shots_required: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        actions_list: Iterable[effect_response_create_params.ActionsList] | Omit = omit,
+        actor_src_id: str | Omit = omit,
+        actor_src_type: str | Omit = omit,
+        coa_metrics: Iterable[effect_response_create_params.CoaMetric] | Omit = omit,
+        collateral_damage_est: float | Omit = omit,
+        decision_deadline: Union[str, datetime] | Omit = omit,
+        external_actions: SequenceNotStr[str] | Omit = omit,
+        external_request_id: str | Omit = omit,
+        id_effect_request: str | Omit = omit,
+        munition_id: str | Omit = omit,
+        munition_type: str | Omit = omit,
+        origin: str | Omit = omit,
+        probability_of_kill: float | Omit = omit,
+        red_target_src_id: str | Omit = omit,
+        red_target_src_type: str | Omit = omit,
+        red_time_to_overhead: Union[str, datetime] | Omit = omit,
+        shots_required: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single EffectResponse as a POST body and ingest into
@@ -225,14 +225,14 @@ class EffectResponsesResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EffectResponseRetrieveResponse:
         """
         Service operation to get a single EffectResponse by its unique ID passed as a
@@ -271,14 +271,14 @@ class EffectResponsesResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[EffectResponseListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -322,14 +322,14 @@ class EffectResponsesResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -379,7 +379,7 @@ class EffectResponsesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -415,7 +415,7 @@ class EffectResponsesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EffectResponseQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -434,14 +434,14 @@ class EffectResponsesResource(SyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EffectResponseTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -499,7 +499,7 @@ class EffectResponsesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple EffectResponses as a POST body and ingest
@@ -558,30 +558,30 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        actions_list: Iterable[effect_response_create_params.ActionsList] | NotGiven = NOT_GIVEN,
-        actor_src_id: str | NotGiven = NOT_GIVEN,
-        actor_src_type: str | NotGiven = NOT_GIVEN,
-        coa_metrics: Iterable[effect_response_create_params.CoaMetric] | NotGiven = NOT_GIVEN,
-        collateral_damage_est: float | NotGiven = NOT_GIVEN,
-        decision_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_actions: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        external_request_id: str | NotGiven = NOT_GIVEN,
-        id_effect_request: str | NotGiven = NOT_GIVEN,
-        munition_id: str | NotGiven = NOT_GIVEN,
-        munition_type: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        probability_of_kill: float | NotGiven = NOT_GIVEN,
-        red_target_src_id: str | NotGiven = NOT_GIVEN,
-        red_target_src_type: str | NotGiven = NOT_GIVEN,
-        red_time_to_overhead: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        shots_required: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        actions_list: Iterable[effect_response_create_params.ActionsList] | Omit = omit,
+        actor_src_id: str | Omit = omit,
+        actor_src_type: str | Omit = omit,
+        coa_metrics: Iterable[effect_response_create_params.CoaMetric] | Omit = omit,
+        collateral_damage_est: float | Omit = omit,
+        decision_deadline: Union[str, datetime] | Omit = omit,
+        external_actions: SequenceNotStr[str] | Omit = omit,
+        external_request_id: str | Omit = omit,
+        id_effect_request: str | Omit = omit,
+        munition_id: str | Omit = omit,
+        munition_type: str | Omit = omit,
+        origin: str | Omit = omit,
+        probability_of_kill: float | Omit = omit,
+        red_target_src_id: str | Omit = omit,
+        red_target_src_type: str | Omit = omit,
+        red_time_to_overhead: Union[str, datetime] | Omit = omit,
+        shots_required: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single EffectResponse as a POST body and ingest into
@@ -707,14 +707,14 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EffectResponseRetrieveResponse:
         """
         Service operation to get a single EffectResponse by its unique ID passed as a
@@ -753,14 +753,14 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EffectResponseListResponse, AsyncOffsetPage[EffectResponseListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -804,14 +804,14 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -861,7 +861,7 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -897,7 +897,7 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EffectResponseQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -916,14 +916,14 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         *,
         columns: str,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EffectResponseTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -981,7 +981,7 @@ class AsyncEffectResponsesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple EffectResponses as a POST body and ingest

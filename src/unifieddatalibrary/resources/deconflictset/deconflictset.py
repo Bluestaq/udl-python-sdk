@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -76,26 +76,26 @@ class DeconflictsetResource(SyncAPIResource):
         event_start_time: Union[str, datetime],
         num_windows: int,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        calculation_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        calculation_id: str | NotGiven = NOT_GIVEN,
-        calculation_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        deconflict_windows: Iterable[deconflictset_create_params.DeconflictWindow] | NotGiven = NOT_GIVEN,
-        errors: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        event_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        event_type: str | NotGiven = NOT_GIVEN,
-        id_laser_deconflict_request: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        reference_frame: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        warnings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        calculation_end_time: Union[str, datetime] | Omit = omit,
+        calculation_id: str | Omit = omit,
+        calculation_start_time: Union[str, datetime] | Omit = omit,
+        deconflict_windows: Iterable[deconflictset_create_params.DeconflictWindow] | Omit = omit,
+        errors: SequenceNotStr[str] | Omit = omit,
+        event_end_time: Union[str, datetime] | Omit = omit,
+        event_type: str | Omit = omit,
+        id_laser_deconflict_request: str | Omit = omit,
+        origin: str | Omit = omit,
+        reference_frame: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        warnings: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single DeconflictSet record as a POST body and
@@ -219,14 +219,14 @@ class DeconflictsetResource(SyncAPIResource):
         self,
         *,
         event_start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[DeconflictsetListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -270,14 +270,14 @@ class DeconflictsetResource(SyncAPIResource):
         self,
         *,
         event_start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -322,14 +322,14 @@ class DeconflictsetResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DeconflictsetGetResponse:
         """
         Service operation to get a single DeconflictSet record by its unique ID passed
@@ -372,7 +372,7 @@ class DeconflictsetResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DeconflictsetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -391,14 +391,14 @@ class DeconflictsetResource(SyncAPIResource):
         *,
         columns: str,
         event_start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DeconflictsetTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -455,26 +455,26 @@ class DeconflictsetResource(SyncAPIResource):
         event_start_time: Union[str, datetime],
         num_windows: int,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        calculation_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        calculation_id: str | NotGiven = NOT_GIVEN,
-        calculation_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        deconflict_windows: Iterable[deconflictset_unvalidated_publish_params.DeconflictWindow] | NotGiven = NOT_GIVEN,
-        errors: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        event_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        event_type: str | NotGiven = NOT_GIVEN,
-        id_laser_deconflict_request: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        reference_frame: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        warnings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        calculation_end_time: Union[str, datetime] | Omit = omit,
+        calculation_id: str | Omit = omit,
+        calculation_start_time: Union[str, datetime] | Omit = omit,
+        deconflict_windows: Iterable[deconflictset_unvalidated_publish_params.DeconflictWindow] | Omit = omit,
+        errors: SequenceNotStr[str] | Omit = omit,
+        event_end_time: Union[str, datetime] | Omit = omit,
+        event_type: str | Omit = omit,
+        id_laser_deconflict_request: str | Omit = omit,
+        origin: str | Omit = omit,
+        reference_frame: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        warnings: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single DeconflictSet record as a POST body and
@@ -626,26 +626,26 @@ class AsyncDeconflictsetResource(AsyncAPIResource):
         event_start_time: Union[str, datetime],
         num_windows: int,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        calculation_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        calculation_id: str | NotGiven = NOT_GIVEN,
-        calculation_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        deconflict_windows: Iterable[deconflictset_create_params.DeconflictWindow] | NotGiven = NOT_GIVEN,
-        errors: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        event_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        event_type: str | NotGiven = NOT_GIVEN,
-        id_laser_deconflict_request: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        reference_frame: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        warnings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        calculation_end_time: Union[str, datetime] | Omit = omit,
+        calculation_id: str | Omit = omit,
+        calculation_start_time: Union[str, datetime] | Omit = omit,
+        deconflict_windows: Iterable[deconflictset_create_params.DeconflictWindow] | Omit = omit,
+        errors: SequenceNotStr[str] | Omit = omit,
+        event_end_time: Union[str, datetime] | Omit = omit,
+        event_type: str | Omit = omit,
+        id_laser_deconflict_request: str | Omit = omit,
+        origin: str | Omit = omit,
+        reference_frame: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        warnings: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single DeconflictSet record as a POST body and
@@ -769,14 +769,14 @@ class AsyncDeconflictsetResource(AsyncAPIResource):
         self,
         *,
         event_start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DeconflictsetListResponse, AsyncOffsetPage[DeconflictsetListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -820,14 +820,14 @@ class AsyncDeconflictsetResource(AsyncAPIResource):
         self,
         *,
         event_start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -872,14 +872,14 @@ class AsyncDeconflictsetResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DeconflictsetGetResponse:
         """
         Service operation to get a single DeconflictSet record by its unique ID passed
@@ -922,7 +922,7 @@ class AsyncDeconflictsetResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DeconflictsetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -941,14 +941,14 @@ class AsyncDeconflictsetResource(AsyncAPIResource):
         *,
         columns: str,
         event_start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DeconflictsetTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1005,26 +1005,26 @@ class AsyncDeconflictsetResource(AsyncAPIResource):
         event_start_time: Union[str, datetime],
         num_windows: int,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        calculation_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        calculation_id: str | NotGiven = NOT_GIVEN,
-        calculation_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        deconflict_windows: Iterable[deconflictset_unvalidated_publish_params.DeconflictWindow] | NotGiven = NOT_GIVEN,
-        errors: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        event_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        event_type: str | NotGiven = NOT_GIVEN,
-        id_laser_deconflict_request: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        reference_frame: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        warnings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        calculation_end_time: Union[str, datetime] | Omit = omit,
+        calculation_id: str | Omit = omit,
+        calculation_start_time: Union[str, datetime] | Omit = omit,
+        deconflict_windows: Iterable[deconflictset_unvalidated_publish_params.DeconflictWindow] | Omit = omit,
+        errors: SequenceNotStr[str] | Omit = omit,
+        event_end_time: Union[str, datetime] | Omit = omit,
+        event_type: str | Omit = omit,
+        id_laser_deconflict_request: str | Omit = omit,
+        origin: str | Omit = omit,
+        reference_frame: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        warnings: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single DeconflictSet record as a POST body and

@@ -7,7 +7,7 @@ from typing_extensions import Literal
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent
+from ..._types import Body, Query, Headers, NoneType, NotGiven, FileContent, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -52,7 +52,7 @@ class CrewpapersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to remove supporting PDF from an aircraft sortie or sorties.
 
@@ -97,7 +97,7 @@ class CrewpapersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to upload a supporting PDF for the aircraft sortie.
 
@@ -175,7 +175,7 @@ class AsyncCrewpapersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to remove supporting PDF from an aircraft sortie or sorties.
 
@@ -220,7 +220,7 @@ class AsyncCrewpapersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to upload a supporting PDF for the aircraft sortie.
 

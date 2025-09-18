@@ -7,7 +7,7 @@ import typing_extensions
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
-from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven, FileContent
+from ..._types import Body, Omit, Query, Headers, NotGiven, FileContent, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -50,17 +50,17 @@ class PathsResource(SyncAPIResource):
         *,
         id: str,
         classification_marking: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        delete_after: str | Omit = omit,
+        description: str | Omit = omit,
+        overwrite: bool | Omit = omit,
+        send_notification: bool | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """Creates the path and uploads file that is passed.
 
@@ -144,17 +144,17 @@ class AsyncPathsResource(AsyncAPIResource):
         *,
         id: str,
         classification_marking: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        delete_after: str | Omit = omit,
+        description: str | Omit = omit,
+        overwrite: bool | Omit = omit,
+        send_notification: bool | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """Creates the path and uploads file that is passed.
 

@@ -18,7 +18,7 @@ from ..types import (
     air_event_create_bulk_params,
     air_event_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -65,46 +65,46 @@ class AirEventsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        actual_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        actual_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        arct: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ar_event_type: str | NotGiven = NOT_GIVEN,
-        arr_purpose: str | NotGiven = NOT_GIVEN,
-        ar_track_id: str | NotGiven = NOT_GIVEN,
-        ar_track_name: str | NotGiven = NOT_GIVEN,
-        base_alt: float | NotGiven = NOT_GIVEN,
-        cancelled: bool | NotGiven = NOT_GIVEN,
-        dep_purpose: str | NotGiven = NOT_GIVEN,
-        est_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_air_event_id: str | NotGiven = NOT_GIVEN,
-        external_ar_track_id: str | NotGiven = NOT_GIVEN,
-        id_mission: str | NotGiven = NOT_GIVEN,
-        id_sortie: str | NotGiven = NOT_GIVEN,
-        leg_num: int | NotGiven = NOT_GIVEN,
-        location: str | NotGiven = NOT_GIVEN,
-        num_tankers: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        planned_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        planned_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        priority: str | NotGiven = NOT_GIVEN,
-        receivers: Iterable[air_event_create_params.Receiver] | NotGiven = NOT_GIVEN,
-        remarks: Iterable[air_event_create_params.Remark] | NotGiven = NOT_GIVEN,
-        rev_track: bool | NotGiven = NOT_GIVEN,
-        rzct: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        rz_point: str | NotGiven = NOT_GIVEN,
-        rz_type: str | NotGiven = NOT_GIVEN,
-        short_track: bool | NotGiven = NOT_GIVEN,
-        status_code: str | NotGiven = NOT_GIVEN,
-        tankers: Iterable[air_event_create_params.Tanker] | NotGiven = NOT_GIVEN,
-        track_time: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        actual_arr_time: Union[str, datetime] | Omit = omit,
+        actual_dep_time: Union[str, datetime] | Omit = omit,
+        arct: Union[str, datetime] | Omit = omit,
+        ar_event_type: str | Omit = omit,
+        arr_purpose: str | Omit = omit,
+        ar_track_id: str | Omit = omit,
+        ar_track_name: str | Omit = omit,
+        base_alt: float | Omit = omit,
+        cancelled: bool | Omit = omit,
+        dep_purpose: str | Omit = omit,
+        est_arr_time: Union[str, datetime] | Omit = omit,
+        est_dep_time: Union[str, datetime] | Omit = omit,
+        external_air_event_id: str | Omit = omit,
+        external_ar_track_id: str | Omit = omit,
+        id_mission: str | Omit = omit,
+        id_sortie: str | Omit = omit,
+        leg_num: int | Omit = omit,
+        location: str | Omit = omit,
+        num_tankers: int | Omit = omit,
+        origin: str | Omit = omit,
+        planned_arr_time: Union[str, datetime] | Omit = omit,
+        planned_dep_time: Union[str, datetime] | Omit = omit,
+        priority: str | Omit = omit,
+        receivers: Iterable[air_event_create_params.Receiver] | Omit = omit,
+        remarks: Iterable[air_event_create_params.Remark] | Omit = omit,
+        rev_track: bool | Omit = omit,
+        rzct: Union[str, datetime] | Omit = omit,
+        rz_point: str | Omit = omit,
+        rz_type: str | Omit = omit,
+        short_track: bool | Omit = omit,
+        status_code: str | Omit = omit,
+        tankers: Iterable[air_event_create_params.Tanker] | Omit = omit,
+        track_time: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single airevent object as a POST body and ingest
@@ -307,46 +307,46 @@ class AirEventsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         type: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        actual_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        actual_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        arct: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ar_event_type: str | NotGiven = NOT_GIVEN,
-        arr_purpose: str | NotGiven = NOT_GIVEN,
-        ar_track_id: str | NotGiven = NOT_GIVEN,
-        ar_track_name: str | NotGiven = NOT_GIVEN,
-        base_alt: float | NotGiven = NOT_GIVEN,
-        cancelled: bool | NotGiven = NOT_GIVEN,
-        dep_purpose: str | NotGiven = NOT_GIVEN,
-        est_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_air_event_id: str | NotGiven = NOT_GIVEN,
-        external_ar_track_id: str | NotGiven = NOT_GIVEN,
-        id_mission: str | NotGiven = NOT_GIVEN,
-        id_sortie: str | NotGiven = NOT_GIVEN,
-        leg_num: int | NotGiven = NOT_GIVEN,
-        location: str | NotGiven = NOT_GIVEN,
-        num_tankers: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        planned_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        planned_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        priority: str | NotGiven = NOT_GIVEN,
-        receivers: Iterable[air_event_update_params.Receiver] | NotGiven = NOT_GIVEN,
-        remarks: Iterable[air_event_update_params.Remark] | NotGiven = NOT_GIVEN,
-        rev_track: bool | NotGiven = NOT_GIVEN,
-        rzct: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        rz_point: str | NotGiven = NOT_GIVEN,
-        rz_type: str | NotGiven = NOT_GIVEN,
-        short_track: bool | NotGiven = NOT_GIVEN,
-        status_code: str | NotGiven = NOT_GIVEN,
-        tankers: Iterable[air_event_update_params.Tanker] | NotGiven = NOT_GIVEN,
-        track_time: float | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        actual_arr_time: Union[str, datetime] | Omit = omit,
+        actual_dep_time: Union[str, datetime] | Omit = omit,
+        arct: Union[str, datetime] | Omit = omit,
+        ar_event_type: str | Omit = omit,
+        arr_purpose: str | Omit = omit,
+        ar_track_id: str | Omit = omit,
+        ar_track_name: str | Omit = omit,
+        base_alt: float | Omit = omit,
+        cancelled: bool | Omit = omit,
+        dep_purpose: str | Omit = omit,
+        est_arr_time: Union[str, datetime] | Omit = omit,
+        est_dep_time: Union[str, datetime] | Omit = omit,
+        external_air_event_id: str | Omit = omit,
+        external_ar_track_id: str | Omit = omit,
+        id_mission: str | Omit = omit,
+        id_sortie: str | Omit = omit,
+        leg_num: int | Omit = omit,
+        location: str | Omit = omit,
+        num_tankers: int | Omit = omit,
+        origin: str | Omit = omit,
+        planned_arr_time: Union[str, datetime] | Omit = omit,
+        planned_dep_time: Union[str, datetime] | Omit = omit,
+        priority: str | Omit = omit,
+        receivers: Iterable[air_event_update_params.Receiver] | Omit = omit,
+        remarks: Iterable[air_event_update_params.Remark] | Omit = omit,
+        rev_track: bool | Omit = omit,
+        rzct: Union[str, datetime] | Omit = omit,
+        rz_point: str | Omit = omit,
+        rz_type: str | Omit = omit,
+        short_track: bool | Omit = omit,
+        status_code: str | Omit = omit,
+        tankers: Iterable[air_event_update_params.Tanker] | Omit = omit,
+        track_time: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single airevent record.
 
@@ -547,14 +547,14 @@ class AirEventsResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[AirEventListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -599,7 +599,7 @@ class AirEventsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an airevent record specified by the passed ID path
@@ -629,14 +629,14 @@ class AirEventsResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -682,7 +682,7 @@ class AirEventsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list
@@ -715,14 +715,14 @@ class AirEventsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirEventGetResponse:
         """
         Service operation to get a single airevent record by its unique ID passed as a
@@ -765,7 +765,7 @@ class AirEventsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirEventQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -783,14 +783,14 @@ class AirEventsResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirEventTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -844,7 +844,7 @@ class AirEventsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple airevent records as a POST body and ingest
@@ -899,46 +899,46 @@ class AsyncAirEventsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        actual_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        actual_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        arct: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ar_event_type: str | NotGiven = NOT_GIVEN,
-        arr_purpose: str | NotGiven = NOT_GIVEN,
-        ar_track_id: str | NotGiven = NOT_GIVEN,
-        ar_track_name: str | NotGiven = NOT_GIVEN,
-        base_alt: float | NotGiven = NOT_GIVEN,
-        cancelled: bool | NotGiven = NOT_GIVEN,
-        dep_purpose: str | NotGiven = NOT_GIVEN,
-        est_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_air_event_id: str | NotGiven = NOT_GIVEN,
-        external_ar_track_id: str | NotGiven = NOT_GIVEN,
-        id_mission: str | NotGiven = NOT_GIVEN,
-        id_sortie: str | NotGiven = NOT_GIVEN,
-        leg_num: int | NotGiven = NOT_GIVEN,
-        location: str | NotGiven = NOT_GIVEN,
-        num_tankers: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        planned_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        planned_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        priority: str | NotGiven = NOT_GIVEN,
-        receivers: Iterable[air_event_create_params.Receiver] | NotGiven = NOT_GIVEN,
-        remarks: Iterable[air_event_create_params.Remark] | NotGiven = NOT_GIVEN,
-        rev_track: bool | NotGiven = NOT_GIVEN,
-        rzct: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        rz_point: str | NotGiven = NOT_GIVEN,
-        rz_type: str | NotGiven = NOT_GIVEN,
-        short_track: bool | NotGiven = NOT_GIVEN,
-        status_code: str | NotGiven = NOT_GIVEN,
-        tankers: Iterable[air_event_create_params.Tanker] | NotGiven = NOT_GIVEN,
-        track_time: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        actual_arr_time: Union[str, datetime] | Omit = omit,
+        actual_dep_time: Union[str, datetime] | Omit = omit,
+        arct: Union[str, datetime] | Omit = omit,
+        ar_event_type: str | Omit = omit,
+        arr_purpose: str | Omit = omit,
+        ar_track_id: str | Omit = omit,
+        ar_track_name: str | Omit = omit,
+        base_alt: float | Omit = omit,
+        cancelled: bool | Omit = omit,
+        dep_purpose: str | Omit = omit,
+        est_arr_time: Union[str, datetime] | Omit = omit,
+        est_dep_time: Union[str, datetime] | Omit = omit,
+        external_air_event_id: str | Omit = omit,
+        external_ar_track_id: str | Omit = omit,
+        id_mission: str | Omit = omit,
+        id_sortie: str | Omit = omit,
+        leg_num: int | Omit = omit,
+        location: str | Omit = omit,
+        num_tankers: int | Omit = omit,
+        origin: str | Omit = omit,
+        planned_arr_time: Union[str, datetime] | Omit = omit,
+        planned_dep_time: Union[str, datetime] | Omit = omit,
+        priority: str | Omit = omit,
+        receivers: Iterable[air_event_create_params.Receiver] | Omit = omit,
+        remarks: Iterable[air_event_create_params.Remark] | Omit = omit,
+        rev_track: bool | Omit = omit,
+        rzct: Union[str, datetime] | Omit = omit,
+        rz_point: str | Omit = omit,
+        rz_type: str | Omit = omit,
+        short_track: bool | Omit = omit,
+        status_code: str | Omit = omit,
+        tankers: Iterable[air_event_create_params.Tanker] | Omit = omit,
+        track_time: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single airevent object as a POST body and ingest
@@ -1141,46 +1141,46 @@ class AsyncAirEventsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         source: str,
         type: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        actual_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        actual_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        arct: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ar_event_type: str | NotGiven = NOT_GIVEN,
-        arr_purpose: str | NotGiven = NOT_GIVEN,
-        ar_track_id: str | NotGiven = NOT_GIVEN,
-        ar_track_name: str | NotGiven = NOT_GIVEN,
-        base_alt: float | NotGiven = NOT_GIVEN,
-        cancelled: bool | NotGiven = NOT_GIVEN,
-        dep_purpose: str | NotGiven = NOT_GIVEN,
-        est_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        est_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_air_event_id: str | NotGiven = NOT_GIVEN,
-        external_ar_track_id: str | NotGiven = NOT_GIVEN,
-        id_mission: str | NotGiven = NOT_GIVEN,
-        id_sortie: str | NotGiven = NOT_GIVEN,
-        leg_num: int | NotGiven = NOT_GIVEN,
-        location: str | NotGiven = NOT_GIVEN,
-        num_tankers: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        planned_arr_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        planned_dep_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        priority: str | NotGiven = NOT_GIVEN,
-        receivers: Iterable[air_event_update_params.Receiver] | NotGiven = NOT_GIVEN,
-        remarks: Iterable[air_event_update_params.Remark] | NotGiven = NOT_GIVEN,
-        rev_track: bool | NotGiven = NOT_GIVEN,
-        rzct: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        rz_point: str | NotGiven = NOT_GIVEN,
-        rz_type: str | NotGiven = NOT_GIVEN,
-        short_track: bool | NotGiven = NOT_GIVEN,
-        status_code: str | NotGiven = NOT_GIVEN,
-        tankers: Iterable[air_event_update_params.Tanker] | NotGiven = NOT_GIVEN,
-        track_time: float | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        actual_arr_time: Union[str, datetime] | Omit = omit,
+        actual_dep_time: Union[str, datetime] | Omit = omit,
+        arct: Union[str, datetime] | Omit = omit,
+        ar_event_type: str | Omit = omit,
+        arr_purpose: str | Omit = omit,
+        ar_track_id: str | Omit = omit,
+        ar_track_name: str | Omit = omit,
+        base_alt: float | Omit = omit,
+        cancelled: bool | Omit = omit,
+        dep_purpose: str | Omit = omit,
+        est_arr_time: Union[str, datetime] | Omit = omit,
+        est_dep_time: Union[str, datetime] | Omit = omit,
+        external_air_event_id: str | Omit = omit,
+        external_ar_track_id: str | Omit = omit,
+        id_mission: str | Omit = omit,
+        id_sortie: str | Omit = omit,
+        leg_num: int | Omit = omit,
+        location: str | Omit = omit,
+        num_tankers: int | Omit = omit,
+        origin: str | Omit = omit,
+        planned_arr_time: Union[str, datetime] | Omit = omit,
+        planned_dep_time: Union[str, datetime] | Omit = omit,
+        priority: str | Omit = omit,
+        receivers: Iterable[air_event_update_params.Receiver] | Omit = omit,
+        remarks: Iterable[air_event_update_params.Remark] | Omit = omit,
+        rev_track: bool | Omit = omit,
+        rzct: Union[str, datetime] | Omit = omit,
+        rz_point: str | Omit = omit,
+        rz_type: str | Omit = omit,
+        short_track: bool | Omit = omit,
+        status_code: str | Omit = omit,
+        tankers: Iterable[air_event_update_params.Tanker] | Omit = omit,
+        track_time: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single airevent record.
 
@@ -1381,14 +1381,14 @@ class AsyncAirEventsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AirEventListResponse, AsyncOffsetPage[AirEventListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1433,7 +1433,7 @@ class AsyncAirEventsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an airevent record specified by the passed ID path
@@ -1463,14 +1463,14 @@ class AsyncAirEventsResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1516,7 +1516,7 @@ class AsyncAirEventsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list
@@ -1549,14 +1549,14 @@ class AsyncAirEventsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirEventGetResponse:
         """
         Service operation to get a single airevent record by its unique ID passed as a
@@ -1599,7 +1599,7 @@ class AsyncAirEventsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirEventQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1617,14 +1617,14 @@ class AsyncAirEventsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirEventTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1678,7 +1678,7 @@ class AsyncAirEventsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple airevent records as a POST body and ingest

@@ -12,7 +12,7 @@ from ..types import (
     onorbitbattery_create_params,
     onorbitbattery_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -59,16 +59,16 @@ class OnorbitbatteryResource(SyncAPIResource):
         id_battery: str,
         id_on_orbit: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        battery: BatteryIngest | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        quantity: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        battery: BatteryIngest | Omit = omit,
+        origin: str | Omit = omit,
+        quantity: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single OnorbitBattery as a POST body and ingest into
@@ -153,16 +153,16 @@ class OnorbitbatteryResource(SyncAPIResource):
         id_battery: str,
         id_on_orbit: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        battery: BatteryIngest | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        quantity: int | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        battery: BatteryIngest | Omit = omit,
+        origin: str | Omit = omit,
+        quantity: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single OnorbitBattery.
 
@@ -244,14 +244,14 @@ class OnorbitbatteryResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[OnorbitbatteryListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -296,7 +296,7 @@ class OnorbitbatteryResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a OnorbitBattery object specified by the passed ID
@@ -329,14 +329,14 @@ class OnorbitbatteryResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitBatteryFull:
         """
         Service operation to get a single OnorbitBattery record by its unique ID passed
@@ -402,16 +402,16 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
         id_battery: str,
         id_on_orbit: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        battery: BatteryIngest | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        quantity: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        battery: BatteryIngest | Omit = omit,
+        origin: str | Omit = omit,
+        quantity: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single OnorbitBattery as a POST body and ingest into
@@ -496,16 +496,16 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
         id_battery: str,
         id_on_orbit: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        battery: BatteryIngest | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        quantity: int | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        battery: BatteryIngest | Omit = omit,
+        origin: str | Omit = omit,
+        quantity: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single OnorbitBattery.
 
@@ -587,14 +587,14 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[OnorbitbatteryListResponse, AsyncOffsetPage[OnorbitbatteryListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -639,7 +639,7 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a OnorbitBattery object specified by the passed ID
@@ -672,14 +672,14 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitBatteryFull:
         """
         Service operation to get a single OnorbitBattery record by its unique ID passed

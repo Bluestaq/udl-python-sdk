@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -75,42 +75,42 @@ class SiteStatusResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_site: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        cat: Literal["COLD", "WARM", "HOT"] | NotGiven = NOT_GIVEN,
-        cold_inventory: int | NotGiven = NOT_GIVEN,
-        comm_impairment: str | NotGiven = NOT_GIVEN,
-        cpcon: Literal["1", "2", "3", "4", "5"] | NotGiven = NOT_GIVEN,
-        eoc: Literal["COLD", "WARM", "HOT"] | NotGiven = NOT_GIVEN,
-        fpcon: Literal["NORMAL", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
-        hot_inventory: int | NotGiven = NOT_GIVEN,
-        hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
-        inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | NotGiven = NOT_GIVEN,
-        link: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        link_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        missile: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        missile_inventory: Iterable[int] | NotGiven = NOT_GIVEN,
-        mobile_alt_id: str | NotGiven = NOT_GIVEN,
-        ops_capability: str | NotGiven = NOT_GIVEN,
-        ops_impairment: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pes: bool | NotGiven = NOT_GIVEN,
-        poiid: str | NotGiven = NOT_GIVEN,
-        radar_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        radar_system: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        radiate_mode: str | NotGiven = NOT_GIVEN,
-        report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        sam_mode: str | NotGiven = NOT_GIVEN,
-        site_type: str | NotGiven = NOT_GIVEN,
-        time_function: str | NotGiven = NOT_GIVEN,
-        track_id: str | NotGiven = NOT_GIVEN,
-        track_ref_l16: str | NotGiven = NOT_GIVEN,
-        weather_message: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        cat: Literal["COLD", "WARM", "HOT"] | Omit = omit,
+        cold_inventory: int | Omit = omit,
+        comm_impairment: str | Omit = omit,
+        cpcon: Literal["1", "2", "3", "4", "5"] | Omit = omit,
+        eoc: Literal["COLD", "WARM", "HOT"] | Omit = omit,
+        fpcon: Literal["NORMAL", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | Omit = omit,
+        hot_inventory: int | Omit = omit,
+        hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | Omit = omit,
+        inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | Omit = omit,
+        link: SequenceNotStr[str] | Omit = omit,
+        link_status: SequenceNotStr[str] | Omit = omit,
+        missile: SequenceNotStr[str] | Omit = omit,
+        missile_inventory: Iterable[int] | Omit = omit,
+        mobile_alt_id: str | Omit = omit,
+        ops_capability: str | Omit = omit,
+        ops_impairment: str | Omit = omit,
+        origin: str | Omit = omit,
+        pes: bool | Omit = omit,
+        poiid: str | Omit = omit,
+        radar_status: SequenceNotStr[str] | Omit = omit,
+        radar_system: SequenceNotStr[str] | Omit = omit,
+        radiate_mode: str | Omit = omit,
+        report_time: Union[str, datetime] | Omit = omit,
+        sam_mode: str | Omit = omit,
+        site_type: str | Omit = omit,
+        time_function: str | Omit = omit,
+        track_id: str | Omit = omit,
+        track_ref_l16: str | Omit = omit,
+        weather_message: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SiteStatus object as a POST body and ingest
@@ -347,42 +347,42 @@ class SiteStatusResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_site: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        cat: Literal["COLD", "WARM", "HOT"] | NotGiven = NOT_GIVEN,
-        cold_inventory: int | NotGiven = NOT_GIVEN,
-        comm_impairment: str | NotGiven = NOT_GIVEN,
-        cpcon: Literal["1", "2", "3", "4", "5"] | NotGiven = NOT_GIVEN,
-        eoc: Literal["COLD", "WARM", "HOT"] | NotGiven = NOT_GIVEN,
-        fpcon: Literal["NORMAL", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
-        hot_inventory: int | NotGiven = NOT_GIVEN,
-        hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
-        inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | NotGiven = NOT_GIVEN,
-        link: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        link_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        missile: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        missile_inventory: Iterable[int] | NotGiven = NOT_GIVEN,
-        mobile_alt_id: str | NotGiven = NOT_GIVEN,
-        ops_capability: str | NotGiven = NOT_GIVEN,
-        ops_impairment: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pes: bool | NotGiven = NOT_GIVEN,
-        poiid: str | NotGiven = NOT_GIVEN,
-        radar_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        radar_system: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        radiate_mode: str | NotGiven = NOT_GIVEN,
-        report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        sam_mode: str | NotGiven = NOT_GIVEN,
-        site_type: str | NotGiven = NOT_GIVEN,
-        time_function: str | NotGiven = NOT_GIVEN,
-        track_id: str | NotGiven = NOT_GIVEN,
-        track_ref_l16: str | NotGiven = NOT_GIVEN,
-        weather_message: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        cat: Literal["COLD", "WARM", "HOT"] | Omit = omit,
+        cold_inventory: int | Omit = omit,
+        comm_impairment: str | Omit = omit,
+        cpcon: Literal["1", "2", "3", "4", "5"] | Omit = omit,
+        eoc: Literal["COLD", "WARM", "HOT"] | Omit = omit,
+        fpcon: Literal["NORMAL", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | Omit = omit,
+        hot_inventory: int | Omit = omit,
+        hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | Omit = omit,
+        inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | Omit = omit,
+        link: SequenceNotStr[str] | Omit = omit,
+        link_status: SequenceNotStr[str] | Omit = omit,
+        missile: SequenceNotStr[str] | Omit = omit,
+        missile_inventory: Iterable[int] | Omit = omit,
+        mobile_alt_id: str | Omit = omit,
+        ops_capability: str | Omit = omit,
+        ops_impairment: str | Omit = omit,
+        origin: str | Omit = omit,
+        pes: bool | Omit = omit,
+        poiid: str | Omit = omit,
+        radar_status: SequenceNotStr[str] | Omit = omit,
+        radar_system: SequenceNotStr[str] | Omit = omit,
+        radiate_mode: str | Omit = omit,
+        report_time: Union[str, datetime] | Omit = omit,
+        sam_mode: str | Omit = omit,
+        site_type: str | Omit = omit,
+        time_function: str | Omit = omit,
+        track_id: str | Omit = omit,
+        track_ref_l16: str | Omit = omit,
+        weather_message: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single SiteStatus object.
 
@@ -617,14 +617,14 @@ class SiteStatusResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SiteStatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -669,7 +669,7 @@ class SiteStatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an SiteStatus object specified by the passed ID path
@@ -700,14 +700,14 @@ class SiteStatusResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -748,14 +748,14 @@ class SiteStatusResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SiteStatusGetResponse:
         """
         Service operation to get a single SiteStatus record by its unique ID passed as a
@@ -798,7 +798,7 @@ class SiteStatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SiteStatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -816,14 +816,14 @@ class SiteStatusResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SiteStatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -900,42 +900,42 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_site: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        cat: Literal["COLD", "WARM", "HOT"] | NotGiven = NOT_GIVEN,
-        cold_inventory: int | NotGiven = NOT_GIVEN,
-        comm_impairment: str | NotGiven = NOT_GIVEN,
-        cpcon: Literal["1", "2", "3", "4", "5"] | NotGiven = NOT_GIVEN,
-        eoc: Literal["COLD", "WARM", "HOT"] | NotGiven = NOT_GIVEN,
-        fpcon: Literal["NORMAL", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
-        hot_inventory: int | NotGiven = NOT_GIVEN,
-        hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
-        inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | NotGiven = NOT_GIVEN,
-        link: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        link_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        missile: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        missile_inventory: Iterable[int] | NotGiven = NOT_GIVEN,
-        mobile_alt_id: str | NotGiven = NOT_GIVEN,
-        ops_capability: str | NotGiven = NOT_GIVEN,
-        ops_impairment: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pes: bool | NotGiven = NOT_GIVEN,
-        poiid: str | NotGiven = NOT_GIVEN,
-        radar_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        radar_system: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        radiate_mode: str | NotGiven = NOT_GIVEN,
-        report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        sam_mode: str | NotGiven = NOT_GIVEN,
-        site_type: str | NotGiven = NOT_GIVEN,
-        time_function: str | NotGiven = NOT_GIVEN,
-        track_id: str | NotGiven = NOT_GIVEN,
-        track_ref_l16: str | NotGiven = NOT_GIVEN,
-        weather_message: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        cat: Literal["COLD", "WARM", "HOT"] | Omit = omit,
+        cold_inventory: int | Omit = omit,
+        comm_impairment: str | Omit = omit,
+        cpcon: Literal["1", "2", "3", "4", "5"] | Omit = omit,
+        eoc: Literal["COLD", "WARM", "HOT"] | Omit = omit,
+        fpcon: Literal["NORMAL", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | Omit = omit,
+        hot_inventory: int | Omit = omit,
+        hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | Omit = omit,
+        inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | Omit = omit,
+        link: SequenceNotStr[str] | Omit = omit,
+        link_status: SequenceNotStr[str] | Omit = omit,
+        missile: SequenceNotStr[str] | Omit = omit,
+        missile_inventory: Iterable[int] | Omit = omit,
+        mobile_alt_id: str | Omit = omit,
+        ops_capability: str | Omit = omit,
+        ops_impairment: str | Omit = omit,
+        origin: str | Omit = omit,
+        pes: bool | Omit = omit,
+        poiid: str | Omit = omit,
+        radar_status: SequenceNotStr[str] | Omit = omit,
+        radar_system: SequenceNotStr[str] | Omit = omit,
+        radiate_mode: str | Omit = omit,
+        report_time: Union[str, datetime] | Omit = omit,
+        sam_mode: str | Omit = omit,
+        site_type: str | Omit = omit,
+        time_function: str | Omit = omit,
+        track_id: str | Omit = omit,
+        track_ref_l16: str | Omit = omit,
+        weather_message: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SiteStatus object as a POST body and ingest
@@ -1172,42 +1172,42 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_site: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        cat: Literal["COLD", "WARM", "HOT"] | NotGiven = NOT_GIVEN,
-        cold_inventory: int | NotGiven = NOT_GIVEN,
-        comm_impairment: str | NotGiven = NOT_GIVEN,
-        cpcon: Literal["1", "2", "3", "4", "5"] | NotGiven = NOT_GIVEN,
-        eoc: Literal["COLD", "WARM", "HOT"] | NotGiven = NOT_GIVEN,
-        fpcon: Literal["NORMAL", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
-        hot_inventory: int | NotGiven = NOT_GIVEN,
-        hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | NotGiven = NOT_GIVEN,
-        inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | NotGiven = NOT_GIVEN,
-        link: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        link_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        missile: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        missile_inventory: Iterable[int] | NotGiven = NOT_GIVEN,
-        mobile_alt_id: str | NotGiven = NOT_GIVEN,
-        ops_capability: str | NotGiven = NOT_GIVEN,
-        ops_impairment: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pes: bool | NotGiven = NOT_GIVEN,
-        poiid: str | NotGiven = NOT_GIVEN,
-        radar_status: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        radar_system: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        radiate_mode: str | NotGiven = NOT_GIVEN,
-        report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        sam_mode: str | NotGiven = NOT_GIVEN,
-        site_type: str | NotGiven = NOT_GIVEN,
-        time_function: str | NotGiven = NOT_GIVEN,
-        track_id: str | NotGiven = NOT_GIVEN,
-        track_ref_l16: str | NotGiven = NOT_GIVEN,
-        weather_message: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        cat: Literal["COLD", "WARM", "HOT"] | Omit = omit,
+        cold_inventory: int | Omit = omit,
+        comm_impairment: str | Omit = omit,
+        cpcon: Literal["1", "2", "3", "4", "5"] | Omit = omit,
+        eoc: Literal["COLD", "WARM", "HOT"] | Omit = omit,
+        fpcon: Literal["NORMAL", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | Omit = omit,
+        hot_inventory: int | Omit = omit,
+        hpcon: Literal["0", "ALPHA", "BRAVO", "CHARLIE", "DELTA"] | Omit = omit,
+        inst_status: Literal["FMC", "PMC", "NMC", "UNK"] | Omit = omit,
+        link: SequenceNotStr[str] | Omit = omit,
+        link_status: SequenceNotStr[str] | Omit = omit,
+        missile: SequenceNotStr[str] | Omit = omit,
+        missile_inventory: Iterable[int] | Omit = omit,
+        mobile_alt_id: str | Omit = omit,
+        ops_capability: str | Omit = omit,
+        ops_impairment: str | Omit = omit,
+        origin: str | Omit = omit,
+        pes: bool | Omit = omit,
+        poiid: str | Omit = omit,
+        radar_status: SequenceNotStr[str] | Omit = omit,
+        radar_system: SequenceNotStr[str] | Omit = omit,
+        radiate_mode: str | Omit = omit,
+        report_time: Union[str, datetime] | Omit = omit,
+        sam_mode: str | Omit = omit,
+        site_type: str | Omit = omit,
+        time_function: str | Omit = omit,
+        track_id: str | Omit = omit,
+        track_ref_l16: str | Omit = omit,
+        weather_message: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single SiteStatus object.
 
@@ -1442,14 +1442,14 @@ class AsyncSiteStatusResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SiteStatusListResponse, AsyncOffsetPage[SiteStatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1494,7 +1494,7 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an SiteStatus object specified by the passed ID path
@@ -1525,14 +1525,14 @@ class AsyncSiteStatusResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1573,14 +1573,14 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SiteStatusGetResponse:
         """
         Service operation to get a single SiteStatus record by its unique ID passed as a
@@ -1623,7 +1623,7 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SiteStatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1641,14 +1641,14 @@ class AsyncSiteStatusResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SiteStatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified

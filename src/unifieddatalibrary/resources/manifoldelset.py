@@ -17,7 +17,7 @@ from ..types import (
     manifoldelset_update_params,
     manifoldelset_create_bulk_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -66,28 +66,28 @@ class ManifoldelsetResource(SyncAPIResource):
         id_manifold: str,
         source: str,
         tmp_sat_no: int,
-        id: str | NotGiven = NOT_GIVEN,
-        apogee: float | NotGiven = NOT_GIVEN,
-        arg_of_perigee: float | NotGiven = NOT_GIVEN,
-        b_star: float | NotGiven = NOT_GIVEN,
-        eccentricity: float | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        mean_anomaly: float | NotGiven = NOT_GIVEN,
-        mean_motion: float | NotGiven = NOT_GIVEN,
-        mean_motion_d_dot: float | NotGiven = NOT_GIVEN,
-        mean_motion_dot: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        perigee: float | NotGiven = NOT_GIVEN,
-        period: float | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        rev_no: int | NotGiven = NOT_GIVEN,
-        semi_major_axis: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        apogee: float | Omit = omit,
+        arg_of_perigee: float | Omit = omit,
+        b_star: float | Omit = omit,
+        eccentricity: float | Omit = omit,
+        inclination: float | Omit = omit,
+        mean_anomaly: float | Omit = omit,
+        mean_motion: float | Omit = omit,
+        mean_motion_d_dot: float | Omit = omit,
+        mean_motion_dot: float | Omit = omit,
+        origin: str | Omit = omit,
+        perigee: float | Omit = omit,
+        period: float | Omit = omit,
+        raan: float | Omit = omit,
+        rev_no: int | Omit = omit,
+        semi_major_axis: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single ManifoldElset as a POST body and ingest into
@@ -234,28 +234,28 @@ class ManifoldelsetResource(SyncAPIResource):
         id_manifold: str,
         source: str,
         tmp_sat_no: int,
-        body_id: str | NotGiven = NOT_GIVEN,
-        apogee: float | NotGiven = NOT_GIVEN,
-        arg_of_perigee: float | NotGiven = NOT_GIVEN,
-        b_star: float | NotGiven = NOT_GIVEN,
-        eccentricity: float | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        mean_anomaly: float | NotGiven = NOT_GIVEN,
-        mean_motion: float | NotGiven = NOT_GIVEN,
-        mean_motion_d_dot: float | NotGiven = NOT_GIVEN,
-        mean_motion_dot: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        perigee: float | NotGiven = NOT_GIVEN,
-        period: float | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        rev_no: int | NotGiven = NOT_GIVEN,
-        semi_major_axis: float | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        apogee: float | Omit = omit,
+        arg_of_perigee: float | Omit = omit,
+        b_star: float | Omit = omit,
+        eccentricity: float | Omit = omit,
+        inclination: float | Omit = omit,
+        mean_anomaly: float | Omit = omit,
+        mean_motion: float | Omit = omit,
+        mean_motion_d_dot: float | Omit = omit,
+        mean_motion_dot: float | Omit = omit,
+        origin: str | Omit = omit,
+        perigee: float | Omit = omit,
+        period: float | Omit = omit,
+        raan: float | Omit = omit,
+        rev_no: int | Omit = omit,
+        semi_major_axis: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single ManifoldElset.
 
@@ -398,14 +398,14 @@ class ManifoldelsetResource(SyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[ManifoldelsetListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -454,7 +454,7 @@ class ManifoldelsetResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a ManifoldElset object specified by the passed ID
@@ -488,14 +488,14 @@ class ManifoldelsetResource(SyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -545,7 +545,7 @@ class ManifoldelsetResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple ManifoldElsets as a POST body and ingest into
@@ -575,14 +575,14 @@ class ManifoldelsetResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManifoldelsetGetResponse:
         """
         Service operation to get a single ManifoldElset record by its unique ID passed
@@ -627,7 +627,7 @@ class ManifoldelsetResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManifoldelsetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -646,14 +646,14 @@ class ManifoldelsetResource(SyncAPIResource):
         *,
         columns: str,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManifoldelsetTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -732,28 +732,28 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         id_manifold: str,
         source: str,
         tmp_sat_no: int,
-        id: str | NotGiven = NOT_GIVEN,
-        apogee: float | NotGiven = NOT_GIVEN,
-        arg_of_perigee: float | NotGiven = NOT_GIVEN,
-        b_star: float | NotGiven = NOT_GIVEN,
-        eccentricity: float | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        mean_anomaly: float | NotGiven = NOT_GIVEN,
-        mean_motion: float | NotGiven = NOT_GIVEN,
-        mean_motion_d_dot: float | NotGiven = NOT_GIVEN,
-        mean_motion_dot: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        perigee: float | NotGiven = NOT_GIVEN,
-        period: float | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        rev_no: int | NotGiven = NOT_GIVEN,
-        semi_major_axis: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        apogee: float | Omit = omit,
+        arg_of_perigee: float | Omit = omit,
+        b_star: float | Omit = omit,
+        eccentricity: float | Omit = omit,
+        inclination: float | Omit = omit,
+        mean_anomaly: float | Omit = omit,
+        mean_motion: float | Omit = omit,
+        mean_motion_d_dot: float | Omit = omit,
+        mean_motion_dot: float | Omit = omit,
+        origin: str | Omit = omit,
+        perigee: float | Omit = omit,
+        period: float | Omit = omit,
+        raan: float | Omit = omit,
+        rev_no: int | Omit = omit,
+        semi_major_axis: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single ManifoldElset as a POST body and ingest into
@@ -900,28 +900,28 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         id_manifold: str,
         source: str,
         tmp_sat_no: int,
-        body_id: str | NotGiven = NOT_GIVEN,
-        apogee: float | NotGiven = NOT_GIVEN,
-        arg_of_perigee: float | NotGiven = NOT_GIVEN,
-        b_star: float | NotGiven = NOT_GIVEN,
-        eccentricity: float | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        mean_anomaly: float | NotGiven = NOT_GIVEN,
-        mean_motion: float | NotGiven = NOT_GIVEN,
-        mean_motion_d_dot: float | NotGiven = NOT_GIVEN,
-        mean_motion_dot: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        perigee: float | NotGiven = NOT_GIVEN,
-        period: float | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        rev_no: int | NotGiven = NOT_GIVEN,
-        semi_major_axis: float | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        apogee: float | Omit = omit,
+        arg_of_perigee: float | Omit = omit,
+        b_star: float | Omit = omit,
+        eccentricity: float | Omit = omit,
+        inclination: float | Omit = omit,
+        mean_anomaly: float | Omit = omit,
+        mean_motion: float | Omit = omit,
+        mean_motion_d_dot: float | Omit = omit,
+        mean_motion_dot: float | Omit = omit,
+        origin: str | Omit = omit,
+        perigee: float | Omit = omit,
+        period: float | Omit = omit,
+        raan: float | Omit = omit,
+        rev_no: int | Omit = omit,
+        semi_major_axis: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single ManifoldElset.
 
@@ -1064,14 +1064,14 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ManifoldelsetListResponse, AsyncOffsetPage[ManifoldelsetListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1120,7 +1120,7 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a ManifoldElset object specified by the passed ID
@@ -1154,14 +1154,14 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1211,7 +1211,7 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple ManifoldElsets as a POST body and ingest into
@@ -1241,14 +1241,14 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManifoldelsetGetResponse:
         """
         Service operation to get a single ManifoldElset record by its unique ID passed
@@ -1293,7 +1293,7 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManifoldelsetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1312,14 +1312,14 @@ class AsyncManifoldelsetResource(AsyncAPIResource):
         *,
         columns: str,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ManifoldelsetTupleResponse:
         """
         Service operation to dynamically query data and only return specified

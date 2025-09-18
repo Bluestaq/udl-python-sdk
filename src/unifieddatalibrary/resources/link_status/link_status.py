@@ -23,7 +23,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from .datalink import (
     DatalinkResource,
@@ -94,26 +94,26 @@ class LinkStatusResource(SyncAPIResource):
         link_start_time: Union[str, datetime],
         link_stop_time: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        data_rate1_to2: float | NotGiven = NOT_GIVEN,
-        data_rate2_to1: float | NotGiven = NOT_GIVEN,
-        id_beam1: str | NotGiven = NOT_GIVEN,
-        id_beam2: str | NotGiven = NOT_GIVEN,
-        link_state: str | NotGiven = NOT_GIVEN,
-        link_type: str | NotGiven = NOT_GIVEN,
-        ops_cap: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        sat_no1: int | NotGiven = NOT_GIVEN,
-        sat_no2: int | NotGiven = NOT_GIVEN,
-        sys_cap: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        band: str | Omit = omit,
+        constellation: str | Omit = omit,
+        data_rate1_to2: float | Omit = omit,
+        data_rate2_to1: float | Omit = omit,
+        id_beam1: str | Omit = omit,
+        id_beam2: str | Omit = omit,
+        link_state: str | Omit = omit,
+        link_type: str | Omit = omit,
+        ops_cap: str | Omit = omit,
+        origin: str | Omit = omit,
+        sat_no1: int | Omit = omit,
+        sat_no2: int | Omit = omit,
+        sys_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single LinkStatus as a POST body and ingest into the
@@ -250,17 +250,17 @@ class LinkStatusResource(SyncAPIResource):
     def list(
         self,
         *,
-        created_at: Union[str, date] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        created_at: Union[str, date] | Omit = omit,
+        first_result: int | Omit = omit,
+        link_start_time: Union[str, datetime] | Omit = omit,
+        link_stop_time: Union[str, datetime] | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[LinkStatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -314,17 +314,17 @@ class LinkStatusResource(SyncAPIResource):
     def count(
         self,
         *,
-        created_at: Union[str, date] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        created_at: Union[str, date] | Omit = omit,
+        first_result: int | Omit = omit,
+        link_start_time: Union[str, datetime] | Omit = omit,
+        link_stop_time: Union[str, datetime] | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -380,14 +380,14 @@ class LinkStatusResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LinkStatusGetResponse:
         """
         Service operation to get a single LinkStatus record by its unique ID passed as a
@@ -430,7 +430,7 @@ class LinkStatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LinkStatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -448,17 +448,17 @@ class LinkStatusResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        created_at: Union[str, date] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        created_at: Union[str, date] | Omit = omit,
+        first_result: int | Omit = omit,
+        link_start_time: Union[str, datetime] | Omit = omit,
+        link_stop_time: Union[str, datetime] | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LinkStatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -562,26 +562,26 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         link_start_time: Union[str, datetime],
         link_stop_time: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        constellation: str | NotGiven = NOT_GIVEN,
-        data_rate1_to2: float | NotGiven = NOT_GIVEN,
-        data_rate2_to1: float | NotGiven = NOT_GIVEN,
-        id_beam1: str | NotGiven = NOT_GIVEN,
-        id_beam2: str | NotGiven = NOT_GIVEN,
-        link_state: str | NotGiven = NOT_GIVEN,
-        link_type: str | NotGiven = NOT_GIVEN,
-        ops_cap: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        sat_no1: int | NotGiven = NOT_GIVEN,
-        sat_no2: int | NotGiven = NOT_GIVEN,
-        sys_cap: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        band: str | Omit = omit,
+        constellation: str | Omit = omit,
+        data_rate1_to2: float | Omit = omit,
+        data_rate2_to1: float | Omit = omit,
+        id_beam1: str | Omit = omit,
+        id_beam2: str | Omit = omit,
+        link_state: str | Omit = omit,
+        link_type: str | Omit = omit,
+        ops_cap: str | Omit = omit,
+        origin: str | Omit = omit,
+        sat_no1: int | Omit = omit,
+        sat_no2: int | Omit = omit,
+        sys_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single LinkStatus as a POST body and ingest into the
@@ -718,17 +718,17 @@ class AsyncLinkStatusResource(AsyncAPIResource):
     def list(
         self,
         *,
-        created_at: Union[str, date] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        created_at: Union[str, date] | Omit = omit,
+        first_result: int | Omit = omit,
+        link_start_time: Union[str, datetime] | Omit = omit,
+        link_stop_time: Union[str, datetime] | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[LinkStatusListResponse, AsyncOffsetPage[LinkStatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -782,17 +782,17 @@ class AsyncLinkStatusResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        created_at: Union[str, date] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        created_at: Union[str, date] | Omit = omit,
+        first_result: int | Omit = omit,
+        link_start_time: Union[str, datetime] | Omit = omit,
+        link_stop_time: Union[str, datetime] | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -848,14 +848,14 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LinkStatusGetResponse:
         """
         Service operation to get a single LinkStatus record by its unique ID passed as a
@@ -898,7 +898,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LinkStatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -916,17 +916,17 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        created_at: Union[str, date] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        link_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        link_stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        created_at: Union[str, date] | Omit = omit,
+        first_result: int | Omit = omit,
+        link_start_time: Union[str, datetime] | Omit = omit,
+        link_stop_time: Union[str, datetime] | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LinkStatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified

@@ -7,7 +7,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -50,17 +50,17 @@ class FoldersResource(SyncAPIResource):
         *,
         id: str,
         classification_marking: str,
-        description: str | NotGiven = NOT_GIVEN,
-        read: str | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
-        write: str | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
+        read: str | Omit = omit,
+        send_notification: bool | Omit = omit,
+        tags: str | Omit = omit,
+        write: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """Creates a new folder that is passed as part of the path.
 
@@ -119,14 +119,14 @@ class FoldersResource(SyncAPIResource):
         self,
         *,
         id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FileData:
         """
         Returns a FileData object representing the folder ID that is visible to the
@@ -166,17 +166,17 @@ class FoldersResource(SyncAPIResource):
     def update(
         self,
         *,
-        id: str | NotGiven = NOT_GIVEN,
-        attributes: folder_update_params.Attributes | NotGiven = NOT_GIVEN,
-        target_name: str | NotGiven = NOT_GIVEN,
-        target_path: str | NotGiven = NOT_GIVEN,
-        type: Literal["file", "folder", "summary"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        attributes: folder_update_params.Attributes | Omit = omit,
+        target_name: str | Omit = omit,
+        target_path: str | Omit = omit,
+        type: Literal["file", "folder", "summary"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """operation to update folders metadata.
 
@@ -238,17 +238,17 @@ class AsyncFoldersResource(AsyncAPIResource):
         *,
         id: str,
         classification_marking: str,
-        description: str | NotGiven = NOT_GIVEN,
-        read: str | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
-        write: str | NotGiven = NOT_GIVEN,
+        description: str | Omit = omit,
+        read: str | Omit = omit,
+        send_notification: bool | Omit = omit,
+        tags: str | Omit = omit,
+        write: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """Creates a new folder that is passed as part of the path.
 
@@ -307,14 +307,14 @@ class AsyncFoldersResource(AsyncAPIResource):
         self,
         *,
         id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> FileData:
         """
         Returns a FileData object representing the folder ID that is visible to the
@@ -354,17 +354,17 @@ class AsyncFoldersResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        id: str | NotGiven = NOT_GIVEN,
-        attributes: folder_update_params.Attributes | NotGiven = NOT_GIVEN,
-        target_name: str | NotGiven = NOT_GIVEN,
-        target_path: str | NotGiven = NOT_GIVEN,
-        type: Literal["file", "folder", "summary"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        attributes: folder_update_params.Attributes | Omit = omit,
+        target_name: str | Omit = omit,
+        target_path: str | Omit = omit,
+        type: Literal["file", "folder", "summary"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """operation to update folders metadata.
 

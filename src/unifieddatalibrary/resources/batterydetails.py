@@ -12,7 +12,7 @@ from ..types import (
     batterydetail_update_params,
     batterydetail_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -57,21 +57,21 @@ class BatterydetailsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_battery: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        capacity: float | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        discharge_depth: float | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        model: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        technology: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        capacity: float | Omit = omit,
+        description: str | Omit = omit,
+        discharge_depth: float | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        model: str | Omit = omit,
+        origin: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        technology: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single BatteryDetails as a POST body and ingest into
@@ -166,14 +166,14 @@ class BatterydetailsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatterydetailsFull:
         """
         Service operation to get a single BatteryDetails record by its unique ID passed
@@ -217,21 +217,21 @@ class BatterydetailsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_battery: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        capacity: float | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        discharge_depth: float | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        model: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        technology: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        capacity: float | Omit = omit,
+        description: str | Omit = omit,
+        discharge_depth: float | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        model: str | Omit = omit,
+        origin: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        technology: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single BatteryDetails.
 
@@ -327,14 +327,14 @@ class BatterydetailsResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[BatterydetailsAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -379,7 +379,7 @@ class BatterydetailsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a BatteryDetails object specified by the passed ID
@@ -435,21 +435,21 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_battery: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        capacity: float | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        discharge_depth: float | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        model: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        technology: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        capacity: float | Omit = omit,
+        description: str | Omit = omit,
+        discharge_depth: float | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        model: str | Omit = omit,
+        origin: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        technology: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single BatteryDetails as a POST body and ingest into
@@ -544,14 +544,14 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BatterydetailsFull:
         """
         Service operation to get a single BatteryDetails record by its unique ID passed
@@ -595,21 +595,21 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_battery: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        capacity: float | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        discharge_depth: float | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        model: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        technology: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        capacity: float | Omit = omit,
+        description: str | Omit = omit,
+        discharge_depth: float | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        model: str | Omit = omit,
+        origin: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        technology: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single BatteryDetails.
 
@@ -705,14 +705,14 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[BatterydetailsAbridged, AsyncOffsetPage[BatterydetailsAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -757,7 +757,7 @@ class AsyncBatterydetailsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a BatteryDetails object specified by the passed ID

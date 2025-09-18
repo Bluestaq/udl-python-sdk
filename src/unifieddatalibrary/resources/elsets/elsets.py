@@ -33,7 +33,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -90,42 +90,42 @@ class ElsetsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         epoch: Union[str, datetime],
         source: str,
-        agom: float | NotGiven = NOT_GIVEN,
-        algorithm: str | NotGiven = NOT_GIVEN,
-        apogee: float | NotGiven = NOT_GIVEN,
-        arg_of_perigee: float | NotGiven = NOT_GIVEN,
-        ballistic_coeff: float | NotGiven = NOT_GIVEN,
-        b_star: float | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        eccentricity: float | NotGiven = NOT_GIVEN,
-        ephem_type: int | NotGiven = NOT_GIVEN,
-        id_elset: str | NotGiven = NOT_GIVEN,
-        id_orbit_determination: str | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        mean_anomaly: float | NotGiven = NOT_GIVEN,
-        mean_motion: float | NotGiven = NOT_GIVEN,
-        mean_motion_d_dot: float | NotGiven = NOT_GIVEN,
-        mean_motion_dot: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        perigee: float | NotGiven = NOT_GIVEN,
-        period: float | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
-        rev_no: int | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        semi_major_axis: float | NotGiven = NOT_GIVEN,
-        sourced_data: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        uct: bool | NotGiven = NOT_GIVEN,
+        agom: float | Omit = omit,
+        algorithm: str | Omit = omit,
+        apogee: float | Omit = omit,
+        arg_of_perigee: float | Omit = omit,
+        ballistic_coeff: float | Omit = omit,
+        b_star: float | Omit = omit,
+        descriptor: str | Omit = omit,
+        eccentricity: float | Omit = omit,
+        ephem_type: int | Omit = omit,
+        id_elset: str | Omit = omit,
+        id_orbit_determination: str | Omit = omit,
+        inclination: float | Omit = omit,
+        mean_anomaly: float | Omit = omit,
+        mean_motion: float | Omit = omit,
+        mean_motion_d_dot: float | Omit = omit,
+        mean_motion_dot: float | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        perigee: float | Omit = omit,
+        period: float | Omit = omit,
+        raan: float | Omit = omit,
+        raw_file_uri: str | Omit = omit,
+        rev_no: int | Omit = omit,
+        sat_no: int | Omit = omit,
+        semi_major_axis: float | Omit = omit,
+        sourced_data: SequenceNotStr[str] | Omit = omit,
+        sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        uct: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single elset as a POST body and ingest into the
@@ -354,14 +354,14 @@ class ElsetsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Elset:
         """
         Service operation to get a single elset by its unique ID passed as a path
@@ -400,14 +400,14 @@ class ElsetsResource(SyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[ElsetAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -451,14 +451,14 @@ class ElsetsResource(SyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -503,13 +503,13 @@ class ElsetsResource(SyncAPIResource):
         self,
         *,
         body: Iterable[ElsetIngestParam],
-        dupe_check: bool | NotGiven = NOT_GIVEN,
+        dupe_check: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -552,16 +552,16 @@ class ElsetsResource(SyncAPIResource):
         make_current: bool,
         source: str,
         body: str,
-        auto_create_sats: bool | NotGiven = NOT_GIVEN,
-        control: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        auto_create_sats: bool | Omit = omit,
+        control: str | Omit = omit,
+        origin: str | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a multiple TLEs as a POST body and ingest into the
@@ -633,7 +633,7 @@ class ElsetsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ElsetQueryCurrentElsetHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -655,7 +655,7 @@ class ElsetsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ElsetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -674,14 +674,14 @@ class ElsetsResource(SyncAPIResource):
         *,
         columns: str,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ElsetTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -739,7 +739,7 @@ class ElsetsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take elsets as a POST body and ingest into the database
@@ -801,42 +801,42 @@ class AsyncElsetsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         epoch: Union[str, datetime],
         source: str,
-        agom: float | NotGiven = NOT_GIVEN,
-        algorithm: str | NotGiven = NOT_GIVEN,
-        apogee: float | NotGiven = NOT_GIVEN,
-        arg_of_perigee: float | NotGiven = NOT_GIVEN,
-        ballistic_coeff: float | NotGiven = NOT_GIVEN,
-        b_star: float | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        eccentricity: float | NotGiven = NOT_GIVEN,
-        ephem_type: int | NotGiven = NOT_GIVEN,
-        id_elset: str | NotGiven = NOT_GIVEN,
-        id_orbit_determination: str | NotGiven = NOT_GIVEN,
-        inclination: float | NotGiven = NOT_GIVEN,
-        mean_anomaly: float | NotGiven = NOT_GIVEN,
-        mean_motion: float | NotGiven = NOT_GIVEN,
-        mean_motion_d_dot: float | NotGiven = NOT_GIVEN,
-        mean_motion_dot: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        perigee: float | NotGiven = NOT_GIVEN,
-        period: float | NotGiven = NOT_GIVEN,
-        raan: float | NotGiven = NOT_GIVEN,
-        raw_file_uri: str | NotGiven = NOT_GIVEN,
-        rev_no: int | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        semi_major_axis: float | NotGiven = NOT_GIVEN,
-        sourced_data: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        uct: bool | NotGiven = NOT_GIVEN,
+        agom: float | Omit = omit,
+        algorithm: str | Omit = omit,
+        apogee: float | Omit = omit,
+        arg_of_perigee: float | Omit = omit,
+        ballistic_coeff: float | Omit = omit,
+        b_star: float | Omit = omit,
+        descriptor: str | Omit = omit,
+        eccentricity: float | Omit = omit,
+        ephem_type: int | Omit = omit,
+        id_elset: str | Omit = omit,
+        id_orbit_determination: str | Omit = omit,
+        inclination: float | Omit = omit,
+        mean_anomaly: float | Omit = omit,
+        mean_motion: float | Omit = omit,
+        mean_motion_d_dot: float | Omit = omit,
+        mean_motion_dot: float | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        perigee: float | Omit = omit,
+        period: float | Omit = omit,
+        raan: float | Omit = omit,
+        raw_file_uri: str | Omit = omit,
+        rev_no: int | Omit = omit,
+        sat_no: int | Omit = omit,
+        semi_major_axis: float | Omit = omit,
+        sourced_data: SequenceNotStr[str] | Omit = omit,
+        sourced_data_types: List[Literal["EO", "RADAR", "RF", "DOA", "ELSET", "SV"]] | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        uct: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single elset as a POST body and ingest into the
@@ -1065,14 +1065,14 @@ class AsyncElsetsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Elset:
         """
         Service operation to get a single elset by its unique ID passed as a path
@@ -1111,14 +1111,14 @@ class AsyncElsetsResource(AsyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ElsetAbridged, AsyncOffsetPage[ElsetAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1162,14 +1162,14 @@ class AsyncElsetsResource(AsyncAPIResource):
         self,
         *,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1214,13 +1214,13 @@ class AsyncElsetsResource(AsyncAPIResource):
         self,
         *,
         body: Iterable[ElsetIngestParam],
-        dupe_check: bool | NotGiven = NOT_GIVEN,
+        dupe_check: bool | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1265,16 +1265,16 @@ class AsyncElsetsResource(AsyncAPIResource):
         make_current: bool,
         source: str,
         body: str,
-        auto_create_sats: bool | NotGiven = NOT_GIVEN,
-        control: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        auto_create_sats: bool | Omit = omit,
+        control: str | Omit = omit,
+        origin: str | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a multiple TLEs as a POST body and ingest into the
@@ -1346,7 +1346,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ElsetQueryCurrentElsetHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1368,7 +1368,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ElsetQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1387,14 +1387,14 @@ class AsyncElsetsResource(AsyncAPIResource):
         *,
         columns: str,
         epoch: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ElsetTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1452,7 +1452,7 @@ class AsyncElsetsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take elsets as a POST body and ingest into the database

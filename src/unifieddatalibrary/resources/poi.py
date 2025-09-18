@@ -17,7 +17,7 @@ from ..types import (
     poi_create_bulk_params,
     poi_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -66,54 +66,54 @@ class PoiResource(SyncAPIResource):
         poiid: str,
         source: str,
         ts: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        activity: str | NotGiven = NOT_GIVEN,
-        agjson: str | NotGiven = NOT_GIVEN,
-        alt: float | NotGiven = NOT_GIVEN,
-        andims: int | NotGiven = NOT_GIVEN,
-        area: str | NotGiven = NOT_GIVEN,
-        asrid: int | NotGiven = NOT_GIVEN,
-        asset: str | NotGiven = NOT_GIVEN,
-        atext: str | NotGiven = NOT_GIVEN,
-        atype: str | NotGiven = NOT_GIVEN,
-        az: float | NotGiven = NOT_GIVEN,
-        be_number: str | NotGiven = NOT_GIVEN,
-        ce: float | NotGiven = NOT_GIVEN,
-        cntct: str | NotGiven = NOT_GIVEN,
-        conf: float | NotGiven = NOT_GIVEN,
-        desc: str | NotGiven = NOT_GIVEN,
-        el: float | NotGiven = NOT_GIVEN,
-        elle: Iterable[float] | NotGiven = NOT_GIVEN,
-        env: str | NotGiven = NOT_GIVEN,
-        groups: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        how: str | NotGiven = NOT_GIVEN,
-        ident: str | NotGiven = NOT_GIVEN,
-        id_weather_report: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        lat: float | NotGiven = NOT_GIVEN,
-        le: float | NotGiven = NOT_GIVEN,
-        lon: float | NotGiven = NOT_GIVEN,
-        msnid: str | NotGiven = NOT_GIVEN,
-        orientation: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        plat: str | NotGiven = NOT_GIVEN,
-        pps: str | NotGiven = NOT_GIVEN,
-        pri: int | NotGiven = NOT_GIVEN,
-        spec: str | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        stale: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        trkid: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        activity: str | Omit = omit,
+        agjson: str | Omit = omit,
+        alt: float | Omit = omit,
+        andims: int | Omit = omit,
+        area: str | Omit = omit,
+        asrid: int | Omit = omit,
+        asset: str | Omit = omit,
+        atext: str | Omit = omit,
+        atype: str | Omit = omit,
+        az: float | Omit = omit,
+        be_number: str | Omit = omit,
+        ce: float | Omit = omit,
+        cntct: str | Omit = omit,
+        conf: float | Omit = omit,
+        desc: str | Omit = omit,
+        el: float | Omit = omit,
+        elle: Iterable[float] | Omit = omit,
+        env: str | Omit = omit,
+        groups: SequenceNotStr[str] | Omit = omit,
+        how: str | Omit = omit,
+        ident: str | Omit = omit,
+        id_weather_report: SequenceNotStr[str] | Omit = omit,
+        lat: float | Omit = omit,
+        le: float | Omit = omit,
+        lon: float | Omit = omit,
+        msnid: str | Omit = omit,
+        orientation: float | Omit = omit,
+        origin: str | Omit = omit,
+        plat: str | Omit = omit,
+        pps: str | Omit = omit,
+        pri: int | Omit = omit,
+        spec: str | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        stale: Union[str, datetime] | Omit = omit,
+        start: Union[str, datetime] | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        trkid: str | Omit = omit,
+        type: str | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single POI as a POST body and ingest into the
@@ -350,14 +350,14 @@ class PoiResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[PoiListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -400,14 +400,14 @@ class PoiResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -456,7 +456,7 @@ class PoiResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of POIs
@@ -488,14 +488,14 @@ class PoiResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PoiGetResponse:
         """
         Service operation to get a single POI by its unique ID passed as a path
@@ -538,7 +538,7 @@ class PoiResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PoiQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -557,14 +557,14 @@ class PoiResource(SyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PoiTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -621,7 +621,7 @@ class PoiResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of POIs as a POST body and ingest into the
@@ -678,54 +678,54 @@ class AsyncPoiResource(AsyncAPIResource):
         poiid: str,
         source: str,
         ts: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        activity: str | NotGiven = NOT_GIVEN,
-        agjson: str | NotGiven = NOT_GIVEN,
-        alt: float | NotGiven = NOT_GIVEN,
-        andims: int | NotGiven = NOT_GIVEN,
-        area: str | NotGiven = NOT_GIVEN,
-        asrid: int | NotGiven = NOT_GIVEN,
-        asset: str | NotGiven = NOT_GIVEN,
-        atext: str | NotGiven = NOT_GIVEN,
-        atype: str | NotGiven = NOT_GIVEN,
-        az: float | NotGiven = NOT_GIVEN,
-        be_number: str | NotGiven = NOT_GIVEN,
-        ce: float | NotGiven = NOT_GIVEN,
-        cntct: str | NotGiven = NOT_GIVEN,
-        conf: float | NotGiven = NOT_GIVEN,
-        desc: str | NotGiven = NOT_GIVEN,
-        el: float | NotGiven = NOT_GIVEN,
-        elle: Iterable[float] | NotGiven = NOT_GIVEN,
-        env: str | NotGiven = NOT_GIVEN,
-        groups: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        how: str | NotGiven = NOT_GIVEN,
-        ident: str | NotGiven = NOT_GIVEN,
-        id_weather_report: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        lat: float | NotGiven = NOT_GIVEN,
-        le: float | NotGiven = NOT_GIVEN,
-        lon: float | NotGiven = NOT_GIVEN,
-        msnid: str | NotGiven = NOT_GIVEN,
-        orientation: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        plat: str | NotGiven = NOT_GIVEN,
-        pps: str | NotGiven = NOT_GIVEN,
-        pri: int | NotGiven = NOT_GIVEN,
-        spec: str | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        stale: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        trkid: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        activity: str | Omit = omit,
+        agjson: str | Omit = omit,
+        alt: float | Omit = omit,
+        andims: int | Omit = omit,
+        area: str | Omit = omit,
+        asrid: int | Omit = omit,
+        asset: str | Omit = omit,
+        atext: str | Omit = omit,
+        atype: str | Omit = omit,
+        az: float | Omit = omit,
+        be_number: str | Omit = omit,
+        ce: float | Omit = omit,
+        cntct: str | Omit = omit,
+        conf: float | Omit = omit,
+        desc: str | Omit = omit,
+        el: float | Omit = omit,
+        elle: Iterable[float] | Omit = omit,
+        env: str | Omit = omit,
+        groups: SequenceNotStr[str] | Omit = omit,
+        how: str | Omit = omit,
+        ident: str | Omit = omit,
+        id_weather_report: SequenceNotStr[str] | Omit = omit,
+        lat: float | Omit = omit,
+        le: float | Omit = omit,
+        lon: float | Omit = omit,
+        msnid: str | Omit = omit,
+        orientation: float | Omit = omit,
+        origin: str | Omit = omit,
+        plat: str | Omit = omit,
+        pps: str | Omit = omit,
+        pri: int | Omit = omit,
+        spec: str | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        stale: Union[str, datetime] | Omit = omit,
+        start: Union[str, datetime] | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        trkid: str | Omit = omit,
+        type: str | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single POI as a POST body and ingest into the
@@ -962,14 +962,14 @@ class AsyncPoiResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[PoiListResponse, AsyncOffsetPage[PoiListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1012,14 +1012,14 @@ class AsyncPoiResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1068,7 +1068,7 @@ class AsyncPoiResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of POIs
@@ -1100,14 +1100,14 @@ class AsyncPoiResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PoiGetResponse:
         """
         Service operation to get a single POI by its unique ID passed as a path
@@ -1150,7 +1150,7 @@ class AsyncPoiResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PoiQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1169,14 +1169,14 @@ class AsyncPoiResource(AsyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> PoiTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1233,7 +1233,7 @@ class AsyncPoiResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of POIs as a POST body and ingest into the

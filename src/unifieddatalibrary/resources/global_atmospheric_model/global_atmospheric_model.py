@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -80,14 +80,14 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GlobalAtmosphericModelRetrieveResponse:
         """
         Service operation to get a single GlobalAtmosphericModel record by its unique ID
@@ -126,14 +126,14 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[GlobalAtmosphericModelListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -177,14 +177,14 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -229,14 +229,14 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
         Service operation to get a single GlobalAtmosphericModel compressed data file by
@@ -281,7 +281,7 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GlobalAtmosphericModelQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -300,14 +300,14 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GlobalAtmosphericModelTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -364,30 +364,30 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         source: str,
         ts: Union[str, datetime],
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        cadence: int | NotGiven = NOT_GIVEN,
-        end_alt: float | NotGiven = NOT_GIVEN,
-        end_lat: float | NotGiven = NOT_GIVEN,
-        end_lon: float | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        filesize: int | NotGiven = NOT_GIVEN,
-        num_alt: int | NotGiven = NOT_GIVEN,
-        num_lat: int | NotGiven = NOT_GIVEN,
-        num_lon: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        start_alt: float | NotGiven = NOT_GIVEN,
-        start_lat: float | NotGiven = NOT_GIVEN,
-        start_lon: float | NotGiven = NOT_GIVEN,
-        state: str | NotGiven = NOT_GIVEN,
-        step_lat: float | NotGiven = NOT_GIVEN,
-        step_lon: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        cadence: int | Omit = omit,
+        end_alt: float | Omit = omit,
+        end_lat: float | Omit = omit,
+        end_lon: float | Omit = omit,
+        filename: str | Omit = omit,
+        filesize: int | Omit = omit,
+        num_alt: int | Omit = omit,
+        num_lat: int | Omit = omit,
+        num_lon: int | Omit = omit,
+        origin: str | Omit = omit,
+        report_time: Union[str, datetime] | Omit = omit,
+        start_alt: float | Omit = omit,
+        start_lat: float | Omit = omit,
+        start_lon: float | Omit = omit,
+        state: str | Omit = omit,
+        step_lat: float | Omit = omit,
+        step_lon: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Upload a file with its metadata.
@@ -555,14 +555,14 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GlobalAtmosphericModelRetrieveResponse:
         """
         Service operation to get a single GlobalAtmosphericModel record by its unique ID
@@ -601,14 +601,14 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[GlobalAtmosphericModelListResponse, AsyncOffsetPage[GlobalAtmosphericModelListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -652,14 +652,14 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -704,14 +704,14 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
         Service operation to get a single GlobalAtmosphericModel compressed data file by
@@ -756,7 +756,7 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GlobalAtmosphericModelQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -775,14 +775,14 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> GlobalAtmosphericModelTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -839,30 +839,30 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         source: str,
         ts: Union[str, datetime],
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        cadence: int | NotGiven = NOT_GIVEN,
-        end_alt: float | NotGiven = NOT_GIVEN,
-        end_lat: float | NotGiven = NOT_GIVEN,
-        end_lon: float | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        filesize: int | NotGiven = NOT_GIVEN,
-        num_alt: int | NotGiven = NOT_GIVEN,
-        num_lat: int | NotGiven = NOT_GIVEN,
-        num_lon: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        report_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        start_alt: float | NotGiven = NOT_GIVEN,
-        start_lat: float | NotGiven = NOT_GIVEN,
-        start_lon: float | NotGiven = NOT_GIVEN,
-        state: str | NotGiven = NOT_GIVEN,
-        step_lat: float | NotGiven = NOT_GIVEN,
-        step_lon: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        cadence: int | Omit = omit,
+        end_alt: float | Omit = omit,
+        end_lat: float | Omit = omit,
+        end_lon: float | Omit = omit,
+        filename: str | Omit = omit,
+        filesize: int | Omit = omit,
+        num_alt: int | Omit = omit,
+        num_lat: int | Omit = omit,
+        num_lon: int | Omit = omit,
+        origin: str | Omit = omit,
+        report_time: Union[str, datetime] | Omit = omit,
+        start_alt: float | Omit = omit,
+        start_lat: float | Omit = omit,
+        start_lon: float | Omit = omit,
+        state: str | Omit = omit,
+        step_lat: float | Omit = omit,
+        step_lon: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Upload a file with its metadata.

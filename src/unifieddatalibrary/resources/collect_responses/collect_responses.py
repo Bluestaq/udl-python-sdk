@@ -32,7 +32,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -86,31 +86,31 @@ class CollectResponsesResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_request: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        actual_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        actual_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        alt_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        alt_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        err_code: str | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        id_plan: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        task_id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        actual_end_time: Union[str, datetime] | Omit = omit,
+        actual_start_time: Union[str, datetime] | Omit = omit,
+        alt_end_time: Union[str, datetime] | Omit = omit,
+        alt_start_time: Union[str, datetime] | Omit = omit,
+        err_code: str | Omit = omit,
+        external_id: str | Omit = omit,
+        id_plan: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        sat_no: int | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        status: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        task_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Collect Response object as a POST body and
@@ -287,14 +287,14 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectResponseFull:
         """
         Service operation to get a single Collect Response record by its unique ID
@@ -333,14 +333,14 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[CollectResponseAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -384,14 +384,14 @@ class CollectResponsesResource(SyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -441,7 +441,7 @@ class CollectResponsesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -477,7 +477,7 @@ class CollectResponsesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectResponseQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -500,7 +500,7 @@ class CollectResponsesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of CollectResponse as a POST body and ingest
@@ -563,31 +563,31 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_request: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        actual_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        actual_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        alt_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        alt_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        err_code: str | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        id_plan: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        status: str | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        task_id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        actual_end_time: Union[str, datetime] | Omit = omit,
+        actual_start_time: Union[str, datetime] | Omit = omit,
+        alt_end_time: Union[str, datetime] | Omit = omit,
+        alt_start_time: Union[str, datetime] | Omit = omit,
+        err_code: str | Omit = omit,
+        external_id: str | Omit = omit,
+        id_plan: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        sat_no: int | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        status: str | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        task_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Collect Response object as a POST body and
@@ -764,14 +764,14 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectResponseFull:
         """
         Service operation to get a single Collect Response record by its unique ID
@@ -810,14 +810,14 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CollectResponseAbridged, AsyncOffsetPage[CollectResponseAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -861,14 +861,14 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         self,
         *,
         created_at: Union[str, date],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -918,7 +918,7 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -954,7 +954,7 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CollectResponseQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -977,7 +977,7 @@ class AsyncCollectResponsesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of CollectResponse as a POST body and ingest

@@ -17,7 +17,7 @@ from ..types import (
     aviation_risk_management_create_bulk_params,
     aviation_risk_management_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -64,22 +64,22 @@ class AviationRiskManagementResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_mission: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
         aviation_risk_management_worksheet_record: Iterable[
             aviation_risk_management_create_params.AviationRiskManagementWorksheetRecord
         ]
-        | NotGiven = NOT_GIVEN,
-        ext_mission_id: str | NotGiven = NOT_GIVEN,
-        mission_number: str | NotGiven = NOT_GIVEN,
-        org_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        unit_id: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        ext_mission_id: str | Omit = omit,
+        mission_number: str | Omit = omit,
+        org_id: str | Omit = omit,
+        origin: str | Omit = omit,
+        unit_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Aviation Risk Management record as a POST
@@ -167,14 +167,14 @@ class AviationRiskManagementResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AviationRiskManagementRetrieveResponse:
         """
         Service operation to get a single Aviation Risk Management record by its unique
@@ -217,22 +217,22 @@ class AviationRiskManagementResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_mission: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
         aviation_risk_management_worksheet_record: Iterable[
             aviation_risk_management_update_params.AviationRiskManagementWorksheetRecord
         ]
-        | NotGiven = NOT_GIVEN,
-        ext_mission_id: str | NotGiven = NOT_GIVEN,
-        mission_number: str | NotGiven = NOT_GIVEN,
-        org_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        unit_id: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        ext_mission_id: str | Omit = omit,
+        mission_number: str | Omit = omit,
+        org_id: str | Omit = omit,
+        origin: str | Omit = omit,
+        unit_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Aviation Risk Management record.
 
@@ -323,14 +323,14 @@ class AviationRiskManagementResource(SyncAPIResource):
         self,
         *,
         id_mission: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[AviationRiskManagementListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -379,7 +379,7 @@ class AviationRiskManagementResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an Aviation Risk Management record specified by the
@@ -410,14 +410,14 @@ class AviationRiskManagementResource(SyncAPIResource):
         self,
         *,
         id_mission: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -467,7 +467,7 @@ class AviationRiskManagementResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -503,7 +503,7 @@ class AviationRiskManagementResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AviationRiskManagementQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -522,14 +522,14 @@ class AviationRiskManagementResource(SyncAPIResource):
         *,
         columns: str,
         id_mission: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AviationRiskManagementTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -587,7 +587,7 @@ class AviationRiskManagementResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple Aviation Risk Management records as a POST
@@ -642,22 +642,22 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_mission: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
         aviation_risk_management_worksheet_record: Iterable[
             aviation_risk_management_create_params.AviationRiskManagementWorksheetRecord
         ]
-        | NotGiven = NOT_GIVEN,
-        ext_mission_id: str | NotGiven = NOT_GIVEN,
-        mission_number: str | NotGiven = NOT_GIVEN,
-        org_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        unit_id: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        ext_mission_id: str | Omit = omit,
+        mission_number: str | Omit = omit,
+        org_id: str | Omit = omit,
+        origin: str | Omit = omit,
+        unit_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Aviation Risk Management record as a POST
@@ -745,14 +745,14 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AviationRiskManagementRetrieveResponse:
         """
         Service operation to get a single Aviation Risk Management record by its unique
@@ -795,22 +795,22 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_mission: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
         aviation_risk_management_worksheet_record: Iterable[
             aviation_risk_management_update_params.AviationRiskManagementWorksheetRecord
         ]
-        | NotGiven = NOT_GIVEN,
-        ext_mission_id: str | NotGiven = NOT_GIVEN,
-        mission_number: str | NotGiven = NOT_GIVEN,
-        org_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        unit_id: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        ext_mission_id: str | Omit = omit,
+        mission_number: str | Omit = omit,
+        org_id: str | Omit = omit,
+        origin: str | Omit = omit,
+        unit_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Aviation Risk Management record.
 
@@ -901,14 +901,14 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         self,
         *,
         id_mission: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AviationRiskManagementListResponse, AsyncOffsetPage[AviationRiskManagementListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -957,7 +957,7 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an Aviation Risk Management record specified by the
@@ -988,14 +988,14 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         self,
         *,
         id_mission: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1045,7 +1045,7 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1081,7 +1081,7 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AviationRiskManagementQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1100,14 +1100,14 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         *,
         columns: str,
         id_mission: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AviationRiskManagementTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1165,7 +1165,7 @@ class AsyncAviationRiskManagementResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple Aviation Risk Management records as a POST

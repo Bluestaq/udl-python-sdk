@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -77,24 +77,24 @@ class ItemTrackingsResource(SyncAPIResource):
         scanner_id: str,
         source: str,
         ts: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        dv_code: str | NotGiven = NOT_GIVEN,
-        id_item: str | NotGiven = NOT_GIVEN,
-        keys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        lat: float | NotGiven = NOT_GIVEN,
-        lon: float | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        scan_type: str | NotGiven = NOT_GIVEN,
-        sc_gen_tool: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        values: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        dv_code: str | Omit = omit,
+        id_item: str | Omit = omit,
+        keys: SequenceNotStr[str] | Omit = omit,
+        lat: float | Omit = omit,
+        lon: float | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        scan_type: str | Omit = omit,
+        sc_gen_tool: str | Omit = omit,
+        type: str | Omit = omit,
+        values: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single itemtracking record as a POST body and ingest
@@ -208,14 +208,14 @@ class ItemTrackingsResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[ItemTrackingListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -264,7 +264,7 @@ class ItemTrackingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an item tracking object specified by the passed ID
@@ -295,14 +295,14 @@ class ItemTrackingsResource(SyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -347,14 +347,14 @@ class ItemTrackingsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ItemTrackingGetResponse:
         """
         Service operation to get a single item tracking record by its unique ID passed
@@ -397,7 +397,7 @@ class ItemTrackingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ItemTrackingQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -416,14 +416,14 @@ class ItemTrackingsResource(SyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ItemTrackingTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -481,7 +481,7 @@ class ItemTrackingsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple itemtracking records as a POST body and
@@ -542,24 +542,24 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         scanner_id: str,
         source: str,
         ts: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        dv_code: str | NotGiven = NOT_GIVEN,
-        id_item: str | NotGiven = NOT_GIVEN,
-        keys: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        lat: float | NotGiven = NOT_GIVEN,
-        lon: float | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        scan_type: str | NotGiven = NOT_GIVEN,
-        sc_gen_tool: str | NotGiven = NOT_GIVEN,
-        type: str | NotGiven = NOT_GIVEN,
-        values: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        dv_code: str | Omit = omit,
+        id_item: str | Omit = omit,
+        keys: SequenceNotStr[str] | Omit = omit,
+        lat: float | Omit = omit,
+        lon: float | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        scan_type: str | Omit = omit,
+        sc_gen_tool: str | Omit = omit,
+        type: str | Omit = omit,
+        values: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single itemtracking record as a POST body and ingest
@@ -673,14 +673,14 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ItemTrackingListResponse, AsyncOffsetPage[ItemTrackingListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -729,7 +729,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an item tracking object specified by the passed ID
@@ -760,14 +760,14 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         self,
         *,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -812,14 +812,14 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ItemTrackingGetResponse:
         """
         Service operation to get a single item tracking record by its unique ID passed
@@ -862,7 +862,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ItemTrackingQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -881,14 +881,14 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         *,
         columns: str,
         ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ItemTrackingTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -946,7 +946,7 @@ class AsyncItemTrackingsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple itemtracking records as a POST body and
