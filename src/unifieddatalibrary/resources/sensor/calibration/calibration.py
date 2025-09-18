@@ -26,17 +26,18 @@ from ...._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
+from ....pagination import SyncOffsetPage, AsyncOffsetPage
+from ...._base_client import AsyncPaginator, make_request_options
 from ....types.sensor import (
+    calibration_list_params,
     calibration_count_params,
-    calibration_query_params,
     calibration_tuple_params,
     calibration_create_params,
     calibration_retrieve_params,
     calibration_create_bulk_params,
     calibration_unvalidated_publish_params,
 )
-from ....types.sensor.calibration_query_response import CalibrationQueryResponse
+from ....types.sensor.calibration_list_response import CalibrationListResponse
 from ....types.sensor.calibration_tuple_response import CalibrationTupleResponse
 from ....types.sensor.calibration_retrieve_response import CalibrationRetrieveResponse
 from ....types.sensor.calibration_query_help_response import CalibrationQueryHelpResponse
@@ -419,6 +420,57 @@ class CalibrationResource(SyncAPIResource):
             cast_to=CalibrationRetrieveResponse,
         )
 
+    def list(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[CalibrationListResponse]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          start_time: Calibration data span start time in ISO 8601 UTC format with millisecond
+              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/sensorcalibration",
+            page=SyncOffsetPage[CalibrationListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    calibration_list_params.CalibrationListParams,
+                ),
+            ),
+            model=CalibrationListResponse,
+        )
+
     def count(
         self,
         *,
@@ -506,56 +558,6 @@ class CalibrationResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def query(
-        self,
-        *,
-        start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CalibrationQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          start_time: Calibration data span start time in ISO 8601 UTC format with millisecond
-              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/sensorcalibration",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "start_time": start_time,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    calibration_query_params.CalibrationQueryParams,
-                ),
-            ),
-            cast_to=CalibrationQueryResponse,
         )
 
     def query_help(
@@ -1053,6 +1055,57 @@ class AsyncCalibrationResource(AsyncAPIResource):
             cast_to=CalibrationRetrieveResponse,
         )
 
+    def list(
+        self,
+        *,
+        start_time: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[CalibrationListResponse, AsyncOffsetPage[CalibrationListResponse]]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          start_time: Calibration data span start time in ISO 8601 UTC format with millisecond
+              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/sensorcalibration",
+            page=AsyncOffsetPage[CalibrationListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "start_time": start_time,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    calibration_list_params.CalibrationListParams,
+                ),
+            ),
+            model=CalibrationListResponse,
+        )
+
     async def count(
         self,
         *,
@@ -1140,56 +1193,6 @@ class AsyncCalibrationResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def query(
-        self,
-        *,
-        start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> CalibrationQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          start_time: Calibration data span start time in ISO 8601 UTC format with millisecond
-              precision. (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/sensorcalibration",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "start_time": start_time,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    calibration_query_params.CalibrationQueryParams,
-                ),
-            ),
-            cast_to=CalibrationQueryResponse,
         )
 
     async def query_help(
@@ -1322,14 +1325,14 @@ class CalibrationResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             calibration.retrieve,
         )
+        self.list = to_raw_response_wrapper(
+            calibration.list,
+        )
         self.count = to_raw_response_wrapper(
             calibration.count,
         )
         self.create_bulk = to_raw_response_wrapper(
             calibration.create_bulk,
-        )
-        self.query = to_raw_response_wrapper(
-            calibration.query,
         )
         self.query_help = to_raw_response_wrapper(
             calibration.query_help,
@@ -1356,14 +1359,14 @@ class AsyncCalibrationResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             calibration.retrieve,
         )
+        self.list = async_to_raw_response_wrapper(
+            calibration.list,
+        )
         self.count = async_to_raw_response_wrapper(
             calibration.count,
         )
         self.create_bulk = async_to_raw_response_wrapper(
             calibration.create_bulk,
-        )
-        self.query = async_to_raw_response_wrapper(
-            calibration.query,
         )
         self.query_help = async_to_raw_response_wrapper(
             calibration.query_help,
@@ -1390,14 +1393,14 @@ class CalibrationResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             calibration.retrieve,
         )
+        self.list = to_streamed_response_wrapper(
+            calibration.list,
+        )
         self.count = to_streamed_response_wrapper(
             calibration.count,
         )
         self.create_bulk = to_streamed_response_wrapper(
             calibration.create_bulk,
-        )
-        self.query = to_streamed_response_wrapper(
-            calibration.query,
         )
         self.query_help = to_streamed_response_wrapper(
             calibration.query_help,
@@ -1424,14 +1427,14 @@ class AsyncCalibrationResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             calibration.retrieve,
         )
+        self.list = async_to_streamed_response_wrapper(
+            calibration.list,
+        )
         self.count = async_to_streamed_response_wrapper(
             calibration.count,
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             calibration.create_bulk,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            calibration.query,
         )
         self.query_help = async_to_streamed_response_wrapper(
             calibration.query_help,

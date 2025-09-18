@@ -9,8 +9,8 @@ from typing_extensions import Literal
 import httpx
 
 from ..types import (
+    dropzone_list_params,
     dropzone_count_params,
-    dropzone_query_params,
     dropzone_tuple_params,
     dropzone_create_params,
     dropzone_update_params,
@@ -28,8 +28,9 @@ from .._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from .._base_client import make_request_options
-from ..types.dropzone_query_response import DropzoneQueryResponse
+from ..pagination import SyncOffsetPage, AsyncOffsetPage
+from .._base_client import AsyncPaginator, make_request_options
+from ..types.dropzone_list_response import DropzoneListResponse
 from ..types.dropzone_tuple_response import DropzoneTupleResponse
 from ..types.dropzone_retrieve_response import DropzoneRetrieveResponse
 from ..types.dropzone_query_help_response import DropzoneQueryHelpResponse
@@ -499,6 +500,52 @@ class DropzoneResource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def list(
+        self,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[DropzoneListResponse]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/dropzone",
+            page=SyncOffsetPage[DropzoneListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    dropzone_list_params.DropzoneListParams,
+                ),
+            ),
+            model=DropzoneListResponse,
+        )
+
     def delete(
         self,
         id: str,
@@ -617,51 +664,6 @@ class DropzoneResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def query(
-        self,
-        *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DropzoneQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/dropzone",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    dropzone_query_params.DropzoneQueryParams,
-                ),
-            ),
-            cast_to=DropzoneQueryResponse,
         )
 
     def query_help(
@@ -1241,6 +1243,52 @@ class AsyncDropzoneResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    def list(
+        self,
+        *,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[DropzoneListResponse, AsyncOffsetPage[DropzoneListResponse]]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/dropzone",
+            page=AsyncOffsetPage[DropzoneListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    dropzone_list_params.DropzoneListParams,
+                ),
+            ),
+            model=DropzoneListResponse,
+        )
+
     async def delete(
         self,
         id: str,
@@ -1359,51 +1407,6 @@ class AsyncDropzoneResource(AsyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    async def query(
-        self,
-        *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> DropzoneQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/dropzone",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    dropzone_query_params.DropzoneQueryParams,
-                ),
-            ),
-            cast_to=DropzoneQueryResponse,
         )
 
     async def query_help(
@@ -1534,6 +1537,9 @@ class DropzoneResourceWithRawResponse:
         self.update = to_raw_response_wrapper(
             dropzone.update,
         )
+        self.list = to_raw_response_wrapper(
+            dropzone.list,
+        )
         self.delete = to_raw_response_wrapper(
             dropzone.delete,
         )
@@ -1542,9 +1548,6 @@ class DropzoneResourceWithRawResponse:
         )
         self.create_bulk = to_raw_response_wrapper(
             dropzone.create_bulk,
-        )
-        self.query = to_raw_response_wrapper(
-            dropzone.query,
         )
         self.query_help = to_raw_response_wrapper(
             dropzone.query_help,
@@ -1570,6 +1573,9 @@ class AsyncDropzoneResourceWithRawResponse:
         self.update = async_to_raw_response_wrapper(
             dropzone.update,
         )
+        self.list = async_to_raw_response_wrapper(
+            dropzone.list,
+        )
         self.delete = async_to_raw_response_wrapper(
             dropzone.delete,
         )
@@ -1578,9 +1584,6 @@ class AsyncDropzoneResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             dropzone.create_bulk,
-        )
-        self.query = async_to_raw_response_wrapper(
-            dropzone.query,
         )
         self.query_help = async_to_raw_response_wrapper(
             dropzone.query_help,
@@ -1606,6 +1609,9 @@ class DropzoneResourceWithStreamingResponse:
         self.update = to_streamed_response_wrapper(
             dropzone.update,
         )
+        self.list = to_streamed_response_wrapper(
+            dropzone.list,
+        )
         self.delete = to_streamed_response_wrapper(
             dropzone.delete,
         )
@@ -1614,9 +1620,6 @@ class DropzoneResourceWithStreamingResponse:
         )
         self.create_bulk = to_streamed_response_wrapper(
             dropzone.create_bulk,
-        )
-        self.query = to_streamed_response_wrapper(
-            dropzone.query,
         )
         self.query_help = to_streamed_response_wrapper(
             dropzone.query_help,
@@ -1642,6 +1645,9 @@ class AsyncDropzoneResourceWithStreamingResponse:
         self.update = async_to_streamed_response_wrapper(
             dropzone.update,
         )
+        self.list = async_to_streamed_response_wrapper(
+            dropzone.list,
+        )
         self.delete = async_to_streamed_response_wrapper(
             dropzone.delete,
         )
@@ -1650,9 +1656,6 @@ class AsyncDropzoneResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             dropzone.create_bulk,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            dropzone.query,
         )
         self.query_help = async_to_streamed_response_wrapper(
             dropzone.query_help,

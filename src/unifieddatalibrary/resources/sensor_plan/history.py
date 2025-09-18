@@ -17,9 +17,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.sensor_plan import history_aodr_params, history_count_params, history_retrieve_params
-from ...types.sensor_plan.history_retrieve_response import HistoryRetrieveResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.sensor_plan import history_aodr_params, history_list_params, history_count_params
+from ...types.sensor_plan.history_list_response import HistoryListResponse
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
@@ -44,7 +45,7 @@ class HistoryResource(SyncAPIResource):
         """
         return HistoryResourceWithStreamingResponse(self)
 
-    def retrieve(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -57,7 +58,7 @@ class HistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryRetrieveResponse:
+    ) -> SyncOffsetPage[HistoryListResponse]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -80,8 +81,9 @@ class HistoryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/sensorplan/history",
+            page=SyncOffsetPage[HistoryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -94,10 +96,10 @@ class HistoryResource(SyncAPIResource):
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    history_retrieve_params.HistoryRetrieveParams,
+                    history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryRetrieveResponse,
+            model=HistoryListResponse,
         )
 
     def aodr(
@@ -248,7 +250,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         return AsyncHistoryResourceWithStreamingResponse(self)
 
-    async def retrieve(
+    def list(
         self,
         *,
         start_time: Union[str, datetime],
@@ -261,7 +263,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryRetrieveResponse:
+    ) -> AsyncPaginator[HistoryListResponse, AsyncOffsetPage[HistoryListResponse]]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -284,24 +286,25 @@ class AsyncHistoryResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return await self._get(
+        return self._get_api_list(
             "/udl/sensorplan/history",
+            page=AsyncOffsetPage[HistoryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=await async_maybe_transform(
+                query=maybe_transform(
                     {
                         "start_time": start_time,
                         "columns": columns,
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    history_retrieve_params.HistoryRetrieveParams,
+                    history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryRetrieveResponse,
+            model=HistoryListResponse,
         )
 
     async def aodr(
@@ -436,8 +439,8 @@ class HistoryResourceWithRawResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
-        self.retrieve = to_raw_response_wrapper(
-            history.retrieve,
+        self.list = to_raw_response_wrapper(
+            history.list,
         )
         self.aodr = to_raw_response_wrapper(
             history.aodr,
@@ -451,8 +454,8 @@ class AsyncHistoryResourceWithRawResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
-        self.retrieve = async_to_raw_response_wrapper(
-            history.retrieve,
+        self.list = async_to_raw_response_wrapper(
+            history.list,
         )
         self.aodr = async_to_raw_response_wrapper(
             history.aodr,
@@ -466,8 +469,8 @@ class HistoryResourceWithStreamingResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
-        self.retrieve = to_streamed_response_wrapper(
-            history.retrieve,
+        self.list = to_streamed_response_wrapper(
+            history.list,
         )
         self.aodr = to_streamed_response_wrapper(
             history.aodr,
@@ -481,8 +484,8 @@ class AsyncHistoryResourceWithStreamingResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
-        self.retrieve = async_to_streamed_response_wrapper(
-            history.retrieve,
+        self.list = async_to_streamed_response_wrapper(
+            history.list,
         )
         self.aodr = async_to_streamed_response_wrapper(
             history.aodr,

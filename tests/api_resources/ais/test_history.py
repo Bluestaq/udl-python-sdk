@@ -104,6 +104,46 @@ class TestHistory:
 
         assert cast(Any, response.is_closed) is True
 
+    @parametrize
+    def test_method_count(self, client: Unifieddatalibrary) -> None:
+        history = client.ais.history.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    def test_method_count_with_all_params(self, client: Unifieddatalibrary) -> None:
+        history = client.ais.history.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    def test_raw_response_count(self, client: Unifieddatalibrary) -> None:
+        response = client.ais.history.with_raw_response.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        history = response.parse()
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    def test_streaming_response_count(self, client: Unifieddatalibrary) -> None:
+        with client.ais.history.with_streaming_response.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            history = response.parse()
+            assert_matches_type(str, history, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
 
 class TestAsyncHistory:
     parametrize = pytest.mark.parametrize(
@@ -192,5 +232,45 @@ class TestAsyncHistory:
 
             history = await response.parse()
             assert history is None
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.ais.history.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    async def test_method_count_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        history = await async_client.ais.history.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    async def test_raw_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.ais.history.with_raw_response.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        history = await response.parse()
+        assert_matches_type(str, history, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_count(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.ais.history.with_streaming_response.count(
+            ts=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            history = await response.parse()
+            assert_matches_type(str, history, path=["response"])
 
         assert cast(Any, response.is_closed) is True

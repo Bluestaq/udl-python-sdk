@@ -10,8 +10,9 @@ import pytest
 from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary._utils import parse_datetime
+from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 from unifieddatalibrary.types.sensor import (
-    CalibrationQueryResponse,
+    CalibrationListResponse,
     CalibrationTupleResponse,
     CalibrationRetrieveResponse,
     CalibrationQueryHelpResponse,
@@ -174,6 +175,46 @@ class TestCalibration:
             )
 
     @parametrize
+    def test_method_list(self, client: Unifieddatalibrary) -> None:
+        calibration = client.sensor.calibration.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(SyncOffsetPage[CalibrationListResponse], calibration, path=["response"])
+
+    @parametrize
+    def test_method_list_with_all_params(self, client: Unifieddatalibrary) -> None:
+        calibration = client.sensor.calibration.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(SyncOffsetPage[CalibrationListResponse], calibration, path=["response"])
+
+    @parametrize
+    def test_raw_response_list(self, client: Unifieddatalibrary) -> None:
+        response = client.sensor.calibration.with_raw_response.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calibration = response.parse()
+        assert_matches_type(SyncOffsetPage[CalibrationListResponse], calibration, path=["response"])
+
+    @parametrize
+    def test_streaming_response_list(self, client: Unifieddatalibrary) -> None:
+        with client.sensor.calibration.with_streaming_response.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calibration = response.parse()
+            assert_matches_type(SyncOffsetPage[CalibrationListResponse], calibration, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     def test_method_count(self, client: Unifieddatalibrary) -> None:
         calibration = client.sensor.calibration.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -265,46 +306,6 @@ class TestCalibration:
 
             calibration = response.parse()
             assert calibration is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    def test_method_query(self, client: Unifieddatalibrary) -> None:
-        calibration = client.sensor.calibration.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-        assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
-
-    @parametrize
-    def test_method_query_with_all_params(self, client: Unifieddatalibrary) -> None:
-        calibration = client.sensor.calibration.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            first_result=0,
-            max_results=0,
-        )
-        assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
-
-    @parametrize
-    def test_raw_response_query(self, client: Unifieddatalibrary) -> None:
-        response = client.sensor.calibration.with_raw_response.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        calibration = response.parse()
-        assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
-
-    @parametrize
-    def test_streaming_response_query(self, client: Unifieddatalibrary) -> None:
-        with client.sensor.calibration.with_streaming_response.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            calibration = response.parse()
-            assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -589,6 +590,46 @@ class TestAsyncCalibration:
             )
 
     @parametrize
+    async def test_method_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        calibration = await async_client.sensor.calibration.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+        assert_matches_type(AsyncOffsetPage[CalibrationListResponse], calibration, path=["response"])
+
+    @parametrize
+    async def test_method_list_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        calibration = await async_client.sensor.calibration.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(AsyncOffsetPage[CalibrationListResponse], calibration, path=["response"])
+
+    @parametrize
+    async def test_raw_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.sensor.calibration.with_raw_response.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        calibration = await response.parse()
+        assert_matches_type(AsyncOffsetPage[CalibrationListResponse], calibration, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_list(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.sensor.calibration.with_streaming_response.list(
+            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            calibration = await response.parse()
+            assert_matches_type(AsyncOffsetPage[CalibrationListResponse], calibration, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
     async def test_method_count(self, async_client: AsyncUnifieddatalibrary) -> None:
         calibration = await async_client.sensor.calibration.count(
             start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
@@ -680,46 +721,6 @@ class TestAsyncCalibration:
 
             calibration = await response.parse()
             assert calibration is None
-
-        assert cast(Any, response.is_closed) is True
-
-    @parametrize
-    async def test_method_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        calibration = await async_client.sensor.calibration.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-        assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
-
-    @parametrize
-    async def test_method_query_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
-        calibration = await async_client.sensor.calibration.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-            first_result=0,
-            max_results=0,
-        )
-        assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
-
-    @parametrize
-    async def test_raw_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        response = await async_client.sensor.calibration.with_raw_response.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        )
-
-        assert response.is_closed is True
-        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-        calibration = await response.parse()
-        assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
-
-    @parametrize
-    async def test_streaming_response_query(self, async_client: AsyncUnifieddatalibrary) -> None:
-        async with async_client.sensor.calibration.with_streaming_response.query(
-            start_time=parse_datetime("2019-12-27T18:11:19.117Z"),
-        ) as response:
-            assert not response.is_closed
-            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
-
-            calibration = await response.parse()
-            assert_matches_type(CalibrationQueryResponse, calibration, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

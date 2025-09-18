@@ -54,12 +54,12 @@ __all__ = ["StateVectorResource", "AsyncStateVectorResource"]
 
 class StateVectorResource(SyncAPIResource):
     @cached_property
-    def history(self) -> HistoryResource:
-        return HistoryResource(self._client)
-
-    @cached_property
     def current(self) -> CurrentResource:
         return CurrentResource(self._client)
+
+    @cached_property
+    def history(self) -> HistoryResource:
+        return HistoryResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> StateVectorResourceWithRawResponse:
@@ -1022,12 +1022,12 @@ class StateVectorResource(SyncAPIResource):
 
 class AsyncStateVectorResource(AsyncAPIResource):
     @cached_property
-    def history(self) -> AsyncHistoryResource:
-        return AsyncHistoryResource(self._client)
-
-    @cached_property
     def current(self) -> AsyncCurrentResource:
         return AsyncCurrentResource(self._client)
+
+    @cached_property
+    def history(self) -> AsyncHistoryResource:
+        return AsyncHistoryResource(self._client)
 
     @cached_property
     def with_raw_response(self) -> AsyncStateVectorResourceWithRawResponse:
@@ -2018,12 +2018,12 @@ class StateVectorResourceWithRawResponse:
         )
 
     @cached_property
-    def history(self) -> HistoryResourceWithRawResponse:
-        return HistoryResourceWithRawResponse(self._state_vector.history)
-
-    @cached_property
     def current(self) -> CurrentResourceWithRawResponse:
         return CurrentResourceWithRawResponse(self._state_vector.current)
+
+    @cached_property
+    def history(self) -> HistoryResourceWithRawResponse:
+        return HistoryResourceWithRawResponse(self._state_vector.history)
 
 
 class AsyncStateVectorResourceWithRawResponse:
@@ -2056,12 +2056,12 @@ class AsyncStateVectorResourceWithRawResponse:
         )
 
     @cached_property
-    def history(self) -> AsyncHistoryResourceWithRawResponse:
-        return AsyncHistoryResourceWithRawResponse(self._state_vector.history)
-
-    @cached_property
     def current(self) -> AsyncCurrentResourceWithRawResponse:
         return AsyncCurrentResourceWithRawResponse(self._state_vector.current)
+
+    @cached_property
+    def history(self) -> AsyncHistoryResourceWithRawResponse:
+        return AsyncHistoryResourceWithRawResponse(self._state_vector.history)
 
 
 class StateVectorResourceWithStreamingResponse:
@@ -2094,12 +2094,12 @@ class StateVectorResourceWithStreamingResponse:
         )
 
     @cached_property
-    def history(self) -> HistoryResourceWithStreamingResponse:
-        return HistoryResourceWithStreamingResponse(self._state_vector.history)
-
-    @cached_property
     def current(self) -> CurrentResourceWithStreamingResponse:
         return CurrentResourceWithStreamingResponse(self._state_vector.current)
+
+    @cached_property
+    def history(self) -> HistoryResourceWithStreamingResponse:
+        return HistoryResourceWithStreamingResponse(self._state_vector.history)
 
 
 class AsyncStateVectorResourceWithStreamingResponse:
@@ -2132,9 +2132,9 @@ class AsyncStateVectorResourceWithStreamingResponse:
         )
 
     @cached_property
-    def history(self) -> AsyncHistoryResourceWithStreamingResponse:
-        return AsyncHistoryResourceWithStreamingResponse(self._state_vector.history)
-
-    @cached_property
     def current(self) -> AsyncCurrentResourceWithStreamingResponse:
         return AsyncCurrentResourceWithStreamingResponse(self._state_vector.current)
+
+    @cached_property
+    def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        return AsyncHistoryResourceWithStreamingResponse(self._state_vector.history)

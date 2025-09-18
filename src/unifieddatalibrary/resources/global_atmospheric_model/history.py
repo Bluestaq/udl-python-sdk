@@ -17,9 +17,10 @@ from ..._response import (
     async_to_raw_response_wrapper,
     async_to_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.global_atmospheric_model import history_count_params, history_query_params, history_write_aodr_params
-from ...types.global_atmospheric_model.history_query_response import HistoryQueryResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.global_atmospheric_model import history_aodr_params, history_list_params, history_count_params
+from ...types.global_atmospheric_model.history_list_response import HistoryListResponse
 
 __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
@@ -43,6 +44,138 @@ class HistoryResource(SyncAPIResource):
         For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
         """
         return HistoryResourceWithStreamingResponse(self)
+
+    def list(
+        self,
+        *,
+        ts: Union[str, datetime],
+        columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[HistoryListResponse]:
+        """
+        Service operation to dynamically query historical data by a variety of query
+        parameters not specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          ts: Target time of the model in ISO 8601 UTC format with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
+              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              query fields that can be selected.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/globalatmosphericmodel/history",
+            page=SyncOffsetPage[HistoryListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "ts": ts,
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    history_list_params.HistoryListParams,
+                ),
+            ),
+            model=HistoryListResponse,
+        )
+
+    def aodr(
+        self,
+        *,
+        ts: Union[str, datetime],
+        columns: str | NotGiven = NOT_GIVEN,
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        notification: str | NotGiven = NOT_GIVEN,
+        output_delimiter: str | NotGiven = NOT_GIVEN,
+        output_format: str | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> None:
+        """
+        Service operation to dynamically query historical data by a variety of query
+        parameters not specified in this API documentation, then write that data to the
+        Secure Content Store. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          ts: Target time of the model in ISO 8601 UTC format with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
+              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              query fields that can be selected.
+
+          notification: optional, notification method for the created file link. When omitted, EMAIL is
+              assumed. Current valid values are: EMAIL, SMS.
+
+          output_delimiter: optional, field delimiter when the created file is not JSON. Must be a single
+              character chosen from this set: (',', ';', ':', '|'). When omitted, "," is used.
+              It is strongly encouraged that your field delimiter be a character unlikely to
+              occur within the data.
+
+          output_format: optional, output format for the file. When omitted, JSON is assumed. Current
+              valid values are: JSON and CSV.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
+        return self._get(
+            "/udl/globalatmosphericmodel/history/aodr",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "ts": ts,
+                        "columns": columns,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                        "notification": notification,
+                        "output_delimiter": output_delimiter,
+                        "output_format": output_format,
+                    },
+                    history_aodr_params.HistoryAodrParams,
+                ),
+            ),
+            cast_to=NoneType,
+        )
 
     def count(
         self,
@@ -96,7 +229,28 @@ class HistoryResource(SyncAPIResource):
             cast_to=str,
         )
 
-    def query(
+
+class AsyncHistoryResource(AsyncAPIResource):
+    @cached_property
+    def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
+        """
+        return AsyncHistoryResourceWithRawResponse(self)
+
+    @cached_property
+    def with_streaming_response(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
+        """
+        return AsyncHistoryResourceWithStreamingResponse(self)
+
+    def list(
         self,
         *,
         ts: Union[str, datetime],
@@ -109,7 +263,7 @@ class HistoryResource(SyncAPIResource):
         extra_query: Query | None = None,
         extra_body: Body | None = None,
         timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryQueryResponse:
+    ) -> AsyncPaginator[HistoryListResponse, AsyncOffsetPage[HistoryListResponse]]:
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
@@ -132,8 +286,9 @@ class HistoryResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        return self._get(
+        return self._get_api_list(
             "/udl/globalatmosphericmodel/history",
+            page=AsyncOffsetPage[HistoryListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -146,13 +301,13 @@ class HistoryResource(SyncAPIResource):
                         "first_result": first_result,
                         "max_results": max_results,
                     },
-                    history_query_params.HistoryQueryParams,
+                    history_list_params.HistoryListParams,
                 ),
             ),
-            cast_to=HistoryQueryResponse,
+            model=HistoryListResponse,
         )
 
-    def write_aodr(
+    async def aodr(
         self,
         *,
         ts: Union[str, datetime],
@@ -204,14 +359,14 @@ class HistoryResource(SyncAPIResource):
           timeout: Override the client-level default timeout for this request, in seconds
         """
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return self._get(
+        return await self._get(
             "/udl/globalatmosphericmodel/history/aodr",
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
                 extra_body=extra_body,
                 timeout=timeout,
-                query=maybe_transform(
+                query=await async_maybe_transform(
                     {
                         "ts": ts,
                         "columns": columns,
@@ -221,32 +376,11 @@ class HistoryResource(SyncAPIResource):
                         "output_delimiter": output_delimiter,
                         "output_format": output_format,
                     },
-                    history_write_aodr_params.HistoryWriteAodrParams,
+                    history_aodr_params.HistoryAodrParams,
                 ),
             ),
             cast_to=NoneType,
         )
-
-
-class AsyncHistoryResource(AsyncAPIResource):
-    @cached_property
-    def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
-        """
-        This property can be used as a prefix for any HTTP method call to return
-        the raw response object instead of the parsed content.
-
-        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#accessing-raw-response-data-eg-headers
-        """
-        return AsyncHistoryResourceWithRawResponse(self)
-
-    @cached_property
-    def with_streaming_response(self) -> AsyncHistoryResourceWithStreamingResponse:
-        """
-        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
-
-        For more information, see https://www.github.com/Bluestaq/udl-python-sdk#with_streaming_response
-        """
-        return AsyncHistoryResourceWithStreamingResponse(self)
 
     async def count(
         self,
@@ -300,150 +434,19 @@ class AsyncHistoryResource(AsyncAPIResource):
             cast_to=str,
         )
 
-    async def query(
-        self,
-        *,
-        ts: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> HistoryQueryResponse:
-        """
-        Service operation to dynamically query historical data by a variety of query
-        parameters not specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          ts: Target time of the model in ISO 8601 UTC format with millisecond precision.
-              (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
-              query fields that can be selected.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/globalatmosphericmodel/history",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "ts": ts,
-                        "columns": columns,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    history_query_params.HistoryQueryParams,
-                ),
-            ),
-            cast_to=HistoryQueryResponse,
-        )
-
-    async def write_aodr(
-        self,
-        *,
-        ts: Union[str, datetime],
-        columns: str | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        notification: str | NotGiven = NOT_GIVEN,
-        output_delimiter: str | NotGiven = NOT_GIVEN,
-        output_format: str | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> None:
-        """
-        Service operation to dynamically query historical data by a variety of query
-        parameters not specified in this API documentation, then write that data to the
-        Secure Content Store. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          ts: Target time of the model in ISO 8601 UTC format with millisecond precision.
-              (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
-              query fields that can be selected.
-
-          notification: optional, notification method for the created file link. When omitted, EMAIL is
-              assumed. Current valid values are: EMAIL, SMS.
-
-          output_delimiter: optional, field delimiter when the created file is not JSON. Must be a single
-              character chosen from this set: (',', ';', ':', '|'). When omitted, "," is used.
-              It is strongly encouraged that your field delimiter be a character unlikely to
-              occur within the data.
-
-          output_format: optional, output format for the file. When omitted, JSON is assumed. Current
-              valid values are: JSON and CSV.
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "*/*", **(extra_headers or {})}
-        return await self._get(
-            "/udl/globalatmosphericmodel/history/aodr",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "ts": ts,
-                        "columns": columns,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                        "notification": notification,
-                        "output_delimiter": output_delimiter,
-                        "output_format": output_format,
-                    },
-                    history_write_aodr_params.HistoryWriteAodrParams,
-                ),
-            ),
-            cast_to=NoneType,
-        )
-
 
 class HistoryResourceWithRawResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
+        self.list = to_raw_response_wrapper(
+            history.list,
+        )
+        self.aodr = to_raw_response_wrapper(
+            history.aodr,
+        )
         self.count = to_raw_response_wrapper(
             history.count,
-        )
-        self.query = to_raw_response_wrapper(
-            history.query,
-        )
-        self.write_aodr = to_raw_response_wrapper(
-            history.write_aodr,
         )
 
 
@@ -451,14 +454,14 @@ class AsyncHistoryResourceWithRawResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
+        self.list = async_to_raw_response_wrapper(
+            history.list,
+        )
+        self.aodr = async_to_raw_response_wrapper(
+            history.aodr,
+        )
         self.count = async_to_raw_response_wrapper(
             history.count,
-        )
-        self.query = async_to_raw_response_wrapper(
-            history.query,
-        )
-        self.write_aodr = async_to_raw_response_wrapper(
-            history.write_aodr,
         )
 
 
@@ -466,14 +469,14 @@ class HistoryResourceWithStreamingResponse:
     def __init__(self, history: HistoryResource) -> None:
         self._history = history
 
+        self.list = to_streamed_response_wrapper(
+            history.list,
+        )
+        self.aodr = to_streamed_response_wrapper(
+            history.aodr,
+        )
         self.count = to_streamed_response_wrapper(
             history.count,
-        )
-        self.query = to_streamed_response_wrapper(
-            history.query,
-        )
-        self.write_aodr = to_streamed_response_wrapper(
-            history.write_aodr,
         )
 
 
@@ -481,12 +484,12 @@ class AsyncHistoryResourceWithStreamingResponse:
     def __init__(self, history: AsyncHistoryResource) -> None:
         self._history = history
 
+        self.list = async_to_streamed_response_wrapper(
+            history.list,
+        )
+        self.aodr = async_to_streamed_response_wrapper(
+            history.aodr,
+        )
         self.count = async_to_streamed_response_wrapper(
             history.count,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            history.query,
-        )
-        self.write_aodr = async_to_streamed_response_wrapper(
-            history.write_aodr,
         )

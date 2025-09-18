@@ -7,7 +7,7 @@ from datetime import datetime
 
 import httpx
 
-from ...types import ai_list_params, ai_count_params, ai_tuple_params, ai_create_bulk_params, ai_history_count_params
+from ...types import ai_list_params, ai_count_params, ai_tuple_params, ai_create_bulk_params
 from .history import (
     HistoryResource,
     AsyncHistoryResource,
@@ -197,58 +197,6 @@ class AIsResource(SyncAPIResource):
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
             cast_to=NoneType,
-        )
-
-    def history_count(
-        self,
-        *,
-        ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
-        """
-        Service operation to return the count of records satisfying the specified query
-        parameters. This operation is useful to determine how many records pass a
-        particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
-        valid/required query parameter information.
-
-        Args:
-          ts: The timestamp that the vessel position was recorded, in ISO 8601 UTC format.
-              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
-        return self._get(
-            "/udl/ais/history/count",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "ts": ts,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    ai_history_count_params.AIHistoryCountParams,
-                ),
-            ),
-            cast_to=str,
         )
 
     def queryhelp(
@@ -499,58 +447,6 @@ class AsyncAIsResource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
-    async def history_count(
-        self,
-        *,
-        ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> str:
-        """
-        Service operation to return the count of records satisfying the specified query
-        parameters. This operation is useful to determine how many records pass a
-        particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
-        valid/required query parameter information.
-
-        Args:
-          ts: The timestamp that the vessel position was recorded, in ISO 8601 UTC format.
-              (YYYY-MM-DDTHH:MM:SS.ssssssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
-        return await self._get(
-            "/udl/ais/history/count",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "ts": ts,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    ai_history_count_params.AIHistoryCountParams,
-                ),
-            ),
-            cast_to=str,
-        )
-
     async def queryhelp(
         self,
         *,
@@ -648,9 +544,6 @@ class AIsResourceWithRawResponse:
         self.create_bulk = to_raw_response_wrapper(
             ais.create_bulk,
         )
-        self.history_count = to_raw_response_wrapper(
-            ais.history_count,
-        )
         self.queryhelp = to_raw_response_wrapper(
             ais.queryhelp,
         )
@@ -675,9 +568,6 @@ class AsyncAIsResourceWithRawResponse:
         )
         self.create_bulk = async_to_raw_response_wrapper(
             ais.create_bulk,
-        )
-        self.history_count = async_to_raw_response_wrapper(
-            ais.history_count,
         )
         self.queryhelp = async_to_raw_response_wrapper(
             ais.queryhelp,
@@ -704,9 +594,6 @@ class AIsResourceWithStreamingResponse:
         self.create_bulk = to_streamed_response_wrapper(
             ais.create_bulk,
         )
-        self.history_count = to_streamed_response_wrapper(
-            ais.history_count,
-        )
         self.queryhelp = to_streamed_response_wrapper(
             ais.queryhelp,
         )
@@ -731,9 +618,6 @@ class AsyncAIsResourceWithStreamingResponse:
         )
         self.create_bulk = async_to_streamed_response_wrapper(
             ais.create_bulk,
-        )
-        self.history_count = async_to_streamed_response_wrapper(
-            ais.history_count,
         )
         self.queryhelp = async_to_streamed_response_wrapper(
             ais.queryhelp,

@@ -12,14 +12,6 @@ from .crewpapers import (
     AsyncCrewpapersResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .aircraft_sorties import (
-    AircraftSortiesResource,
-    AsyncAircraftSortiesResource,
-    AircraftSortiesResourceWithRawResponse,
-    AsyncAircraftSortiesResourceWithRawResponse,
-    AircraftSortiesResourceWithStreamingResponse,
-    AsyncAircraftSortiesResourceWithStreamingResponse,
-)
 from .air_tasking_orders import (
     AirTaskingOrdersResource,
     AsyncAirTaskingOrdersResource,
@@ -43,6 +35,14 @@ from .airspace_control_orders import (
     AsyncAirspaceControlOrdersResourceWithRawResponse,
     AirspaceControlOrdersResourceWithStreamingResponse,
     AsyncAirspaceControlOrdersResourceWithStreamingResponse,
+)
+from .aircraft_sorties.aircraft_sorties import (
+    AircraftSortiesResource,
+    AsyncAircraftSortiesResource,
+    AircraftSortiesResourceWithRawResponse,
+    AsyncAircraftSortiesResourceWithRawResponse,
+    AircraftSortiesResourceWithStreamingResponse,
+    AsyncAircraftSortiesResourceWithStreamingResponse,
 )
 
 __all__ = ["AirOperationsResource", "AsyncAirOperationsResource"]

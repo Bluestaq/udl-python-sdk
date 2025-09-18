@@ -20,6 +20,7 @@ from ...types.scs import (
     v2_list_params,
     v2_move_params,
     v2_delete_params,
+    v2_search_params,
     v2_update_params,
     v2_file_upload_params,
     v2_folder_create_params,
@@ -27,6 +28,8 @@ from ...types.scs import (
 from ...pagination import SyncOffsetPage, AsyncOffsetPage
 from ..._base_client import AsyncPaginator, make_request_options
 from ...types.scs.scs_entity import ScsEntity
+from ...types.scs.v2_search_response import V2SearchResponse
+from ...types.search_criterion_param import SearchCriterionParam
 
 __all__ = ["V2Resource", "AsyncV2Resource"]
 
@@ -497,6 +500,66 @@ class V2Resource(SyncAPIResource):
             cast_to=NoneType,
         )
 
+    def search(
+        self,
+        *,
+        order: str | NotGiven = NOT_GIVEN,
+        search_after: str | NotGiven = NOT_GIVEN,
+        size: int | NotGiven = NOT_GIVEN,
+        sort: str | NotGiven = NOT_GIVEN,
+        query: SearchCriterionParam | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> V2SearchResponse:
+        """
+        Operation to search for files in the Secure Content Store.
+
+        Args:
+          order: The order in which entries should be sorted
+
+          search_after: The starting point for pagination results, usually set to the value of the
+              SEARCH_AFTER header returned in the previous request.
+
+          size: The number of results to retrieve.
+
+          sort: The field on which to sort entries
+
+          query: A search criterion, which can be a simple field comparison or a logical
+              combination of other criteria.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._post(
+            "/scs/v2/search",
+            body=maybe_transform({"query": query}, v2_search_params.V2SearchParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "order": order,
+                        "search_after": search_after,
+                        "size": size,
+                        "sort": sort,
+                    },
+                    v2_search_params.V2SearchParams,
+                ),
+            ),
+            cast_to=V2SearchResponse,
+        )
+
 
 class AsyncV2Resource(AsyncAPIResource):
     @cached_property
@@ -964,6 +1027,66 @@ class AsyncV2Resource(AsyncAPIResource):
             cast_to=NoneType,
         )
 
+    async def search(
+        self,
+        *,
+        order: str | NotGiven = NOT_GIVEN,
+        search_after: str | NotGiven = NOT_GIVEN,
+        size: int | NotGiven = NOT_GIVEN,
+        sort: str | NotGiven = NOT_GIVEN,
+        query: SearchCriterionParam | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> V2SearchResponse:
+        """
+        Operation to search for files in the Secure Content Store.
+
+        Args:
+          order: The order in which entries should be sorted
+
+          search_after: The starting point for pagination results, usually set to the value of the
+              SEARCH_AFTER header returned in the previous request.
+
+          size: The number of results to retrieve.
+
+          sort: The field on which to sort entries
+
+          query: A search criterion, which can be a simple field comparison or a logical
+              combination of other criteria.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return await self._post(
+            "/scs/v2/search",
+            body=await async_maybe_transform({"query": query}, v2_search_params.V2SearchParams),
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "order": order,
+                        "search_after": search_after,
+                        "size": size,
+                        "sort": sort,
+                    },
+                    v2_search_params.V2SearchParams,
+                ),
+            ),
+            cast_to=V2SearchResponse,
+        )
+
 
 class V2ResourceWithRawResponse:
     def __init__(self, v2: V2Resource) -> None:
@@ -989,6 +1112,9 @@ class V2ResourceWithRawResponse:
         )
         self.move = to_raw_response_wrapper(
             v2.move,
+        )
+        self.search = to_raw_response_wrapper(
+            v2.search,
         )
 
 
@@ -1017,6 +1143,9 @@ class AsyncV2ResourceWithRawResponse:
         self.move = async_to_raw_response_wrapper(
             v2.move,
         )
+        self.search = async_to_raw_response_wrapper(
+            v2.search,
+        )
 
 
 class V2ResourceWithStreamingResponse:
@@ -1044,6 +1173,9 @@ class V2ResourceWithStreamingResponse:
         self.move = to_streamed_response_wrapper(
             v2.move,
         )
+        self.search = to_streamed_response_wrapper(
+            v2.search,
+        )
 
 
 class AsyncV2ResourceWithStreamingResponse:
@@ -1070,4 +1202,7 @@ class AsyncV2ResourceWithStreamingResponse:
         )
         self.move = async_to_streamed_response_wrapper(
             v2.move,
+        )
+        self.search = async_to_streamed_response_wrapper(
+            v2.search,
         )

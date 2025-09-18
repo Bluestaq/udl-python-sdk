@@ -9,8 +9,8 @@ from typing_extensions import Literal
 import httpx
 
 from ...types import (
+    global_atmospheric_model_list_params,
     global_atmospheric_model_count_params,
-    global_atmospheric_model_query_params,
     global_atmospheric_model_tuple_params,
     global_atmospheric_model_get_file_params,
     global_atmospheric_model_retrieve_params,
@@ -42,8 +42,9 @@ from ..._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from ..._base_client import make_request_options
-from ...types.global_atmospheric_model_query_response import GlobalAtmosphericModelQueryResponse
+from ...pagination import SyncOffsetPage, AsyncOffsetPage
+from ..._base_client import AsyncPaginator, make_request_options
+from ...types.global_atmospheric_model_list_response import GlobalAtmosphericModelListResponse
 from ...types.global_atmospheric_model_tuple_response import GlobalAtmosphericModelTupleResponse
 from ...types.global_atmospheric_model_retrieve_response import GlobalAtmosphericModelRetrieveResponse
 from ...types.global_atmospheric_model_query_help_response import GlobalAtmosphericModelQueryHelpResponse
@@ -119,6 +120,57 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
                 ),
             ),
             cast_to=GlobalAtmosphericModelRetrieveResponse,
+        )
+
+    def list(
+        self,
+        *,
+        ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> SyncOffsetPage[GlobalAtmosphericModelListResponse]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          ts: Target time of the model in ISO 8601 UTC format with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/globalatmosphericmodel",
+            page=SyncOffsetPage[GlobalAtmosphericModelListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    global_atmospheric_model_list_params.GlobalAtmosphericModelListParams,
+                ),
+            ),
+            model=GlobalAtmosphericModelListResponse,
         )
 
     def count(
@@ -219,56 +271,6 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
                 ),
             ),
             cast_to=BinaryAPIResponse,
-        )
-
-    def query(
-        self,
-        *,
-        ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GlobalAtmosphericModelQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          ts: Target time of the model in ISO 8601 UTC format with millisecond precision.
-              (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return self._get(
-            "/udl/globalatmosphericmodel",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=maybe_transform(
-                    {
-                        "ts": ts,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    global_atmospheric_model_query_params.GlobalAtmosphericModelQueryParams,
-                ),
-            ),
-            cast_to=GlobalAtmosphericModelQueryResponse,
         )
 
     def query_help(
@@ -595,6 +597,57 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
             cast_to=GlobalAtmosphericModelRetrieveResponse,
         )
 
+    def list(
+        self,
+        *,
+        ts: Union[str, datetime],
+        first_result: int | NotGiven = NOT_GIVEN,
+        max_results: int | NotGiven = NOT_GIVEN,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+    ) -> AsyncPaginator[GlobalAtmosphericModelListResponse, AsyncOffsetPage[GlobalAtmosphericModelListResponse]]:
+        """
+        Service operation to dynamically query data by a variety of query parameters not
+        specified in this API documentation. See the queryhelp operation
+        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
+        parameter information.
+
+        Args:
+          ts: Target time of the model in ISO 8601 UTC format with millisecond precision.
+              (YYYY-MM-DDTHH:MM:SS.sssZ)
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        return self._get_api_list(
+            "/udl/globalatmosphericmodel",
+            page=AsyncOffsetPage[GlobalAtmosphericModelListResponse],
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "ts": ts,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    global_atmospheric_model_list_params.GlobalAtmosphericModelListParams,
+                ),
+            ),
+            model=GlobalAtmosphericModelListResponse,
+        )
+
     async def count(
         self,
         *,
@@ -693,56 +746,6 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
                 ),
             ),
             cast_to=AsyncBinaryAPIResponse,
-        )
-
-    async def query(
-        self,
-        *,
-        ts: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
-        # The extra values given here take precedence over values defined on the client or passed to this method.
-        extra_headers: Headers | None = None,
-        extra_query: Query | None = None,
-        extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
-    ) -> GlobalAtmosphericModelQueryResponse:
-        """
-        Service operation to dynamically query data by a variety of query parameters not
-        specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
-
-        Args:
-          ts: Target time of the model in ISO 8601 UTC format with millisecond precision.
-              (YYYY-MM-DDTHH:MM:SS.sssZ)
-
-          extra_headers: Send extra headers
-
-          extra_query: Add additional query parameters to the request
-
-          extra_body: Add additional JSON properties to the request
-
-          timeout: Override the client-level default timeout for this request, in seconds
-        """
-        return await self._get(
-            "/udl/globalatmosphericmodel",
-            options=make_request_options(
-                extra_headers=extra_headers,
-                extra_query=extra_query,
-                extra_body=extra_body,
-                timeout=timeout,
-                query=await async_maybe_transform(
-                    {
-                        "ts": ts,
-                        "first_result": first_result,
-                        "max_results": max_results,
-                    },
-                    global_atmospheric_model_query_params.GlobalAtmosphericModelQueryParams,
-                ),
-            ),
-            cast_to=GlobalAtmosphericModelQueryResponse,
         )
 
     async def query_help(
@@ -1006,15 +1009,15 @@ class GlobalAtmosphericModelResourceWithRawResponse:
         self.retrieve = to_raw_response_wrapper(
             global_atmospheric_model.retrieve,
         )
+        self.list = to_raw_response_wrapper(
+            global_atmospheric_model.list,
+        )
         self.count = to_raw_response_wrapper(
             global_atmospheric_model.count,
         )
         self.get_file = to_custom_raw_response_wrapper(
             global_atmospheric_model.get_file,
             BinaryAPIResponse,
-        )
-        self.query = to_raw_response_wrapper(
-            global_atmospheric_model.query,
         )
         self.query_help = to_raw_response_wrapper(
             global_atmospheric_model.query_help,
@@ -1038,15 +1041,15 @@ class AsyncGlobalAtmosphericModelResourceWithRawResponse:
         self.retrieve = async_to_raw_response_wrapper(
             global_atmospheric_model.retrieve,
         )
+        self.list = async_to_raw_response_wrapper(
+            global_atmospheric_model.list,
+        )
         self.count = async_to_raw_response_wrapper(
             global_atmospheric_model.count,
         )
         self.get_file = async_to_custom_raw_response_wrapper(
             global_atmospheric_model.get_file,
             AsyncBinaryAPIResponse,
-        )
-        self.query = async_to_raw_response_wrapper(
-            global_atmospheric_model.query,
         )
         self.query_help = async_to_raw_response_wrapper(
             global_atmospheric_model.query_help,
@@ -1070,15 +1073,15 @@ class GlobalAtmosphericModelResourceWithStreamingResponse:
         self.retrieve = to_streamed_response_wrapper(
             global_atmospheric_model.retrieve,
         )
+        self.list = to_streamed_response_wrapper(
+            global_atmospheric_model.list,
+        )
         self.count = to_streamed_response_wrapper(
             global_atmospheric_model.count,
         )
         self.get_file = to_custom_streamed_response_wrapper(
             global_atmospheric_model.get_file,
             StreamedBinaryAPIResponse,
-        )
-        self.query = to_streamed_response_wrapper(
-            global_atmospheric_model.query,
         )
         self.query_help = to_streamed_response_wrapper(
             global_atmospheric_model.query_help,
@@ -1102,15 +1105,15 @@ class AsyncGlobalAtmosphericModelResourceWithStreamingResponse:
         self.retrieve = async_to_streamed_response_wrapper(
             global_atmospheric_model.retrieve,
         )
+        self.list = async_to_streamed_response_wrapper(
+            global_atmospheric_model.list,
+        )
         self.count = async_to_streamed_response_wrapper(
             global_atmospheric_model.count,
         )
         self.get_file = async_to_custom_streamed_response_wrapper(
             global_atmospheric_model.get_file,
             AsyncStreamedBinaryAPIResponse,
-        )
-        self.query = async_to_streamed_response_wrapper(
-            global_atmospheric_model.query,
         )
         self.query_help = async_to_streamed_response_wrapper(
             global_atmospheric_model.query_help,
