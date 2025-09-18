@@ -15,7 +15,7 @@ from ..types import (
     entity_retrieve_params,
     entity_get_all_types_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -78,23 +78,23 @@ class EntitiesResource(SyncAPIResource):
             "SITE",
             "VESSEL",
         ],
-        country_code: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_location: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        id_operating_unit: str | NotGiven = NOT_GIVEN,
-        location: LocationIngestParam | NotGiven = NOT_GIVEN,
-        on_orbit: entity_create_params.OnOrbit | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
-        taskable: bool | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        country_code: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_location: str | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        id_operating_unit: str | Omit = omit,
+        location: LocationIngestParam | Omit = omit,
+        on_orbit: entity_create_params.OnOrbit | Omit = omit,
+        origin: str | Omit = omit,
+        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | Omit = omit,
+        taskable: bool | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Entity as a POST body and ingest into the
@@ -203,14 +203,14 @@ class EntitiesResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EntityFull:
         """
         Service operation to get a single Entity record by its unique ID passed as a
@@ -267,23 +267,23 @@ class EntitiesResource(SyncAPIResource):
             "SITE",
             "VESSEL",
         ],
-        country_code: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_location: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        id_operating_unit: str | NotGiven = NOT_GIVEN,
-        location: LocationIngestParam | NotGiven = NOT_GIVEN,
-        on_orbit: entity_update_params.OnOrbit | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
-        taskable: bool | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        country_code: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_location: str | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        id_operating_unit: str | Omit = omit,
+        location: LocationIngestParam | Omit = omit,
+        on_orbit: entity_update_params.OnOrbit | Omit = omit,
+        origin: str | Omit = omit,
+        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | Omit = omit,
+        taskable: bool | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Entity.
 
@@ -393,14 +393,14 @@ class EntitiesResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[EntityAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -445,7 +445,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an Entity object specified by the passed ID path
@@ -475,14 +475,14 @@ class EntitiesResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -522,14 +522,14 @@ class EntitiesResource(SyncAPIResource):
     def get_all_types(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EntityGetAllTypesResponse:
         """
         Retrieves all distinct entity types.
@@ -569,7 +569,7 @@ class EntitiesResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EntityQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -587,14 +587,14 @@ class EntitiesResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EntityTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -681,23 +681,23 @@ class AsyncEntitiesResource(AsyncAPIResource):
             "SITE",
             "VESSEL",
         ],
-        country_code: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_location: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        id_operating_unit: str | NotGiven = NOT_GIVEN,
-        location: LocationIngestParam | NotGiven = NOT_GIVEN,
-        on_orbit: entity_create_params.OnOrbit | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
-        taskable: bool | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        country_code: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_location: str | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        id_operating_unit: str | Omit = omit,
+        location: LocationIngestParam | Omit = omit,
+        on_orbit: entity_create_params.OnOrbit | Omit = omit,
+        origin: str | Omit = omit,
+        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | Omit = omit,
+        taskable: bool | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Entity as a POST body and ingest into the
@@ -806,14 +806,14 @@ class AsyncEntitiesResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EntityFull:
         """
         Service operation to get a single Entity record by its unique ID passed as a
@@ -870,23 +870,23 @@ class AsyncEntitiesResource(AsyncAPIResource):
             "SITE",
             "VESSEL",
         ],
-        country_code: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        id_location: str | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        id_operating_unit: str | NotGiven = NOT_GIVEN,
-        location: LocationIngestParam | NotGiven = NOT_GIVEN,
-        on_orbit: entity_update_params.OnOrbit | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | NotGiven = NOT_GIVEN,
-        taskable: bool | NotGiven = NOT_GIVEN,
-        urls: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        country_code: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        id_location: str | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        id_operating_unit: str | Omit = omit,
+        location: LocationIngestParam | Omit = omit,
+        on_orbit: entity_update_params.OnOrbit | Omit = omit,
+        origin: str | Omit = omit,
+        owner_type: Literal["Commercial", "Government", "Academic", "Consortium", "Other"] | Omit = omit,
+        taskable: bool | Omit = omit,
+        urls: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Entity.
 
@@ -996,14 +996,14 @@ class AsyncEntitiesResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EntityAbridged, AsyncOffsetPage[EntityAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1048,7 +1048,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an Entity object specified by the passed ID path
@@ -1078,14 +1078,14 @@ class AsyncEntitiesResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1125,14 +1125,14 @@ class AsyncEntitiesResource(AsyncAPIResource):
     async def get_all_types(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EntityGetAllTypesResponse:
         """
         Retrieves all distinct entity types.
@@ -1172,7 +1172,7 @@ class AsyncEntitiesResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EntityQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1190,14 +1190,14 @@ class AsyncEntitiesResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EntityTupleResponse:
         """
         Service operation to dynamically query data and only return specified

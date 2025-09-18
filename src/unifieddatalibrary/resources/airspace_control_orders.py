@@ -16,7 +16,7 @@ from ..types import (
     airspace_control_order_retrieve_params,
     airspace_control_order_create_bulk_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -65,36 +65,36 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         originator: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        aco_comments: str | NotGiven = NOT_GIVEN,
-        aco_serial_num: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        aco_comments: str | Omit = omit,
+        aco_serial_num: str | Omit = omit,
         airspace_control_means_status: Iterable[airspace_control_order_create_params.AirspaceControlMeansStatus]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         airspace_control_order_references: Iterable[airspace_control_order_create_params.AirspaceControlOrderReference]
-        | NotGiven = NOT_GIVEN,
-        area_of_validity: str | NotGiven = NOT_GIVEN,
-        class_reasons: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        class_source: str | NotGiven = NOT_GIVEN,
-        declass_exemption_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        downgrade_ins_dates: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        geo_datum: str | NotGiven = NOT_GIVEN,
-        month: str | NotGiven = NOT_GIVEN,
-        op_ex_info: str | NotGiven = NOT_GIVEN,
-        op_ex_info_alt: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        plan_orig_num: str | NotGiven = NOT_GIVEN,
-        qualifier: str | NotGiven = NOT_GIVEN,
-        qual_sn: int | NotGiven = NOT_GIVEN,
-        serial_num: str | NotGiven = NOT_GIVEN,
-        stop_qualifier: str | NotGiven = NOT_GIVEN,
-        stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        und_lnk_trks: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        area_of_validity: str | Omit = omit,
+        class_reasons: SequenceNotStr[str] | Omit = omit,
+        class_source: str | Omit = omit,
+        declass_exemption_codes: SequenceNotStr[str] | Omit = omit,
+        downgrade_ins_dates: SequenceNotStr[str] | Omit = omit,
+        geo_datum: str | Omit = omit,
+        month: str | Omit = omit,
+        op_ex_info: str | Omit = omit,
+        op_ex_info_alt: str | Omit = omit,
+        origin: str | Omit = omit,
+        plan_orig_num: str | Omit = omit,
+        qualifier: str | Omit = omit,
+        qual_sn: int | Omit = omit,
+        serial_num: str | Omit = omit,
+        stop_qualifier: str | Omit = omit,
+        stop_time: Union[str, datetime] | Omit = omit,
+        und_lnk_trks: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single AirspaceControlOrder record as a POST body
@@ -246,14 +246,14 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirspacecontrolorderFull:
         """
         Service operation to get a single AirspaceControlOrder record by its unique ID
@@ -291,14 +291,14 @@ class AirspaceControlOrdersResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[AirspacecontrolorderAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -337,14 +337,14 @@ class AirspaceControlOrdersResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -390,7 +390,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -426,7 +426,7 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirspaceControlOrderQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -444,14 +444,14 @@ class AirspaceControlOrdersResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirspaceControlOrderTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -526,36 +526,36 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         originator: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        aco_comments: str | NotGiven = NOT_GIVEN,
-        aco_serial_num: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        aco_comments: str | Omit = omit,
+        aco_serial_num: str | Omit = omit,
         airspace_control_means_status: Iterable[airspace_control_order_create_params.AirspaceControlMeansStatus]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         airspace_control_order_references: Iterable[airspace_control_order_create_params.AirspaceControlOrderReference]
-        | NotGiven = NOT_GIVEN,
-        area_of_validity: str | NotGiven = NOT_GIVEN,
-        class_reasons: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        class_source: str | NotGiven = NOT_GIVEN,
-        declass_exemption_codes: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        downgrade_ins_dates: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        geo_datum: str | NotGiven = NOT_GIVEN,
-        month: str | NotGiven = NOT_GIVEN,
-        op_ex_info: str | NotGiven = NOT_GIVEN,
-        op_ex_info_alt: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        plan_orig_num: str | NotGiven = NOT_GIVEN,
-        qualifier: str | NotGiven = NOT_GIVEN,
-        qual_sn: int | NotGiven = NOT_GIVEN,
-        serial_num: str | NotGiven = NOT_GIVEN,
-        stop_qualifier: str | NotGiven = NOT_GIVEN,
-        stop_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        und_lnk_trks: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        area_of_validity: str | Omit = omit,
+        class_reasons: SequenceNotStr[str] | Omit = omit,
+        class_source: str | Omit = omit,
+        declass_exemption_codes: SequenceNotStr[str] | Omit = omit,
+        downgrade_ins_dates: SequenceNotStr[str] | Omit = omit,
+        geo_datum: str | Omit = omit,
+        month: str | Omit = omit,
+        op_ex_info: str | Omit = omit,
+        op_ex_info_alt: str | Omit = omit,
+        origin: str | Omit = omit,
+        plan_orig_num: str | Omit = omit,
+        qualifier: str | Omit = omit,
+        qual_sn: int | Omit = omit,
+        serial_num: str | Omit = omit,
+        stop_qualifier: str | Omit = omit,
+        stop_time: Union[str, datetime] | Omit = omit,
+        und_lnk_trks: SequenceNotStr[str] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single AirspaceControlOrder record as a POST body
@@ -707,14 +707,14 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirspacecontrolorderFull:
         """
         Service operation to get a single AirspaceControlOrder record by its unique ID
@@ -752,14 +752,14 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AirspacecontrolorderAbridged, AsyncOffsetPage[AirspacecontrolorderAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -798,14 +798,14 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -851,7 +851,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -887,7 +887,7 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirspaceControlOrderQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -905,14 +905,14 @@ class AsyncAirspaceControlOrdersResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirspaceControlOrderTupleResponse:
         """
         Service operation to dynamically query data and only return specified

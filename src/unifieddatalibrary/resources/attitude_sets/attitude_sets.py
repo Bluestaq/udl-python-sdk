@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -80,28 +80,28 @@ class AttitudeSetsResource(SyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        as_ref: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        attitude_list: Iterable[attitude_set_create_params.AttitudeList] | NotGiven = NOT_GIVEN,
-        es_id: str | NotGiven = NOT_GIVEN,
-        euler_rot_seq: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        interpolator: str | NotGiven = NOT_GIVEN,
-        interpolator_degree: int | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        prec_angle_init: float | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        spin_angle_init: float | NotGiven = NOT_GIVEN,
-        step_size: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        as_ref: SequenceNotStr[str] | Omit = omit,
+        attitude_list: Iterable[attitude_set_create_params.AttitudeList] | Omit = omit,
+        es_id: str | Omit = omit,
+        euler_rot_seq: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        interpolator: str | Omit = omit,
+        interpolator_degree: int | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        prec_angle_init: float | Omit = omit,
+        sat_no: int | Omit = omit,
+        spin_angle_init: float | Omit = omit,
+        step_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation intended for initial integration only.
 
@@ -288,14 +288,14 @@ class AttitudeSetsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttitudesetFull:
         """
         Service operation to get a single AttitudeSet record by its unique ID passed as
@@ -334,14 +334,14 @@ class AttitudeSetsResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[AttitudesetAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -387,14 +387,14 @@ class AttitudeSetsResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -445,7 +445,7 @@ class AttitudeSetsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttitudeSetQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -464,14 +464,14 @@ class AttitudeSetsResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttitudeSetTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -534,28 +534,28 @@ class AttitudeSetsResource(SyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        as_ref: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        attitude_list: Iterable[attitude_set_unvalidated_publish_params.AttitudeList] | NotGiven = NOT_GIVEN,
-        es_id: str | NotGiven = NOT_GIVEN,
-        euler_rot_seq: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        interpolator: str | NotGiven = NOT_GIVEN,
-        interpolator_degree: int | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        prec_angle_init: float | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        spin_angle_init: float | NotGiven = NOT_GIVEN,
-        step_size: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        as_ref: SequenceNotStr[str] | Omit = omit,
+        attitude_list: Iterable[attitude_set_unvalidated_publish_params.AttitudeList] | Omit = omit,
+        es_id: str | Omit = omit,
+        euler_rot_seq: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        interpolator: str | Omit = omit,
+        interpolator_degree: int | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        prec_angle_init: float | Omit = omit,
+        sat_no: int | Omit = omit,
+        spin_angle_init: float | Omit = omit,
+        step_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Attitude Set and many associated Onorbit
@@ -772,28 +772,28 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        as_ref: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        attitude_list: Iterable[attitude_set_create_params.AttitudeList] | NotGiven = NOT_GIVEN,
-        es_id: str | NotGiven = NOT_GIVEN,
-        euler_rot_seq: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        interpolator: str | NotGiven = NOT_GIVEN,
-        interpolator_degree: int | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        prec_angle_init: float | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        spin_angle_init: float | NotGiven = NOT_GIVEN,
-        step_size: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        as_ref: SequenceNotStr[str] | Omit = omit,
+        attitude_list: Iterable[attitude_set_create_params.AttitudeList] | Omit = omit,
+        es_id: str | Omit = omit,
+        euler_rot_seq: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        interpolator: str | Omit = omit,
+        interpolator_degree: int | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        prec_angle_init: float | Omit = omit,
+        sat_no: int | Omit = omit,
+        spin_angle_init: float | Omit = omit,
+        step_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation intended for initial integration only.
 
@@ -980,14 +980,14 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttitudesetFull:
         """
         Service operation to get a single AttitudeSet record by its unique ID passed as
@@ -1026,14 +1026,14 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AttitudesetAbridged, AsyncOffsetPage[AttitudesetAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1079,14 +1079,14 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1137,7 +1137,7 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttitudeSetQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1156,14 +1156,14 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AttitudeSetTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1226,28 +1226,28 @@ class AsyncAttitudeSetsResource(AsyncAPIResource):
         source: str,
         start_time: Union[str, datetime],
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        as_ref: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        attitude_list: Iterable[attitude_set_unvalidated_publish_params.AttitudeList] | NotGiven = NOT_GIVEN,
-        es_id: str | NotGiven = NOT_GIVEN,
-        euler_rot_seq: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        interpolator: str | NotGiven = NOT_GIVEN,
-        interpolator_degree: int | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        prec_angle_init: float | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        spin_angle_init: float | NotGiven = NOT_GIVEN,
-        step_size: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        as_ref: SequenceNotStr[str] | Omit = omit,
+        attitude_list: Iterable[attitude_set_unvalidated_publish_params.AttitudeList] | Omit = omit,
+        es_id: str | Omit = omit,
+        euler_rot_seq: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        interpolator: str | Omit = omit,
+        interpolator_degree: int | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        prec_angle_init: float | Omit = omit,
+        sat_no: int | Omit = omit,
+        spin_angle_init: float | Omit = omit,
+        step_size: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Attitude Set and many associated Onorbit

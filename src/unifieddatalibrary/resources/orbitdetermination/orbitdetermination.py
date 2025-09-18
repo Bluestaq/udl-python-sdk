@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -79,44 +79,44 @@ class OrbitdeterminationResource(SyncAPIResource):
         method: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        accepted_ob_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        accepted_ob_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        agom_est: bool | NotGiven = NOT_GIVEN,
-        agom_model: str | NotGiven = NOT_GIVEN,
-        apriori_elset: orbitdetermination_create_params.AprioriElset | NotGiven = NOT_GIVEN,
-        apriori_id_elset: str | NotGiven = NOT_GIVEN,
-        apriori_id_state_vector: str | NotGiven = NOT_GIVEN,
-        apriori_state_vector: orbitdetermination_create_params.AprioriStateVector | NotGiven = NOT_GIVEN,
-        ballistic_coeff_est: bool | NotGiven = NOT_GIVEN,
-        ballistic_coeff_model: str | NotGiven = NOT_GIVEN,
-        best_pass_wrms: float | NotGiven = NOT_GIVEN,
-        edr: float | NotGiven = NOT_GIVEN,
-        effective_from: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        effective_until: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        error_growth_rate: float | NotGiven = NOT_GIVEN,
-        first_pass_wrms: float | NotGiven = NOT_GIVEN,
-        fit_span: float | NotGiven = NOT_GIVEN,
-        last_ob_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        last_ob_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        method_source: str | NotGiven = NOT_GIVEN,
-        num_iterations: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        previous_wrms: float | NotGiven = NOT_GIVEN,
-        rejected_ob_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        rejected_ob_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        rms_convergence_criteria: float | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        sensor_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        time_span: float | NotGiven = NOT_GIVEN,
-        wrms: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        accepted_ob_ids: SequenceNotStr[str] | Omit = omit,
+        accepted_ob_typs: SequenceNotStr[str] | Omit = omit,
+        agom_est: bool | Omit = omit,
+        agom_model: str | Omit = omit,
+        apriori_elset: orbitdetermination_create_params.AprioriElset | Omit = omit,
+        apriori_id_elset: str | Omit = omit,
+        apriori_id_state_vector: str | Omit = omit,
+        apriori_state_vector: orbitdetermination_create_params.AprioriStateVector | Omit = omit,
+        ballistic_coeff_est: bool | Omit = omit,
+        ballistic_coeff_model: str | Omit = omit,
+        best_pass_wrms: float | Omit = omit,
+        edr: float | Omit = omit,
+        effective_from: Union[str, datetime] | Omit = omit,
+        effective_until: Union[str, datetime] | Omit = omit,
+        error_growth_rate: float | Omit = omit,
+        first_pass_wrms: float | Omit = omit,
+        fit_span: float | Omit = omit,
+        last_ob_end: Union[str, datetime] | Omit = omit,
+        last_ob_start: Union[str, datetime] | Omit = omit,
+        method_source: str | Omit = omit,
+        num_iterations: int | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        previous_wrms: float | Omit = omit,
+        rejected_ob_ids: SequenceNotStr[str] | Omit = omit,
+        rejected_ob_typs: SequenceNotStr[str] | Omit = omit,
+        rms_convergence_criteria: float | Omit = omit,
+        sat_no: int | Omit = omit,
+        sensor_ids: SequenceNotStr[str] | Omit = omit,
+        time_span: float | Omit = omit,
+        wrms: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single OrbitDetermination record as a POST body and
@@ -335,16 +335,16 @@ class OrbitdeterminationResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[OrbitdeterminationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -395,16 +395,16 @@ class OrbitdeterminationResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -462,7 +462,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -494,14 +494,14 @@ class OrbitdeterminationResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrbitdeterminationGetResponse:
         """
         Service operation to get a single OrbitDetermination record by its unique ID
@@ -544,7 +544,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrbitdeterminationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -562,16 +562,16 @@ class OrbitdeterminationResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrbitdeterminationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -637,7 +637,7 @@ class OrbitdeterminationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple OrbitDetermination records as a POST body and
@@ -699,44 +699,44 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         method: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        accepted_ob_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        accepted_ob_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        agom_est: bool | NotGiven = NOT_GIVEN,
-        agom_model: str | NotGiven = NOT_GIVEN,
-        apriori_elset: orbitdetermination_create_params.AprioriElset | NotGiven = NOT_GIVEN,
-        apriori_id_elset: str | NotGiven = NOT_GIVEN,
-        apriori_id_state_vector: str | NotGiven = NOT_GIVEN,
-        apriori_state_vector: orbitdetermination_create_params.AprioriStateVector | NotGiven = NOT_GIVEN,
-        ballistic_coeff_est: bool | NotGiven = NOT_GIVEN,
-        ballistic_coeff_model: str | NotGiven = NOT_GIVEN,
-        best_pass_wrms: float | NotGiven = NOT_GIVEN,
-        edr: float | NotGiven = NOT_GIVEN,
-        effective_from: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        effective_until: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        error_growth_rate: float | NotGiven = NOT_GIVEN,
-        first_pass_wrms: float | NotGiven = NOT_GIVEN,
-        fit_span: float | NotGiven = NOT_GIVEN,
-        last_ob_end: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        last_ob_start: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        method_source: str | NotGiven = NOT_GIVEN,
-        num_iterations: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        previous_wrms: float | NotGiven = NOT_GIVEN,
-        rejected_ob_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        rejected_ob_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        rms_convergence_criteria: float | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        sensor_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        time_span: float | NotGiven = NOT_GIVEN,
-        wrms: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        accepted_ob_ids: SequenceNotStr[str] | Omit = omit,
+        accepted_ob_typs: SequenceNotStr[str] | Omit = omit,
+        agom_est: bool | Omit = omit,
+        agom_model: str | Omit = omit,
+        apriori_elset: orbitdetermination_create_params.AprioriElset | Omit = omit,
+        apriori_id_elset: str | Omit = omit,
+        apriori_id_state_vector: str | Omit = omit,
+        apriori_state_vector: orbitdetermination_create_params.AprioriStateVector | Omit = omit,
+        ballistic_coeff_est: bool | Omit = omit,
+        ballistic_coeff_model: str | Omit = omit,
+        best_pass_wrms: float | Omit = omit,
+        edr: float | Omit = omit,
+        effective_from: Union[str, datetime] | Omit = omit,
+        effective_until: Union[str, datetime] | Omit = omit,
+        error_growth_rate: float | Omit = omit,
+        first_pass_wrms: float | Omit = omit,
+        fit_span: float | Omit = omit,
+        last_ob_end: Union[str, datetime] | Omit = omit,
+        last_ob_start: Union[str, datetime] | Omit = omit,
+        method_source: str | Omit = omit,
+        num_iterations: int | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        previous_wrms: float | Omit = omit,
+        rejected_ob_ids: SequenceNotStr[str] | Omit = omit,
+        rejected_ob_typs: SequenceNotStr[str] | Omit = omit,
+        rms_convergence_criteria: float | Omit = omit,
+        sat_no: int | Omit = omit,
+        sensor_ids: SequenceNotStr[str] | Omit = omit,
+        time_span: float | Omit = omit,
+        wrms: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single OrbitDetermination record as a POST body and
@@ -955,16 +955,16 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[OrbitdeterminationListResponse, AsyncOffsetPage[OrbitdeterminationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1015,16 +1015,16 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1082,7 +1082,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1114,14 +1114,14 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrbitdeterminationGetResponse:
         """
         Service operation to get a single OrbitDetermination record by its unique ID
@@ -1164,7 +1164,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrbitdeterminationQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1182,16 +1182,16 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OrbitdeterminationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1257,7 +1257,7 @@ class AsyncOrbitdeterminationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple OrbitDetermination records as a POST body and

@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -64,24 +64,24 @@ class AirTaskingOrdersResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         op_exer_name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        ack_req_ind: str | NotGiven = NOT_GIVEN,
-        ack_unit_instructions: str | NotGiven = NOT_GIVEN,
-        ac_msn_tasking: Iterable[air_tasking_order_create_params.AcMsnTasking] | NotGiven = NOT_GIVEN,
-        end_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        gen_text: Iterable[air_tasking_order_create_params.GenText] | NotGiven = NOT_GIVEN,
-        msg_month: str | NotGiven = NOT_GIVEN,
-        msg_originator: str | NotGiven = NOT_GIVEN,
-        msg_qualifier: str | NotGiven = NOT_GIVEN,
-        msg_sn: str | NotGiven = NOT_GIVEN,
-        naval_flt_ops: Iterable[air_tasking_order_create_params.NavalFltOp] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        ack_req_ind: str | Omit = omit,
+        ack_unit_instructions: str | Omit = omit,
+        ac_msn_tasking: Iterable[air_tasking_order_create_params.AcMsnTasking] | Omit = omit,
+        end_ts: Union[str, datetime] | Omit = omit,
+        gen_text: Iterable[air_tasking_order_create_params.GenText] | Omit = omit,
+        msg_month: str | Omit = omit,
+        msg_originator: str | Omit = omit,
+        msg_qualifier: str | Omit = omit,
+        msg_sn: str | Omit = omit,
+        naval_flt_ops: Iterable[air_tasking_order_create_params.NavalFltOp] | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single airtaskingorder record as a POST body and
@@ -190,14 +190,14 @@ class AirTaskingOrdersResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirTaskingOrderFull:
         """
         Service operation to get a single airtaskingorder record by its unique ID passed
@@ -235,14 +235,14 @@ class AirTaskingOrdersResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[AirtaskingorderAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -281,14 +281,14 @@ class AirTaskingOrdersResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -333,7 +333,7 @@ class AirTaskingOrdersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirTaskingOrderQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -351,14 +351,14 @@ class AirTaskingOrdersResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirTaskingOrderTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -412,7 +412,7 @@ class AirTaskingOrdersResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple airtaskingorder records as a POST body and
@@ -468,24 +468,24 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         op_exer_name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        ack_req_ind: str | NotGiven = NOT_GIVEN,
-        ack_unit_instructions: str | NotGiven = NOT_GIVEN,
-        ac_msn_tasking: Iterable[air_tasking_order_create_params.AcMsnTasking] | NotGiven = NOT_GIVEN,
-        end_ts: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        gen_text: Iterable[air_tasking_order_create_params.GenText] | NotGiven = NOT_GIVEN,
-        msg_month: str | NotGiven = NOT_GIVEN,
-        msg_originator: str | NotGiven = NOT_GIVEN,
-        msg_qualifier: str | NotGiven = NOT_GIVEN,
-        msg_sn: str | NotGiven = NOT_GIVEN,
-        naval_flt_ops: Iterable[air_tasking_order_create_params.NavalFltOp] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        ack_req_ind: str | Omit = omit,
+        ack_unit_instructions: str | Omit = omit,
+        ac_msn_tasking: Iterable[air_tasking_order_create_params.AcMsnTasking] | Omit = omit,
+        end_ts: Union[str, datetime] | Omit = omit,
+        gen_text: Iterable[air_tasking_order_create_params.GenText] | Omit = omit,
+        msg_month: str | Omit = omit,
+        msg_originator: str | Omit = omit,
+        msg_qualifier: str | Omit = omit,
+        msg_sn: str | Omit = omit,
+        naval_flt_ops: Iterable[air_tasking_order_create_params.NavalFltOp] | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single airtaskingorder record as a POST body and
@@ -594,14 +594,14 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirTaskingOrderFull:
         """
         Service operation to get a single airtaskingorder record by its unique ID passed
@@ -639,14 +639,14 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AirtaskingorderAbridged, AsyncOffsetPage[AirtaskingorderAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -685,14 +685,14 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -737,7 +737,7 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirTaskingOrderQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -755,14 +755,14 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirTaskingOrderTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -816,7 +816,7 @@ class AsyncAirTaskingOrdersResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple airtaskingorder records as a POST body and

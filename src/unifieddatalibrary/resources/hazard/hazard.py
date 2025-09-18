@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -78,42 +78,42 @@ class HazardResource(SyncAPIResource):
         detect_time: Union[str, datetime],
         detect_type: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        a: int | NotGiven = NOT_GIVEN,
-        activity: float | NotGiven = NOT_GIVEN,
-        bottle_id: str | NotGiven = NOT_GIVEN,
-        cas_rn: str | NotGiven = NOT_GIVEN,
-        channel: str | NotGiven = NOT_GIVEN,
-        ctrn_time: float | NotGiven = NOT_GIVEN,
-        density: float | NotGiven = NOT_GIVEN,
-        dep: float | NotGiven = NOT_GIVEN,
-        dep_ctrn: float | NotGiven = NOT_GIVEN,
-        dose: float | NotGiven = NOT_GIVEN,
-        dose_rate: float | NotGiven = NOT_GIVEN,
-        duration: int | NotGiven = NOT_GIVEN,
-        g_bar: float | NotGiven = NOT_GIVEN,
-        harmful: bool | NotGiven = NOT_GIVEN,
-        h_bar: float | NotGiven = NOT_GIVEN,
-        id_poi: str | NotGiven = NOT_GIVEN,
-        id_track: str | NotGiven = NOT_GIVEN,
-        mass_frac: float | NotGiven = NOT_GIVEN,
-        mat_cat: int | NotGiven = NOT_GIVEN,
-        mat_class: str | NotGiven = NOT_GIVEN,
-        mat_name: str | NotGiven = NOT_GIVEN,
-        mat_type: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        ppm: int | NotGiven = NOT_GIVEN,
-        rad_ctrn: float | NotGiven = NOT_GIVEN,
-        readings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        reading_units: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        reading_values: Iterable[float] | NotGiven = NOT_GIVEN,
-        z: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        a: int | Omit = omit,
+        activity: float | Omit = omit,
+        bottle_id: str | Omit = omit,
+        cas_rn: str | Omit = omit,
+        channel: str | Omit = omit,
+        ctrn_time: float | Omit = omit,
+        density: float | Omit = omit,
+        dep: float | Omit = omit,
+        dep_ctrn: float | Omit = omit,
+        dose: float | Omit = omit,
+        dose_rate: float | Omit = omit,
+        duration: int | Omit = omit,
+        g_bar: float | Omit = omit,
+        harmful: bool | Omit = omit,
+        h_bar: float | Omit = omit,
+        id_poi: str | Omit = omit,
+        id_track: str | Omit = omit,
+        mass_frac: float | Omit = omit,
+        mat_cat: int | Omit = omit,
+        mat_class: str | Omit = omit,
+        mat_name: str | Omit = omit,
+        mat_type: str | Omit = omit,
+        origin: str | Omit = omit,
+        ppm: int | Omit = omit,
+        rad_ctrn: float | Omit = omit,
+        readings: SequenceNotStr[str] | Omit = omit,
+        reading_units: SequenceNotStr[str] | Omit = omit,
+        reading_values: Iterable[float] | Omit = omit,
+        z: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single hazard as a POST body and ingest into the
@@ -334,14 +334,14 @@ class HazardResource(SyncAPIResource):
         self,
         *,
         detect_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[HazardListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -385,14 +385,14 @@ class HazardResource(SyncAPIResource):
         self,
         *,
         detect_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -442,7 +442,7 @@ class HazardResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -474,14 +474,14 @@ class HazardResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> HazardGetResponse:
         """
         Service operation to get a single Hazard by its unique ID passed as a path
@@ -524,7 +524,7 @@ class HazardResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> HazardQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -543,14 +543,14 @@ class HazardResource(SyncAPIResource):
         *,
         columns: str,
         detect_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> HazardTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -634,42 +634,42 @@ class AsyncHazardResource(AsyncAPIResource):
         detect_time: Union[str, datetime],
         detect_type: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        a: int | NotGiven = NOT_GIVEN,
-        activity: float | NotGiven = NOT_GIVEN,
-        bottle_id: str | NotGiven = NOT_GIVEN,
-        cas_rn: str | NotGiven = NOT_GIVEN,
-        channel: str | NotGiven = NOT_GIVEN,
-        ctrn_time: float | NotGiven = NOT_GIVEN,
-        density: float | NotGiven = NOT_GIVEN,
-        dep: float | NotGiven = NOT_GIVEN,
-        dep_ctrn: float | NotGiven = NOT_GIVEN,
-        dose: float | NotGiven = NOT_GIVEN,
-        dose_rate: float | NotGiven = NOT_GIVEN,
-        duration: int | NotGiven = NOT_GIVEN,
-        g_bar: float | NotGiven = NOT_GIVEN,
-        harmful: bool | NotGiven = NOT_GIVEN,
-        h_bar: float | NotGiven = NOT_GIVEN,
-        id_poi: str | NotGiven = NOT_GIVEN,
-        id_track: str | NotGiven = NOT_GIVEN,
-        mass_frac: float | NotGiven = NOT_GIVEN,
-        mat_cat: int | NotGiven = NOT_GIVEN,
-        mat_class: str | NotGiven = NOT_GIVEN,
-        mat_name: str | NotGiven = NOT_GIVEN,
-        mat_type: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        ppm: int | NotGiven = NOT_GIVEN,
-        rad_ctrn: float | NotGiven = NOT_GIVEN,
-        readings: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        reading_units: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        reading_values: Iterable[float] | NotGiven = NOT_GIVEN,
-        z: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        a: int | Omit = omit,
+        activity: float | Omit = omit,
+        bottle_id: str | Omit = omit,
+        cas_rn: str | Omit = omit,
+        channel: str | Omit = omit,
+        ctrn_time: float | Omit = omit,
+        density: float | Omit = omit,
+        dep: float | Omit = omit,
+        dep_ctrn: float | Omit = omit,
+        dose: float | Omit = omit,
+        dose_rate: float | Omit = omit,
+        duration: int | Omit = omit,
+        g_bar: float | Omit = omit,
+        harmful: bool | Omit = omit,
+        h_bar: float | Omit = omit,
+        id_poi: str | Omit = omit,
+        id_track: str | Omit = omit,
+        mass_frac: float | Omit = omit,
+        mat_cat: int | Omit = omit,
+        mat_class: str | Omit = omit,
+        mat_name: str | Omit = omit,
+        mat_type: str | Omit = omit,
+        origin: str | Omit = omit,
+        ppm: int | Omit = omit,
+        rad_ctrn: float | Omit = omit,
+        readings: SequenceNotStr[str] | Omit = omit,
+        reading_units: SequenceNotStr[str] | Omit = omit,
+        reading_values: Iterable[float] | Omit = omit,
+        z: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single hazard as a POST body and ingest into the
@@ -890,14 +890,14 @@ class AsyncHazardResource(AsyncAPIResource):
         self,
         *,
         detect_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[HazardListResponse, AsyncOffsetPage[HazardListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -941,14 +941,14 @@ class AsyncHazardResource(AsyncAPIResource):
         self,
         *,
         detect_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -998,7 +998,7 @@ class AsyncHazardResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1030,14 +1030,14 @@ class AsyncHazardResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> HazardGetResponse:
         """
         Service operation to get a single Hazard by its unique ID passed as a path
@@ -1080,7 +1080,7 @@ class AsyncHazardResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> HazardQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1099,14 +1099,14 @@ class AsyncHazardResource(AsyncAPIResource):
         *,
         columns: str,
         detect_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> HazardTupleResponse:
         """
         Service operation to dynamically query data and only return specified

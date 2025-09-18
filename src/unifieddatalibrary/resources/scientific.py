@@ -14,7 +14,7 @@ from ..types import (
     scientific_create_params,
     scientific_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -63,21 +63,21 @@ class ScientificResource(SyncAPIResource):
         name: str,
         source: str,
         spacecraft_id: str,
-        id: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        frequency_band: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        payload_category: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        frequency_band: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        payload_category: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Scientific as a POST body and ingest into the
@@ -177,21 +177,21 @@ class ScientificResource(SyncAPIResource):
         name: str,
         source: str,
         spacecraft_id: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        frequency_band: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        payload_category: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        frequency_band: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        payload_category: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Scientific.
 
@@ -287,14 +287,14 @@ class ScientificResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[ScientificListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -339,7 +339,7 @@ class ScientificResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a Scientific object specified by the passed ID path
@@ -369,14 +369,14 @@ class ScientificResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -417,14 +417,14 @@ class ScientificResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScientificGetResponse:
         """
         Service operation to get a single Scientific record by its unique ID passed as a
@@ -467,7 +467,7 @@ class ScientificResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScientificQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -485,14 +485,14 @@ class ScientificResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScientificTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -566,21 +566,21 @@ class AsyncScientificResource(AsyncAPIResource):
         name: str,
         source: str,
         spacecraft_id: str,
-        id: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        frequency_band: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        payload_category: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        frequency_band: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        payload_category: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single Scientific as a POST body and ingest into the
@@ -680,21 +680,21 @@ class AsyncScientificResource(AsyncAPIResource):
         name: str,
         source: str,
         spacecraft_id: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        frequency_band: str | NotGiven = NOT_GIVEN,
-        hosted_for_company_org_id: str | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        manufacturer_org_id: str | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        payload_category: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        frequency_band: str | Omit = omit,
+        hosted_for_company_org_id: str | Omit = omit,
+        id_entity: str | Omit = omit,
+        manufacturer_org_id: str | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        payload_category: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single Scientific.
 
@@ -790,14 +790,14 @@ class AsyncScientificResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[ScientificListResponse, AsyncOffsetPage[ScientificListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -842,7 +842,7 @@ class AsyncScientificResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a Scientific object specified by the passed ID path
@@ -872,14 +872,14 @@ class AsyncScientificResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -920,14 +920,14 @@ class AsyncScientificResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScientificGetResponse:
         """
         Service operation to get a single Scientific record by its unique ID passed as a
@@ -970,7 +970,7 @@ class AsyncScientificResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScientificQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -988,14 +988,14 @@ class AsyncScientificResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScientificTupleResponse:
         """
         Service operation to dynamically query data and only return specified

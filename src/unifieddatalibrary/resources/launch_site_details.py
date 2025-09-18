@@ -14,7 +14,7 @@ from ..types import (
     launch_site_detail_update_params,
     launch_site_detail_find_by_source_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -61,19 +61,19 @@ class LaunchSiteDetailsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_launch_site: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        available_inclinations: Iterable[float] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        id_location: str | NotGiven = NOT_GIVEN,
-        launch_group: str | NotGiven = NOT_GIVEN,
-        location: LocationIngestParam | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        available_inclinations: Iterable[float] | Omit = omit,
+        description: str | Omit = omit,
+        id_location: str | Omit = omit,
+        launch_group: str | Omit = omit,
+        location: LocationIngestParam | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single LaunchSiteDetails as a POST body and ingest
@@ -169,19 +169,19 @@ class LaunchSiteDetailsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_launch_site: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        available_inclinations: Iterable[float] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        id_location: str | NotGiven = NOT_GIVEN,
-        launch_group: str | NotGiven = NOT_GIVEN,
-        location: LocationIngestParam | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        available_inclinations: Iterable[float] | Omit = omit,
+        description: str | Omit = omit,
+        id_location: str | Omit = omit,
+        launch_group: str | Omit = omit,
+        location: LocationIngestParam | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a LaunchSiteDetails.
 
@@ -274,14 +274,14 @@ class LaunchSiteDetailsResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[LaunchSiteDetailListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -326,7 +326,7 @@ class LaunchSiteDetailsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a LaunchSiteDetails specified by the passed ID path
@@ -359,14 +359,14 @@ class LaunchSiteDetailsResource(SyncAPIResource):
         self,
         *,
         source: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchSiteDetailFindBySourceResponse:
         """
         Service operation to get a single LaunchSiteDetails by a source passed as a
@@ -408,14 +408,14 @@ class LaunchSiteDetailsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchSiteDetailGetResponse:
         """
         Service operation to get a single LaunchSiteDetails by its unique ID passed as a
@@ -480,19 +480,19 @@ class AsyncLaunchSiteDetailsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_launch_site: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        available_inclinations: Iterable[float] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        id_location: str | NotGiven = NOT_GIVEN,
-        launch_group: str | NotGiven = NOT_GIVEN,
-        location: LocationIngestParam | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        available_inclinations: Iterable[float] | Omit = omit,
+        description: str | Omit = omit,
+        id_location: str | Omit = omit,
+        launch_group: str | Omit = omit,
+        location: LocationIngestParam | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single LaunchSiteDetails as a POST body and ingest
@@ -588,19 +588,19 @@ class AsyncLaunchSiteDetailsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_launch_site: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        available_inclinations: Iterable[float] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        id_location: str | NotGiven = NOT_GIVEN,
-        launch_group: str | NotGiven = NOT_GIVEN,
-        location: LocationIngestParam | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        available_inclinations: Iterable[float] | Omit = omit,
+        description: str | Omit = omit,
+        id_location: str | Omit = omit,
+        launch_group: str | Omit = omit,
+        location: LocationIngestParam | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a LaunchSiteDetails.
 
@@ -693,14 +693,14 @@ class AsyncLaunchSiteDetailsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[LaunchSiteDetailListResponse, AsyncOffsetPage[LaunchSiteDetailListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -745,7 +745,7 @@ class AsyncLaunchSiteDetailsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a LaunchSiteDetails specified by the passed ID path
@@ -778,14 +778,14 @@ class AsyncLaunchSiteDetailsResource(AsyncAPIResource):
         self,
         *,
         source: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchSiteDetailFindBySourceResponse:
         """
         Service operation to get a single LaunchSiteDetails by a source passed as a
@@ -827,14 +827,14 @@ class AsyncLaunchSiteDetailsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaunchSiteDetailGetResponse:
         """
         Service operation to get a single LaunchSiteDetails by its unique ID passed as a

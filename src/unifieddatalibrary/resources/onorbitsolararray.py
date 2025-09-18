@@ -12,7 +12,7 @@ from ..types import (
     onorbitsolararray_create_params,
     onorbitsolararray_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -59,16 +59,16 @@ class OnorbitsolararrayResource(SyncAPIResource):
         id_on_orbit: str,
         id_solar_array: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        quantity: int | NotGiven = NOT_GIVEN,
-        solar_array: SolarArrayIngest | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        origin: str | Omit = omit,
+        quantity: int | Omit = omit,
+        solar_array: SolarArrayIngest | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single OnorbitSolarArray as a POST body and ingest
@@ -157,16 +157,16 @@ class OnorbitsolararrayResource(SyncAPIResource):
         id_on_orbit: str,
         id_solar_array: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        quantity: int | NotGiven = NOT_GIVEN,
-        solar_array: SolarArrayIngest | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        origin: str | Omit = omit,
+        quantity: int | Omit = omit,
+        solar_array: SolarArrayIngest | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single OnorbitSolarArray.
 
@@ -251,14 +251,14 @@ class OnorbitsolararrayResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[OnorbitsolararrayListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -303,7 +303,7 @@ class OnorbitsolararrayResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a OnorbitSolarArray object specified by the passed
@@ -337,14 +337,14 @@ class OnorbitsolararrayResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitSolarArrayFull:
         """
         Service operation to get a single OnorbitSolarArray record by its unique ID
@@ -410,16 +410,16 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
         id_on_orbit: str,
         id_solar_array: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        quantity: int | NotGiven = NOT_GIVEN,
-        solar_array: SolarArrayIngest | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        origin: str | Omit = omit,
+        quantity: int | Omit = omit,
+        solar_array: SolarArrayIngest | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single OnorbitSolarArray as a POST body and ingest
@@ -508,16 +508,16 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
         id_on_orbit: str,
         id_solar_array: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        quantity: int | NotGiven = NOT_GIVEN,
-        solar_array: SolarArrayIngest | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        origin: str | Omit = omit,
+        quantity: int | Omit = omit,
+        solar_array: SolarArrayIngest | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single OnorbitSolarArray.
 
@@ -602,14 +602,14 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[OnorbitsolararrayListResponse, AsyncOffsetPage[OnorbitsolararrayListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -654,7 +654,7 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a OnorbitSolarArray object specified by the passed
@@ -688,14 +688,14 @@ class AsyncOnorbitsolararrayResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitSolarArrayFull:
         """
         Service operation to get a single OnorbitSolarArray record by its unique ID

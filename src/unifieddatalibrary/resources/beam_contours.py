@@ -16,7 +16,7 @@ from ..types import (
     beam_contour_retrieve_params,
     beam_contour_create_bulk_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -64,23 +64,23 @@ class BeamContoursResource(SyncAPIResource):
         id_beam: str,
         source: str,
         type: Literal["BORESIGHT", "CONTOUR", "SVC AREA"],
-        id: str | NotGiven = NOT_GIVEN,
-        contour_idx: int | NotGiven = NOT_GIVEN,
-        gain: float | NotGiven = NOT_GIVEN,
-        geography: str | NotGiven = NOT_GIVEN,
-        geography_json: str | NotGiven = NOT_GIVEN,
-        geography_ndims: int | NotGiven = NOT_GIVEN,
-        geography_srid: int | NotGiven = NOT_GIVEN,
-        geography_text: str | NotGiven = NOT_GIVEN,
-        geography_type: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        region_name: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        contour_idx: int | Omit = omit,
+        gain: float | Omit = omit,
+        geography: str | Omit = omit,
+        geography_json: str | Omit = omit,
+        geography_ndims: int | Omit = omit,
+        geography_srid: int | Omit = omit,
+        geography_text: str | Omit = omit,
+        geography_type: str | Omit = omit,
+        origin: str | Omit = omit,
+        region_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single BeamContour as a POST body and ingest into
@@ -200,14 +200,14 @@ class BeamContoursResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BeamcontourFull:
         """
         Service operation to get a single BeamContour by its unique ID passed as a path
@@ -251,23 +251,23 @@ class BeamContoursResource(SyncAPIResource):
         id_beam: str,
         source: str,
         type: Literal["BORESIGHT", "CONTOUR", "SVC AREA"],
-        body_id: str | NotGiven = NOT_GIVEN,
-        contour_idx: int | NotGiven = NOT_GIVEN,
-        gain: float | NotGiven = NOT_GIVEN,
-        geography: str | NotGiven = NOT_GIVEN,
-        geography_json: str | NotGiven = NOT_GIVEN,
-        geography_ndims: int | NotGiven = NOT_GIVEN,
-        geography_srid: int | NotGiven = NOT_GIVEN,
-        geography_text: str | NotGiven = NOT_GIVEN,
-        geography_type: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        region_name: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        contour_idx: int | Omit = omit,
+        gain: float | Omit = omit,
+        geography: str | Omit = omit,
+        geography_json: str | Omit = omit,
+        geography_ndims: int | Omit = omit,
+        geography_srid: int | Omit = omit,
+        geography_text: str | Omit = omit,
+        geography_type: str | Omit = omit,
+        origin: str | Omit = omit,
+        region_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single BeamContour.
 
@@ -389,14 +389,14 @@ class BeamContoursResource(SyncAPIResource):
         self,
         *,
         id_beam: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[BeamcontourAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -444,7 +444,7 @@ class BeamContoursResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a BeamContour object specified by the passed ID path
@@ -475,14 +475,14 @@ class BeamContoursResource(SyncAPIResource):
         self,
         *,
         id_beam: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -531,7 +531,7 @@ class BeamContoursResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of BeamContours as a POST body and ingest into
@@ -567,7 +567,7 @@ class BeamContoursResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BeamContourQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -586,14 +586,14 @@ class BeamContoursResource(SyncAPIResource):
         *,
         columns: str,
         id_beam: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BeamContourTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -670,23 +670,23 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         id_beam: str,
         source: str,
         type: Literal["BORESIGHT", "CONTOUR", "SVC AREA"],
-        id: str | NotGiven = NOT_GIVEN,
-        contour_idx: int | NotGiven = NOT_GIVEN,
-        gain: float | NotGiven = NOT_GIVEN,
-        geography: str | NotGiven = NOT_GIVEN,
-        geography_json: str | NotGiven = NOT_GIVEN,
-        geography_ndims: int | NotGiven = NOT_GIVEN,
-        geography_srid: int | NotGiven = NOT_GIVEN,
-        geography_text: str | NotGiven = NOT_GIVEN,
-        geography_type: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        region_name: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        contour_idx: int | Omit = omit,
+        gain: float | Omit = omit,
+        geography: str | Omit = omit,
+        geography_json: str | Omit = omit,
+        geography_ndims: int | Omit = omit,
+        geography_srid: int | Omit = omit,
+        geography_text: str | Omit = omit,
+        geography_type: str | Omit = omit,
+        origin: str | Omit = omit,
+        region_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single BeamContour as a POST body and ingest into
@@ -806,14 +806,14 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BeamcontourFull:
         """
         Service operation to get a single BeamContour by its unique ID passed as a path
@@ -857,23 +857,23 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         id_beam: str,
         source: str,
         type: Literal["BORESIGHT", "CONTOUR", "SVC AREA"],
-        body_id: str | NotGiven = NOT_GIVEN,
-        contour_idx: int | NotGiven = NOT_GIVEN,
-        gain: float | NotGiven = NOT_GIVEN,
-        geography: str | NotGiven = NOT_GIVEN,
-        geography_json: str | NotGiven = NOT_GIVEN,
-        geography_ndims: int | NotGiven = NOT_GIVEN,
-        geography_srid: int | NotGiven = NOT_GIVEN,
-        geography_text: str | NotGiven = NOT_GIVEN,
-        geography_type: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        region_name: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        contour_idx: int | Omit = omit,
+        gain: float | Omit = omit,
+        geography: str | Omit = omit,
+        geography_json: str | Omit = omit,
+        geography_ndims: int | Omit = omit,
+        geography_srid: int | Omit = omit,
+        geography_text: str | Omit = omit,
+        geography_type: str | Omit = omit,
+        origin: str | Omit = omit,
+        region_name: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single BeamContour.
 
@@ -995,14 +995,14 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         *,
         id_beam: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[BeamcontourAbridged, AsyncOffsetPage[BeamcontourAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1050,7 +1050,7 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a BeamContour object specified by the passed ID path
@@ -1081,14 +1081,14 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         self,
         *,
         id_beam: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1137,7 +1137,7 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of BeamContours as a POST body and ingest into
@@ -1173,7 +1173,7 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BeamContourQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1192,14 +1192,14 @@ class AsyncBeamContoursResource(AsyncAPIResource):
         *,
         columns: str,
         id_beam: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BeamContourTupleResponse:
         """
         Service operation to dynamically query data and only return specified

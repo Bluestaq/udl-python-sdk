@@ -18,7 +18,7 @@ from ..types import (
     dropzone_create_bulk_params,
     dropzone_unvalidated_publish_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -67,37 +67,37 @@ class DropzoneResource(SyncAPIResource):
         lon: float,
         name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        alt_country_code: str | NotGiven = NOT_GIVEN,
-        alt_country_name: str | NotGiven = NOT_GIVEN,
-        approval_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        country_name: str | NotGiven = NOT_GIVEN,
-        expiration_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ext_identifier: str | NotGiven = NOT_GIVEN,
-        id_site: str | NotGiven = NOT_GIVEN,
-        last_update: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        majcom: str | NotGiven = NOT_GIVEN,
-        nearest_loc: str | NotGiven = NOT_GIVEN,
-        operational_approval_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        point_name: str | NotGiven = NOT_GIVEN,
-        radius: float | NotGiven = NOT_GIVEN,
-        recert_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        remark: str | NotGiven = NOT_GIVEN,
-        state_abbr: str | NotGiven = NOT_GIVEN,
-        state_name: str | NotGiven = NOT_GIVEN,
-        survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
-        zar_id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        alt_country_code: str | Omit = omit,
+        alt_country_name: str | Omit = omit,
+        approval_date: Union[str, datetime] | Omit = omit,
+        code: str | Omit = omit,
+        country_code: str | Omit = omit,
+        country_name: str | Omit = omit,
+        expiration_date: Union[str, datetime] | Omit = omit,
+        ext_identifier: str | Omit = omit,
+        id_site: str | Omit = omit,
+        last_update: Union[str, datetime] | Omit = omit,
+        length: float | Omit = omit,
+        majcom: str | Omit = omit,
+        nearest_loc: str | Omit = omit,
+        operational_approval_date: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        point_name: str | Omit = omit,
+        radius: float | Omit = omit,
+        recert_date: Union[str, datetime] | Omit = omit,
+        remark: str | Omit = omit,
+        state_abbr: str | Omit = omit,
+        state_name: str | Omit = omit,
+        survey_date: Union[str, datetime] | Omit = omit,
+        width: float | Omit = omit,
+        zar_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single dropzone record as a POST body and ingest
@@ -258,14 +258,14 @@ class DropzoneResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DropzoneRetrieveResponse:
         """
         Service operation to get a single dropzone record by its unique ID passed as a
@@ -310,37 +310,37 @@ class DropzoneResource(SyncAPIResource):
         lon: float,
         name: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        alt_country_code: str | NotGiven = NOT_GIVEN,
-        alt_country_name: str | NotGiven = NOT_GIVEN,
-        approval_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        country_name: str | NotGiven = NOT_GIVEN,
-        expiration_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ext_identifier: str | NotGiven = NOT_GIVEN,
-        id_site: str | NotGiven = NOT_GIVEN,
-        last_update: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        majcom: str | NotGiven = NOT_GIVEN,
-        nearest_loc: str | NotGiven = NOT_GIVEN,
-        operational_approval_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        point_name: str | NotGiven = NOT_GIVEN,
-        radius: float | NotGiven = NOT_GIVEN,
-        recert_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        remark: str | NotGiven = NOT_GIVEN,
-        state_abbr: str | NotGiven = NOT_GIVEN,
-        state_name: str | NotGiven = NOT_GIVEN,
-        survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
-        zar_id: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        alt_country_code: str | Omit = omit,
+        alt_country_name: str | Omit = omit,
+        approval_date: Union[str, datetime] | Omit = omit,
+        code: str | Omit = omit,
+        country_code: str | Omit = omit,
+        country_name: str | Omit = omit,
+        expiration_date: Union[str, datetime] | Omit = omit,
+        ext_identifier: str | Omit = omit,
+        id_site: str | Omit = omit,
+        last_update: Union[str, datetime] | Omit = omit,
+        length: float | Omit = omit,
+        majcom: str | Omit = omit,
+        nearest_loc: str | Omit = omit,
+        operational_approval_date: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        point_name: str | Omit = omit,
+        radius: float | Omit = omit,
+        recert_date: Union[str, datetime] | Omit = omit,
+        remark: str | Omit = omit,
+        state_abbr: str | Omit = omit,
+        state_name: str | Omit = omit,
+        survey_date: Union[str, datetime] | Omit = omit,
+        width: float | Omit = omit,
+        zar_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single dropzone record.
 
@@ -503,14 +503,14 @@ class DropzoneResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[DropzoneListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -555,7 +555,7 @@ class DropzoneResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a dropzone record specified by the passed ID path
@@ -585,14 +585,14 @@ class DropzoneResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -638,7 +638,7 @@ class DropzoneResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -674,7 +674,7 @@ class DropzoneResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DropzoneQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -692,14 +692,14 @@ class DropzoneResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DropzoneTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -753,7 +753,7 @@ class DropzoneResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple dropzone records as a POST body and ingest
@@ -810,37 +810,37 @@ class AsyncDropzoneResource(AsyncAPIResource):
         lon: float,
         name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        alt_country_code: str | NotGiven = NOT_GIVEN,
-        alt_country_name: str | NotGiven = NOT_GIVEN,
-        approval_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        country_name: str | NotGiven = NOT_GIVEN,
-        expiration_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ext_identifier: str | NotGiven = NOT_GIVEN,
-        id_site: str | NotGiven = NOT_GIVEN,
-        last_update: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        majcom: str | NotGiven = NOT_GIVEN,
-        nearest_loc: str | NotGiven = NOT_GIVEN,
-        operational_approval_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        point_name: str | NotGiven = NOT_GIVEN,
-        radius: float | NotGiven = NOT_GIVEN,
-        recert_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        remark: str | NotGiven = NOT_GIVEN,
-        state_abbr: str | NotGiven = NOT_GIVEN,
-        state_name: str | NotGiven = NOT_GIVEN,
-        survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
-        zar_id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        alt_country_code: str | Omit = omit,
+        alt_country_name: str | Omit = omit,
+        approval_date: Union[str, datetime] | Omit = omit,
+        code: str | Omit = omit,
+        country_code: str | Omit = omit,
+        country_name: str | Omit = omit,
+        expiration_date: Union[str, datetime] | Omit = omit,
+        ext_identifier: str | Omit = omit,
+        id_site: str | Omit = omit,
+        last_update: Union[str, datetime] | Omit = omit,
+        length: float | Omit = omit,
+        majcom: str | Omit = omit,
+        nearest_loc: str | Omit = omit,
+        operational_approval_date: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        point_name: str | Omit = omit,
+        radius: float | Omit = omit,
+        recert_date: Union[str, datetime] | Omit = omit,
+        remark: str | Omit = omit,
+        state_abbr: str | Omit = omit,
+        state_name: str | Omit = omit,
+        survey_date: Union[str, datetime] | Omit = omit,
+        width: float | Omit = omit,
+        zar_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single dropzone record as a POST body and ingest
@@ -1001,14 +1001,14 @@ class AsyncDropzoneResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DropzoneRetrieveResponse:
         """
         Service operation to get a single dropzone record by its unique ID passed as a
@@ -1053,37 +1053,37 @@ class AsyncDropzoneResource(AsyncAPIResource):
         lon: float,
         name: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        alt_country_code: str | NotGiven = NOT_GIVEN,
-        alt_country_name: str | NotGiven = NOT_GIVEN,
-        approval_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        code: str | NotGiven = NOT_GIVEN,
-        country_code: str | NotGiven = NOT_GIVEN,
-        country_name: str | NotGiven = NOT_GIVEN,
-        expiration_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ext_identifier: str | NotGiven = NOT_GIVEN,
-        id_site: str | NotGiven = NOT_GIVEN,
-        last_update: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        length: float | NotGiven = NOT_GIVEN,
-        majcom: str | NotGiven = NOT_GIVEN,
-        nearest_loc: str | NotGiven = NOT_GIVEN,
-        operational_approval_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        point_name: str | NotGiven = NOT_GIVEN,
-        radius: float | NotGiven = NOT_GIVEN,
-        recert_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        remark: str | NotGiven = NOT_GIVEN,
-        state_abbr: str | NotGiven = NOT_GIVEN,
-        state_name: str | NotGiven = NOT_GIVEN,
-        survey_date: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        width: float | NotGiven = NOT_GIVEN,
-        zar_id: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        alt_country_code: str | Omit = omit,
+        alt_country_name: str | Omit = omit,
+        approval_date: Union[str, datetime] | Omit = omit,
+        code: str | Omit = omit,
+        country_code: str | Omit = omit,
+        country_name: str | Omit = omit,
+        expiration_date: Union[str, datetime] | Omit = omit,
+        ext_identifier: str | Omit = omit,
+        id_site: str | Omit = omit,
+        last_update: Union[str, datetime] | Omit = omit,
+        length: float | Omit = omit,
+        majcom: str | Omit = omit,
+        nearest_loc: str | Omit = omit,
+        operational_approval_date: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        point_name: str | Omit = omit,
+        radius: float | Omit = omit,
+        recert_date: Union[str, datetime] | Omit = omit,
+        remark: str | Omit = omit,
+        state_abbr: str | Omit = omit,
+        state_name: str | Omit = omit,
+        survey_date: Union[str, datetime] | Omit = omit,
+        width: float | Omit = omit,
+        zar_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single dropzone record.
 
@@ -1246,14 +1246,14 @@ class AsyncDropzoneResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DropzoneListResponse, AsyncOffsetPage[DropzoneListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1298,7 +1298,7 @@ class AsyncDropzoneResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a dropzone record specified by the passed ID path
@@ -1328,14 +1328,14 @@ class AsyncDropzoneResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1381,7 +1381,7 @@ class AsyncDropzoneResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1417,7 +1417,7 @@ class AsyncDropzoneResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DropzoneQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1435,14 +1435,14 @@ class AsyncDropzoneResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DropzoneTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1496,7 +1496,7 @@ class AsyncDropzoneResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple dropzone records as a POST body and ingest

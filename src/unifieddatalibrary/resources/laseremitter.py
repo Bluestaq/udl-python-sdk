@@ -14,7 +14,7 @@ from ..types import (
     laseremitter_create_params,
     laseremitter_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -63,30 +63,30 @@ class LaseremitterResource(SyncAPIResource):
         laser_name: str,
         laser_type: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        atmospheric_transmission: float | NotGiven = NOT_GIVEN,
-        beam_output_power: float | NotGiven = NOT_GIVEN,
-        beam_waist: float | NotGiven = NOT_GIVEN,
-        divergence: float | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        is_operational: bool | NotGiven = NOT_GIVEN,
-        max_duration: float | NotGiven = NOT_GIVEN,
-        max_focus_range: float | NotGiven = NOT_GIVEN,
-        min_focus_range: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pulse_fluence: float | NotGiven = NOT_GIVEN,
-        pulse_peak_power: float | NotGiven = NOT_GIVEN,
-        pulse_rep_freq: float | NotGiven = NOT_GIVEN,
-        pulse_shape: str | NotGiven = NOT_GIVEN,
-        pulse_width: float | NotGiven = NOT_GIVEN,
-        wavelength: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        atmospheric_transmission: float | Omit = omit,
+        beam_output_power: float | Omit = omit,
+        beam_waist: float | Omit = omit,
+        divergence: float | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        id_entity: str | Omit = omit,
+        is_operational: bool | Omit = omit,
+        max_duration: float | Omit = omit,
+        max_focus_range: float | Omit = omit,
+        min_focus_range: float | Omit = omit,
+        origin: str | Omit = omit,
+        pulse_fluence: float | Omit = omit,
+        pulse_peak_power: float | Omit = omit,
+        pulse_rep_freq: float | Omit = omit,
+        pulse_shape: str | Omit = omit,
+        pulse_width: float | Omit = omit,
+        wavelength: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single LaserEmitter record as a POST body and ingest
@@ -231,30 +231,30 @@ class LaseremitterResource(SyncAPIResource):
         laser_name: str,
         laser_type: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        atmospheric_transmission: float | NotGiven = NOT_GIVEN,
-        beam_output_power: float | NotGiven = NOT_GIVEN,
-        beam_waist: float | NotGiven = NOT_GIVEN,
-        divergence: float | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        is_operational: bool | NotGiven = NOT_GIVEN,
-        max_duration: float | NotGiven = NOT_GIVEN,
-        max_focus_range: float | NotGiven = NOT_GIVEN,
-        min_focus_range: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pulse_fluence: float | NotGiven = NOT_GIVEN,
-        pulse_peak_power: float | NotGiven = NOT_GIVEN,
-        pulse_rep_freq: float | NotGiven = NOT_GIVEN,
-        pulse_shape: str | NotGiven = NOT_GIVEN,
-        pulse_width: float | NotGiven = NOT_GIVEN,
-        wavelength: float | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        atmospheric_transmission: float | Omit = omit,
+        beam_output_power: float | Omit = omit,
+        beam_waist: float | Omit = omit,
+        divergence: float | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        id_entity: str | Omit = omit,
+        is_operational: bool | Omit = omit,
+        max_duration: float | Omit = omit,
+        max_focus_range: float | Omit = omit,
+        min_focus_range: float | Omit = omit,
+        origin: str | Omit = omit,
+        pulse_fluence: float | Omit = omit,
+        pulse_peak_power: float | Omit = omit,
+        pulse_rep_freq: float | Omit = omit,
+        pulse_shape: str | Omit = omit,
+        pulse_width: float | Omit = omit,
+        wavelength: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single LaserEmitter record.
 
@@ -396,14 +396,14 @@ class LaseremitterResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[LaseremitterListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -448,7 +448,7 @@ class LaseremitterResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a LaserEmitter record specified by the passed ID
@@ -478,14 +478,14 @@ class LaseremitterResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -526,14 +526,14 @@ class LaseremitterResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaseremitterGetResponse:
         """
         Service operation to get a single LaserEmitter record by its unique ID passed as
@@ -576,7 +576,7 @@ class LaseremitterResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaseremitterQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -594,14 +594,14 @@ class LaseremitterResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaseremitterTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -675,30 +675,30 @@ class AsyncLaseremitterResource(AsyncAPIResource):
         laser_name: str,
         laser_type: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        atmospheric_transmission: float | NotGiven = NOT_GIVEN,
-        beam_output_power: float | NotGiven = NOT_GIVEN,
-        beam_waist: float | NotGiven = NOT_GIVEN,
-        divergence: float | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        is_operational: bool | NotGiven = NOT_GIVEN,
-        max_duration: float | NotGiven = NOT_GIVEN,
-        max_focus_range: float | NotGiven = NOT_GIVEN,
-        min_focus_range: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pulse_fluence: float | NotGiven = NOT_GIVEN,
-        pulse_peak_power: float | NotGiven = NOT_GIVEN,
-        pulse_rep_freq: float | NotGiven = NOT_GIVEN,
-        pulse_shape: str | NotGiven = NOT_GIVEN,
-        pulse_width: float | NotGiven = NOT_GIVEN,
-        wavelength: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        atmospheric_transmission: float | Omit = omit,
+        beam_output_power: float | Omit = omit,
+        beam_waist: float | Omit = omit,
+        divergence: float | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        id_entity: str | Omit = omit,
+        is_operational: bool | Omit = omit,
+        max_duration: float | Omit = omit,
+        max_focus_range: float | Omit = omit,
+        min_focus_range: float | Omit = omit,
+        origin: str | Omit = omit,
+        pulse_fluence: float | Omit = omit,
+        pulse_peak_power: float | Omit = omit,
+        pulse_rep_freq: float | Omit = omit,
+        pulse_shape: str | Omit = omit,
+        pulse_width: float | Omit = omit,
+        wavelength: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single LaserEmitter record as a POST body and ingest
@@ -843,30 +843,30 @@ class AsyncLaseremitterResource(AsyncAPIResource):
         laser_name: str,
         laser_type: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        atmospheric_transmission: float | NotGiven = NOT_GIVEN,
-        beam_output_power: float | NotGiven = NOT_GIVEN,
-        beam_waist: float | NotGiven = NOT_GIVEN,
-        divergence: float | NotGiven = NOT_GIVEN,
-        entity: EntityIngestParam | NotGiven = NOT_GIVEN,
-        id_entity: str | NotGiven = NOT_GIVEN,
-        is_operational: bool | NotGiven = NOT_GIVEN,
-        max_duration: float | NotGiven = NOT_GIVEN,
-        max_focus_range: float | NotGiven = NOT_GIVEN,
-        min_focus_range: float | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        pulse_fluence: float | NotGiven = NOT_GIVEN,
-        pulse_peak_power: float | NotGiven = NOT_GIVEN,
-        pulse_rep_freq: float | NotGiven = NOT_GIVEN,
-        pulse_shape: str | NotGiven = NOT_GIVEN,
-        pulse_width: float | NotGiven = NOT_GIVEN,
-        wavelength: float | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        atmospheric_transmission: float | Omit = omit,
+        beam_output_power: float | Omit = omit,
+        beam_waist: float | Omit = omit,
+        divergence: float | Omit = omit,
+        entity: EntityIngestParam | Omit = omit,
+        id_entity: str | Omit = omit,
+        is_operational: bool | Omit = omit,
+        max_duration: float | Omit = omit,
+        max_focus_range: float | Omit = omit,
+        min_focus_range: float | Omit = omit,
+        origin: str | Omit = omit,
+        pulse_fluence: float | Omit = omit,
+        pulse_peak_power: float | Omit = omit,
+        pulse_rep_freq: float | Omit = omit,
+        pulse_shape: str | Omit = omit,
+        pulse_width: float | Omit = omit,
+        wavelength: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single LaserEmitter record.
 
@@ -1008,14 +1008,14 @@ class AsyncLaseremitterResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[LaseremitterListResponse, AsyncOffsetPage[LaseremitterListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1060,7 +1060,7 @@ class AsyncLaseremitterResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a LaserEmitter record specified by the passed ID
@@ -1090,14 +1090,14 @@ class AsyncLaseremitterResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1138,14 +1138,14 @@ class AsyncLaseremitterResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaseremitterGetResponse:
         """
         Service operation to get a single LaserEmitter record by its unique ID passed as
@@ -1188,7 +1188,7 @@ class AsyncLaseremitterResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaseremitterQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1206,14 +1206,14 @@ class AsyncLaseremitterResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LaseremitterTupleResponse:
         """
         Service operation to dynamically query data and only return specified

@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -66,45 +66,45 @@ class CountryResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         last_changed_date: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        accepts_dms: bool | NotGiven = NOT_GIVEN,
-        accepts_email: bool | NotGiven = NOT_GIVEN,
-        accepts_fax: bool | NotGiven = NOT_GIVEN,
-        accepts_sipr_net: bool | NotGiven = NOT_GIVEN,
-        agency: str | NotGiven = NOT_GIVEN,
-        alt_country_code: str | NotGiven = NOT_GIVEN,
-        close_time: str | NotGiven = NOT_GIVEN,
-        country_id: str | NotGiven = NOT_GIVEN,
-        country_name: str | NotGiven = NOT_GIVEN,
-        country_remark: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        accepts_dms: bool | Omit = omit,
+        accepts_email: bool | Omit = omit,
+        accepts_fax: bool | Omit = omit,
+        accepts_sipr_net: bool | Omit = omit,
+        agency: str | Omit = omit,
+        alt_country_code: str | Omit = omit,
+        close_time: str | Omit = omit,
+        country_id: str | Omit = omit,
+        country_name: str | Omit = omit,
+        country_remark: str | Omit = omit,
         diplomatic_clearance_country_contacts: Iterable[country_create_params.DiplomaticClearanceCountryContact]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_country_entry_exit_points: Iterable[
             country_create_params.DiplomaticClearanceCountryEntryExitPoint
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_country_profiles: Iterable[country_create_params.DiplomaticClearanceCountryProfile]
-        | NotGiven = NOT_GIVEN,
-        existing_profile: bool | NotGiven = NOT_GIVEN,
-        gmt_offset: str | NotGiven = NOT_GIVEN,
-        office_name: str | NotGiven = NOT_GIVEN,
-        office_poc: str | NotGiven = NOT_GIVEN,
-        office_remark: str | NotGiven = NOT_GIVEN,
-        open_fri: bool | NotGiven = NOT_GIVEN,
-        open_mon: bool | NotGiven = NOT_GIVEN,
-        open_sat: bool | NotGiven = NOT_GIVEN,
-        open_sun: bool | NotGiven = NOT_GIVEN,
-        open_thu: bool | NotGiven = NOT_GIVEN,
-        open_time: str | NotGiven = NOT_GIVEN,
-        open_tue: bool | NotGiven = NOT_GIVEN,
-        open_wed: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        existing_profile: bool | Omit = omit,
+        gmt_offset: str | Omit = omit,
+        office_name: str | Omit = omit,
+        office_poc: str | Omit = omit,
+        office_remark: str | Omit = omit,
+        open_fri: bool | Omit = omit,
+        open_mon: bool | Omit = omit,
+        open_sat: bool | Omit = omit,
+        open_sun: bool | Omit = omit,
+        open_thu: bool | Omit = omit,
+        open_time: str | Omit = omit,
+        open_tue: bool | Omit = omit,
+        open_wed: bool | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single diplomaticclearancecountry record as a POST
@@ -277,14 +277,14 @@ class CountryResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CountryRetrieveResponse:
         """
         Service operation to get a single diplomaticclearancecountry record by its
@@ -328,45 +328,45 @@ class CountryResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         last_changed_date: Union[str, datetime],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        accepts_dms: bool | NotGiven = NOT_GIVEN,
-        accepts_email: bool | NotGiven = NOT_GIVEN,
-        accepts_fax: bool | NotGiven = NOT_GIVEN,
-        accepts_sipr_net: bool | NotGiven = NOT_GIVEN,
-        agency: str | NotGiven = NOT_GIVEN,
-        alt_country_code: str | NotGiven = NOT_GIVEN,
-        close_time: str | NotGiven = NOT_GIVEN,
-        country_id: str | NotGiven = NOT_GIVEN,
-        country_name: str | NotGiven = NOT_GIVEN,
-        country_remark: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        accepts_dms: bool | Omit = omit,
+        accepts_email: bool | Omit = omit,
+        accepts_fax: bool | Omit = omit,
+        accepts_sipr_net: bool | Omit = omit,
+        agency: str | Omit = omit,
+        alt_country_code: str | Omit = omit,
+        close_time: str | Omit = omit,
+        country_id: str | Omit = omit,
+        country_name: str | Omit = omit,
+        country_remark: str | Omit = omit,
         diplomatic_clearance_country_contacts: Iterable[country_update_params.DiplomaticClearanceCountryContact]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_country_entry_exit_points: Iterable[
             country_update_params.DiplomaticClearanceCountryEntryExitPoint
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_country_profiles: Iterable[country_update_params.DiplomaticClearanceCountryProfile]
-        | NotGiven = NOT_GIVEN,
-        existing_profile: bool | NotGiven = NOT_GIVEN,
-        gmt_offset: str | NotGiven = NOT_GIVEN,
-        office_name: str | NotGiven = NOT_GIVEN,
-        office_poc: str | NotGiven = NOT_GIVEN,
-        office_remark: str | NotGiven = NOT_GIVEN,
-        open_fri: bool | NotGiven = NOT_GIVEN,
-        open_mon: bool | NotGiven = NOT_GIVEN,
-        open_sat: bool | NotGiven = NOT_GIVEN,
-        open_sun: bool | NotGiven = NOT_GIVEN,
-        open_thu: bool | NotGiven = NOT_GIVEN,
-        open_time: str | NotGiven = NOT_GIVEN,
-        open_tue: bool | NotGiven = NOT_GIVEN,
-        open_wed: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        existing_profile: bool | Omit = omit,
+        gmt_offset: str | Omit = omit,
+        office_name: str | Omit = omit,
+        office_poc: str | Omit = omit,
+        office_remark: str | Omit = omit,
+        open_fri: bool | Omit = omit,
+        open_mon: bool | Omit = omit,
+        open_sat: bool | Omit = omit,
+        open_sun: bool | Omit = omit,
+        open_thu: bool | Omit = omit,
+        open_time: str | Omit = omit,
+        open_tue: bool | Omit = omit,
+        open_wed: bool | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single diplomaticclearancecountry record.
 
@@ -541,14 +541,14 @@ class CountryResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[CountryListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -593,7 +593,7 @@ class CountryResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a diplomaticclearancecountry record specified by the
@@ -623,14 +623,14 @@ class CountryResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -676,7 +676,7 @@ class CountryResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -712,7 +712,7 @@ class CountryResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CountryQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -730,14 +730,14 @@ class CountryResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CountryTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -791,7 +791,7 @@ class CountryResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple diplomaticclearancecountry records as a POST
@@ -847,45 +847,45 @@ class AsyncCountryResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         last_changed_date: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        accepts_dms: bool | NotGiven = NOT_GIVEN,
-        accepts_email: bool | NotGiven = NOT_GIVEN,
-        accepts_fax: bool | NotGiven = NOT_GIVEN,
-        accepts_sipr_net: bool | NotGiven = NOT_GIVEN,
-        agency: str | NotGiven = NOT_GIVEN,
-        alt_country_code: str | NotGiven = NOT_GIVEN,
-        close_time: str | NotGiven = NOT_GIVEN,
-        country_id: str | NotGiven = NOT_GIVEN,
-        country_name: str | NotGiven = NOT_GIVEN,
-        country_remark: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        accepts_dms: bool | Omit = omit,
+        accepts_email: bool | Omit = omit,
+        accepts_fax: bool | Omit = omit,
+        accepts_sipr_net: bool | Omit = omit,
+        agency: str | Omit = omit,
+        alt_country_code: str | Omit = omit,
+        close_time: str | Omit = omit,
+        country_id: str | Omit = omit,
+        country_name: str | Omit = omit,
+        country_remark: str | Omit = omit,
         diplomatic_clearance_country_contacts: Iterable[country_create_params.DiplomaticClearanceCountryContact]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_country_entry_exit_points: Iterable[
             country_create_params.DiplomaticClearanceCountryEntryExitPoint
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_country_profiles: Iterable[country_create_params.DiplomaticClearanceCountryProfile]
-        | NotGiven = NOT_GIVEN,
-        existing_profile: bool | NotGiven = NOT_GIVEN,
-        gmt_offset: str | NotGiven = NOT_GIVEN,
-        office_name: str | NotGiven = NOT_GIVEN,
-        office_poc: str | NotGiven = NOT_GIVEN,
-        office_remark: str | NotGiven = NOT_GIVEN,
-        open_fri: bool | NotGiven = NOT_GIVEN,
-        open_mon: bool | NotGiven = NOT_GIVEN,
-        open_sat: bool | NotGiven = NOT_GIVEN,
-        open_sun: bool | NotGiven = NOT_GIVEN,
-        open_thu: bool | NotGiven = NOT_GIVEN,
-        open_time: str | NotGiven = NOT_GIVEN,
-        open_tue: bool | NotGiven = NOT_GIVEN,
-        open_wed: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        existing_profile: bool | Omit = omit,
+        gmt_offset: str | Omit = omit,
+        office_name: str | Omit = omit,
+        office_poc: str | Omit = omit,
+        office_remark: str | Omit = omit,
+        open_fri: bool | Omit = omit,
+        open_mon: bool | Omit = omit,
+        open_sat: bool | Omit = omit,
+        open_sun: bool | Omit = omit,
+        open_thu: bool | Omit = omit,
+        open_time: str | Omit = omit,
+        open_tue: bool | Omit = omit,
+        open_wed: bool | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single diplomaticclearancecountry record as a POST
@@ -1058,14 +1058,14 @@ class AsyncCountryResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CountryRetrieveResponse:
         """
         Service operation to get a single diplomaticclearancecountry record by its
@@ -1109,45 +1109,45 @@ class AsyncCountryResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         last_changed_date: Union[str, datetime],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        accepts_dms: bool | NotGiven = NOT_GIVEN,
-        accepts_email: bool | NotGiven = NOT_GIVEN,
-        accepts_fax: bool | NotGiven = NOT_GIVEN,
-        accepts_sipr_net: bool | NotGiven = NOT_GIVEN,
-        agency: str | NotGiven = NOT_GIVEN,
-        alt_country_code: str | NotGiven = NOT_GIVEN,
-        close_time: str | NotGiven = NOT_GIVEN,
-        country_id: str | NotGiven = NOT_GIVEN,
-        country_name: str | NotGiven = NOT_GIVEN,
-        country_remark: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        accepts_dms: bool | Omit = omit,
+        accepts_email: bool | Omit = omit,
+        accepts_fax: bool | Omit = omit,
+        accepts_sipr_net: bool | Omit = omit,
+        agency: str | Omit = omit,
+        alt_country_code: str | Omit = omit,
+        close_time: str | Omit = omit,
+        country_id: str | Omit = omit,
+        country_name: str | Omit = omit,
+        country_remark: str | Omit = omit,
         diplomatic_clearance_country_contacts: Iterable[country_update_params.DiplomaticClearanceCountryContact]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_country_entry_exit_points: Iterable[
             country_update_params.DiplomaticClearanceCountryEntryExitPoint
         ]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_country_profiles: Iterable[country_update_params.DiplomaticClearanceCountryProfile]
-        | NotGiven = NOT_GIVEN,
-        existing_profile: bool | NotGiven = NOT_GIVEN,
-        gmt_offset: str | NotGiven = NOT_GIVEN,
-        office_name: str | NotGiven = NOT_GIVEN,
-        office_poc: str | NotGiven = NOT_GIVEN,
-        office_remark: str | NotGiven = NOT_GIVEN,
-        open_fri: bool | NotGiven = NOT_GIVEN,
-        open_mon: bool | NotGiven = NOT_GIVEN,
-        open_sat: bool | NotGiven = NOT_GIVEN,
-        open_sun: bool | NotGiven = NOT_GIVEN,
-        open_thu: bool | NotGiven = NOT_GIVEN,
-        open_time: str | NotGiven = NOT_GIVEN,
-        open_tue: bool | NotGiven = NOT_GIVEN,
-        open_wed: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        existing_profile: bool | Omit = omit,
+        gmt_offset: str | Omit = omit,
+        office_name: str | Omit = omit,
+        office_poc: str | Omit = omit,
+        office_remark: str | Omit = omit,
+        open_fri: bool | Omit = omit,
+        open_mon: bool | Omit = omit,
+        open_sat: bool | Omit = omit,
+        open_sun: bool | Omit = omit,
+        open_thu: bool | Omit = omit,
+        open_time: str | Omit = omit,
+        open_tue: bool | Omit = omit,
+        open_wed: bool | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single diplomaticclearancecountry record.
 
@@ -1322,14 +1322,14 @@ class AsyncCountryResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CountryListResponse, AsyncOffsetPage[CountryListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1374,7 +1374,7 @@ class AsyncCountryResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a diplomaticclearancecountry record specified by the
@@ -1404,14 +1404,14 @@ class AsyncCountryResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1457,7 +1457,7 @@ class AsyncCountryResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1493,7 +1493,7 @@ class AsyncCountryResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CountryQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1511,14 +1511,14 @@ class AsyncCountryResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CountryTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1572,7 +1572,7 @@ class AsyncCountryResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple diplomaticclearancecountry records as a POST

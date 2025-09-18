@@ -23,7 +23,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -82,14 +82,14 @@ class EphemerisResource(SyncAPIResource):
         self,
         *,
         es_id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[EphemerisAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -134,14 +134,14 @@ class EphemerisResource(SyncAPIResource):
         self,
         *,
         es_id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -195,14 +195,14 @@ class EphemerisResource(SyncAPIResource):
         source: str,
         type: str,
         body: str,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        origin: str | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to post/store Ephemeris data.
 
@@ -284,7 +284,7 @@ class EphemerisResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EphemerisQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -303,14 +303,14 @@ class EphemerisResource(SyncAPIResource):
         *,
         columns: str,
         es_id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EphemerisTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -371,45 +371,45 @@ class EphemerisResource(SyncAPIResource):
         point_start_time: Union[str, datetime],
         source: str,
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        b_dot: float | NotGiven = NOT_GIVEN,
-        cent_body: str | NotGiven = NOT_GIVEN,
-        comments: str | NotGiven = NOT_GIVEN,
-        cov_reference_frame: Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        drag_model: str | NotGiven = NOT_GIVEN,
-        edr: float | NotGiven = NOT_GIVEN,
-        ephemeris_list: Iterable[ephemeris_unvalidated_publish_params.EphemerisList] | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        geopotential_model: str | NotGiven = NOT_GIVEN,
-        has_accel: bool | NotGiven = NOT_GIVEN,
-        has_cov: bool | NotGiven = NOT_GIVEN,
-        has_mnvr: bool | NotGiven = NOT_GIVEN,
-        id_maneuvers: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        id_state_vector: str | NotGiven = NOT_GIVEN,
-        integrator: str | NotGiven = NOT_GIVEN,
-        interpolation: str | NotGiven = NOT_GIVEN,
-        interpolation_degree: int | NotGiven = NOT_GIVEN,
-        lunar_solar: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        pedigree: str | NotGiven = NOT_GIVEN,
-        reference_frame: Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"] | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        solid_earth_tides: bool | NotGiven = NOT_GIVEN,
-        step_size: int | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        usable_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        usable_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        b_dot: float | Omit = omit,
+        cent_body: str | Omit = omit,
+        comments: str | Omit = omit,
+        cov_reference_frame: Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"] | Omit = omit,
+        description: str | Omit = omit,
+        descriptor: str | Omit = omit,
+        drag_model: str | Omit = omit,
+        edr: float | Omit = omit,
+        ephemeris_list: Iterable[ephemeris_unvalidated_publish_params.EphemerisList] | Omit = omit,
+        filename: str | Omit = omit,
+        geopotential_model: str | Omit = omit,
+        has_accel: bool | Omit = omit,
+        has_cov: bool | Omit = omit,
+        has_mnvr: bool | Omit = omit,
+        id_maneuvers: SequenceNotStr[str] | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        id_state_vector: str | Omit = omit,
+        integrator: str | Omit = omit,
+        interpolation: str | Omit = omit,
+        interpolation_degree: int | Omit = omit,
+        lunar_solar: bool | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        pedigree: str | Omit = omit,
+        reference_frame: Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"] | Omit = omit,
+        sat_no: int | Omit = omit,
+        solid_earth_tides: bool | Omit = omit,
+        step_size: int | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        usable_end_time: Union[str, datetime] | Omit = omit,
+        usable_start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single EphemerisSet and many associated Ephemeris
@@ -644,14 +644,14 @@ class AsyncEphemerisResource(AsyncAPIResource):
         self,
         *,
         es_id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EphemerisAbridged, AsyncOffsetPage[EphemerisAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -696,14 +696,14 @@ class AsyncEphemerisResource(AsyncAPIResource):
         self,
         *,
         es_id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -757,14 +757,14 @@ class AsyncEphemerisResource(AsyncAPIResource):
         source: str,
         type: str,
         body: str,
-        origin: str | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        origin: str | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to post/store Ephemeris data.
 
@@ -846,7 +846,7 @@ class AsyncEphemerisResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EphemerisQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -865,14 +865,14 @@ class AsyncEphemerisResource(AsyncAPIResource):
         *,
         columns: str,
         es_id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EphemerisTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -933,45 +933,45 @@ class AsyncEphemerisResource(AsyncAPIResource):
         point_start_time: Union[str, datetime],
         source: str,
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        b_dot: float | NotGiven = NOT_GIVEN,
-        cent_body: str | NotGiven = NOT_GIVEN,
-        comments: str | NotGiven = NOT_GIVEN,
-        cov_reference_frame: Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"] | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        descriptor: str | NotGiven = NOT_GIVEN,
-        drag_model: str | NotGiven = NOT_GIVEN,
-        edr: float | NotGiven = NOT_GIVEN,
-        ephemeris_list: Iterable[ephemeris_unvalidated_publish_params.EphemerisList] | NotGiven = NOT_GIVEN,
-        filename: str | NotGiven = NOT_GIVEN,
-        geopotential_model: str | NotGiven = NOT_GIVEN,
-        has_accel: bool | NotGiven = NOT_GIVEN,
-        has_cov: bool | NotGiven = NOT_GIVEN,
-        has_mnvr: bool | NotGiven = NOT_GIVEN,
-        id_maneuvers: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        id_on_orbit: str | NotGiven = NOT_GIVEN,
-        id_state_vector: str | NotGiven = NOT_GIVEN,
-        integrator: str | NotGiven = NOT_GIVEN,
-        interpolation: str | NotGiven = NOT_GIVEN,
-        interpolation_degree: int | NotGiven = NOT_GIVEN,
-        lunar_solar: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        pedigree: str | NotGiven = NOT_GIVEN,
-        reference_frame: Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"] | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        solid_earth_tides: bool | NotGiven = NOT_GIVEN,
-        step_size: int | NotGiven = NOT_GIVEN,
-        tags: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        transaction_id: str | NotGiven = NOT_GIVEN,
-        usable_end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        usable_start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        b_dot: float | Omit = omit,
+        cent_body: str | Omit = omit,
+        comments: str | Omit = omit,
+        cov_reference_frame: Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"] | Omit = omit,
+        description: str | Omit = omit,
+        descriptor: str | Omit = omit,
+        drag_model: str | Omit = omit,
+        edr: float | Omit = omit,
+        ephemeris_list: Iterable[ephemeris_unvalidated_publish_params.EphemerisList] | Omit = omit,
+        filename: str | Omit = omit,
+        geopotential_model: str | Omit = omit,
+        has_accel: bool | Omit = omit,
+        has_cov: bool | Omit = omit,
+        has_mnvr: bool | Omit = omit,
+        id_maneuvers: SequenceNotStr[str] | Omit = omit,
+        id_on_orbit: str | Omit = omit,
+        id_state_vector: str | Omit = omit,
+        integrator: str | Omit = omit,
+        interpolation: str | Omit = omit,
+        interpolation_degree: int | Omit = omit,
+        lunar_solar: bool | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        pedigree: str | Omit = omit,
+        reference_frame: Literal["J2000", "EFG/TDR", "ECR/ECEF", "TEME", "ITRF", "GCRF"] | Omit = omit,
+        sat_no: int | Omit = omit,
+        solid_earth_tides: bool | Omit = omit,
+        step_size: int | Omit = omit,
+        tags: SequenceNotStr[str] | Omit = omit,
+        transaction_id: str | Omit = omit,
+        usable_end_time: Union[str, datetime] | Omit = omit,
+        usable_start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single EphemerisSet and many associated Ephemeris

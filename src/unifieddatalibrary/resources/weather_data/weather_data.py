@@ -25,7 +25,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -76,44 +76,44 @@ class WeatherDataResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         ob_time: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        angle_orientation: float | NotGiven = NOT_GIVEN,
-        avg_ref_pwr: float | NotGiven = NOT_GIVEN,
-        avg_tx_pwr: float | NotGiven = NOT_GIVEN,
-        checksum: int | NotGiven = NOT_GIVEN,
-        co_integs: Iterable[int] | NotGiven = NOT_GIVEN,
-        cons_recs: Iterable[int] | NotGiven = NOT_GIVEN,
-        dopp_vels: Iterable[float] | NotGiven = NOT_GIVEN,
-        file_creation: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        first_guess_avgs: Iterable[int] | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        interpulse_periods: Iterable[float] | NotGiven = NOT_GIVEN,
-        light_det_sensors: Iterable[int] | NotGiven = NOT_GIVEN,
-        light_event_num: int | NotGiven = NOT_GIVEN,
-        noise_lvls: Iterable[float] | NotGiven = NOT_GIVEN,
-        num_elements: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        pos_confidence: float | NotGiven = NOT_GIVEN,
-        qc_value: int | NotGiven = NOT_GIVEN,
-        sector_num: int | NotGiven = NOT_GIVEN,
-        semi_major_axis: float | NotGiven = NOT_GIVEN,
-        semi_minor_axis: float | NotGiven = NOT_GIVEN,
-        sig_pwrs: Iterable[float] | NotGiven = NOT_GIVEN,
-        sig_strength: float | NotGiven = NOT_GIVEN,
-        snrs: Iterable[float] | NotGiven = NOT_GIVEN,
-        spec_avgs: Iterable[int] | NotGiven = NOT_GIVEN,
-        spec_widths: Iterable[float] | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        td_avg_sample_nums: Iterable[int] | NotGiven = NOT_GIVEN,
-        term_alt: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        angle_orientation: float | Omit = omit,
+        avg_ref_pwr: float | Omit = omit,
+        avg_tx_pwr: float | Omit = omit,
+        checksum: int | Omit = omit,
+        co_integs: Iterable[int] | Omit = omit,
+        cons_recs: Iterable[int] | Omit = omit,
+        dopp_vels: Iterable[float] | Omit = omit,
+        file_creation: Union[str, datetime] | Omit = omit,
+        first_guess_avgs: Iterable[int] | Omit = omit,
+        id_sensor: str | Omit = omit,
+        interpulse_periods: Iterable[float] | Omit = omit,
+        light_det_sensors: Iterable[int] | Omit = omit,
+        light_event_num: int | Omit = omit,
+        noise_lvls: Iterable[float] | Omit = omit,
+        num_elements: int | Omit = omit,
+        origin: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        pos_confidence: float | Omit = omit,
+        qc_value: int | Omit = omit,
+        sector_num: int | Omit = omit,
+        semi_major_axis: float | Omit = omit,
+        semi_minor_axis: float | Omit = omit,
+        sig_pwrs: Iterable[float] | Omit = omit,
+        sig_strength: float | Omit = omit,
+        snrs: Iterable[float] | Omit = omit,
+        spec_avgs: Iterable[int] | Omit = omit,
+        spec_widths: Iterable[float] | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        td_avg_sample_nums: Iterable[int] | Omit = omit,
+        term_alt: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single WeatherData as a POST body and ingest into
@@ -314,14 +314,14 @@ class WeatherDataResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[WeatherDataListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -365,14 +365,14 @@ class WeatherDataResource(SyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -422,7 +422,7 @@ class WeatherDataResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple WeatherData as a POST body and ingest into
@@ -452,14 +452,14 @@ class WeatherDataResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WeatherDataFull:
         """
         Service operation to get a single WeatherData by its unique ID passed as a path
@@ -502,7 +502,7 @@ class WeatherDataResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WeatherDataQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -521,14 +521,14 @@ class WeatherDataResource(SyncAPIResource):
         *,
         columns: str,
         ob_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WeatherDataTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -586,7 +586,7 @@ class WeatherDataResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of WeatherData as a POST body and ingest into
@@ -645,44 +645,44 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         ob_time: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        angle_orientation: float | NotGiven = NOT_GIVEN,
-        avg_ref_pwr: float | NotGiven = NOT_GIVEN,
-        avg_tx_pwr: float | NotGiven = NOT_GIVEN,
-        checksum: int | NotGiven = NOT_GIVEN,
-        co_integs: Iterable[int] | NotGiven = NOT_GIVEN,
-        cons_recs: Iterable[int] | NotGiven = NOT_GIVEN,
-        dopp_vels: Iterable[float] | NotGiven = NOT_GIVEN,
-        file_creation: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        first_guess_avgs: Iterable[int] | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        interpulse_periods: Iterable[float] | NotGiven = NOT_GIVEN,
-        light_det_sensors: Iterable[int] | NotGiven = NOT_GIVEN,
-        light_event_num: int | NotGiven = NOT_GIVEN,
-        noise_lvls: Iterable[float] | NotGiven = NOT_GIVEN,
-        num_elements: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        pos_confidence: float | NotGiven = NOT_GIVEN,
-        qc_value: int | NotGiven = NOT_GIVEN,
-        sector_num: int | NotGiven = NOT_GIVEN,
-        semi_major_axis: float | NotGiven = NOT_GIVEN,
-        semi_minor_axis: float | NotGiven = NOT_GIVEN,
-        sig_pwrs: Iterable[float] | NotGiven = NOT_GIVEN,
-        sig_strength: float | NotGiven = NOT_GIVEN,
-        snrs: Iterable[float] | NotGiven = NOT_GIVEN,
-        spec_avgs: Iterable[int] | NotGiven = NOT_GIVEN,
-        spec_widths: Iterable[float] | NotGiven = NOT_GIVEN,
-        src_ids: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        src_typs: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        td_avg_sample_nums: Iterable[int] | NotGiven = NOT_GIVEN,
-        term_alt: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        angle_orientation: float | Omit = omit,
+        avg_ref_pwr: float | Omit = omit,
+        avg_tx_pwr: float | Omit = omit,
+        checksum: int | Omit = omit,
+        co_integs: Iterable[int] | Omit = omit,
+        cons_recs: Iterable[int] | Omit = omit,
+        dopp_vels: Iterable[float] | Omit = omit,
+        file_creation: Union[str, datetime] | Omit = omit,
+        first_guess_avgs: Iterable[int] | Omit = omit,
+        id_sensor: str | Omit = omit,
+        interpulse_periods: Iterable[float] | Omit = omit,
+        light_det_sensors: Iterable[int] | Omit = omit,
+        light_event_num: int | Omit = omit,
+        noise_lvls: Iterable[float] | Omit = omit,
+        num_elements: int | Omit = omit,
+        origin: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        pos_confidence: float | Omit = omit,
+        qc_value: int | Omit = omit,
+        sector_num: int | Omit = omit,
+        semi_major_axis: float | Omit = omit,
+        semi_minor_axis: float | Omit = omit,
+        sig_pwrs: Iterable[float] | Omit = omit,
+        sig_strength: float | Omit = omit,
+        snrs: Iterable[float] | Omit = omit,
+        spec_avgs: Iterable[int] | Omit = omit,
+        spec_widths: Iterable[float] | Omit = omit,
+        src_ids: SequenceNotStr[str] | Omit = omit,
+        src_typs: SequenceNotStr[str] | Omit = omit,
+        td_avg_sample_nums: Iterable[int] | Omit = omit,
+        term_alt: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single WeatherData as a POST body and ingest into
@@ -883,14 +883,14 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[WeatherDataListResponse, AsyncOffsetPage[WeatherDataListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -934,14 +934,14 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         self,
         *,
         ob_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -991,7 +991,7 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple WeatherData as a POST body and ingest into
@@ -1021,14 +1021,14 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WeatherDataFull:
         """
         Service operation to get a single WeatherData by its unique ID passed as a path
@@ -1071,7 +1071,7 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WeatherDataQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1090,14 +1090,14 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         *,
         columns: str,
         ob_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> WeatherDataTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1155,7 +1155,7 @@ class AsyncWeatherDataResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a list of WeatherData as a POST body and ingest into

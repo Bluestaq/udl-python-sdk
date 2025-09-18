@@ -16,7 +16,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, SequenceNotStr
+from ...._types import Body, Omit, Query, Headers, NoneType, NotGiven, SequenceNotStr, omit, not_given
 from ...._utils import maybe_transform, async_maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
@@ -77,61 +77,61 @@ class CalibrationResource(SyncAPIResource):
         id_sensor: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        az_ra_accel_bias: float | NotGiven = NOT_GIVEN,
-        az_ra_accel_sigma: float | NotGiven = NOT_GIVEN,
-        az_ra_bias: float | NotGiven = NOT_GIVEN,
-        az_ra_rate_bias: float | NotGiven = NOT_GIVEN,
-        az_ra_rate_sigma: float | NotGiven = NOT_GIVEN,
-        az_ra_rms: float | NotGiven = NOT_GIVEN,
-        az_ra_sigma: float | NotGiven = NOT_GIVEN,
-        cal_angle_ref: str | NotGiven = NOT_GIVEN,
-        cal_track_mode: str | NotGiven = NOT_GIVEN,
-        cal_type: str | NotGiven = NOT_GIVEN,
-        confidence_noise_bias: float | NotGiven = NOT_GIVEN,
-        duration: float | NotGiven = NOT_GIVEN,
-        ecr: Iterable[float] | NotGiven = NOT_GIVEN,
-        el_dec_accel_bias: float | NotGiven = NOT_GIVEN,
-        el_dec_accel_sigma: float | NotGiven = NOT_GIVEN,
-        el_dec_bias: float | NotGiven = NOT_GIVEN,
-        el_dec_rate_bias: float | NotGiven = NOT_GIVEN,
-        el_dec_rate_sigma: float | NotGiven = NOT_GIVEN,
-        el_dec_rms: float | NotGiven = NOT_GIVEN,
-        el_dec_sigma: float | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        num_az_ra_obs: int | NotGiven = NOT_GIVEN,
-        num_el_dec_obs: int | NotGiven = NOT_GIVEN,
-        num_obs: int | NotGiven = NOT_GIVEN,
-        num_photo_obs: int | NotGiven = NOT_GIVEN,
-        num_range_obs: int | NotGiven = NOT_GIVEN,
-        num_range_rate_obs: int | NotGiven = NOT_GIVEN,
-        num_rcs_obs: int | NotGiven = NOT_GIVEN,
-        num_time_obs: int | NotGiven = NOT_GIVEN,
-        num_tracks: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        photo_bias: float | NotGiven = NOT_GIVEN,
-        photo_sigma: float | NotGiven = NOT_GIVEN,
-        range_accel_bias: float | NotGiven = NOT_GIVEN,
-        range_accel_sigma: float | NotGiven = NOT_GIVEN,
-        range_bias: float | NotGiven = NOT_GIVEN,
-        range_rate_bias: float | NotGiven = NOT_GIVEN,
-        range_rate_rms: float | NotGiven = NOT_GIVEN,
-        range_rate_sigma: float | NotGiven = NOT_GIVEN,
-        range_rms: float | NotGiven = NOT_GIVEN,
-        range_sigma: float | NotGiven = NOT_GIVEN,
-        rcs_bias: float | NotGiven = NOT_GIVEN,
-        rcs_sigma: float | NotGiven = NOT_GIVEN,
-        ref_targets: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        ref_type: str | NotGiven = NOT_GIVEN,
-        sen_type: str | NotGiven = NOT_GIVEN,
-        time_bias: float | NotGiven = NOT_GIVEN,
-        time_bias_sigma: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        az_ra_accel_bias: float | Omit = omit,
+        az_ra_accel_sigma: float | Omit = omit,
+        az_ra_bias: float | Omit = omit,
+        az_ra_rate_bias: float | Omit = omit,
+        az_ra_rate_sigma: float | Omit = omit,
+        az_ra_rms: float | Omit = omit,
+        az_ra_sigma: float | Omit = omit,
+        cal_angle_ref: str | Omit = omit,
+        cal_track_mode: str | Omit = omit,
+        cal_type: str | Omit = omit,
+        confidence_noise_bias: float | Omit = omit,
+        duration: float | Omit = omit,
+        ecr: Iterable[float] | Omit = omit,
+        el_dec_accel_bias: float | Omit = omit,
+        el_dec_accel_sigma: float | Omit = omit,
+        el_dec_bias: float | Omit = omit,
+        el_dec_rate_bias: float | Omit = omit,
+        el_dec_rate_sigma: float | Omit = omit,
+        el_dec_rms: float | Omit = omit,
+        el_dec_sigma: float | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        num_az_ra_obs: int | Omit = omit,
+        num_el_dec_obs: int | Omit = omit,
+        num_obs: int | Omit = omit,
+        num_photo_obs: int | Omit = omit,
+        num_range_obs: int | Omit = omit,
+        num_range_rate_obs: int | Omit = omit,
+        num_rcs_obs: int | Omit = omit,
+        num_time_obs: int | Omit = omit,
+        num_tracks: int | Omit = omit,
+        origin: str | Omit = omit,
+        photo_bias: float | Omit = omit,
+        photo_sigma: float | Omit = omit,
+        range_accel_bias: float | Omit = omit,
+        range_accel_sigma: float | Omit = omit,
+        range_bias: float | Omit = omit,
+        range_rate_bias: float | Omit = omit,
+        range_rate_rms: float | Omit = omit,
+        range_rate_sigma: float | Omit = omit,
+        range_rms: float | Omit = omit,
+        range_sigma: float | Omit = omit,
+        rcs_bias: float | Omit = omit,
+        rcs_sigma: float | Omit = omit,
+        ref_targets: SequenceNotStr[str] | Omit = omit,
+        ref_type: str | Omit = omit,
+        sen_type: str | Omit = omit,
+        time_bias: float | Omit = omit,
+        time_bias_sigma: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SensorCalibration as a POST body and ingest
@@ -378,14 +378,14 @@ class CalibrationResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalibrationRetrieveResponse:
         """
         Service operation to get a single SensorCalibration by its unique ID passed as a
@@ -424,14 +424,14 @@ class CalibrationResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[CalibrationListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -475,14 +475,14 @@ class CalibrationResource(SyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -532,7 +532,7 @@ class CalibrationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -568,7 +568,7 @@ class CalibrationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalibrationQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -587,14 +587,14 @@ class CalibrationResource(SyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalibrationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -652,7 +652,7 @@ class CalibrationResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple sensorcalibration records as a POST body and
@@ -712,61 +712,61 @@ class AsyncCalibrationResource(AsyncAPIResource):
         id_sensor: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        az_ra_accel_bias: float | NotGiven = NOT_GIVEN,
-        az_ra_accel_sigma: float | NotGiven = NOT_GIVEN,
-        az_ra_bias: float | NotGiven = NOT_GIVEN,
-        az_ra_rate_bias: float | NotGiven = NOT_GIVEN,
-        az_ra_rate_sigma: float | NotGiven = NOT_GIVEN,
-        az_ra_rms: float | NotGiven = NOT_GIVEN,
-        az_ra_sigma: float | NotGiven = NOT_GIVEN,
-        cal_angle_ref: str | NotGiven = NOT_GIVEN,
-        cal_track_mode: str | NotGiven = NOT_GIVEN,
-        cal_type: str | NotGiven = NOT_GIVEN,
-        confidence_noise_bias: float | NotGiven = NOT_GIVEN,
-        duration: float | NotGiven = NOT_GIVEN,
-        ecr: Iterable[float] | NotGiven = NOT_GIVEN,
-        el_dec_accel_bias: float | NotGiven = NOT_GIVEN,
-        el_dec_accel_sigma: float | NotGiven = NOT_GIVEN,
-        el_dec_bias: float | NotGiven = NOT_GIVEN,
-        el_dec_rate_bias: float | NotGiven = NOT_GIVEN,
-        el_dec_rate_sigma: float | NotGiven = NOT_GIVEN,
-        el_dec_rms: float | NotGiven = NOT_GIVEN,
-        el_dec_sigma: float | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        num_az_ra_obs: int | NotGiven = NOT_GIVEN,
-        num_el_dec_obs: int | NotGiven = NOT_GIVEN,
-        num_obs: int | NotGiven = NOT_GIVEN,
-        num_photo_obs: int | NotGiven = NOT_GIVEN,
-        num_range_obs: int | NotGiven = NOT_GIVEN,
-        num_range_rate_obs: int | NotGiven = NOT_GIVEN,
-        num_rcs_obs: int | NotGiven = NOT_GIVEN,
-        num_time_obs: int | NotGiven = NOT_GIVEN,
-        num_tracks: int | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        photo_bias: float | NotGiven = NOT_GIVEN,
-        photo_sigma: float | NotGiven = NOT_GIVEN,
-        range_accel_bias: float | NotGiven = NOT_GIVEN,
-        range_accel_sigma: float | NotGiven = NOT_GIVEN,
-        range_bias: float | NotGiven = NOT_GIVEN,
-        range_rate_bias: float | NotGiven = NOT_GIVEN,
-        range_rate_rms: float | NotGiven = NOT_GIVEN,
-        range_rate_sigma: float | NotGiven = NOT_GIVEN,
-        range_rms: float | NotGiven = NOT_GIVEN,
-        range_sigma: float | NotGiven = NOT_GIVEN,
-        rcs_bias: float | NotGiven = NOT_GIVEN,
-        rcs_sigma: float | NotGiven = NOT_GIVEN,
-        ref_targets: SequenceNotStr[str] | NotGiven = NOT_GIVEN,
-        ref_type: str | NotGiven = NOT_GIVEN,
-        sen_type: str | NotGiven = NOT_GIVEN,
-        time_bias: float | NotGiven = NOT_GIVEN,
-        time_bias_sigma: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        az_ra_accel_bias: float | Omit = omit,
+        az_ra_accel_sigma: float | Omit = omit,
+        az_ra_bias: float | Omit = omit,
+        az_ra_rate_bias: float | Omit = omit,
+        az_ra_rate_sigma: float | Omit = omit,
+        az_ra_rms: float | Omit = omit,
+        az_ra_sigma: float | Omit = omit,
+        cal_angle_ref: str | Omit = omit,
+        cal_track_mode: str | Omit = omit,
+        cal_type: str | Omit = omit,
+        confidence_noise_bias: float | Omit = omit,
+        duration: float | Omit = omit,
+        ecr: Iterable[float] | Omit = omit,
+        el_dec_accel_bias: float | Omit = omit,
+        el_dec_accel_sigma: float | Omit = omit,
+        el_dec_bias: float | Omit = omit,
+        el_dec_rate_bias: float | Omit = omit,
+        el_dec_rate_sigma: float | Omit = omit,
+        el_dec_rms: float | Omit = omit,
+        el_dec_sigma: float | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        num_az_ra_obs: int | Omit = omit,
+        num_el_dec_obs: int | Omit = omit,
+        num_obs: int | Omit = omit,
+        num_photo_obs: int | Omit = omit,
+        num_range_obs: int | Omit = omit,
+        num_range_rate_obs: int | Omit = omit,
+        num_rcs_obs: int | Omit = omit,
+        num_time_obs: int | Omit = omit,
+        num_tracks: int | Omit = omit,
+        origin: str | Omit = omit,
+        photo_bias: float | Omit = omit,
+        photo_sigma: float | Omit = omit,
+        range_accel_bias: float | Omit = omit,
+        range_accel_sigma: float | Omit = omit,
+        range_bias: float | Omit = omit,
+        range_rate_bias: float | Omit = omit,
+        range_rate_rms: float | Omit = omit,
+        range_rate_sigma: float | Omit = omit,
+        range_rms: float | Omit = omit,
+        range_sigma: float | Omit = omit,
+        rcs_bias: float | Omit = omit,
+        rcs_sigma: float | Omit = omit,
+        ref_targets: SequenceNotStr[str] | Omit = omit,
+        ref_type: str | Omit = omit,
+        sen_type: str | Omit = omit,
+        time_bias: float | Omit = omit,
+        time_bias_sigma: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SensorCalibration as a POST body and ingest
@@ -1013,14 +1013,14 @@ class AsyncCalibrationResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalibrationRetrieveResponse:
         """
         Service operation to get a single SensorCalibration by its unique ID passed as a
@@ -1059,14 +1059,14 @@ class AsyncCalibrationResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[CalibrationListResponse, AsyncOffsetPage[CalibrationListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1110,14 +1110,14 @@ class AsyncCalibrationResource(AsyncAPIResource):
         self,
         *,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1167,7 +1167,7 @@ class AsyncCalibrationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1203,7 +1203,7 @@ class AsyncCalibrationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalibrationQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1222,14 +1222,14 @@ class AsyncCalibrationResource(AsyncAPIResource):
         *,
         columns: str,
         start_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> CalibrationTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1287,7 +1287,7 @@ class AsyncCalibrationResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple sensorcalibration records as a POST body and

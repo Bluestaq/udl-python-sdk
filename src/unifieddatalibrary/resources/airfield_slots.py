@@ -14,7 +14,7 @@ from ..types import (
     airfield_slot_update_params,
     airfield_slot_retrieve_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -62,24 +62,24 @@ class AirfieldSlotsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | NotGiven = NOT_GIVEN,
-        alt_airfield_id: str | NotGiven = NOT_GIVEN,
-        capacity: int | NotGiven = NOT_GIVEN,
-        end_time: str | NotGiven = NOT_GIVEN,
-        icao: str | NotGiven = NOT_GIVEN,
-        id_airfield: str | NotGiven = NOT_GIVEN,
-        min_separation: int | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        start_time: str | NotGiven = NOT_GIVEN,
-        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | Omit = omit,
+        alt_airfield_id: str | Omit = omit,
+        capacity: int | Omit = omit,
+        end_time: str | Omit = omit,
+        icao: str | Omit = omit,
+        id_airfield: str | Omit = omit,
+        min_separation: int | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        start_time: str | Omit = omit,
+        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single airfieldslot record as a POST body and ingest
@@ -188,14 +188,14 @@ class AirfieldSlotsResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldslotFull:
         """
         Service operation to get a single airfieldslot record by its unique ID passed as
@@ -239,24 +239,24 @@ class AirfieldSlotsResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | NotGiven = NOT_GIVEN,
-        alt_airfield_id: str | NotGiven = NOT_GIVEN,
-        capacity: int | NotGiven = NOT_GIVEN,
-        end_time: str | NotGiven = NOT_GIVEN,
-        icao: str | NotGiven = NOT_GIVEN,
-        id_airfield: str | NotGiven = NOT_GIVEN,
-        min_separation: int | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        start_time: str | NotGiven = NOT_GIVEN,
-        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | Omit = omit,
+        alt_airfield_id: str | Omit = omit,
+        capacity: int | Omit = omit,
+        end_time: str | Omit = omit,
+        icao: str | Omit = omit,
+        id_airfield: str | Omit = omit,
+        min_separation: int | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        start_time: str | Omit = omit,
+        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single airfieldslot record.
 
@@ -367,14 +367,14 @@ class AirfieldSlotsResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[AirfieldslotAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -419,7 +419,7 @@ class AirfieldSlotsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an airfieldslot record specified by the passed ID
@@ -449,14 +449,14 @@ class AirfieldSlotsResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -501,7 +501,7 @@ class AirfieldSlotsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldSlotQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -519,14 +519,14 @@ class AirfieldSlotsResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldSlotTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -600,24 +600,24 @@ class AsyncAirfieldSlotsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | NotGiven = NOT_GIVEN,
-        alt_airfield_id: str | NotGiven = NOT_GIVEN,
-        capacity: int | NotGiven = NOT_GIVEN,
-        end_time: str | NotGiven = NOT_GIVEN,
-        icao: str | NotGiven = NOT_GIVEN,
-        id_airfield: str | NotGiven = NOT_GIVEN,
-        min_separation: int | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        start_time: str | NotGiven = NOT_GIVEN,
-        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | Omit = omit,
+        alt_airfield_id: str | Omit = omit,
+        capacity: int | Omit = omit,
+        end_time: str | Omit = omit,
+        icao: str | Omit = omit,
+        id_airfield: str | Omit = omit,
+        min_separation: int | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        start_time: str | Omit = omit,
+        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single airfieldslot record as a POST body and ingest
@@ -726,14 +726,14 @@ class AsyncAirfieldSlotsResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldslotFull:
         """
         Service operation to get a single airfieldslot record by its unique ID passed as
@@ -777,24 +777,24 @@ class AsyncAirfieldSlotsResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         name: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | NotGiven = NOT_GIVEN,
-        alt_airfield_id: str | NotGiven = NOT_GIVEN,
-        capacity: int | NotGiven = NOT_GIVEN,
-        end_time: str | NotGiven = NOT_GIVEN,
-        icao: str | NotGiven = NOT_GIVEN,
-        id_airfield: str | NotGiven = NOT_GIVEN,
-        min_separation: int | NotGiven = NOT_GIVEN,
-        notes: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        start_time: str | NotGiven = NOT_GIVEN,
-        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        ac_slot_cat: Literal["WIDE", "NARROW", "HELO", "ALL", "OTHER"] | Omit = omit,
+        alt_airfield_id: str | Omit = omit,
+        capacity: int | Omit = omit,
+        end_time: str | Omit = omit,
+        icao: str | Omit = omit,
+        id_airfield: str | Omit = omit,
+        min_separation: int | Omit = omit,
+        notes: str | Omit = omit,
+        origin: str | Omit = omit,
+        start_time: str | Omit = omit,
+        type: Literal["WORKING", "PARKING", "TAKEOFF", "LANDING", "OTHER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single airfieldslot record.
 
@@ -905,14 +905,14 @@ class AsyncAirfieldSlotsResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[AirfieldslotAbridged, AsyncOffsetPage[AirfieldslotAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -957,7 +957,7 @@ class AsyncAirfieldSlotsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete an airfieldslot record specified by the passed ID
@@ -987,14 +987,14 @@ class AsyncAirfieldSlotsResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1039,7 +1039,7 @@ class AsyncAirfieldSlotsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldSlotQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1057,14 +1057,14 @@ class AsyncAirfieldSlotsResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AirfieldSlotTupleResponse:
         """
         Service operation to dynamically query data and only return specified

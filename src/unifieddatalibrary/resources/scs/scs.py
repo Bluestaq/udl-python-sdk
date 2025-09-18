@@ -57,7 +57,18 @@ from .folders import (
     AsyncFoldersResourceWithStreamingResponse,
 )
 from ..._files import read_file_content, async_read_file_content
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven, FileContent, SequenceNotStr
+from ..._types import (
+    Body,
+    Omit,
+    Query,
+    Headers,
+    NoneType,
+    NotGiven,
+    FileContent,
+    SequenceNotStr,
+    omit,
+    not_given,
+)
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -145,7 +156,7 @@ class ScsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Deletes the requested file or folder in the passed path directory that is
@@ -184,7 +195,7 @@ class ScsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScAllowableFileExtensionsResponse:
         """Returns a list of the allowed filename extensions."""
         return self._get(
@@ -203,7 +214,7 @@ class ScsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScAllowableFileMimesResponse:
         """Returns a list of the allowed file upload mime types."""
         return self._get(
@@ -225,7 +236,7 @@ class ScsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """operation to copy folders or files.
 
@@ -272,7 +283,7 @@ class ScsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
         Downloads a zip of one or more files and/or folders.
@@ -300,14 +311,14 @@ class ScsResource(SyncAPIResource):
         self,
         *,
         id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> BinaryAPIResponse:
         """
         Download a single file from SCS.
@@ -351,17 +362,17 @@ class ScsResource(SyncAPIResource):
         classification_marking: str,
         file_name: str,
         path: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        delete_after: str | Omit = omit,
+        description: str | Omit = omit,
+        overwrite: bool | Omit = omit,
+        send_notification: bool | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """Operation to upload a file.
 
@@ -430,7 +441,7 @@ class ScsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """operation to move folders or files.
 
@@ -479,7 +490,7 @@ class ScsResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to rename folders or files.
 
@@ -523,19 +534,19 @@ class ScsResource(SyncAPIResource):
         self,
         *,
         path: str,
-        count: int | NotGiven = NOT_GIVEN,
-        offset: int | NotGiven = NOT_GIVEN,
-        content_criteria: str | NotGiven = NOT_GIVEN,
-        meta_data_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        non_range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        search_after: str | NotGiven = NOT_GIVEN,
+        count: int | Omit = omit,
+        offset: int | Omit = omit,
+        content_criteria: str | Omit = omit,
+        meta_data_criteria: Dict[str, SequenceNotStr[str]] | Omit = omit,
+        non_range_criteria: Dict[str, SequenceNotStr[str]] | Omit = omit,
+        range_criteria: Dict[str, SequenceNotStr[str]] | Omit = omit,
+        search_after: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScSearchResponse:
         """
         Search for files by metadata and/or text in file content.
@@ -639,7 +650,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Deletes the requested file or folder in the passed path directory that is
@@ -678,7 +689,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScAllowableFileExtensionsResponse:
         """Returns a list of the allowed filename extensions."""
         return await self._get(
@@ -697,7 +708,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScAllowableFileMimesResponse:
         """Returns a list of the allowed file upload mime types."""
         return await self._get(
@@ -719,7 +730,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """operation to copy folders or files.
 
@@ -766,7 +777,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
         Downloads a zip of one or more files and/or folders.
@@ -794,14 +805,14 @@ class AsyncScsResource(AsyncAPIResource):
         self,
         *,
         id: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncBinaryAPIResponse:
         """
         Download a single file from SCS.
@@ -845,17 +856,17 @@ class AsyncScsResource(AsyncAPIResource):
         classification_marking: str,
         file_name: str,
         path: str,
-        delete_after: str | NotGiven = NOT_GIVEN,
-        description: str | NotGiven = NOT_GIVEN,
-        overwrite: bool | NotGiven = NOT_GIVEN,
-        send_notification: bool | NotGiven = NOT_GIVEN,
-        tags: str | NotGiven = NOT_GIVEN,
+        delete_after: str | Omit = omit,
+        description: str | Omit = omit,
+        overwrite: bool | Omit = omit,
+        send_notification: bool | Omit = omit,
+        tags: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """Operation to upload a file.
 
@@ -924,7 +935,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """operation to move folders or files.
 
@@ -973,7 +984,7 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Operation to rename folders or files.
 
@@ -1017,19 +1028,19 @@ class AsyncScsResource(AsyncAPIResource):
         self,
         *,
         path: str,
-        count: int | NotGiven = NOT_GIVEN,
-        offset: int | NotGiven = NOT_GIVEN,
-        content_criteria: str | NotGiven = NOT_GIVEN,
-        meta_data_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        non_range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        range_criteria: Dict[str, SequenceNotStr[str]] | NotGiven = NOT_GIVEN,
-        search_after: str | NotGiven = NOT_GIVEN,
+        count: int | Omit = omit,
+        offset: int | Omit = omit,
+        content_criteria: str | Omit = omit,
+        meta_data_criteria: Dict[str, SequenceNotStr[str]] | Omit = omit,
+        non_range_criteria: Dict[str, SequenceNotStr[str]] | Omit = omit,
+        range_criteria: Dict[str, SequenceNotStr[str]] | Omit = omit,
+        search_after: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> ScSearchResponse:
         """
         Search for files by metadata and/or text in file content.

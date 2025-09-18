@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.23 (2025-09-18)
+
+Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
+
+### Chores
+
+* **types:** change optional parameter type from NotGiven to Omit ([0b3c2e2](https://github.com/Bluestaq/udl-python-sdk/commit/0b3c2e2fb290870688b8ea340ce60800b927fba8))
+
 ## 0.1.0-alpha.22 (2025-09-17)
 
 Full Changelog: [v0.1.0-alpha.21...v0.1.0-alpha.22](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.21...v0.1.0-alpha.22)

@@ -26,7 +26,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -77,22 +77,22 @@ class SortiePprResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_sortie: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        grantor: str | NotGiven = NOT_GIVEN,
-        number: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        remarks: str | NotGiven = NOT_GIVEN,
-        requestor: str | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        type: Literal["M", "C"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        external_id: str | Omit = omit,
+        grantor: str | Omit = omit,
+        number: str | Omit = omit,
+        origin: str | Omit = omit,
+        remarks: str | Omit = omit,
+        requestor: str | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
+        type: Literal["M", "C"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single sortieppr record as a POST body and ingest
@@ -195,22 +195,22 @@ class SortiePprResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_sortie: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        grantor: str | NotGiven = NOT_GIVEN,
-        number: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        remarks: str | NotGiven = NOT_GIVEN,
-        requestor: str | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        type: Literal["M", "C"] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        external_id: str | Omit = omit,
+        grantor: str | Omit = omit,
+        number: str | Omit = omit,
+        origin: str | Omit = omit,
+        remarks: str | Omit = omit,
+        requestor: str | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
+        type: Literal["M", "C"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single sortieppr record.
 
@@ -312,14 +312,14 @@ class SortiePprResource(SyncAPIResource):
         self,
         *,
         id_sortie: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SortiePprListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -368,7 +368,7 @@ class SortiePprResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a sortieppr record specified by the passed ID path
@@ -399,14 +399,14 @@ class SortiePprResource(SyncAPIResource):
         self,
         *,
         id_sortie: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -456,7 +456,7 @@ class SortiePprResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -488,14 +488,14 @@ class SortiePprResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SortiePprFull:
         """
         Service operation to get a single sortieppr record by its unique ID passed as a
@@ -538,7 +538,7 @@ class SortiePprResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SortiePprQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -557,14 +557,14 @@ class SortiePprResource(SyncAPIResource):
         *,
         columns: str,
         id_sortie: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SortiePprTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -622,7 +622,7 @@ class SortiePprResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take SortiePPR as a POST body and ingest into the database.
@@ -681,22 +681,22 @@ class AsyncSortiePprResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_sortie: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        grantor: str | NotGiven = NOT_GIVEN,
-        number: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        remarks: str | NotGiven = NOT_GIVEN,
-        requestor: str | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        type: Literal["M", "C"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        external_id: str | Omit = omit,
+        grantor: str | Omit = omit,
+        number: str | Omit = omit,
+        origin: str | Omit = omit,
+        remarks: str | Omit = omit,
+        requestor: str | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
+        type: Literal["M", "C"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single sortieppr record as a POST body and ingest
@@ -799,22 +799,22 @@ class AsyncSortiePprResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         id_sortie: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_id: str | NotGiven = NOT_GIVEN,
-        grantor: str | NotGiven = NOT_GIVEN,
-        number: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        remarks: str | NotGiven = NOT_GIVEN,
-        requestor: str | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        type: Literal["M", "C"] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        end_time: Union[str, datetime] | Omit = omit,
+        external_id: str | Omit = omit,
+        grantor: str | Omit = omit,
+        number: str | Omit = omit,
+        origin: str | Omit = omit,
+        remarks: str | Omit = omit,
+        requestor: str | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
+        type: Literal["M", "C"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single sortieppr record.
 
@@ -916,14 +916,14 @@ class AsyncSortiePprResource(AsyncAPIResource):
         self,
         *,
         id_sortie: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SortiePprListResponse, AsyncOffsetPage[SortiePprListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -972,7 +972,7 @@ class AsyncSortiePprResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a sortieppr record specified by the passed ID path
@@ -1003,14 +1003,14 @@ class AsyncSortiePprResource(AsyncAPIResource):
         self,
         *,
         id_sortie: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1060,7 +1060,7 @@ class AsyncSortiePprResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1092,14 +1092,14 @@ class AsyncSortiePprResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SortiePprFull:
         """
         Service operation to get a single sortieppr record by its unique ID passed as a
@@ -1142,7 +1142,7 @@ class AsyncSortiePprResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SortiePprQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1161,14 +1161,14 @@ class AsyncSortiePprResource(AsyncAPIResource):
         *,
         columns: str,
         id_sortie: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SortiePprTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1226,7 +1226,7 @@ class AsyncSortiePprResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take SortiePPR as a POST body and ingest into the database.

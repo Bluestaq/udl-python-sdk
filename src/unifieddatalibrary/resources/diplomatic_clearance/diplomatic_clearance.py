@@ -33,7 +33,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -89,22 +89,22 @@ class DiplomaticClearanceResource(SyncAPIResource):
         first_dep_date: Union[str, datetime],
         id_mission: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        apacs_id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        apacs_id: str | Omit = omit,
         diplomatic_clearance_details: Iterable[diplomatic_clearance_create_params.DiplomaticClearanceDetail]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_remarks: Iterable[diplomatic_clearance_create_params.DiplomaticClearanceRemark]
-        | NotGiven = NOT_GIVEN,
-        dip_worksheet_name: str | NotGiven = NOT_GIVEN,
-        doc_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_worksheet_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        dip_worksheet_name: str | Omit = omit,
+        doc_deadline: Union[str, datetime] | Omit = omit,
+        external_worksheet_id: str | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single diplomatic clearance record as a POST body
@@ -202,14 +202,14 @@ class DiplomaticClearanceResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DiplomaticclearanceFull:
         """
         Service operation to get a single diplomatic clearance record by its unique ID
@@ -253,22 +253,22 @@ class DiplomaticClearanceResource(SyncAPIResource):
         first_dep_date: Union[str, datetime],
         id_mission: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        apacs_id: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        apacs_id: str | Omit = omit,
         diplomatic_clearance_details: Iterable[diplomatic_clearance_update_params.DiplomaticClearanceDetail]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_remarks: Iterable[diplomatic_clearance_update_params.DiplomaticClearanceRemark]
-        | NotGiven = NOT_GIVEN,
-        dip_worksheet_name: str | NotGiven = NOT_GIVEN,
-        doc_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_worksheet_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        dip_worksheet_name: str | Omit = omit,
+        doc_deadline: Union[str, datetime] | Omit = omit,
+        external_worksheet_id: str | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single diplomatic clearance record.
 
@@ -369,14 +369,14 @@ class DiplomaticClearanceResource(SyncAPIResource):
         self,
         *,
         first_dep_date: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[DiplomaticclearanceAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -425,7 +425,7 @@ class DiplomaticClearanceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a diplomatic clearance record specified by the
@@ -456,14 +456,14 @@ class DiplomaticClearanceResource(SyncAPIResource):
         self,
         *,
         first_dep_date: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -513,7 +513,7 @@ class DiplomaticClearanceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -549,7 +549,7 @@ class DiplomaticClearanceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DiplomaticClearanceQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -568,14 +568,14 @@ class DiplomaticClearanceResource(SyncAPIResource):
         *,
         columns: str,
         first_dep_date: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DiplomaticClearanceTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -661,22 +661,22 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         first_dep_date: Union[str, datetime],
         id_mission: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        apacs_id: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        apacs_id: str | Omit = omit,
         diplomatic_clearance_details: Iterable[diplomatic_clearance_create_params.DiplomaticClearanceDetail]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_remarks: Iterable[diplomatic_clearance_create_params.DiplomaticClearanceRemark]
-        | NotGiven = NOT_GIVEN,
-        dip_worksheet_name: str | NotGiven = NOT_GIVEN,
-        doc_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_worksheet_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        dip_worksheet_name: str | Omit = omit,
+        doc_deadline: Union[str, datetime] | Omit = omit,
+        external_worksheet_id: str | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single diplomatic clearance record as a POST body
@@ -774,14 +774,14 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DiplomaticclearanceFull:
         """
         Service operation to get a single diplomatic clearance record by its unique ID
@@ -825,22 +825,22 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         first_dep_date: Union[str, datetime],
         id_mission: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        apacs_id: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        apacs_id: str | Omit = omit,
         diplomatic_clearance_details: Iterable[diplomatic_clearance_update_params.DiplomaticClearanceDetail]
-        | NotGiven = NOT_GIVEN,
+        | Omit = omit,
         diplomatic_clearance_remarks: Iterable[diplomatic_clearance_update_params.DiplomaticClearanceRemark]
-        | NotGiven = NOT_GIVEN,
-        dip_worksheet_name: str | NotGiven = NOT_GIVEN,
-        doc_deadline: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        external_worksheet_id: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        dip_worksheet_name: str | Omit = omit,
+        doc_deadline: Union[str, datetime] | Omit = omit,
+        external_worksheet_id: str | Omit = omit,
+        origin: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single diplomatic clearance record.
 
@@ -941,14 +941,14 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         self,
         *,
         first_dep_date: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[DiplomaticclearanceAbridged, AsyncOffsetPage[DiplomaticclearanceAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -997,7 +997,7 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a diplomatic clearance record specified by the
@@ -1028,14 +1028,14 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         self,
         *,
         first_dep_date: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1085,7 +1085,7 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1121,7 +1121,7 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DiplomaticClearanceQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1140,14 +1140,14 @@ class AsyncDiplomaticClearanceResource(AsyncAPIResource):
         *,
         columns: str,
         first_dep_date: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> DiplomaticClearanceTupleResponse:
         """
         Service operation to dynamically query data and only return specified

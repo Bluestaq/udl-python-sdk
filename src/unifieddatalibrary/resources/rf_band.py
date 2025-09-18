@@ -15,7 +15,7 @@ from ..types import (
     rf_band_create_params,
     rf_band_update_params,
 )
-from .._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from .._utils import maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
@@ -63,33 +63,33 @@ class RfBandResource(SyncAPIResource):
         id_entity: str,
         name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        bandwidth: float | NotGiven = NOT_GIVEN,
-        bandwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        beamwidth: float | NotGiven = NOT_GIVEN,
-        beamwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        delay_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        edge_gain: float | NotGiven = NOT_GIVEN,
-        eirp: float | NotGiven = NOT_GIVEN,
-        erp: float | NotGiven = NOT_GIVEN,
-        freq_max: float | NotGiven = NOT_GIVEN,
-        freq_min: float | NotGiven = NOT_GIVEN,
-        frequency_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        gain_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
-        noise_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        peak_gain: float | NotGiven = NOT_GIVEN,
-        polarization: Literal["H", "V", "R", "L"] | NotGiven = NOT_GIVEN,
-        purpose: Literal["COMM", "TTC", "OPS", "OTHER"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        band: str | Omit = omit,
+        bandwidth: float | Omit = omit,
+        bandwidth_settings: Iterable[float] | Omit = omit,
+        beamwidth: float | Omit = omit,
+        beamwidth_settings: Iterable[float] | Omit = omit,
+        center_freq: float | Omit = omit,
+        delay_settings: Iterable[float] | Omit = omit,
+        edge_gain: float | Omit = omit,
+        eirp: float | Omit = omit,
+        erp: float | Omit = omit,
+        freq_max: float | Omit = omit,
+        freq_min: float | Omit = omit,
+        frequency_settings: Iterable[float] | Omit = omit,
+        gain_settings: Iterable[float] | Omit = omit,
+        mode: Literal["TX", "RX"] | Omit = omit,
+        noise_settings: Iterable[float] | Omit = omit,
+        origin: str | Omit = omit,
+        peak_gain: float | Omit = omit,
+        polarization: Literal["H", "V", "R", "L"] | Omit = omit,
+        purpose: Literal["COMM", "TTC", "OPS", "OTHER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single RFBand record as a POST body and ingest into
@@ -262,33 +262,33 @@ class RfBandResource(SyncAPIResource):
         id_entity: str,
         name: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        bandwidth: float | NotGiven = NOT_GIVEN,
-        bandwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        beamwidth: float | NotGiven = NOT_GIVEN,
-        beamwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        delay_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        edge_gain: float | NotGiven = NOT_GIVEN,
-        eirp: float | NotGiven = NOT_GIVEN,
-        erp: float | NotGiven = NOT_GIVEN,
-        freq_max: float | NotGiven = NOT_GIVEN,
-        freq_min: float | NotGiven = NOT_GIVEN,
-        frequency_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        gain_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
-        noise_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        peak_gain: float | NotGiven = NOT_GIVEN,
-        polarization: Literal["H", "V", "R", "L"] | NotGiven = NOT_GIVEN,
-        purpose: Literal["COMM", "TTC", "OPS", "OTHER"] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        band: str | Omit = omit,
+        bandwidth: float | Omit = omit,
+        bandwidth_settings: Iterable[float] | Omit = omit,
+        beamwidth: float | Omit = omit,
+        beamwidth_settings: Iterable[float] | Omit = omit,
+        center_freq: float | Omit = omit,
+        delay_settings: Iterable[float] | Omit = omit,
+        edge_gain: float | Omit = omit,
+        eirp: float | Omit = omit,
+        erp: float | Omit = omit,
+        freq_max: float | Omit = omit,
+        freq_min: float | Omit = omit,
+        frequency_settings: Iterable[float] | Omit = omit,
+        gain_settings: Iterable[float] | Omit = omit,
+        mode: Literal["TX", "RX"] | Omit = omit,
+        noise_settings: Iterable[float] | Omit = omit,
+        origin: str | Omit = omit,
+        peak_gain: float | Omit = omit,
+        polarization: Literal["H", "V", "R", "L"] | Omit = omit,
+        purpose: Literal["COMM", "TTC", "OPS", "OTHER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single RFBand record.
 
@@ -457,14 +457,14 @@ class RfBandResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[RfBandListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -509,7 +509,7 @@ class RfBandResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a RFBand record specified by the passed ID path
@@ -539,14 +539,14 @@ class RfBandResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -587,14 +587,14 @@ class RfBandResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfBandFull:
         """
         Service operation to get a single RFBand record by its unique ID passed as a
@@ -637,7 +637,7 @@ class RfBandResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfBandQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -655,14 +655,14 @@ class RfBandResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfBandTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -736,33 +736,33 @@ class AsyncRfBandResource(AsyncAPIResource):
         id_entity: str,
         name: str,
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        bandwidth: float | NotGiven = NOT_GIVEN,
-        bandwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        beamwidth: float | NotGiven = NOT_GIVEN,
-        beamwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        delay_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        edge_gain: float | NotGiven = NOT_GIVEN,
-        eirp: float | NotGiven = NOT_GIVEN,
-        erp: float | NotGiven = NOT_GIVEN,
-        freq_max: float | NotGiven = NOT_GIVEN,
-        freq_min: float | NotGiven = NOT_GIVEN,
-        frequency_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        gain_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
-        noise_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        peak_gain: float | NotGiven = NOT_GIVEN,
-        polarization: Literal["H", "V", "R", "L"] | NotGiven = NOT_GIVEN,
-        purpose: Literal["COMM", "TTC", "OPS", "OTHER"] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        band: str | Omit = omit,
+        bandwidth: float | Omit = omit,
+        bandwidth_settings: Iterable[float] | Omit = omit,
+        beamwidth: float | Omit = omit,
+        beamwidth_settings: Iterable[float] | Omit = omit,
+        center_freq: float | Omit = omit,
+        delay_settings: Iterable[float] | Omit = omit,
+        edge_gain: float | Omit = omit,
+        eirp: float | Omit = omit,
+        erp: float | Omit = omit,
+        freq_max: float | Omit = omit,
+        freq_min: float | Omit = omit,
+        frequency_settings: Iterable[float] | Omit = omit,
+        gain_settings: Iterable[float] | Omit = omit,
+        mode: Literal["TX", "RX"] | Omit = omit,
+        noise_settings: Iterable[float] | Omit = omit,
+        origin: str | Omit = omit,
+        peak_gain: float | Omit = omit,
+        polarization: Literal["H", "V", "R", "L"] | Omit = omit,
+        purpose: Literal["COMM", "TTC", "OPS", "OTHER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single RFBand record as a POST body and ingest into
@@ -935,33 +935,33 @@ class AsyncRfBandResource(AsyncAPIResource):
         id_entity: str,
         name: str,
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        band: str | NotGiven = NOT_GIVEN,
-        bandwidth: float | NotGiven = NOT_GIVEN,
-        bandwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        beamwidth: float | NotGiven = NOT_GIVEN,
-        beamwidth_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        center_freq: float | NotGiven = NOT_GIVEN,
-        delay_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        edge_gain: float | NotGiven = NOT_GIVEN,
-        eirp: float | NotGiven = NOT_GIVEN,
-        erp: float | NotGiven = NOT_GIVEN,
-        freq_max: float | NotGiven = NOT_GIVEN,
-        freq_min: float | NotGiven = NOT_GIVEN,
-        frequency_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        gain_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        mode: Literal["TX", "RX"] | NotGiven = NOT_GIVEN,
-        noise_settings: Iterable[float] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        peak_gain: float | NotGiven = NOT_GIVEN,
-        polarization: Literal["H", "V", "R", "L"] | NotGiven = NOT_GIVEN,
-        purpose: Literal["COMM", "TTC", "OPS", "OTHER"] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        band: str | Omit = omit,
+        bandwidth: float | Omit = omit,
+        bandwidth_settings: Iterable[float] | Omit = omit,
+        beamwidth: float | Omit = omit,
+        beamwidth_settings: Iterable[float] | Omit = omit,
+        center_freq: float | Omit = omit,
+        delay_settings: Iterable[float] | Omit = omit,
+        edge_gain: float | Omit = omit,
+        eirp: float | Omit = omit,
+        erp: float | Omit = omit,
+        freq_max: float | Omit = omit,
+        freq_min: float | Omit = omit,
+        frequency_settings: Iterable[float] | Omit = omit,
+        gain_settings: Iterable[float] | Omit = omit,
+        mode: Literal["TX", "RX"] | Omit = omit,
+        noise_settings: Iterable[float] | Omit = omit,
+        origin: str | Omit = omit,
+        peak_gain: float | Omit = omit,
+        polarization: Literal["H", "V", "R", "L"] | Omit = omit,
+        purpose: Literal["COMM", "TTC", "OPS", "OTHER"] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single RFBand record.
 
@@ -1130,14 +1130,14 @@ class AsyncRfBandResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[RfBandListResponse, AsyncOffsetPage[RfBandListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1182,7 +1182,7 @@ class AsyncRfBandResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a RFBand record specified by the passed ID path
@@ -1212,14 +1212,14 @@ class AsyncRfBandResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1260,14 +1260,14 @@ class AsyncRfBandResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfBandFull:
         """
         Service operation to get a single RFBand record by its unique ID passed as a
@@ -1310,7 +1310,7 @@ class AsyncRfBandResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfBandQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1328,14 +1328,14 @@ class AsyncRfBandResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> RfBandTupleResponse:
         """
         Service operation to dynamically query data and only return specified

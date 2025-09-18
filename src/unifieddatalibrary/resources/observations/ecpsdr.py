@@ -8,7 +8,7 @@ from typing_extensions import Literal
 
 import httpx
 
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -65,55 +65,55 @@ class EcpsdrResource(SyncAPIResource):
         msg_time: Union[str, datetime],
         source: str,
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        asl5_v_curr_mon: int | NotGiven = NOT_GIVEN,
-        cds_plate_v_mon: int | NotGiven = NOT_GIVEN,
-        cds_ref_v_mon: int | NotGiven = NOT_GIVEN,
-        cds_threshold: int | NotGiven = NOT_GIVEN,
-        cds_throttle: int | NotGiven = NOT_GIVEN,
-        checksum: int | NotGiven = NOT_GIVEN,
-        dos_bias: int | NotGiven = NOT_GIVEN,
-        dsl5_v_curr_mon: int | NotGiven = NOT_GIVEN,
-        esd_trig_count_h: int | NotGiven = NOT_GIVEN,
-        esd_trig_count_l: int | NotGiven = NOT_GIVEN,
-        hi_let_l: int | NotGiven = NOT_GIVEN,
-        hi_let_m: int | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        low_let_l: int | NotGiven = NOT_GIVEN,
-        low_let_m: int | NotGiven = NOT_GIVEN,
-        med_let1_l: int | NotGiven = NOT_GIVEN,
-        med_let1_m: int | NotGiven = NOT_GIVEN,
-        med_let2_l: int | NotGiven = NOT_GIVEN,
-        med_let2_m: int | NotGiven = NOT_GIVEN,
-        med_let3_l: int | NotGiven = NOT_GIVEN,
-        med_let3_m: int | NotGiven = NOT_GIVEN,
-        med_let4_l: int | NotGiven = NOT_GIVEN,
-        med_let4_m: int | NotGiven = NOT_GIVEN,
-        mp_temp: int | NotGiven = NOT_GIVEN,
-        ob_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        pd1_sig_lev: int | NotGiven = NOT_GIVEN,
-        pd2_sig_lev: int | NotGiven = NOT_GIVEN,
-        ps_temp_mon: int | NotGiven = NOT_GIVEN,
-        retransmit: bool | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        sen_mode: str | NotGiven = NOT_GIVEN,
-        surf_dos_charge_h: int | NotGiven = NOT_GIVEN,
-        surf_dos_charge_l: int | NotGiven = NOT_GIVEN,
-        surf_dos_h: int | NotGiven = NOT_GIVEN,
-        surf_dos_l: int | NotGiven = NOT_GIVEN,
-        surf_dos_m: int | NotGiven = NOT_GIVEN,
-        surf_dos_stat: int | NotGiven = NOT_GIVEN,
-        transient_data: Iterable[int] | NotGiven = NOT_GIVEN,
-        v_ref: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        asl5_v_curr_mon: int | Omit = omit,
+        cds_plate_v_mon: int | Omit = omit,
+        cds_ref_v_mon: int | Omit = omit,
+        cds_threshold: int | Omit = omit,
+        cds_throttle: int | Omit = omit,
+        checksum: int | Omit = omit,
+        dos_bias: int | Omit = omit,
+        dsl5_v_curr_mon: int | Omit = omit,
+        esd_trig_count_h: int | Omit = omit,
+        esd_trig_count_l: int | Omit = omit,
+        hi_let_l: int | Omit = omit,
+        hi_let_m: int | Omit = omit,
+        id_sensor: str | Omit = omit,
+        low_let_l: int | Omit = omit,
+        low_let_m: int | Omit = omit,
+        med_let1_l: int | Omit = omit,
+        med_let1_m: int | Omit = omit,
+        med_let2_l: int | Omit = omit,
+        med_let2_m: int | Omit = omit,
+        med_let3_l: int | Omit = omit,
+        med_let3_m: int | Omit = omit,
+        med_let4_l: int | Omit = omit,
+        med_let4_m: int | Omit = omit,
+        mp_temp: int | Omit = omit,
+        ob_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        pd1_sig_lev: int | Omit = omit,
+        pd2_sig_lev: int | Omit = omit,
+        ps_temp_mon: int | Omit = omit,
+        retransmit: bool | Omit = omit,
+        sat_no: int | Omit = omit,
+        sen_mode: str | Omit = omit,
+        surf_dos_charge_h: int | Omit = omit,
+        surf_dos_charge_l: int | Omit = omit,
+        surf_dos_h: int | Omit = omit,
+        surf_dos_l: int | Omit = omit,
+        surf_dos_m: int | Omit = omit,
+        surf_dos_stat: int | Omit = omit,
+        transient_data: Iterable[int] | Omit = omit,
+        v_ref: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single ECPSDR as a POST body and ingest into the
@@ -334,14 +334,14 @@ class EcpsdrResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Ecpsdr:
         """
         Service operation to get a single ECPSDR by its unique ID passed as a path
@@ -380,14 +380,14 @@ class EcpsdrResource(SyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[EcpsdrAbridged]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -431,14 +431,14 @@ class EcpsdrResource(SyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -488,7 +488,7 @@ class EcpsdrResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -524,7 +524,7 @@ class EcpsdrResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EcpsdrQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -543,14 +543,14 @@ class EcpsdrResource(SyncAPIResource):
         *,
         columns: str,
         msg_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EcpsdrTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -608,7 +608,7 @@ class EcpsdrResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple ECPSDR as a POST body and ingest into the
@@ -664,55 +664,55 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         msg_time: Union[str, datetime],
         source: str,
         type: str,
-        id: str | NotGiven = NOT_GIVEN,
-        asl5_v_curr_mon: int | NotGiven = NOT_GIVEN,
-        cds_plate_v_mon: int | NotGiven = NOT_GIVEN,
-        cds_ref_v_mon: int | NotGiven = NOT_GIVEN,
-        cds_threshold: int | NotGiven = NOT_GIVEN,
-        cds_throttle: int | NotGiven = NOT_GIVEN,
-        checksum: int | NotGiven = NOT_GIVEN,
-        dos_bias: int | NotGiven = NOT_GIVEN,
-        dsl5_v_curr_mon: int | NotGiven = NOT_GIVEN,
-        esd_trig_count_h: int | NotGiven = NOT_GIVEN,
-        esd_trig_count_l: int | NotGiven = NOT_GIVEN,
-        hi_let_l: int | NotGiven = NOT_GIVEN,
-        hi_let_m: int | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        low_let_l: int | NotGiven = NOT_GIVEN,
-        low_let_m: int | NotGiven = NOT_GIVEN,
-        med_let1_l: int | NotGiven = NOT_GIVEN,
-        med_let1_m: int | NotGiven = NOT_GIVEN,
-        med_let2_l: int | NotGiven = NOT_GIVEN,
-        med_let2_m: int | NotGiven = NOT_GIVEN,
-        med_let3_l: int | NotGiven = NOT_GIVEN,
-        med_let3_m: int | NotGiven = NOT_GIVEN,
-        med_let4_l: int | NotGiven = NOT_GIVEN,
-        med_let4_m: int | NotGiven = NOT_GIVEN,
-        mp_temp: int | NotGiven = NOT_GIVEN,
-        ob_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        orig_object_id: str | NotGiven = NOT_GIVEN,
-        orig_sensor_id: str | NotGiven = NOT_GIVEN,
-        pd1_sig_lev: int | NotGiven = NOT_GIVEN,
-        pd2_sig_lev: int | NotGiven = NOT_GIVEN,
-        ps_temp_mon: int | NotGiven = NOT_GIVEN,
-        retransmit: bool | NotGiven = NOT_GIVEN,
-        sat_no: int | NotGiven = NOT_GIVEN,
-        sen_mode: str | NotGiven = NOT_GIVEN,
-        surf_dos_charge_h: int | NotGiven = NOT_GIVEN,
-        surf_dos_charge_l: int | NotGiven = NOT_GIVEN,
-        surf_dos_h: int | NotGiven = NOT_GIVEN,
-        surf_dos_l: int | NotGiven = NOT_GIVEN,
-        surf_dos_m: int | NotGiven = NOT_GIVEN,
-        surf_dos_stat: int | NotGiven = NOT_GIVEN,
-        transient_data: Iterable[int] | NotGiven = NOT_GIVEN,
-        v_ref: int | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        asl5_v_curr_mon: int | Omit = omit,
+        cds_plate_v_mon: int | Omit = omit,
+        cds_ref_v_mon: int | Omit = omit,
+        cds_threshold: int | Omit = omit,
+        cds_throttle: int | Omit = omit,
+        checksum: int | Omit = omit,
+        dos_bias: int | Omit = omit,
+        dsl5_v_curr_mon: int | Omit = omit,
+        esd_trig_count_h: int | Omit = omit,
+        esd_trig_count_l: int | Omit = omit,
+        hi_let_l: int | Omit = omit,
+        hi_let_m: int | Omit = omit,
+        id_sensor: str | Omit = omit,
+        low_let_l: int | Omit = omit,
+        low_let_m: int | Omit = omit,
+        med_let1_l: int | Omit = omit,
+        med_let1_m: int | Omit = omit,
+        med_let2_l: int | Omit = omit,
+        med_let2_m: int | Omit = omit,
+        med_let3_l: int | Omit = omit,
+        med_let3_m: int | Omit = omit,
+        med_let4_l: int | Omit = omit,
+        med_let4_m: int | Omit = omit,
+        mp_temp: int | Omit = omit,
+        ob_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        orig_object_id: str | Omit = omit,
+        orig_sensor_id: str | Omit = omit,
+        pd1_sig_lev: int | Omit = omit,
+        pd2_sig_lev: int | Omit = omit,
+        ps_temp_mon: int | Omit = omit,
+        retransmit: bool | Omit = omit,
+        sat_no: int | Omit = omit,
+        sen_mode: str | Omit = omit,
+        surf_dos_charge_h: int | Omit = omit,
+        surf_dos_charge_l: int | Omit = omit,
+        surf_dos_h: int | Omit = omit,
+        surf_dos_l: int | Omit = omit,
+        surf_dos_m: int | Omit = omit,
+        surf_dos_stat: int | Omit = omit,
+        transient_data: Iterable[int] | Omit = omit,
+        v_ref: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single ECPSDR as a POST body and ingest into the
@@ -933,14 +933,14 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> Ecpsdr:
         """
         Service operation to get a single ECPSDR by its unique ID passed as a path
@@ -979,14 +979,14 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[EcpsdrAbridged, AsyncOffsetPage[EcpsdrAbridged]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1030,14 +1030,14 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         self,
         *,
         msg_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1087,7 +1087,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1123,7 +1123,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EcpsdrQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1142,14 +1142,14 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         *,
         columns: str,
         msg_time: Union[str, datetime],
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> EcpsdrTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1207,7 +1207,7 @@ class AsyncEcpsdrResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple ECPSDR as a POST body and ingest into the

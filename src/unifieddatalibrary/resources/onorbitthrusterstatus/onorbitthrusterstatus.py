@@ -24,7 +24,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -76,28 +76,28 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         id_onorbit_thruster: str,
         source: str,
         status_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        est_delta_v: float | NotGiven = NOT_GIVEN,
-        fuel_mass: float | NotGiven = NOT_GIVEN,
-        fuel_mass_unc: float | NotGiven = NOT_GIVEN,
-        isp: float | NotGiven = NOT_GIVEN,
-        max_delta_v: float | NotGiven = NOT_GIVEN,
-        min_delta_v: float | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        operational: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        prop_mass_avg: float | NotGiven = NOT_GIVEN,
-        prop_mass_max: float | NotGiven = NOT_GIVEN,
-        prop_mass_median: float | NotGiven = NOT_GIVEN,
-        prop_mass_min: float | NotGiven = NOT_GIVEN,
-        thrust_max: float | NotGiven = NOT_GIVEN,
-        total_delta_v: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        est_delta_v: float | Omit = omit,
+        fuel_mass: float | Omit = omit,
+        fuel_mass_unc: float | Omit = omit,
+        isp: float | Omit = omit,
+        max_delta_v: float | Omit = omit,
+        min_delta_v: float | Omit = omit,
+        name: str | Omit = omit,
+        operational: bool | Omit = omit,
+        origin: str | Omit = omit,
+        prop_mass_avg: float | Omit = omit,
+        prop_mass_max: float | Omit = omit,
+        prop_mass_median: float | Omit = omit,
+        prop_mass_min: float | Omit = omit,
+        thrust_max: float | Omit = omit,
+        total_delta_v: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single OnorbitThrusterStatus record as a POST body
@@ -216,16 +216,16 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_onorbit_thruster: str | Omit = omit,
+        max_results: int | Omit = omit,
+        status_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[OnorbitthrusterstatusListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -282,7 +282,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a OnorbitThrusterStatus record specified by the
@@ -312,16 +312,16 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_onorbit_thruster: str | Omit = omit,
+        max_results: int | Omit = omit,
+        status_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -379,7 +379,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -411,14 +411,14 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitthrusterstatusFull:
         """
         Service operation to get a single OnorbitThrusterStatus record by its unique ID
@@ -462,7 +462,7 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitthrusterstatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -480,16 +480,16 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_onorbit_thruster: str | Omit = omit,
+        max_results: int | Omit = omit,
+        status_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitthrusterstatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -579,28 +579,28 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         id_onorbit_thruster: str,
         source: str,
         status_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        est_delta_v: float | NotGiven = NOT_GIVEN,
-        fuel_mass: float | NotGiven = NOT_GIVEN,
-        fuel_mass_unc: float | NotGiven = NOT_GIVEN,
-        isp: float | NotGiven = NOT_GIVEN,
-        max_delta_v: float | NotGiven = NOT_GIVEN,
-        min_delta_v: float | NotGiven = NOT_GIVEN,
-        name: str | NotGiven = NOT_GIVEN,
-        operational: bool | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        prop_mass_avg: float | NotGiven = NOT_GIVEN,
-        prop_mass_max: float | NotGiven = NOT_GIVEN,
-        prop_mass_median: float | NotGiven = NOT_GIVEN,
-        prop_mass_min: float | NotGiven = NOT_GIVEN,
-        thrust_max: float | NotGiven = NOT_GIVEN,
-        total_delta_v: float | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        est_delta_v: float | Omit = omit,
+        fuel_mass: float | Omit = omit,
+        fuel_mass_unc: float | Omit = omit,
+        isp: float | Omit = omit,
+        max_delta_v: float | Omit = omit,
+        min_delta_v: float | Omit = omit,
+        name: str | Omit = omit,
+        operational: bool | Omit = omit,
+        origin: str | Omit = omit,
+        prop_mass_avg: float | Omit = omit,
+        prop_mass_max: float | Omit = omit,
+        prop_mass_median: float | Omit = omit,
+        prop_mass_min: float | Omit = omit,
+        thrust_max: float | Omit = omit,
+        total_delta_v: float | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single OnorbitThrusterStatus record as a POST body
@@ -719,16 +719,16 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_onorbit_thruster: str | Omit = omit,
+        max_results: int | Omit = omit,
+        status_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[OnorbitthrusterstatusListResponse, AsyncOffsetPage[OnorbitthrusterstatusListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -785,7 +785,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a OnorbitThrusterStatus record specified by the
@@ -815,16 +815,16 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_onorbit_thruster: str | Omit = omit,
+        max_results: int | Omit = omit,
+        status_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -882,7 +882,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -914,14 +914,14 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitthrusterstatusFull:
         """
         Service operation to get a single OnorbitThrusterStatus record by its unique ID
@@ -965,7 +965,7 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitthrusterstatusQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -983,16 +983,16 @@ class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        id_onorbit_thruster: str | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        status_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        id_onorbit_thruster: str | Omit = omit,
+        max_results: int | Omit = omit,
+        status_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> OnorbitthrusterstatusTupleResponse:
         """
         Service operation to dynamically query data and only return specified

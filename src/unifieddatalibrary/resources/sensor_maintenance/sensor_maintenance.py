@@ -26,7 +26,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -80,33 +80,33 @@ class SensorMaintenanceResource(SyncAPIResource):
         site_code: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        activity: str | NotGiven = NOT_GIVEN,
-        approver: str | NotGiven = NOT_GIVEN,
-        changer: str | NotGiven = NOT_GIVEN,
-        duration: str | NotGiven = NOT_GIVEN,
-        eow_id: str | NotGiven = NOT_GIVEN,
-        equip_status: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        impacted_faces: str | NotGiven = NOT_GIVEN,
-        line_number: str | NotGiven = NOT_GIVEN,
-        md_ops_cap: str | NotGiven = NOT_GIVEN,
-        mw_ops_cap: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        priority: str | NotGiven = NOT_GIVEN,
-        recall: str | NotGiven = NOT_GIVEN,
-        rel: str | NotGiven = NOT_GIVEN,
-        remark: str | NotGiven = NOT_GIVEN,
-        requestor: str | NotGiven = NOT_GIVEN,
-        resource: str | NotGiven = NOT_GIVEN,
-        rev: str | NotGiven = NOT_GIVEN,
-        ss_ops_cap: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        activity: str | Omit = omit,
+        approver: str | Omit = omit,
+        changer: str | Omit = omit,
+        duration: str | Omit = omit,
+        eow_id: str | Omit = omit,
+        equip_status: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        impacted_faces: str | Omit = omit,
+        line_number: str | Omit = omit,
+        md_ops_cap: str | Omit = omit,
+        mw_ops_cap: str | Omit = omit,
+        origin: str | Omit = omit,
+        priority: str | Omit = omit,
+        recall: str | Omit = omit,
+        rel: str | Omit = omit,
+        remark: str | Omit = omit,
+        requestor: str | Omit = omit,
+        resource: str | Omit = omit,
+        rev: str | Omit = omit,
+        ss_ops_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SensorMaintenance as a POST body and ingest
@@ -248,33 +248,33 @@ class SensorMaintenanceResource(SyncAPIResource):
         site_code: str,
         source: str,
         start_time: Union[str, datetime],
-        body_id: str | NotGiven = NOT_GIVEN,
-        activity: str | NotGiven = NOT_GIVEN,
-        approver: str | NotGiven = NOT_GIVEN,
-        changer: str | NotGiven = NOT_GIVEN,
-        duration: str | NotGiven = NOT_GIVEN,
-        eow_id: str | NotGiven = NOT_GIVEN,
-        equip_status: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        impacted_faces: str | NotGiven = NOT_GIVEN,
-        line_number: str | NotGiven = NOT_GIVEN,
-        md_ops_cap: str | NotGiven = NOT_GIVEN,
-        mw_ops_cap: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        priority: str | NotGiven = NOT_GIVEN,
-        recall: str | NotGiven = NOT_GIVEN,
-        rel: str | NotGiven = NOT_GIVEN,
-        remark: str | NotGiven = NOT_GIVEN,
-        requestor: str | NotGiven = NOT_GIVEN,
-        resource: str | NotGiven = NOT_GIVEN,
-        rev: str | NotGiven = NOT_GIVEN,
-        ss_ops_cap: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        activity: str | Omit = omit,
+        approver: str | Omit = omit,
+        changer: str | Omit = omit,
+        duration: str | Omit = omit,
+        eow_id: str | Omit = omit,
+        equip_status: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        impacted_faces: str | Omit = omit,
+        line_number: str | Omit = omit,
+        md_ops_cap: str | Omit = omit,
+        mw_ops_cap: str | Omit = omit,
+        origin: str | Omit = omit,
+        priority: str | Omit = omit,
+        recall: str | Omit = omit,
+        rel: str | Omit = omit,
+        remark: str | Omit = omit,
+        requestor: str | Omit = omit,
+        resource: str | Omit = omit,
+        rev: str | Omit = omit,
+        ss_ops_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single SensorMaintenance.
 
@@ -412,16 +412,16 @@ class SensorMaintenanceResource(SyncAPIResource):
     def list(
         self,
         *,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SensorMaintenanceListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -474,7 +474,7 @@ class SensorMaintenanceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a SensorMaintenance object specified by the passed
@@ -504,16 +504,16 @@ class SensorMaintenanceResource(SyncAPIResource):
     def count(
         self,
         *,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -562,14 +562,14 @@ class SensorMaintenanceResource(SyncAPIResource):
         self,
         *,
         body: Iterable[sensor_maintenance_create_bulk_params.Body],
-        origin: str | NotGiven = NOT_GIVEN,
-        source: str | NotGiven = NOT_GIVEN,
+        origin: str | Omit = omit,
+        source: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple SensorMaintenance as a POST body and ingest
@@ -613,14 +613,14 @@ class SensorMaintenanceResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorMaintenanceGetResponse:
         """
         Service operation to get a single SensorMaintenance record by its unique ID
@@ -658,14 +658,14 @@ class SensorMaintenanceResource(SyncAPIResource):
     def list_current(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[SensorMaintenanceListCurrentResponse]:
         """
         Service operation to get current Sensor Maintenance records using any number of
@@ -707,7 +707,7 @@ class SensorMaintenanceResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorMaintenanceQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -725,16 +725,16 @@ class SensorMaintenanceResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorMaintenanceTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -821,33 +821,33 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         site_code: str,
         source: str,
         start_time: Union[str, datetime],
-        id: str | NotGiven = NOT_GIVEN,
-        activity: str | NotGiven = NOT_GIVEN,
-        approver: str | NotGiven = NOT_GIVEN,
-        changer: str | NotGiven = NOT_GIVEN,
-        duration: str | NotGiven = NOT_GIVEN,
-        eow_id: str | NotGiven = NOT_GIVEN,
-        equip_status: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        impacted_faces: str | NotGiven = NOT_GIVEN,
-        line_number: str | NotGiven = NOT_GIVEN,
-        md_ops_cap: str | NotGiven = NOT_GIVEN,
-        mw_ops_cap: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        priority: str | NotGiven = NOT_GIVEN,
-        recall: str | NotGiven = NOT_GIVEN,
-        rel: str | NotGiven = NOT_GIVEN,
-        remark: str | NotGiven = NOT_GIVEN,
-        requestor: str | NotGiven = NOT_GIVEN,
-        resource: str | NotGiven = NOT_GIVEN,
-        rev: str | NotGiven = NOT_GIVEN,
-        ss_ops_cap: str | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        activity: str | Omit = omit,
+        approver: str | Omit = omit,
+        changer: str | Omit = omit,
+        duration: str | Omit = omit,
+        eow_id: str | Omit = omit,
+        equip_status: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        impacted_faces: str | Omit = omit,
+        line_number: str | Omit = omit,
+        md_ops_cap: str | Omit = omit,
+        mw_ops_cap: str | Omit = omit,
+        origin: str | Omit = omit,
+        priority: str | Omit = omit,
+        recall: str | Omit = omit,
+        rel: str | Omit = omit,
+        remark: str | Omit = omit,
+        requestor: str | Omit = omit,
+        resource: str | Omit = omit,
+        rev: str | Omit = omit,
+        ss_ops_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single SensorMaintenance as a POST body and ingest
@@ -989,33 +989,33 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         site_code: str,
         source: str,
         start_time: Union[str, datetime],
-        body_id: str | NotGiven = NOT_GIVEN,
-        activity: str | NotGiven = NOT_GIVEN,
-        approver: str | NotGiven = NOT_GIVEN,
-        changer: str | NotGiven = NOT_GIVEN,
-        duration: str | NotGiven = NOT_GIVEN,
-        eow_id: str | NotGiven = NOT_GIVEN,
-        equip_status: str | NotGiven = NOT_GIVEN,
-        id_sensor: str | NotGiven = NOT_GIVEN,
-        impacted_faces: str | NotGiven = NOT_GIVEN,
-        line_number: str | NotGiven = NOT_GIVEN,
-        md_ops_cap: str | NotGiven = NOT_GIVEN,
-        mw_ops_cap: str | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        priority: str | NotGiven = NOT_GIVEN,
-        recall: str | NotGiven = NOT_GIVEN,
-        rel: str | NotGiven = NOT_GIVEN,
-        remark: str | NotGiven = NOT_GIVEN,
-        requestor: str | NotGiven = NOT_GIVEN,
-        resource: str | NotGiven = NOT_GIVEN,
-        rev: str | NotGiven = NOT_GIVEN,
-        ss_ops_cap: str | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        activity: str | Omit = omit,
+        approver: str | Omit = omit,
+        changer: str | Omit = omit,
+        duration: str | Omit = omit,
+        eow_id: str | Omit = omit,
+        equip_status: str | Omit = omit,
+        id_sensor: str | Omit = omit,
+        impacted_faces: str | Omit = omit,
+        line_number: str | Omit = omit,
+        md_ops_cap: str | Omit = omit,
+        mw_ops_cap: str | Omit = omit,
+        origin: str | Omit = omit,
+        priority: str | Omit = omit,
+        recall: str | Omit = omit,
+        rel: str | Omit = omit,
+        remark: str | Omit = omit,
+        requestor: str | Omit = omit,
+        resource: str | Omit = omit,
+        rev: str | Omit = omit,
+        ss_ops_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single SensorMaintenance.
 
@@ -1153,16 +1153,16 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
     def list(
         self,
         *,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SensorMaintenanceListResponse, AsyncOffsetPage[SensorMaintenanceListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1215,7 +1215,7 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to delete a SensorMaintenance object specified by the passed
@@ -1245,16 +1245,16 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1303,14 +1303,14 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         self,
         *,
         body: Iterable[sensor_maintenance_create_bulk_params.Body],
-        origin: str | NotGiven = NOT_GIVEN,
-        source: str | NotGiven = NOT_GIVEN,
+        origin: str | Omit = omit,
+        source: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple SensorMaintenance as a POST body and ingest
@@ -1354,14 +1354,14 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorMaintenanceGetResponse:
         """
         Service operation to get a single SensorMaintenance record by its unique ID
@@ -1399,14 +1399,14 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
     def list_current(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[SensorMaintenanceListCurrentResponse, AsyncOffsetPage[SensorMaintenanceListCurrentResponse]]:
         """
         Service operation to get current Sensor Maintenance records using any number of
@@ -1448,7 +1448,7 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorMaintenanceQueryHelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1466,16 +1466,16 @@ class AsyncSensorMaintenanceResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        end_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
-        start_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
+        end_time: Union[str, datetime] | Omit = omit,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        start_time: Union[str, datetime] | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SensorMaintenanceTupleResponse:
         """
         Service operation to dynamically query data and only return specified

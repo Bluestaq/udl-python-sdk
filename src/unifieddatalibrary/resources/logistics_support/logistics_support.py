@@ -26,7 +26,7 @@ from .history import (
     HistoryResourceWithStreamingResponse,
     AsyncHistoryResourceWithStreamingResponse,
 )
-from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -78,35 +78,34 @@ class LogisticsSupportResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         rpt_created_time: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        aircraft_mds: str | NotGiven = NOT_GIVEN,
-        curr_icao: str | NotGiven = NOT_GIVEN,
-        etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        etmc: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ext_system_id: str | NotGiven = NOT_GIVEN,
-        logistic_action: str | NotGiven = NOT_GIVEN,
-        logistics_discrepancy_infos: Iterable[logistics_support_create_params.LogisticsDiscrepancyInfo]
-        | NotGiven = NOT_GIVEN,
-        logistics_record_id: str | NotGiven = NOT_GIVEN,
-        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | NotGiven = NOT_GIVEN,
-        logistics_support_items: Iterable[logistics_support_create_params.LogisticsSupportItem] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        aircraft_mds: str | Omit = omit,
+        curr_icao: str | Omit = omit,
+        etic: Union[str, datetime] | Omit = omit,
+        etmc: Union[str, datetime] | Omit = omit,
+        ext_system_id: str | Omit = omit,
+        logistic_action: str | Omit = omit,
+        logistics_discrepancy_infos: Iterable[logistics_support_create_params.LogisticsDiscrepancyInfo] | Omit = omit,
+        logistics_record_id: str | Omit = omit,
+        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | Omit = omit,
+        logistics_support_items: Iterable[logistics_support_create_params.LogisticsSupportItem] | Omit = omit,
         logistics_transportation_plans: Iterable[logistics_support_create_params.LogisticsTransportationPlan]
-        | NotGiven = NOT_GIVEN,
-        maint_status_code: str | NotGiven = NOT_GIVEN,
-        mc_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        me_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner: str | NotGiven = NOT_GIVEN,
-        reopen_flag: bool | NotGiven = NOT_GIVEN,
-        rpt_closed_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        supp_icao: str | NotGiven = NOT_GIVEN,
-        tail_number: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        maint_status_code: str | Omit = omit,
+        mc_time: Union[str, datetime] | Omit = omit,
+        me_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        owner: str | Omit = omit,
+        reopen_flag: bool | Omit = omit,
+        rpt_closed_time: Union[str, datetime] | Omit = omit,
+        supp_icao: str | Omit = omit,
+        tail_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single LogisticsSupport record as a POST body and
@@ -257,35 +256,34 @@ class LogisticsSupportResource(SyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         rpt_created_time: Union[str, datetime],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        aircraft_mds: str | NotGiven = NOT_GIVEN,
-        curr_icao: str | NotGiven = NOT_GIVEN,
-        etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        etmc: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ext_system_id: str | NotGiven = NOT_GIVEN,
-        logistic_action: str | NotGiven = NOT_GIVEN,
-        logistics_discrepancy_infos: Iterable[logistics_support_update_params.LogisticsDiscrepancyInfo]
-        | NotGiven = NOT_GIVEN,
-        logistics_record_id: str | NotGiven = NOT_GIVEN,
-        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | NotGiven = NOT_GIVEN,
-        logistics_support_items: Iterable[logistics_support_update_params.LogisticsSupportItem] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        aircraft_mds: str | Omit = omit,
+        curr_icao: str | Omit = omit,
+        etic: Union[str, datetime] | Omit = omit,
+        etmc: Union[str, datetime] | Omit = omit,
+        ext_system_id: str | Omit = omit,
+        logistic_action: str | Omit = omit,
+        logistics_discrepancy_infos: Iterable[logistics_support_update_params.LogisticsDiscrepancyInfo] | Omit = omit,
+        logistics_record_id: str | Omit = omit,
+        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | Omit = omit,
+        logistics_support_items: Iterable[logistics_support_update_params.LogisticsSupportItem] | Omit = omit,
         logistics_transportation_plans: Iterable[logistics_support_update_params.LogisticsTransportationPlan]
-        | NotGiven = NOT_GIVEN,
-        maint_status_code: str | NotGiven = NOT_GIVEN,
-        mc_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        me_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner: str | NotGiven = NOT_GIVEN,
-        reopen_flag: bool | NotGiven = NOT_GIVEN,
-        rpt_closed_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        supp_icao: str | NotGiven = NOT_GIVEN,
-        tail_number: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        maint_status_code: str | Omit = omit,
+        mc_time: Union[str, datetime] | Omit = omit,
+        me_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        owner: str | Omit = omit,
+        reopen_flag: bool | Omit = omit,
+        rpt_closed_time: Union[str, datetime] | Omit = omit,
+        supp_icao: str | Omit = omit,
+        tail_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single LogisticsSupport record.
 
@@ -434,14 +432,14 @@ class LogisticsSupportResource(SyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> SyncOffsetPage[LogisticsSupportListResponse]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -480,14 +478,14 @@ class LogisticsSupportResource(SyncAPIResource):
     def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -533,7 +531,7 @@ class LogisticsSupportResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -565,14 +563,14 @@ class LogisticsSupportResource(SyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LogisticsSupportGetResponse:
         """
         Service operation to get a single LogisticsSupport record by its unique ID
@@ -615,7 +613,7 @@ class LogisticsSupportResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LogisticsSupportQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -633,14 +631,14 @@ class LogisticsSupportResource(SyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LogisticsSupportTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -694,7 +692,7 @@ class LogisticsSupportResource(SyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple logisticssupport records as a POST body and
@@ -753,35 +751,34 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         rpt_created_time: Union[str, datetime],
         source: str,
-        id: str | NotGiven = NOT_GIVEN,
-        aircraft_mds: str | NotGiven = NOT_GIVEN,
-        curr_icao: str | NotGiven = NOT_GIVEN,
-        etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        etmc: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ext_system_id: str | NotGiven = NOT_GIVEN,
-        logistic_action: str | NotGiven = NOT_GIVEN,
-        logistics_discrepancy_infos: Iterable[logistics_support_create_params.LogisticsDiscrepancyInfo]
-        | NotGiven = NOT_GIVEN,
-        logistics_record_id: str | NotGiven = NOT_GIVEN,
-        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | NotGiven = NOT_GIVEN,
-        logistics_support_items: Iterable[logistics_support_create_params.LogisticsSupportItem] | NotGiven = NOT_GIVEN,
+        id: str | Omit = omit,
+        aircraft_mds: str | Omit = omit,
+        curr_icao: str | Omit = omit,
+        etic: Union[str, datetime] | Omit = omit,
+        etmc: Union[str, datetime] | Omit = omit,
+        ext_system_id: str | Omit = omit,
+        logistic_action: str | Omit = omit,
+        logistics_discrepancy_infos: Iterable[logistics_support_create_params.LogisticsDiscrepancyInfo] | Omit = omit,
+        logistics_record_id: str | Omit = omit,
+        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | Omit = omit,
+        logistics_support_items: Iterable[logistics_support_create_params.LogisticsSupportItem] | Omit = omit,
         logistics_transportation_plans: Iterable[logistics_support_create_params.LogisticsTransportationPlan]
-        | NotGiven = NOT_GIVEN,
-        maint_status_code: str | NotGiven = NOT_GIVEN,
-        mc_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        me_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner: str | NotGiven = NOT_GIVEN,
-        reopen_flag: bool | NotGiven = NOT_GIVEN,
-        rpt_closed_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        supp_icao: str | NotGiven = NOT_GIVEN,
-        tail_number: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        maint_status_code: str | Omit = omit,
+        mc_time: Union[str, datetime] | Omit = omit,
+        me_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        owner: str | Omit = omit,
+        reopen_flag: bool | Omit = omit,
+        rpt_closed_time: Union[str, datetime] | Omit = omit,
+        supp_icao: str | Omit = omit,
+        tail_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take a single LogisticsSupport record as a POST body and
@@ -932,35 +929,34 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
         rpt_created_time: Union[str, datetime],
         source: str,
-        body_id: str | NotGiven = NOT_GIVEN,
-        aircraft_mds: str | NotGiven = NOT_GIVEN,
-        curr_icao: str | NotGiven = NOT_GIVEN,
-        etic: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        etmc: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        ext_system_id: str | NotGiven = NOT_GIVEN,
-        logistic_action: str | NotGiven = NOT_GIVEN,
-        logistics_discrepancy_infos: Iterable[logistics_support_update_params.LogisticsDiscrepancyInfo]
-        | NotGiven = NOT_GIVEN,
-        logistics_record_id: str | NotGiven = NOT_GIVEN,
-        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | NotGiven = NOT_GIVEN,
-        logistics_support_items: Iterable[logistics_support_update_params.LogisticsSupportItem] | NotGiven = NOT_GIVEN,
+        body_id: str | Omit = omit,
+        aircraft_mds: str | Omit = omit,
+        curr_icao: str | Omit = omit,
+        etic: Union[str, datetime] | Omit = omit,
+        etmc: Union[str, datetime] | Omit = omit,
+        ext_system_id: str | Omit = omit,
+        logistic_action: str | Omit = omit,
+        logistics_discrepancy_infos: Iterable[logistics_support_update_params.LogisticsDiscrepancyInfo] | Omit = omit,
+        logistics_record_id: str | Omit = omit,
+        logistics_remarks: Iterable[LogisticsRemarksIngestParam] | Omit = omit,
+        logistics_support_items: Iterable[logistics_support_update_params.LogisticsSupportItem] | Omit = omit,
         logistics_transportation_plans: Iterable[logistics_support_update_params.LogisticsTransportationPlan]
-        | NotGiven = NOT_GIVEN,
-        maint_status_code: str | NotGiven = NOT_GIVEN,
-        mc_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        me_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        origin: str | NotGiven = NOT_GIVEN,
-        owner: str | NotGiven = NOT_GIVEN,
-        reopen_flag: bool | NotGiven = NOT_GIVEN,
-        rpt_closed_time: Union[str, datetime] | NotGiven = NOT_GIVEN,
-        supp_icao: str | NotGiven = NOT_GIVEN,
-        tail_number: str | NotGiven = NOT_GIVEN,
+        | Omit = omit,
+        maint_status_code: str | Omit = omit,
+        mc_time: Union[str, datetime] | Omit = omit,
+        me_time: Union[str, datetime] | Omit = omit,
+        origin: str | Omit = omit,
+        owner: str | Omit = omit,
+        reopen_flag: bool | Omit = omit,
+        rpt_closed_time: Union[str, datetime] | Omit = omit,
+        supp_icao: str | Omit = omit,
+        tail_number: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """Service operation to update a single LogisticsSupport record.
 
@@ -1109,14 +1105,14 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
     def list(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> AsyncPaginator[LogisticsSupportListResponse, AsyncOffsetPage[LogisticsSupportListResponse]]:
         """
         Service operation to dynamically query data by a variety of query parameters not
@@ -1155,14 +1151,14 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
     async def count(
         self,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> str:
         """
         Service operation to return the count of records satisfying the specified query
@@ -1208,7 +1204,7 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation intended for initial integration only, to take a list of
@@ -1240,14 +1236,14 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         self,
         id: str,
         *,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LogisticsSupportGetResponse:
         """
         Service operation to get a single LogisticsSupport record by its unique ID
@@ -1290,7 +1286,7 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LogisticsSupportQueryhelpResponse:
         """
         Service operation to provide detailed information on available dynamic query
@@ -1308,14 +1304,14 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         self,
         *,
         columns: str,
-        first_result: int | NotGiven = NOT_GIVEN,
-        max_results: int | NotGiven = NOT_GIVEN,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> LogisticsSupportTupleResponse:
         """
         Service operation to dynamically query data and only return specified
@@ -1369,7 +1365,7 @@ class AsyncLogisticsSupportResource(AsyncAPIResource):
         extra_headers: Headers | None = None,
         extra_query: Query | None = None,
         extra_body: Body | None = None,
-        timeout: float | httpx.Timeout | None | NotGiven = NOT_GIVEN,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
     ) -> None:
         """
         Service operation to take multiple logisticssupport records as a POST body and
