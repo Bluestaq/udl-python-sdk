@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.24 (2025-09-19)
+
+Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
+
+### Chores
+
+* do not install brew dependencies in ./scripts/bootstrap by default ([947f6d9](https://github.com/Bluestaq/udl-python-sdk/commit/947f6d99183dea3b1c9f5594f3e91514c02d4d3a))
+
 ## 0.1.0-alpha.23 (2025-09-18)
 
 Full Changelog: [v0.1.0-alpha.22...v0.1.0-alpha.23](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.22...v0.1.0-alpha.23)
