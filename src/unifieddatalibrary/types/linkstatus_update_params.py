@@ -133,5 +133,8 @@ class LinkstatusUpdateParams(TypedDict, total=False):
     sat_no2: Annotated[int, PropertyInfo(alias="satNo2")]
     """Satellite/catalog number of the target on-orbit secondary object."""
 
+    snr: float
+    """Signal to noise ratio, in dB."""
+
     sys_cap: Annotated[str, PropertyInfo(alias="sysCap")]
     """The SYSCAP mission status of the system(s) forming the link."""
