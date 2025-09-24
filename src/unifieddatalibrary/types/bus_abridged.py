@@ -1,6 +1,6 @@
 # File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-from typing import Optional
+from typing import List, Optional
 from datetime import datetime
 from typing_extensions import Literal
 
@@ -185,6 +185,13 @@ class BusAbridged(BaseModel):
     """
     Orbit averaged power (the power averaged over one orbit) available on this bus,
     in kilowatts.
+    """
+
+    orbit_types: Optional[List[str]] = FieldInfo(alias="orbitTypes", default=None)
+    """Array of orbit types this bus can support (e.g.
+
+    GEO, LEO, etc.). Must contain the same number of elements as the value of
+    numOrbitType.
     """
 
     origin: Optional[str] = None
