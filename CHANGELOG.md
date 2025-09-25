@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.1.0-alpha.25 (2025-09-25)
+
+Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
+
+### Features
+
+* **api:** adding obs correlation, staging data for emitters, and user auth endpoint ([33bb171](https://github.com/Bluestaq/udl-python-sdk/commit/33bb171172b7883a87d9da7cf225cb970a29aaab))
+* **api:** api update ([257ef1a](https://github.com/Bluestaq/udl-python-sdk/commit/257ef1a5e993d4e72c4a1d415c694d7cd6f10cf7))
+
 ## 0.1.0-alpha.24 (2025-09-19)
 
 Full Changelog: [v0.1.0-alpha.23...v0.1.0-alpha.24](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.23...v0.1.0-alpha.24)
