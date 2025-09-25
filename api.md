@@ -2335,14 +2335,36 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="post /udl/laseremitter">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_create_params.py">params</a>) -> None</code>
-- <code title="put /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/laseremitter_update_params.py">params</a>) -> None</code>
-- <code title="get /udl/laseremitter">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_list_response.py">SyncOffsetPage[LaseremitterListResponse]</a></code>
-- <code title="delete /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">delete</a>(id) -> None</code>
-- <code title="get /udl/laseremitter/count">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/laseremitter_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_get_response.py">LaseremitterGetResponse</a></code>
-- <code title="get /udl/laseremitter/queryhelp">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/laseremitter_queryhelp_response.py">LaseremitterQueryhelpResponse</a></code>
-- <code title="get /udl/laseremitter/tuple">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_tuple_response.py">LaseremitterTupleResponse</a></code>
+- <code title="post /udl/laseremitter">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter/laseremitter.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_create_params.py">params</a>) -> None</code>
+- <code title="put /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter/laseremitter.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/laseremitter_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/laseremitter">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter/laseremitter.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_list_response.py">SyncOffsetPage[LaseremitterListResponse]</a></code>
+- <code title="delete /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter/laseremitter.py">delete</a>(id) -> None</code>
+- <code title="get /udl/laseremitter/count">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter/laseremitter.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/laseremitter/{id}">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter/laseremitter.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/laseremitter_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_get_response.py">LaseremitterGetResponse</a></code>
+- <code title="get /udl/laseremitter/queryhelp">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter/laseremitter.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/laseremitter_queryhelp_response.py">LaseremitterQueryhelpResponse</a></code>
+- <code title="get /udl/laseremitter/tuple">client.laseremitter.<a href="./src/unifieddatalibrary/resources/laseremitter/laseremitter.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter_tuple_response.py">LaseremitterTupleResponse</a></code>
+
+## Staging
+
+Types:
+
+```python
+from unifieddatalibrary.types.laseremitter import (
+    StagingRetrieveResponse,
+    StagingListResponse,
+    StagingQueryhelpResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/laseremitterstaging">client.laseremitter.staging.<a href="./src/unifieddatalibrary/resources/laseremitter/staging.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter/staging_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/laseremitterstaging/{id}">client.laseremitter.staging.<a href="./src/unifieddatalibrary/resources/laseremitter/staging.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/laseremitter/staging_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter/staging_retrieve_response.py">StagingRetrieveResponse</a></code>
+- <code title="put /udl/laseremitterstaging/{id}">client.laseremitter.staging.<a href="./src/unifieddatalibrary/resources/laseremitter/staging.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/laseremitter/staging_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/laseremitterstaging">client.laseremitter.staging.<a href="./src/unifieddatalibrary/resources/laseremitter/staging.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter/staging_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/laseremitter/staging_list_response.py">SyncOffsetPage[StagingListResponse]</a></code>
+- <code title="delete /udl/laseremitterstaging/{id}">client.laseremitter.staging.<a href="./src/unifieddatalibrary/resources/laseremitter/staging.py">delete</a>(id) -> None</code>
+- <code title="post /udl/laseremitterstaging/createBulk">client.laseremitter.staging.<a href="./src/unifieddatalibrary/resources/laseremitter/staging.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/laseremitter/staging_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/laseremitterstaging/queryhelp">client.laseremitter.staging.<a href="./src/unifieddatalibrary/resources/laseremitter/staging.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/laseremitter/staging_queryhelp_response.py">StagingQueryhelpResponse</a></code>
 
 # LaunchDetection
 
@@ -3054,6 +3076,48 @@ Methods:
 - <code title="get /udl/monoradar/history">client.observations.monoradar.history.<a href="./src/unifieddatalibrary/resources/observations/monoradar/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/monoradar/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/monoradar/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/monoradar/history/aodr">client.observations.monoradar.history.<a href="./src/unifieddatalibrary/resources/observations/monoradar/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/observations/monoradar/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/monoradar/history/count">client.observations.monoradar.history.<a href="./src/unifieddatalibrary/resources/observations/monoradar/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/monoradar/history_count_params.py">params</a>) -> str</code>
+
+## Obscorrelation
+
+Types:
+
+```python
+from unifieddatalibrary.types.observations import (
+    ObscorrelationRetrieveResponse,
+    ObscorrelationListResponse,
+    ObscorrelationCountResponse,
+    ObscorrelationQueryHelpResponse,
+    ObscorrelationTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/obscorrelation">client.observations.obscorrelation.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/obscorrelation.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/obscorrelation/{id}">client.observations.obscorrelation.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/obscorrelation.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/obscorrelation_retrieve_response.py">ObscorrelationRetrieveResponse</a></code>
+- <code title="get /udl/obscorrelation">client.observations.obscorrelation.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/obscorrelation.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/obscorrelation_list_response.py">SyncOffsetPage[ObscorrelationListResponse]</a></code>
+- <code title="get /udl/obscorrelation/count">client.observations.obscorrelation.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/obscorrelation.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/obscorrelation/createBulk">client.observations.obscorrelation.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/obscorrelation.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/obscorrelation/queryhelp">client.observations.obscorrelation.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/obscorrelation.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/observations/obscorrelation_query_help_response.py">ObscorrelationQueryHelpResponse</a></code>
+- <code title="get /udl/obscorrelation/tuple">client.observations.obscorrelation.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/obscorrelation.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/obscorrelation_tuple_response.py">ObscorrelationTupleResponse</a></code>
+- <code title="post /filedrop/udl-obscorrelation">client.observations.obscorrelation.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/obscorrelation.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation_unvalidated_publish_params.py">params</a>) -> None</code>
+
+### History
+
+Types:
+
+```python
+from unifieddatalibrary.types.observations.obscorrelation import (
+    HistoryListResponse,
+    HistoryCountResponse,
+)
+```
+
+Methods:
+
+- <code title="get /udl/obscorrelation/history">client.observations.obscorrelation.history.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/observations/obscorrelation/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/obscorrelation/history/aodr">client.observations.obscorrelation.history.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/obscorrelation/history/count">client.observations.obscorrelation.history.<a href="./src/unifieddatalibrary/resources/observations/obscorrelation/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/observations/obscorrelation/history_count_params.py">params</a>) -> str</code>
 
 ## PassiveRadarObservation
 
@@ -3790,39 +3854,61 @@ from unifieddatalibrary.types import (
 
 Methods:
 
-- <code title="post /udl/rfemitter">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_create_params.py">params</a>) -> None</code>
-- <code title="put /udl/rfemitter/{id}">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter_update_params.py">params</a>) -> None</code>
-- <code title="get /udl/rfemitter">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_list_response.py">SyncOffsetPage[RfEmitterListResponse]</a></code>
-- <code title="delete /udl/rfemitter/{id}">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter.py">delete</a>(id) -> None</code>
-- <code title="get /udl/rfemitter/count">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/rfemitter/{id}">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_get_response.py">RfEmitterGetResponse</a></code>
-- <code title="get /udl/rfemitter/queryhelp">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/rf_emitter_queryhelp_response.py">RfEmitterQueryhelpResponse</a></code>
-- <code title="get /udl/rfemitter/tuple">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_tuple_response.py">RfEmitterTupleResponse</a></code>
+- <code title="post /udl/rfemitter">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter/rf_emitter.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_create_params.py">params</a>) -> None</code>
+- <code title="put /udl/rfemitter/{id}">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter/rf_emitter.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/rfemitter">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter/rf_emitter.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_list_response.py">SyncOffsetPage[RfEmitterListResponse]</a></code>
+- <code title="delete /udl/rfemitter/{id}">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter/rf_emitter.py">delete</a>(id) -> None</code>
+- <code title="get /udl/rfemitter/count">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter/rf_emitter.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/rfemitter/{id}">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter/rf_emitter.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_get_response.py">RfEmitterGetResponse</a></code>
+- <code title="get /udl/rfemitter/queryhelp">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter/rf_emitter.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/rf_emitter_queryhelp_response.py">RfEmitterQueryhelpResponse</a></code>
+- <code title="get /udl/rfemitter/tuple">client.rf_emitter.<a href="./src/unifieddatalibrary/resources/rf_emitter/rf_emitter.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_tuple_response.py">RfEmitterTupleResponse</a></code>
 
-# RfEmitterDetails
+## Staging
 
 Types:
 
 ```python
-from unifieddatalibrary.types import (
-    RfEmitterDetailListResponse,
-    RfEmitterDetailCountResponse,
-    RfEmitterDetailGetResponse,
-    RfEmitterDetailQueryhelpResponse,
-    RfEmitterDetailTupleResponse,
+from unifieddatalibrary.types.rf_emitter import (
+    StagingRetrieveResponse,
+    StagingListResponse,
+    StagingQueryhelpResponse,
 )
 ```
 
 Methods:
 
-- <code title="post /udl/rfemitterdetails">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_detail_create_params.py">params</a>) -> None</code>
-- <code title="put /udl/rfemitterdetails/{id}">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter_detail_update_params.py">params</a>) -> None</code>
-- <code title="get /udl/rfemitterdetails">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_detail_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_detail_list_response.py">SyncOffsetPage[RfEmitterDetailListResponse]</a></code>
-- <code title="delete /udl/rfemitterdetails/{id}">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">delete</a>(id) -> None</code>
-- <code title="get /udl/rfemitterdetails/count">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_detail_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/rfemitterdetails/{id}">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter_detail_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_detail_get_response.py">RfEmitterDetailGetResponse</a></code>
-- <code title="get /udl/rfemitterdetails/queryhelp">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/rf_emitter_detail_queryhelp_response.py">RfEmitterDetailQueryhelpResponse</a></code>
-- <code title="get /udl/rfemitterdetails/tuple">client.rf_emitter_details.<a href="./src/unifieddatalibrary/resources/rf_emitter_details.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter_detail_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter_detail_tuple_response.py">RfEmitterDetailTupleResponse</a></code>
+- <code title="post /udl/rfemitterstaging">client.rf_emitter.staging.<a href="./src/unifieddatalibrary/resources/rf_emitter/staging.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter/staging_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/rfemitterstaging/{id}">client.rf_emitter.staging.<a href="./src/unifieddatalibrary/resources/rf_emitter/staging.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter/staging_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter/staging_retrieve_response.py">StagingRetrieveResponse</a></code>
+- <code title="put /udl/rfemitterstaging/{id}">client.rf_emitter.staging.<a href="./src/unifieddatalibrary/resources/rf_emitter/staging.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter/staging_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/rfemitterstaging">client.rf_emitter.staging.<a href="./src/unifieddatalibrary/resources/rf_emitter/staging.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter/staging_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter/staging_list_response.py">SyncOffsetPage[StagingListResponse]</a></code>
+- <code title="delete /udl/rfemitterstaging/{id}">client.rf_emitter.staging.<a href="./src/unifieddatalibrary/resources/rf_emitter/staging.py">delete</a>(id) -> None</code>
+- <code title="post /udl/rfemitterstaging/createBulk">client.rf_emitter.staging.<a href="./src/unifieddatalibrary/resources/rf_emitter/staging.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter/staging_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/rfemitterstaging/queryhelp">client.rf_emitter.staging.<a href="./src/unifieddatalibrary/resources/rf_emitter/staging.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/rf_emitter/staging_queryhelp_response.py">StagingQueryhelpResponse</a></code>
+
+## Details
+
+Types:
+
+```python
+from unifieddatalibrary.types.rf_emitter import (
+    DetailListResponse,
+    DetailCountResponse,
+    DetailGetResponse,
+    DetailQueryhelpResponse,
+    DetailTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/rfemitterdetails">client.rf_emitter.details.<a href="./src/unifieddatalibrary/resources/rf_emitter/details.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter/detail_create_params.py">params</a>) -> None</code>
+- <code title="put /udl/rfemitterdetails/{id}">client.rf_emitter.details.<a href="./src/unifieddatalibrary/resources/rf_emitter/details.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter/detail_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/rfemitterdetails">client.rf_emitter.details.<a href="./src/unifieddatalibrary/resources/rf_emitter/details.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter/detail_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter/detail_list_response.py">SyncOffsetPage[DetailListResponse]</a></code>
+- <code title="delete /udl/rfemitterdetails/{id}">client.rf_emitter.details.<a href="./src/unifieddatalibrary/resources/rf_emitter/details.py">delete</a>(id) -> None</code>
+- <code title="get /udl/rfemitterdetails/count">client.rf_emitter.details.<a href="./src/unifieddatalibrary/resources/rf_emitter/details.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter/detail_count_params.py">params</a>) -> str</code>
+- <code title="get /udl/rfemitterdetails/{id}">client.rf_emitter.details.<a href="./src/unifieddatalibrary/resources/rf_emitter/details.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/rf_emitter/detail_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter/detail_get_response.py">DetailGetResponse</a></code>
+- <code title="get /udl/rfemitterdetails/queryhelp">client.rf_emitter.details.<a href="./src/unifieddatalibrary/resources/rf_emitter/details.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/rf_emitter/detail_queryhelp_response.py">DetailQueryhelpResponse</a></code>
+- <code title="get /udl/rfemitterdetails/tuple">client.rf_emitter.details.<a href="./src/unifieddatalibrary/resources/rf_emitter/details.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/rf_emitter/detail_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/rf_emitter/detail_tuple_response.py">DetailTupleResponse</a></code>
 
 # RouteStats
 
@@ -3927,6 +4013,7 @@ from unifieddatalibrary.types import (
     ScAllowableFileMimesResponse,
     ScCopyResponse,
     ScFileUploadResponse,
+    ScHasWriteAccessResponse,
     ScMoveResponse,
     ScSearchResponse,
 )
@@ -3941,6 +4028,7 @@ Methods:
 - <code title="post /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_download_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /scs/download">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_download</a>(\*\*<a href="src/unifieddatalibrary/types/sc_file_download_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="post /scs/file">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">file_upload</a>(file_content, \*\*<a href="src/unifieddatalibrary/types/sc_file_upload_params.py">params</a>) -> str</code>
+- <code title="get /scs/userHasWriteAccess">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">has_write_access</a>(\*\*<a href="src/unifieddatalibrary/types/sc_has_write_access_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sc_has_write_access_response.py">ScHasWriteAccessResponse</a></code>
 - <code title="put /scs/move">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">move</a>(\*\*<a href="src/unifieddatalibrary/types/sc_move_params.py">params</a>) -> str</code>
 - <code title="put /scs/rename">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">rename</a>(\*\*<a href="src/unifieddatalibrary/types/sc_rename_params.py">params</a>) -> None</code>
 - <code title="post /scs/search">client.scs.<a href="./src/unifieddatalibrary/resources/scs/scs.py">search</a>(\*\*<a href="src/unifieddatalibrary/types/sc_search_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sc_search_response.py">ScSearchResponse</a></code>
@@ -5270,6 +5358,18 @@ Methods:
 - <code title="get /udl/transponder/{id}">client.transponder.<a href="./src/unifieddatalibrary/resources/transponder.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/transponder_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/transponder_get_response.py">TransponderGetResponse</a></code>
 - <code title="get /udl/transponder/queryhelp">client.transponder.<a href="./src/unifieddatalibrary/resources/transponder.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/transponder_queryhelp_response.py">TransponderQueryhelpResponse</a></code>
 - <code title="get /udl/transponder/tuple">client.transponder.<a href="./src/unifieddatalibrary/resources/transponder.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/transponder_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/transponder_tuple_response.py">TransponderTupleResponse</a></code>
+
+# User
+
+Types:
+
+```python
+from unifieddatalibrary.types import UserAuthResponse
+```
+
+Methods:
+
+- <code title="get /basicAuth">client.user.<a href="./src/unifieddatalibrary/resources/user.py">auth</a>() -> <a href="./src/unifieddatalibrary/types/user_auth_response.py">UserAuthResponse</a></code>
 
 # Vessel
 

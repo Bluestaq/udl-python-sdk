@@ -32,6 +32,14 @@ from .observations import (
     ObservationsResourceWithStreamingResponse,
     AsyncObservationsResourceWithStreamingResponse,
 )
+from .obscorrelation import (
+    ObscorrelationResource,
+    AsyncObscorrelationResource,
+    ObscorrelationResourceWithRawResponse,
+    AsyncObscorrelationResourceWithRawResponse,
+    ObscorrelationResourceWithStreamingResponse,
+    AsyncObscorrelationResourceWithStreamingResponse,
+)
 from .rf_observation import (
     RfObservationResource,
     AsyncRfObservationResource,
@@ -84,6 +92,12 @@ __all__ = [
     "AsyncMonoradarResourceWithRawResponse",
     "MonoradarResourceWithStreamingResponse",
     "AsyncMonoradarResourceWithStreamingResponse",
+    "ObscorrelationResource",
+    "AsyncObscorrelationResource",
+    "ObscorrelationResourceWithRawResponse",
+    "AsyncObscorrelationResourceWithRawResponse",
+    "ObscorrelationResourceWithStreamingResponse",
+    "AsyncObscorrelationResourceWithStreamingResponse",
     "PassiveRadarObservationResource",
     "AsyncPassiveRadarObservationResource",
     "PassiveRadarObservationResourceWithRawResponse",

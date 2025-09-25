@@ -47,6 +47,7 @@ from ...types import (
     sc_search_params,
     sc_file_upload_params,
     sc_file_download_params,
+    sc_has_write_access_params,
 )
 from .folders import (
     FoldersResource,
@@ -96,6 +97,7 @@ from .notifications.notifications import (
     NotificationsResourceWithStreamingResponse,
     AsyncNotificationsResourceWithStreamingResponse,
 )
+from ...types.sc_has_write_access_response import ScHasWriteAccessResponse
 from ...types.sc_allowable_file_mimes_response import ScAllowableFileMimesResponse
 from ...types.sc_allowable_file_extensions_response import ScAllowableFileExtensionsResponse
 
@@ -428,6 +430,53 @@ class ScsResource(SyncAPIResource):
                 ),
             ),
             cast_to=str,
+        )
+
+    def has_write_access(
+        self,
+        *,
+        path: str,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ScHasWriteAccessResponse:
+        """
+        Returns true if a user has write access to the specified folder.
+
+        Args:
+          path: Folder path for which to check user write access.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return self._get(
+            "/scs/userHasWriteAccess",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=maybe_transform(
+                    {
+                        "path": path,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    sc_has_write_access_params.ScHasWriteAccessParams,
+                ),
+            ),
+            cast_to=ScHasWriteAccessResponse,
         )
 
     @typing_extensions.deprecated("deprecated")
@@ -924,6 +973,53 @@ class AsyncScsResource(AsyncAPIResource):
             cast_to=str,
         )
 
+    async def has_write_access(
+        self,
+        *,
+        path: str,
+        first_result: int | Omit = omit,
+        max_results: int | Omit = omit,
+        # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
+        # The extra values given here take precedence over values defined on the client or passed to this method.
+        extra_headers: Headers | None = None,
+        extra_query: Query | None = None,
+        extra_body: Body | None = None,
+        timeout: float | httpx.Timeout | None | NotGiven = not_given,
+    ) -> ScHasWriteAccessResponse:
+        """
+        Returns true if a user has write access to the specified folder.
+
+        Args:
+          path: Folder path for which to check user write access.
+
+          extra_headers: Send extra headers
+
+          extra_query: Add additional query parameters to the request
+
+          extra_body: Add additional JSON properties to the request
+
+          timeout: Override the client-level default timeout for this request, in seconds
+        """
+        extra_headers = {"Accept": "text/plain", **(extra_headers or {})}
+        return await self._get(
+            "/scs/userHasWriteAccess",
+            options=make_request_options(
+                extra_headers=extra_headers,
+                extra_query=extra_query,
+                extra_body=extra_body,
+                timeout=timeout,
+                query=await async_maybe_transform(
+                    {
+                        "path": path,
+                        "first_result": first_result,
+                        "max_results": max_results,
+                    },
+                    sc_has_write_access_params.ScHasWriteAccessParams,
+                ),
+            ),
+            cast_to=ScHasWriteAccessResponse,
+        )
+
     @typing_extensions.deprecated("deprecated")
     async def move(
         self,
@@ -1123,6 +1219,9 @@ class ScsResourceWithRawResponse:
                 scs.file_upload,  # pyright: ignore[reportDeprecated],
             )
         )
+        self.has_write_access = to_raw_response_wrapper(
+            scs.has_write_access,
+        )
         self.move = (  # pyright: ignore[reportDeprecated]
             to_raw_response_wrapper(
                 scs.move,  # pyright: ignore[reportDeprecated],
@@ -1196,6 +1295,9 @@ class AsyncScsResourceWithRawResponse:
             async_to_raw_response_wrapper(
                 scs.file_upload,  # pyright: ignore[reportDeprecated],
             )
+        )
+        self.has_write_access = async_to_raw_response_wrapper(
+            scs.has_write_access,
         )
         self.move = (  # pyright: ignore[reportDeprecated]
             async_to_raw_response_wrapper(
@@ -1271,6 +1373,9 @@ class ScsResourceWithStreamingResponse:
                 scs.file_upload,  # pyright: ignore[reportDeprecated],
             )
         )
+        self.has_write_access = to_streamed_response_wrapper(
+            scs.has_write_access,
+        )
         self.move = (  # pyright: ignore[reportDeprecated]
             to_streamed_response_wrapper(
                 scs.move,  # pyright: ignore[reportDeprecated],
@@ -1344,6 +1449,9 @@ class AsyncScsResourceWithStreamingResponse:
             async_to_streamed_response_wrapper(
                 scs.file_upload,  # pyright: ignore[reportDeprecated],
             )
+        )
+        self.has_write_access = async_to_streamed_response_wrapper(
+            scs.has_write_access,
         )
         self.move = (  # pyright: ignore[reportDeprecated]
             async_to_streamed_response_wrapper(
