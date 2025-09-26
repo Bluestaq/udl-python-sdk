@@ -128,6 +128,14 @@ from .swir import (
     SwirResourceWithStreamingResponse,
     AsyncSwirResourceWithStreamingResponse,
 )
+from .user import (
+    UserResource,
+    AsyncUserResource,
+    UserResourceWithRawResponse,
+    AsyncUserResourceWithRawResponse,
+    UserResourceWithStreamingResponse,
+    AsyncUserResourceWithStreamingResponse,
+)
 from .buses import (
     BusesResource,
     AsyncBusesResource,
@@ -1063,14 +1071,6 @@ from .orbitdetermination import (
     AsyncOrbitdeterminationResourceWithRawResponse,
     OrbitdeterminationResourceWithStreamingResponse,
     AsyncOrbitdeterminationResourceWithStreamingResponse,
-)
-from .rf_emitter_details import (
-    RfEmitterDetailsResource,
-    AsyncRfEmitterDetailsResource,
-    RfEmitterDetailsResourceWithRawResponse,
-    AsyncRfEmitterDetailsResourceWithRawResponse,
-    RfEmitterDetailsResourceWithStreamingResponse,
-    AsyncRfEmitterDetailsResourceWithStreamingResponse,
 )
 from .sensor_maintenance import (
     SensorMaintenanceResource,
@@ -2010,12 +2010,6 @@ __all__ = [
     "AsyncRfEmitterResourceWithRawResponse",
     "RfEmitterResourceWithStreamingResponse",
     "AsyncRfEmitterResourceWithStreamingResponse",
-    "RfEmitterDetailsResource",
-    "AsyncRfEmitterDetailsResource",
-    "RfEmitterDetailsResourceWithRawResponse",
-    "AsyncRfEmitterDetailsResourceWithRawResponse",
-    "RfEmitterDetailsResourceWithStreamingResponse",
-    "AsyncRfEmitterDetailsResourceWithStreamingResponse",
     "RouteStatsResource",
     "AsyncRouteStatsResource",
     "RouteStatsResourceWithRawResponse",
@@ -2274,6 +2268,12 @@ __all__ = [
     "AsyncTransponderResourceWithRawResponse",
     "TransponderResourceWithStreamingResponse",
     "AsyncTransponderResourceWithStreamingResponse",
+    "UserResource",
+    "AsyncUserResource",
+    "UserResourceWithRawResponse",
+    "AsyncUserResourceWithRawResponse",
+    "UserResourceWithStreamingResponse",
+    "AsyncUserResourceWithStreamingResponse",
     "VesselResource",
     "AsyncVesselResource",
     "VesselResourceWithRawResponse",

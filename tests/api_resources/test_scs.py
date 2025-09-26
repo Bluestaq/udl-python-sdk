@@ -13,6 +13,7 @@ from tests.utils import assert_matches_type
 from unifieddatalibrary import Unifieddatalibrary, AsyncUnifieddatalibrary
 from unifieddatalibrary.types import (
     ScSearchResponse,
+    ScHasWriteAccessResponse,
     ScAllowableFileMimesResponse,
     ScAllowableFileExtensionsResponse,
 )
@@ -310,6 +311,46 @@ class TestScs:
 
                 sc = response.parse()
                 assert_matches_type(str, sc, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    def test_method_has_write_access(self, client: Unifieddatalibrary) -> None:
+        sc = client.scs.has_write_access(
+            path="path",
+        )
+        assert_matches_type(ScHasWriteAccessResponse, sc, path=["response"])
+
+    @parametrize
+    def test_method_has_write_access_with_all_params(self, client: Unifieddatalibrary) -> None:
+        sc = client.scs.has_write_access(
+            path="path",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(ScHasWriteAccessResponse, sc, path=["response"])
+
+    @parametrize
+    def test_raw_response_has_write_access(self, client: Unifieddatalibrary) -> None:
+        response = client.scs.with_raw_response.has_write_access(
+            path="path",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sc = response.parse()
+        assert_matches_type(ScHasWriteAccessResponse, sc, path=["response"])
+
+    @parametrize
+    def test_streaming_response_has_write_access(self, client: Unifieddatalibrary) -> None:
+        with client.scs.with_streaming_response.has_write_access(
+            path="path",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sc = response.parse()
+            assert_matches_type(ScHasWriteAccessResponse, sc, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 
@@ -733,6 +774,46 @@ class TestAsyncScs:
 
                 sc = await response.parse()
                 assert_matches_type(str, sc, path=["response"])
+
+        assert cast(Any, response.is_closed) is True
+
+    @parametrize
+    async def test_method_has_write_access(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sc = await async_client.scs.has_write_access(
+            path="path",
+        )
+        assert_matches_type(ScHasWriteAccessResponse, sc, path=["response"])
+
+    @parametrize
+    async def test_method_has_write_access_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
+        sc = await async_client.scs.has_write_access(
+            path="path",
+            first_result=0,
+            max_results=0,
+        )
+        assert_matches_type(ScHasWriteAccessResponse, sc, path=["response"])
+
+    @parametrize
+    async def test_raw_response_has_write_access(self, async_client: AsyncUnifieddatalibrary) -> None:
+        response = await async_client.scs.with_raw_response.has_write_access(
+            path="path",
+        )
+
+        assert response.is_closed is True
+        assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+        sc = await response.parse()
+        assert_matches_type(ScHasWriteAccessResponse, sc, path=["response"])
+
+    @parametrize
+    async def test_streaming_response_has_write_access(self, async_client: AsyncUnifieddatalibrary) -> None:
+        async with async_client.scs.with_streaming_response.has_write_access(
+            path="path",
+        ) as response:
+            assert not response.is_closed
+            assert response.http_request.headers.get("X-Stainless-Lang") == "python"
+
+            sc = await response.parse()
+            assert_matches_type(ScHasWriteAccessResponse, sc, path=["response"])
 
         assert cast(Any, response.is_closed) is True
 

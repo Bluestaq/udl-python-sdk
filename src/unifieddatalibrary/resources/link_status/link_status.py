@@ -107,6 +107,7 @@ class LinkStatusResource(SyncAPIResource):
         origin: str | Omit = omit,
         sat_no1: int | Omit = omit,
         sat_no2: int | Omit = omit,
+        snr: float | Omit = omit,
         sys_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -197,6 +198,8 @@ class LinkStatusResource(SyncAPIResource):
 
           sat_no2: Satellite/catalog number of the target on-orbit secondary object.
 
+          snr: Signal to noise ratio, in dB.
+
           sys_cap: The SYSCAP mission status of the system(s) forming the link.
 
           extra_headers: Send extra headers
@@ -237,6 +240,7 @@ class LinkStatusResource(SyncAPIResource):
                     "origin": origin,
                     "sat_no1": sat_no1,
                     "sat_no2": sat_no2,
+                    "snr": snr,
                     "sys_cap": sys_cap,
                 },
                 link_status_create_params.LinkStatusCreateParams,
@@ -575,6 +579,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
         origin: str | Omit = omit,
         sat_no1: int | Omit = omit,
         sat_no2: int | Omit = omit,
+        snr: float | Omit = omit,
         sys_cap: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
@@ -665,6 +670,8 @@ class AsyncLinkStatusResource(AsyncAPIResource):
 
           sat_no2: Satellite/catalog number of the target on-orbit secondary object.
 
+          snr: Signal to noise ratio, in dB.
+
           sys_cap: The SYSCAP mission status of the system(s) forming the link.
 
           extra_headers: Send extra headers
@@ -705,6 +712,7 @@ class AsyncLinkStatusResource(AsyncAPIResource):
                     "origin": origin,
                     "sat_no1": sat_no1,
                     "sat_no2": sat_no2,
+                    "snr": snr,
                     "sys_cap": sys_cap,
                 },
                 link_status_create_params.LinkStatusCreateParams,

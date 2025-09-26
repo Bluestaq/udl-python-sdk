@@ -366,6 +366,7 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
         type: str,
         id: str | Omit = omit,
         cadence: int | Omit = omit,
+        data_source_identifier: str | Omit = omit,
         end_alt: float | Omit = omit,
         end_lat: float | Omit = omit,
         end_lon: float | Omit = omit,
@@ -439,6 +440,9 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
 
           cadence: Model execution cadence, in minutes.
 
+          data_source_identifier: A unique identification code or label assigned to a particular source from which
+              atmospheric data originates.
+
           end_alt: Ending altitude of model outputs, in kilometers.
 
           end_lat: WGS-84 ending latitude of model output, in degrees. -90 to 90 degrees (negative
@@ -501,6 +505,7 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
                     "type": type,
                     "id": id,
                     "cadence": cadence,
+                    "data_source_identifier": data_source_identifier,
                     "end_alt": end_alt,
                     "end_lat": end_lat,
                     "end_lon": end_lon,
@@ -841,6 +846,7 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
         type: str,
         id: str | Omit = omit,
         cadence: int | Omit = omit,
+        data_source_identifier: str | Omit = omit,
         end_alt: float | Omit = omit,
         end_lat: float | Omit = omit,
         end_lon: float | Omit = omit,
@@ -914,6 +920,9 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
 
           cadence: Model execution cadence, in minutes.
 
+          data_source_identifier: A unique identification code or label assigned to a particular source from which
+              atmospheric data originates.
+
           end_alt: Ending altitude of model outputs, in kilometers.
 
           end_lat: WGS-84 ending latitude of model output, in degrees. -90 to 90 degrees (negative
@@ -976,6 +985,7 @@ class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
                     "type": type,
                     "id": id,
                     "cadence": cadence,
+                    "data_source_identifier": data_source_identifier,
                     "end_alt": end_alt,
                     "end_lat": end_lat,
                     "end_lon": end_lon,

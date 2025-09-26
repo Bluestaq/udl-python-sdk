@@ -32,6 +32,7 @@ from .resources import (
     crew,
     item,
     port,
+    user,
     buses,
     stage,
     status,
@@ -55,7 +56,6 @@ from .resources import (
     flightplan,
     linkstatus,
     navigation,
-    rf_emitter,
     scientific,
     ais_objects,
     launch_site,
@@ -65,7 +65,6 @@ from .resources import (
     site_remark,
     solar_array,
     transponder,
-    laseremitter,
     onorbitevent,
     organization,
     rf_band_type,
@@ -90,7 +89,6 @@ from .resources import (
     equipment_remarks,
     onorbitsolararray,
     object_of_interest,
-    rf_emitter_details,
     emitter_geolocation,
     launch_site_details,
     operatingunitremark,
@@ -143,6 +141,7 @@ from .resources.maneuvers import maneuvers
 from .resources.tdoa_fdoa import tdoa_fdoa
 from .resources.geo_status import geo_status
 from .resources.orbittrack import orbittrack
+from .resources.rf_emitter import rf_emitter
 from .resources.sortie_ppr import sortie_ppr
 from .resources.gnss_raw_if import gnss_raw_if
 from .resources.link_status import link_status
@@ -151,6 +150,7 @@ from .resources.site_status import site_status
 from .resources.sky_imagery import sky_imagery
 from .resources.track_route import track_route
 from .resources.conjunctions import conjunctions
+from .resources.laseremitter import laseremitter
 from .resources.launch_event import launch_event
 from .resources.notification import notification
 from .resources.observations import observations
@@ -326,7 +326,6 @@ class Unifieddatalibrary(SyncAPIClient):
     rf_band: rf_band.RfBandResource
     rf_band_type: rf_band_type.RfBandTypeResource
     rf_emitter: rf_emitter.RfEmitterResource
-    rf_emitter_details: rf_emitter_details.RfEmitterDetailsResource
     route_stats: route_stats.RouteStatsResource
     sar_observation: sar_observation.SarObservationResource
     scientific: scientific.ScientificResource
@@ -370,6 +369,7 @@ class Unifieddatalibrary(SyncAPIClient):
     track_details: track_details.TrackDetailsResource
     track_route: track_route.TrackRouteResource
     transponder: transponder.TransponderResource
+    user: user.UserResource
     vessel: vessel.VesselResource
     video: video.VideoResource
     weather_data: weather_data.WeatherDataResource
@@ -559,7 +559,6 @@ class Unifieddatalibrary(SyncAPIClient):
         self.rf_band = rf_band.RfBandResource(self)
         self.rf_band_type = rf_band_type.RfBandTypeResource(self)
         self.rf_emitter = rf_emitter.RfEmitterResource(self)
-        self.rf_emitter_details = rf_emitter_details.RfEmitterDetailsResource(self)
         self.route_stats = route_stats.RouteStatsResource(self)
         self.sar_observation = sar_observation.SarObservationResource(self)
         self.scientific = scientific.ScientificResource(self)
@@ -603,6 +602,7 @@ class Unifieddatalibrary(SyncAPIClient):
         self.track_details = track_details.TrackDetailsResource(self)
         self.track_route = track_route.TrackRouteResource(self)
         self.transponder = transponder.TransponderResource(self)
+        self.user = user.UserResource(self)
         self.vessel = vessel.VesselResource(self)
         self.video = video.VideoResource(self)
         self.weather_data = weather_data.WeatherDataResource(self)
@@ -870,7 +870,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     rf_band: rf_band.AsyncRfBandResource
     rf_band_type: rf_band_type.AsyncRfBandTypeResource
     rf_emitter: rf_emitter.AsyncRfEmitterResource
-    rf_emitter_details: rf_emitter_details.AsyncRfEmitterDetailsResource
     route_stats: route_stats.AsyncRouteStatsResource
     sar_observation: sar_observation.AsyncSarObservationResource
     scientific: scientific.AsyncScientificResource
@@ -914,6 +913,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     track_details: track_details.AsyncTrackDetailsResource
     track_route: track_route.AsyncTrackRouteResource
     transponder: transponder.AsyncTransponderResource
+    user: user.AsyncUserResource
     vessel: vessel.AsyncVesselResource
     video: video.AsyncVideoResource
     weather_data: weather_data.AsyncWeatherDataResource
@@ -1103,7 +1103,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.rf_band = rf_band.AsyncRfBandResource(self)
         self.rf_band_type = rf_band_type.AsyncRfBandTypeResource(self)
         self.rf_emitter = rf_emitter.AsyncRfEmitterResource(self)
-        self.rf_emitter_details = rf_emitter_details.AsyncRfEmitterDetailsResource(self)
         self.route_stats = route_stats.AsyncRouteStatsResource(self)
         self.sar_observation = sar_observation.AsyncSarObservationResource(self)
         self.scientific = scientific.AsyncScientificResource(self)
@@ -1147,6 +1146,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.track_details = track_details.AsyncTrackDetailsResource(self)
         self.track_route = track_route.AsyncTrackRouteResource(self)
         self.transponder = transponder.AsyncTransponderResource(self)
+        self.user = user.AsyncUserResource(self)
         self.vessel = vessel.AsyncVesselResource(self)
         self.video = video.AsyncVideoResource(self)
         self.weather_data = weather_data.AsyncWeatherDataResource(self)
@@ -1451,7 +1451,6 @@ class UnifieddatalibraryWithRawResponse:
         self.rf_band = rf_band.RfBandResourceWithRawResponse(client.rf_band)
         self.rf_band_type = rf_band_type.RfBandTypeResourceWithRawResponse(client.rf_band_type)
         self.rf_emitter = rf_emitter.RfEmitterResourceWithRawResponse(client.rf_emitter)
-        self.rf_emitter_details = rf_emitter_details.RfEmitterDetailsResourceWithRawResponse(client.rf_emitter_details)
         self.route_stats = route_stats.RouteStatsResourceWithRawResponse(client.route_stats)
         self.sar_observation = sar_observation.SarObservationResourceWithRawResponse(client.sar_observation)
         self.scientific = scientific.ScientificResourceWithRawResponse(client.scientific)
@@ -1519,6 +1518,7 @@ class UnifieddatalibraryWithRawResponse:
         self.track_details = track_details.TrackDetailsResourceWithRawResponse(client.track_details)
         self.track_route = track_route.TrackRouteResourceWithRawResponse(client.track_route)
         self.transponder = transponder.TransponderResourceWithRawResponse(client.transponder)
+        self.user = user.UserResourceWithRawResponse(client.user)
         self.vessel = vessel.VesselResourceWithRawResponse(client.vessel)
         self.video = video.VideoResourceWithRawResponse(client.video)
         self.weather_data = weather_data.WeatherDataResourceWithRawResponse(client.weather_data)
@@ -1705,9 +1705,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.rf_band = rf_band.AsyncRfBandResourceWithRawResponse(client.rf_band)
         self.rf_band_type = rf_band_type.AsyncRfBandTypeResourceWithRawResponse(client.rf_band_type)
         self.rf_emitter = rf_emitter.AsyncRfEmitterResourceWithRawResponse(client.rf_emitter)
-        self.rf_emitter_details = rf_emitter_details.AsyncRfEmitterDetailsResourceWithRawResponse(
-            client.rf_emitter_details
-        )
         self.route_stats = route_stats.AsyncRouteStatsResourceWithRawResponse(client.route_stats)
         self.sar_observation = sar_observation.AsyncSarObservationResourceWithRawResponse(client.sar_observation)
         self.scientific = scientific.AsyncScientificResourceWithRawResponse(client.scientific)
@@ -1779,6 +1776,7 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.track_details = track_details.AsyncTrackDetailsResourceWithRawResponse(client.track_details)
         self.track_route = track_route.AsyncTrackRouteResourceWithRawResponse(client.track_route)
         self.transponder = transponder.AsyncTransponderResourceWithRawResponse(client.transponder)
+        self.user = user.AsyncUserResourceWithRawResponse(client.user)
         self.vessel = vessel.AsyncVesselResourceWithRawResponse(client.vessel)
         self.video = video.AsyncVideoResourceWithRawResponse(client.video)
         self.weather_data = weather_data.AsyncWeatherDataResourceWithRawResponse(client.weather_data)
@@ -1965,9 +1963,6 @@ class UnifieddatalibraryWithStreamedResponse:
         self.rf_band = rf_band.RfBandResourceWithStreamingResponse(client.rf_band)
         self.rf_band_type = rf_band_type.RfBandTypeResourceWithStreamingResponse(client.rf_band_type)
         self.rf_emitter = rf_emitter.RfEmitterResourceWithStreamingResponse(client.rf_emitter)
-        self.rf_emitter_details = rf_emitter_details.RfEmitterDetailsResourceWithStreamingResponse(
-            client.rf_emitter_details
-        )
         self.route_stats = route_stats.RouteStatsResourceWithStreamingResponse(client.route_stats)
         self.sar_observation = sar_observation.SarObservationResourceWithStreamingResponse(client.sar_observation)
         self.scientific = scientific.ScientificResourceWithStreamingResponse(client.scientific)
@@ -2039,6 +2034,7 @@ class UnifieddatalibraryWithStreamedResponse:
         self.track_details = track_details.TrackDetailsResourceWithStreamingResponse(client.track_details)
         self.track_route = track_route.TrackRouteResourceWithStreamingResponse(client.track_route)
         self.transponder = transponder.TransponderResourceWithStreamingResponse(client.transponder)
+        self.user = user.UserResourceWithStreamingResponse(client.user)
         self.vessel = vessel.VesselResourceWithStreamingResponse(client.vessel)
         self.video = video.VideoResourceWithStreamingResponse(client.video)
         self.weather_data = weather_data.WeatherDataResourceWithStreamingResponse(client.weather_data)
@@ -2241,9 +2237,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.rf_band = rf_band.AsyncRfBandResourceWithStreamingResponse(client.rf_band)
         self.rf_band_type = rf_band_type.AsyncRfBandTypeResourceWithStreamingResponse(client.rf_band_type)
         self.rf_emitter = rf_emitter.AsyncRfEmitterResourceWithStreamingResponse(client.rf_emitter)
-        self.rf_emitter_details = rf_emitter_details.AsyncRfEmitterDetailsResourceWithStreamingResponse(
-            client.rf_emitter_details
-        )
         self.route_stats = route_stats.AsyncRouteStatsResourceWithStreamingResponse(client.route_stats)
         self.sar_observation = sar_observation.AsyncSarObservationResourceWithStreamingResponse(client.sar_observation)
         self.scientific = scientific.AsyncScientificResourceWithStreamingResponse(client.scientific)
@@ -2319,6 +2312,7 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.track_details = track_details.AsyncTrackDetailsResourceWithStreamingResponse(client.track_details)
         self.track_route = track_route.AsyncTrackRouteResourceWithStreamingResponse(client.track_route)
         self.transponder = transponder.AsyncTransponderResourceWithStreamingResponse(client.transponder)
+        self.user = user.AsyncUserResourceWithStreamingResponse(client.user)
         self.vessel = vessel.AsyncVesselResourceWithStreamingResponse(client.vessel)
         self.video = video.AsyncVideoResourceWithStreamingResponse(client.video)
         self.weather_data = weather_data.AsyncWeatherDataResourceWithStreamingResponse(client.weather_data)

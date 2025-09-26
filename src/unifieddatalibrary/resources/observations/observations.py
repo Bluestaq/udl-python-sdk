@@ -28,6 +28,14 @@ from .monoradar.monoradar import (
     MonoradarResourceWithStreamingResponse,
     AsyncMonoradarResourceWithStreamingResponse,
 )
+from .obscorrelation.obscorrelation import (
+    ObscorrelationResource,
+    AsyncObscorrelationResource,
+    ObscorrelationResourceWithRawResponse,
+    AsyncObscorrelationResourceWithRawResponse,
+    ObscorrelationResourceWithStreamingResponse,
+    AsyncObscorrelationResourceWithStreamingResponse,
+)
 from .rf_observation.rf_observation import (
     RfObservationResource,
     AsyncRfObservationResource,
@@ -78,6 +86,10 @@ class ObservationsResource(SyncAPIResource):
         return MonoradarResource(self._client)
 
     @cached_property
+    def obscorrelation(self) -> ObscorrelationResource:
+        return ObscorrelationResource(self._client)
+
+    @cached_property
     def passive_radar_observation(self) -> PassiveRadarObservationResource:
         return PassiveRadarObservationResource(self._client)
 
@@ -125,6 +137,10 @@ class AsyncObservationsResource(AsyncAPIResource):
     @cached_property
     def monoradar(self) -> AsyncMonoradarResource:
         return AsyncMonoradarResource(self._client)
+
+    @cached_property
+    def obscorrelation(self) -> AsyncObscorrelationResource:
+        return AsyncObscorrelationResource(self._client)
 
     @cached_property
     def passive_radar_observation(self) -> AsyncPassiveRadarObservationResource:
@@ -179,6 +195,10 @@ class ObservationsResourceWithRawResponse:
         return MonoradarResourceWithRawResponse(self._observations.monoradar)
 
     @cached_property
+    def obscorrelation(self) -> ObscorrelationResourceWithRawResponse:
+        return ObscorrelationResourceWithRawResponse(self._observations.obscorrelation)
+
+    @cached_property
     def passive_radar_observation(self) -> PassiveRadarObservationResourceWithRawResponse:
         return PassiveRadarObservationResourceWithRawResponse(self._observations.passive_radar_observation)
 
@@ -210,6 +230,10 @@ class AsyncObservationsResourceWithRawResponse:
     @cached_property
     def monoradar(self) -> AsyncMonoradarResourceWithRawResponse:
         return AsyncMonoradarResourceWithRawResponse(self._observations.monoradar)
+
+    @cached_property
+    def obscorrelation(self) -> AsyncObscorrelationResourceWithRawResponse:
+        return AsyncObscorrelationResourceWithRawResponse(self._observations.obscorrelation)
 
     @cached_property
     def passive_radar_observation(self) -> AsyncPassiveRadarObservationResourceWithRawResponse:
@@ -245,6 +269,10 @@ class ObservationsResourceWithStreamingResponse:
         return MonoradarResourceWithStreamingResponse(self._observations.monoradar)
 
     @cached_property
+    def obscorrelation(self) -> ObscorrelationResourceWithStreamingResponse:
+        return ObscorrelationResourceWithStreamingResponse(self._observations.obscorrelation)
+
+    @cached_property
     def passive_radar_observation(self) -> PassiveRadarObservationResourceWithStreamingResponse:
         return PassiveRadarObservationResourceWithStreamingResponse(self._observations.passive_radar_observation)
 
@@ -276,6 +304,10 @@ class AsyncObservationsResourceWithStreamingResponse:
     @cached_property
     def monoradar(self) -> AsyncMonoradarResourceWithStreamingResponse:
         return AsyncMonoradarResourceWithStreamingResponse(self._observations.monoradar)
+
+    @cached_property
+    def obscorrelation(self) -> AsyncObscorrelationResourceWithStreamingResponse:
+        return AsyncObscorrelationResourceWithStreamingResponse(self._observations.obscorrelation)
 
     @cached_property
     def passive_radar_observation(self) -> AsyncPassiveRadarObservationResourceWithStreamingResponse:
