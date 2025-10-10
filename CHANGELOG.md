@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.26 (2025-10-10)
+
+Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
+
+### Chores
+
+* **internal:** detect missing future annotations with ruff ([5e2df56](https://github.com/Bluestaq/udl-python-sdk/commit/5e2df56fbdd6057458a835dd8c4a6c648c6a527a))
+
 ## 0.1.0-alpha.25 (2025-09-25)
 
 Full Changelog: [v0.1.0-alpha.24...v0.1.0-alpha.25](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.24...v0.1.0-alpha.25)
