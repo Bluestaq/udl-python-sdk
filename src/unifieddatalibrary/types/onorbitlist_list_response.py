@@ -50,11 +50,25 @@ class OnorbitlistListResponse(BaseModel):
     system.
     """
 
+    default_revisit_rate_mins: Optional[float] = FieldInfo(alias="defaultRevisitRateMins", default=None)
+    """Default revisit rate in minutes for all objects in this list."""
+
     description: Optional[str] = None
     """Description of the list."""
 
-    onorbits: Optional[List[str]] = None
-    """Ordered array of Onorbit IDs belonging to this list."""
+    list_priority: Optional[float] = FieldInfo(alias="listPriority", default=None)
+    """
+    Numerical priority of this orbit list relative to other orbit lists; lower
+    values indicate higher priority. Decimal values allowed for fine granularity.
+    Consumers should contact the provider for details on the priority.
+    """
+
+    namespace: Optional[str] = None
+    """
+    Defined naming system that ensures each satellite or space object has a unique
+    and unambiguous identifier within the name space (e.g. JCO, 18SDS). If null, it
+    is assumed to be 18th Space Defense Squadron (18SDS).
+    """
 
     origin: Optional[str] = None
     """
@@ -62,4 +76,35 @@ class OnorbitlistListResponse(BaseModel):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
+    """
+
+    source_dl: Optional[str] = FieldInfo(alias="sourceDL", default=None)
+    """The source data library from which this record was received.
+
+    This could be a remote or tactical UDL or another data library. If null, the
+    record should be assumed to have originated from the primary Enterprise UDL.
+    """
+
+    tags: Optional[List[str]] = None
+    """
+    Optional array of provider/source specific tags for this data, where each
+    element is no longer than 32 characters, used for implementing data owner
+    conditional access controls to restrict access to the data. Should be left null
+    by data providers unless conditional access controls are coordinated with the
+    UDL team.
+    """
+
+    transaction_id: Optional[str] = FieldInfo(alias="transactionId", default=None)
+    """
+    Optional identifier to track a commercial or marketplace transaction executed to
+    produce this data.
+    """
+
+    updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)
+    """Time the row was last updated in the database, auto-populated by the system."""
+
+    updated_by: Optional[str] = FieldInfo(alias="updatedBy", default=None)
+    """
+    Application user who updated the row in the database, auto-populated by the
+    system.
     """

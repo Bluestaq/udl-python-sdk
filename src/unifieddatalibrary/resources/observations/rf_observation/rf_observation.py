@@ -108,6 +108,8 @@ class RfObservationResource(SyncAPIResource):
         elevation_unc: float | Omit = omit,
         elnot: str | Omit = omit,
         end_frequency: float | Omit = omit,
+        fft_imag_coeffs: Iterable[float] | Omit = omit,
+        fft_real_coeffs: Iterable[float] | Omit = omit,
         frequencies: Iterable[float] | Omit = omit,
         frequency: float | Omit = omit,
         frequency_shift: float | Omit = omit,
@@ -211,7 +213,7 @@ class RfObservationResource(SyncAPIResource):
 
           antenna_name: Antenna name of the RFObservation record.
 
-          azimuth: azimuth angle in degrees and J2000 coordinate frame.
+          azimuth: Azimuth angle in degrees and topocentric coordinate frame.
 
           azimuth_measured: Optional flag indicating whether the azimuth value is measured (true) or
               computed (false). If null, consumers may consult the data provider for
@@ -221,7 +223,7 @@ class RfObservationResource(SyncAPIResource):
 
           azimuth_unc: One sigma uncertainty in the azimuth angle measurement, in degrees.
 
-          bandwidth: Measured bandwidth in Hz.
+          bandwidth: Measured bandwidth in hertz.
 
           baud_rate: Baud rate is the number of symbol changes, waveform changes, or signaling
               events, across the transmission medium per second.
@@ -242,8 +244,8 @@ class RfObservationResource(SyncAPIResource):
 
           code_taps: Array of code taps.
 
-          collection_mode: Collection mode (e.g. SURVEY, SPOT_SEARCH, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH,
-              MANUAL, etc).
+          collection_mode: Collection mode (e.g. CONTINUOUS, MANUAL, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH,
+              SPOT_SEARCH, SURVEY, etc).
 
           confidence: Confidence in the signal and its measurements and characterization.
 
@@ -260,12 +262,12 @@ class RfObservationResource(SyncAPIResource):
           detection_status: Detection status (e.g. DETECTED, CARRIER_ACQUIRING, CARRIER_DETECTED,
               NOT_DETECTED, etc).
 
-          detection_statuses: Array of detection statuses (e.g. DETECTED, CARRIER_DETECTED, NOT_DETECTED) for
+          detection_statuses: Array of detection statuses (e.g. CARRIER_DETECTED, DETECTED, NOT_DETECTED) for
               each measured signal.
 
-          eirp: Measured Equivalent Isotopically Radiated Power in dBW.
+          eirp: Measured Equivalent Isotopically Radiated Power in decibel watts.
 
-          elevation: elevation in degrees and J2000 coordinate frame.
+          elevation: Elevation in degrees and topocentric coordinate frame.
 
           elevation_measured: Optional flag indicating whether the elevation value is measured (true) or
               computed (false). If null, consumers may consult the data provider for
@@ -277,12 +279,22 @@ class RfObservationResource(SyncAPIResource):
 
           elnot: ELINT notation.
 
-          end_frequency: End carrier frequency in Hz.
+          end_frequency: End carrier frequency in hertz.
 
-          frequencies: Array of individual PSD frequencies of the signal in Hz. This array should
+          fft_imag_coeffs: Array of imaginary components of the complex Fast Fourier Transform (FFT)
+              coefficients from the signal. Used together with the same-sized fftRealCoeffs
+              array to preserve both amplitude and phase information. This array should
+              correspond with the same-sized array of frequencies.
+
+          fft_real_coeffs: Array of real components of the complex Fast Fourier Transform (FFT)
+              coefficients from the signal. Used together with the same-sized fftImagCoeffs
+              array to preserve both amplitude and phase information. This array should
+              correspond with the same-sized array of frequencies.
+
+          frequencies: Array of individual PSD frequencies of the signal in hertz. This array should
               correspond with the same-sized array of powers.
 
-          frequency: Center carrier frequency in Hz.
+          frequency: Center carrier frequency in hertz.
 
           frequency_shift: Frequency Shift of the RFObservation record.
 
@@ -293,23 +305,23 @@ class RfObservationResource(SyncAPIResource):
           inner_coding_rate: Inner forward error correction rate: 0 = Auto, 1 = 1/2, 2 = 2/3, 3 = 3/4, 4 =
               5/6, 5 = 7/8, 6 = 8/9, 7 = 3/5, 8 = 4/5, 9 = 9/10, 15 = None.
 
-          max_psd: Maximum measured PSD value of the trace in dBW.
+          max_psd: Maximum measured PSD value of the trace in decibel watts.
 
-          min_psd: Minimum measured PSD value of the trace in dBW.
+          min_psd: Minimum measured PSD value of the trace in decibel watts.
 
           modulation: Transponder modulation (e.g. Auto, QPSK, 8PSK, etc).
 
-          noise_pwr_density: Noise power density, in dBW-Hz.
+          noise_pwr_density: Noise power density, in decibel watts per hertz.
 
-          nominal_bandwidth: Expected bandwidth in Hz.
+          nominal_bandwidth: Expected bandwidth in hertz.
 
-          nominal_eirp: Expected Equivalent Isotopically Radiated Power in dBW.
+          nominal_eirp: Expected Equivalent Isotopically Radiated Power in decibel watts.
 
-          nominal_frequency: Nominal or expected center carrier frequency in Hz.
+          nominal_frequency: Nominal or expected center carrier frequency in hertz.
 
-          nominal_power_over_noise: Expected carrier power over noise (dBW/Hz).
+          nominal_power_over_noise: Expected carrier power over noise (decibel watts per hertz).
 
-          nominal_snr: Nominal or expected signal to noise ratio, in dB.
+          nominal_snr: Nominal or expected signal to noise ratio, in decibels.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
@@ -331,7 +343,7 @@ class RfObservationResource(SyncAPIResource):
 
           pgri: A pulse group repetition interval (PGRI) is a pulse train in which there are
               groups of closely spaced pulses separated by much longer times between these
-              pulse groups.
+              pulse groups. The PGRI is measured in seconds.
 
           pn_orders: Array of pnOrder.
 
@@ -343,18 +355,18 @@ class RfObservationResource(SyncAPIResource):
               R - (Right Hand Circularly Polarized) Rotating right relative to the earth's
               surface.
 
-          power_over_noise: Measured carrier power over noise (dBW/Hz).
+          power_over_noise: Measured carrier power over noise (decibel watts per hertz).
 
-          powers: Array of individual measured PSD powers of the signal in dBW. This array should
-              correspond with the same-sized array of frequencies.
+          powers: Array of individual measured PSD powers of the signal in decibel watts. This
+              array should correspond with the same-sized array of frequencies.
 
-          range: Target range in km.
+          range: Target range in kilometers.
 
           range_measured: Optional flag indicating whether the range value is measured (true) or computed
               (false). If null, consumers may consult the data provider for information
               regarding whether the corresponding value is computed or measured.
 
-          range_rate: Rate of change of the range in km/sec.
+          range_rate: Rate of change of the range in kilometers per second.
 
           range_rate_measured: Optional flag indicating whether the rangeRate value is measured (true) or
               computed (false). If null, consumers may consult the data provider for
@@ -368,14 +380,14 @@ class RfObservationResource(SyncAPIResource):
               system to produce this record. To download the raw file, prepend
               https://udl-hostname/scs/download?id= to this value.
 
-          reference_level: Reference signal level, in dBW.
+          reference_level: Reference signal level, in decibel watts.
 
-          relative_carrier_power: Measured power of the center carrier frequency in dBW.
+          relative_carrier_power: Measured power of the center carrier frequency in decibel watts.
 
           relative_noise_floor: The measure of the signal created from the sum of all the noise sources and
-              unwanted signals within the measurement system, in dBW.
+              unwanted signals within the measurement system, in decibel watts.
 
-          resolution_bandwidth: Resolution bandwidth in Hz.
+          resolution_bandwidth: Resolution bandwidth in hertz.
 
           sat_no: Satellite/Catalog number of the target on-orbit object.
 
@@ -391,17 +403,18 @@ class RfObservationResource(SyncAPIResource):
 
           signal_ids: Array of optional source provided identifiers of the measurements/signals.
 
-          snr: Signal to noise ratio, in dB.
+          snr: Signal to noise ratio, in decibels.
 
-          snrs: Array of signal to noise ratios of the signals, in dB.
+          snrs: Array of signal to noise ratios of the signals, in decibels.
 
-          spectrum_analyzer_power: Measured spectrum analyzer power of the center carrier frequency in dBW.
+          spectrum_analyzer_power: Measured spectrum analyzer power of the center carrier frequency in decibel
+              watts.
 
-          start_frequency: Start carrier frequency in Hz.
+          start_frequency: Start carrier frequency in hertz.
 
           switch_point: Switch Point of the RFObservation record.
 
-          symbol_to_noise_ratio: Symbol to noise ratio, in dB.
+          symbol_to_noise_ratio: Symbol to noise ratio, in decibels.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -417,14 +430,14 @@ class RfObservationResource(SyncAPIResource):
 
           track_id: Optional identifier of the track to which this observation belongs.
 
-          track_range: Target track or apparent range in km.
+          track_range: Target track or apparent range in kilometers.
 
           transaction_id: Optional identifier to track a commercial or marketplace transaction executed to
               produce this data.
 
           transmit_filter_roll_off: Transmit pulse shaping filter roll-off value.
 
-          transmit_filter_type: Transmit pulse shaping filter typ (e.g. RRC).
+          transmit_filter_type: Transmit pulse shaping filter type (e.g. RRC).
 
           transponder: Optional identifier provided by observation source to indicate the transponder
               used for this measurement.
@@ -437,7 +450,7 @@ class RfObservationResource(SyncAPIResource):
 
           url: Optional URL containing additional information on this observation.
 
-          video_bandwidth: Video bandwidth in Hz.
+          video_bandwidth: Video bandwidth in hertz.
 
           extra_headers: Send extra headers
 
@@ -488,6 +501,8 @@ class RfObservationResource(SyncAPIResource):
                     "elevation_unc": elevation_unc,
                     "elnot": elnot,
                     "end_frequency": end_frequency,
+                    "fft_imag_coeffs": fft_imag_coeffs,
+                    "fft_real_coeffs": fft_real_coeffs,
                     "frequencies": frequencies,
                     "frequency": frequency,
                     "frequency_shift": frequency_shift,
@@ -926,6 +941,8 @@ class AsyncRfObservationResource(AsyncAPIResource):
         elevation_unc: float | Omit = omit,
         elnot: str | Omit = omit,
         end_frequency: float | Omit = omit,
+        fft_imag_coeffs: Iterable[float] | Omit = omit,
+        fft_real_coeffs: Iterable[float] | Omit = omit,
         frequencies: Iterable[float] | Omit = omit,
         frequency: float | Omit = omit,
         frequency_shift: float | Omit = omit,
@@ -1029,7 +1046,7 @@ class AsyncRfObservationResource(AsyncAPIResource):
 
           antenna_name: Antenna name of the RFObservation record.
 
-          azimuth: azimuth angle in degrees and J2000 coordinate frame.
+          azimuth: Azimuth angle in degrees and topocentric coordinate frame.
 
           azimuth_measured: Optional flag indicating whether the azimuth value is measured (true) or
               computed (false). If null, consumers may consult the data provider for
@@ -1039,7 +1056,7 @@ class AsyncRfObservationResource(AsyncAPIResource):
 
           azimuth_unc: One sigma uncertainty in the azimuth angle measurement, in degrees.
 
-          bandwidth: Measured bandwidth in Hz.
+          bandwidth: Measured bandwidth in hertz.
 
           baud_rate: Baud rate is the number of symbol changes, waveform changes, or signaling
               events, across the transmission medium per second.
@@ -1060,8 +1077,8 @@ class AsyncRfObservationResource(AsyncAPIResource):
 
           code_taps: Array of code taps.
 
-          collection_mode: Collection mode (e.g. SURVEY, SPOT_SEARCH, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH,
-              MANUAL, etc).
+          collection_mode: Collection mode (e.g. CONTINUOUS, MANUAL, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH,
+              SPOT_SEARCH, SURVEY, etc).
 
           confidence: Confidence in the signal and its measurements and characterization.
 
@@ -1078,12 +1095,12 @@ class AsyncRfObservationResource(AsyncAPIResource):
           detection_status: Detection status (e.g. DETECTED, CARRIER_ACQUIRING, CARRIER_DETECTED,
               NOT_DETECTED, etc).
 
-          detection_statuses: Array of detection statuses (e.g. DETECTED, CARRIER_DETECTED, NOT_DETECTED) for
+          detection_statuses: Array of detection statuses (e.g. CARRIER_DETECTED, DETECTED, NOT_DETECTED) for
               each measured signal.
 
-          eirp: Measured Equivalent Isotopically Radiated Power in dBW.
+          eirp: Measured Equivalent Isotopically Radiated Power in decibel watts.
 
-          elevation: elevation in degrees and J2000 coordinate frame.
+          elevation: Elevation in degrees and topocentric coordinate frame.
 
           elevation_measured: Optional flag indicating whether the elevation value is measured (true) or
               computed (false). If null, consumers may consult the data provider for
@@ -1095,12 +1112,22 @@ class AsyncRfObservationResource(AsyncAPIResource):
 
           elnot: ELINT notation.
 
-          end_frequency: End carrier frequency in Hz.
+          end_frequency: End carrier frequency in hertz.
 
-          frequencies: Array of individual PSD frequencies of the signal in Hz. This array should
+          fft_imag_coeffs: Array of imaginary components of the complex Fast Fourier Transform (FFT)
+              coefficients from the signal. Used together with the same-sized fftRealCoeffs
+              array to preserve both amplitude and phase information. This array should
+              correspond with the same-sized array of frequencies.
+
+          fft_real_coeffs: Array of real components of the complex Fast Fourier Transform (FFT)
+              coefficients from the signal. Used together with the same-sized fftImagCoeffs
+              array to preserve both amplitude and phase information. This array should
+              correspond with the same-sized array of frequencies.
+
+          frequencies: Array of individual PSD frequencies of the signal in hertz. This array should
               correspond with the same-sized array of powers.
 
-          frequency: Center carrier frequency in Hz.
+          frequency: Center carrier frequency in hertz.
 
           frequency_shift: Frequency Shift of the RFObservation record.
 
@@ -1111,23 +1138,23 @@ class AsyncRfObservationResource(AsyncAPIResource):
           inner_coding_rate: Inner forward error correction rate: 0 = Auto, 1 = 1/2, 2 = 2/3, 3 = 3/4, 4 =
               5/6, 5 = 7/8, 6 = 8/9, 7 = 3/5, 8 = 4/5, 9 = 9/10, 15 = None.
 
-          max_psd: Maximum measured PSD value of the trace in dBW.
+          max_psd: Maximum measured PSD value of the trace in decibel watts.
 
-          min_psd: Minimum measured PSD value of the trace in dBW.
+          min_psd: Minimum measured PSD value of the trace in decibel watts.
 
           modulation: Transponder modulation (e.g. Auto, QPSK, 8PSK, etc).
 
-          noise_pwr_density: Noise power density, in dBW-Hz.
+          noise_pwr_density: Noise power density, in decibel watts per hertz.
 
-          nominal_bandwidth: Expected bandwidth in Hz.
+          nominal_bandwidth: Expected bandwidth in hertz.
 
-          nominal_eirp: Expected Equivalent Isotopically Radiated Power in dBW.
+          nominal_eirp: Expected Equivalent Isotopically Radiated Power in decibel watts.
 
-          nominal_frequency: Nominal or expected center carrier frequency in Hz.
+          nominal_frequency: Nominal or expected center carrier frequency in hertz.
 
-          nominal_power_over_noise: Expected carrier power over noise (dBW/Hz).
+          nominal_power_over_noise: Expected carrier power over noise (decibel watts per hertz).
 
-          nominal_snr: Nominal or expected signal to noise ratio, in dB.
+          nominal_snr: Nominal or expected signal to noise ratio, in decibels.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
@@ -1149,7 +1176,7 @@ class AsyncRfObservationResource(AsyncAPIResource):
 
           pgri: A pulse group repetition interval (PGRI) is a pulse train in which there are
               groups of closely spaced pulses separated by much longer times between these
-              pulse groups.
+              pulse groups. The PGRI is measured in seconds.
 
           pn_orders: Array of pnOrder.
 
@@ -1161,18 +1188,18 @@ class AsyncRfObservationResource(AsyncAPIResource):
               R - (Right Hand Circularly Polarized) Rotating right relative to the earth's
               surface.
 
-          power_over_noise: Measured carrier power over noise (dBW/Hz).
+          power_over_noise: Measured carrier power over noise (decibel watts per hertz).
 
-          powers: Array of individual measured PSD powers of the signal in dBW. This array should
-              correspond with the same-sized array of frequencies.
+          powers: Array of individual measured PSD powers of the signal in decibel watts. This
+              array should correspond with the same-sized array of frequencies.
 
-          range: Target range in km.
+          range: Target range in kilometers.
 
           range_measured: Optional flag indicating whether the range value is measured (true) or computed
               (false). If null, consumers may consult the data provider for information
               regarding whether the corresponding value is computed or measured.
 
-          range_rate: Rate of change of the range in km/sec.
+          range_rate: Rate of change of the range in kilometers per second.
 
           range_rate_measured: Optional flag indicating whether the rangeRate value is measured (true) or
               computed (false). If null, consumers may consult the data provider for
@@ -1186,14 +1213,14 @@ class AsyncRfObservationResource(AsyncAPIResource):
               system to produce this record. To download the raw file, prepend
               https://udl-hostname/scs/download?id= to this value.
 
-          reference_level: Reference signal level, in dBW.
+          reference_level: Reference signal level, in decibel watts.
 
-          relative_carrier_power: Measured power of the center carrier frequency in dBW.
+          relative_carrier_power: Measured power of the center carrier frequency in decibel watts.
 
           relative_noise_floor: The measure of the signal created from the sum of all the noise sources and
-              unwanted signals within the measurement system, in dBW.
+              unwanted signals within the measurement system, in decibel watts.
 
-          resolution_bandwidth: Resolution bandwidth in Hz.
+          resolution_bandwidth: Resolution bandwidth in hertz.
 
           sat_no: Satellite/Catalog number of the target on-orbit object.
 
@@ -1209,17 +1236,18 @@ class AsyncRfObservationResource(AsyncAPIResource):
 
           signal_ids: Array of optional source provided identifiers of the measurements/signals.
 
-          snr: Signal to noise ratio, in dB.
+          snr: Signal to noise ratio, in decibels.
 
-          snrs: Array of signal to noise ratios of the signals, in dB.
+          snrs: Array of signal to noise ratios of the signals, in decibels.
 
-          spectrum_analyzer_power: Measured spectrum analyzer power of the center carrier frequency in dBW.
+          spectrum_analyzer_power: Measured spectrum analyzer power of the center carrier frequency in decibel
+              watts.
 
-          start_frequency: Start carrier frequency in Hz.
+          start_frequency: Start carrier frequency in hertz.
 
           switch_point: Switch Point of the RFObservation record.
 
-          symbol_to_noise_ratio: Symbol to noise ratio, in dB.
+          symbol_to_noise_ratio: Symbol to noise ratio, in decibels.
 
           tags: Optional array of provider/source specific tags for this data, where each
               element is no longer than 32 characters, used for implementing data owner
@@ -1235,14 +1263,14 @@ class AsyncRfObservationResource(AsyncAPIResource):
 
           track_id: Optional identifier of the track to which this observation belongs.
 
-          track_range: Target track or apparent range in km.
+          track_range: Target track or apparent range in kilometers.
 
           transaction_id: Optional identifier to track a commercial or marketplace transaction executed to
               produce this data.
 
           transmit_filter_roll_off: Transmit pulse shaping filter roll-off value.
 
-          transmit_filter_type: Transmit pulse shaping filter typ (e.g. RRC).
+          transmit_filter_type: Transmit pulse shaping filter type (e.g. RRC).
 
           transponder: Optional identifier provided by observation source to indicate the transponder
               used for this measurement.
@@ -1255,7 +1283,7 @@ class AsyncRfObservationResource(AsyncAPIResource):
 
           url: Optional URL containing additional information on this observation.
 
-          video_bandwidth: Video bandwidth in Hz.
+          video_bandwidth: Video bandwidth in hertz.
 
           extra_headers: Send extra headers
 
@@ -1306,6 +1334,8 @@ class AsyncRfObservationResource(AsyncAPIResource):
                     "elevation_unc": elevation_unc,
                     "elnot": elnot,
                     "end_frequency": end_frequency,
+                    "fft_imag_coeffs": fft_imag_coeffs,
+                    "fft_real_coeffs": fft_real_coeffs,
                     "frequencies": frequencies,
                     "frequency": frequency,
                     "frequency_shift": frequency_shift,

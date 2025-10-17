@@ -15,6 +15,7 @@ from unifieddatalibrary.types import (
     OnorbitlistTupleResponse,
     OnorbitlistQueryhelpResponse,
 )
+from unifieddatalibrary._utils import parse_datetime
 from unifieddatalibrary.pagination import SyncOffsetPage, AsyncOffsetPage
 
 base_url = os.environ.get("TEST_API_BASE_URL", "http://127.0.0.1:4010")
@@ -28,7 +29,8 @@ class TestOnorbitlist:
         onorbitlist = client.onorbitlist.create(
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         )
         assert onorbitlist is None
@@ -38,12 +40,34 @@ class TestOnorbitlist:
         onorbitlist = client.onorbitlist.create(
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[
+                {
+                    "clearing_box_cross_track": 1.25,
+                    "clearing_box_in_track": 1.25,
+                    "clearing_radius": 1.25,
+                    "common_name": "VANGUARD 1",
+                    "country_code": "USA",
+                    "expired_on": parse_datetime("2024-07-12T00:00:00.000Z"),
+                    "freq_mins": 300.25,
+                    "monitoring_type": "REVISIT_RATE",
+                    "object_id": "5",
+                    "orbit_regime": "LEO",
+                    "orig_object_id": "ORIGOBJECT-ID",
+                    "payload_priority": 2.5,
+                    "rank": 3,
+                    "urgency": 5.1,
+                }
+            ],
             source="Bluestaq",
             id="ONORBITLIST-ID",
+            default_revisit_rate_mins=15.3,
             description="DESCRIPTION_OF_LIST",
-            onorbits=["ID1", "ID2"],
+            list_priority=1.1,
+            namespace="18SDS",
             origin="THIRD_PARTY_DATASOURCE",
+            tags=["TAG1", "TAG2"],
+            transaction_id="TRANSACTION-ID",
         )
         assert onorbitlist is None
 
@@ -52,7 +76,8 @@ class TestOnorbitlist:
         response = client.onorbitlist.with_raw_response.create(
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         )
 
@@ -66,7 +91,8 @@ class TestOnorbitlist:
         with client.onorbitlist.with_streaming_response.create(
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -83,7 +109,8 @@ class TestOnorbitlist:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         )
         assert onorbitlist is None
@@ -94,12 +121,34 @@ class TestOnorbitlist:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[
+                {
+                    "clearing_box_cross_track": 1.25,
+                    "clearing_box_in_track": 1.25,
+                    "clearing_radius": 1.25,
+                    "common_name": "VANGUARD 1",
+                    "country_code": "USA",
+                    "expired_on": parse_datetime("2024-07-12T00:00:00.000Z"),
+                    "freq_mins": 300.25,
+                    "monitoring_type": "REVISIT_RATE",
+                    "object_id": "5",
+                    "orbit_regime": "LEO",
+                    "orig_object_id": "ORIGOBJECT-ID",
+                    "payload_priority": 2.5,
+                    "rank": 3,
+                    "urgency": 5.1,
+                }
+            ],
             source="Bluestaq",
             body_id="ONORBITLIST-ID",
+            default_revisit_rate_mins=15.3,
             description="DESCRIPTION_OF_LIST",
-            onorbits=["ID1", "ID2"],
+            list_priority=1.1,
+            namespace="18SDS",
             origin="THIRD_PARTY_DATASOURCE",
+            tags=["TAG1", "TAG2"],
+            transaction_id="TRANSACTION-ID",
         )
         assert onorbitlist is None
 
@@ -109,7 +158,8 @@ class TestOnorbitlist:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         )
 
@@ -124,7 +174,8 @@ class TestOnorbitlist:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -142,7 +193,8 @@ class TestOnorbitlist:
                 path_id="",
                 classification_marking="U",
                 data_mode="TEST",
-                name="People",
+                name="HRR-SATELLITES",
+                on_orbit_list_items=[{}],
                 source="Bluestaq",
             )
 
@@ -373,7 +425,8 @@ class TestAsyncOnorbitlist:
         onorbitlist = await async_client.onorbitlist.create(
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         )
         assert onorbitlist is None
@@ -383,12 +436,34 @@ class TestAsyncOnorbitlist:
         onorbitlist = await async_client.onorbitlist.create(
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[
+                {
+                    "clearing_box_cross_track": 1.25,
+                    "clearing_box_in_track": 1.25,
+                    "clearing_radius": 1.25,
+                    "common_name": "VANGUARD 1",
+                    "country_code": "USA",
+                    "expired_on": parse_datetime("2024-07-12T00:00:00.000Z"),
+                    "freq_mins": 300.25,
+                    "monitoring_type": "REVISIT_RATE",
+                    "object_id": "5",
+                    "orbit_regime": "LEO",
+                    "orig_object_id": "ORIGOBJECT-ID",
+                    "payload_priority": 2.5,
+                    "rank": 3,
+                    "urgency": 5.1,
+                }
+            ],
             source="Bluestaq",
             id="ONORBITLIST-ID",
+            default_revisit_rate_mins=15.3,
             description="DESCRIPTION_OF_LIST",
-            onorbits=["ID1", "ID2"],
+            list_priority=1.1,
+            namespace="18SDS",
             origin="THIRD_PARTY_DATASOURCE",
+            tags=["TAG1", "TAG2"],
+            transaction_id="TRANSACTION-ID",
         )
         assert onorbitlist is None
 
@@ -397,7 +472,8 @@ class TestAsyncOnorbitlist:
         response = await async_client.onorbitlist.with_raw_response.create(
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         )
 
@@ -411,7 +487,8 @@ class TestAsyncOnorbitlist:
         async with async_client.onorbitlist.with_streaming_response.create(
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -428,7 +505,8 @@ class TestAsyncOnorbitlist:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         )
         assert onorbitlist is None
@@ -439,12 +517,34 @@ class TestAsyncOnorbitlist:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[
+                {
+                    "clearing_box_cross_track": 1.25,
+                    "clearing_box_in_track": 1.25,
+                    "clearing_radius": 1.25,
+                    "common_name": "VANGUARD 1",
+                    "country_code": "USA",
+                    "expired_on": parse_datetime("2024-07-12T00:00:00.000Z"),
+                    "freq_mins": 300.25,
+                    "monitoring_type": "REVISIT_RATE",
+                    "object_id": "5",
+                    "orbit_regime": "LEO",
+                    "orig_object_id": "ORIGOBJECT-ID",
+                    "payload_priority": 2.5,
+                    "rank": 3,
+                    "urgency": 5.1,
+                }
+            ],
             source="Bluestaq",
             body_id="ONORBITLIST-ID",
+            default_revisit_rate_mins=15.3,
             description="DESCRIPTION_OF_LIST",
-            onorbits=["ID1", "ID2"],
+            list_priority=1.1,
+            namespace="18SDS",
             origin="THIRD_PARTY_DATASOURCE",
+            tags=["TAG1", "TAG2"],
+            transaction_id="TRANSACTION-ID",
         )
         assert onorbitlist is None
 
@@ -454,7 +554,8 @@ class TestAsyncOnorbitlist:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         )
 
@@ -469,7 +570,8 @@ class TestAsyncOnorbitlist:
             path_id="id",
             classification_marking="U",
             data_mode="TEST",
-            name="People",
+            name="HRR-SATELLITES",
+            on_orbit_list_items=[{}],
             source="Bluestaq",
         ) as response:
             assert not response.is_closed
@@ -487,7 +589,8 @@ class TestAsyncOnorbitlist:
                 path_id="",
                 classification_marking="U",
                 data_mode="TEST",
-                name="People",
+                name="HRR-SATELLITES",
+                on_orbit_list_items=[{}],
                 source="Bluestaq",
             )
 

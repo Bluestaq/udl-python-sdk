@@ -85,6 +85,25 @@ class EmitterGeolocationCreateParams(TypedDict, total=False):
     atype: str
     """Type of region as projected on the ground."""
 
+    avg_prf: Annotated[float, PropertyInfo(alias="avgPRF")]
+    """Average pulse repetition frequency of the emitter, measured in hertz.
+
+    PRF is the number of pulses transmitted per second. This is the reciprocal of
+    the avgPRI (Pulse Repetition Interval) value.
+    """
+
+    avg_pri: Annotated[float, PropertyInfo(alias="avgPRI")]
+    """Average pulse repetition interval of the emitter, measured in microseconds.
+
+    The interval between the start of one pulse and the start of another.
+    """
+
+    avg_pw: Annotated[float, PropertyInfo(alias="avgPW")]
+    """Average pulse width of the emitter, measured in nanoseconds.
+
+    This is the average duration of the pulse.
+    """
+
     center_freq: Annotated[float, PropertyInfo(alias="centerFreq")]
     """The detected signal frequency in megahertz."""
 
@@ -130,8 +149,9 @@ class EmitterGeolocationCreateParams(TypedDict, total=False):
 
     err_ellp: Annotated[Iterable[float], PropertyInfo(alias="errEllp")]
     """
-    Confidence ellipsoid about the detection location [semi-major axis (m),
-    semi-minor axis (m), orientation (deg)].
+    Confidence ellipsoid about the detection location [semi-major axis (meters),
+    semi-minor axis (meters), orientation (degrees) measured clockwise (0-360 from
+    true north)].
     """
 
     external_id: Annotated[str, PropertyInfo(alias="externalId")]
@@ -162,8 +182,46 @@ class EmitterGeolocationCreateParams(TypedDict, total=False):
     max_freq: Annotated[float, PropertyInfo(alias="maxFreq")]
     """The maximum detected frequency in megahertz."""
 
+    max_prf: Annotated[float, PropertyInfo(alias="maxPRF")]
+    """Maximum pulse repetition frequency of the emitter, measured in hertz.
+
+    PRF is the number of pulses transmitted per second. This is the reciprocal of
+    the minPRI (Pulse Repetition Interval) value.
+    """
+
+    max_pri: Annotated[float, PropertyInfo(alias="maxPRI")]
+    """Maximum pulse repetition interval of the emitter, measured in microseconds.
+
+    The interval between the start of one pulse and the start of another.
+    """
+
+    max_pw: Annotated[float, PropertyInfo(alias="maxPW")]
+    """Maximum pulse width of the emitter, measured in nanoseconds.
+
+    This is the maximum duration of the pulse.
+    """
+
     min_freq: Annotated[float, PropertyInfo(alias="minFreq")]
     """The minimum detected frequency in megahertz."""
+
+    min_prf: Annotated[float, PropertyInfo(alias="minPRF")]
+    """Minimum pulse repetition frequency of the emitter, measured in hertz.
+
+    PRF is the number of pulses transmitted per second. This is the reciprocal of
+    the maxPRI (Pulse Repetition Interval) value.
+    """
+
+    min_pri: Annotated[float, PropertyInfo(alias="minPRI")]
+    """Minimum pulse repetition interval of the emitter, measured in microseconds.
+
+    The interval between the start of one pulse and the start of another.
+    """
+
+    min_pw: Annotated[float, PropertyInfo(alias="minPW")]
+    """Minimum pulse width of the emitter, measured in nanoseconds.
+
+    This is the minimum duration of the pulse.
+    """
 
     num_bursts: Annotated[int, PropertyInfo(alias="numBursts")]
     """The count of single-burst observations used for this geolocation observation."""
@@ -205,6 +263,12 @@ class EmitterGeolocationCreateParams(TypedDict, total=False):
     """
     Optional external identifier referencing the entity used in the calculation of
     the geolocation.
+    """
+
+    pulse_shape: Annotated[str, PropertyInfo(alias="pulseShape")]
+    """
+    Describes the form of the emitted pulse and how its signal varies within the
+    pulse duration (e.g. GAUSSIAN, RECTANGULAR, TRAPEZOIDAL, etc.).
     """
 
     received_ts: Annotated[Union[str, datetime], PropertyInfo(alias="receivedTs", format="iso8601")]

@@ -390,6 +390,13 @@ class BodyRadarSoiObservationList(TypedDict, total=False):
     precision.
     """
 
+    waveform_number: Annotated[int, PropertyInfo(alias="waveformNumber")]
+    """
+    A unique numeric or hash identifier assigned to each distinct waveform, enabling
+    traceability between the waveform used and the images or data products generated
+    from it.
+    """
+
     xaccel: Iterable[float]
     """
     Array of the cartesian X accelerations, in kilometers per second squared, in the

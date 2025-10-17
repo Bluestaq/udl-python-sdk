@@ -8,7 +8,103 @@ from pydantic import Field as FieldInfo
 
 from .._models import BaseModel
 
-__all__ = ["OnorbitlistTupleResponse", "OnorbitlistTupleResponseItem"]
+__all__ = ["OnorbitlistTupleResponse", "OnorbitlistTupleResponseItem", "OnorbitlistTupleResponseItemOnOrbitListItem"]
+
+
+class OnorbitlistTupleResponseItemOnOrbitListItem(BaseModel):
+    clearing_box_cross_track: Optional[float] = FieldInfo(alias="clearingBoxCrossTrack", default=None)
+    """
+    Height of a box, in degrees, volume expected to be cleared by sensor providers,
+    if CLEARING is selected.
+    """
+
+    clearing_box_in_track: Optional[float] = FieldInfo(alias="clearingBoxInTrack", default=None)
+    """
+    Width of a box volume, in degrees, expected to be cleared by sensor providers,
+    if CLEARING is selected.
+    """
+
+    clearing_radius: Optional[float] = FieldInfo(alias="clearingRadius", default=None)
+    """
+    Radius, in degrees, of a spherical volume expected to be cleared by sensor
+    providers, if CLEARING is selected.
+    """
+
+    common_name: Optional[str] = FieldInfo(alias="commonName", default=None)
+    """Common name of the onorbit object."""
+
+    country_code: Optional[str] = FieldInfo(alias="countryCode", default=None)
+    """
+    This value is typically the ISO 3166 Alpha-3 three-character country code,
+    however it can also represent various consortiums that do not appear in the ISO
+    document.
+    """
+
+    expired_on: Optional[datetime] = FieldInfo(alias="expiredOn", default=None)
+    """
+    Datetime expiration of a satellite on this list, allowing for the maintenance of
+    a history of when satellites entered and when they exited the list in ISO 8601
+    UTC datetime format with millisecond precision.
+    """
+
+    freq_mins: Optional[float] = FieldInfo(alias="freqMins", default=None)
+    """
+    Frequency of additional routine, in minutes, tasking identified in and
+    corresponding to the monitoringType array.
+    """
+
+    monitoring_type: Optional[str] = FieldInfo(alias="monitoringType", default=None)
+    """Routine tasking that should be applied to this object.
+
+    REVISIT_RATE allows users to define custom revisit rates for individual
+    satellites, HVA_CLEARING allows users to define custom volumes that are expected
+    to be clear of unknown objects, and POL would be collects on a specified
+    increment in support of collecting data that feeds into Pattern of Life (PoL)
+    assessments.
+    """
+
+    object_id: Optional[str] = FieldInfo(alias="objectId", default=None)
+    """Unique identifier of the on-orbit object.
+
+    This is typically the USSF 18th SDS satellite number (also sometimes referred to
+    as NORAD ID/number) but could be an identifier from another satellite catalog
+    namespace. See the ‘namespace’ field for the appropriate identifier namespace.
+    If namespace is null, 18SDS satellite number is assumed.
+    """
+
+    orbit_regime: Optional[str] = FieldInfo(alias="orbitRegime", default=None)
+    """
+    Orbit Regime refers to a classification of a satellite's orbit based on its
+    altitude, inclination, and other orbital characteristics. Common orbit regimes
+    include Low Earth Orbit (LEO), Medium Earth Orbit (MEO), Geostationary Orbit
+    (GEO), and Highly Elliptical Orbit (HEO).
+    """
+
+    orig_object_id: Optional[str] = FieldInfo(alias="origObjectId", default=None)
+    """Optional identifier indicates the on-orbit object being referenced.
+
+    This may be an internal system identifier and not necessarily a valid satellite
+    number.
+    """
+
+    payload_priority: Optional[float] = FieldInfo(alias="payloadPriority", default=None)
+    """
+    Payload priority based on the type of payload that has been identified or that
+    is suspected. Priority of the payload as a number. (1=highest priority).
+    """
+
+    rank: Optional[int] = None
+    """
+    Rank refers to the assigned position or level of priority given to a satellite
+    based on its relative importance, urgency, or operational relevance as
+    determined by the applicable operations unit.
+    """
+
+    urgency: Optional[float] = None
+    """Tasking urgency, typically will be on a 1-10 scale.
+
+    Urgency as a number. (1=highest priority).
+    """
 
 
 class OnorbitlistTupleResponseItem(BaseModel):
@@ -35,6 +131,12 @@ class OnorbitlistTupleResponseItem(BaseModel):
     name: str
     """Unique name of the list."""
 
+    on_orbit_list_items: List[OnorbitlistTupleResponseItemOnOrbitListItem] = FieldInfo(alias="onOrbitListItems")
+    """
+    This is a list of onOrbitListItems that will be related one-to-one with an
+    onOrbit entry.
+    """
+
     source: str
     """Source of the data."""
 
@@ -50,11 +152,25 @@ class OnorbitlistTupleResponseItem(BaseModel):
     system.
     """
 
+    default_revisit_rate_mins: Optional[float] = FieldInfo(alias="defaultRevisitRateMins", default=None)
+    """Default revisit rate in minutes for all objects in this list."""
+
     description: Optional[str] = None
     """Description of the list."""
 
-    onorbits: Optional[List[str]] = None
-    """Ordered array of Onorbit IDs belonging to this list."""
+    list_priority: Optional[float] = FieldInfo(alias="listPriority", default=None)
+    """
+    Numerical priority of this orbit list relative to other orbit lists; lower
+    values indicate higher priority. Decimal values allowed for fine granularity.
+    Consumers should contact the provider for details on the priority.
+    """
+
+    namespace: Optional[str] = None
+    """
+    Defined naming system that ensures each satellite or space object has a unique
+    and unambiguous identifier within the name space (e.g. JCO, 18SDS). If null, it
+    is assumed to be 18th Space Defense Squadron (18SDS).
+    """
 
     origin: Optional[str] = None
     """
@@ -62,6 +178,28 @@ class OnorbitlistTupleResponseItem(BaseModel):
     the source. The origin may be different than the source if the source was a
     mediating system which forwarded the data on behalf of the origin system. If
     null, the source may be assumed to be the origin.
+    """
+
+    source_dl: Optional[str] = FieldInfo(alias="sourceDL", default=None)
+    """The source data library from which this record was received.
+
+    This could be a remote or tactical UDL or another data library. If null, the
+    record should be assumed to have originated from the primary Enterprise UDL.
+    """
+
+    tags: Optional[List[str]] = None
+    """
+    Optional array of provider/source specific tags for this data, where each
+    element is no longer than 32 characters, used for implementing data owner
+    conditional access controls to restrict access to the data. Should be left null
+    by data providers unless conditional access controls are coordinated with the
+    UDL team.
+    """
+
+    transaction_id: Optional[str] = FieldInfo(alias="transactionId", default=None)
+    """
+    Optional identifier to track a commercial or marketplace transaction executed to
+    produce this data.
     """
 
     updated_at: Optional[datetime] = FieldInfo(alias="updatedAt", default=None)

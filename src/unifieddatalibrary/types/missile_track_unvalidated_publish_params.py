@@ -92,11 +92,11 @@ class BodyVector(TypedDict, total=False):
     """
 
     cov_reference_frame: Annotated[
-        Literal["ECEF", "J2000", "UVW", "EFG/TDR", "TEME", "GCRF"], PropertyInfo(alias="covReferenceFrame")
+        Literal["J2000", "UVW", "EFG/TDR", "ECR/ECEF", "TEME", "GCRF"], PropertyInfo(alias="covReferenceFrame")
     ]
     """
-    The reference frame of the covariance elements (ECEF, J2000, UVW, EFG/TDR, TEME,
-    GCRF). If the referenceFrame is null it is assumed to be UVW.
+    The reference frame of the covariance elements (J2000, UVW, EFG/TDR, ECR/ECEF,
+    TEME, GCRF). If the referenceFrame is null it is assumed to be UVW.
     """
 
     flight_az: Annotated[float, PropertyInfo(alias="flightAz")]

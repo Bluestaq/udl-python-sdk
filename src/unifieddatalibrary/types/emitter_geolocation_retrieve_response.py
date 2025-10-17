@@ -79,6 +79,25 @@ class EmitterGeolocationRetrieveResponse(BaseModel):
     atype: Optional[str] = None
     """Type of region as projected on the ground."""
 
+    avg_prf: Optional[float] = FieldInfo(alias="avgPRF", default=None)
+    """Average pulse repetition frequency of the emitter, measured in hertz.
+
+    PRF is the number of pulses transmitted per second. This is the reciprocal of
+    the avgPRI (Pulse Repetition Interval) value.
+    """
+
+    avg_pri: Optional[float] = FieldInfo(alias="avgPRI", default=None)
+    """Average pulse repetition interval of the emitter, measured in microseconds.
+
+    The interval between the start of one pulse and the start of another.
+    """
+
+    avg_pw: Optional[float] = FieldInfo(alias="avgPW", default=None)
+    """Average pulse width of the emitter, measured in nanoseconds.
+
+    This is the average duration of the pulse.
+    """
+
     center_freq: Optional[float] = FieldInfo(alias="centerFreq", default=None)
     """The detected signal frequency in megahertz."""
 
@@ -133,8 +152,9 @@ class EmitterGeolocationRetrieveResponse(BaseModel):
 
     err_ellp: Optional[List[float]] = FieldInfo(alias="errEllp", default=None)
     """
-    Confidence ellipsoid about the detection location [semi-major axis (m),
-    semi-minor axis (m), orientation (deg)].
+    Confidence ellipsoid about the detection location [semi-major axis (meters),
+    semi-minor axis (meters), orientation (degrees) measured clockwise (0-360 from
+    true north)].
     """
 
     external_id: Optional[str] = FieldInfo(alias="externalId", default=None)
@@ -174,8 +194,46 @@ class EmitterGeolocationRetrieveResponse(BaseModel):
     max_freq: Optional[float] = FieldInfo(alias="maxFreq", default=None)
     """The maximum detected frequency in megahertz."""
 
+    max_prf: Optional[float] = FieldInfo(alias="maxPRF", default=None)
+    """Maximum pulse repetition frequency of the emitter, measured in hertz.
+
+    PRF is the number of pulses transmitted per second. This is the reciprocal of
+    the minPRI (Pulse Repetition Interval) value.
+    """
+
+    max_pri: Optional[float] = FieldInfo(alias="maxPRI", default=None)
+    """Maximum pulse repetition interval of the emitter, measured in microseconds.
+
+    The interval between the start of one pulse and the start of another.
+    """
+
+    max_pw: Optional[float] = FieldInfo(alias="maxPW", default=None)
+    """Maximum pulse width of the emitter, measured in nanoseconds.
+
+    This is the maximum duration of the pulse.
+    """
+
     min_freq: Optional[float] = FieldInfo(alias="minFreq", default=None)
     """The minimum detected frequency in megahertz."""
+
+    min_prf: Optional[float] = FieldInfo(alias="minPRF", default=None)
+    """Minimum pulse repetition frequency of the emitter, measured in hertz.
+
+    PRF is the number of pulses transmitted per second. This is the reciprocal of
+    the maxPRI (Pulse Repetition Interval) value.
+    """
+
+    min_pri: Optional[float] = FieldInfo(alias="minPRI", default=None)
+    """Minimum pulse repetition interval of the emitter, measured in microseconds.
+
+    The interval between the start of one pulse and the start of another.
+    """
+
+    min_pw: Optional[float] = FieldInfo(alias="minPW", default=None)
+    """Minimum pulse width of the emitter, measured in nanoseconds.
+
+    This is the minimum duration of the pulse.
+    """
 
     num_bursts: Optional[int] = FieldInfo(alias="numBursts", default=None)
     """The count of single-burst observations used for this geolocation observation."""
@@ -226,6 +284,12 @@ class EmitterGeolocationRetrieveResponse(BaseModel):
     """
     Optional external identifier referencing the entity used in the calculation of
     the geolocation.
+    """
+
+    pulse_shape: Optional[str] = FieldInfo(alias="pulseShape", default=None)
+    """
+    Describes the form of the emitted pulse and how its signal varies within the
+    pulse duration (e.g. GAUSSIAN, RECTANGULAR, TRAPEZOIDAL, etc.).
     """
 
     received_ts: Optional[datetime] = FieldInfo(alias="receivedTs", default=None)
