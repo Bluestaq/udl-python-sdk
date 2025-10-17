@@ -422,7 +422,7 @@ class ManeuverTupleResponseItemPostEventStateVector(BaseModel):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Optional[Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"]] = FieldInfo(
+    cov_reference_frame: Optional[Literal["J2000", "UVW", "EFG/TDR", "ECR/ECEF", "TEME", "GCRF"]] = FieldInfo(
         alias="covReferenceFrame", default=None
     )
     """The reference frame of the covariance matrix elements.
@@ -1381,7 +1381,7 @@ class ManeuverTupleResponseItemPreEventStateVector(BaseModel):
     value was used (CALCULATED, DEFAULT).
     """
 
-    cov_reference_frame: Optional[Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"]] = FieldInfo(
+    cov_reference_frame: Optional[Literal["J2000", "UVW", "EFG/TDR", "ECR/ECEF", "TEME", "GCRF"]] = FieldInfo(
         alias="covReferenceFrame", default=None
     )
     """The reference frame of the covariance matrix elements.

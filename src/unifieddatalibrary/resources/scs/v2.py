@@ -224,16 +224,16 @@ class V2Resource(SyncAPIResource):
         path.
 
         Args:
-          path: The base path to list
+          path: The base path to list.
 
-          order: The order in which entries should be sorted
+          order: The order in which entries should be sorted.
 
           search_after: The starting point for pagination results, usually set to the value of the
               SEARCH_AFTER header returned in the previous request.
 
           size: The number of results to retrieve.
 
-          sort: The field on which to sort entries
+          sort: The field on which to sort entries.
 
           extra_headers: Send extra headers
 
@@ -640,14 +640,14 @@ class V2Resource(SyncAPIResource):
         Operation to search for files in the Secure Content Store.
 
         Args:
-          order: The order in which entries should be sorted
+          order: The order in which entries should be sorted.
 
           search_after: The starting point for pagination results, usually set to the value of the
               SEARCH_AFTER header returned in the previous request.
 
           size: The number of results to retrieve.
 
-          sort: The field on which to sort entries
+          sort: The field on which to sort entries.
 
           query: A search criterion, which can be a simple field comparison or a logical
               combination of other criteria.
@@ -859,16 +859,16 @@ class AsyncV2Resource(AsyncAPIResource):
         path.
 
         Args:
-          path: The base path to list
+          path: The base path to list.
 
-          order: The order in which entries should be sorted
+          order: The order in which entries should be sorted.
 
           search_after: The starting point for pagination results, usually set to the value of the
               SEARCH_AFTER header returned in the previous request.
 
           size: The number of results to retrieve.
 
-          sort: The field on which to sort entries
+          sort: The field on which to sort entries.
 
           extra_headers: Send extra headers
 
@@ -1275,14 +1275,14 @@ class AsyncV2Resource(AsyncAPIResource):
         Operation to search for files in the Secure Content Store.
 
         Args:
-          order: The order in which entries should be sorted
+          order: The order in which entries should be sorted.
 
           search_after: The starting point for pagination results, usually set to the value of the
               SEARCH_AFTER header returned in the previous request.
 
           size: The number of results to retrieve.
 
-          sort: The field on which to sort entries
+          sort: The field on which to sort entries.
 
           query: A search criterion, which can be a simple field comparison or a logical
               combination of other criteria.

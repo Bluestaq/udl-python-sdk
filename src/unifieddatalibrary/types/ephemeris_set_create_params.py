@@ -70,7 +70,7 @@ class EphemerisSetCreateParams(TypedDict, total=False):
     """Additional source provided comments associated with the ephemeris."""
 
     cov_reference_frame: Annotated[
-        Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"], PropertyInfo(alias="covReferenceFrame")
+        Literal["J2000", "UVW", "EFG/TDR", "ECR/ECEF", "TEME", "GCRF"], PropertyInfo(alias="covReferenceFrame")
     ]
     """The reference frame of the covariance matrix elements.
 

@@ -49,7 +49,7 @@ class RfObservationCreateParams(TypedDict, total=False):
     """Antenna name of the RFObservation record."""
 
     azimuth: float
-    """azimuth angle in degrees and J2000 coordinate frame."""
+    """Azimuth angle in degrees and topocentric coordinate frame."""
 
     azimuth_measured: Annotated[bool, PropertyInfo(alias="azimuthMeasured")]
     """
@@ -65,7 +65,7 @@ class RfObservationCreateParams(TypedDict, total=False):
     """One sigma uncertainty in the azimuth angle measurement, in degrees."""
 
     bandwidth: float
-    """Measured bandwidth in Hz."""
+    """Measured bandwidth in hertz."""
 
     baud_rate: Annotated[float, PropertyInfo(alias="baudRate")]
     """
@@ -100,7 +100,8 @@ class RfObservationCreateParams(TypedDict, total=False):
     collection_mode: Annotated[str, PropertyInfo(alias="collectionMode")]
     """Collection mode (e.g.
 
-    SURVEY, SPOT_SEARCH, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH, MANUAL, etc).
+    CONTINUOUS, MANUAL, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH, SPOT_SEARCH, SURVEY,
+    etc).
     """
 
     confidence: float
@@ -133,14 +134,14 @@ class RfObservationCreateParams(TypedDict, total=False):
     detection_statuses: Annotated[SequenceNotStr[str], PropertyInfo(alias="detectionStatuses")]
     """Array of detection statuses (e.g.
 
-    DETECTED, CARRIER_DETECTED, NOT_DETECTED) for each measured signal.
+    CARRIER_DETECTED, DETECTED, NOT_DETECTED) for each measured signal.
     """
 
     eirp: float
-    """Measured Equivalent Isotopically Radiated Power in dBW."""
+    """Measured Equivalent Isotopically Radiated Power in decibel watts."""
 
     elevation: float
-    """elevation in degrees and J2000 coordinate frame."""
+    """Elevation in degrees and topocentric coordinate frame."""
 
     elevation_measured: Annotated[bool, PropertyInfo(alias="elevationMeasured")]
     """
@@ -159,16 +160,32 @@ class RfObservationCreateParams(TypedDict, total=False):
     """ELINT notation."""
 
     end_frequency: Annotated[float, PropertyInfo(alias="endFrequency")]
-    """End carrier frequency in Hz."""
+    """End carrier frequency in hertz."""
+
+    fft_imag_coeffs: Annotated[Iterable[float], PropertyInfo(alias="fftImagCoeffs")]
+    """
+    Array of imaginary components of the complex Fast Fourier Transform (FFT)
+    coefficients from the signal. Used together with the same-sized fftRealCoeffs
+    array to preserve both amplitude and phase information. This array should
+    correspond with the same-sized array of frequencies.
+    """
+
+    fft_real_coeffs: Annotated[Iterable[float], PropertyInfo(alias="fftRealCoeffs")]
+    """
+    Array of real components of the complex Fast Fourier Transform (FFT)
+    coefficients from the signal. Used together with the same-sized fftImagCoeffs
+    array to preserve both amplitude and phase information. This array should
+    correspond with the same-sized array of frequencies.
+    """
 
     frequencies: Iterable[float]
-    """Array of individual PSD frequencies of the signal in Hz.
+    """Array of individual PSD frequencies of the signal in hertz.
 
     This array should correspond with the same-sized array of powers.
     """
 
     frequency: float
-    """Center carrier frequency in Hz."""
+    """Center carrier frequency in hertz."""
 
     frequency_shift: Annotated[float, PropertyInfo(alias="frequencyShift")]
     """Frequency Shift of the RFObservation record."""
@@ -186,31 +203,31 @@ class RfObservationCreateParams(TypedDict, total=False):
     """
 
     max_psd: Annotated[float, PropertyInfo(alias="maxPSD")]
-    """Maximum measured PSD value of the trace in dBW."""
+    """Maximum measured PSD value of the trace in decibel watts."""
 
     min_psd: Annotated[float, PropertyInfo(alias="minPSD")]
-    """Minimum measured PSD value of the trace in dBW."""
+    """Minimum measured PSD value of the trace in decibel watts."""
 
     modulation: str
     """Transponder modulation (e.g. Auto, QPSK, 8PSK, etc)."""
 
     noise_pwr_density: Annotated[float, PropertyInfo(alias="noisePwrDensity")]
-    """Noise power density, in dBW-Hz."""
+    """Noise power density, in decibel watts per hertz."""
 
     nominal_bandwidth: Annotated[float, PropertyInfo(alias="nominalBandwidth")]
-    """Expected bandwidth in Hz."""
+    """Expected bandwidth in hertz."""
 
     nominal_eirp: Annotated[float, PropertyInfo(alias="nominalEirp")]
-    """Expected Equivalent Isotopically Radiated Power in dBW."""
+    """Expected Equivalent Isotopically Radiated Power in decibel watts."""
 
     nominal_frequency: Annotated[float, PropertyInfo(alias="nominalFrequency")]
-    """Nominal or expected center carrier frequency in Hz."""
+    """Nominal or expected center carrier frequency in hertz."""
 
     nominal_power_over_noise: Annotated[float, PropertyInfo(alias="nominalPowerOverNoise")]
-    """Expected carrier power over noise (dBW/Hz)."""
+    """Expected carrier power over noise (decibel watts per hertz)."""
 
     nominal_snr: Annotated[float, PropertyInfo(alias="nominalSnr")]
-    """Nominal or expected signal to noise ratio, in dB."""
+    """Nominal or expected signal to noise ratio, in decibels."""
 
     origin: str
     """
@@ -247,7 +264,7 @@ class RfObservationCreateParams(TypedDict, total=False):
     """
     A pulse group repetition interval (PGRI) is a pulse train in which there are
     groups of closely spaced pulses separated by much longer times between these
-    pulse groups.
+    pulse groups. The PGRI is measured in seconds.
     """
 
     pn_orders: Annotated[Iterable[int], PropertyInfo(alias="pnOrders")]
@@ -266,16 +283,16 @@ class RfObservationCreateParams(TypedDict, total=False):
     """
 
     power_over_noise: Annotated[float, PropertyInfo(alias="powerOverNoise")]
-    """Measured carrier power over noise (dBW/Hz)."""
+    """Measured carrier power over noise (decibel watts per hertz)."""
 
     powers: Iterable[float]
-    """Array of individual measured PSD powers of the signal in dBW.
+    """Array of individual measured PSD powers of the signal in decibel watts.
 
     This array should correspond with the same-sized array of frequencies.
     """
 
     range: float
-    """Target range in km."""
+    """Target range in kilometers."""
 
     range_measured: Annotated[bool, PropertyInfo(alias="rangeMeasured")]
     """
@@ -285,7 +302,7 @@ class RfObservationCreateParams(TypedDict, total=False):
     """
 
     range_rate: Annotated[float, PropertyInfo(alias="rangeRate")]
-    """Rate of change of the range in km/sec."""
+    """Rate of change of the range in kilometers per second."""
 
     range_rate_measured: Annotated[bool, PropertyInfo(alias="rangeRateMeasured")]
     """
@@ -308,19 +325,19 @@ class RfObservationCreateParams(TypedDict, total=False):
     """
 
     reference_level: Annotated[float, PropertyInfo(alias="referenceLevel")]
-    """Reference signal level, in dBW."""
+    """Reference signal level, in decibel watts."""
 
     relative_carrier_power: Annotated[float, PropertyInfo(alias="relativeCarrierPower")]
-    """Measured power of the center carrier frequency in dBW."""
+    """Measured power of the center carrier frequency in decibel watts."""
 
     relative_noise_floor: Annotated[float, PropertyInfo(alias="relativeNoiseFloor")]
     """
     The measure of the signal created from the sum of all the noise sources and
-    unwanted signals within the measurement system, in dBW.
+    unwanted signals within the measurement system, in decibel watts.
     """
 
     resolution_bandwidth: Annotated[float, PropertyInfo(alias="resolutionBandwidth")]
-    """Resolution bandwidth in Hz."""
+    """Resolution bandwidth in hertz."""
 
     sat_no: Annotated[int, PropertyInfo(alias="satNo")]
     """Satellite/Catalog number of the target on-orbit object."""
@@ -349,22 +366,25 @@ class RfObservationCreateParams(TypedDict, total=False):
     """Array of optional source provided identifiers of the measurements/signals."""
 
     snr: float
-    """Signal to noise ratio, in dB."""
+    """Signal to noise ratio, in decibels."""
 
     snrs: Iterable[float]
-    """Array of signal to noise ratios of the signals, in dB."""
+    """Array of signal to noise ratios of the signals, in decibels."""
 
     spectrum_analyzer_power: Annotated[float, PropertyInfo(alias="spectrumAnalyzerPower")]
-    """Measured spectrum analyzer power of the center carrier frequency in dBW."""
+    """
+    Measured spectrum analyzer power of the center carrier frequency in decibel
+    watts.
+    """
 
     start_frequency: Annotated[float, PropertyInfo(alias="startFrequency")]
-    """Start carrier frequency in Hz."""
+    """Start carrier frequency in hertz."""
 
     switch_point: Annotated[int, PropertyInfo(alias="switchPoint")]
     """Switch Point of the RFObservation record."""
 
     symbol_to_noise_ratio: Annotated[float, PropertyInfo(alias="symbolToNoiseRatio")]
-    """Symbol to noise ratio, in dB."""
+    """Symbol to noise ratio, in decibels."""
 
     tags: SequenceNotStr[str]
     """
@@ -391,7 +411,7 @@ class RfObservationCreateParams(TypedDict, total=False):
     """Optional identifier of the track to which this observation belongs."""
 
     track_range: Annotated[float, PropertyInfo(alias="trackRange")]
-    """Target track or apparent range in km."""
+    """Target track or apparent range in kilometers."""
 
     transaction_id: Annotated[str, PropertyInfo(alias="transactionId")]
     """
@@ -403,7 +423,7 @@ class RfObservationCreateParams(TypedDict, total=False):
     """Transmit pulse shaping filter roll-off value."""
 
     transmit_filter_type: Annotated[str, PropertyInfo(alias="transmitFilterType")]
-    """Transmit pulse shaping filter typ (e.g. RRC)."""
+    """Transmit pulse shaping filter type (e.g. RRC)."""
 
     transponder: str
     """
@@ -424,4 +444,4 @@ class RfObservationCreateParams(TypedDict, total=False):
     """Optional URL containing additional information on this observation."""
 
     video_bandwidth: Annotated[float, PropertyInfo(alias="videoBandwidth")]
-    """Video bandwidth in Hz."""
+    """Video bandwidth in hertz."""

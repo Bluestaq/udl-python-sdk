@@ -11,14 +11,14 @@ __all__ = ["V2ListParams"]
 
 class V2ListParams(TypedDict, total=False):
     path: Required[str]
-    """The base path to list"""
+    """The base path to list."""
 
     first_result: Annotated[int, PropertyInfo(alias="firstResult")]
 
     max_results: Annotated[int, PropertyInfo(alias="maxResults")]
 
     order: str
-    """The order in which entries should be sorted"""
+    """The order in which entries should be sorted."""
 
     search_after: Annotated[str, PropertyInfo(alias="searchAfter")]
     """
@@ -30,4 +30,4 @@ class V2ListParams(TypedDict, total=False):
     """The number of results to retrieve."""
 
     sort: str
-    """The field on which to sort entries"""
+    """The field on which to sort entries."""

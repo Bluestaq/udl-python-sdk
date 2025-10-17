@@ -377,6 +377,13 @@ class RadarSoiObservationList(BaseModel):
     precision.
     """
 
+    waveform_number: Optional[int] = FieldInfo(alias="waveformNumber", default=None)
+    """
+    A unique numeric or hash identifier assigned to each distinct waveform, enabling
+    traceability between the waveform used and the images or data products generated
+    from it.
+    """
+
     xaccel: Optional[List[float]] = None
     """
     Array of the cartesian X accelerations, in kilometers per second squared, in the

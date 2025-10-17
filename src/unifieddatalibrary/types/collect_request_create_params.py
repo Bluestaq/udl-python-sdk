@@ -851,7 +851,7 @@ class StateVector(TypedDict, total=False):
     """
 
     cov_reference_frame: Annotated[
-        Literal["J2000", "UVW", "EFG/TDR", "TEME", "GCRF"], PropertyInfo(alias="covReferenceFrame")
+        Literal["J2000", "UVW", "EFG/TDR", "ECR/ECEF", "TEME", "GCRF"], PropertyInfo(alias="covReferenceFrame")
     ]
     """The reference frame of the covariance matrix elements.
 
