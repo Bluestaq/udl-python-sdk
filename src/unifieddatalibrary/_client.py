@@ -81,6 +81,7 @@ from .resources import (
     onorbitantenna,
     onorbitbattery,
     onorbitdetails,
+    sensor_stating,
     h3_geo_hex_cell,
     onorbitthruster,
     aircraft_sorties,
@@ -182,6 +183,7 @@ from .resources.gnss_observations import gnss_observations
 from .resources.iono_observations import iono_observations
 from .resources.logistics_support import logistics_support
 from .resources.onboardnavigation import onboardnavigation
+from .resources.onorbitassessment import onorbitassessment
 from .resources.personnelrecovery import personnelrecovery
 from .resources.feature_assessment import feature_assessment
 from .resources.mission_assignment import mission_assignment
@@ -313,6 +315,7 @@ class Unifieddatalibrary(SyncAPIClient):
     onorbitsolararray: onorbitsolararray.OnorbitsolararrayResource
     onorbitthruster: onorbitthruster.OnorbitthrusterResource
     onorbitthrusterstatus: onorbitthrusterstatus.OnorbitthrusterstatusResource
+    onorbitassessment: onorbitassessment.OnorbitassessmentResource
     operatingunit: operatingunit.OperatingunitResource
     operatingunitremark: operatingunitremark.OperatingunitremarkResource
     orbitdetermination: orbitdetermination.OrbitdeterminationResource
@@ -332,6 +335,7 @@ class Unifieddatalibrary(SyncAPIClient):
     scs: scs.ScsResource
     secure_messaging: secure_messaging.SecureMessagingResource
     sensor: sensor.SensorResource
+    sensor_stating: sensor_stating.SensorStatingResource
     sensor_maintenance: sensor_maintenance.SensorMaintenanceResource
     sensor_observation_type: sensor_observation_type.SensorObservationTypeResource
     sensor_plan: sensor_plan.SensorPlanResource
@@ -546,6 +550,7 @@ class Unifieddatalibrary(SyncAPIClient):
         self.onorbitsolararray = onorbitsolararray.OnorbitsolararrayResource(self)
         self.onorbitthruster = onorbitthruster.OnorbitthrusterResource(self)
         self.onorbitthrusterstatus = onorbitthrusterstatus.OnorbitthrusterstatusResource(self)
+        self.onorbitassessment = onorbitassessment.OnorbitassessmentResource(self)
         self.operatingunit = operatingunit.OperatingunitResource(self)
         self.operatingunitremark = operatingunitremark.OperatingunitremarkResource(self)
         self.orbitdetermination = orbitdetermination.OrbitdeterminationResource(self)
@@ -565,6 +570,7 @@ class Unifieddatalibrary(SyncAPIClient):
         self.scs = scs.ScsResource(self)
         self.secure_messaging = secure_messaging.SecureMessagingResource(self)
         self.sensor = sensor.SensorResource(self)
+        self.sensor_stating = sensor_stating.SensorStatingResource(self)
         self.sensor_maintenance = sensor_maintenance.SensorMaintenanceResource(self)
         self.sensor_observation_type = sensor_observation_type.SensorObservationTypeResource(self)
         self.sensor_plan = sensor_plan.SensorPlanResource(self)
@@ -857,6 +863,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     onorbitsolararray: onorbitsolararray.AsyncOnorbitsolararrayResource
     onorbitthruster: onorbitthruster.AsyncOnorbitthrusterResource
     onorbitthrusterstatus: onorbitthrusterstatus.AsyncOnorbitthrusterstatusResource
+    onorbitassessment: onorbitassessment.AsyncOnorbitassessmentResource
     operatingunit: operatingunit.AsyncOperatingunitResource
     operatingunitremark: operatingunitremark.AsyncOperatingunitremarkResource
     orbitdetermination: orbitdetermination.AsyncOrbitdeterminationResource
@@ -876,6 +883,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     scs: scs.AsyncScsResource
     secure_messaging: secure_messaging.AsyncSecureMessagingResource
     sensor: sensor.AsyncSensorResource
+    sensor_stating: sensor_stating.AsyncSensorStatingResource
     sensor_maintenance: sensor_maintenance.AsyncSensorMaintenanceResource
     sensor_observation_type: sensor_observation_type.AsyncSensorObservationTypeResource
     sensor_plan: sensor_plan.AsyncSensorPlanResource
@@ -1090,6 +1098,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.onorbitsolararray = onorbitsolararray.AsyncOnorbitsolararrayResource(self)
         self.onorbitthruster = onorbitthruster.AsyncOnorbitthrusterResource(self)
         self.onorbitthrusterstatus = onorbitthrusterstatus.AsyncOnorbitthrusterstatusResource(self)
+        self.onorbitassessment = onorbitassessment.AsyncOnorbitassessmentResource(self)
         self.operatingunit = operatingunit.AsyncOperatingunitResource(self)
         self.operatingunitremark = operatingunitremark.AsyncOperatingunitremarkResource(self)
         self.orbitdetermination = orbitdetermination.AsyncOrbitdeterminationResource(self)
@@ -1109,6 +1118,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.scs = scs.AsyncScsResource(self)
         self.secure_messaging = secure_messaging.AsyncSecureMessagingResource(self)
         self.sensor = sensor.AsyncSensorResource(self)
+        self.sensor_stating = sensor_stating.AsyncSensorStatingResource(self)
         self.sensor_maintenance = sensor_maintenance.AsyncSensorMaintenanceResource(self)
         self.sensor_observation_type = sensor_observation_type.AsyncSensorObservationTypeResource(self)
         self.sensor_plan = sensor_plan.AsyncSensorPlanResource(self)
@@ -1430,6 +1440,7 @@ class UnifieddatalibraryWithRawResponse:
         self.onorbitthrusterstatus = onorbitthrusterstatus.OnorbitthrusterstatusResourceWithRawResponse(
             client.onorbitthrusterstatus
         )
+        self.onorbitassessment = onorbitassessment.OnorbitassessmentResourceWithRawResponse(client.onorbitassessment)
         self.operatingunit = operatingunit.OperatingunitResourceWithRawResponse(client.operatingunit)
         self.operatingunitremark = operatingunitremark.OperatingunitremarkResourceWithRawResponse(
             client.operatingunitremark
@@ -1457,6 +1468,7 @@ class UnifieddatalibraryWithRawResponse:
         self.scs = scs.ScsResourceWithRawResponse(client.scs)
         self.secure_messaging = secure_messaging.SecureMessagingResourceWithRawResponse(client.secure_messaging)
         self.sensor = sensor.SensorResourceWithRawResponse(client.sensor)
+        self.sensor_stating = sensor_stating.SensorStatingResourceWithRawResponse(client.sensor_stating)
         self.sensor_maintenance = sensor_maintenance.SensorMaintenanceResourceWithRawResponse(client.sensor_maintenance)
         self.sensor_observation_type = sensor_observation_type.SensorObservationTypeResourceWithRawResponse(
             client.sensor_observation_type
@@ -1682,6 +1694,9 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.onorbitthrusterstatus = onorbitthrusterstatus.AsyncOnorbitthrusterstatusResourceWithRawResponse(
             client.onorbitthrusterstatus
         )
+        self.onorbitassessment = onorbitassessment.AsyncOnorbitassessmentResourceWithRawResponse(
+            client.onorbitassessment
+        )
         self.operatingunit = operatingunit.AsyncOperatingunitResourceWithRawResponse(client.operatingunit)
         self.operatingunitremark = operatingunitremark.AsyncOperatingunitremarkResourceWithRawResponse(
             client.operatingunitremark
@@ -1711,6 +1726,7 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.scs = scs.AsyncScsResourceWithRawResponse(client.scs)
         self.secure_messaging = secure_messaging.AsyncSecureMessagingResourceWithRawResponse(client.secure_messaging)
         self.sensor = sensor.AsyncSensorResourceWithRawResponse(client.sensor)
+        self.sensor_stating = sensor_stating.AsyncSensorStatingResourceWithRawResponse(client.sensor_stating)
         self.sensor_maintenance = sensor_maintenance.AsyncSensorMaintenanceResourceWithRawResponse(
             client.sensor_maintenance
         )
@@ -1940,6 +1956,9 @@ class UnifieddatalibraryWithStreamedResponse:
         self.onorbitthrusterstatus = onorbitthrusterstatus.OnorbitthrusterstatusResourceWithStreamingResponse(
             client.onorbitthrusterstatus
         )
+        self.onorbitassessment = onorbitassessment.OnorbitassessmentResourceWithStreamingResponse(
+            client.onorbitassessment
+        )
         self.operatingunit = operatingunit.OperatingunitResourceWithStreamingResponse(client.operatingunit)
         self.operatingunitremark = operatingunitremark.OperatingunitremarkResourceWithStreamingResponse(
             client.operatingunitremark
@@ -1969,6 +1988,7 @@ class UnifieddatalibraryWithStreamedResponse:
         self.scs = scs.ScsResourceWithStreamingResponse(client.scs)
         self.secure_messaging = secure_messaging.SecureMessagingResourceWithStreamingResponse(client.secure_messaging)
         self.sensor = sensor.SensorResourceWithStreamingResponse(client.sensor)
+        self.sensor_stating = sensor_stating.SensorStatingResourceWithStreamingResponse(client.sensor_stating)
         self.sensor_maintenance = sensor_maintenance.SensorMaintenanceResourceWithStreamingResponse(
             client.sensor_maintenance
         )
@@ -2214,6 +2234,9 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.onorbitthrusterstatus = onorbitthrusterstatus.AsyncOnorbitthrusterstatusResourceWithStreamingResponse(
             client.onorbitthrusterstatus
         )
+        self.onorbitassessment = onorbitassessment.AsyncOnorbitassessmentResourceWithStreamingResponse(
+            client.onorbitassessment
+        )
         self.operatingunit = operatingunit.AsyncOperatingunitResourceWithStreamingResponse(client.operatingunit)
         self.operatingunitremark = operatingunitremark.AsyncOperatingunitremarkResourceWithStreamingResponse(
             client.operatingunitremark
@@ -2245,6 +2268,7 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
             client.secure_messaging
         )
         self.sensor = sensor.AsyncSensorResourceWithStreamingResponse(client.sensor)
+        self.sensor_stating = sensor_stating.AsyncSensorStatingResourceWithStreamingResponse(client.sensor_stating)
         self.sensor_maintenance = sensor_maintenance.AsyncSensorMaintenanceResourceWithStreamingResponse(
             client.sensor_maintenance
         )
