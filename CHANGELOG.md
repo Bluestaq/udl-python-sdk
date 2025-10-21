@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.1.0-alpha.27 (2025-10-21)
+
+Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)
+
+### Features
+
+* **api:** api update ([47d2419](https://github.com/Bluestaq/udl-python-sdk/commit/47d24197e6c52cbe59131a55abbf286537447d8e))
+* **api:** manual updates ([4618bd4](https://github.com/Bluestaq/udl-python-sdk/commit/4618bd4cc8dccb154de859755d674076934e261e))
+
+
+### Chores
+
+* bump `httpx-aiohttp` version to 0.1.9 ([116ddc6](https://github.com/Bluestaq/udl-python-sdk/commit/116ddc6fae95365e3f33698398fb52f3ea19244f))
+
 ## 0.1.0-alpha.26 (2025-10-10)
 
 Full Changelog: [v0.1.0-alpha.25...v0.1.0-alpha.26](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.25...v0.1.0-alpha.26)
