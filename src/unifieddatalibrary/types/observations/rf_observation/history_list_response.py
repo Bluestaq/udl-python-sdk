@@ -49,7 +49,7 @@ class HistoryListResponse(BaseModel):
     """Antenna name of the RFObservation record."""
 
     azimuth: Optional[float] = None
-    """azimuth angle in degrees and J2000 coordinate frame."""
+    """Azimuth angle in degrees and topocentric coordinate frame."""
 
     azimuth_measured: Optional[bool] = FieldInfo(alias="azimuthMeasured", default=None)
     """
@@ -65,7 +65,7 @@ class HistoryListResponse(BaseModel):
     """One sigma uncertainty in the azimuth angle measurement, in degrees."""
 
     bandwidth: Optional[float] = None
-    """Measured bandwidth in Hz."""
+    """Measured bandwidth in hertz."""
 
     baud_rate: Optional[float] = FieldInfo(alias="baudRate", default=None)
     """
@@ -100,7 +100,8 @@ class HistoryListResponse(BaseModel):
     collection_mode: Optional[str] = FieldInfo(alias="collectionMode", default=None)
     """Collection mode (e.g.
 
-    SURVEY, SPOT_SEARCH, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH, MANUAL, etc).
+    CONTINUOUS, MANUAL, NEIGHBORHOOD_WATCH, DIRECTED_SEARCH, SPOT_SEARCH, SURVEY,
+    etc).
     """
 
     confidence: Optional[float] = None
@@ -142,14 +143,14 @@ class HistoryListResponse(BaseModel):
     detection_statuses: Optional[List[str]] = FieldInfo(alias="detectionStatuses", default=None)
     """Array of detection statuses (e.g.
 
-    DETECTED, CARRIER_DETECTED, NOT_DETECTED) for each measured signal.
+    CARRIER_DETECTED, DETECTED, NOT_DETECTED) for each measured signal.
     """
 
     eirp: Optional[float] = None
-    """Measured Equivalent Isotopically Radiated Power in dBW."""
+    """Measured Equivalent Isotopically Radiated Power in decibel watts."""
 
     elevation: Optional[float] = None
-    """elevation in degrees and J2000 coordinate frame."""
+    """Elevation in degrees and topocentric coordinate frame."""
 
     elevation_measured: Optional[bool] = FieldInfo(alias="elevationMeasured", default=None)
     """
@@ -168,16 +169,32 @@ class HistoryListResponse(BaseModel):
     """ELINT notation."""
 
     end_frequency: Optional[float] = FieldInfo(alias="endFrequency", default=None)
-    """End carrier frequency in Hz."""
+    """End carrier frequency in hertz."""
+
+    fft_imag_coeffs: Optional[List[float]] = FieldInfo(alias="fftImagCoeffs", default=None)
+    """
+    Array of imaginary components of the complex Fast Fourier Transform (FFT)
+    coefficients from the signal. Used together with the same-sized fftRealCoeffs
+    array to preserve both amplitude and phase information. This array should
+    correspond with the same-sized array of frequencies.
+    """
+
+    fft_real_coeffs: Optional[List[float]] = FieldInfo(alias="fftRealCoeffs", default=None)
+    """
+    Array of real components of the complex Fast Fourier Transform (FFT)
+    coefficients from the signal. Used together with the same-sized fftImagCoeffs
+    array to preserve both amplitude and phase information. This array should
+    correspond with the same-sized array of frequencies.
+    """
 
     frequencies: Optional[List[float]] = None
-    """Array of individual PSD frequencies of the signal in Hz.
+    """Array of individual PSD frequencies of the signal in hertz.
 
     This array should correspond with the same-sized array of powers.
     """
 
     frequency: Optional[float] = None
-    """Center carrier frequency in Hz."""
+    """Center carrier frequency in hertz."""
 
     frequency_shift: Optional[float] = FieldInfo(alias="frequencyShift", default=None)
     """Frequency Shift of the RFObservation record."""
@@ -198,31 +215,31 @@ class HistoryListResponse(BaseModel):
     """
 
     max_psd: Optional[float] = FieldInfo(alias="maxPSD", default=None)
-    """Maximum measured PSD value of the trace in dBW."""
+    """Maximum measured PSD value of the trace in decibel watts."""
 
     min_psd: Optional[float] = FieldInfo(alias="minPSD", default=None)
-    """Minimum measured PSD value of the trace in dBW."""
+    """Minimum measured PSD value of the trace in decibel watts."""
 
     modulation: Optional[str] = None
     """Transponder modulation (e.g. Auto, QPSK, 8PSK, etc)."""
 
     noise_pwr_density: Optional[float] = FieldInfo(alias="noisePwrDensity", default=None)
-    """Noise power density, in dBW-Hz."""
+    """Noise power density, in decibel watts per hertz."""
 
     nominal_bandwidth: Optional[float] = FieldInfo(alias="nominalBandwidth", default=None)
-    """Expected bandwidth in Hz."""
+    """Expected bandwidth in hertz."""
 
     nominal_eirp: Optional[float] = FieldInfo(alias="nominalEirp", default=None)
-    """Expected Equivalent Isotopically Radiated Power in dBW."""
+    """Expected Equivalent Isotopically Radiated Power in decibel watts."""
 
     nominal_frequency: Optional[float] = FieldInfo(alias="nominalFrequency", default=None)
-    """Nominal or expected center carrier frequency in Hz."""
+    """Nominal or expected center carrier frequency in hertz."""
 
     nominal_power_over_noise: Optional[float] = FieldInfo(alias="nominalPowerOverNoise", default=None)
-    """Expected carrier power over noise (dBW/Hz)."""
+    """Expected carrier power over noise (decibel watts per hertz)."""
 
     nominal_snr: Optional[float] = FieldInfo(alias="nominalSnr", default=None)
-    """Nominal or expected signal to noise ratio, in dB."""
+    """Nominal or expected signal to noise ratio, in decibels."""
 
     on_orbit: Optional[OnorbitFull] = FieldInfo(alias="onOrbit", default=None)
     """Model object representing on-orbit objects or satellites in the system."""
@@ -274,7 +291,7 @@ class HistoryListResponse(BaseModel):
     """
     A pulse group repetition interval (PGRI) is a pulse train in which there are
     groups of closely spaced pulses separated by much longer times between these
-    pulse groups.
+    pulse groups. The PGRI is measured in seconds.
     """
 
     pn_orders: Optional[List[int]] = FieldInfo(alias="pnOrders", default=None)
@@ -293,16 +310,16 @@ class HistoryListResponse(BaseModel):
     """
 
     power_over_noise: Optional[float] = FieldInfo(alias="powerOverNoise", default=None)
-    """Measured carrier power over noise (dBW/Hz)."""
+    """Measured carrier power over noise (decibel watts per hertz)."""
 
     powers: Optional[List[float]] = None
-    """Array of individual measured PSD powers of the signal in dBW.
+    """Array of individual measured PSD powers of the signal in decibel watts.
 
     This array should correspond with the same-sized array of frequencies.
     """
 
     range: Optional[float] = None
-    """Target range in km."""
+    """Target range in kilometers."""
 
     range_measured: Optional[bool] = FieldInfo(alias="rangeMeasured", default=None)
     """
@@ -312,7 +329,7 @@ class HistoryListResponse(BaseModel):
     """
 
     range_rate: Optional[float] = FieldInfo(alias="rangeRate", default=None)
-    """Rate of change of the range in km/sec."""
+    """Rate of change of the range in kilometers per second."""
 
     range_rate_measured: Optional[bool] = FieldInfo(alias="rangeRateMeasured", default=None)
     """
@@ -335,19 +352,19 @@ class HistoryListResponse(BaseModel):
     """
 
     reference_level: Optional[float] = FieldInfo(alias="referenceLevel", default=None)
-    """Reference signal level, in dBW."""
+    """Reference signal level, in decibel watts."""
 
     relative_carrier_power: Optional[float] = FieldInfo(alias="relativeCarrierPower", default=None)
-    """Measured power of the center carrier frequency in dBW."""
+    """Measured power of the center carrier frequency in decibel watts."""
 
     relative_noise_floor: Optional[float] = FieldInfo(alias="relativeNoiseFloor", default=None)
     """
     The measure of the signal created from the sum of all the noise sources and
-    unwanted signals within the measurement system, in dBW.
+    unwanted signals within the measurement system, in decibel watts.
     """
 
     resolution_bandwidth: Optional[float] = FieldInfo(alias="resolutionBandwidth", default=None)
-    """Resolution bandwidth in Hz."""
+    """Resolution bandwidth in hertz."""
 
     sat_no: Optional[int] = FieldInfo(alias="satNo", default=None)
     """Satellite/Catalog number of the target on-orbit object."""
@@ -376,10 +393,10 @@ class HistoryListResponse(BaseModel):
     """Array of optional source provided identifiers of the measurements/signals."""
 
     snr: Optional[float] = None
-    """Signal to noise ratio, in dB."""
+    """Signal to noise ratio, in decibels."""
 
     snrs: Optional[List[float]] = None
-    """Array of signal to noise ratios of the signals, in dB."""
+    """Array of signal to noise ratios of the signals, in decibels."""
 
     source_dl: Optional[str] = FieldInfo(alias="sourceDL", default=None)
     """The source data library from which this record was received.
@@ -389,16 +406,19 @@ class HistoryListResponse(BaseModel):
     """
 
     spectrum_analyzer_power: Optional[float] = FieldInfo(alias="spectrumAnalyzerPower", default=None)
-    """Measured spectrum analyzer power of the center carrier frequency in dBW."""
+    """
+    Measured spectrum analyzer power of the center carrier frequency in decibel
+    watts.
+    """
 
     start_frequency: Optional[float] = FieldInfo(alias="startFrequency", default=None)
-    """Start carrier frequency in Hz."""
+    """Start carrier frequency in hertz."""
 
     switch_point: Optional[int] = FieldInfo(alias="switchPoint", default=None)
     """Switch Point of the RFObservation record."""
 
     symbol_to_noise_ratio: Optional[float] = FieldInfo(alias="symbolToNoiseRatio", default=None)
-    """Symbol to noise ratio, in dB."""
+    """Symbol to noise ratio, in decibels."""
 
     tags: Optional[List[str]] = None
     """
@@ -425,7 +445,7 @@ class HistoryListResponse(BaseModel):
     """Optional identifier of the track to which this observation belongs."""
 
     track_range: Optional[float] = FieldInfo(alias="trackRange", default=None)
-    """Target track or apparent range in km."""
+    """Target track or apparent range in kilometers."""
 
     transaction_id: Optional[str] = FieldInfo(alias="transactionId", default=None)
     """
@@ -437,7 +457,7 @@ class HistoryListResponse(BaseModel):
     """Transmit pulse shaping filter roll-off value."""
 
     transmit_filter_type: Optional[str] = FieldInfo(alias="transmitFilterType", default=None)
-    """Transmit pulse shaping filter typ (e.g. RRC)."""
+    """Transmit pulse shaping filter type (e.g. RRC)."""
 
     transponder: Optional[str] = None
     """
@@ -458,4 +478,4 @@ class HistoryListResponse(BaseModel):
     """Optional URL containing additional information on this observation."""
 
     video_bandwidth: Optional[float] = FieldInfo(alias="videoBandwidth", default=None)
-    """Video bandwidth in Hz."""
+    """Video bandwidth in hertz."""

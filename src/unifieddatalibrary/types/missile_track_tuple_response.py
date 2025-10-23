@@ -86,12 +86,12 @@ class MissileTrackTupleResponseItemVector(BaseModel):
     down to bottom right, in order.
     """
 
-    cov_reference_frame: Optional[Literal["ECEF", "J2000", "UVW", "EFG/TDR", "TEME", "GCRF"]] = FieldInfo(
+    cov_reference_frame: Optional[Literal["J2000", "UVW", "EFG/TDR", "ECR/ECEF", "TEME", "GCRF"]] = FieldInfo(
         alias="covReferenceFrame", default=None
     )
     """
-    The reference frame of the covariance elements (ECEF, J2000, UVW, EFG/TDR, TEME,
-    GCRF). If the referenceFrame is null it is assumed to be UVW.
+    The reference frame of the covariance elements (J2000, UVW, EFG/TDR, ECR/ECEF,
+    TEME, GCRF). If the referenceFrame is null it is assumed to be UVW.
     """
 
     flight_az: Optional[float] = FieldInfo(alias="flightAz", default=None)

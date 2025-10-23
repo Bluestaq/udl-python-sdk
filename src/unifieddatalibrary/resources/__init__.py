@@ -840,6 +840,14 @@ from .onorbitdetails import (
     OnorbitdetailsResourceWithStreamingResponse,
     AsyncOnorbitdetailsResourceWithStreamingResponse,
 )
+from .sensor_stating import (
+    SensorStatingResource,
+    AsyncSensorStatingResource,
+    SensorStatingResourceWithRawResponse,
+    AsyncSensorStatingResourceWithRawResponse,
+    SensorStatingResourceWithStreamingResponse,
+    AsyncSensorStatingResourceWithStreamingResponse,
+)
 from .weather_report import (
     WeatherReportResource,
     AsyncWeatherReportResource,
@@ -1023,6 +1031,14 @@ from .onboardnavigation import (
     AsyncOnboardnavigationResourceWithRawResponse,
     OnboardnavigationResourceWithStreamingResponse,
     AsyncOnboardnavigationResourceWithStreamingResponse,
+)
+from .onorbitassessment import (
+    OnorbitassessmentResource,
+    AsyncOnorbitassessmentResource,
+    OnorbitassessmentResourceWithRawResponse,
+    AsyncOnorbitassessmentResourceWithRawResponse,
+    OnorbitassessmentResourceWithStreamingResponse,
+    AsyncOnorbitassessmentResourceWithStreamingResponse,
 )
 from .onorbitsolararray import (
     OnorbitsolararrayResource,
@@ -1932,6 +1948,12 @@ __all__ = [
     "AsyncOnorbitthrusterstatusResourceWithRawResponse",
     "OnorbitthrusterstatusResourceWithStreamingResponse",
     "AsyncOnorbitthrusterstatusResourceWithStreamingResponse",
+    "OnorbitassessmentResource",
+    "AsyncOnorbitassessmentResource",
+    "OnorbitassessmentResourceWithRawResponse",
+    "AsyncOnorbitassessmentResourceWithRawResponse",
+    "OnorbitassessmentResourceWithStreamingResponse",
+    "AsyncOnorbitassessmentResourceWithStreamingResponse",
     "OperatingunitResource",
     "AsyncOperatingunitResource",
     "OperatingunitResourceWithRawResponse",
@@ -2046,6 +2068,12 @@ __all__ = [
     "AsyncSensorResourceWithRawResponse",
     "SensorResourceWithStreamingResponse",
     "AsyncSensorResourceWithStreamingResponse",
+    "SensorStatingResource",
+    "AsyncSensorStatingResource",
+    "SensorStatingResourceWithRawResponse",
+    "AsyncSensorStatingResourceWithRawResponse",
+    "SensorStatingResourceWithStreamingResponse",
+    "AsyncSensorStatingResourceWithStreamingResponse",
     "SensorMaintenanceResource",
     "AsyncSensorMaintenanceResource",
     "SensorMaintenanceResourceWithRawResponse",

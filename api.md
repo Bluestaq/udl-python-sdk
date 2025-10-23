@@ -3497,6 +3497,45 @@ Methods:
 - <code title="get /udl/onorbitthrusterstatus/history">client.onorbitthrusterstatus.history.<a href="./src/unifieddatalibrary/resources/onorbitthrusterstatus/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitthrusterstatus/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/shared/onorbitthrusterstatus_full.py">SyncOffsetPage[OnorbitthrusterstatusFull]</a></code>
 - <code title="get /udl/onorbitthrusterstatus/history/count">client.onorbitthrusterstatus.history.<a href="./src/unifieddatalibrary/resources/onorbitthrusterstatus/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitthrusterstatus/history_count_params.py">params</a>) -> str</code>
 
+# Onorbitassessment
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    OnorbitassessmentListResponse,
+    OnorbitassessmentCountResponse,
+    OnorbitassessmentGetResponse,
+    OnorbitassessmentQueryhelpResponse,
+    OnorbitassessmentTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/onorbitassessment">client.onorbitassessment.<a href="./src/unifieddatalibrary/resources/onorbitassessment/onorbitassessment.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/onorbitassessment">client.onorbitassessment.<a href="./src/unifieddatalibrary/resources/onorbitassessment/onorbitassessment.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/onorbitassessment_list_response.py">SyncOffsetPage[OnorbitassessmentListResponse]</a></code>
+- <code title="get /udl/onorbitassessment/count">client.onorbitassessment.<a href="./src/unifieddatalibrary/resources/onorbitassessment/onorbitassessment.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/onorbitassessment/createBulk">client.onorbitassessment.<a href="./src/unifieddatalibrary/resources/onorbitassessment/onorbitassessment.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/onorbitassessment/{id}">client.onorbitassessment.<a href="./src/unifieddatalibrary/resources/onorbitassessment/onorbitassessment.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/onorbitassessment_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/onorbitassessment_get_response.py">OnorbitassessmentGetResponse</a></code>
+- <code title="get /udl/onorbitassessment/queryhelp">client.onorbitassessment.<a href="./src/unifieddatalibrary/resources/onorbitassessment/onorbitassessment.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/onorbitassessment_queryhelp_response.py">OnorbitassessmentQueryhelpResponse</a></code>
+- <code title="get /udl/onorbitassessment/tuple">client.onorbitassessment.<a href="./src/unifieddatalibrary/resources/onorbitassessment/onorbitassessment.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/onorbitassessment_tuple_response.py">OnorbitassessmentTupleResponse</a></code>
+- <code title="post /filedrop/udl-onorbitassessment">client.onorbitassessment.<a href="./src/unifieddatalibrary/resources/onorbitassessment/onorbitassessment.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.onorbitassessment import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/onorbitassessment/history">client.onorbitassessment.history.<a href="./src/unifieddatalibrary/resources/onorbitassessment/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/onorbitassessment/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/onorbitassessment/history/aodr">client.onorbitassessment.history.<a href="./src/unifieddatalibrary/resources/onorbitassessment/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/onorbitassessment/history/count">client.onorbitassessment.history.<a href="./src/unifieddatalibrary/resources/onorbitassessment/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/onorbitassessment/history_count_params.py">params</a>) -> str</code>
+
 # Operatingunit
 
 Types:
@@ -4195,6 +4234,28 @@ Methods:
 - <code title="get /udl/sensorcalibration/history">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor/calibration/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
 - <code title="get /udl/sensorcalibration/history/aodr">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_aodr_params.py">params</a>) -> None</code>
 - <code title="get /udl/sensorcalibration/history/count">client.sensor.calibration.history.<a href="./src/unifieddatalibrary/resources/sensor/calibration/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/sensor/calibration/history_count_params.py">params</a>) -> str</code>
+
+# SensorStating
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    SensorStatingListResponse,
+    SensorStatingGetResponse,
+    SensorStatingQueryhelpResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/sensorstaging">client.sensor_stating.<a href="./src/unifieddatalibrary/resources/sensor_stating.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_stating_create_params.py">params</a>) -> None</code>
+- <code title="put /udl/sensorstaging/{id}">client.sensor_stating.<a href="./src/unifieddatalibrary/resources/sensor_stating.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/sensor_stating_update_params.py">params</a>) -> None</code>
+- <code title="get /udl/sensorstaging">client.sensor_stating.<a href="./src/unifieddatalibrary/resources/sensor_stating.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_stating_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_stating_list_response.py">SyncOffsetPage[SensorStatingListResponse]</a></code>
+- <code title="delete /udl/sensorstaging/{id}">client.sensor_stating.<a href="./src/unifieddatalibrary/resources/sensor_stating.py">delete</a>(id) -> None</code>
+- <code title="post /udl/sensorstaging/createBulk">client.sensor_stating.<a href="./src/unifieddatalibrary/resources/sensor_stating.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/sensor_stating_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/sensorstaging/{id}">client.sensor_stating.<a href="./src/unifieddatalibrary/resources/sensor_stating.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/sensor_stating_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/sensor_stating_get_response.py">SensorStatingGetResponse</a></code>
+- <code title="get /udl/sensorstaging/queryhelp">client.sensor_stating.<a href="./src/unifieddatalibrary/resources/sensor_stating.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/sensor_stating_queryhelp_response.py">SensorStatingQueryhelpResponse</a></code>
 
 # SensorMaintenance
 

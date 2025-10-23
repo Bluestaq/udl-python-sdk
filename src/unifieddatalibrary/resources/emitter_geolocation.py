@@ -73,6 +73,9 @@ class EmitterGeolocationResource(SyncAPIResource):
         asrid: int | Omit = omit,
         atext: str | Omit = omit,
         atype: str | Omit = omit,
+        avg_prf: float | Omit = omit,
+        avg_pri: float | Omit = omit,
+        avg_pw: float | Omit = omit,
         center_freq: float | Omit = omit,
         cluster: str | Omit = omit,
         conf_area: float | Omit = omit,
@@ -87,7 +90,13 @@ class EmitterGeolocationResource(SyncAPIResource):
         id_rf_emitter: str | Omit = omit,
         id_sensor: str | Omit = omit,
         max_freq: float | Omit = omit,
+        max_prf: float | Omit = omit,
+        max_pri: float | Omit = omit,
+        max_pw: float | Omit = omit,
         min_freq: float | Omit = omit,
+        min_prf: float | Omit = omit,
+        min_pri: float | Omit = omit,
+        min_pw: float | Omit = omit,
         num_bursts: int | Omit = omit,
         order_id: str | Omit = omit,
         origin: str | Omit = omit,
@@ -95,6 +104,7 @@ class EmitterGeolocationResource(SyncAPIResource):
         orig_rf_emitter_id: str | Omit = omit,
         orig_sensor_id: str | Omit = omit,
         pass_group_id: str | Omit = omit,
+        pulse_shape: str | Omit = omit,
         received_ts: Union[str, datetime] | Omit = omit,
         sat_no: int | Omit = omit,
         signal_of_interest: str | Omit = omit,
@@ -163,6 +173,16 @@ class EmitterGeolocationResource(SyncAPIResource):
 
           atype: Type of region as projected on the ground.
 
+          avg_prf: Average pulse repetition frequency of the emitter, measured in hertz. PRF is the
+              number of pulses transmitted per second. This is the reciprocal of the avgPRI
+              (Pulse Repetition Interval) value.
+
+          avg_pri: Average pulse repetition interval of the emitter, measured in microseconds. The
+              interval between the start of one pulse and the start of another.
+
+          avg_pw: Average pulse width of the emitter, measured in nanoseconds. This is the average
+              duration of the pulse.
+
           center_freq: The detected signal frequency in megahertz.
 
           cluster: The name(s) of the subset of constellation spacecraft that made this detection.
@@ -186,8 +206,9 @@ class EmitterGeolocationResource(SyncAPIResource):
           end_time: The end time for this Emitter Geo Location data set in ISO 8601 UTC with
               microsecond precision.
 
-          err_ellp: Confidence ellipsoid about the detection location [semi-major axis (m),
-              semi-minor axis (m), orientation (deg)].
+          err_ellp: Confidence ellipsoid about the detection location [semi-major axis (meters),
+              semi-minor axis (meters), orientation (degrees) measured clockwise (0-360 from
+              true north)].
 
           external_id: Optional ID from external systems. This field has no meaning within UDL and is
               provided as a convenience for systems that require tracking of an internal
@@ -206,7 +227,27 @@ class EmitterGeolocationResource(SyncAPIResource):
 
           max_freq: The maximum detected frequency in megahertz.
 
+          max_prf: Maximum pulse repetition frequency of the emitter, measured in hertz. PRF is the
+              number of pulses transmitted per second. This is the reciprocal of the minPRI
+              (Pulse Repetition Interval) value.
+
+          max_pri: Maximum pulse repetition interval of the emitter, measured in microseconds. The
+              interval between the start of one pulse and the start of another.
+
+          max_pw: Maximum pulse width of the emitter, measured in nanoseconds. This is the maximum
+              duration of the pulse.
+
           min_freq: The minimum detected frequency in megahertz.
+
+          min_prf: Minimum pulse repetition frequency of the emitter, measured in hertz. PRF is the
+              number of pulses transmitted per second. This is the reciprocal of the maxPRI
+              (Pulse Repetition Interval) value.
+
+          min_pri: Minimum pulse repetition interval of the emitter, measured in microseconds. The
+              interval between the start of one pulse and the start of another.
+
+          min_pw: Minimum pulse width of the emitter, measured in nanoseconds. This is the minimum
+              duration of the pulse.
 
           num_bursts: The count of single-burst observations used for this geolocation observation.
 
@@ -232,6 +273,9 @@ class EmitterGeolocationResource(SyncAPIResource):
 
           pass_group_id: Optional external identifier referencing the entity used in the calculation of
               the geolocation.
+
+          pulse_shape: Describes the form of the emitted pulse and how its signal varies within the
+              pulse duration (e.g. GAUSSIAN, RECTANGULAR, TRAPEZOIDAL, etc.).
 
           received_ts: The time representing the mean of the constituent single-burst observations in
               ISO 8601 UTC with microsecond precision.
@@ -274,6 +318,9 @@ class EmitterGeolocationResource(SyncAPIResource):
                     "asrid": asrid,
                     "atext": atext,
                     "atype": atype,
+                    "avg_prf": avg_prf,
+                    "avg_pri": avg_pri,
+                    "avg_pw": avg_pw,
                     "center_freq": center_freq,
                     "cluster": cluster,
                     "conf_area": conf_area,
@@ -288,7 +335,13 @@ class EmitterGeolocationResource(SyncAPIResource):
                     "id_rf_emitter": id_rf_emitter,
                     "id_sensor": id_sensor,
                     "max_freq": max_freq,
+                    "max_prf": max_prf,
+                    "max_pri": max_pri,
+                    "max_pw": max_pw,
                     "min_freq": min_freq,
+                    "min_prf": min_prf,
+                    "min_pri": min_pri,
+                    "min_pw": min_pw,
                     "num_bursts": num_bursts,
                     "order_id": order_id,
                     "origin": origin,
@@ -296,6 +349,7 @@ class EmitterGeolocationResource(SyncAPIResource):
                     "orig_rf_emitter_id": orig_rf_emitter_id,
                     "orig_sensor_id": orig_sensor_id,
                     "pass_group_id": pass_group_id,
+                    "pulse_shape": pulse_shape,
                     "received_ts": received_ts,
                     "sat_no": sat_no,
                     "signal_of_interest": signal_of_interest,
@@ -688,6 +742,9 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         asrid: int | Omit = omit,
         atext: str | Omit = omit,
         atype: str | Omit = omit,
+        avg_prf: float | Omit = omit,
+        avg_pri: float | Omit = omit,
+        avg_pw: float | Omit = omit,
         center_freq: float | Omit = omit,
         cluster: str | Omit = omit,
         conf_area: float | Omit = omit,
@@ -702,7 +759,13 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         id_rf_emitter: str | Omit = omit,
         id_sensor: str | Omit = omit,
         max_freq: float | Omit = omit,
+        max_prf: float | Omit = omit,
+        max_pri: float | Omit = omit,
+        max_pw: float | Omit = omit,
         min_freq: float | Omit = omit,
+        min_prf: float | Omit = omit,
+        min_pri: float | Omit = omit,
+        min_pw: float | Omit = omit,
         num_bursts: int | Omit = omit,
         order_id: str | Omit = omit,
         origin: str | Omit = omit,
@@ -710,6 +773,7 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
         orig_rf_emitter_id: str | Omit = omit,
         orig_sensor_id: str | Omit = omit,
         pass_group_id: str | Omit = omit,
+        pulse_shape: str | Omit = omit,
         received_ts: Union[str, datetime] | Omit = omit,
         sat_no: int | Omit = omit,
         signal_of_interest: str | Omit = omit,
@@ -778,6 +842,16 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
 
           atype: Type of region as projected on the ground.
 
+          avg_prf: Average pulse repetition frequency of the emitter, measured in hertz. PRF is the
+              number of pulses transmitted per second. This is the reciprocal of the avgPRI
+              (Pulse Repetition Interval) value.
+
+          avg_pri: Average pulse repetition interval of the emitter, measured in microseconds. The
+              interval between the start of one pulse and the start of another.
+
+          avg_pw: Average pulse width of the emitter, measured in nanoseconds. This is the average
+              duration of the pulse.
+
           center_freq: The detected signal frequency in megahertz.
 
           cluster: The name(s) of the subset of constellation spacecraft that made this detection.
@@ -801,8 +875,9 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
           end_time: The end time for this Emitter Geo Location data set in ISO 8601 UTC with
               microsecond precision.
 
-          err_ellp: Confidence ellipsoid about the detection location [semi-major axis (m),
-              semi-minor axis (m), orientation (deg)].
+          err_ellp: Confidence ellipsoid about the detection location [semi-major axis (meters),
+              semi-minor axis (meters), orientation (degrees) measured clockwise (0-360 from
+              true north)].
 
           external_id: Optional ID from external systems. This field has no meaning within UDL and is
               provided as a convenience for systems that require tracking of an internal
@@ -821,7 +896,27 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
 
           max_freq: The maximum detected frequency in megahertz.
 
+          max_prf: Maximum pulse repetition frequency of the emitter, measured in hertz. PRF is the
+              number of pulses transmitted per second. This is the reciprocal of the minPRI
+              (Pulse Repetition Interval) value.
+
+          max_pri: Maximum pulse repetition interval of the emitter, measured in microseconds. The
+              interval between the start of one pulse and the start of another.
+
+          max_pw: Maximum pulse width of the emitter, measured in nanoseconds. This is the maximum
+              duration of the pulse.
+
           min_freq: The minimum detected frequency in megahertz.
+
+          min_prf: Minimum pulse repetition frequency of the emitter, measured in hertz. PRF is the
+              number of pulses transmitted per second. This is the reciprocal of the maxPRI
+              (Pulse Repetition Interval) value.
+
+          min_pri: Minimum pulse repetition interval of the emitter, measured in microseconds. The
+              interval between the start of one pulse and the start of another.
+
+          min_pw: Minimum pulse width of the emitter, measured in nanoseconds. This is the minimum
+              duration of the pulse.
 
           num_bursts: The count of single-burst observations used for this geolocation observation.
 
@@ -847,6 +942,9 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
 
           pass_group_id: Optional external identifier referencing the entity used in the calculation of
               the geolocation.
+
+          pulse_shape: Describes the form of the emitted pulse and how its signal varies within the
+              pulse duration (e.g. GAUSSIAN, RECTANGULAR, TRAPEZOIDAL, etc.).
 
           received_ts: The time representing the mean of the constituent single-burst observations in
               ISO 8601 UTC with microsecond precision.
@@ -889,6 +987,9 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
                     "asrid": asrid,
                     "atext": atext,
                     "atype": atype,
+                    "avg_prf": avg_prf,
+                    "avg_pri": avg_pri,
+                    "avg_pw": avg_pw,
                     "center_freq": center_freq,
                     "cluster": cluster,
                     "conf_area": conf_area,
@@ -903,7 +1004,13 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
                     "id_rf_emitter": id_rf_emitter,
                     "id_sensor": id_sensor,
                     "max_freq": max_freq,
+                    "max_prf": max_prf,
+                    "max_pri": max_pri,
+                    "max_pw": max_pw,
                     "min_freq": min_freq,
+                    "min_prf": min_prf,
+                    "min_pri": min_pri,
+                    "min_pw": min_pw,
                     "num_bursts": num_bursts,
                     "order_id": order_id,
                     "origin": origin,
@@ -911,6 +1018,7 @@ class AsyncEmitterGeolocationResource(AsyncAPIResource):
                     "orig_rf_emitter_id": orig_rf_emitter_id,
                     "orig_sensor_id": orig_sensor_id,
                     "pass_group_id": pass_group_id,
+                    "pulse_shape": pulse_shape,
                     "received_ts": received_ts,
                     "sat_no": sat_no,
                     "signal_of_interest": signal_of_interest,
