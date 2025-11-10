@@ -1,5 +1,21 @@
 # Changelog
 
+## 0.1.0-alpha.28 (2025-11-10)
+
+Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
+
+### Bug Fixes
+
+* **client:** close streams without requiring full consumption ([4356aff](https://github.com/Bluestaq/udl-python-sdk/commit/4356aff7449040198c6ebfeda936e9182d60225b))
+* compat with Python 3.14 ([f5a5b28](https://github.com/Bluestaq/udl-python-sdk/commit/f5a5b28f8e4d9b8ab9377e648fc0ca08b2c45e6b))
+
+
+### Chores
+
+* **internal/tests:** avoid race condition with implicit client cleanup ([746100e](https://github.com/Bluestaq/udl-python-sdk/commit/746100e901f584b6f2942d398cb243094d373d1d))
+* **internal:** grammar fix (it's -&gt; its) ([3ff3c9d](https://github.com/Bluestaq/udl-python-sdk/commit/3ff3c9d617bacc82b5ed5260f0afabe3da5b5800))
+* **package:** drop Python 3.8 support ([6ddd362](https://github.com/Bluestaq/udl-python-sdk/commit/6ddd36281c69f7ab1060d145bd3304eb062aef75))
+
 ## 0.1.0-alpha.27 (2025-10-21)
 
 Full Changelog: [v0.1.0-alpha.26...v0.1.0-alpha.27](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.26...v0.1.0-alpha.27)

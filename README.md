@@ -3,7 +3,7 @@
 <!-- prettier-ignore -->
 [![PyPI version](https://img.shields.io/pypi/v/udl-sdk.svg?label=pypi%20(stable))](https://pypi.org/project/udl-sdk/)
 
-The Unifieddatalibrary Python library provides convenient access to the Unifieddatalibrary REST API from any Python 3.8+
+The Unifieddatalibrary Python library provides convenient access to the Unifieddatalibrary REST API from any Python 3.9+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -461,7 +461,7 @@ print(unifieddatalibrary.__version__)
 
 ## Requirements
 
-Python 3.8 or higher.
+Python 3.9 or higher.
 
 ## Contributing
 
