@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.29 (2025-11-11)
+
+Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
+
+### Bug Fixes
+
+* **compat:** update signatures of `model_dump` and `model_dump_json` for Pydantic v1 ([5fa5de3](https://github.com/Bluestaq/udl-python-sdk/commit/5fa5de3af8b66df23531fe686d1545caa00fb4ba))
+
 ## 0.1.0-alpha.28 (2025-11-10)
 
 Full Changelog: [v0.1.0-alpha.27...v0.1.0-alpha.28](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.27...v0.1.0-alpha.28)
