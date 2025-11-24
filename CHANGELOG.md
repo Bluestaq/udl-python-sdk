@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.1.0-alpha.30 (2025-11-21)
+
+Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
+
+### Chores
+
+* **internal:** codegen related update ([3622b00](https://github.com/Bluestaq/udl-python-sdk/commit/3622b004b6c044145fd203187f4bd1bc651a8cdf))
+
 ## 0.1.0-alpha.29 (2025-11-11)
 
 Full Changelog: [v0.1.0-alpha.28...v0.1.0-alpha.29](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.28...v0.1.0-alpha.29)
