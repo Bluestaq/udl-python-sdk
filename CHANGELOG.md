@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.1.0-alpha.31 (2025-11-27)
+
+Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)
+
+### Bug Fixes
+
+* ensure streams are always closed ([846c866](https://github.com/Bluestaq/udl-python-sdk/commit/846c8665b82d66bbaa36948b722adc1231615bc5))
+
+
+### Chores
+
+* **deps:** mypy 1.18.1 has a regression, pin to 1.17 ([41ad4a7](https://github.com/Bluestaq/udl-python-sdk/commit/41ad4a70a934b8cf1c6a0d5c30948f34b56f98a4))
+
 ## 0.1.0-alpha.30 (2025-11-21)
 
 Full Changelog: [v0.1.0-alpha.29...v0.1.0-alpha.30](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.29...v0.1.0-alpha.30)
