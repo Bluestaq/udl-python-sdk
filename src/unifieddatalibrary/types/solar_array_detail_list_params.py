@@ -19,8 +19,8 @@ class SolarArrayDetailListParams(TypedDict, total=False):
     data_mode: Annotated[str, PropertyInfo(alias="dataMode")]
     """
     (One or more of fields 'classificationMarking, dataMode, source' are required.)
-    Indicator of whether the data is REAL, TEST, SIMULATED, or EXERCISE data. (REAL,
-    TEST, SIMULATED, or EXERCISE)
+    Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data. (REAL,
+    TEST, EXERCISE, or SIMULATED)
     """
 
     first_result: Annotated[int, PropertyInfo(alias="firstResult")]
