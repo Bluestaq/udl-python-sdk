@@ -191,6 +191,7 @@ from .resources.orbitdetermination import orbitdetermination
 from .resources.sensor_maintenance import sensor_maintenance
 from .resources.gnss_observationset import gnss_observationset
 from .resources.soi_observation_set import soi_observation_set
+from .resources.closelyspacedobjects import closelyspacedobjects
 from .resources.diplomatic_clearance import diplomatic_clearance
 from .resources.onorbitthrusterstatus import onorbitthrusterstatus
 from .resources.report_and_activities import report_and_activities
@@ -238,6 +239,7 @@ class Unifieddatalibrary(SyncAPIClient):
     beam_contours: beam_contours.BeamContoursResource
     buses: buses.BusesResource
     channels: channels.ChannelsResource
+    closelyspacedobjects: closelyspacedobjects.CloselyspacedobjectsResource
     collect_requests: collect_requests.CollectRequestsResource
     collect_responses: collect_responses.CollectResponsesResource
     comm: comm.CommResource
@@ -473,6 +475,7 @@ class Unifieddatalibrary(SyncAPIClient):
         self.beam_contours = beam_contours.BeamContoursResource(self)
         self.buses = buses.BusesResource(self)
         self.channels = channels.ChannelsResource(self)
+        self.closelyspacedobjects = closelyspacedobjects.CloselyspacedobjectsResource(self)
         self.collect_requests = collect_requests.CollectRequestsResource(self)
         self.collect_responses = collect_responses.CollectResponsesResource(self)
         self.comm = comm.CommResource(self)
@@ -786,6 +789,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
     beam_contours: beam_contours.AsyncBeamContoursResource
     buses: buses.AsyncBusesResource
     channels: channels.AsyncChannelsResource
+    closelyspacedobjects: closelyspacedobjects.AsyncCloselyspacedobjectsResource
     collect_requests: collect_requests.AsyncCollectRequestsResource
     collect_responses: collect_responses.AsyncCollectResponsesResource
     comm: comm.AsyncCommResource
@@ -1021,6 +1025,7 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         self.beam_contours = beam_contours.AsyncBeamContoursResource(self)
         self.buses = buses.AsyncBusesResource(self)
         self.channels = channels.AsyncChannelsResource(self)
+        self.closelyspacedobjects = closelyspacedobjects.AsyncCloselyspacedobjectsResource(self)
         self.collect_requests = collect_requests.AsyncCollectRequestsResource(self)
         self.collect_responses = collect_responses.AsyncCollectResponsesResource(self)
         self.comm = comm.AsyncCommResource(self)
@@ -1345,6 +1350,9 @@ class UnifieddatalibraryWithRawResponse:
         self.beam_contours = beam_contours.BeamContoursResourceWithRawResponse(client.beam_contours)
         self.buses = buses.BusesResourceWithRawResponse(client.buses)
         self.channels = channels.ChannelsResourceWithRawResponse(client.channels)
+        self.closelyspacedobjects = closelyspacedobjects.CloselyspacedobjectsResourceWithRawResponse(
+            client.closelyspacedobjects
+        )
         self.collect_requests = collect_requests.CollectRequestsResourceWithRawResponse(client.collect_requests)
         self.collect_responses = collect_responses.CollectResponsesResourceWithRawResponse(client.collect_responses)
         self.comm = comm.CommResourceWithRawResponse(client.comm)
@@ -1579,6 +1587,9 @@ class AsyncUnifieddatalibraryWithRawResponse:
         self.beam_contours = beam_contours.AsyncBeamContoursResourceWithRawResponse(client.beam_contours)
         self.buses = buses.AsyncBusesResourceWithRawResponse(client.buses)
         self.channels = channels.AsyncChannelsResourceWithRawResponse(client.channels)
+        self.closelyspacedobjects = closelyspacedobjects.AsyncCloselyspacedobjectsResourceWithRawResponse(
+            client.closelyspacedobjects
+        )
         self.collect_requests = collect_requests.AsyncCollectRequestsResourceWithRawResponse(client.collect_requests)
         self.collect_responses = collect_responses.AsyncCollectResponsesResourceWithRawResponse(
             client.collect_responses
@@ -1841,6 +1852,9 @@ class UnifieddatalibraryWithStreamedResponse:
         self.beam_contours = beam_contours.BeamContoursResourceWithStreamingResponse(client.beam_contours)
         self.buses = buses.BusesResourceWithStreamingResponse(client.buses)
         self.channels = channels.ChannelsResourceWithStreamingResponse(client.channels)
+        self.closelyspacedobjects = closelyspacedobjects.CloselyspacedobjectsResourceWithStreamingResponse(
+            client.closelyspacedobjects
+        )
         self.collect_requests = collect_requests.CollectRequestsResourceWithStreamingResponse(client.collect_requests)
         self.collect_responses = collect_responses.CollectResponsesResourceWithStreamingResponse(
             client.collect_responses
@@ -2109,6 +2123,9 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         self.beam_contours = beam_contours.AsyncBeamContoursResourceWithStreamingResponse(client.beam_contours)
         self.buses = buses.AsyncBusesResourceWithStreamingResponse(client.buses)
         self.channels = channels.AsyncChannelsResourceWithStreamingResponse(client.channels)
+        self.closelyspacedobjects = closelyspacedobjects.AsyncCloselyspacedobjectsResourceWithStreamingResponse(
+            client.closelyspacedobjects
+        )
         self.collect_requests = collect_requests.AsyncCollectRequestsResourceWithStreamingResponse(
             client.collect_requests
         )
