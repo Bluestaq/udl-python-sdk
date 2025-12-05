@@ -1087,6 +1087,7 @@ from .airspacecontrolorder_abridged import AirspacecontrolorderAbridged as Airsp
 from .analytic_imagery_count_params import AnalyticImageryCountParams as AnalyticImageryCountParams
 from .analytic_imagery_tuple_params import AnalyticImageryTupleParams as AnalyticImageryTupleParams
 from .batterydetail_retrieve_params import BatterydetailRetrieveParams as BatterydetailRetrieveParams
+from .closelyspacedobjects_abridged import CloselyspacedobjectsAbridged as CloselyspacedobjectsAbridged
 from .collect_request_create_params import CollectRequestCreateParams as CollectRequestCreateParams
 from .collect_response_count_params import CollectResponseCountParams as CollectResponseCountParams
 from .conjunction_create_udl_params import ConjunctionCreateUdlParams as ConjunctionCreateUdlParams
@@ -1225,6 +1226,7 @@ from .airload_plan_queryhelp_response import AirloadPlanQueryhelpResponse as Air
 from .analytic_imagery_count_response import AnalyticImageryCountResponse as AnalyticImageryCountResponse
 from .analytic_imagery_tuple_response import AnalyticImageryTupleResponse as AnalyticImageryTupleResponse
 from .beam_contour_create_bulk_params import BeamContourCreateBulkParams as BeamContourCreateBulkParams
+from .closelyspacedobject_list_params import CloselyspacedobjectListParams as CloselyspacedobjectListParams
 from .collect_request_retrieve_params import CollectRequestRetrieveParams as CollectRequestRetrieveParams
 from .collect_response_count_response import CollectResponseCountResponse as CollectResponseCountResponse
 from .crew_unvalidated_publish_params import CrewUnvalidatedPublishParams as CrewUnvalidatedPublishParams
@@ -1292,6 +1294,8 @@ from .analytic_imagery_file_get_params import AnalyticImageryFileGetParams as An
 from .analytic_imagery_retrieve_params import AnalyticImageryRetrieveParams as AnalyticImageryRetrieveParams
 from .attitude_set_query_help_response import AttitudeSetQueryHelpResponse as AttitudeSetQueryHelpResponse
 from .beam_contour_query_help_response import BeamContourQueryHelpResponse as BeamContourQueryHelpResponse
+from .closelyspacedobject_count_params import CloselyspacedobjectCountParams as CloselyspacedobjectCountParams
+from .closelyspacedobject_tuple_params import CloselyspacedobjectTupleParams as CloselyspacedobjectTupleParams
 from .collect_response_retrieve_params import CollectResponseRetrieveParams as CollectResponseRetrieveParams
 from .conjunction_get_history_response import ConjunctionGetHistoryResponse as ConjunctionGetHistoryResponse
 from .deconflictset_queryhelp_response import DeconflictsetQueryhelpResponse as DeconflictsetQueryhelpResponse
@@ -1362,6 +1366,7 @@ from .track_unvalidated_publish_params import TrackUnvalidatedPublishParams as T
 from .air_transport_mission_list_params import AirTransportMissionListParams as AirTransportMissionListParams
 from .aircraft_sorty_queryhelp_response import AircraftSortyQueryhelpResponse as AircraftSortyQueryhelpResponse
 from .attitude_data_query_help_response import AttitudeDataQueryHelpResponse as AttitudeDataQueryHelpResponse
+from .closelyspacedobject_create_params import CloselyspacedobjectCreateParams as CloselyspacedobjectCreateParams
 from .diplomatic_clearance_count_params import DiplomaticClearanceCountParams as DiplomaticClearanceCountParams
 from .diplomatic_clearance_tuple_params import DiplomaticClearanceTupleParams as DiplomaticClearanceTupleParams
 from .ecpedr_unvalidated_publish_params import EcpedrUnvalidatedPublishParams as EcpedrUnvalidatedPublishParams
@@ -1411,6 +1416,8 @@ from .aircraft_status_queryhelp_response import AircraftStatusQueryhelpResponse 
 from .aircraft_status_remark_list_params import AircraftStatusRemarkListParams as AircraftStatusRemarkListParams
 from .airfield_status_queryhelp_response import AirfieldStatusQueryhelpResponse as AirfieldStatusQueryhelpResponse
 from .airspace_control_order_list_params import AirspaceControlOrderListParams as AirspaceControlOrderListParams
+from .closelyspacedobject_count_response import CloselyspacedobjectCountResponse as CloselyspacedobjectCountResponse
+from .closelyspacedobject_tuple_response import CloselyspacedobjectTupleResponse as CloselyspacedobjectTupleResponse
 from .collect_request_create_bulk_params import CollectRequestCreateBulkParams as CollectRequestCreateBulkParams
 from .diff_of_arrival_queryhelp_response import DiffOfArrivalQueryhelpResponse as DiffOfArrivalQueryhelpResponse
 from .diplomatic_clearance_create_params import DiplomaticClearanceCreateParams as DiplomaticClearanceCreateParams
@@ -1459,6 +1466,7 @@ from .aircraft_status_remark_tuple_params import AircraftStatusRemarkTupleParams
 from .airspace_control_order_count_params import AirspaceControlOrderCountParams as AirspaceControlOrderCountParams
 from .airspace_control_order_tuple_params import AirspaceControlOrderTupleParams as AirspaceControlOrderTupleParams
 from .analytic_imagery_queryhelp_response import AnalyticImageryQueryhelpResponse as AnalyticImageryQueryhelpResponse
+from .closelyspacedobject_retrieve_params import CloselyspacedobjectRetrieveParams as CloselyspacedobjectRetrieveParams
 from .collect_request_query_help_response import CollectRequestQueryHelpResponse as CollectRequestQueryHelpResponse
 from .collect_response_create_bulk_params import CollectResponseCreateBulkParams as CollectResponseCreateBulkParams
 from .diplomatic_clearance_count_response import DiplomaticClearanceCountResponse as DiplomaticClearanceCountResponse
@@ -1579,6 +1587,9 @@ from .aviation_risk_management_count_params import (
 from .aviation_risk_management_tuple_params import (
     AviationRiskManagementTupleParams as AviationRiskManagementTupleParams,
 )
+from .closelyspacedobject_retrieve_response import (
+    CloselyspacedobjectRetrieveResponse as CloselyspacedobjectRetrieveResponse,
+)
 from .emitter_geolocation_retrieve_response import (
     EmitterGeolocationRetrieveResponse as EmitterGeolocationRetrieveResponse,
 )
@@ -1696,6 +1707,9 @@ from .aviation_risk_management_list_response import (
 from .aviation_risk_management_update_params import (
     AviationRiskManagementUpdateParams as AviationRiskManagementUpdateParams,
 )
+from .closelyspacedobject_create_bulk_params import (
+    CloselyspacedobjectCreateBulkParams as CloselyspacedobjectCreateBulkParams,
+)
 from .conjunction_unvalidated_publish_params import (
     ConjunctionUnvalidatedPublishParams as ConjunctionUnvalidatedPublishParams,
 )
@@ -1794,6 +1808,9 @@ from .aviation_risk_management_count_response import (
 )
 from .aviation_risk_management_tuple_response import (
     AviationRiskManagementTupleResponse as AviationRiskManagementTupleResponse,
+)
+from .closelyspacedobject_query_help_response import (
+    CloselyspacedobjectQueryHelpResponse as CloselyspacedobjectQueryHelpResponse,
 )
 from .diplomatic_clearance_create_bulk_params import (
     DiplomaticClearanceCreateBulkParams as DiplomaticClearanceCreateBulkParams,
@@ -2049,6 +2066,9 @@ from .seradata_spacecraft_detail_queryhelp_response import (
 )
 from .sgi_get_data_by_effective_as_of_date_response import (
     SgiGetDataByEffectiveAsOfDateResponse as SgiGetDataByEffectiveAsOfDateResponse,
+)
+from .closelyspacedobject_unvalidated_publish_params import (
+    CloselyspacedobjectUnvalidatedPublishParams as CloselyspacedobjectUnvalidatedPublishParams,
 )
 from .emitter_geolocation_unvalidated_publish_params import (
     EmitterGeolocationUnvalidatedPublishParams as EmitterGeolocationUnvalidatedPublishParams,
