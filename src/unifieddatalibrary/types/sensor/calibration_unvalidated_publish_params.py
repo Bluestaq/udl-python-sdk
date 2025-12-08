@@ -17,6 +17,10 @@ class CalibrationUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    The Sensor Calibration service records data about a sensor's overall accuracy and is used to adjust sensor settings to achieve and maintain that accuracy in reported sensor observations. Calibration occurs periodically when needed to maintain sensor accuracy or on-demand to adjust a sensor for a specific reading.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

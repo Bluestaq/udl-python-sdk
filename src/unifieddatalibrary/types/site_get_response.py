@@ -19,6 +19,10 @@ __all__ = ["SiteGetResponse", "SiteOperation", "SiteRemark"]
 
 
 class SiteOperation(BaseModel):
+    """
+    Site operating details concerning the hours of operation, operational limitations, site navigation, and waivers associated with the Site.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -164,6 +168,11 @@ class SiteOperation(BaseModel):
 
 
 class SiteRemark(BaseModel):
+    """Remarks contain amplifying information for a specific service.
+
+    The information may contain context and interpretations for consumer use.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -237,6 +246,10 @@ class SiteRemark(BaseModel):
 
 
 class SiteGetResponse(BaseModel):
+    """
+    Properties and characteristics of a site entity, such as an airbase, airfield, naval station, etc.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

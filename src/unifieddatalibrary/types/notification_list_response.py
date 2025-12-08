@@ -12,6 +12,11 @@ __all__ = ["NotificationListResponse"]
 
 
 class NotificationListResponse(BaseModel):
+    """Model representation of client generated notification data.
+
+    Contains a message type and message body field to store notification information.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

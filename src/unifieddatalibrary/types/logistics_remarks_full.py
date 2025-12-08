@@ -11,6 +11,8 @@ __all__ = ["LogisticsRemarksFull"]
 
 
 class LogisticsRemarksFull(BaseModel):
+    """Remarks associated with this LogisticsSupport record."""
+
     last_changed: Optional[datetime] = FieldInfo(alias="lastChanged", default=None)
     """
     Date the remark was published or updated, in ISO 8601 UTC format, with

@@ -12,6 +12,10 @@ __all__ = ["EngineDetailsFull"]
 
 
 class EngineDetailsFull(BaseModel):
+    """
+    Known launch vehicle engine details and performance characteristics and limits compiled by a particular source.  A launch vehicle engine may have several details records from multiple sources.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

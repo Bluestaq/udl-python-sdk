@@ -19,6 +19,10 @@ __all__ = [
 
 
 class AcMsnTaskingAcMsnLocSeg(BaseModel):
+    """
+    Collection of aircraft mission location information for this aircraft mission tasking.
+    """
+
     start_time: datetime = FieldInfo(alias="startTime")
     """
     The start time of this mission in ISO 8601 UTC format with millisecond
@@ -68,6 +72,8 @@ class AcMsnTaskingAcMsnLocSeg(BaseModel):
 
 
 class AcMsnTaskingIndAcTasking(BaseModel):
+    """Collection that specifies the naval flight operations for this ATO."""
+
     acft_type: str = FieldInfo(alias="acftType")
     """The type and model number for the aircraft.
 
@@ -123,6 +129,10 @@ class AcMsnTaskingIndAcTasking(BaseModel):
 
 
 class AcMsnTasking(BaseModel):
+    """
+    Collection that specifies the tasked country, tasked service, unit and mission level tasking for this ATO.
+    """
+
     country_code: str = FieldInfo(alias="countryCode")
     """
     The country code responsible for conducting this aircraft mission tasking for
@@ -250,6 +260,10 @@ class AcMsnTasking(BaseModel):
 
 
 class GenText(BaseModel):
+    """
+    Collection that details special instructions, important information, guidance, and amplifying information regarding this ATO.
+    """
+
     text: Optional[str] = None
     """The free text that describes the information specific to the text indicator."""
 
@@ -261,6 +275,8 @@ class GenText(BaseModel):
 
 
 class NavalFltOp(BaseModel):
+    """Collection that specifies the naval flight operations for this ATO."""
+
     ship_name: str = FieldInfo(alias="shipName")
     """The name of a ship or maritime vessel. Specify UNKNOWN if name is not known."""
 
@@ -284,6 +300,10 @@ class NavalFltOp(BaseModel):
 
 
 class AirTaskingOrderFull(BaseModel):
+    """
+    Beta Version Air Tasking Order: The ATO is used to task air missions, assign cross force tasking as well as intraservice tasking.
+    """
+
     begin_ts: datetime = FieldInfo(alias="beginTs")
     """
     The effective begin time for this ATO in ISO 8601 UTC format with millisecond

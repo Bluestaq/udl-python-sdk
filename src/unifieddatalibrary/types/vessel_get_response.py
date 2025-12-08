@@ -13,6 +13,10 @@ __all__ = ["VesselGetResponse"]
 
 
 class VesselGetResponse(BaseModel):
+    """
+    This service provides operations for manipulation and querying of maritime Vessel data. Vessel contains the static data of the specific vessel: mmsi, cruise speed, max speed, etc.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

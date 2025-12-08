@@ -12,6 +12,10 @@ __all__ = ["StarCatalogListResponse"]
 
 
 class StarCatalogListResponse(BaseModel):
+    """
+    The star catalog provides the position, proper motion, parallax, and photometric magnitudes at various bandpasses of a star.
+    """
+
     astrometry_origin: Literal["GAIADR3", "HIPPARCOS", "USNOBSC"] = FieldInfo(alias="astrometryOrigin")
     """Originating astrometric catalog for this object.
 

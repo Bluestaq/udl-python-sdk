@@ -12,6 +12,8 @@ __all__ = ["OnorbitListResponse"]
 
 
 class OnorbitListResponse(BaseModel):
+    """Model object representing on-orbit objects or satellites in the system."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

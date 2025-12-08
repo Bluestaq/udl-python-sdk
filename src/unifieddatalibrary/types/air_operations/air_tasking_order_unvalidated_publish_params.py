@@ -25,6 +25,10 @@ class AirTaskingOrderUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyAcMsnTaskingAcMsnLocSeg(TypedDict, total=False):
+    """
+    Collection of aircraft mission location information for this aircraft mission tasking.
+    """
+
     start_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]]
     """
     The start time of this mission in ISO 8601 UTC format with millisecond
@@ -74,6 +78,8 @@ class BodyAcMsnTaskingAcMsnLocSeg(TypedDict, total=False):
 
 
 class BodyAcMsnTaskingIndAcTasking(TypedDict, total=False):
+    """Collection that specifies the naval flight operations for this ATO."""
+
     acft_type: Required[Annotated[str, PropertyInfo(alias="acftType")]]
     """The type and model number for the aircraft.
 
@@ -129,6 +135,10 @@ class BodyAcMsnTaskingIndAcTasking(TypedDict, total=False):
 
 
 class BodyAcMsnTasking(TypedDict, total=False):
+    """
+    Collection that specifies the tasked country, tasked service, unit and mission level tasking for this ATO.
+    """
+
     country_code: Required[Annotated[str, PropertyInfo(alias="countryCode")]]
     """
     The country code responsible for conducting this aircraft mission tasking for
@@ -256,6 +266,10 @@ class BodyAcMsnTasking(TypedDict, total=False):
 
 
 class BodyGenText(TypedDict, total=False):
+    """
+    Collection that details special instructions, important information, guidance, and amplifying information regarding this ATO.
+    """
+
     text: str
     """The free text that describes the information specific to the text indicator."""
 
@@ -267,6 +281,8 @@ class BodyGenText(TypedDict, total=False):
 
 
 class BodyNavalFltOp(TypedDict, total=False):
+    """Collection that specifies the naval flight operations for this ATO."""
+
     ship_name: Required[Annotated[str, PropertyInfo(alias="shipName")]]
     """The name of a ship or maritime vessel. Specify UNKNOWN if name is not known."""
 
@@ -292,6 +308,10 @@ class BodyNavalFltOp(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Beta Version Air Tasking Order: The ATO is used to task air missions, assign cross force tasking as well as intraservice tasking.
+    """
+
     begin_ts: Required[Annotated[Union[str, datetime], PropertyInfo(alias="beginTs", format="iso8601")]]
     """
     The effective begin time for this ATO in ISO 8601 UTC format with millisecond

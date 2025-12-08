@@ -20,6 +20,8 @@ __all__ = [
 class AviationRiskManagementTupleResponseItemAviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetScoreAviationRiskManagementSortie(
     BaseModel
 ):
+    """Collection of aviation risk management worksheet record score aircraft sorties."""
+
     ext_sortie_id: Optional[str] = FieldInfo(alias="extSortieId", default=None)
     """Optional aircraft sortie ID from external systems.
 
@@ -47,6 +49,8 @@ class AviationRiskManagementTupleResponseItemAviationRiskManagementWorksheetReco
 class AviationRiskManagementTupleResponseItemAviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetScore(
     BaseModel
 ):
+    """Collection of Aviation Risk Management worksheet record scores."""
+
     approval_date: Optional[datetime] = FieldInfo(alias="approvalDate", default=None)
     """
     Timestamp the worksheet record score was approval or disapproval, in ISO 8601
@@ -101,6 +105,8 @@ class AviationRiskManagementTupleResponseItemAviationRiskManagementWorksheetReco
 
 
 class AviationRiskManagementTupleResponseItemAviationRiskManagementWorksheetRecord(BaseModel):
+    """Collection of Aviation Risk Management Worksheet Records."""
+
     mission_date: date = FieldInfo(alias="missionDate")
     """Date of the mission in ISO 8601 date-only format (YYYY-MM-DD)."""
 
@@ -182,6 +188,10 @@ class AviationRiskManagementTupleResponseItemAviationRiskManagementWorksheetReco
 
 
 class AviationRiskManagementTupleResponseItem(BaseModel):
+    """
+    Aviation Risk Management is used to identify, evaluate, and track risks when mission planning by accounting for factors such as crew fatigue and mission complexity.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

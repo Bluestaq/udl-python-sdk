@@ -22,6 +22,8 @@ class CountryUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyDiplomaticClearanceCountryContact(TypedDict, total=False):
+    """Collection of contact information for this country."""
+
     ah_num: Annotated[str, PropertyInfo(alias="ahNum")]
     """Phone number for this contact after regular business hours."""
 
@@ -66,6 +68,8 @@ class BodyDiplomaticClearanceCountryContact(TypedDict, total=False):
 
 
 class BodyDiplomaticClearanceCountryEntryExitPoint(TypedDict, total=False):
+    """Collection of entry and exit points for this country."""
+
     is_entry: Annotated[bool, PropertyInfo(alias="isEntry")]
     """Flag indicating whether this is a point of entry for this country."""
 
@@ -77,6 +81,8 @@ class BodyDiplomaticClearanceCountryEntryExitPoint(TypedDict, total=False):
 
 
 class BodyDiplomaticClearanceCountryProfile(TypedDict, total=False):
+    """Collection of diplomatic clearance profile information for this country."""
+
     cargo_pax_remark: Annotated[str, PropertyInfo(alias="cargoPaxRemark")]
     """
     Remarks concerning aircraft cargo and passenger information for this country
@@ -354,6 +360,10 @@ class BodyDiplomaticClearanceCountryProfile(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Diplomatic Clearance Country provides information such as entry/exit points, requirements, and points of contact for countries diplomatic clearances are being created for.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

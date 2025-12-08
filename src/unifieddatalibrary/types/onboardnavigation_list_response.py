@@ -12,6 +12,10 @@ __all__ = ["OnboardnavigationListResponse"]
 
 
 class OnboardnavigationListResponse(BaseModel):
+    """
+    These services provide spacecraft positional data derived from on-board navigational sensors.  Navigational points are provided in kilometers and in a user specified reference frame, with ECI J2K being preferred.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -17,6 +17,11 @@ class WeatherDataUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """These services provide for posting and querying Weather Data.
+
+    Weather Data integrates dynamic data measured by Doppler/CG such as signal power and noise levels, to produce useful weather information.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

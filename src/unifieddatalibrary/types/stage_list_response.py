@@ -12,6 +12,11 @@ __all__ = ["StageListResponse"]
 
 
 class StageListResponse(BaseModel):
+    """Launch stage information for a particular launch vehicle.
+
+    A launch vehicle can have several stages, each with 1 to many engines.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

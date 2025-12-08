@@ -12,6 +12,10 @@ __all__ = ["DriftHistoryAbridged"]
 
 
 class DriftHistoryAbridged(BaseModel):
+    """
+    Historical drift rates for GEO Onorbit objects resulting from updates to OnorbitDetails driftRate values.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

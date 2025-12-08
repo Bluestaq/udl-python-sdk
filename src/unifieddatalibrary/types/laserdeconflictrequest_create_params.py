@@ -298,6 +298,10 @@ class LaserDeconflictTargetFixedPoint(TypedDict, total=False):
 
 
 class LaserDeconflictTarget(TypedDict, total=False):
+    """
+    Model representation which can be used for the specification of target object for a laser operation. The specification of various target types common across space-to-space, space-to-ground, and ground-to-space laser operations are supported by this model.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

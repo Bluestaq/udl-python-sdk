@@ -24,6 +24,8 @@ class AviationRiskManagementCreateBulkParams(TypedDict, total=False):
 class BodyAviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetScoreAviationRiskManagementSortie(
     TypedDict, total=False
 ):
+    """Collection of aviation risk management worksheet record score aircraft sorties."""
+
     ext_sortie_id: Annotated[str, PropertyInfo(alias="extSortieId")]
     """Optional aircraft sortie ID from external systems.
 
@@ -49,6 +51,8 @@ class BodyAviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetSc
 
 
 class BodyAviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetScore(TypedDict, total=False):
+    """Collection of Aviation Risk Management worksheet record scores."""
+
     approval_date: Annotated[Union[str, datetime], PropertyInfo(alias="approvalDate", format="iso8601")]
     """
     Timestamp the worksheet record score was approval or disapproval, in ISO 8601
@@ -104,6 +108,8 @@ class BodyAviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetSc
 
 
 class BodyAviationRiskManagementWorksheetRecord(TypedDict, total=False):
+    """Collection of Aviation Risk Management Worksheet Records."""
+
     mission_date: Required[Annotated[Union[str, date], PropertyInfo(alias="missionDate", format="iso8601")]]
     """Date of the mission in ISO 8601 date-only format (YYYY-MM-DD)."""
 
@@ -184,6 +190,10 @@ class BodyAviationRiskManagementWorksheetRecord(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Aviation Risk Management is used to identify, evaluate, and track risks when mission planning by accounting for factors such as crew fatigue and mission complexity.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -15,6 +15,10 @@ class GeoStatusCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Information for the specified on-orbit GEO spacecraft, including status, expected longitude limits, and drift rates.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

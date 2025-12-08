@@ -13,6 +13,8 @@ __all__ = ["EmitterGeolocationRetrieveResponse"]
 
 
 class EmitterGeolocationRetrieveResponse(BaseModel):
+    """Model representation of Emitter geolocation data for a signal of interest."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

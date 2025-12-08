@@ -13,6 +13,11 @@ __all__ = ["SolarArrayFull"]
 
 
 class SolarArrayFull(BaseModel):
+    """Model representation of information on on-orbit/spacecraft solar arrays.
+
+    A spacecraft may have multiple solar arrays and each solar array can have multiple 'details' records compiled by different sources.
+    """
+
     data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
 

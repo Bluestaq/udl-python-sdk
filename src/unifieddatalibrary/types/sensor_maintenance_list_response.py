@@ -12,6 +12,8 @@ __all__ = ["SensorMaintenanceListResponse"]
 
 
 class SensorMaintenanceListResponse(BaseModel):
+    """Maintenance schedule and operational status of Sensor."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

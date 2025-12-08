@@ -12,6 +12,8 @@ __all__ = ["AirEventGetResponse", "Receiver", "Remark", "Tanker"]
 
 
 class Receiver(BaseModel):
+    """Collection of receiver aircraft associated with this Air Event."""
+
     alt_receiver_mission_id: Optional[str] = FieldInfo(alias="altReceiverMissionId", default=None)
     """Alternate mission identifier of this receiver provided by source."""
 
@@ -104,6 +106,8 @@ class Receiver(BaseModel):
 
 
 class Remark(BaseModel):
+    """Collection of remarks associated with this Air Event."""
+
     date: Optional[datetime] = None
     """
     Date the remark was published, in ISO 8601 UTC format, with millisecond
@@ -125,6 +129,8 @@ class Remark(BaseModel):
 
 
 class Tanker(BaseModel):
+    """Collection of tanker aircraft associated with this Air Event."""
+
     alt_tanker_mission_id: Optional[str] = FieldInfo(alias="altTankerMissionId", default=None)
     """Alternate mission identifier of this tanker provided by source."""
 
@@ -199,6 +205,11 @@ class Tanker(BaseModel):
 
 
 class AirEventGetResponse(BaseModel):
+    """Information related to an air event (e.g.
+
+    FUEL TRANSFER, AIR DROP) and the associated aircraft.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

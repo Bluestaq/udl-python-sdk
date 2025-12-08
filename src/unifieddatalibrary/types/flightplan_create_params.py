@@ -453,6 +453,8 @@ class FlightplanCreateParams(TypedDict, total=False):
 
 
 class AirRefuelEvent(TypedDict, total=False):
+    """Collection of air refueling events occurring on this flight."""
+
     ar_degrade: Annotated[float, PropertyInfo(alias="arDegrade")]
     """
     Additional degrade for air refueling, cumulative with fuelDegrade field percent.
@@ -478,6 +480,10 @@ class AirRefuelEvent(TypedDict, total=False):
 
 
 class FlightPlanMessage(TypedDict, total=False):
+    """
+    Collection of messages associated with this flight plan indicating the severity, the point where the message was generated, the path (Primary, Alternate, etc.), and the text of the message.
+    """
+
     msg_text: Annotated[str, PropertyInfo(alias="msgText")]
     """The text of the message."""
 
@@ -495,6 +501,8 @@ class FlightPlanMessage(TypedDict, total=False):
 
 
 class FlightPlanPointGroupFlightPlanPoint(TypedDict, total=False):
+    """Array of point data for this Point Group."""
+
     fpp_eta: Annotated[Union[str, datetime], PropertyInfo(alias="fppEta", format="iso8601")]
     """
     Estimated Time of Arrival (ETA) at this point in ISO 8601 UTC format, with
@@ -524,6 +532,11 @@ class FlightPlanPointGroupFlightPlanPoint(TypedDict, total=False):
 
 
 class FlightPlanPointGroup(TypedDict, total=False):
+    """Collection of point groups generated for this flight plan.
+
+    Groups include point sets for Extended Operations (ETOPS), Critical Fuel Point, and Equal Time Point (ETP).
+    """
+
     avg_fuel_flow: Annotated[float, PropertyInfo(alias="avgFuelFlow")]
     """Average fuel flow at which the fuel was calculated in pounds per hour."""
 
@@ -649,6 +662,8 @@ class FlightPlanPointGroup(TypedDict, total=False):
 
 
 class FlightPlanWaypoint(TypedDict, total=False):
+    """Collection of waypoints associated with this flight plan."""
+
     type: Required[str]
     """Points are designated by type as either a comment point or a waypoint.
 

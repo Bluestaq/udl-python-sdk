@@ -16,6 +16,10 @@ class AircraftSortyUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Information related to the planning, load, status, and deployment or dispatch of one aircraft to carry out a mission.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

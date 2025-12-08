@@ -13,6 +13,8 @@ __all__ = ["BatteryFull"]
 
 
 class BatteryFull(BaseModel):
+    """Model representation of specific spacecraft battery types."""
+
     data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
 

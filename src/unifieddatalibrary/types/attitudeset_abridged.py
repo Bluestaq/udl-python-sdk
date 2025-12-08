@@ -12,6 +12,10 @@ __all__ = ["AttitudesetAbridged"]
 
 
 class AttitudesetAbridged(BaseModel):
+    """
+    AttitudeSet represents a wrapper or collection of Onorbit Attitude 'points' and meta data indicating the specifics of the orientation of an on-orbit object.  Attitude is typically distributed in a flat file containing details of the attitude generation as well as a large collection of individual points at varying time steps. AttitudeSet is analogous to this flat file.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -16,6 +16,10 @@ class RouteStatCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    General statistics applying to navigation routes utilized by vessels, aircraft, ground vehicles, etc.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

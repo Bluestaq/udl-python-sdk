@@ -12,6 +12,8 @@ __all__ = ["SeraDataEarlyWarningGetResponse"]
 
 
 class SeraDataEarlyWarningGetResponse(BaseModel):
+    """Details for an early warning payload from  Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

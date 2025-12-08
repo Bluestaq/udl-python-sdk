@@ -12,6 +12,10 @@ __all__ = ["AirTransportMissionAbridged", "HazMat", "Remark", "Requirement"]
 
 
 class HazMat(BaseModel):
+    """
+    Collection of Hazardous Material information planned to be associated with this Air Transport Mission.
+    """
+
     applicable_notes: Optional[str] = FieldInfo(alias="applicableNotes", default=None)
     """
     Comma delimited list of Note IDs for Item Class Segregation groups, specific to
@@ -89,6 +93,8 @@ class HazMat(BaseModel):
 
 
 class Remark(BaseModel):
+    """Collection of Remarks associated with this Air Transport Mission."""
+
     date: Optional[datetime] = None
     """
     Date the remark was published, in ISO 8601 UTC format, with millisecond
@@ -115,6 +121,10 @@ class Remark(BaseModel):
 
 
 class Requirement(BaseModel):
+    """
+    Collection of Requirements planned to be associated with this Air Transport Mission.
+    """
+
     bulk_weight: Optional[float] = FieldInfo(alias="bulkWeight", default=None)
     """Total weight of the bulk cargo, in kilograms."""
 
@@ -180,6 +190,10 @@ class Requirement(BaseModel):
 
 
 class AirTransportMissionAbridged(BaseModel):
+    """
+    The information in an Air Transport Mission contains unique identification, description of the mission objective, aircraft and crew assignments, mission alias, embarkation/debarkation cargo locations, priority, and other mission characteristics.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

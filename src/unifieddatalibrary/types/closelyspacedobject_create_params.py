@@ -306,6 +306,10 @@ class CloselyspacedobjectCreateParams(TypedDict, total=False):
 
 
 class CsoDetail(TypedDict, total=False):
+    """
+    A collection of orbital metrics for the event at the start and end times, and the mean values of the primary and secondary objects, as well as the deltas between the primary and secondary objects.
+    """
+
     object_event: Required[Annotated[str, PropertyInfo(alias="objectEvent")]]
     """The type of object event the metrics apply. Values consist of START, END, MEAN."""
 

@@ -31,6 +31,8 @@ __all__ = [
 
 
 class SensorTupleResponseItemEntityOnOrbit(BaseModel):
+    """Model object representing on-orbit objects or satellites in the system."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -186,6 +188,10 @@ class SensorTupleResponseItemEntityOnOrbit(BaseModel):
 
 
 class SensorTupleResponseItemEntity(BaseModel):
+    """
+    An entity is a generic representation of any object within a space/SSA system such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An entity can have an operating unit, a location (if terrestrial), and statuses.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -333,6 +339,8 @@ class SensorTupleResponseItemEntity(BaseModel):
 
 
 class SensorTupleResponseItemSensorcharacteristic(BaseModel):
+    """Model representation of characteristics and capabilities of a sensor."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1072,6 +1080,10 @@ class SensorTupleResponseItemSensorcharacteristic(BaseModel):
 
 
 class SensorTupleResponseItemSensorlimitsCollection(BaseModel):
+    """
+    Sensorlimits define 0 to many limits of a particular sensor in terms of observation coverage of on-orbit objects.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1242,6 +1254,10 @@ class SensorTupleResponseItemSensorObservationType(BaseModel):
 
 
 class SensorTupleResponseItemSensorStat(BaseModel):
+    """
+    SensorStats contain statistics on sensors related to observation production such as last reported observation time.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1349,6 +1365,10 @@ class SensorTupleResponseItemSensorType(BaseModel):
 
 
 class SensorTupleResponseItem(BaseModel):
+    """
+    Model representation of observation data for electro-optical based sensor phenomenologies.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

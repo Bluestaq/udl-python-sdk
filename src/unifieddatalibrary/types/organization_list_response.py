@@ -12,6 +12,11 @@ __all__ = ["OrganizationListResponse"]
 
 
 class OrganizationListResponse(BaseModel):
+    """An organization such as a corporation, manufacturer, consortium, government, etc.
+
+    An organization may have parent and child organizations as well as link to a former organization if this org previously existed as another organization.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

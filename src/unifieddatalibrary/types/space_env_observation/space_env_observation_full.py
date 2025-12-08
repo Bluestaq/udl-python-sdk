@@ -12,6 +12,8 @@ __all__ = ["SpaceEnvObservationFull", "SeoList"]
 
 
 class SeoList(BaseModel):
+    """A single space environment observation."""
+
     ob_type: str = FieldInfo(alias="obType")
     """The type of observation associated with this record."""
 
@@ -74,6 +76,8 @@ class SeoList(BaseModel):
 
 
 class SpaceEnvObservationFull(BaseModel):
+    """SpaceEnvObservation data."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

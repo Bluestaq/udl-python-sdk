@@ -15,6 +15,10 @@ __all__ = ["EphemerisSet"]
 
 
 class EphemerisSet(BaseModel):
+    """
+    EphemerisSet represents a wrapper or collection of Ephemeris 'points' and meta data indicating the specifics of the propagation of an on-orbit object. Ephemeris is typically distributed in a flat file containing details of the ephemeris generation as well as a large collection of individual points at varying time steps. EphemerisSet is analogous to this flat file.
+    """
+
     category: str
     """The source category of the ephemeris (e.g. OWNER_OPERATOR, ANALYST, EXTERNAL)."""
 

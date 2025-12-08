@@ -113,6 +113,10 @@ class AirTaskingOrderCreateParams(TypedDict, total=False):
 
 
 class AcMsnTaskingAcMsnLocSeg(TypedDict, total=False):
+    """
+    Collection of aircraft mission location information for this aircraft mission tasking.
+    """
+
     start_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="startTime", format="iso8601")]]
     """
     The start time of this mission in ISO 8601 UTC format with millisecond
@@ -162,6 +166,8 @@ class AcMsnTaskingAcMsnLocSeg(TypedDict, total=False):
 
 
 class AcMsnTaskingIndAcTasking(TypedDict, total=False):
+    """Collection that specifies the naval flight operations for this ATO."""
+
     acft_type: Required[Annotated[str, PropertyInfo(alias="acftType")]]
     """The type and model number for the aircraft.
 
@@ -217,6 +223,10 @@ class AcMsnTaskingIndAcTasking(TypedDict, total=False):
 
 
 class AcMsnTasking(TypedDict, total=False):
+    """
+    Collection that specifies the tasked country, tasked service, unit and mission level tasking for this ATO.
+    """
+
     country_code: Required[Annotated[str, PropertyInfo(alias="countryCode")]]
     """
     The country code responsible for conducting this aircraft mission tasking for
@@ -344,6 +354,10 @@ class AcMsnTasking(TypedDict, total=False):
 
 
 class GenText(TypedDict, total=False):
+    """
+    Collection that details special instructions, important information, guidance, and amplifying information regarding this ATO.
+    """
+
     text: str
     """The free text that describes the information specific to the text indicator."""
 
@@ -355,6 +369,8 @@ class GenText(TypedDict, total=False):
 
 
 class NavalFltOp(TypedDict, total=False):
+    """Collection that specifies the naval flight operations for this ATO."""
+
     ship_name: Required[Annotated[str, PropertyInfo(alias="shipName")]]
     """The name of a ship or maritime vessel. Specify UNKNOWN if name is not known."""
 

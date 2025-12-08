@@ -11,6 +11,10 @@ __all__ = ["MaximumOnGroundFull"]
 
 
 class MaximumOnGroundFull(BaseModel):
+    """
+    Collection providing maximum on ground (MOG) information for specific aircraft at the site associated with this SiteOperations record.
+    """
+
     aircraft_mds: Optional[str] = FieldInfo(alias="aircraftMDS", default=None)
     """
     The Model Design Series (MDS) designation of the aircraft to which this maximum

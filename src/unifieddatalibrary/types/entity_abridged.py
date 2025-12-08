@@ -13,6 +13,8 @@ __all__ = ["EntityAbridged", "OnOrbit"]
 
 
 class OnOrbit(BaseModel):
+    """Model object representing on-orbit objects or satellites in the system."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -144,6 +146,10 @@ class OnOrbit(BaseModel):
 
 
 class EntityAbridged(BaseModel):
+    """
+    An entity is a generic representation of any object within a space/SSA system such as sensors, on-orbit objects, RF Emitters, space craft buses, etc. An entity can have an operating unit, a location (if terrestrial), and statuses.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

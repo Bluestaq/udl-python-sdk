@@ -10,6 +10,11 @@ __all__ = ["EngineIngest"]
 
 
 class EngineIngest(TypedDict, total=False):
+    """Known launch vehicle engines and their performance characteristics and limits.
+
+    A launch vehicle has 1 to many engines per stage.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -13,6 +13,11 @@ __all__ = ["SolarArrayDetailsFull"]
 
 
 class SolarArrayDetailsFull(BaseModel):
+    """Model representation of Information on spacecraft SolarArrayDetails.
+
+    A SolarArray may have multiple details records compiled by various sources.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

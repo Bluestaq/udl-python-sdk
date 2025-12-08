@@ -183,6 +183,8 @@ class DetailCreateParams(TypedDict, total=False):
 
 
 class Amplifier(TypedDict, total=False):
+    """An RF Amplifier associated with an RF Emitter Details."""
+
     device_identifier: Annotated[str, PropertyInfo(alias="deviceIdentifier")]
     """The device identifier of the amplifier."""
 
@@ -197,6 +199,8 @@ class Amplifier(TypedDict, total=False):
 
 
 class AntennaFeed(TypedDict, total=False):
+    """An RF Antenna Feed associated with an RF Antenna."""
+
     freq_max: Annotated[float, PropertyInfo(alias="freqMax")]
     """Maximum frequency, in megahertz."""
 
@@ -214,6 +218,8 @@ class AntennaFeed(TypedDict, total=False):
 
 
 class AntennaReceiverChannel(TypedDict, total=False):
+    """An RF Antenna Receiver Channel associated with an RF Antenna."""
+
     bandwidth: float
     """
     The receiver bandwidth, in megahertz, must satisfy the constraint: minBandwidth
@@ -249,6 +255,8 @@ class AntennaReceiverChannel(TypedDict, total=False):
 
 
 class AntennaTransmitChannel(TypedDict, total=False):
+    """An RF Antenna Transmit Channel associated with an RF Antenna."""
+
     power: Required[float]
     """Transmit power, in watts."""
 
@@ -308,6 +316,8 @@ class AntennaTransmitChannel(TypedDict, total=False):
 
 
 class Antenna(TypedDict, total=False):
+    """An RF Antenna associated with an RF Emitter Details."""
+
     antenna_diameter: Annotated[float, PropertyInfo(alias="antennaDiameter")]
     """For parabolic/dish antennas, the diameter of the antenna in meters."""
 
@@ -352,6 +362,8 @@ class Antenna(TypedDict, total=False):
 
 
 class PowerOffset(TypedDict, total=False):
+    """An RF Emitter Power Offset associated with an RF Emitter Details."""
+
     frequency_band: Annotated[str, PropertyInfo(alias="frequencyBand")]
     """The RF frequency band (e.g. HF, VHF, P, UHF, L, S, C, X, KU, K, KA, V, W, MM)."""
 
@@ -360,6 +372,8 @@ class PowerOffset(TypedDict, total=False):
 
 
 class Service(TypedDict, total=False):
+    """An RF Emitter SW Service associated with an RF Emitter Details."""
+
     name: str
     """The name for this software service."""
 
@@ -368,6 +382,10 @@ class Service(TypedDict, total=False):
 
 
 class TtpTechniqueDefinitionParamDefinition(TypedDict, total=False):
+    """
+    An RF Emitter Technique Parameter Definition associated with an RF Emitter Technique Definition.
+    """
+
     default_value: Annotated[str, PropertyInfo(alias="defaultValue")]
     """Default parameter value used if not overridden in a SEW task definition."""
 
@@ -394,6 +412,8 @@ class TtpTechniqueDefinitionParamDefinition(TypedDict, total=False):
 
 
 class TtpTechniqueDefinition(TypedDict, total=False):
+    """An RF Emitter Technique Definition associated with an RF Emitter TTP."""
+
     name: str
     """The EW Emitter system technique name."""
 
@@ -404,6 +424,8 @@ class TtpTechniqueDefinition(TypedDict, total=False):
 
 
 class Ttp(TypedDict, total=False):
+    """An RF Emitter TTP associated with an RF Emitter Details."""
+
     output_signal_name: Annotated[str, PropertyInfo(alias="outputSignalName")]
     """The name of the output signal."""
 

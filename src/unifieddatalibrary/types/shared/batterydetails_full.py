@@ -13,6 +13,10 @@ __all__ = ["BatterydetailsFull"]
 
 
 class BatterydetailsFull(BaseModel):
+    """
+    Detailed information on a spacecraft battery type compiled by a particular source. A Battery record may have multiple details records from several sources.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

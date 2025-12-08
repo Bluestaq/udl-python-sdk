@@ -15,6 +15,10 @@ __all__ = ["TrackRouteIngestParam"]
 
 
 class TrackRouteIngestParam(TypedDict, total=False):
+    """
+    A track route is a prescribed route for performing training events or operations such as air refueling.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

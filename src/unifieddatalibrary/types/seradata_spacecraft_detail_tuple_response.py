@@ -29,6 +29,8 @@ __all__ = [
 
 
 class SeradataSpacecraftDetailTupleResponseItemOnOrbit(BaseModel):
+    """Model object representing on-orbit objects or satellites in the system."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -184,6 +186,8 @@ class SeradataSpacecraftDetailTupleResponseItemOnOrbit(BaseModel):
 
 
 class SeradataSpacecraftDetailTupleResponseItemScientific(BaseModel):
+    """Scientific or other data from Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -275,6 +279,8 @@ class SeradataSpacecraftDetailTupleResponseItemScientific(BaseModel):
 
 
 class SeradataSpacecraftDetailTupleResponseItemSeradataCommDetail(BaseModel):
+    """Seradata-compiled information on communications payloads."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -432,6 +438,8 @@ class SeradataSpacecraftDetailTupleResponseItemSeradataCommDetail(BaseModel):
 
 
 class SeradataSpacecraftDetailTupleResponseItemSeradataEarlyWarning(BaseModel):
+    """Details for an early warning payload from  Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -536,6 +544,8 @@ class SeradataSpacecraftDetailTupleResponseItemSeradataEarlyWarning(BaseModel):
 
 
 class SeradataSpacecraftDetailTupleResponseItemSeradataNavigation(BaseModel):
+    """Details for a navigation payload from  Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -635,6 +645,8 @@ class SeradataSpacecraftDetailTupleResponseItemSeradataNavigation(BaseModel):
 
 
 class SeradataSpacecraftDetailTupleResponseItemSeradataOpticalPayload(BaseModel):
+    """Details for an optical payload from  Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -755,6 +767,8 @@ class SeradataSpacecraftDetailTupleResponseItemSeradataOpticalPayload(BaseModel)
 
 
 class SeradataSpacecraftDetailTupleResponseItemSeradataRadarPayload(BaseModel):
+    """Details for an radar payload from  Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -896,6 +910,8 @@ class SeradataSpacecraftDetailTupleResponseItemSeradataRadarPayload(BaseModel):
 
 
 class SeradataSpacecraftDetailTupleResponseItemSeradataSigIntPayload(BaseModel):
+    """Details for an sigint payload from  Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -995,6 +1011,8 @@ class SeradataSpacecraftDetailTupleResponseItemSeradataSigIntPayload(BaseModel):
 
 
 class SeradataSpacecraftDetailTupleResponseItem(BaseModel):
+    """On-orbit spacecraft details compiled by Seradata for a particular satellite."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

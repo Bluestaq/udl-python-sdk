@@ -13,6 +13,11 @@ __all__ = ["OnorbitGetSignatureResponse", "RadarObservation", "RfObservation"]
 
 
 class RadarObservation(BaseModel):
+    """Model representation of observation data for radar based sensor phenomenologies.
+
+    J2000 is the preferred coordinate frame for all observations, but in some cases observations may be in another frame depending on the provider. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -350,6 +355,10 @@ class RadarObservation(BaseModel):
 
 
 class RfObservation(BaseModel):
+    """
+    Model representation of observation data for active/passive radio frequency (RF) based sensor phenomenologies. J2000 is the preferred coordinate frame for all observations, but in some cases observations may be in another frame depending on the provider. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider. RF observations include several optional ordered arrays which are used to provide detailed information on recorded signals such as power spectral density lists or active signals (code taps/fills, etc). In these cases, the sizes of the arrays must match and can be assumed to have consistent indexing across arrays (e.g. powers[0] is the measured power at frequencies[0]).
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -728,6 +737,8 @@ class RfObservation(BaseModel):
 
 
 class OnorbitGetSignatureResponse(BaseModel):
+    """Contains a list of common information across both Radar and EO observations."""
+
     eo_observation: Optional[EoObservationAbridged] = FieldInfo(alias="eoObservation", default=None)
     """
     Model representation of observation data for electro-optical based sensor

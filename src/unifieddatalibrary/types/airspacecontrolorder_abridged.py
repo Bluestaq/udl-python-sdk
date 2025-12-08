@@ -19,6 +19,10 @@ __all__ = [
 
 
 class AirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint(BaseModel):
+    """
+    The controlPoint set describes any reference/controlling/rendezvous point for a given airspace control means.
+    """
+
     ctrl_pt_altitude: Optional[str] = FieldInfo(alias="ctrlPtAltitude", default=None)
     """The altitude of the control point."""
 
@@ -36,6 +40,10 @@ class AirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint(BaseMode
 
 
 class AirspaceControlMeansStatusAirspaceControlMeanAirspaceTimePeriod(BaseModel):
+    """
+    The timePeriods set describes the effective datetime for a given airspace control means.
+    """
+
     int_dur: Optional[List[str]] = FieldInfo(alias="intDur", default=None)
     """Mandatory if timeMode is INTERVAL.
 
@@ -68,6 +76,10 @@ class AirspaceControlMeansStatusAirspaceControlMeanAirspaceTimePeriod(BaseModel)
 
 
 class AirspaceControlMeansStatusAirspaceControlMean(BaseModel):
+    """
+    A conditional nested segment to report multiple airspace control means within a particular airspace control means status.
+    """
+
     airspace_control_point: Optional[List[AirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint]] = (
         FieldInfo(alias="airspaceControlPoint", default=None)
     )
@@ -258,6 +270,10 @@ class AirspaceControlMeansStatusAirspaceControlMean(BaseModel):
 
 
 class AirspaceControlMeansStatus(BaseModel):
+    """
+    Mandatory nested segment to report multiple airspace control means statuses within an ACOID.
+    """
+
     airspace_control_means: Optional[List[AirspaceControlMeansStatusAirspaceControlMean]] = FieldInfo(
         alias="airspaceControlMeans", default=None
     )
@@ -277,6 +293,10 @@ class AirspaceControlMeansStatus(BaseModel):
 
 
 class AirspaceControlOrderReference(BaseModel):
+    """
+    The airspaceControlReferences set provides both USMTF and non-USMTF references for this airspace control order.
+    """
+
     ref_originator: Optional[str] = FieldInfo(alias="refOriginator", default=None)
     """The originator of this reference."""
 
@@ -312,6 +332,10 @@ class AirspaceControlOrderReference(BaseModel):
 
 
 class AirspacecontrolorderAbridged(BaseModel):
+    """
+    Beta Version Airspace Control Order: Contains airspace coordination information and instructions that have been issued by an airspace control authority.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -12,6 +12,8 @@ __all__ = ["SeraDataCommDetailGetResponse"]
 
 
 class SeraDataCommDetailGetResponse(BaseModel):
+    """Seradata-compiled information on communications payloads."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -25,6 +25,10 @@ class AirspaceControlOrderUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyAirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint(TypedDict, total=False):
+    """
+    The controlPoint set describes any reference/controlling/rendezvous point for a given airspace control means.
+    """
+
     ctrl_pt_altitude: Annotated[str, PropertyInfo(alias="ctrlPtAltitude")]
     """The altitude of the control point."""
 
@@ -42,6 +46,10 @@ class BodyAirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint(Type
 
 
 class BodyAirspaceControlMeansStatusAirspaceControlMeanAirspaceTimePeriod(TypedDict, total=False):
+    """
+    The timePeriods set describes the effective datetime for a given airspace control means.
+    """
+
     int_dur: Annotated[SequenceNotStr[str], PropertyInfo(alias="intDur")]
     """Mandatory if timeMode is INTERVAL.
 
@@ -74,6 +82,10 @@ class BodyAirspaceControlMeansStatusAirspaceControlMeanAirspaceTimePeriod(TypedD
 
 
 class BodyAirspaceControlMeansStatusAirspaceControlMean(TypedDict, total=False):
+    """
+    A conditional nested segment to report multiple airspace control means within a particular airspace control means status.
+    """
+
     airspace_control_point: Annotated[
         Iterable[BodyAirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint],
         PropertyInfo(alias="airspaceControlPoint"),
@@ -267,6 +279,10 @@ class BodyAirspaceControlMeansStatusAirspaceControlMean(TypedDict, total=False):
 
 
 class BodyAirspaceControlMeansStatus(TypedDict, total=False):
+    """
+    Mandatory nested segment to report multiple airspace control means statuses within an ACOID.
+    """
+
     airspace_control_means: Annotated[
         Iterable[BodyAirspaceControlMeansStatusAirspaceControlMean], PropertyInfo(alias="airspaceControlMeans")
     ]
@@ -286,6 +302,10 @@ class BodyAirspaceControlMeansStatus(TypedDict, total=False):
 
 
 class BodyAirspaceControlOrderReference(TypedDict, total=False):
+    """
+    The airspaceControlReferences set provides both USMTF and non-USMTF references for this airspace control order.
+    """
+
     ref_originator: Annotated[str, PropertyInfo(alias="refOriginator")]
     """The originator of this reference."""
 
@@ -321,6 +341,10 @@ class BodyAirspaceControlOrderReference(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Beta Version Airspace Control Order: Contains airspace coordination information and instructions that have been issued by an airspace control authority.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

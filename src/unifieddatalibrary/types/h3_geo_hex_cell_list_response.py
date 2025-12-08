@@ -12,6 +12,10 @@ __all__ = ["H3GeoHexCellListResponse"]
 
 
 class H3GeoHexCellListResponse(BaseModel):
+    """
+    Model representation of a hex cell array containing data for a set of observations.
+    """
+
     cell_id: str = FieldInfo(alias="cellId")
     """The H3 index represented as a 16 character hexadecimal string."""
 

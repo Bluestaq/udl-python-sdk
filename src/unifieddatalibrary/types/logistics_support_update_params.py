@@ -172,6 +172,8 @@ class LogisticsSupportUpdateParams(TypedDict, total=False):
 
 
 class LogisticsDiscrepancyInfo(TypedDict, total=False):
+    """Discrepancy information associated with this LogisticsSupport record."""
+
     closure_time: Annotated[Union[str, datetime], PropertyInfo(alias="closureTime", format="iso8601")]
     """
     The discrepancy closure time, in ISO 8601 UTC format with millisecond precision.
@@ -188,6 +190,8 @@ class LogisticsDiscrepancyInfo(TypedDict, total=False):
 
 
 class LogisticsSupportItemLogisticsPartLogisticsStock(TypedDict, total=False):
+    """The supply stocks for this support item."""
+
     quantity: int
     """The quantity of available parts needed from sourceICAO."""
 
@@ -205,6 +209,8 @@ class LogisticsSupportItemLogisticsPartLogisticsStock(TypedDict, total=False):
 
 
 class LogisticsSupportItemLogisticsPart(TypedDict, total=False):
+    """The parts associated with this support item."""
+
     figure_number: Annotated[str, PropertyInfo(alias="figureNumber")]
     """Technical order manual figure number for the requested / supplied part."""
 
@@ -248,6 +254,8 @@ class LogisticsSupportItemLogisticsPart(TypedDict, total=False):
 
 
 class LogisticsSupportItemLogisticsSpecialty(TypedDict, total=False):
+    """The specialties required to implement this support item."""
+
     first_name: Annotated[str, PropertyInfo(alias="firstName")]
     """The first name of the specialist."""
 
@@ -278,6 +286,8 @@ class LogisticsSupportItemLogisticsSpecialty(TypedDict, total=False):
 
 
 class LogisticsSupportItem(TypedDict, total=False):
+    """Support items associated with this LogisticsSupport record."""
+
     cannibalized: bool
     """
     This element indicates whether or not the supplied item is contained within
@@ -384,6 +394,8 @@ class LogisticsSupportItem(TypedDict, total=False):
 
 
 class LogisticsTransportationPlanLogisticsSegment(TypedDict, total=False):
+    """Remarks associated with this LogisticsSupport record."""
+
     arrival_icao: Annotated[str, PropertyInfo(alias="arrivalICAO")]
     """Airport ICAO arrival code."""
 
@@ -459,6 +471,10 @@ class LogisticsTransportationPlanLogisticsSegment(TypedDict, total=False):
 
 
 class LogisticsTransportationPlan(TypedDict, total=False):
+    """
+    Transportation plans associated with this LogisticsSupport record, used to coordinate maintenance efforts.
+    """
+
     act_dep_time: Annotated[Union[str, datetime], PropertyInfo(alias="actDepTime", format="iso8601")]
     """
     Actual time of departure of first segment, in ISO 8601 UTC format with

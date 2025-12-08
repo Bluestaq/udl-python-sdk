@@ -12,6 +12,11 @@ __all__ = ["EngineAbridged"]
 
 
 class EngineAbridged(BaseModel):
+    """Known launch vehicle engines and their performance characteristics and limits.
+
+    A launch vehicle has 1 to many engines per stage.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

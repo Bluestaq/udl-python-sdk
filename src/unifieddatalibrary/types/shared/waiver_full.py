@@ -11,6 +11,10 @@ __all__ = ["WaiverFull"]
 
 
 class WaiverFull(BaseModel):
+    """
+    Collection documenting operational waivers that have been issued for the Site associated with this record.
+    """
+
     expiration_date: Optional[datetime] = FieldInfo(alias="expirationDate", default=None)
     """
     The expiration date of this waiver, in ISO8601 UTC format with millisecond

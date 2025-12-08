@@ -14,6 +14,11 @@ __all__ = ["SkyImageryGetResponse"]
 
 
 class SkyImageryGetResponse(BaseModel):
+    """Model representation of sky imagery data.
+
+    Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

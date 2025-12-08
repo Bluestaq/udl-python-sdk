@@ -16,6 +16,8 @@ class OrbittrackCreateBulkParams(TypedDict, total=False):
 
 
 class BodyTrackSensor(TypedDict, total=False):
+    """Schema for Track Sensor data."""
+
     az: Required[float]
     """The observing sensor azimuth angle, in degrees and topocentric frame."""
 
@@ -50,6 +52,10 @@ class BodyTrackSensor(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Keplerian orbital elements describing an orbit for a particular on-orbit satellite and applicable sensor data aiding in the orbit prediction.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

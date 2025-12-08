@@ -12,6 +12,11 @@ __all__ = ["AnalyticImageryAbridged"]
 
 
 class AnalyticImageryAbridged(BaseModel):
+    """The analytic imagery schema supports data plots and graphics of various types.
+
+    The records contain general file information, allows for annotations to user-defined areas of interest on the graphics, and supports keyword searching.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

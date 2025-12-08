@@ -12,6 +12,11 @@ __all__ = ["CommAbridged"]
 
 
 class CommAbridged(BaseModel):
+    """Comm represents communications entities (e.g.
+
+    on-orbit communications satellite payloads) within the SSA environment.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

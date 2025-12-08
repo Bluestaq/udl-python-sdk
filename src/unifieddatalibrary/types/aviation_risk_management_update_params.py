@@ -85,6 +85,8 @@ class AviationRiskManagementUpdateParams(TypedDict, total=False):
 class AviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetScoreAviationRiskManagementSortie(
     TypedDict, total=False
 ):
+    """Collection of aviation risk management worksheet record score aircraft sorties."""
+
     ext_sortie_id: Annotated[str, PropertyInfo(alias="extSortieId")]
     """Optional aircraft sortie ID from external systems.
 
@@ -110,6 +112,8 @@ class AviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetScoreA
 
 
 class AviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetScore(TypedDict, total=False):
+    """Collection of Aviation Risk Management worksheet record scores."""
+
     approval_date: Annotated[Union[str, datetime], PropertyInfo(alias="approvalDate", format="iso8601")]
     """
     Timestamp the worksheet record score was approval or disapproval, in ISO 8601
@@ -163,6 +167,8 @@ class AviationRiskManagementWorksheetRecordAviationRiskManagementWorksheetScore(
 
 
 class AviationRiskManagementWorksheetRecord(TypedDict, total=False):
+    """Collection of Aviation Risk Management Worksheet Records."""
+
     mission_date: Required[Annotated[Union[str, date], PropertyInfo(alias="missionDate", format="iso8601")]]
     """Date of the mission in ISO 8601 date-only format (YYYY-MM-DD)."""
 

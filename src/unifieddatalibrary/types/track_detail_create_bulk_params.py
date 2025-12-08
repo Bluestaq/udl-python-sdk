@@ -17,6 +17,10 @@ class TrackDetailCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    These services provide operations for querying of all available track details and amplifying track data. A track is a position and optionally a heading/velocity of an object such as an aircraft, marine vessel, etc at a particular timestamp. It also includes optional information regarding the identity/type of the target object and other amplifying object data, if known.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

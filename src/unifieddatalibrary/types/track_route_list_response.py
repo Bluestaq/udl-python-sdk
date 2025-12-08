@@ -12,6 +12,8 @@ __all__ = ["TrackRouteListResponse", "AltitudeBlock", "Poc", "RoutePoint"]
 
 
 class AltitudeBlock(BaseModel):
+    """Minimum and maximum altitude bounds for the track."""
+
     altitude_sequence_id: Optional[str] = FieldInfo(alias="altitudeSequenceId", default=None)
     """Sequencing field for the altitude block."""
 
@@ -25,6 +27,8 @@ class AltitudeBlock(BaseModel):
 
 
 class Poc(BaseModel):
+    """Point of contacts for scheduling or modifying the route."""
+
     office: Optional[str] = None
     """Office name for which the contact belongs."""
 
@@ -57,6 +61,8 @@ class Poc(BaseModel):
 
 
 class RoutePoint(BaseModel):
+    """Points identified within the route."""
+
     alt_country_code: Optional[str] = FieldInfo(alias="altCountryCode", default=None)
     """
     Specifies an alternate country code if the data provider code is not part of an
@@ -130,6 +136,10 @@ class RoutePoint(BaseModel):
 
 
 class TrackRouteListResponse(BaseModel):
+    """
+    A track route is a prescribed route for performing training events or operations such as air refueling.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

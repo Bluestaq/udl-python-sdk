@@ -176,6 +176,10 @@ class AirspaceControlOrderCreateParams(TypedDict, total=False):
 
 
 class AirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint(TypedDict, total=False):
+    """
+    The controlPoint set describes any reference/controlling/rendezvous point for a given airspace control means.
+    """
+
     ctrl_pt_altitude: Annotated[str, PropertyInfo(alias="ctrlPtAltitude")]
     """The altitude of the control point."""
 
@@ -193,6 +197,10 @@ class AirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint(TypedDic
 
 
 class AirspaceControlMeansStatusAirspaceControlMeanAirspaceTimePeriod(TypedDict, total=False):
+    """
+    The timePeriods set describes the effective datetime for a given airspace control means.
+    """
+
     int_dur: Annotated[SequenceNotStr[str], PropertyInfo(alias="intDur")]
     """Mandatory if timeMode is INTERVAL.
 
@@ -225,6 +233,10 @@ class AirspaceControlMeansStatusAirspaceControlMeanAirspaceTimePeriod(TypedDict,
 
 
 class AirspaceControlMeansStatusAirspaceControlMean(TypedDict, total=False):
+    """
+    A conditional nested segment to report multiple airspace control means within a particular airspace control means status.
+    """
+
     airspace_control_point: Annotated[
         Iterable[AirspaceControlMeansStatusAirspaceControlMeanAirspaceControlPoint],
         PropertyInfo(alias="airspaceControlPoint"),
@@ -418,6 +430,10 @@ class AirspaceControlMeansStatusAirspaceControlMean(TypedDict, total=False):
 
 
 class AirspaceControlMeansStatus(TypedDict, total=False):
+    """
+    Mandatory nested segment to report multiple airspace control means statuses within an ACOID.
+    """
+
     airspace_control_means: Annotated[
         Iterable[AirspaceControlMeansStatusAirspaceControlMean], PropertyInfo(alias="airspaceControlMeans")
     ]
@@ -437,6 +453,10 @@ class AirspaceControlMeansStatus(TypedDict, total=False):
 
 
 class AirspaceControlOrderReference(TypedDict, total=False):
+    """
+    The airspaceControlReferences set provides both USMTF and non-USMTF references for this airspace control order.
+    """
+
     ref_originator: Annotated[str, PropertyInfo(alias="refOriginator")]
     """The originator of this reference."""
 

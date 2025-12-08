@@ -13,6 +13,10 @@ __all__ = ["LaserdeconflictrequestGetResponse", "LaserDeconflictTarget"]
 
 
 class LaserDeconflictTarget(BaseModel):
+    """
+    Model representation which can be used for the specification of target object for a laser operation. The specification of various target types common across space-to-space, space-to-ground, and ground-to-space laser operations are supported by this model.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -202,6 +206,10 @@ class LaserDeconflictTarget(BaseModel):
 
 
 class LaserdeconflictrequestGetResponse(BaseModel):
+    """
+    The LaserDeconflictionRequest service is designed to process and manage requests related to the safe operation of high-powered lasers, ensuring that laser systems do not interfere with other critical operations, such as satellite based activities. The service facilitates real-time coordination between different entities to prevent accidental exposure to laser hazards, ensuring compliance with safety protocols and regulations.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -17,6 +17,10 @@ class VesselCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    This service provides operations for manipulation and querying of maritime Vessel data. Vessel contains the static data of the specific vessel: mmsi, cruise speed, max speed, etc.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

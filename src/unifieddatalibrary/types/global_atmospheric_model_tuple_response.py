@@ -12,6 +12,10 @@ __all__ = ["GlobalAtmosphericModelTupleResponse", "GlobalAtmosphericModelTupleRe
 
 
 class GlobalAtmosphericModelTupleResponseItem(BaseModel):
+    """
+    The GlobalAtmosphericModel service provides atmospheric model output data for use in space situational awareness such as the Global Total Electron Content (2D) data, Global Total Electron Density (3D) data, etc.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

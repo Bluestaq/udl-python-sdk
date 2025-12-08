@@ -12,6 +12,10 @@ __all__ = ["SurfaceListResponse"]
 
 
 class SurfaceListResponse(BaseModel):
+    """
+    Surface information contains properties related to an airfield's runway, taxiway, and parking. The surface types and characteristics can dictate the airfield's capability of hosting a specific aircraft.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

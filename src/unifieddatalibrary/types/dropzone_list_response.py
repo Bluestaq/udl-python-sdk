@@ -12,6 +12,10 @@ __all__ = ["DropzoneListResponse"]
 
 
 class DropzoneListResponse(BaseModel):
+    """
+    Properties and characteristics of a Drop Zone, including name, location, shape, type code, survey date, and remarks.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

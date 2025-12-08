@@ -15,6 +15,10 @@ class ManifoldCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    A manifold represents a set of possible/theoretical orbits for an object of interest based on a delta V and delta T.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

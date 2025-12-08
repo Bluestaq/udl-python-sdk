@@ -12,6 +12,8 @@ __all__ = ["ChannelAbridged"]
 
 
 class ChannelAbridged(BaseModel):
+    """Channel information on a particular transponder."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -177,6 +177,8 @@ class IsrCollectionTupleResponseItemTransit(BaseModel):
 
 
 class IsrCollectionTupleResponseItem(BaseModel):
+    """ISR Collection data."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

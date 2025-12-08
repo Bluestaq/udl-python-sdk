@@ -17,6 +17,10 @@ class EventEvolutionUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Event Evolution is a unique service supporting the association of UDL records of various data types to a common event or activity. The associations may be a one time summary, aggregating sources of a past event, or of an ongoing activity that evolves over a period of time.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

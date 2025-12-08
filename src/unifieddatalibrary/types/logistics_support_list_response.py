@@ -22,6 +22,8 @@ __all__ = [
 
 
 class LogisticsDiscrepancyInfo(BaseModel):
+    """Discrepancy information associated with this LogisticsSupport record."""
+
     closure_time: Optional[datetime] = FieldInfo(alias="closureTime", default=None)
     """
     The discrepancy closure time, in ISO 8601 UTC format with millisecond precision.
@@ -38,6 +40,8 @@ class LogisticsDiscrepancyInfo(BaseModel):
 
 
 class LogisticsSupportItemLogisticsPartLogisticsStock(BaseModel):
+    """The supply stocks for this support item."""
+
     quantity: Optional[int] = None
     """The quantity of available parts needed from sourceICAO."""
 
@@ -55,6 +59,8 @@ class LogisticsSupportItemLogisticsPartLogisticsStock(BaseModel):
 
 
 class LogisticsSupportItemLogisticsPart(BaseModel):
+    """The parts associated with this support item."""
+
     figure_number: Optional[str] = FieldInfo(alias="figureNumber", default=None)
     """Technical order manual figure number for the requested / supplied part."""
 
@@ -98,6 +104,8 @@ class LogisticsSupportItemLogisticsPart(BaseModel):
 
 
 class LogisticsSupportItemLogisticsSpecialty(BaseModel):
+    """The specialties required to implement this support item."""
+
     first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
     """The first name of the specialist."""
 
@@ -128,6 +136,8 @@ class LogisticsSupportItemLogisticsSpecialty(BaseModel):
 
 
 class LogisticsSupportItem(BaseModel):
+    """Support items associated with this LogisticsSupport record."""
+
     cannibalized: Optional[bool] = None
     """
     This element indicates whether or not the supplied item is contained within
@@ -234,6 +244,8 @@ class LogisticsSupportItem(BaseModel):
 
 
 class LogisticsTransportationPlanLogisticsSegment(BaseModel):
+    """Remarks associated with this LogisticsSupport record."""
+
     arrival_icao: Optional[str] = FieldInfo(alias="arrivalICAO", default=None)
     """Airport ICAO arrival code."""
 
@@ -309,6 +321,10 @@ class LogisticsTransportationPlanLogisticsSegment(BaseModel):
 
 
 class LogisticsTransportationPlan(BaseModel):
+    """
+    Transportation plans associated with this LogisticsSupport record, used to coordinate maintenance efforts.
+    """
+
     act_dep_time: Optional[datetime] = FieldInfo(alias="actDepTime", default=None)
     """
     Actual time of departure of first segment, in ISO 8601 UTC format with
@@ -436,6 +452,10 @@ class LogisticsTransportationPlan(BaseModel):
 
 
 class LogisticsSupportListResponse(BaseModel):
+    """
+    Comprehensive logistical details concerning the planned support of maintenance operations required by an aircraft, including transportation information, supplies coordination, and service personnel.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

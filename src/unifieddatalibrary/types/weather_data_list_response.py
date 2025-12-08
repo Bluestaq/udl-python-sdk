@@ -12,6 +12,11 @@ __all__ = ["WeatherDataListResponse"]
 
 
 class WeatherDataListResponse(BaseModel):
+    """These services provide for posting and querying Weather Data.
+
+    Weather Data integrates dynamic data measured by Doppler/CG such as signal power and noise levels, to produce useful weather information.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

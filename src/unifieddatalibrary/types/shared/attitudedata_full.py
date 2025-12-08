@@ -12,6 +12,10 @@ __all__ = ["AttitudedataFull"]
 
 
 class AttitudedataFull(BaseModel):
+    """
+    These services provide operations for posting and querying attitude of on-orbit objects.  Attitude describes the orientation of an object, which can be represented by quaternions or euler angles.  The AttitudeSet ID (asId) identifies the 'AttitudeSet' record which contains details of the underlying data as well as a collection of attitude points. Points must be retrieved by first identifying a desired AttitudeSet and pulling its points by that AttitudeSet ID 'asId'.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

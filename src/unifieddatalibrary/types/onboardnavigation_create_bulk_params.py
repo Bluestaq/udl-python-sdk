@@ -17,6 +17,10 @@ class OnboardnavigationCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    These services provide spacecraft positional data derived from on-board navigational sensors.  Navigational points are provided in kilometers and in a user specified reference frame, with ECI J2K being preferred.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -12,6 +12,10 @@ __all__ = ["ObjectOfInterestListResponse"]
 
 
 class ObjectOfInterestListResponse(BaseModel):
+    """
+    OnOrbit objects of interest, which include information about the last known state of the object.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

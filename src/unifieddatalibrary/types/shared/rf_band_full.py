@@ -12,6 +12,10 @@ __all__ = ["RfBandFull"]
 
 
 class RfBandFull(BaseModel):
+    """
+    Details on a particular Radio Frequency (RF) band, also known as a carrier, which may be in use by any type of Entity for communications or operations.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

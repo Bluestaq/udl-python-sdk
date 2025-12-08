@@ -11,6 +11,8 @@ __all__ = ["LogisticsDiscrepancyInfosFull"]
 
 
 class LogisticsDiscrepancyInfosFull(BaseModel):
+    """Discrepancy information associated with this LogisticsSupport record."""
+
     closure_time: Optional[datetime] = FieldInfo(alias="closureTime", default=None)
     """
     The discrepancy closure time, in ISO 8601 UTC format with millisecond precision.

@@ -97,6 +97,8 @@ class V2UpdateParams(TypedDict, total=False):
 
 
 class Attachment(TypedDict, total=False):
+    """Additional metadata associated with this document."""
+
     author: str
     """The creator of this document. Can be a person or a software entity."""
 

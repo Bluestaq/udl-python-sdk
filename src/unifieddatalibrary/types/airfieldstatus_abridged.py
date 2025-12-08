@@ -12,6 +12,8 @@ __all__ = ["AirfieldstatusAbridged"]
 
 
 class AirfieldstatusAbridged(BaseModel):
+    """The airfield status contains dynamic data of an airfield's capabilities."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -15,6 +15,11 @@ class StagingCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Model representation of a nominal laser emitter.
+
+    This entity contains minimal information used to stage laser emitter entities.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

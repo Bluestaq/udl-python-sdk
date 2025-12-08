@@ -12,6 +12,11 @@ __all__ = ["WeatherReportFull"]
 
 
 class WeatherReportFull(BaseModel):
+    """These services provide for posting and querying Weather Over Target information.
+
+    The information contained within describes the current weather conditions over a target area or region to include navigational considerations such as altimeter settings, visibility, cloud heights etc.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

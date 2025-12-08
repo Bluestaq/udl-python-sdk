@@ -16,6 +16,10 @@ class ManifoldelsetCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Theoretical Keplarian orbital elements belonging to an object of interest's manifold describing a possible/theoretical orbit for an object of interest for tasking purposes.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

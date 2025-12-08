@@ -72,6 +72,8 @@ class CotCreateParams(TypedDict, total=False):
 
 
 class CotChatData(TypedDict, total=False):
+    """Schema for the CotChatData to post."""
+
     chat_msg: Annotated[str, PropertyInfo(alias="chatMsg")]
     """Contents of a chat message."""
 
@@ -83,6 +85,8 @@ class CotChatData(TypedDict, total=False):
 
 
 class CotPositionData(TypedDict, total=False):
+    """Schema for the CotPositionData to post."""
+
     call_sign: Required[Annotated[str, PropertyInfo(alias="callSign")]]
     """Name of the POI target Object."""
 

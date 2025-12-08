@@ -123,6 +123,8 @@ class EcpedrCreateParams(TypedDict, total=False):
 
 
 class EcpedrMeasurement(TypedDict, total=False):
+    """Collection of measurements associated with this ECP EDR record."""
+
     ob_type: Required[Annotated[str, PropertyInfo(alias="obType")]]
     """The type of observation associated with this record.
 

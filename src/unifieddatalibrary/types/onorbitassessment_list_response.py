@@ -12,6 +12,11 @@ __all__ = ["OnorbitassessmentListResponse"]
 
 
 class OnorbitassessmentListResponse(BaseModel):
+    """Spacecraft characterization results from analysis of MASINT data.
+
+    Supports results of both the overall assessment of a particular spacecraft as well as of individual signature packages.
+    """
+
     assmt_time: datetime = FieldInfo(alias="assmtTime")
     """The time of the assessment, in ISO 8601 UTC format with millisecond precision."""
 

@@ -12,6 +12,8 @@ __all__ = ["EcpedrTupleResponse", "EcpedrTupleResponseItem", "EcpedrTupleRespons
 
 
 class EcpedrTupleResponseItemEcpedrMeasurement(BaseModel):
+    """Collection of measurements associated with this ECP EDR record."""
+
     ob_type: str = FieldInfo(alias="obType")
     """The type of observation associated with this record.
 
@@ -57,6 +59,8 @@ class EcpedrTupleResponseItemEcpedrMeasurement(BaseModel):
 
 
 class EcpedrTupleResponseItem(BaseModel):
+    """Energetic Charged Particles (ECP) Environmental Data Records (EDRs)."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

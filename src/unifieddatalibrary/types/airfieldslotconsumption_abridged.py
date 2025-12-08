@@ -12,6 +12,11 @@ __all__ = ["AirfieldslotconsumptionAbridged"]
 
 
 class AirfieldslotconsumptionAbridged(BaseModel):
+    """Airfield slot use data.
+
+    Contains the dynamic data associated with the status and use of specific airfield slots.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

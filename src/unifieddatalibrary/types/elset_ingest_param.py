@@ -13,6 +13,10 @@ __all__ = ["ElsetIngestParam"]
 
 
 class ElsetIngestParam(TypedDict, total=False):
+    """
+    An element set is a collection of Keplerian orbital elements describing an orbit of a particular satellite. The data is used along with an orbit propagator in order to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

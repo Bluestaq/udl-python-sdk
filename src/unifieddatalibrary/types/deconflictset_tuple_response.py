@@ -16,6 +16,10 @@ __all__ = [
 
 
 class DeconflictsetTupleResponseItemDeconflictWindow(BaseModel):
+    """
+    A DeconflictWindow describes a time window during which an action, such as target engagement, may either occur or is prohibited from occurring. The DeconflictWindow model includes information about the spatial details for specific target types. A flag is provided to specify whether the window should be associated with taking action (OPEN), or if no action should occur (CLOSED).
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -149,6 +153,10 @@ class DeconflictsetTupleResponseItemDeconflictWindow(BaseModel):
 
 
 class DeconflictsetTupleResponseItem(BaseModel):
+    """
+    The DeconflictSet service provides access to a set of DeconflictWindows and metadata about those data. A DeconflictWindow describes a time window during which an action, such as target engagement, may either occur or is prohibited from occurring. The DeconflictWindow model includes information about the spatial details for specific target types. A flag is provided to specify whether the window should be associated with taking action (OPEN), or if no action should occur (CLOSED).
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

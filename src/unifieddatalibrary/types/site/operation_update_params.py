@@ -131,6 +131,10 @@ class OperationUpdateParams(TypedDict, total=False):
 
 
 class DailyOperationOperatingHour(TypedDict, total=False):
+    """
+    A collection containing the operational start and stop times scheduled for the day of the week specified.
+    """
+
     op_start_time: Annotated[str, PropertyInfo(alias="opStartTime")]
     """The Zulu (UTC) operational start time, expressed in ISO 8601 format as HH:MM."""
 
@@ -139,6 +143,10 @@ class DailyOperationOperatingHour(TypedDict, total=False):
 
 
 class DailyOperation(TypedDict, total=False):
+    """
+    Collection providing hours of operation and other information specific to a day of the week.
+    """
+
     day_of_week: Annotated[
         Literal["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"],
         PropertyInfo(alias="dayOfWeek"),
@@ -170,6 +178,10 @@ class DailyOperation(TypedDict, total=False):
 
 
 class MaximumOnGround(TypedDict, total=False):
+    """
+    Collection providing maximum on ground (MOG) information for specific aircraft at the site associated with this SiteOperations record.
+    """
+
     aircraft_mds: Annotated[str, PropertyInfo(alias="aircraftMDS")]
     """
     The Model Design Series (MDS) designation of the aircraft to which this maximum
@@ -208,6 +220,10 @@ class MaximumOnGround(TypedDict, total=False):
 
 
 class OperationalDeviation(TypedDict, total=False):
+    """
+    Collection providing relevant information in the event of deviations/exceptions to normal operations.
+    """
+
     affected_aircraft_mds: Annotated[str, PropertyInfo(alias="affectedAircraftMDS")]
     """
     The Model Design Series (MDS) designation of the aircraft affected by this
@@ -243,6 +259,8 @@ class OperationalDeviation(TypedDict, total=False):
 
 
 class OperationalPlanning(TypedDict, total=False):
+    """Collection of planning information associated with this SiteOperations record."""
+
     op_end_date: Annotated[Union[str, datetime], PropertyInfo(alias="opEndDate", format="iso8601")]
     """
     The end date of this operational planning, in ISO8601 UTC format with
@@ -278,6 +296,10 @@ class OperationalPlanning(TypedDict, total=False):
 
 
 class Pathway(TypedDict, total=False):
+    """
+    Collection detailing operational pathways at the Site associated with this SiteOperations record.
+    """
+
     pw_definition: Annotated[str, PropertyInfo(alias="pwDefinition")]
     """Text defining this pathway from its constituent parts."""
 
@@ -298,6 +320,10 @@ class Pathway(TypedDict, total=False):
 
 
 class Waiver(TypedDict, total=False):
+    """
+    Collection documenting operational waivers that have been issued for the Site associated with this record.
+    """
+
     expiration_date: Annotated[Union[str, datetime], PropertyInfo(alias="expirationDate", format="iso8601")]
     """
     The expiration date of this waiver, in ISO8601 UTC format with millisecond

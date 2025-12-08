@@ -12,6 +12,8 @@ __all__ = ["LogisticsRemarksIngestParam"]
 
 
 class LogisticsRemarksIngestParam(TypedDict, total=False):
+    """Remarks associated with this LogisticsSupport record."""
+
     last_changed: Annotated[Union[str, datetime], PropertyInfo(alias="lastChanged", format="iso8601")]
     """
     Date the remark was published or updated, in ISO 8601 UTC format, with

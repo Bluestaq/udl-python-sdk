@@ -17,6 +17,11 @@ class FeatureAssessmentCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Feature assessments obtained from imagery analysis or other data analytics.
+
+    Feature assessments are georeferenced terrestrial features such as marine vessels, vehicles, buildings, etc., or contain other types of non terrestrial assessments such as spacecraft structures. Geospatial queries are supported through either the regionText (WKT) or regionGeoJSON fields.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

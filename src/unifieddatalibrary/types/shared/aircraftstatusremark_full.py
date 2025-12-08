@@ -12,6 +12,10 @@ __all__ = ["AircraftstatusremarkFull"]
 
 
 class AircraftstatusremarkFull(BaseModel):
+    """
+    Properties and characteristics of a remark that is associated with an aircraft status.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

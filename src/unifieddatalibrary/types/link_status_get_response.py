@@ -12,6 +12,8 @@ __all__ = ["LinkStatusGetResponse"]
 
 
 class LinkStatusGetResponse(BaseModel):
+    """Captures link status."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

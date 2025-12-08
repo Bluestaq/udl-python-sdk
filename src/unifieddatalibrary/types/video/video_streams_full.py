@@ -12,6 +12,8 @@ __all__ = ["VideoStreamsFull"]
 
 
 class VideoStreamsFull(BaseModel):
+    """The table captures metadata associated with the published videos in UDL."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

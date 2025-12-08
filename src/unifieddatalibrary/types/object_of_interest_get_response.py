@@ -13,6 +13,10 @@ __all__ = ["ObjectOfInterestGetResponse", "Manifold"]
 
 
 class Manifold(BaseModel):
+    """
+    A manifold represents a set of possible/theoretical orbits for an object of interest based on a delta V and delta T.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -98,6 +102,10 @@ class Manifold(BaseModel):
 
 
 class ObjectOfInterestGetResponse(BaseModel):
+    """
+    OnOrbit objects of interest, which include information about the last known state of the object.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

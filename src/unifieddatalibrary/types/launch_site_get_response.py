@@ -13,6 +13,10 @@ __all__ = ["LaunchSiteGetResponse", "LaunchSiteDetail"]
 
 
 class LaunchSiteDetail(BaseModel):
+    """
+    Model representation of details compiled/collected on a launch site by a particular source. A launch site may have several details records.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -114,6 +118,8 @@ class LaunchSiteDetail(BaseModel):
 
 
 class LaunchSiteGetResponse(BaseModel):
+    """Model representation of known launch sites."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

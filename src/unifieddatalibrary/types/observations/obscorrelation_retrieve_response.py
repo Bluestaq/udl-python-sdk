@@ -12,6 +12,10 @@ __all__ = ["ObscorrelationRetrieveResponse"]
 
 
 class ObscorrelationRetrieveResponse(BaseModel):
+    """
+    Model representation supporting post-pass correlation of UCTs and re-correlation of mis-tagged electro-optical (EO), radar, RF, and DOA track/observations.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

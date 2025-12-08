@@ -17,6 +17,10 @@ class EoObservationUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyEoobservationDetails(TypedDict, total=False):
+    """
+    Model representation of additional detailed observation data for electro-optical based sensor phenomenologies.
+    """
+
     acal_cr_pix_x: Annotated[float, PropertyInfo(alias="acalCrPixX")]
     """World Coordinate System (WCS) X pixel origin in astrometric fit."""
 
@@ -538,6 +542,10 @@ class BodyEoobservationDetails(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Model representation of observation data for electro-optical based sensor phenomenologies. ECI J2K is the preferred reference frame for EOObservations, however, several user-specified reference frames are accommodated. Users should check the EOObservation record as well as the 'Discover' tab in the storefront to confirm the coordinate frames used by the data provider.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

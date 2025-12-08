@@ -12,6 +12,10 @@ __all__ = ["ManifoldelsetGetResponse"]
 
 
 class ManifoldelsetGetResponse(BaseModel):
+    """
+    Theoretical Keplarian orbital elements belonging to an object of interest's manifold describing a possible/theoretical orbit for an object of interest for tasking purposes.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

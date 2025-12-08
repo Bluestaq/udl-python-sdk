@@ -12,6 +12,10 @@ __all__ = ["SgiGetResponse"]
 
 
 class SgiGetResponse(BaseModel):
+    """
+    Model representation of space weather/solar, geomagnetic, and radiation belt indices.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

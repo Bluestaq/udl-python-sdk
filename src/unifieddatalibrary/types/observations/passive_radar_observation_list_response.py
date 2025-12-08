@@ -12,6 +12,10 @@ __all__ = ["PassiveRadarObservationListResponse"]
 
 
 class PassiveRadarObservationListResponse(BaseModel):
+    """
+    Model representation of observation data for passive radar based sensor phenomenologies. Passive radar is a form of radar that instead of using a dedicated transmitter, as is the case for traditional radar, utilizes radio frequency (RF) energy already in the environment. With an abundance of existing energy available from geographically diverse sources, passive radar offers wide field of view coverage and long observation times. A passive radar system is comprised of separately located transmitter (for example, FM radio stations), a reference receiver, and a surveillance sensor. The transmitted signal illuminates multiple targets over a broad angular extent as well as providing a signal at the reference site. The reflected energy is received at the surveillance site for processing with the reference signal. The long observation durations that are possible with this technology enables an accurate orbit to be determined within a single pass.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

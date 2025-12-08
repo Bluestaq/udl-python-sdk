@@ -12,6 +12,10 @@ __all__ = ["TrackListResponse"]
 
 
 class TrackListResponse(BaseModel):
+    """
+    A track is a position and optionally a heading/velocity of an object such as an aircraft at a particular timestamp. It also includes optional information regarding the identity/type of the target object, if known.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

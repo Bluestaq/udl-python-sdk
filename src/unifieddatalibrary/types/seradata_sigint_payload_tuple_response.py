@@ -12,6 +12,8 @@ __all__ = ["SeradataSigintPayloadTupleResponse", "SeradataSigintPayloadTupleResp
 
 
 class SeradataSigintPayloadTupleResponseItem(BaseModel):
+    """Details for an sigint payload from  Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

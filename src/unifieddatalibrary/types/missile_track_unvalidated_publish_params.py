@@ -17,6 +17,8 @@ class MissileTrackUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyVector(TypedDict, total=False):
+    """Schema for Missile Track Vector data."""
+
     epoch: Required[Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]]
     """Vector timestamp in ISO8601 UTC format, with microsecond precision."""
 
@@ -180,6 +182,10 @@ class BodyVector(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    These services provide operations for querying of all available missile track details and amplifying missile data. A missile track is a position and optionally a heading/velocity of an object across all environments at a particular timestamp. It also includes optional information regarding the identity/type of missile, impact location, launch location and other amplifying object data, if known.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

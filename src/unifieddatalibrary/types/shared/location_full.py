@@ -12,6 +12,10 @@ __all__ = ["LocationFull"]
 
 
 class LocationFull(BaseModel):
+    """
+    Model representation of a location, which is a specific fixed point on the earth and is used to denote the locations of fixed sensors, operating units, etc.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

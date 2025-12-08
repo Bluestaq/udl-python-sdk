@@ -10,6 +10,8 @@ __all__ = ["BatteryIngest"]
 
 
 class BatteryIngest(TypedDict, total=False):
+    """Model representation of specific spacecraft battery types."""
+
     data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
 

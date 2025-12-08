@@ -12,6 +12,8 @@ __all__ = ["OnorbitthrusterstatusFull"]
 
 
 class OnorbitthrusterstatusFull(BaseModel):
+    """Status information for OnorbitThruster objects."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

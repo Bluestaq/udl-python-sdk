@@ -17,6 +17,11 @@ class OnorbitassessmentCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Spacecraft characterization results from analysis of MASINT data.
+
+    Supports results of both the overall assessment of a particular spacecraft as well as of individual signature packages.
+    """
+
     assmt_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="assmtTime", format="iso8601")]]
     """The time of the assessment, in ISO 8601 UTC format with millisecond precision."""
 

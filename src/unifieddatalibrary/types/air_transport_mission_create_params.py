@@ -211,6 +211,10 @@ class AirTransportMissionCreateParams(TypedDict, total=False):
 
 
 class HazMat(TypedDict, total=False):
+    """
+    Collection of Hazardous Material information planned to be associated with this Air Transport Mission.
+    """
+
     applicable_notes: Annotated[str, PropertyInfo(alias="applicableNotes")]
     """
     Comma delimited list of Note IDs for Item Class Segregation groups, specific to
@@ -288,6 +292,8 @@ class HazMat(TypedDict, total=False):
 
 
 class Remark(TypedDict, total=False):
+    """Collection of Remarks associated with this Air Transport Mission."""
+
     date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Date the remark was published, in ISO 8601 UTC format, with millisecond
@@ -314,6 +320,10 @@ class Remark(TypedDict, total=False):
 
 
 class Requirement(TypedDict, total=False):
+    """
+    Collection of Requirements planned to be associated with this Air Transport Mission.
+    """
+
     bulk_weight: Annotated[float, PropertyInfo(alias="bulkWeight")]
     """Total weight of the bulk cargo, in kilograms."""
 

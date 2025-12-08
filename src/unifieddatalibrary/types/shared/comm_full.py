@@ -14,6 +14,10 @@ __all__ = ["CommFull", "Transponder"]
 
 
 class Transponder(BaseModel):
+    """
+    A transponder receives and transmits radio signals at a prescribed frequency range. A communications satellite's transponder is the series of interconnected units that form a communications channel between the receiving and the transmitting antennas. It is mainly used in satellite communication to transfer the received signals.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -120,6 +124,11 @@ class Transponder(BaseModel):
 
 
 class CommFull(BaseModel):
+    """Comm represents communications entities (e.g.
+
+    on-orbit communications satellite payloads) within the SSA environment.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
