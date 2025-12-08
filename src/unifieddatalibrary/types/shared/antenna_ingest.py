@@ -12,6 +12,10 @@ __all__ = ["AntennaIngest"]
 
 
 class AntennaIngest(BaseModel):
+    """
+    Model representation of information on on-orbit/spacecraft communication antennas. A spacecraft may have multiple antennas and each antenna can have multiple 'details' records compiled by different sources.
+    """
+
     data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
     """Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
 

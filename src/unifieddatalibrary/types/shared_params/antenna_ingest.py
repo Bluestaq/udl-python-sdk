@@ -10,6 +10,10 @@ __all__ = ["AntennaIngest"]
 
 
 class AntennaIngest(TypedDict, total=False):
+    """
+    Model representation of information on on-orbit/spacecraft communication antennas. A spacecraft may have multiple antennas and each antenna can have multiple 'details' records compiled by different sources.
+    """
+
     data_mode: Required[Annotated[Literal["REAL", "TEST", "SIMULATED", "EXERCISE"], PropertyInfo(alias="dataMode")]]
     """Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
 

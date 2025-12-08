@@ -16,6 +16,10 @@ __all__ = ["HistoryListResponse"]
 
 
 class HistoryListResponse(BaseModel):
+    """
+    Comprehensive logistical details concerning the planned support of maintenance operations required by an aircraft, including transportation information, supplies coordination, and service personnel.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

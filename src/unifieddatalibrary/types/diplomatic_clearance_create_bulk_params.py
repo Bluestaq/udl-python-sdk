@@ -21,6 +21,8 @@ class DiplomaticClearanceCreateBulkParams(TypedDict, total=False):
 
 
 class BodyDiplomaticClearanceDetail(TypedDict, total=False):
+    """Collection of diplomatic clearance details."""
+
     action: str
     """The type of action the aircraft can take with this diplomatic clearance (e.g.
 
@@ -137,6 +139,8 @@ class BodyDiplomaticClearanceDetail(TypedDict, total=False):
 
 
 class BodyDiplomaticClearanceRemark(TypedDict, total=False):
+    """Collection of diplomatic clearance remarks."""
+
     date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Date the remark was published, in ISO 8601 UTC format, with millisecond
@@ -154,6 +158,10 @@ class BodyDiplomaticClearanceRemark(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    A diplomatic clearance is an authorization for an aircraft to traverse or land within a specified country.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

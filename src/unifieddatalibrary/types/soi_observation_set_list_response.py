@@ -12,6 +12,8 @@ __all__ = ["SoiObservationSetListResponse", "Calibration"]
 
 
 class Calibration(BaseModel):
+    """Schema for SOI Calibration data."""
+
     cal_bg_intensity: Optional[float] = FieldInfo(alias="calBgIntensity", default=None)
     """
     Background intensity, at calibration, specified in kilowatts per steradian per
@@ -74,6 +76,10 @@ class Calibration(BaseModel):
 
 
 class SoiObservationSetListResponse(BaseModel):
+    """
+    These services provide operations for posting space object identification observation sets.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

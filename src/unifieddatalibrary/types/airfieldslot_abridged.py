@@ -12,6 +12,11 @@ __all__ = ["AirfieldslotAbridged"]
 
 
 class AirfieldslotAbridged(BaseModel):
+    """Airfield capacity data.
+
+    Contains data associated with the airfieldslots available for parking, working, takeoff, and landing at the airfield, as well as the types of aircraft that can be accommodated.
+    """
+
     airfield_name: str = FieldInfo(alias="airfieldName")
     """The name of the airfield where this slot is located."""
 

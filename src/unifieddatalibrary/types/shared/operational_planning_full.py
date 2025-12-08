@@ -11,6 +11,8 @@ __all__ = ["OperationalPlanningFull"]
 
 
 class OperationalPlanningFull(BaseModel):
+    """Collection of planning information associated with this SiteOperations record."""
+
     op_end_date: Optional[datetime] = FieldInfo(alias="opEndDate", default=None)
     """
     The end date of this operational planning, in ISO8601 UTC format with

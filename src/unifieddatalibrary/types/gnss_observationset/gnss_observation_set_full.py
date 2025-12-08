@@ -12,6 +12,10 @@ __all__ = ["GnssObservationSetFull", "GnssObservationList"]
 
 
 class GnssObservationList(BaseModel):
+    """
+    Information for Global Navigation Satellite Systems (GNSS) Observations collected from GNSS receivers, including the specific GNSS sat from which each signal was received, and the observation codes of each observation in the record. Each GNSS Observation is associated with a GNSS Observation Set record containing data which applies to all observations in the set, including observation time, receiver location, and Dilution of Precision (DOP) values. Users can Reference RINEX 3+ documentation for further information concerning many of the standards and conventions for GNSS observations.
+    """
+
     agc_state: Optional[int] = FieldInfo(alias="agcState", default=None)
     """GNSS Automatic Gain Control State."""
 
@@ -59,6 +63,8 @@ class GnssObservationList(BaseModel):
 
 
 class GnssObservationSetFull(BaseModel):
+    """Set of GNSSObservation data."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

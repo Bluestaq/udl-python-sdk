@@ -10,6 +10,10 @@ __all__ = ["OperatingHoursFull"]
 
 
 class OperatingHoursFull(BaseModel):
+    """
+    A collection containing the operational start and stop times scheduled for the day of the week specified.
+    """
+
     op_start_time: Optional[str] = FieldInfo(alias="opStartTime", default=None)
     """The Zulu (UTC) operational start time, expressed in ISO 8601 format as HH:MM."""
 

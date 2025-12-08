@@ -12,6 +12,10 @@ __all__ = ["OperatingunitListResponse"]
 
 
 class OperatingunitListResponse(BaseModel):
+    """
+    Model representation of a unit or organization which operates or controls a space-related Entity such as an on-orbit payload, a sensor, etc.  A contact may belong to an organization.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

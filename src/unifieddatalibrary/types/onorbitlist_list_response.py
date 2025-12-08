@@ -12,6 +12,11 @@ __all__ = ["OnorbitlistListResponse"]
 
 
 class OnorbitlistListResponse(BaseModel):
+    """Table for maintaining generic lists of OnOrbit objects (e.g.
+
+    Favorites, HIO, SHIO, HVA, etc).
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -19,6 +19,8 @@ __all__ = [
 
 
 class AirLoadPlanHazmatActual(BaseModel):
+    """Collection of hazmat actuals associated with this load plan."""
+
     ashc: Optional[str] = None
     """
     The Air Special Handling Code (ASHC) indicates the type of special handling
@@ -98,6 +100,10 @@ class AirLoadPlanHazmatActual(BaseModel):
 
 
 class AirLoadPlanHr(BaseModel):
+    """
+    Collection of human remains transport information associated with this load plan.
+    """
+
     container: Optional[str] = None
     """Type of transfer case used."""
 
@@ -151,6 +157,10 @@ class AirLoadPlanHr(BaseModel):
 
 
 class AirLoadPlanPalletDetail(BaseModel):
+    """
+    Collection of cargo information located at the pallet positions associated with this load plan.
+    """
+
     category: Optional[str] = None
     """Category of special interest cargo."""
 
@@ -183,6 +193,10 @@ class AirLoadPlanPalletDetail(BaseModel):
 
 
 class AirLoadPlanPaxCargo(BaseModel):
+    """
+    Collection of passenger and cargo details associated with this load plan for this leg of the mission.
+    """
+
     amb_pax: Optional[int] = FieldInfo(alias="ambPax", default=None)
     """Number of ambulatory medical passengers in this group."""
 
@@ -233,6 +247,8 @@ class AirLoadPlanPaxCargo(BaseModel):
 
 
 class AirLoadPlanUlnActual(BaseModel):
+    """Collection of unit line number actuals associated with this load plan."""
+
     num_ambulatory: Optional[int] = FieldInfo(alias="numAmbulatory", default=None)
     """Number of ambulatory patients associated with this load plan."""
 
@@ -277,6 +293,10 @@ class AirLoadPlanUlnActual(BaseModel):
 
 
 class AirloadplanFull(BaseModel):
+    """
+    Information related to how an aircraft is loaded with cargo, equipment, and passengers.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

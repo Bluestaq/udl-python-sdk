@@ -17,6 +17,8 @@ class EmitterGeolocationUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Model representation of Emitter geolocation data for a signal of interest."""
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

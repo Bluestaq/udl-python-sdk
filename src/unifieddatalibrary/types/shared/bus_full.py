@@ -13,6 +13,10 @@ __all__ = ["BusFull"]
 
 
 class BusFull(BaseModel):
+    """
+    A bus is the physical and software infrastructure backbone to which on-orbit satellite payloads are attached for power, control, and other support functions.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

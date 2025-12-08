@@ -11,6 +11,8 @@ __all__ = ["LogisticsSegmentsFull"]
 
 
 class LogisticsSegmentsFull(BaseModel):
+    """Remarks associated with this LogisticsSupport record."""
+
     arrival_icao: Optional[str] = FieldInfo(alias="arrivalICAO", default=None)
     """Airport ICAO arrival code."""
 

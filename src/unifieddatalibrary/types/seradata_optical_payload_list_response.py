@@ -12,6 +12,8 @@ __all__ = ["SeradataOpticalPayloadListResponse"]
 
 
 class SeradataOpticalPayloadListResponse(BaseModel):
+    """Details for an optical payload from  Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

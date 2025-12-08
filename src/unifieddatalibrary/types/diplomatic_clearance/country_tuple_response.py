@@ -18,6 +18,8 @@ __all__ = [
 
 
 class CountryTupleResponseItemDiplomaticClearanceCountryContact(BaseModel):
+    """Collection of contact information for this country."""
+
     ah_num: Optional[str] = FieldInfo(alias="ahNum", default=None)
     """Phone number for this contact after regular business hours."""
 
@@ -62,6 +64,8 @@ class CountryTupleResponseItemDiplomaticClearanceCountryContact(BaseModel):
 
 
 class CountryTupleResponseItemDiplomaticClearanceCountryEntryExitPoint(BaseModel):
+    """Collection of entry and exit points for this country."""
+
     is_entry: Optional[bool] = FieldInfo(alias="isEntry", default=None)
     """Flag indicating whether this is a point of entry for this country."""
 
@@ -73,6 +77,8 @@ class CountryTupleResponseItemDiplomaticClearanceCountryEntryExitPoint(BaseModel
 
 
 class CountryTupleResponseItemDiplomaticClearanceCountryProfile(BaseModel):
+    """Collection of diplomatic clearance profile information for this country."""
+
     cargo_pax_remark: Optional[str] = FieldInfo(alias="cargoPaxRemark", default=None)
     """
     Remarks concerning aircraft cargo and passenger information for this country
@@ -350,6 +356,10 @@ class CountryTupleResponseItemDiplomaticClearanceCountryProfile(BaseModel):
 
 
 class CountryTupleResponseItem(BaseModel):
+    """
+    Diplomatic Clearance Country provides information such as entry/exit points, requirements, and points of contact for countries diplomatic clearances are being created for.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -12,6 +12,10 @@ __all__ = ["NavigationalObstructionGetResponse"]
 
 
 class NavigationalObstructionGetResponse(BaseModel):
+    """
+    Beta Version Navigational Obstruction: Information describing navigational obstructions, such as applicable boundaries, locations, heights, data ownership, and currency.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

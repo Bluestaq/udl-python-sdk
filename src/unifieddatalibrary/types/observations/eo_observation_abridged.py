@@ -12,6 +12,10 @@ __all__ = ["EoObservationAbridged"]
 
 
 class EoObservationAbridged(BaseModel):
+    """
+    Model representation of observation data for electro-optical based sensor phenomenologies. ECI J2K is the preferred reference frame for EOObservations, however, several user-specified reference frames are accommodated. Users should check the EOObservation record as well as the 'Discover' tab in the storefront to confirm the coordinate frames used by the data provider.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

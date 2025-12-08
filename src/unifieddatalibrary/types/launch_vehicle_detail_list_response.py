@@ -12,6 +12,10 @@ __all__ = ["LaunchVehicleDetailListResponse"]
 
 
 class LaunchVehicleDetailListResponse(BaseModel):
+    """
+    Model representation of launch vehicle details and characteristics, compiled by a particular source. A vehicle may have multiple details records from various sources.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -12,6 +12,8 @@ __all__ = ["SubstatusListResponse"]
 
 
 class SubstatusListResponse(BaseModel):
+    """Additional sub-system or capability status for the parent entity."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

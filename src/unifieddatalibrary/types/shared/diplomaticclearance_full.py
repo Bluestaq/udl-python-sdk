@@ -12,6 +12,8 @@ __all__ = ["DiplomaticclearanceFull", "DiplomaticClearanceDetail", "DiplomaticCl
 
 
 class DiplomaticClearanceDetail(BaseModel):
+    """Collection of diplomatic clearance details."""
+
     action: Optional[str] = None
     """The type of action the aircraft can take with this diplomatic clearance (e.g.
 
@@ -128,6 +130,8 @@ class DiplomaticClearanceDetail(BaseModel):
 
 
 class DiplomaticClearanceRemark(BaseModel):
+    """Collection of diplomatic clearance remarks."""
+
     date: Optional[datetime] = None
     """
     Date the remark was published, in ISO 8601 UTC format, with millisecond
@@ -145,6 +149,10 @@ class DiplomaticClearanceRemark(BaseModel):
 
 
 class DiplomaticclearanceFull(BaseModel):
+    """
+    A diplomatic clearance is an authorization for an aircraft to traverse or land within a specified country.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -13,6 +13,10 @@ __all__ = ["Ecpsdr"]
 
 
 class Ecpsdr(BaseModel):
+    """
+    Supports Sensor Data Records (SDR) from space-borne Energetic Charged Particle (ECP) Sensors.  SDR contains sensor status telemetry and raw dosimeter measurements of the space environment.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

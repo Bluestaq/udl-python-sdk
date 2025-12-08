@@ -12,6 +12,10 @@ __all__ = ["EventEvolutionListResponse"]
 
 
 class EventEvolutionListResponse(BaseModel):
+    """
+    Event Evolution is a unique service supporting the association of UDL records of various data types to a common event or activity. The associations may be a one time summary, aggregating sources of a past event, or of an ongoing activity that evolves over a period of time.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

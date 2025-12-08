@@ -24,6 +24,8 @@ __all__ = [
 
 
 class Amplifier(BaseModel):
+    """An RF Amplifier associated with an RF Emitter Details."""
+
     device_identifier: Optional[str] = FieldInfo(alias="deviceIdentifier", default=None)
     """The device identifier of the amplifier."""
 
@@ -38,6 +40,8 @@ class Amplifier(BaseModel):
 
 
 class AntennaFeed(BaseModel):
+    """An RF Antenna Feed associated with an RF Antenna."""
+
     freq_max: Optional[float] = FieldInfo(alias="freqMax", default=None)
     """Maximum frequency, in megahertz."""
 
@@ -55,6 +59,8 @@ class AntennaFeed(BaseModel):
 
 
 class AntennaReceiverChannel(BaseModel):
+    """An RF Antenna Receiver Channel associated with an RF Antenna."""
+
     bandwidth: Optional[float] = None
     """
     The receiver bandwidth, in megahertz, must satisfy the constraint: minBandwidth
@@ -90,6 +96,8 @@ class AntennaReceiverChannel(BaseModel):
 
 
 class AntennaTransmitChannel(BaseModel):
+    """An RF Antenna Transmit Channel associated with an RF Antenna."""
+
     power: float
     """Transmit power, in watts."""
 
@@ -149,6 +157,8 @@ class AntennaTransmitChannel(BaseModel):
 
 
 class Antenna(BaseModel):
+    """An RF Antenna associated with an RF Emitter Details."""
+
     antenna_diameter: Optional[float] = FieldInfo(alias="antennaDiameter", default=None)
     """For parabolic/dish antennas, the diameter of the antenna in meters."""
 
@@ -193,6 +203,8 @@ class Antenna(BaseModel):
 
 
 class PowerOffset(BaseModel):
+    """An RF Emitter Power Offset associated with an RF Emitter Details."""
+
     frequency_band: Optional[str] = FieldInfo(alias="frequencyBand", default=None)
     """The RF frequency band (e.g. HF, VHF, P, UHF, L, S, C, X, KU, K, KA, V, W, MM)."""
 
@@ -201,6 +213,8 @@ class PowerOffset(BaseModel):
 
 
 class Service(BaseModel):
+    """An RF Emitter SW Service associated with an RF Emitter Details."""
+
     name: Optional[str] = None
     """The name for this software service."""
 
@@ -209,6 +223,10 @@ class Service(BaseModel):
 
 
 class TtpTechniqueDefinitionParamDefinition(BaseModel):
+    """
+    An RF Emitter Technique Parameter Definition associated with an RF Emitter Technique Definition.
+    """
+
     default_value: Optional[str] = FieldInfo(alias="defaultValue", default=None)
     """Default parameter value used if not overridden in a SEW task definition."""
 
@@ -235,6 +253,8 @@ class TtpTechniqueDefinitionParamDefinition(BaseModel):
 
 
 class TtpTechniqueDefinition(BaseModel):
+    """An RF Emitter Technique Definition associated with an RF Emitter TTP."""
+
     name: Optional[str] = None
     """The EW Emitter system technique name."""
 
@@ -245,6 +265,8 @@ class TtpTechniqueDefinition(BaseModel):
 
 
 class Ttp(BaseModel):
+    """An RF Emitter TTP associated with an RF Emitter Details."""
+
     output_signal_name: Optional[str] = FieldInfo(alias="outputSignalName", default=None)
     """The name of the output signal."""
 
@@ -255,6 +277,11 @@ class Ttp(BaseModel):
 
 
 class DetailListResponse(BaseModel):
+    """Details for a particular RF Emitter, collected by a particular source.
+
+    An RF Emitter may have multiple details records from various sources.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

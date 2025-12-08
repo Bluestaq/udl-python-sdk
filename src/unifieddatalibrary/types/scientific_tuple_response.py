@@ -13,6 +13,8 @@ __all__ = ["ScientificTupleResponse", "ScientificTupleResponseItem"]
 
 
 class ScientificTupleResponseItem(BaseModel):
+    """Scientific or other data from Seradata."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

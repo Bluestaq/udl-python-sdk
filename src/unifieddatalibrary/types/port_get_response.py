@@ -12,6 +12,10 @@ __all__ = ["PortGetResponse"]
 
 
 class PortGetResponse(BaseModel):
+    """
+    Properties and characteristics of a maritime port, which includes location, port identifiers, and remarks.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

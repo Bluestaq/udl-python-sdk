@@ -12,6 +12,10 @@ __all__ = ["GnssRawIfGetResponse"]
 
 
 class GnssRawIfGetResponse(BaseModel):
+    """
+    Global Navigation Satellite System (GNSS) Raw Intermediate Frequency (IF) data are the recorded streams of raw signal samples after down-conversion of the received signal to IF and prior to any processing onboard the receiving spacecraft.  These data sets are processed in various geophysical applications and used to characterize Electromagnetic Interference (EMI) in the operating environment.
+    """
+
     center_freq: List[float] = FieldInfo(alias="centerFreq")
     """The center frequency, in MHz, of the observation bands.
 

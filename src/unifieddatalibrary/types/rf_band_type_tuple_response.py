@@ -12,6 +12,8 @@ __all__ = ["RfBandTypeTupleResponse", "RfBandTypeTupleResponseItem"]
 
 
 class RfBandTypeTupleResponseItem(BaseModel):
+    """This table contains descriptions for common satellite RF bands."""
+
     id: str
     """Unique identifier for the RF band (e.g. X, K, Ku, etc)."""
 

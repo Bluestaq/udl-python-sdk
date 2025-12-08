@@ -13,6 +13,11 @@ __all__ = ["SarObservationTupleResponse", "SarObservationTupleResponseItem"]
 
 
 class SarObservationTupleResponseItem(BaseModel):
+    """Model representation of observation data for SAR based sensor phenomenologies.
+
+    J2000 is the preferred coordinate frame for all observations, but in some cases observations may be in another frame depending on the provider. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

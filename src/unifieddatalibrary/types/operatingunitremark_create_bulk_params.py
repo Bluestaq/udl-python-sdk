@@ -15,6 +15,11 @@ class OperatingunitremarkCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Remarks contain amplifying information for a specific service.
+
+    The information may contain context and interpretations for consumer use.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

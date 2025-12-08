@@ -12,6 +12,10 @@ __all__ = ["HistoryListResponse"]
 
 
 class HistoryListResponse(BaseModel):
+    """
+    H3 Geospatial Binning is a discrete global grid system for indexing geographies into a hexagonal grid. The H3 schema is a collection of hexagonal cells that contain data for producing geospatial maps over a specified time span.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

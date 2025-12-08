@@ -17,6 +17,10 @@ class SgiUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Model representation of space weather/solar, geomagnetic, and radiation belt indices.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

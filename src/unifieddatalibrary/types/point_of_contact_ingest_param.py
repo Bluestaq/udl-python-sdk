@@ -10,6 +10,8 @@ __all__ = ["PointOfContactIngestParam"]
 
 
 class PointOfContactIngestParam(TypedDict, total=False):
+    """Point of contacts for scheduling or modifying the route."""
+
     office: str
     """Office name for which the contact belongs."""
 

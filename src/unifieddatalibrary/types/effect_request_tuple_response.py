@@ -12,6 +12,8 @@ __all__ = ["EffectRequestTupleResponse", "EffectRequestTupleResponseItem"]
 
 
 class EffectRequestTupleResponseItem(BaseModel):
+    """A request for various effects on a target."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

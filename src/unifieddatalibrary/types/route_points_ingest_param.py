@@ -10,6 +10,8 @@ __all__ = ["RoutePointsIngestParam"]
 
 
 class RoutePointsIngestParam(TypedDict, total=False):
+    """Points identified within the route."""
+
     alt_country_code: Annotated[str, PropertyInfo(alias="altCountryCode")]
     """
     Specifies an alternate country code if the data provider code is not part of an

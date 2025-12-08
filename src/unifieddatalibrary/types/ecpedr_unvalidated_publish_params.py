@@ -17,6 +17,8 @@ class EcpedrUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyEcpedrMeasurement(TypedDict, total=False):
+    """Collection of measurements associated with this ECP EDR record."""
+
     ob_type: Required[Annotated[str, PropertyInfo(alias="obType")]]
     """The type of observation associated with this record.
 
@@ -62,6 +64,8 @@ class BodyEcpedrMeasurement(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Energetic Charged Particles (ECP) Environmental Data Records (EDRs)."""
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

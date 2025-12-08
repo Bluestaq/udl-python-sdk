@@ -12,6 +12,10 @@ __all__ = ["DiffofarrivalAbridged"]
 
 
 class DiffofarrivalAbridged(BaseModel):
+    """
+    Model representation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

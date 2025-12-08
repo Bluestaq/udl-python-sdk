@@ -304,6 +304,8 @@ class CrewUpdateParams(TypedDict, total=False):
 
 
 class CrewMember(TypedDict, total=False):
+    """Schema for Crew Member data."""
+
     alerted: bool
     """
     Flag indicating whether this crew member has been alerted of the associated

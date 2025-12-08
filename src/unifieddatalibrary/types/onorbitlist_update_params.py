@@ -93,6 +93,8 @@ class OnorbitlistUpdateParams(TypedDict, total=False):
 
 
 class OnOrbitListItem(TypedDict, total=False):
+    """Items associated with this onOrbitList record."""
+
     clearing_box_cross_track: Annotated[float, PropertyInfo(alias="clearingBoxCrossTrack")]
     """
     Height of a box, in degrees, volume expected to be cleared by sensor providers,

@@ -12,6 +12,10 @@ __all__ = ["EquipmentAbridged"]
 
 
 class EquipmentAbridged(BaseModel):
+    """
+    Properties and characteristics of equipment that can be associated with a site or other entity.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

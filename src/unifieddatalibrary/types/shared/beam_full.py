@@ -13,6 +13,8 @@ __all__ = ["BeamFull"]
 
 
 class BeamFull(BaseModel):
+    """Describes a satellite antenna beam."""
+
     beam_name: str = FieldInfo(alias="beamName")
     """The antenna beam ID of the particular beam for this channel.
 

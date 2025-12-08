@@ -13,6 +13,11 @@ __all__ = ["CollectResponseFull"]
 
 
 class CollectResponseFull(BaseModel):
+    """Collect response supports the response and status of individual collect requests.
+
+    Each response is referenced by the UUID of the request, and contains information including the status of the request, collection times and types, and reference(s) to the observations collected. There may be multiple responses associated with a request, either from multiple collectors or to relay status changes prior to completion and delivery.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

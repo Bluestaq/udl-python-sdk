@@ -12,6 +12,10 @@ __all__ = ["LaseremitterListResponse"]
 
 
 class LaseremitterListResponse(BaseModel):
+    """
+    Model representation of a laser beam emitter/director which represents a source of directed energy.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

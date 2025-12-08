@@ -12,6 +12,10 @@ __all__ = ["SensorPlanListResponse"]
 
 
 class SensorPlanListResponse(BaseModel):
+    """
+    A Plan is used to aggregate two or more of the same type of record to a parent entity, with the planId (UUID) being included in all of the subordinate records, enabling resolution back to the parent.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -12,6 +12,10 @@ __all__ = ["AircraftsortieAbridged"]
 
 
 class AircraftsortieAbridged(BaseModel):
+    """
+    Information related to the planning, load, status, and deployment or dispatch of one aircraft to carry out a mission.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

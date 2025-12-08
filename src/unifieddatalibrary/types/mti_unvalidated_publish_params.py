@@ -28,6 +28,10 @@ class MtiUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyDwellD32(TypedDict, total=False):
+    """
+    A grouping of zero or more target reports for which the sensor provides a single time, sensor position, reference position on the ground with simple estimates for the observed area at the reported time, and other pertinent data.
+    """
+
     d32_1: int
     """Sequential count of this MTI report within the dwell."""
 
@@ -310,6 +314,10 @@ class BodyFreeText(TypedDict, total=False):
 
 
 class BodyHrrH32(TypedDict, total=False):
+    """
+    HRR Scatterer record for a target pixel that exceeds the target detection threshold.
+    """
+
     h32_1: int
     """Scatterer’s power magnitude."""
 
@@ -452,6 +460,10 @@ class BodyHrr(TypedDict, total=False):
 
 
 class BodyJobDef(TypedDict, total=False):
+    """
+    The means for the platform to pass information pertaining to the sensor job that will be performed and details of the location parameters (terrain elevation model and geoid model) used in the measurement.
+    """
+
     j1: int
     """
     A platform assigned number identifying the specific request or task to which the
@@ -799,6 +811,10 @@ class BodyPlatformLoc(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Information on the mission and flight plans, the type and configuration of the platform, and the reference time.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

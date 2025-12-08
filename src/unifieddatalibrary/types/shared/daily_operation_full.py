@@ -13,6 +13,10 @@ __all__ = ["DailyOperationFull"]
 
 
 class DailyOperationFull(BaseModel):
+    """
+    Collection providing hours of operation and other information specific to a day of the week.
+    """
+
     day_of_week: Optional[Literal["MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]] = (
         FieldInfo(alias="dayOfWeek", default=None)
     )

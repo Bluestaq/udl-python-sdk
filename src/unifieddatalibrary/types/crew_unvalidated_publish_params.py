@@ -17,6 +17,8 @@ class CrewUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyCrewMember(TypedDict, total=False):
+    """Schema for Crew Member data."""
+
     alerted: bool
     """
     Flag indicating whether this crew member has been alerted of the associated
@@ -331,6 +333,8 @@ class BodyCrewMember(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Crew Services."""
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

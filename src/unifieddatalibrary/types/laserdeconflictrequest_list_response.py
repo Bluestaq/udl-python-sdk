@@ -29,6 +29,10 @@ class FixedPoint(BaseModel):
 
 
 class LaserdeconflictrequestListResponse(BaseModel):
+    """
+    The LaserDeconflictionRequest service is designed to process and manage requests related to the safe operation of high-powered lasers, ensuring that laser systems do not interfere with other critical operations, such as satellite based activities. The service facilitates real-time coordination between different entities to prevent accidental exposure to laser hazards, ensuring compliance with safety protocols and regulations.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

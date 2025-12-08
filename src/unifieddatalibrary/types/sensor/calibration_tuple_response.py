@@ -12,6 +12,10 @@ __all__ = ["CalibrationTupleResponse", "CalibrationTupleResponseItem"]
 
 
 class CalibrationTupleResponseItem(BaseModel):
+    """
+    The Sensor Calibration service records data about a sensor's overall accuracy and is used to adjust sensor settings to achieve and maintain that accuracy in reported sensor observations. Calibration occurs periodically when needed to maintain sensor accuracy or on-demand to adjust a sensor for a specific reading.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

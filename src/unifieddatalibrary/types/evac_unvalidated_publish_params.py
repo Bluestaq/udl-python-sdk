@@ -412,6 +412,11 @@ class BodyEnemyData(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Casualty report and evacuation request.
+
+    Used to report and request support to evacuate friendly and enemy casualties.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

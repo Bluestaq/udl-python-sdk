@@ -98,6 +98,8 @@ class DiplomaticClearanceCreateParams(TypedDict, total=False):
 
 
 class DiplomaticClearanceDetail(TypedDict, total=False):
+    """Collection of diplomatic clearance details."""
+
     action: str
     """The type of action the aircraft can take with this diplomatic clearance (e.g.
 
@@ -214,6 +216,8 @@ class DiplomaticClearanceDetail(TypedDict, total=False):
 
 
 class DiplomaticClearanceRemark(TypedDict, total=False):
+    """Collection of diplomatic clearance remarks."""
+
     date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Date the remark was published, in ISO 8601 UTC format, with millisecond

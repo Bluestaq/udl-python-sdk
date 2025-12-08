@@ -120,6 +120,8 @@ class EntityUpdateParams(TypedDict, total=False):
 
 
 class OnOrbit(TypedDict, total=False):
+    """Model object representing on-orbit objects or satellites in the system."""
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

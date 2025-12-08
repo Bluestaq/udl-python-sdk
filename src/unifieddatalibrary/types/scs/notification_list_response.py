@@ -11,6 +11,8 @@ __all__ = ["NotificationListResponse"]
 
 
 class NotificationListResponse(BaseModel):
+    """SCS Event Notification"""
+
     actions: Optional[
         List[
             Literal[

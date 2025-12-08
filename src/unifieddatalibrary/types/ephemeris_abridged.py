@@ -12,6 +12,10 @@ __all__ = ["EphemerisAbridged"]
 
 
 class EphemerisAbridged(BaseModel):
+    """
+    An ephemeris record is a position and velocity vector identifying the location and trajectory of an on-orbit object at a specified time. Ephemeris points, including covariance, are in kilometer and second based units in a user specified reference frame, with ECI J2K being preferred. The EphemerisSet ID (esId) links all points associated with an ephemeris set. The 'EphemerisSet' record contains details of the underlying data and propagation models used in the generation of the ephemeris. Ephemeris points must be retrieved by specifying the parent EphemerisSet ID (esId).
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

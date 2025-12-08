@@ -85,6 +85,8 @@ class BodyAzimuth(TypedDict, total=False):
 
 
 class BodyCharAtt(TypedDict, total=False):
+    """Characteristic attributes of a IonoObservation."""
+
     char_name: Annotated[str, PropertyInfo(alias="charName")]
     """Characteristic name.
 
@@ -151,6 +153,8 @@ class BodyDatum(TypedDict, total=False):
 
 
 class BodyDensityProfileIri(TypedDict, total=False):
+    """Full set of the IRI formalism coefficients."""
+
     b0: float
     """B0 parameter of the F2 layer shape."""
 
@@ -222,6 +226,8 @@ class BodyDensityProfileIri(TypedDict, total=False):
 
 
 class BodyDensityProfileParabolicParabolicItem(TypedDict, total=False):
+    """Describes the E, F1, and F2 layers as parabolic-shape segments."""
+
     f: float
     """Plasma frequency at the layer peak, in MHz."""
 
@@ -236,6 +242,8 @@ class BodyDensityProfileParabolicParabolicItem(TypedDict, total=False):
 
 
 class BodyDensityProfileParabolic(TypedDict, total=False):
+    """Coefficients to describe the E, F1, and F2 layers as parabolic-shape segments."""
+
     description: str
     """General description of the QP computation algorithm."""
 
@@ -244,6 +252,10 @@ class BodyDensityProfileParabolic(TypedDict, total=False):
 
 
 class BodyDensityProfileQuasiParabolicQuasiParabolicSegment(TypedDict, total=False):
+    """
+    A quasi-parabolic segment is the best-fit 3-parameter quasi-parabolas defined via A, B, C coefficients, f^2=A/r^2+B/r+C”. Usually 3 groups for E, F1, and F2 layers, but additional segments may be used to improve accuracy.
+    """
+
     a: float
     """Coefficient A."""
 
@@ -267,6 +279,8 @@ class BodyDensityProfileQuasiParabolicQuasiParabolicSegment(TypedDict, total=Fal
 
 
 class BodyDensityProfileQuasiParabolic(TypedDict, total=False):
+    """Coefficients to describe profile shape as quasi-parabolic segments."""
+
     description: str
     """General description of the quasi-parabolic computation algorithm."""
 
@@ -285,6 +299,10 @@ class BodyDensityProfileQuasiParabolic(TypedDict, total=False):
 
 
 class BodyDensityProfileShiftedChebyshevShiftedChebyshev(TypedDict, total=False):
+    """
+    Coefficients, using ‘shiftedChebyshev’ sub-field, to describe E, F1, and bottomside F2 profile shapes, or height uncertainty boundaries (upper and lower).
+    """
+
     coeffs: Iterable[float]
     """Array of coefficients."""
 
@@ -311,6 +329,10 @@ class BodyDensityProfileShiftedChebyshevShiftedChebyshev(TypedDict, total=False)
 
 
 class BodyDensityProfileShiftedChebyshev(TypedDict, total=False):
+    """
+    Coefficients to describe either the E, F1, and bottomside F2 profile shapes or the height uncertainty boundaries.
+    """
+
     description: str
     """Description of the computation technique."""
 
@@ -325,6 +347,8 @@ class BodyDensityProfileShiftedChebyshev(TypedDict, total=False):
 
 
 class BodyDensityProfileTopsideExtensionChapmanConst(TypedDict, total=False):
+    """Parameters of the constant-scale-height Chapman layer."""
+
     chi: float
     """
     Peak Density Thickness (PDT) for description of the flat-nose shape, in
@@ -345,6 +369,8 @@ class BodyDensityProfileTopsideExtensionChapmanConst(TypedDict, total=False):
 
 
 class BodyDensityProfileTopsideExtensionVaryChap(TypedDict, total=False):
+    """Varying scale height Chapman topside layer."""
+
     alpha: float
     """Alpha parameter of the profile shape."""
 
@@ -374,6 +400,10 @@ class BodyDensityProfileTopsideExtensionVaryChap(TypedDict, total=False):
 
 
 class BodyDensityProfile(TypedDict, total=False):
+    """
+    Profile of electron densities in the ionosphere associated with an IonoObservation.
+    """
+
     iri: BodyDensityProfileIri
     """Full set of the IRI formalism coefficients."""
 
@@ -509,6 +539,10 @@ class BodyRange(TypedDict, total=False):
 
 
 class BodyScalerInfo(TypedDict, total=False):
+    """
+    The ScalerInfo record describes the person or system who interpreted the ionogram in IonoObservation.
+    """
+
     confidence_level: Annotated[int, PropertyInfo(alias="confidenceLevel")]
     """Scaler confidence level."""
 
@@ -578,6 +612,10 @@ class BodyTraceGeneric(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    These services provide operations for posting and querying ionospheric observation data. Characteristics are defined by the CHARS: URSI IIWG format for archiving monthly ionospheric characteristics, INAG Bulletin No. 62 specification. Qualifying and Descriptive letters are defined by the URSI Handbook for Ionogram Interpretation and reduction, Report UAG, No. 23A specification.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

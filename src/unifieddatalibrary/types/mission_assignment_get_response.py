@@ -12,6 +12,8 @@ __all__ = ["MissionAssignmentGetResponse"]
 
 
 class MissionAssignmentGetResponse(BaseModel):
+    """Platform mission assignment data."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

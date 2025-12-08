@@ -91,6 +91,10 @@ class UdlH3geoUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Cell(TypedDict, total=False):
+    """
+    Model representation of a hex cell array containing data for a set of observations.
+    """
+
     cell_id: Required[Annotated[str, PropertyInfo(alias="cellId")]]
     """The H3 index represented as a 16 character hexadecimal string."""
 

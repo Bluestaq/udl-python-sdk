@@ -11,6 +11,11 @@ __all__ = ["StagingRetrieveResponse"]
 
 
 class StagingRetrieveResponse(BaseModel):
+    """Model representation of a nominal RF emitter.
+
+    This entity contains minimal information used to stage RF emitter entities.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

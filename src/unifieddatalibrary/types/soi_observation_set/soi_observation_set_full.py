@@ -12,6 +12,8 @@ __all__ = ["SoiObservationSetFull", "Calibration", "OpticalSoiObservationList", 
 
 
 class Calibration(BaseModel):
+    """Schema for SOI Calibration data."""
+
     cal_bg_intensity: Optional[float] = FieldInfo(alias="calBgIntensity", default=None)
     """
     Background intensity, at calibration, specified in kilowatts per steradian per
@@ -74,6 +76,10 @@ class Calibration(BaseModel):
 
 
 class OpticalSoiObservationList(BaseModel):
+    """
+    An Optical SOI record contains observation information taken from a sensor about a Space Object.
+    """
+
     ob_start_time: datetime = FieldInfo(alias="obStartTime")
     """Observation detection start time in ISO 8601 UTC with microsecond precision."""
 
@@ -190,6 +196,10 @@ class OpticalSoiObservationList(BaseModel):
 
 
 class RadarSoiObservationList(BaseModel):
+    """
+    A Radar SOI record contains observation information taken from a sensor about a Space Object.
+    """
+
     ob_start_time: datetime = FieldInfo(alias="obStartTime")
     """
     Observation detection start time in ISO 8601 UTC format with microsecond
@@ -455,6 +465,10 @@ class RadarSoiObservationList(BaseModel):
 
 
 class SoiObservationSetFull(BaseModel):
+    """
+    These services provide operations for posting space object identification observation sets.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

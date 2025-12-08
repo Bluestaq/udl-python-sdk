@@ -12,6 +12,8 @@ __all__ = ["SeradataSpacecraftDetailListResponse"]
 
 
 class SeradataSpacecraftDetailListResponse(BaseModel):
+    """On-orbit spacecraft details compiled by Seradata for a particular satellite."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

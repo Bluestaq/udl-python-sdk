@@ -395,6 +395,8 @@ class SoiObservationSetCreateParams(TypedDict, total=False):
 
 
 class Calibration(TypedDict, total=False):
+    """Schema for SOI Calibration data."""
+
     cal_bg_intensity: Annotated[float, PropertyInfo(alias="calBgIntensity")]
     """
     Background intensity, at calibration, specified in kilowatts per steradian per
@@ -457,6 +459,10 @@ class Calibration(TypedDict, total=False):
 
 
 class OpticalSoiObservationList(TypedDict, total=False):
+    """
+    An Optical SOI record contains observation information taken from a sensor about a Space Object.
+    """
+
     ob_start_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="obStartTime", format="iso8601")]]
     """Observation detection start time in ISO 8601 UTC with microsecond precision."""
 
@@ -575,6 +581,10 @@ class OpticalSoiObservationList(TypedDict, total=False):
 
 
 class RadarSoiObservationList(TypedDict, total=False):
+    """
+    A Radar SOI record contains observation information taken from a sensor about a Space Object.
+    """
+
     ob_start_time: Required[Annotated[Union[str, datetime], PropertyInfo(alias="obStartTime", format="iso8601")]]
     """
     Observation detection start time in ISO 8601 UTC format with microsecond

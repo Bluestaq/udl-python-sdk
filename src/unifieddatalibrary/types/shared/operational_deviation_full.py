@@ -11,6 +11,10 @@ __all__ = ["OperationalDeviationFull"]
 
 
 class OperationalDeviationFull(BaseModel):
+    """
+    Collection providing relevant information in the event of deviations/exceptions to normal operations.
+    """
+
     affected_aircraft_mds: Optional[str] = FieldInfo(alias="affectedAircraftMDS", default=None)
     """
     The Model Design Series (MDS) designation of the aircraft affected by this

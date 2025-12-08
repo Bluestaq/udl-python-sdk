@@ -22,6 +22,10 @@ __all__ = [
 
 
 class MultiDutyMultiDutyVoiceCoord(BaseModel):
+    """
+    Collection of information regarding the function, frequency, and priority of interface control and coordination nets for multilink coordination. There can be 0 to many DataLinkMultiVoiceCoord collections within a DataLinkMultiDuty collection.
+    """
+
     multi_comm_pri: Optional[str] = FieldInfo(alias="multiCommPri", default=None)
     """
     Priority of a communication circuit, channel or frequency for multilink
@@ -48,6 +52,10 @@ class MultiDutyMultiDutyVoiceCoord(BaseModel):
 
 
 class MultiDuty(BaseModel):
+    """
+    Collection of contact and identification information for designated multilink coordinator duty assignments. There can be 0 to many DataLinkMultiDuty collections within the datalink service.
+    """
+
     duty: Optional[str] = None
     """Specific duties assigned for multilink coordination (e.g. ICO, RICO, SICO)."""
 
@@ -81,6 +89,10 @@ class MultiDuty(BaseModel):
 
 
 class Op(BaseModel):
+    """
+    Collection of information describing the establishment and detailed operation of tactical data links. There can be 0 to many DataLinkOps collections within the datalink service.
+    """
+
     link_details: Optional[str] = FieldInfo(alias="linkDetails", default=None)
     """Detailed characteristics of the data link."""
 
@@ -108,6 +120,11 @@ class Op(BaseModel):
 
 
 class Reference(BaseModel):
+    """Collection of reference information.
+
+    There can be 0 to many DataLinkReferences collections within the datalink service.
+    """
+
     ref_originator: Optional[str] = FieldInfo(alias="refOriginator", default=None)
     """The originator of this reference."""
 
@@ -143,6 +160,10 @@ class Reference(BaseModel):
 
 
 class RefPoint(BaseModel):
+    """
+    Collection that identifies points of reference used in the establishment of the data links. There can be 1 to many DataLinkRefPoints collections within the datalink service.
+    """
+
     eff_event_time: Optional[datetime] = FieldInfo(alias="effEventTime", default=None)
     """
     Indicates when a particular event or nickname becomes effective or the old event
@@ -172,6 +193,8 @@ class RefPoint(BaseModel):
 
 
 class Remark(BaseModel):
+    """Collection of remarks associated with this data link message."""
+
     text: Optional[str] = None
     """Text of the remark."""
 
@@ -180,6 +203,11 @@ class Remark(BaseModel):
 
 
 class SpecTrack(BaseModel):
+    """Collection of special track numbers used on the data links.
+
+    There can be 0 to many DataLinkSpecTracks collections within the datalink service.
+    """
+
     spec_track_num: Optional[str] = FieldInfo(alias="specTrackNum", default=None)
     """
     The special track number used on the data link entered as an octal reference
@@ -193,6 +221,10 @@ class SpecTrack(BaseModel):
 
 
 class VoiceCoord(BaseModel):
+    """
+    Collection of information regarding the function, frequency, and priority of interface control and coordination nets for this data link message. There can be 1 to many DataLinkVoiceCoord collections within the datalink service.
+    """
+
     comm_pri: Optional[str] = FieldInfo(alias="commPri", default=None)
     """
     Priority of a communication circuit, channel or frequency for this data link
@@ -219,6 +251,10 @@ class VoiceCoord(BaseModel):
 
 
 class DatalinkListResponse(BaseModel):
+    """
+    Beta Version DataLink: Detailed instructions regarding the operations of data links.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

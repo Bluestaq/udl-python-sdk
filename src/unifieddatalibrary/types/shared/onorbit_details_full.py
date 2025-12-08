@@ -12,6 +12,8 @@ __all__ = ["OnorbitDetailsFull"]
 
 
 class OnorbitDetailsFull(BaseModel):
+    """Contains details of the OnOrbit object."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

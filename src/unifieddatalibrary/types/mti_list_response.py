@@ -23,6 +23,10 @@ __all__ = [
 
 
 class DwellD32(BaseModel):
+    """
+    A grouping of zero or more target reports for which the sensor provides a single time, sensor position, reference position on the ground with simple estimates for the observed area at the reported time, and other pertinent data.
+    """
+
     d32_1: Optional[int] = None
     """Sequential count of this MTI report within the dwell."""
 
@@ -305,6 +309,10 @@ class FreeText(BaseModel):
 
 
 class HrrH32(BaseModel):
+    """
+    HRR Scatterer record for a target pixel that exceeds the target detection threshold.
+    """
+
     h32_1: Optional[int] = None
     """Scatterer’s power magnitude."""
 
@@ -447,6 +455,10 @@ class Hrr(BaseModel):
 
 
 class JobDef(BaseModel):
+    """
+    The means for the platform to pass information pertaining to the sensor job that will be performed and details of the location parameters (terrain elevation model and geoid model) used in the measurement.
+    """
+
     j10: Optional[float] = None
     """
     North-South position of the third corner (Point C) defining the area for sensor
@@ -788,6 +800,10 @@ class PlatformLoc(BaseModel):
 
 
 class MtiListResponse(BaseModel):
+    """
+    Information on the mission and flight plans, the type and configuration of the platform, and the reference time.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

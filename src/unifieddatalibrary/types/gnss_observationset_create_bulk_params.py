@@ -17,6 +17,10 @@ class GnssObservationsetCreateBulkParams(TypedDict, total=False):
 
 
 class BodyGnssObservationList(TypedDict, total=False):
+    """
+    Information for Global Navigation Satellite Systems (GNSS) Observations collected from GNSS receivers, including the specific GNSS sat from which each signal was received, and the observation codes of each observation in the record. Each GNSS Observation is associated with a GNSS Observation Set record containing data which applies to all observations in the set, including observation time, receiver location, and Dilution of Precision (DOP) values. Users can Reference RINEX 3+ documentation for further information concerning many of the standards and conventions for GNSS observations.
+    """
+
     agc_state: Annotated[int, PropertyInfo(alias="agcState")]
     """GNSS Automatic Gain Control State."""
 
@@ -64,6 +68,8 @@ class BodyGnssObservationList(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Set of GNSSObservation data."""
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

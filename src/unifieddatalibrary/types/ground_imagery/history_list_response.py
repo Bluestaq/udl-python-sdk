@@ -12,6 +12,8 @@ __all__ = ["HistoryListResponse"]
 
 
 class HistoryListResponse(BaseModel):
+    """Imagery of terrestrial regions from on-orbit, air, and other sensors."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

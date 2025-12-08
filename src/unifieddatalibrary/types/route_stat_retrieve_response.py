@@ -12,6 +12,10 @@ __all__ = ["RouteStatRetrieveResponse"]
 
 
 class RouteStatRetrieveResponse(BaseModel):
+    """
+    General statistics applying to navigation routes utilized by vessels, aircraft, ground vehicles, etc.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

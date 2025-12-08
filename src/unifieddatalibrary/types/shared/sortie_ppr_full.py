@@ -12,6 +12,10 @@ __all__ = ["SortiePprFull"]
 
 
 class SortiePprFull(BaseModel):
+    """
+    SortiePPR is a regulatory requirement where operators must obtain permissions to full operational access to a runway, taxiway, or airport service.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

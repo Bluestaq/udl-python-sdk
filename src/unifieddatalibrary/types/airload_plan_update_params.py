@@ -350,6 +350,8 @@ class AirloadPlanUpdateParams(TypedDict, total=False):
 
 
 class AirLoadPlanHazmatActual(TypedDict, total=False):
+    """Collection of hazmat actuals associated with this load plan."""
+
     ashc: str
     """
     The Air Special Handling Code (ASHC) indicates the type of special handling
@@ -429,6 +431,10 @@ class AirLoadPlanHazmatActual(TypedDict, total=False):
 
 
 class AirLoadPlanHr(TypedDict, total=False):
+    """
+    Collection of human remains transport information associated with this load plan.
+    """
+
     container: str
     """Type of transfer case used."""
 
@@ -482,6 +488,10 @@ class AirLoadPlanHr(TypedDict, total=False):
 
 
 class AirLoadPlanPalletDetail(TypedDict, total=False):
+    """
+    Collection of cargo information located at the pallet positions associated with this load plan.
+    """
+
     category: str
     """Category of special interest cargo."""
 
@@ -514,6 +524,10 @@ class AirLoadPlanPalletDetail(TypedDict, total=False):
 
 
 class AirLoadPlanPaxCargo(TypedDict, total=False):
+    """
+    Collection of passenger and cargo details associated with this load plan for this leg of the mission.
+    """
+
     amb_pax: Annotated[int, PropertyInfo(alias="ambPax")]
     """Number of ambulatory medical passengers in this group."""
 
@@ -564,6 +578,8 @@ class AirLoadPlanPaxCargo(TypedDict, total=False):
 
 
 class AirLoadPlanUlnActual(TypedDict, total=False):
+    """Collection of unit line number actuals associated with this load plan."""
+
     num_ambulatory: Annotated[int, PropertyInfo(alias="numAmbulatory")]
     """Number of ambulatory patients associated with this load plan."""
 

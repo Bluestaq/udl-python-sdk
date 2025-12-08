@@ -12,6 +12,8 @@ __all__ = ["MissileTrackListResponse", "Vector"]
 
 
 class Vector(BaseModel):
+    """Schema for Missile Track Vector data."""
+
     epoch: datetime
     """Vector timestamp in ISO8601 UTC format, with microsecond precision."""
 
@@ -175,6 +177,10 @@ class Vector(BaseModel):
 
 
 class MissileTrackListResponse(BaseModel):
+    """
+    These services provide operations for querying of all available missile track details and amplifying missile data. A missile track is a position and optionally a heading/velocity of an object across all environments at a particular timestamp. It also includes optional information regarding the identity/type of missile, impact location, launch location and other amplifying object data, if known.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

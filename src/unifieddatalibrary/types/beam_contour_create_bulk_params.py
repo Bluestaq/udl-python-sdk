@@ -15,6 +15,11 @@ class BeamContourCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Describes the beam contour associated with a beam entity.
+
+    Beam contours are the geographic representation of the relative gain levels of beam power off of the maximum gain boresight points.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -12,6 +12,10 @@ __all__ = ["ConjunctionAbridged", "StateVector1", "StateVector2"]
 
 
 class StateVector1(BaseModel):
+    """
+    This service provides operations for querying and manipulation of state vectors for OnOrbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that, together with their time (epoch) (t), uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -622,6 +626,10 @@ class StateVector1(BaseModel):
 
 
 class StateVector2(BaseModel):
+    """
+    This service provides operations for querying and manipulation of state vectors for OnOrbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that, together with their time (epoch) (t), uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1232,6 +1240,8 @@ class StateVector2(BaseModel):
 
 
 class ConjunctionAbridged(BaseModel):
+    """Stores the results of a particular Conjunction Assessment (CA) run."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

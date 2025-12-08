@@ -16,6 +16,10 @@ __all__ = [
 
 
 class CloselyspacedobjectTupleResponseItemCsoDetail(BaseModel):
+    """
+    A collection of orbital metrics for the event at the start and end times, and the mean values of the primary and secondary objects, as well as the deltas between the primary and secondary objects.
+    """
+
     object_event: str = FieldInfo(alias="objectEvent")
     """The type of object event the metrics apply. Values consist of START, END, MEAN."""
 
@@ -68,6 +72,10 @@ class CloselyspacedobjectTupleResponseItemCsoDetail(BaseModel):
 
 
 class CloselyspacedobjectTupleResponseItem(BaseModel):
+    """
+    This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -13,6 +13,8 @@ __all__ = ["LaunchEventTupleResponse", "LaunchEventTupleResponseItem"]
 
 
 class LaunchEventTupleResponseItem(BaseModel):
+    """Information on known launch events."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

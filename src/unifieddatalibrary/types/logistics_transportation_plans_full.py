@@ -13,6 +13,10 @@ __all__ = ["LogisticsTransportationPlansFull"]
 
 
 class LogisticsTransportationPlansFull(BaseModel):
+    """
+    Transportation plans associated with this LogisticsSupport record, used to coordinate maintenance efforts.
+    """
+
     act_dep_time: Optional[datetime] = FieldInfo(alias="actDepTime", default=None)
     """
     Actual time of departure of first segment, in ISO 8601 UTC format with

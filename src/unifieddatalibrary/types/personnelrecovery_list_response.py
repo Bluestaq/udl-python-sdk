@@ -134,6 +134,10 @@ class ObjectiveAreaInfo(BaseModel):
 
 
 class PersonnelrecoveryListResponse(BaseModel):
+    """
+    Provides information concerning search and rescue operations and other situations involving personnel recovery.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

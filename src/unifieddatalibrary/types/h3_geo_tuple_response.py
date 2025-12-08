@@ -12,6 +12,10 @@ __all__ = ["H3GeoTupleResponse", "H3GeoTupleResponseItem", "H3GeoTupleResponseIt
 
 
 class H3GeoTupleResponseItemCell(BaseModel):
+    """
+    Model representation of a hex cell array containing data for a set of observations.
+    """
+
     cell_id: str = FieldInfo(alias="cellId")
     """The H3 index represented as a 16 character hexadecimal string."""
 
@@ -142,6 +146,10 @@ class H3GeoTupleResponseItemCell(BaseModel):
 
 
 class H3GeoTupleResponseItem(BaseModel):
+    """
+    H3 Geospatial Binning is a discrete global grid system for indexing geographies into a hexagonal grid. The H3 schema is a collection of hexagonal cells that contain data for producing geospatial maps over a specified time span.
+    """
+
     cells: List[H3GeoTupleResponseItemCell]
     """The collection of hex cells contained in this H3 data set.
 

@@ -12,6 +12,10 @@ __all__ = ["PoiGetResponse"]
 
 
 class PoiGetResponse(BaseModel):
+    """
+    A Point of Interest is loosely based on the MITRE CoT (Cursor on Target) schema (https://www.mitre.org/publications/technical-papers/cursorontarget-message-router-users-guide) and provides a simple way to specify a point on the earth for a variety of purposes (tasking, targeting, etc).
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

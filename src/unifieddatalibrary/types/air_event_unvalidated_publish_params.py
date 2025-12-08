@@ -16,6 +16,8 @@ class AirEventUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyReceiver(TypedDict, total=False):
+    """Collection of receiver aircraft associated with this Air Event."""
+
     alt_receiver_mission_id: Annotated[str, PropertyInfo(alias="altReceiverMissionId")]
     """Alternate mission identifier of this receiver provided by source."""
 
@@ -108,6 +110,8 @@ class BodyReceiver(TypedDict, total=False):
 
 
 class BodyRemark(TypedDict, total=False):
+    """Collection of remarks associated with this Air Event."""
+
     date: Annotated[Union[str, datetime], PropertyInfo(format="iso8601")]
     """
     Date the remark was published, in ISO 8601 UTC format, with millisecond
@@ -129,6 +133,8 @@ class BodyRemark(TypedDict, total=False):
 
 
 class BodyTanker(TypedDict, total=False):
+    """Collection of tanker aircraft associated with this Air Event."""
+
     alt_tanker_mission_id: Annotated[str, PropertyInfo(alias="altTankerMissionId")]
     """Alternate mission identifier of this tanker provided by source."""
 
@@ -203,6 +209,11 @@ class BodyTanker(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """Information related to an air event (e.g.
+
+    FUEL TRANSFER, AIR DROP) and the associated aircraft.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

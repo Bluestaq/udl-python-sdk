@@ -17,6 +17,10 @@ class NavigationalObstructionCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Beta Version Navigational Obstruction: Information describing navigational obstructions, such as applicable boundaries, locations, heights, data ownership, and currency.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

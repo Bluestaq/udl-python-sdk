@@ -10,6 +10,8 @@ __all__ = ["SubStatusIngest"]
 
 
 class SubStatusIngest(TypedDict, total=False):
+    """Additional sub-system or capability status for the parent entity."""
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

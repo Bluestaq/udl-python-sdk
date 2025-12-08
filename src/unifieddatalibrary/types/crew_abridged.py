@@ -12,6 +12,8 @@ __all__ = ["CrewAbridged", "CrewMember"]
 
 
 class CrewMember(BaseModel):
+    """Schema for Crew Member data."""
+
     alerted: Optional[bool] = None
     """
     Flag indicating whether this crew member has been alerted of the associated
@@ -320,6 +322,8 @@ class CrewMember(BaseModel):
 
 
 class CrewAbridged(BaseModel):
+    """Crew Services."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

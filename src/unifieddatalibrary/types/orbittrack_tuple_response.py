@@ -13,6 +13,8 @@ __all__ = ["OrbittrackTupleResponse", "OrbittrackTupleResponseItem", "Orbittrack
 
 
 class OrbittrackTupleResponseItemTrackSensor(BaseModel):
+    """Schema for Track Sensor data."""
+
     az: float
     """The observing sensor azimuth angle, in degrees and topocentric frame."""
 
@@ -46,6 +48,10 @@ class OrbittrackTupleResponseItemTrackSensor(BaseModel):
 
 
 class OrbittrackTupleResponseItem(BaseModel):
+    """
+    Keplerian orbital elements describing an orbit for a particular on-orbit satellite and applicable sensor data aiding in the orbit prediction.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -18,6 +18,10 @@ __all__ = ["OperationRetrieveResponse"]
 
 
 class OperationRetrieveResponse(BaseModel):
+    """
+    Site operating details concerning the hours of operation, operational limitations, site navigation, and waivers associated with the Site.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

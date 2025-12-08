@@ -13,6 +13,10 @@ __all__ = ["HistoryListResponse"]
 
 
 class HistoryListResponse(BaseModel):
+    """
+    The EMI Report service supports the reporting, response, and resolution/mitigation for spectrum interference, and provides details regarding electromagnetic interference (EMI) detection, characterization, reporting, identification, geo-location, and resolution data for space-based and terrestrial systems.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

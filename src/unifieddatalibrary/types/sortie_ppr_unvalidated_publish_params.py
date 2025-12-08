@@ -16,6 +16,10 @@ class SortiePprUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    SortiePPR is a regulatory requirement where operators must obtain permissions to full operational access to a runway, taxiway, or airport service.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

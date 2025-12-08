@@ -12,6 +12,8 @@ __all__ = ["OnorbitlistTupleResponse", "OnorbitlistTupleResponseItem", "Onorbitl
 
 
 class OnorbitlistTupleResponseItemOnOrbitListItem(BaseModel):
+    """Items associated with this onOrbitList record."""
+
     clearing_box_cross_track: Optional[float] = FieldInfo(alias="clearingBoxCrossTrack", default=None)
     """
     Height of a box, in degrees, volume expected to be cleared by sensor providers,
@@ -108,6 +110,11 @@ class OnorbitlistTupleResponseItemOnOrbitListItem(BaseModel):
 
 
 class OnorbitlistTupleResponseItem(BaseModel):
+    """Table for maintaining generic lists of OnOrbit objects (e.g.
+
+    Favorites, HIO, SHIO, HVA, etc).
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

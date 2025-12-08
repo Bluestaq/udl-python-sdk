@@ -42,6 +42,10 @@ class BodyRelatedDoc(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Provides information on the dates, actors, locations, fatalities, and types of all reported political violence and protest events across the world.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -12,6 +12,11 @@ __all__ = ["SiteRemarkGetResponse"]
 
 
 class SiteRemarkGetResponse(BaseModel):
+    """Remarks contain amplifying information for a specific service.
+
+    The information may contain context and interpretations for consumer use.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

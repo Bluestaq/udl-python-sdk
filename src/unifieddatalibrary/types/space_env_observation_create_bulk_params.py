@@ -17,6 +17,8 @@ class SpaceEnvObservationCreateBulkParams(TypedDict, total=False):
 
 
 class BodySeoList(TypedDict, total=False):
+    """A single space environment observation."""
+
     ob_type: Required[Annotated[str, PropertyInfo(alias="obType")]]
     """The type of observation associated with this record."""
 
@@ -79,6 +81,8 @@ class BodySeoList(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """SpaceEnvObservation data."""
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

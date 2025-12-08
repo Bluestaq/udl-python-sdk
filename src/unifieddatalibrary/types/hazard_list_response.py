@@ -12,6 +12,10 @@ __all__ = ["HazardListResponse"]
 
 
 class HazardListResponse(BaseModel):
+    """
+    Hazard contains information concerning the exposure of a geographic area to a Chemical, Biological, Radiological, or Nuclear (CBRN) contaminant. The Hazard schema includes the detection time and type of contamination as well as optional information regarding specific material properties, the extent of contamination, and identification of affected regions.
+    """
+
     alarms: List[str]
     """Array of the specific alarms associated with this detection.
 

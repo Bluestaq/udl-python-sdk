@@ -17,6 +17,10 @@ class EmireportUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    The EMI Report service supports the reporting, response, and resolution/mitigation for spectrum interference, and provides details regarding electromagnetic interference (EMI) detection, characterization, reporting, identification, geo-location, and resolution data for space-based and terrestrial systems.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

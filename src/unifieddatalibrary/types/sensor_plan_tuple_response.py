@@ -19,6 +19,10 @@ __all__ = [
 
 
 class SensorPlanTupleResponseItemCollectRequestElset(BaseModel):
+    """
+    An element set is a collection of Keplerian orbital elements describing an orbit of a particular satellite. The data is used along with an orbit propagator in order to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -322,6 +326,10 @@ class SensorPlanTupleResponseItemCollectRequestElset(BaseModel):
 
 
 class SensorPlanTupleResponseItemCollectRequestStateVector(BaseModel):
+    """
+    This service provides operations for querying and manipulation of state vectors for OnOrbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that, together with their time (epoch) (t), uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -978,6 +986,10 @@ class SensorPlanTupleResponseItemCollectRequestStateVector(BaseModel):
 
 
 class SensorPlanTupleResponseItemCollectRequest(BaseModel):
+    """
+    Collect Requests support several types of individual requests, or planned/scheduled tasks on sensors and/or orbital objects. Options are provided to accomodate most common sensor contact and collection applications, including single sensor-object tasking, search operations, and TT&C support. Multiple requests originating from a plan or schedule may be associated to a sensor plan if desired.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1504,6 +1516,10 @@ class SensorPlanTupleResponseItemCollectRequest(BaseModel):
 
 
 class SensorPlanTupleResponseItem(BaseModel):
+    """
+    A Plan is used to aggregate two or more of the same type of record to a parent entity, with the planId (UUID) being included in all of the subordinate records, enabling resolution back to the parent.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

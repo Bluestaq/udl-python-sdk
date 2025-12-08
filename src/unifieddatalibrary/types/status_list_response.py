@@ -12,6 +12,8 @@ __all__ = ["StatusListResponse", "SubStatusCollection"]
 
 
 class SubStatusCollection(BaseModel):
+    """Additional sub-system or capability status for the parent entity."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -75,6 +77,11 @@ class SubStatusCollection(BaseModel):
 
 
 class StatusListResponse(BaseModel):
+    """Status for a particular Entity.
+
+    An entity may have multiple status records collected by various sources.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

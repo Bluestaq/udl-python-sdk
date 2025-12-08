@@ -14,6 +14,10 @@ __all__ = ["LaunchVehicleGetResponse", "LaunchVehicleDetail", "Stage"]
 
 
 class LaunchVehicleDetail(BaseModel):
+    """
+    Model representation of launch vehicle details and characteristics, compiled by a particular source. A vehicle may have multiple details records from various sources.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -241,6 +245,11 @@ class LaunchVehicleDetail(BaseModel):
 
 
 class Stage(BaseModel):
+    """Launch stage information for a particular launch vehicle.
+
+    A launch vehicle can have several stages, each with 1 to many engines.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -412,6 +421,11 @@ class Stage(BaseModel):
 
 
 class LaunchVehicleGetResponse(BaseModel):
+    """Model representation of basic information about known launch vehicles.
+
+    A launch vehicle may have several details records including characteristics and information compiled by a particular source.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -12,6 +12,10 @@ __all__ = ["AirfieldFull"]
 
 
 class AirfieldFull(BaseModel):
+    """
+    Properties and characteristics of an airfield, which includes location, airfield codes, suitability codes, and remarks.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

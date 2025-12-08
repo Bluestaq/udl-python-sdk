@@ -539,6 +539,10 @@ class EoObservationCreateParams(TypedDict, total=False):
 
 
 class EoobservationDetails(TypedDict, total=False):
+    """
+    Model representation of additional detailed observation data for electro-optical based sensor phenomenologies.
+    """
+
     acal_cr_pix_x: Annotated[float, PropertyInfo(alias="acalCrPixX")]
     """World Coordinate System (WCS) X pixel origin in astrometric fit."""
 

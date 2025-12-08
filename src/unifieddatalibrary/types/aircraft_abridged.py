@@ -12,6 +12,11 @@ __all__ = ["AircraftAbridged"]
 
 
 class AircraftAbridged(BaseModel):
+    """General aircraft designation, characteristics, and capabilities.
+
+    The aircraft schema contains static data of specific aircraft, including tail number, cruise speed, max speed, and minimum required runway length, etc.
+    """
+
     aircraft_mds: str = FieldInfo(alias="aircraftMDS")
     """The aircraft Model Design Series (MDS) designation (e.g.
 

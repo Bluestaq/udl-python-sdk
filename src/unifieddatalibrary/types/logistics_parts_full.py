@@ -11,6 +11,8 @@ __all__ = ["LogisticsPartsFull"]
 
 
 class LogisticsPartsFull(BaseModel):
+    """The parts associated with this support item."""
+
     figure_number: Optional[str] = FieldInfo(alias="figureNumber", default=None)
     """Technical order manual figure number for the requested / supplied part."""
 

@@ -10,6 +10,8 @@ __all__ = ["LogisticsSpecialtiesFull"]
 
 
 class LogisticsSpecialtiesFull(BaseModel):
+    """The specialties required to implement this support item."""
+
     first_name: Optional[str] = FieldInfo(alias="firstName", default=None)
     """The first name of the specialist."""
 

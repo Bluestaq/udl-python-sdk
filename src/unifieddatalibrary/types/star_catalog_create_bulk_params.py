@@ -15,6 +15,10 @@ class StarCatalogCreateBulkParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    The star catalog provides the position, proper motion, parallax, and photometric magnitudes at various bandpasses of a star.
+    """
+
     astrometry_origin: Required[
         Annotated[Literal["GAIADR3", "HIPPARCOS", "USNOBSC"], PropertyInfo(alias="astrometryOrigin")]
     ]

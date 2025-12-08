@@ -12,6 +12,11 @@ __all__ = ["AircraftstatusAbridged"]
 
 
 class AircraftstatusAbridged(BaseModel):
+    """Aircraft readiness and status data.
+
+    Contains the dynamic data associated with the specific aircraft status, either in-flight or on-ground, including remaining fuel, mission readiness, and inventory, etc.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -16,6 +16,10 @@ class DropzoneUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Properties and characteristics of a Drop Zone, including name, location, shape, type code, survey date, and remarks.
+    """
+
     classification_marking: Required[Annotated[str, PropertyInfo(alias="classificationMarking")]]
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

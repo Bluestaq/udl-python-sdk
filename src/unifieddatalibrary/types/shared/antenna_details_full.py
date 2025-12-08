@@ -13,6 +13,11 @@ __all__ = ["AntennaDetailsFull"]
 
 
 class AntennaDetailsFull(BaseModel):
+    """Detailed information for a spacecraft communication antenna.
+
+    One antenna may have multiple AntennaDetails records, compiled by various sources.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

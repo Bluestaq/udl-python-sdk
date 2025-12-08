@@ -12,6 +12,10 @@ __all__ = ["CountryFull"]
 
 
 class CountryFull(BaseModel):
+    """
+    A Country may represent countries, multi-national consortiums, and international organizations.
+    """
+
     code: str
     """The country code.
 

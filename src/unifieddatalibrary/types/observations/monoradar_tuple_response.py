@@ -12,6 +12,10 @@ __all__ = ["MonoradarTupleResponse", "MonoradarTupleResponseItem"]
 
 
 class MonoradarTupleResponseItem(BaseModel):
+    """
+    A monoradar record contains the raw, and in some cases, processed target reports from primary and secondary air surveillance radars.  All target positions for monoradar reports are recorded as range and azimuth from geographical North relative to the detecting radar site.  In the case of secondary surveillance radars, interrogation response codes are provided as well as quality and validation characteristics, when available in the particular record type used to generate the record.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

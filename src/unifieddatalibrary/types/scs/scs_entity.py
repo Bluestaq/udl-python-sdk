@@ -12,6 +12,8 @@ __all__ = ["ScsEntity"]
 
 
 class ScsEntity(BaseModel):
+    """An SCS file or folder."""
+
     id: Optional[str] = None
     """Unique identifier for document."""
 

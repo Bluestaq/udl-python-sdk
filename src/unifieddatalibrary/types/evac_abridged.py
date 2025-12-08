@@ -406,6 +406,11 @@ class EnemyData(BaseModel):
 
 
 class EvacAbridged(BaseModel):
+    """Casualty report and evacuation request.
+
+    Used to report and request support to evacuate friendly and enemy casualties.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

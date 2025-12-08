@@ -13,6 +13,10 @@ __all__ = ["HistoryListResponse", "PostEventElset", "PostEventStateVector", "Pre
 
 
 class PostEventElset(BaseModel):
+    """
+    An element set is a collection of Keplerian orbital elements describing an orbit of a particular satellite. The data is used along with an orbit propagator in order to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -316,6 +320,10 @@ class PostEventElset(BaseModel):
 
 
 class PostEventStateVector(BaseModel):
+    """
+    This service provides operations for querying and manipulation of state vectors for OnOrbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that, together with their time (epoch) (t), uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -972,6 +980,10 @@ class PostEventStateVector(BaseModel):
 
 
 class PreEventElset(BaseModel):
+    """
+    An element set is a collection of Keplerian orbital elements describing an orbit of a particular satellite. The data is used along with an orbit propagator in order to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1275,6 +1287,10 @@ class PreEventElset(BaseModel):
 
 
 class PreEventStateVector(BaseModel):
+    """
+    This service provides operations for querying and manipulation of state vectors for OnOrbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that, together with their time (epoch) (t), uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
@@ -1931,6 +1947,10 @@ class PreEventStateVector(BaseModel):
 
 
 class HistoryListResponse(BaseModel):
+    """
+    Model representation of on-orbit object maneuver information for detected, possible, and confirmed maneuvers.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -13,6 +13,8 @@ __all__ = ["SwirFull"]
 
 
 class SwirFull(BaseModel):
+    """Data representing observed short wave infrared (SWIR) measurements."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

@@ -25,6 +25,8 @@ class FlightplanUnvalidatedPublishParams(TypedDict, total=False):
 
 
 class BodyAirRefuelEvent(TypedDict, total=False):
+    """Collection of air refueling events occurring on this flight."""
+
     ar_degrade: Annotated[float, PropertyInfo(alias="arDegrade")]
     """
     Additional degrade for air refueling, cumulative with fuelDegrade field percent.
@@ -50,6 +52,10 @@ class BodyAirRefuelEvent(TypedDict, total=False):
 
 
 class BodyFlightPlanMessage(TypedDict, total=False):
+    """
+    Collection of messages associated with this flight plan indicating the severity, the point where the message was generated, the path (Primary, Alternate, etc.), and the text of the message.
+    """
+
     msg_text: Annotated[str, PropertyInfo(alias="msgText")]
     """The text of the message."""
 
@@ -67,6 +73,8 @@ class BodyFlightPlanMessage(TypedDict, total=False):
 
 
 class BodyFlightPlanPointGroupFlightPlanPoint(TypedDict, total=False):
+    """Array of point data for this Point Group."""
+
     fpp_eta: Annotated[Union[str, datetime], PropertyInfo(alias="fppEta", format="iso8601")]
     """
     Estimated Time of Arrival (ETA) at this point in ISO 8601 UTC format, with
@@ -96,6 +104,11 @@ class BodyFlightPlanPointGroupFlightPlanPoint(TypedDict, total=False):
 
 
 class BodyFlightPlanPointGroup(TypedDict, total=False):
+    """Collection of point groups generated for this flight plan.
+
+    Groups include point sets for Extended Operations (ETOPS), Critical Fuel Point, and Equal Time Point (ETP).
+    """
+
     avg_fuel_flow: Annotated[float, PropertyInfo(alias="avgFuelFlow")]
     """Average fuel flow at which the fuel was calculated in pounds per hour."""
 
@@ -223,6 +236,8 @@ class BodyFlightPlanPointGroup(TypedDict, total=False):
 
 
 class BodyFlightPlanWaypoint(TypedDict, total=False):
+    """Collection of waypoints associated with this flight plan."""
+
     type: Required[str]
     """Points are designated by type as either a comment point or a waypoint.
 
@@ -464,6 +479,10 @@ class BodyFlightPlanWaypoint(TypedDict, total=False):
 
 
 class Body(TypedDict, total=False):
+    """
+    Flight Plan contains data specifying the details of an intended flight including schedule and expected route.
+    """
+
     arr_airfield: Required[Annotated[str, PropertyInfo(alias="arrAirfield")]]
     """
     The airfield identifier of the arrival location, International Civil Aviation

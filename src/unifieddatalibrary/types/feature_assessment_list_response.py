@@ -12,6 +12,11 @@ __all__ = ["FeatureAssessmentListResponse"]
 
 
 class FeatureAssessmentListResponse(BaseModel):
+    """Feature assessments obtained from imagery analysis or other data analytics.
+
+    Feature assessments are georeferenced terrestrial features such as marine vessels, vehicles, buildings, etc., or contain other types of non terrestrial assessments such as spacecraft structures. Geospatial queries are supported through either the regionText (WKT) or regionGeoJSON fields.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

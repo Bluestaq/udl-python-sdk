@@ -13,6 +13,10 @@ __all__ = ["SigactTupleResponse", "SigactTupleResponseItem"]
 
 
 class SigactTupleResponseItem(BaseModel):
+    """
+    Provides information on the dates, actors, locations, fatalities, and types of all reported political violence and protest events across the world.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

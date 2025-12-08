@@ -19,6 +19,8 @@ __all__ = [
 
 
 class AirRefuelEvent(BaseModel):
+    """Collection of air refueling events occurring on this flight."""
+
     ar_degrade: Optional[float] = FieldInfo(alias="arDegrade", default=None)
     """
     Additional degrade for air refueling, cumulative with fuelDegrade field percent.
@@ -44,6 +46,10 @@ class AirRefuelEvent(BaseModel):
 
 
 class FlightPlanMessage(BaseModel):
+    """
+    Collection of messages associated with this flight plan indicating the severity, the point where the message was generated, the path (Primary, Alternate, etc.), and the text of the message.
+    """
+
     msg_text: Optional[str] = FieldInfo(alias="msgText", default=None)
     """The text of the message."""
 
@@ -61,6 +67,8 @@ class FlightPlanMessage(BaseModel):
 
 
 class FlightPlanPointGroupFlightPlanPoint(BaseModel):
+    """Array of point data for this Point Group."""
+
     fpp_eta: Optional[datetime] = FieldInfo(alias="fppEta", default=None)
     """
     Estimated Time of Arrival (ETA) at this point in ISO 8601 UTC format, with
@@ -90,6 +98,11 @@ class FlightPlanPointGroupFlightPlanPoint(BaseModel):
 
 
 class FlightPlanPointGroup(BaseModel):
+    """Collection of point groups generated for this flight plan.
+
+    Groups include point sets for Extended Operations (ETOPS), Critical Fuel Point, and Equal Time Point (ETP).
+    """
+
     avg_fuel_flow: Optional[float] = FieldInfo(alias="avgFuelFlow", default=None)
     """Average fuel flow at which the fuel was calculated in pounds per hour."""
 
@@ -217,6 +230,8 @@ class FlightPlanPointGroup(BaseModel):
 
 
 class FlightPlanWaypoint(BaseModel):
+    """Collection of waypoints associated with this flight plan."""
+
     type: str
     """Points are designated by type as either a comment point or a waypoint.
 
@@ -458,6 +473,10 @@ class FlightPlanWaypoint(BaseModel):
 
 
 class FlightPlanAbridged(BaseModel):
+    """
+    Flight Plan contains data specifying the details of an intended flight including schedule and expected route.
+    """
+
     arr_airfield: str = FieldInfo(alias="arrAirfield")
     """
     The airfield identifier of the arrival location, International Civil Aviation
