@@ -10,6 +10,8 @@ __all__ = ["DataownerAbridged"]
 
 
 class DataownerAbridged(BaseModel):
+    """Information pertaining to UDL data owners."""
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

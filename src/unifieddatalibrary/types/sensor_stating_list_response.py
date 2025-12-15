@@ -11,6 +11,11 @@ __all__ = ["SensorStatingListResponse"]
 
 
 class SensorStatingListResponse(BaseModel):
+    """Model representation of a nominal sensor.
+
+    This entity contains minimal information used to stage sensor entities.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

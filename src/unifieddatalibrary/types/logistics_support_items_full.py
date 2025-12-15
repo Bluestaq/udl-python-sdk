@@ -14,6 +14,8 @@ __all__ = ["LogisticsSupportItemsFull"]
 
 
 class LogisticsSupportItemsFull(BaseModel):
+    """Support items associated with this LogisticsSupport record."""
+
     cannibalized: Optional[bool] = None
     """
     This element indicates whether or not the supplied item is contained within

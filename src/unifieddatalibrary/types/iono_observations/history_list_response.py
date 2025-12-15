@@ -79,6 +79,8 @@ class Azimuth(BaseModel):
 
 
 class CharAtt(BaseModel):
+    """Characteristic attributes of a IonoObservation."""
+
     char_name: Optional[str] = FieldInfo(alias="charName", default=None)
     """Characteristic name.
 
@@ -145,6 +147,8 @@ class Datum(BaseModel):
 
 
 class DensityProfileIri(BaseModel):
+    """Full set of the IRI formalism coefficients."""
+
     b0: Optional[float] = None
     """B0 parameter of the F2 layer shape."""
 
@@ -216,6 +220,8 @@ class DensityProfileIri(BaseModel):
 
 
 class DensityProfileParabolicParabolicItem(BaseModel):
+    """Describes the E, F1, and F2 layers as parabolic-shape segments."""
+
     f: Optional[float] = None
     """Plasma frequency at the layer peak, in MHz."""
 
@@ -230,6 +236,8 @@ class DensityProfileParabolicParabolicItem(BaseModel):
 
 
 class DensityProfileParabolic(BaseModel):
+    """Coefficients to describe the E, F1, and F2 layers as parabolic-shape segments."""
+
     description: Optional[str] = None
     """General description of the QP computation algorithm."""
 
@@ -240,6 +248,10 @@ class DensityProfileParabolic(BaseModel):
 
 
 class DensityProfileQuasiParabolicQuasiParabolicSegment(BaseModel):
+    """
+    A quasi-parabolic segment is the best-fit 3-parameter quasi-parabolas defined via A, B, C coefficients, f^2=A/r^2+B/r+C”. Usually 3 groups for E, F1, and F2 layers, but additional segments may be used to improve accuracy.
+    """
+
     a: Optional[float] = None
     """Coefficient A."""
 
@@ -263,6 +275,8 @@ class DensityProfileQuasiParabolicQuasiParabolicSegment(BaseModel):
 
 
 class DensityProfileQuasiParabolic(BaseModel):
+    """Coefficients to describe profile shape as quasi-parabolic segments."""
+
     description: Optional[str] = None
     """General description of the quasi-parabolic computation algorithm."""
 
@@ -281,6 +295,10 @@ class DensityProfileQuasiParabolic(BaseModel):
 
 
 class DensityProfileShiftedChebyshevShiftedChebyshev(BaseModel):
+    """
+    Coefficients, using ‘shiftedChebyshev’ sub-field, to describe E, F1, and bottomside F2 profile shapes, or height uncertainty boundaries (upper and lower).
+    """
+
     coeffs: Optional[List[float]] = None
     """Array of coefficients."""
 
@@ -307,6 +325,10 @@ class DensityProfileShiftedChebyshevShiftedChebyshev(BaseModel):
 
 
 class DensityProfileShiftedChebyshev(BaseModel):
+    """
+    Coefficients to describe either the E, F1, and bottomside F2 profile shapes or the height uncertainty boundaries.
+    """
+
     description: Optional[str] = None
     """Description of the computation technique."""
 
@@ -321,6 +343,8 @@ class DensityProfileShiftedChebyshev(BaseModel):
 
 
 class DensityProfileTopsideExtensionChapmanConst(BaseModel):
+    """Parameters of the constant-scale-height Chapman layer."""
+
     chi: Optional[float] = None
     """
     Peak Density Thickness (PDT) for description of the flat-nose shape, in
@@ -341,6 +365,8 @@ class DensityProfileTopsideExtensionChapmanConst(BaseModel):
 
 
 class DensityProfileTopsideExtensionVaryChap(BaseModel):
+    """Varying scale height Chapman topside layer."""
+
     alpha: Optional[float] = None
     """Alpha parameter of the profile shape."""
 
@@ -370,6 +396,10 @@ class DensityProfileTopsideExtensionVaryChap(BaseModel):
 
 
 class DensityProfile(BaseModel):
+    """
+    Profile of electron densities in the ionosphere associated with an IonoObservation.
+    """
+
     iri: Optional[DensityProfileIri] = None
     """Full set of the IRI formalism coefficients."""
 
@@ -505,6 +535,10 @@ class Range(BaseModel):
 
 
 class ScalerInfo(BaseModel):
+    """
+    The ScalerInfo record describes the person or system who interpreted the ionogram in IonoObservation.
+    """
+
     confidence_level: Optional[int] = FieldInfo(alias="confidenceLevel", default=None)
     """Scaler confidence level."""
 
@@ -574,24 +608,28 @@ class TraceGeneric(BaseModel):
 
 
 class HistoryListResponse(BaseModel):
+    """
+    These services provide operations for posting and querying ionospheric observation data. Characteristics are defined by the CHARS: URSI IIWG format for archiving monthly ionospheric characteristics, INAG Bulletin No. 62 specification. Qualifying and Descriptive letters are defined by the URSI Handbook for Ionogram Interpretation and reduction, Report UAG, No. 23A specification.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 
     data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"] = FieldInfo(alias="dataMode")
-    """Indicator of whether the data is EXERCISE, REAL, SIMULATED, or TEST data:
-
-    EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
-    may include both real and simulated data.
+    """Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
 
     REAL:&nbsp;Data collected or produced that pertains to real-world objects,
     events, and analysis.
 
-    SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
-    datasets.
-
     TEST:&nbsp;Specific datasets used to evaluate compliance with specifications and
     requirements, and for validating technical, functional, and performance
     characteristics.
+
+    EXERCISE:&nbsp;Data pertaining to a government or military exercise. The data
+    may include both real and simulated data.
+
+    SIMULATED:&nbsp;Synthetic data generated by a model to mimic real-world
+    datasets.
     """
 
     source: str

@@ -11,6 +11,8 @@ __all__ = ["LogisticsStocksFull"]
 
 
 class LogisticsStocksFull(BaseModel):
+    """The supply stocks for this support item."""
+
     quantity: Optional[int] = None
     """The quantity of available parts needed from sourceICAO."""
 

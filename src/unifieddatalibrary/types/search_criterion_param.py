@@ -11,6 +11,8 @@ __all__ = ["SearchCriterionParam", "ScsSearchFieldCriterion"]
 
 
 class ScsSearchFieldCriterion(TypedDict, total=False):
+    """A search on a specific field with a given value and operator."""
+
     field: str
     """The field to search on (e.g., attachment.content, createdBy)."""
 

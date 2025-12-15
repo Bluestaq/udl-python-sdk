@@ -9,6 +9,8 @@ __all__ = ["SearchLogicalCriterionParam"]
 
 
 class SearchLogicalCriterionParam(TypedDict, total=False):
+    """Combines multiple search criteria with a logical operator (AND, OR, NOT)."""
+
     criteria: Iterable["SearchCriterionParam"]
     """List of search criteria to combine"""
 

@@ -11,6 +11,11 @@ __all__ = ["StagingListResponse"]
 
 
 class StagingListResponse(BaseModel):
+    """Model representation of a nominal laser emitter.
+
+    This entity contains minimal information used to stage laser emitter entities.
+    """
+
     classification_marking: str = FieldInfo(alias="classificationMarking")
     """Classification marking of the data in IC/CAPCO Portion-marked format."""
 

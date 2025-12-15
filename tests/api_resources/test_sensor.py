@@ -240,8 +240,8 @@ class TestSensor:
                 {
                     "classification_marking": "U",
                     "data_mode": "TEST",
+                    "id_sensor": "SENSOR-ID",
                     "source": "Bluestaq",
-                    "id_sensor": "SENSORLIMITS-ID",
                     "id_sensor_limits": "SENSORLIMITS-ID",
                     "lower_left_azimuth_limit": 1.23,
                     "lower_left_elevation_limit": 1.23,
@@ -524,8 +524,8 @@ class TestSensor:
                 {
                     "classification_marking": "U",
                     "data_mode": "TEST",
+                    "id_sensor": "SENSOR-ID",
                     "source": "Bluestaq",
-                    "id_sensor": "SENSORLIMITS-ID",
                     "id_sensor_limits": "SENSORLIMITS-ID",
                     "lower_left_azimuth_limit": 1.23,
                     "lower_left_elevation_limit": 1.23,
@@ -1041,8 +1041,8 @@ class TestAsyncSensor:
                 {
                     "classification_marking": "U",
                     "data_mode": "TEST",
+                    "id_sensor": "SENSOR-ID",
                     "source": "Bluestaq",
-                    "id_sensor": "SENSORLIMITS-ID",
                     "id_sensor_limits": "SENSORLIMITS-ID",
                     "lower_left_azimuth_limit": 1.23,
                     "lower_left_elevation_limit": 1.23,
@@ -1325,8 +1325,8 @@ class TestAsyncSensor:
                 {
                     "classification_marking": "U",
                     "data_mode": "TEST",
+                    "id_sensor": "SENSOR-ID",
                     "source": "Bluestaq",
-                    "id_sensor": "SENSORLIMITS-ID",
                     "id_sensor_limits": "SENSORLIMITS-ID",
                     "lower_left_azimuth_limit": 1.23,
                     "lower_left_elevation_limit": 1.23,

@@ -1160,6 +1160,14 @@ from .surface_obstruction import (
     SurfaceObstructionResourceWithStreamingResponse,
     AsyncSurfaceObstructionResourceWithStreamingResponse,
 )
+from .closelyspacedobjects import (
+    CloselyspacedobjectsResource,
+    AsyncCloselyspacedobjectsResource,
+    CloselyspacedobjectsResourceWithRawResponse,
+    AsyncCloselyspacedobjectsResourceWithRawResponse,
+    CloselyspacedobjectsResourceWithStreamingResponse,
+    AsyncCloselyspacedobjectsResourceWithStreamingResponse,
+)
 from .diplomatic_clearance import (
     DiplomaticClearanceResource,
     AsyncDiplomaticClearanceResource,
@@ -1486,6 +1494,12 @@ __all__ = [
     "AsyncChannelsResourceWithRawResponse",
     "ChannelsResourceWithStreamingResponse",
     "AsyncChannelsResourceWithStreamingResponse",
+    "CloselyspacedobjectsResource",
+    "AsyncCloselyspacedobjectsResource",
+    "CloselyspacedobjectsResourceWithRawResponse",
+    "AsyncCloselyspacedobjectsResourceWithRawResponse",
+    "CloselyspacedobjectsResourceWithStreamingResponse",
+    "AsyncCloselyspacedobjectsResourceWithStreamingResponse",
     "CollectRequestsResource",
     "AsyncCollectRequestsResource",
     "CollectRequestsResourceWithRawResponse",

@@ -11,6 +11,10 @@ __all__ = ["PathwayFull"]
 
 
 class PathwayFull(BaseModel):
+    """
+    Collection detailing operational pathways at the Site associated with this SiteOperations record.
+    """
+
     pw_definition: Optional[str] = FieldInfo(alias="pwDefinition", default=None)
     """Text defining this pathway from its constituent parts."""
 

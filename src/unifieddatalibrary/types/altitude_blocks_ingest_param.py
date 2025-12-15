@@ -10,6 +10,8 @@ __all__ = ["AltitudeBlocksIngestParam"]
 
 
 class AltitudeBlocksIngestParam(TypedDict, total=False):
+    """Minimum and maximum altitude bounds for the track."""
+
     altitude_sequence_id: Annotated[str, PropertyInfo(alias="altitudeSequenceId")]
     """Sequencing field for the altitude block."""
 

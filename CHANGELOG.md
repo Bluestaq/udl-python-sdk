@@ -1,5 +1,24 @@
 # Changelog
 
+## 0.1.0-alpha.32 (2025-12-08)
+
+Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
+
+### Features
+
+* **api:** api update ([861c398](https://github.com/Bluestaq/udl-python-sdk/commit/861c398fcbb554f70816a6af86e0de5a9406f661))
+* **api:** bumps to v1.37.0 of UDL API ([283c9ed](https://github.com/Bluestaq/udl-python-sdk/commit/283c9edfb7d0c8ec3124271b1460d0eb3f5fc1ea))
+
+
+### Bug Fixes
+
+* **types:** allow pyright to infer TypedDict types within SequenceNotStr ([89f2adb](https://github.com/Bluestaq/udl-python-sdk/commit/89f2adb301122ccb4e2d64edcfde701a8316ff9e))
+
+
+### Chores
+
+* add missing docstrings ([04357ad](https://github.com/Bluestaq/udl-python-sdk/commit/04357adf6324d13dc0c19e59aeb94d5140ed178c))
+
 ## 0.1.0-alpha.31 (2025-12-02)
 
 Full Changelog: [v0.1.0-alpha.30...v0.1.0-alpha.31](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.30...v0.1.0-alpha.31)

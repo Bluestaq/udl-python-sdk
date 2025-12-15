@@ -802,6 +802,45 @@ Methods:
 - <code title="get /udl/channel/queryhelp">client.channels.<a href="./src/unifieddatalibrary/resources/channels.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/channel_queryhelp_response.py">ChannelQueryhelpResponse</a></code>
 - <code title="get /udl/channel/tuple">client.channels.<a href="./src/unifieddatalibrary/resources/channels.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/channel_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/channel_tuple_response.py">ChannelTupleResponse</a></code>
 
+# Closelyspacedobjects
+
+Types:
+
+```python
+from unifieddatalibrary.types import (
+    CloselyspacedobjectsAbridged,
+    CloselyspacedobjectRetrieveResponse,
+    CloselyspacedobjectCountResponse,
+    CloselyspacedobjectQueryHelpResponse,
+    CloselyspacedobjectTupleResponse,
+)
+```
+
+Methods:
+
+- <code title="post /udl/closelyspacedobjects">client.closelyspacedobjects.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/closelyspacedobjects.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobject_create_params.py">params</a>) -> None</code>
+- <code title="get /udl/closelyspacedobjects/{id}">client.closelyspacedobjects.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/closelyspacedobjects.py">retrieve</a>(id, \*\*<a href="src/unifieddatalibrary/types/closelyspacedobject_retrieve_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/closelyspacedobject_retrieve_response.py">CloselyspacedobjectRetrieveResponse</a></code>
+- <code title="get /udl/closelyspacedobjects">client.closelyspacedobjects.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/closelyspacedobjects.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobject_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/closelyspacedobjects_abridged.py">SyncOffsetPage[CloselyspacedobjectsAbridged]</a></code>
+- <code title="get /udl/closelyspacedobjects/count">client.closelyspacedobjects.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/closelyspacedobjects.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobject_count_params.py">params</a>) -> str</code>
+- <code title="post /udl/closelyspacedobjects/createBulk">client.closelyspacedobjects.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/closelyspacedobjects.py">create_bulk</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobject_create_bulk_params.py">params</a>) -> None</code>
+- <code title="get /udl/closelyspacedobjects/queryhelp">client.closelyspacedobjects.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/closelyspacedobjects.py">query_help</a>() -> <a href="./src/unifieddatalibrary/types/closelyspacedobject_query_help_response.py">CloselyspacedobjectQueryHelpResponse</a></code>
+- <code title="get /udl/closelyspacedobjects/tuple">client.closelyspacedobjects.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/closelyspacedobjects.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobject_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/closelyspacedobject_tuple_response.py">CloselyspacedobjectTupleResponse</a></code>
+- <code title="post /filedrop/udl-closelyspacedobjects">client.closelyspacedobjects.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/closelyspacedobjects.py">unvalidated_publish</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobject_unvalidated_publish_params.py">params</a>) -> None</code>
+
+## History
+
+Types:
+
+```python
+from unifieddatalibrary.types.closelyspacedobjects import HistoryListResponse, HistoryCountResponse
+```
+
+Methods:
+
+- <code title="get /udl/closelyspacedobjects/history">client.closelyspacedobjects.history.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobjects/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/closelyspacedobjects/history_list_response.py">SyncOffsetPage[HistoryListResponse]</a></code>
+- <code title="get /udl/closelyspacedobjects/history/aodr">client.closelyspacedobjects.history.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/history.py">aodr</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobjects/history_aodr_params.py">params</a>) -> None</code>
+- <code title="get /udl/closelyspacedobjects/history/count">client.closelyspacedobjects.history.<a href="./src/unifieddatalibrary/resources/closelyspacedobjects/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/closelyspacedobjects/history_count_params.py">params</a>) -> str</code>
+
 # CollectRequests
 
 Types:
