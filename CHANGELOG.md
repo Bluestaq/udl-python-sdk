@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.33 (2025-12-18)
+
+Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
+
+### Bug Fixes
+
+* use async_to_httpx_files in patch method ([71de664](https://github.com/Bluestaq/udl-python-sdk/commit/71de664cb39767f508353f5563296d377d1416a6))
+
+
+### Chores
+
+* **internal:** add missing files argument to base client ([3508797](https://github.com/Bluestaq/udl-python-sdk/commit/350879731692dc6bc7f75e1301d72a9e6a243f6f))
+* **internal:** codegen related update ([ab9e75d](https://github.com/Bluestaq/udl-python-sdk/commit/ab9e75d95a8368ab95ddc4e1187bc5b8dcce66c9))
+* speedup initial import ([54bc4ed](https://github.com/Bluestaq/udl-python-sdk/commit/54bc4ede3cd2904c52ebf6a8e6de3e99f6c08d43))
+
 ## 0.1.0-alpha.32 (2025-12-08)
 
 Full Changelog: [v0.1.0-alpha.31...v0.1.0-alpha.32](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.31...v0.1.0-alpha.32)
