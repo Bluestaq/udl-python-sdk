@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from typing import Union, Iterable
 from datetime import datetime
 from typing_extensions import Literal
@@ -35,8 +36,10 @@ from ..._types import (
     Headers,
     NoneType,
     NotGiven,
+    BinaryTypes,
     FileContent,
     SequenceNotStr,
+    AsyncBinaryTypes,
     omit,
     not_given,
 )
@@ -826,7 +829,7 @@ class ConjunctionsResource(SyncAPIResource):
 
     def upload_conjunction_data_message(
         self,
-        file_content: FileContent,
+        file_content: FileContent | BinaryTypes,
         *,
         classification: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
@@ -878,7 +881,7 @@ class ConjunctionsResource(SyncAPIResource):
         extra_headers["Content-Type"] = "application/zip"
         return self._post(
             "/filedrop/cdms",
-            body=read_file_content(file_content),
+            content=read_file_content(file_content) if isinstance(file_content, os.PathLike) else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1665,7 +1668,7 @@ class AsyncConjunctionsResource(AsyncAPIResource):
 
     async def upload_conjunction_data_message(
         self,
-        file_content: FileContent,
+        file_content: FileContent | AsyncBinaryTypes,
         *,
         classification: str,
         data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
@@ -1717,7 +1720,9 @@ class AsyncConjunctionsResource(AsyncAPIResource):
         extra_headers["Content-Type"] = "application/zip"
         return await self._post(
             "/filedrop/cdms",
-            body=await async_read_file_content(file_content),
+            content=await async_read_file_content(file_content)
+            if isinstance(file_content, os.PathLike)
+            else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
