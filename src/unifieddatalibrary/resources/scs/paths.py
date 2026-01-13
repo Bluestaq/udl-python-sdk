@@ -2,12 +2,24 @@
 
 from __future__ import annotations
 
+import os
 import typing_extensions
 
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
-from ..._types import Body, Omit, Query, Headers, NotGiven, FileContent, omit, not_given
+from ..._types import (
+    Body,
+    Omit,
+    Query,
+    Headers,
+    NotGiven,
+    BinaryTypes,
+    FileContent,
+    AsyncBinaryTypes,
+    omit,
+    not_given,
+)
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -46,7 +58,7 @@ class PathsResource(SyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     def create_with_file(
         self,
-        file_content: FileContent,
+        file_content: FileContent | BinaryTypes,
         *,
         id: str,
         classification_marking: str,
@@ -94,7 +106,7 @@ class PathsResource(SyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/path",
-            body=read_file_content(file_content),
+            content=read_file_content(file_content) if isinstance(file_content, os.PathLike) else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -140,7 +152,7 @@ class AsyncPathsResource(AsyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     async def create_with_file(
         self,
-        file_content: FileContent,
+        file_content: FileContent | AsyncBinaryTypes,
         *,
         id: str,
         classification_marking: str,
@@ -188,7 +200,9 @@ class AsyncPathsResource(AsyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/path",
-            body=await async_read_file_content(file_content),
+            content=await async_read_file_content(file_content)
+            if isinstance(file_content, os.PathLike)
+            else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

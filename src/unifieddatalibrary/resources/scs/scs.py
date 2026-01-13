@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 import typing_extensions
 from typing import Dict
 
@@ -65,8 +66,10 @@ from ..._types import (
     Headers,
     NoneType,
     NotGiven,
+    BinaryTypes,
     FileContent,
     SequenceNotStr,
+    AsyncBinaryTypes,
     omit,
     not_given,
 )
@@ -359,7 +362,7 @@ class ScsResource(SyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     def file_upload(
         self,
-        file_content: FileContent,
+        file_content: FileContent | BinaryTypes,
         *,
         classification_marking: str,
         file_name: str,
@@ -409,7 +412,7 @@ class ScsResource(SyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return self._post(
             "/scs/file",
-            body=read_file_content(file_content),
+            content=read_file_content(file_content) if isinstance(file_content, os.PathLike) else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -900,7 +903,7 @@ class AsyncScsResource(AsyncAPIResource):
     @typing_extensions.deprecated("deprecated")
     async def file_upload(
         self,
-        file_content: FileContent,
+        file_content: FileContent | AsyncBinaryTypes,
         *,
         classification_marking: str,
         file_name: str,
@@ -950,7 +953,9 @@ class AsyncScsResource(AsyncAPIResource):
         extra_headers = {"Content-Type": "application/octet-stream", **(extra_headers or {})}
         return await self._post(
             "/scs/file",
-            body=await async_read_file_content(file_content),
+            content=await async_read_file_content(file_content)
+            if isinstance(file_content, os.PathLike)
+            else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

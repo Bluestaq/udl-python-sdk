@@ -2,12 +2,23 @@
 
 from __future__ import annotations
 
+import os
 from typing_extensions import Literal
 
 import httpx
 
 from ..._files import read_file_content, async_read_file_content
-from ..._types import Body, Query, Headers, NoneType, NotGiven, FileContent, not_given
+from ..._types import (
+    Body,
+    Query,
+    Headers,
+    NoneType,
+    NotGiven,
+    BinaryTypes,
+    FileContent,
+    AsyncBinaryTypes,
+    not_given,
+)
 from ..._utils import maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
@@ -86,7 +97,7 @@ class CrewpapersResource(SyncAPIResource):
 
     def upload_pdf(
         self,
-        file_content: FileContent,
+        file_content: FileContent | BinaryTypes,
         *,
         aircraft_sortie_ids: str,
         classification_marking: str,
@@ -126,7 +137,7 @@ class CrewpapersResource(SyncAPIResource):
         extra_headers["Content-Type"] = "application/pdf"
         return self._post(
             "/filedrop/crewpapers",
-            body=read_file_content(file_content),
+            content=read_file_content(file_content) if isinstance(file_content, os.PathLike) else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -209,7 +220,7 @@ class AsyncCrewpapersResource(AsyncAPIResource):
 
     async def upload_pdf(
         self,
-        file_content: FileContent,
+        file_content: FileContent | AsyncBinaryTypes,
         *,
         aircraft_sortie_ids: str,
         classification_marking: str,
@@ -249,7 +260,9 @@ class AsyncCrewpapersResource(AsyncAPIResource):
         extra_headers["Content-Type"] = "application/pdf"
         return await self._post(
             "/filedrop/crewpapers",
-            body=await async_read_file_content(file_content),
+            content=await async_read_file_content(file_content)
+            if isinstance(file_content, os.PathLike)
+            else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
