@@ -26,7 +26,7 @@ The REST API documentation can be found on [unifieddatalibrary.com](https://unif
 
 ```sh
 # install from PyPI
-pip install --pre udl-sdk
+pip install '--pre udl-sdk'
 ```
 
 ## Usage
@@ -84,7 +84,7 @@ You can enable this by installing `aiohttp`:
 
 ```sh
 # install from PyPI
-pip install --pre udl-sdk[aiohttp]
+pip install '--pre udl-sdk[aiohttp]'
 ```
 
 Then you can enable it by instantiating the client with `http_client=DefaultAioHttpClient()`:
