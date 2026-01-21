@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+import os
 from typing_extensions import Literal
 
 import httpx
@@ -14,8 +15,10 @@ from ..._types import (
     Headers,
     NoneType,
     NotGiven,
+    BinaryTypes,
     FileContent,
     SequenceNotStr,
+    AsyncBinaryTypes,
     omit,
     not_given,
 )
@@ -358,7 +361,7 @@ class V2Resource(SyncAPIResource):
 
     def file_upload(
         self,
-        file_content: FileContent,
+        file_content: FileContent | BinaryTypes,
         *,
         classification_marking: str,
         path: str,
@@ -410,7 +413,7 @@ class V2Resource(SyncAPIResource):
         extra_headers["Content-Type"] = "application/octet-stream"
         return self._post(
             "/scs/v2/file",
-            body=read_file_content(file_content),
+            content=read_file_content(file_content) if isinstance(file_content, os.PathLike) else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -993,7 +996,7 @@ class AsyncV2Resource(AsyncAPIResource):
 
     async def file_upload(
         self,
-        file_content: FileContent,
+        file_content: FileContent | AsyncBinaryTypes,
         *,
         classification_marking: str,
         path: str,
@@ -1045,7 +1048,9 @@ class AsyncV2Resource(AsyncAPIResource):
         extra_headers["Content-Type"] = "application/octet-stream"
         return await self._post(
             "/scs/v2/file",
-            body=await async_read_file_content(file_content),
+            content=await async_read_file_content(file_content)
+            if isinstance(file_content, os.PathLike)
+            else file_content,
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

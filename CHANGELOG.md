@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.1.0-alpha.34 (2026-01-16)
+
+Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
+
+### Features
+
+* **client:** add support for binary request streaming ([7ee6caa](https://github.com/Bluestaq/udl-python-sdk/commit/7ee6caa416b118415623492d797b779c1f9b3114))
+
+
+### Bug Fixes
+
+* **client:** loosen auth header validation ([b064bba](https://github.com/Bluestaq/udl-python-sdk/commit/b064bbaea2f8ef5e37d35a65792c290a8e2a8d17))
+
+
+### Chores
+
+* **internal:** codegen related update ([a6e95c6](https://github.com/Bluestaq/udl-python-sdk/commit/a6e95c639a18d75fd4ee307b9b2063e1054aa3c6))
+* **internal:** codegen related update ([ef25540](https://github.com/Bluestaq/udl-python-sdk/commit/ef25540a1adce636cd0490ae1527835763281977))
+* **internal:** update `actions/checkout` version ([9bf96c9](https://github.com/Bluestaq/udl-python-sdk/commit/9bf96c975fc0524640dd01ead8bccf6f9ec8c8fd))
+
+
+### Documentation
+
+* prominently feature MCP server setup in root SDK readmes ([4e3b479](https://github.com/Bluestaq/udl-python-sdk/commit/4e3b4799a4d3753bf335de0974aaa8fab0981057))
+
 ## 0.1.0-alpha.33 (2025-12-18)
 
 Full Changelog: [v0.1.0-alpha.32...v0.1.0-alpha.33](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.32...v0.1.0-alpha.33)
