@@ -1,5 +1,26 @@
 # Changelog
 
+## 0.1.0-alpha.35 (2026-02-12)
+
+Full Changelog: [v0.1.0-alpha.34...v0.1.0-alpha.35](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.34...v0.1.0-alpha.35)
+
+### Features
+
+* **client:** add custom JSON encoder for extended type support ([2e7c125](https://github.com/Bluestaq/udl-python-sdk/commit/2e7c125d30f56b3cb3719b8ffcc10220763be115))
+
+
+### Bug Fixes
+
+* **docs:** fix mcp installation instructions for remote servers ([f6ea386](https://github.com/Bluestaq/udl-python-sdk/commit/f6ea3865f28848ad084b715c58b73a5c389a00fc))
+
+
+### Chores
+
+* **ci:** upgrade `actions/github-script` ([54fdb4d](https://github.com/Bluestaq/udl-python-sdk/commit/54fdb4d4da84b77622abbaca8806ddc1ca58532d))
+* format all `api.md` files ([7b62151](https://github.com/Bluestaq/udl-python-sdk/commit/7b621516fb49d4de5c2ef5d9d679dfc608da2ab7))
+* **internal:** bump dependencies ([c089b4f](https://github.com/Bluestaq/udl-python-sdk/commit/c089b4f3c65be3a2b9670a40f349b0145cf4c09d))
+* **internal:** fix lint error on Python 3.14 ([4835f8d](https://github.com/Bluestaq/udl-python-sdk/commit/4835f8d3f076f118920a3bcdb703182183af49f0))
+
 ## 0.1.0-alpha.34 (2026-01-16)
 
 Full Changelog: [v0.1.0-alpha.33...v0.1.0-alpha.34](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.33...v0.1.0-alpha.34)
