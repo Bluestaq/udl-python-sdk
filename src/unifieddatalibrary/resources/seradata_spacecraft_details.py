@@ -37,6 +37,10 @@ __all__ = ["SeradataSpacecraftDetailsResource", "AsyncSeradataSpacecraftDetailsR
 
 
 class SeradataSpacecraftDetailsResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> SeradataSpacecraftDetailsResourceWithRawResponse:
         """
@@ -1167,6 +1171,10 @@ class SeradataSpacecraftDetailsResource(SyncAPIResource):
 
 
 class AsyncSeradataSpacecraftDetailsResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSeradataSpacecraftDetailsResourceWithRawResponse:
         """

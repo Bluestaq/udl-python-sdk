@@ -52,12 +52,16 @@ __all__ = ["CollectResponsesResource", "AsyncCollectResponsesResource"]
 
 
 class CollectResponsesResource(SyncAPIResource):
+    """These services provide operations for posting and querying Sensor Tasking data."""
+
     @cached_property
     def history(self) -> HistoryResource:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResource(self._client)
 
     @cached_property
     def tuple(self) -> TupleResource:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return TupleResource(self._client)
 
     @cached_property
@@ -529,12 +533,16 @@ class CollectResponsesResource(SyncAPIResource):
 
 
 class AsyncCollectResponsesResource(AsyncAPIResource):
+    """These services provide operations for posting and querying Sensor Tasking data."""
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResource(self._client)
 
     @cached_property
     def tuple(self) -> AsyncTupleResource:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncTupleResource(self._client)
 
     @cached_property
@@ -1033,10 +1041,12 @@ class CollectResponsesResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResourceWithRawResponse(self._collect_responses.history)
 
     @cached_property
     def tuple(self) -> TupleResourceWithRawResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return TupleResourceWithRawResponse(self._collect_responses.tuple)
 
 
@@ -1068,10 +1078,12 @@ class AsyncCollectResponsesResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResourceWithRawResponse(self._collect_responses.history)
 
     @cached_property
     def tuple(self) -> AsyncTupleResourceWithRawResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncTupleResourceWithRawResponse(self._collect_responses.tuple)
 
 
@@ -1103,10 +1115,12 @@ class CollectResponsesResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResourceWithStreamingResponse(self._collect_responses.history)
 
     @cached_property
     def tuple(self) -> TupleResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return TupleResourceWithStreamingResponse(self._collect_responses.tuple)
 
 
@@ -1138,8 +1152,10 @@ class AsyncCollectResponsesResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResourceWithStreamingResponse(self._collect_responses.history)
 
     @cached_property
     def tuple(self) -> AsyncTupleResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncTupleResourceWithStreamingResponse(self._collect_responses.tuple)

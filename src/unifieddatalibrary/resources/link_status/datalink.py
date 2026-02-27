@@ -35,6 +35,10 @@ __all__ = ["DatalinkResource", "AsyncDatalinkResource"]
 
 
 class DatalinkResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+    """
+
     @cached_property
     def with_raw_response(self) -> DatalinkResourceWithRawResponse:
         """
@@ -662,6 +666,10 @@ class DatalinkResource(SyncAPIResource):
 
 
 class AsyncDatalinkResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncDatalinkResourceWithRawResponse:
         """

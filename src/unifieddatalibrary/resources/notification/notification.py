@@ -45,8 +45,15 @@ __all__ = ["NotificationResource", "AsyncNotificationResource"]
 
 
 class NotificationResource(SyncAPIResource):
+    """
+    A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -490,8 +497,15 @@ class NotificationResource(SyncAPIResource):
 
 
 class AsyncNotificationResource(AsyncAPIResource):
+    """
+    A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -962,6 +976,9 @@ class NotificationResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+        """
         return HistoryResourceWithRawResponse(self._notification.history)
 
 
@@ -993,6 +1010,9 @@ class AsyncNotificationResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+        """
         return AsyncHistoryResourceWithRawResponse(self._notification.history)
 
 
@@ -1024,6 +1044,9 @@ class NotificationResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+        """
         return HistoryResourceWithStreamingResponse(self._notification.history)
 
 
@@ -1055,4 +1078,7 @@ class AsyncNotificationResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._notification.history)

@@ -46,8 +46,15 @@ __all__ = ["OnorbitassessmentResource", "AsyncOnorbitassessmentResource"]
 
 
 class OnorbitassessmentResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -585,8 +592,15 @@ class OnorbitassessmentResource(SyncAPIResource):
 
 
 class AsyncOnorbitassessmentResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1154,6 +1168,9 @@ class OnorbitassessmentResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResourceWithRawResponse(self._onorbitassessment.history)
 
 
@@ -1188,6 +1205,9 @@ class AsyncOnorbitassessmentResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResourceWithRawResponse(self._onorbitassessment.history)
 
 
@@ -1222,6 +1242,9 @@ class OnorbitassessmentResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResourceWithStreamingResponse(self._onorbitassessment.history)
 
 
@@ -1256,4 +1279,7 @@ class AsyncOnorbitassessmentResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._onorbitassessment.history)

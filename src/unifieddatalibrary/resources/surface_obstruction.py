@@ -37,6 +37,10 @@ __all__ = ["SurfaceObstructionResource", "AsyncSurfaceObstructionResource"]
 
 
 class SurfaceObstructionResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> SurfaceObstructionResourceWithRawResponse:
         """
@@ -589,6 +593,10 @@ class SurfaceObstructionResource(SyncAPIResource):
 
 
 class AsyncSurfaceObstructionResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSurfaceObstructionResourceWithRawResponse:
         """

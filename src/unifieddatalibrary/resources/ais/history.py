@@ -26,6 +26,10 @@ __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
 
 class HistoryResource(SyncAPIResource):
+    """
+    These services provide for posting and querying of self-reported information obtained from the Automatic Identification System (AIS) equipment. This contains information such as unique identification, status, position, course, and speed. The AIS is an automatic tracking system that uses transceivers on ships and is used by vessel traffic services. Although technically and operationally distinct, the AIS system is analogous to ADS-B which performs a similar function for aircraft. AIS is intended to assist a vessel's watchstanding officers and allow maritime authorities to track and monitor vessel movements. AIS integrates a standardized VHF transceiver with a positioning system, such as Global Positioning System receiver, with other electronic navigation sensors, such as gyrocompass or rate of turn indicator. Vessels fitted with AIS transceivers can be tracked by AIS base stations located along coastlines or, when out of range of terrestrial networks, through a growing number of satellites that are fitted with special AIS receivers that are capable of deconflicting a large number of signatures.
+    """
+
     @cached_property
     def with_raw_response(self) -> HistoryResourceWithRawResponse:
         """
@@ -231,6 +235,10 @@ class HistoryResource(SyncAPIResource):
 
 
 class AsyncHistoryResource(AsyncAPIResource):
+    """
+    These services provide for posting and querying of self-reported information obtained from the Automatic Identification System (AIS) equipment. This contains information such as unique identification, status, position, course, and speed. The AIS is an automatic tracking system that uses transceivers on ships and is used by vessel traffic services. Although technically and operationally distinct, the AIS system is analogous to ADS-B which performs a similar function for aircraft. AIS is intended to assist a vessel's watchstanding officers and allow maritime authorities to track and monitor vessel movements. AIS integrates a standardized VHF transceiver with a positioning system, such as Global Positioning System receiver, with other electronic navigation sensors, such as gyrocompass or rate of turn indicator. Vessels fitted with AIS transceivers can be tracked by AIS base stations located along coastlines or, when out of range of terrestrial networks, through a growing number of satellites that are fitted with special AIS receivers that are capable of deconflicting a large number of signatures.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
         """

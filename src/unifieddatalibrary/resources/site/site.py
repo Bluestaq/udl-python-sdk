@@ -46,8 +46,15 @@ __all__ = ["SiteResource", "AsyncSiteResource"]
 
 
 class SiteResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def operations(self) -> OperationsResource:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return OperationsResource(self._client)
 
     @cached_property
@@ -1379,8 +1386,15 @@ class SiteResource(SyncAPIResource):
 
 
 class AsyncSiteResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def operations(self) -> AsyncOperationsResource:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncOperationsResource(self._client)
 
     @cached_property
@@ -2739,6 +2753,9 @@ class SiteResourceWithRawResponse:
 
     @cached_property
     def operations(self) -> OperationsResourceWithRawResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return OperationsResourceWithRawResponse(self._site.operations)
 
 
@@ -2770,6 +2787,9 @@ class AsyncSiteResourceWithRawResponse:
 
     @cached_property
     def operations(self) -> AsyncOperationsResourceWithRawResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncOperationsResourceWithRawResponse(self._site.operations)
 
 
@@ -2801,6 +2821,9 @@ class SiteResourceWithStreamingResponse:
 
     @cached_property
     def operations(self) -> OperationsResourceWithStreamingResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return OperationsResourceWithStreamingResponse(self._site.operations)
 
 
@@ -2832,4 +2855,7 @@ class AsyncSiteResourceWithStreamingResponse:
 
     @cached_property
     def operations(self) -> AsyncOperationsResourceWithStreamingResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncOperationsResourceWithStreamingResponse(self._site.operations)

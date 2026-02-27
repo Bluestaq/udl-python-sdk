@@ -42,8 +42,15 @@ __all__ = ["OrbittrackResource", "AsyncOrbittrackResource"]
 
 
 class OrbittrackResource(SyncAPIResource):
+    """
+    These services provide operations for posting and querying of air, space, and ground 'tracks'. A track is a position and optionally a heading/velocity of an object at a particular timestamp.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for posting and querying of air, space, and ground 'tracks'. A track is a position and optionally a heading/velocity of an object at a particular timestamp.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -326,8 +333,15 @@ class OrbittrackResource(SyncAPIResource):
 
 
 class AsyncOrbittrackResource(AsyncAPIResource):
+    """
+    These services provide operations for posting and querying of air, space, and ground 'tracks'. A track is a position and optionally a heading/velocity of an object at a particular timestamp.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for posting and querying of air, space, and ground 'tracks'. A track is a position and optionally a heading/velocity of an object at a particular timestamp.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -634,6 +648,9 @@ class OrbittrackResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for posting and querying of air, space, and ground 'tracks'. A track is a position and optionally a heading/velocity of an object at a particular timestamp.
+        """
         return HistoryResourceWithRawResponse(self._orbittrack.history)
 
 
@@ -662,6 +679,9 @@ class AsyncOrbittrackResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for posting and querying of air, space, and ground 'tracks'. A track is a position and optionally a heading/velocity of an object at a particular timestamp.
+        """
         return AsyncHistoryResourceWithRawResponse(self._orbittrack.history)
 
 
@@ -690,6 +710,9 @@ class OrbittrackResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for posting and querying of air, space, and ground 'tracks'. A track is a position and optionally a heading/velocity of an object at a particular timestamp.
+        """
         return HistoryResourceWithStreamingResponse(self._orbittrack.history)
 
 
@@ -718,4 +741,7 @@ class AsyncOrbittrackResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for posting and querying of air, space, and ground 'tracks'. A track is a position and optionally a heading/velocity of an object at a particular timestamp.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._orbittrack.history)

@@ -46,8 +46,15 @@ __all__ = ["ManeuversResource", "AsyncManeuversResource"]
 
 
 class ManeuversResource(SyncAPIResource):
+    """
+    This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -915,8 +922,15 @@ class ManeuversResource(SyncAPIResource):
 
 
 class AsyncManeuversResource(AsyncAPIResource):
+    """
+    This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1814,6 +1828,9 @@ class ManeuversResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+        """
         return HistoryResourceWithRawResponse(self._maneuvers.history)
 
 
@@ -1848,6 +1865,9 @@ class AsyncManeuversResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+        """
         return AsyncHistoryResourceWithRawResponse(self._maneuvers.history)
 
 
@@ -1882,6 +1902,9 @@ class ManeuversResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+        """
         return HistoryResourceWithStreamingResponse(self._maneuvers.history)
 
 
@@ -1916,4 +1939,7 @@ class AsyncManeuversResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._maneuvers.history)

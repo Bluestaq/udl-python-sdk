@@ -37,6 +37,10 @@ __all__ = ["ManifoldResource", "AsyncManifoldResource"]
 
 
 class ManifoldResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> ManifoldResourceWithRawResponse:
         """
@@ -550,6 +554,10 @@ class ManifoldResource(SyncAPIResource):
 
 
 class AsyncManifoldResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncManifoldResourceWithRawResponse:
         """
