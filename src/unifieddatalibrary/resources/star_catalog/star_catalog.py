@@ -46,8 +46,17 @@ __all__ = ["StarCatalogResource", "AsyncStarCatalogResource"]
 
 
 class StarCatalogResource(SyncAPIResource):
+    """These services provide operations for posting and querying Star Catalog data.
+
+    The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -1079,8 +1088,17 @@ class StarCatalogResource(SyncAPIResource):
 
 
 class AsyncStarCatalogResource(AsyncAPIResource):
+    """These services provide operations for posting and querying Star Catalog data.
+
+    The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -2148,6 +2166,10 @@ class StarCatalogResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return HistoryResourceWithRawResponse(self._star_catalog.history)
 
 
@@ -2188,6 +2210,10 @@ class AsyncStarCatalogResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return AsyncHistoryResourceWithRawResponse(self._star_catalog.history)
 
 
@@ -2228,6 +2254,10 @@ class StarCatalogResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return HistoryResourceWithStreamingResponse(self._star_catalog.history)
 
 
@@ -2268,4 +2298,8 @@ class AsyncStarCatalogResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._star_catalog.history)

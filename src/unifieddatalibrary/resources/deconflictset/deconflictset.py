@@ -45,8 +45,15 @@ __all__ = ["DeconflictsetResource", "AsyncDeconflictsetResource"]
 
 
 class DeconflictsetResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Mission Ops information.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -595,8 +602,15 @@ class DeconflictsetResource(SyncAPIResource):
 
 
 class AsyncDeconflictsetResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Mission Ops information.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1172,6 +1186,9 @@ class DeconflictsetResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResourceWithRawResponse(self._deconflictset.history)
 
 
@@ -1203,6 +1220,9 @@ class AsyncDeconflictsetResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResourceWithRawResponse(self._deconflictset.history)
 
 
@@ -1234,6 +1254,9 @@ class DeconflictsetResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResourceWithStreamingResponse(self._deconflictset.history)
 
 
@@ -1265,4 +1288,7 @@ class AsyncDeconflictsetResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._deconflictset.history)

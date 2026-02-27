@@ -27,6 +27,10 @@ __all__ = ["FileResource", "AsyncFileResource"]
 
 
 class FileResource(SyncAPIResource):
+    """
+    These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+    """
+
     @cached_property
     def with_raw_response(self) -> FileResourceWithRawResponse:
         """
@@ -190,6 +194,10 @@ class FileResource(SyncAPIResource):
 
 
 class AsyncFileResource(AsyncAPIResource):
+    """
+    These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncFileResourceWithRawResponse:
         """

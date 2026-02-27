@@ -46,8 +46,15 @@ __all__ = ["CloselyspacedobjectsResource", "AsyncCloselyspacedobjectsResource"]
 
 
 class CloselyspacedobjectsResource(SyncAPIResource):
+    """
+    This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -689,8 +696,15 @@ class CloselyspacedobjectsResource(SyncAPIResource):
 
 
 class AsyncCloselyspacedobjectsResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1362,6 +1376,9 @@ class CloselyspacedobjectsResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+        """
         return HistoryResourceWithRawResponse(self._closelyspacedobjects.history)
 
 
@@ -1396,6 +1413,9 @@ class AsyncCloselyspacedobjectsResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+        """
         return AsyncHistoryResourceWithRawResponse(self._closelyspacedobjects.history)
 
 
@@ -1430,6 +1450,9 @@ class CloselyspacedobjectsResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+        """
         return HistoryResourceWithStreamingResponse(self._closelyspacedobjects.history)
 
 
@@ -1464,4 +1487,7 @@ class AsyncCloselyspacedobjectsResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for manipulating and querying of closely spaced objects (on orbit) operations including docking, rendezvous, proximity and reporting of payload zone engagements observed and characterized over a period of time.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._closelyspacedobjects.history)

@@ -45,8 +45,15 @@ __all__ = ["AircraftStatusesResource", "AsyncAircraftStatusesResource"]
 
 
 class AircraftStatusesResource(SyncAPIResource):
+    """
+    This service provides operations for manipulation and querying of Aircraft and Aircraft Status data. Aircraft contains the static data of the specific aircraft: tail number, cruise speed, max speed, minimum required runway length, etc. The Aircraft Status contains the dynamic data associated with the specific aircraft: remaining fuel, mission readiness, and inventory for example.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This service provides operations for manipulation and querying of Aircraft and Aircraft Status data. Aircraft contains the static data of the specific aircraft: tail number, cruise speed, max speed, minimum required runway length, etc. The Aircraft Status contains the dynamic data associated with the specific aircraft: remaining fuel, mission readiness, and inventory for example.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -884,8 +891,15 @@ class AircraftStatusesResource(SyncAPIResource):
 
 
 class AsyncAircraftStatusesResource(AsyncAPIResource):
+    """
+    This service provides operations for manipulation and querying of Aircraft and Aircraft Status data. Aircraft contains the static data of the specific aircraft: tail number, cruise speed, max speed, minimum required runway length, etc. The Aircraft Status contains the dynamic data associated with the specific aircraft: remaining fuel, mission readiness, and inventory for example.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This service provides operations for manipulation and querying of Aircraft and Aircraft Status data. Aircraft contains the static data of the specific aircraft: tail number, cruise speed, max speed, minimum required runway length, etc. The Aircraft Status contains the dynamic data associated with the specific aircraft: remaining fuel, mission readiness, and inventory for example.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1753,6 +1767,9 @@ class AircraftStatusesResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This service provides operations for manipulation and querying of Aircraft and Aircraft Status data. Aircraft contains the static data of the specific aircraft: tail number, cruise speed, max speed, minimum required runway length, etc. The Aircraft Status contains the dynamic data associated with the specific aircraft: remaining fuel, mission readiness, and inventory for example.
+        """
         return HistoryResourceWithRawResponse(self._aircraft_statuses.history)
 
 
@@ -1787,6 +1804,9 @@ class AsyncAircraftStatusesResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This service provides operations for manipulation and querying of Aircraft and Aircraft Status data. Aircraft contains the static data of the specific aircraft: tail number, cruise speed, max speed, minimum required runway length, etc. The Aircraft Status contains the dynamic data associated with the specific aircraft: remaining fuel, mission readiness, and inventory for example.
+        """
         return AsyncHistoryResourceWithRawResponse(self._aircraft_statuses.history)
 
 
@@ -1821,6 +1841,9 @@ class AircraftStatusesResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This service provides operations for manipulation and querying of Aircraft and Aircraft Status data. Aircraft contains the static data of the specific aircraft: tail number, cruise speed, max speed, minimum required runway length, etc. The Aircraft Status contains the dynamic data associated with the specific aircraft: remaining fuel, mission readiness, and inventory for example.
+        """
         return HistoryResourceWithStreamingResponse(self._aircraft_statuses.history)
 
 
@@ -1855,4 +1878,7 @@ class AsyncAircraftStatusesResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This service provides operations for manipulation and querying of Aircraft and Aircraft Status data. Aircraft contains the static data of the specific aircraft: tail number, cruise speed, max speed, minimum required runway length, etc. The Aircraft Status contains the dynamic data associated with the specific aircraft: remaining fuel, mission readiness, and inventory for example.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._aircraft_statuses.history)

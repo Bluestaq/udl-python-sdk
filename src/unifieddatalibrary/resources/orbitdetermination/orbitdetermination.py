@@ -46,8 +46,15 @@ __all__ = ["OrbitdeterminationResource", "AsyncOrbitdeterminationResource"]
 
 
 class OrbitdeterminationResource(SyncAPIResource):
+    """
+    These services provide operations for manipulating and querying Orbit Determination (OD) data. Orbit Determination data contains algorithm results that describe General Perturbations or Special Perturbations orbital updates.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulating and querying Orbit Determination (OD) data. Orbit Determination data contains algorithm results that describe General Perturbations or Special Perturbations orbital updates.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -666,8 +673,15 @@ class OrbitdeterminationResource(SyncAPIResource):
 
 
 class AsyncOrbitdeterminationResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulating and querying Orbit Determination (OD) data. Orbit Determination data contains algorithm results that describe General Perturbations or Special Perturbations orbital updates.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulating and querying Orbit Determination (OD) data. Orbit Determination data contains algorithm results that describe General Perturbations or Special Perturbations orbital updates.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1316,6 +1330,9 @@ class OrbitdeterminationResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulating and querying Orbit Determination (OD) data. Orbit Determination data contains algorithm results that describe General Perturbations or Special Perturbations orbital updates.
+        """
         return HistoryResourceWithRawResponse(self._orbitdetermination.history)
 
 
@@ -1350,6 +1367,9 @@ class AsyncOrbitdeterminationResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulating and querying Orbit Determination (OD) data. Orbit Determination data contains algorithm results that describe General Perturbations or Special Perturbations orbital updates.
+        """
         return AsyncHistoryResourceWithRawResponse(self._orbitdetermination.history)
 
 
@@ -1384,6 +1404,9 @@ class OrbitdeterminationResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulating and querying Orbit Determination (OD) data. Orbit Determination data contains algorithm results that describe General Perturbations or Special Perturbations orbital updates.
+        """
         return HistoryResourceWithStreamingResponse(self._orbitdetermination.history)
 
 
@@ -1418,4 +1441,7 @@ class AsyncOrbitdeterminationResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulating and querying Orbit Determination (OD) data. Orbit Determination data contains algorithm results that describe General Perturbations or Special Perturbations orbital updates.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._orbitdetermination.history)

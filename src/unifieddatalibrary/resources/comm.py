@@ -36,6 +36,10 @@ __all__ = ["CommResource", "AsyncCommResource"]
 
 
 class CommResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit communications payloads (Comm), including supporting data such as transponders and channels, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> CommResourceWithRawResponse:
         """
@@ -498,6 +502,10 @@ class CommResource(SyncAPIResource):
 
 
 class AsyncCommResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit communications payloads (Comm), including supporting data such as transponders and channels, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncCommResourceWithRawResponse:
         """

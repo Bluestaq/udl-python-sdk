@@ -25,6 +25,10 @@ __all__ = ["ViewResource", "AsyncViewResource"]
 
 
 class ViewResource(SyncAPIResource):
+    """
+    These services provide CRUD and search operations for files and folders in the Secure Content Store.
+    """
+
     @cached_property
     def with_raw_response(self) -> ViewResourceWithRawResponse:
         """
@@ -92,6 +96,10 @@ class ViewResource(SyncAPIResource):
 
 
 class AsyncViewResource(AsyncAPIResource):
+    """
+    These services provide CRUD and search operations for files and folders in the Secure Content Store.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncViewResourceWithRawResponse:
         """

@@ -35,6 +35,10 @@ __all__ = ["SeraDataNavigationResource", "AsyncSeraDataNavigationResource"]
 
 
 class SeraDataNavigationResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit payloads.
+    """
+
     @cached_property
     def with_raw_response(self) -> SeraDataNavigationResourceWithRawResponse:
         """
@@ -566,6 +570,10 @@ class SeraDataNavigationResource(SyncAPIResource):
 
 
 class AsyncSeraDataNavigationResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit payloads.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSeraDataNavigationResourceWithRawResponse:
         """

@@ -45,8 +45,15 @@ __all__ = ["SiteStatusResource", "AsyncSiteStatusResource"]
 
 
 class SiteStatusResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -870,8 +877,15 @@ class SiteStatusResource(SyncAPIResource):
 
 
 class AsyncSiteStatusResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1725,6 +1739,9 @@ class SiteStatusResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return HistoryResourceWithRawResponse(self._site_status.history)
 
 
@@ -1759,6 +1776,9 @@ class AsyncSiteStatusResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncHistoryResourceWithRawResponse(self._site_status.history)
 
 
@@ -1793,6 +1813,9 @@ class SiteStatusResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return HistoryResourceWithStreamingResponse(self._site_status.history)
 
 
@@ -1827,4 +1850,7 @@ class AsyncSiteStatusResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._site_status.history)

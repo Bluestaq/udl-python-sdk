@@ -35,6 +35,10 @@ __all__ = ["SeraDataCommDetailsResource", "AsyncSeraDataCommDetailsResource"]
 
 
 class SeraDataCommDetailsResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit communications payloads (Comm), including supporting data such as transponders and channels, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> SeraDataCommDetailsResourceWithRawResponse:
         """
@@ -698,6 +702,10 @@ class SeraDataCommDetailsResource(SyncAPIResource):
 
 
 class AsyncSeraDataCommDetailsResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit communications payloads (Comm), including supporting data such as transponders and channels, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSeraDataCommDetailsResourceWithRawResponse:
         """

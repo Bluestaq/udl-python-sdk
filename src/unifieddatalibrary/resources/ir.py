@@ -36,6 +36,10 @@ __all__ = ["IrResource", "AsyncIrResource"]
 
 
 class IrResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit payloads.
+    """
+
     @cached_property
     def with_raw_response(self) -> IrResourceWithRawResponse:
         """
@@ -500,6 +504,10 @@ class IrResource(SyncAPIResource):
 
 
 class AsyncIrResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit payloads.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncIrResourceWithRawResponse:
         """

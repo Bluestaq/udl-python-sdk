@@ -52,12 +52,22 @@ __all__ = ["LinkStatusResource", "AsyncLinkStatusResource"]
 
 
 class LinkStatusResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+    """
+
     @cached_property
     def datalink(self) -> DatalinkResource:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return DatalinkResource(self._client)
 
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -524,12 +534,22 @@ class LinkStatusResource(SyncAPIResource):
 
 
 class AsyncLinkStatusResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+    """
+
     @cached_property
     def datalink(self) -> AsyncDatalinkResource:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return AsyncDatalinkResource(self._client)
 
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1020,10 +1040,16 @@ class LinkStatusResourceWithRawResponse:
 
     @cached_property
     def datalink(self) -> DatalinkResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return DatalinkResourceWithRawResponse(self._link_status.datalink)
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return HistoryResourceWithRawResponse(self._link_status.history)
 
 
@@ -1052,10 +1078,16 @@ class AsyncLinkStatusResourceWithRawResponse:
 
     @cached_property
     def datalink(self) -> AsyncDatalinkResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return AsyncDatalinkResourceWithRawResponse(self._link_status.datalink)
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return AsyncHistoryResourceWithRawResponse(self._link_status.history)
 
 
@@ -1084,10 +1116,16 @@ class LinkStatusResourceWithStreamingResponse:
 
     @cached_property
     def datalink(self) -> DatalinkResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return DatalinkResourceWithStreamingResponse(self._link_status.datalink)
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return HistoryResourceWithStreamingResponse(self._link_status.history)
 
 
@@ -1116,8 +1154,14 @@ class AsyncLinkStatusResourceWithStreamingResponse:
 
     @cached_property
     def datalink(self) -> AsyncDatalinkResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return AsyncDatalinkResourceWithStreamingResponse(self._link_status.datalink)
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying tactical data links and link statuses of beams or a satellite constellation. Communication link statuses provide definitions and status such as, positional endpoints, where each endpoint may be associated with a specific beam or with a satellite constellation. Data links provide detailed instructions regarding the operational use of a tactical data link and interface coordination through various message formats.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._link_status.history)

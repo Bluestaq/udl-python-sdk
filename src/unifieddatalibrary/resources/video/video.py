@@ -50,8 +50,11 @@ __all__ = ["VideoResource", "AsyncVideoResource"]
 
 
 class VideoResource(SyncAPIResource):
+    """This collection of services provides operations for video streaming."""
+
     @cached_property
     def history(self) -> HistoryResource:
+        """This collection of services provides operations for video streaming."""
         return HistoryResource(self._client)
 
     @cached_property
@@ -531,8 +534,11 @@ class VideoResource(SyncAPIResource):
 
 
 class AsyncVideoResource(AsyncAPIResource):
+    """This collection of services provides operations for video streaming."""
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """This collection of services provides operations for video streaming."""
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1045,6 +1051,7 @@ class VideoResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """This collection of services provides operations for video streaming."""
         return HistoryResourceWithRawResponse(self._video.history)
 
 
@@ -1082,6 +1089,7 @@ class AsyncVideoResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """This collection of services provides operations for video streaming."""
         return AsyncHistoryResourceWithRawResponse(self._video.history)
 
 
@@ -1119,6 +1127,7 @@ class VideoResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """This collection of services provides operations for video streaming."""
         return HistoryResourceWithStreamingResponse(self._video.history)
 
 
@@ -1156,4 +1165,5 @@ class AsyncVideoResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """This collection of services provides operations for video streaming."""
         return AsyncHistoryResourceWithStreamingResponse(self._video.history)

@@ -47,8 +47,15 @@ __all__ = ["OnorbitResource", "AsyncOnorbitResource"]
 
 
 class OnorbitResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def antenna_details(self) -> AntennaDetailsResource:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AntennaDetailsResource(self._client)
 
     @cached_property
@@ -682,8 +689,15 @@ class OnorbitResource(SyncAPIResource):
 
 
 class AsyncOnorbitResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def antenna_details(self) -> AsyncAntennaDetailsResource:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncAntennaDetailsResource(self._client)
 
     @cached_property
@@ -1350,6 +1364,9 @@ class OnorbitResourceWithRawResponse:
 
     @cached_property
     def antenna_details(self) -> AntennaDetailsResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AntennaDetailsResourceWithRawResponse(self._onorbit.antenna_details)
 
 
@@ -1387,6 +1404,9 @@ class AsyncOnorbitResourceWithRawResponse:
 
     @cached_property
     def antenna_details(self) -> AsyncAntennaDetailsResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncAntennaDetailsResourceWithRawResponse(self._onorbit.antenna_details)
 
 
@@ -1424,6 +1444,9 @@ class OnorbitResourceWithStreamingResponse:
 
     @cached_property
     def antenna_details(self) -> AntennaDetailsResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AntennaDetailsResourceWithStreamingResponse(self._onorbit.antenna_details)
 
 
@@ -1461,4 +1484,7 @@ class AsyncOnorbitResourceWithStreamingResponse:
 
     @cached_property
     def antenna_details(self) -> AsyncAntennaDetailsResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncAntennaDetailsResourceWithStreamingResponse(self._onorbit.antenna_details)

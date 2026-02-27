@@ -31,8 +31,15 @@ __all__ = ["NotificationsResource", "AsyncNotificationsResource"]
 
 
 class NotificationsResource(SyncAPIResource):
+    """
+    These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+    """
+
     @cached_property
     def offset(self) -> OffsetResource:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return OffsetResource(self._client)
 
     @cached_property
@@ -107,8 +114,15 @@ class NotificationsResource(SyncAPIResource):
 
 
 class AsyncNotificationsResource(AsyncAPIResource):
+    """
+    These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+    """
+
     @cached_property
     def offset(self) -> AsyncOffsetResource:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return AsyncOffsetResource(self._client)
 
     @cached_property
@@ -192,6 +206,9 @@ class NotificationsResourceWithRawResponse:
 
     @cached_property
     def offset(self) -> OffsetResourceWithRawResponse:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return OffsetResourceWithRawResponse(self._notifications.offset)
 
 
@@ -205,6 +222,9 @@ class AsyncNotificationsResourceWithRawResponse:
 
     @cached_property
     def offset(self) -> AsyncOffsetResourceWithRawResponse:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return AsyncOffsetResourceWithRawResponse(self._notifications.offset)
 
 
@@ -218,6 +238,9 @@ class NotificationsResourceWithStreamingResponse:
 
     @cached_property
     def offset(self) -> OffsetResourceWithStreamingResponse:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return OffsetResourceWithStreamingResponse(self._notifications.offset)
 
 
@@ -231,4 +254,7 @@ class AsyncNotificationsResourceWithStreamingResponse:
 
     @cached_property
     def offset(self) -> AsyncOffsetResourceWithStreamingResponse:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return AsyncOffsetResourceWithStreamingResponse(self._notifications.offset)

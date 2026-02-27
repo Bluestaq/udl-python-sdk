@@ -35,6 +35,10 @@ __all__ = ["CountriesResource", "AsyncCountriesResource"]
 
 
 class CountriesResource(SyncAPIResource):
+    """
+    Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> CountriesResourceWithRawResponse:
         """
@@ -486,6 +490,10 @@ class CountriesResource(SyncAPIResource):
 
 
 class AsyncCountriesResource(AsyncAPIResource):
+    """
+    Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncCountriesResourceWithRawResponse:
         """

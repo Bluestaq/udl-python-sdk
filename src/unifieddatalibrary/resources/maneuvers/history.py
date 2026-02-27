@@ -26,6 +26,10 @@ __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
 
 class HistoryResource(SyncAPIResource):
+    """
+    This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+    """
+
     @cached_property
     def with_raw_response(self) -> HistoryResourceWithRawResponse:
         """
@@ -234,6 +238,10 @@ class HistoryResource(SyncAPIResource):
 
 
 class AsyncHistoryResource(AsyncAPIResource):
+    """
+    This service provides operations for querying and manipulation of detected/possible/confirmed on-orbit maneuvers. The J2000 coordinate frame is the preferred frame for all maneuver data, but in some cases data may be in another frame depending on the provider. Check the Storefront 'Data Products' section under the 'Discover' tab for maneuver data provider information.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
         """
