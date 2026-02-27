@@ -26,6 +26,10 @@ __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
 
 class HistoryResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def with_raw_response(self) -> HistoryResourceWithRawResponse:
         """
@@ -255,6 +259,10 @@ class HistoryResource(SyncAPIResource):
 
 
 class AsyncHistoryResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
         """

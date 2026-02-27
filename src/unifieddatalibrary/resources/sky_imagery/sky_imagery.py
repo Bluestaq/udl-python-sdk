@@ -52,8 +52,15 @@ __all__ = ["SkyImageryResource", "AsyncSkyImageryResource"]
 
 
 class SkyImageryResource(SyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of sky imagery data. Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This collection of services provides operations for querying and manipulation of sky imagery data. Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -418,8 +425,15 @@ class SkyImageryResource(SyncAPIResource):
 
 
 class AsyncSkyImageryResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of sky imagery data. Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This collection of services provides operations for querying and manipulation of sky imagery data. Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -812,6 +826,9 @@ class SkyImageryResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of sky imagery data. Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+        """
         return HistoryResourceWithRawResponse(self._sky_imagery.history)
 
 
@@ -844,6 +861,9 @@ class AsyncSkyImageryResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of sky imagery data. Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+        """
         return AsyncHistoryResourceWithRawResponse(self._sky_imagery.history)
 
 
@@ -876,6 +896,9 @@ class SkyImageryResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of sky imagery data. Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+        """
         return HistoryResourceWithStreamingResponse(self._sky_imagery.history)
 
 
@@ -908,4 +931,7 @@ class AsyncSkyImageryResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of sky imagery data. Sky imagery is ground or space based telescope imagery of RSO's and includes metadata on the image (time, source, etc) as well as binary image content (e.g. FITS, EOSSA, EOCHIP, MP4). Binary content must be downloaded individually by ID using the 'getFile' operation.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._sky_imagery.history)

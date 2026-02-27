@@ -19,6 +19,9 @@ __all__ = ["TdoaFdoaResource", "AsyncTdoaFdoaResource"]
 class TdoaFdoaResource(SyncAPIResource):
     @cached_property
     def diffofarrival(self) -> DiffofarrivalResource:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return DiffofarrivalResource(self._client)
 
     @cached_property
@@ -44,6 +47,9 @@ class TdoaFdoaResource(SyncAPIResource):
 class AsyncTdoaFdoaResource(AsyncAPIResource):
     @cached_property
     def diffofarrival(self) -> AsyncDiffofarrivalResource:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return AsyncDiffofarrivalResource(self._client)
 
     @cached_property
@@ -72,6 +78,9 @@ class TdoaFdoaResourceWithRawResponse:
 
     @cached_property
     def diffofarrival(self) -> DiffofarrivalResourceWithRawResponse:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return DiffofarrivalResourceWithRawResponse(self._tdoa_fdoa.diffofarrival)
 
 
@@ -81,6 +90,9 @@ class AsyncTdoaFdoaResourceWithRawResponse:
 
     @cached_property
     def diffofarrival(self) -> AsyncDiffofarrivalResourceWithRawResponse:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return AsyncDiffofarrivalResourceWithRawResponse(self._tdoa_fdoa.diffofarrival)
 
 
@@ -90,6 +102,9 @@ class TdoaFdoaResourceWithStreamingResponse:
 
     @cached_property
     def diffofarrival(self) -> DiffofarrivalResourceWithStreamingResponse:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return DiffofarrivalResourceWithStreamingResponse(self._tdoa_fdoa.diffofarrival)
 
 
@@ -99,4 +114,7 @@ class AsyncTdoaFdoaResourceWithStreamingResponse:
 
     @cached_property
     def diffofarrival(self) -> AsyncDiffofarrivalResourceWithStreamingResponse:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return AsyncDiffofarrivalResourceWithStreamingResponse(self._tdoa_fdoa.diffofarrival)

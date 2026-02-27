@@ -42,8 +42,11 @@ __all__ = ["IsrCollectionsResource", "AsyncIsrCollectionsResource"]
 
 
 class IsrCollectionsResource(SyncAPIResource):
+    """These services provide operations for posting and querying Sensor Tasking data."""
+
     @cached_property
     def history(self) -> HistoryResource:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResource(self._client)
 
     @cached_property
@@ -326,8 +329,11 @@ class IsrCollectionsResource(SyncAPIResource):
 
 
 class AsyncIsrCollectionsResource(AsyncAPIResource):
+    """These services provide operations for posting and querying Sensor Tasking data."""
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -634,6 +640,7 @@ class IsrCollectionsResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResourceWithRawResponse(self._isr_collections.history)
 
 
@@ -662,6 +669,7 @@ class AsyncIsrCollectionsResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResourceWithRawResponse(self._isr_collections.history)
 
 
@@ -690,6 +698,7 @@ class IsrCollectionsResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResourceWithStreamingResponse(self._isr_collections.history)
 
 
@@ -718,4 +727,5 @@ class AsyncIsrCollectionsResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResourceWithStreamingResponse(self._isr_collections.history)

@@ -27,6 +27,10 @@ __all__ = ["SecureMessagingResource", "AsyncSecureMessagingResource"]
 
 
 class SecureMessagingResource(SyncAPIResource):
+    """
+    Secure Messaging is based on Apache Kafka which is an open-source stream-processing software platform developed by the Apache Software Foundation, written in Scala and Java. Kafka provides a unified, high-throughput, low-latency platform for handling real-time data feeds.  All messaging is secured; consumers will not receive messages unless authorized to do so. J2000 is the preferred coordinate frame for all observations, but in some cases observations may be in another frame depending on the provider. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     @cached_property
     def with_raw_response(self) -> SecureMessagingResourceWithRawResponse:
         """
@@ -207,6 +211,10 @@ class SecureMessagingResource(SyncAPIResource):
 
 
 class AsyncSecureMessagingResource(AsyncAPIResource):
+    """
+    Secure Messaging is based on Apache Kafka which is an open-source stream-processing software platform developed by the Apache Software Foundation, written in Scala and Java. Kafka provides a unified, high-throughput, low-latency platform for handling real-time data feeds.  All messaging is secured; consumers will not receive messages unless authorized to do so. J2000 is the preferred coordinate frame for all observations, but in some cases observations may be in another frame depending on the provider. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSecureMessagingResourceWithRawResponse:
         """

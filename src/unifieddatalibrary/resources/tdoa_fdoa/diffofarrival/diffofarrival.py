@@ -40,8 +40,15 @@ __all__ = ["DiffofarrivalResource", "AsyncDiffofarrivalResource"]
 
 
 class DiffofarrivalResource(SyncAPIResource):
+    """
+    These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -445,8 +452,15 @@ class DiffofarrivalResource(SyncAPIResource):
 
 
 class AsyncDiffofarrivalResource(AsyncAPIResource):
+    """
+    These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -868,6 +882,9 @@ class DiffofarrivalResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return HistoryResourceWithRawResponse(self._diffofarrival.history)
 
 
@@ -890,6 +907,9 @@ class AsyncDiffofarrivalResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return AsyncHistoryResourceWithRawResponse(self._diffofarrival.history)
 
 
@@ -912,6 +932,9 @@ class DiffofarrivalResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return HistoryResourceWithStreamingResponse(self._diffofarrival.history)
 
 
@@ -934,4 +957,7 @@ class AsyncDiffofarrivalResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for querying and manipulation of Signal time and frequency difference of arrival (TDOA/FDOA) information obtained by using passive RF based sensor phenomenologies and sensor triangulation. The J2000 coordinate frame is the preferred frame for all observations, but in some cases observations may be in another frame depending on the provider.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._diffofarrival.history)

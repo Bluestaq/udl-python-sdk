@@ -52,12 +52,22 @@ __all__ = ["EvacResource", "AsyncEvacResource"]
 
 
 class EvacResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Mission Ops information.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResource(self._client)
 
     @cached_property
     def tuple(self) -> TupleResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return TupleResource(self._client)
 
     @cached_property
@@ -540,12 +550,22 @@ class EvacResource(SyncAPIResource):
 
 
 class AsyncEvacResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Mission Ops information.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
     def tuple(self) -> AsyncTupleResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncTupleResource(self._client)
 
     @cached_property
@@ -1055,10 +1075,16 @@ class EvacResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResourceWithRawResponse(self._evac.history)
 
     @cached_property
     def tuple(self) -> TupleResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return TupleResourceWithRawResponse(self._evac.tuple)
 
 
@@ -1090,10 +1116,16 @@ class AsyncEvacResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResourceWithRawResponse(self._evac.history)
 
     @cached_property
     def tuple(self) -> AsyncTupleResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncTupleResourceWithRawResponse(self._evac.tuple)
 
 
@@ -1125,10 +1157,16 @@ class EvacResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResourceWithStreamingResponse(self._evac.history)
 
     @cached_property
     def tuple(self) -> TupleResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return TupleResourceWithStreamingResponse(self._evac.tuple)
 
 
@@ -1160,8 +1198,14 @@ class AsyncEvacResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._evac.history)
 
     @cached_property
     def tuple(self) -> AsyncTupleResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncTupleResourceWithStreamingResponse(self._evac.tuple)

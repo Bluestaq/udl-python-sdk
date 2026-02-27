@@ -42,8 +42,15 @@ __all__ = ["MtiResource", "AsyncMtiResource"]
 
 
 class MtiResource(SyncAPIResource):
+    """
+    These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -324,8 +331,15 @@ class MtiResource(SyncAPIResource):
 
 
 class AsyncMtiResource(AsyncAPIResource):
+    """
+    These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -630,6 +644,9 @@ class MtiResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+        """
         return HistoryResourceWithRawResponse(self._mti.history)
 
 
@@ -658,6 +675,9 @@ class AsyncMtiResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+        """
         return AsyncHistoryResourceWithRawResponse(self._mti.history)
 
 
@@ -686,6 +706,9 @@ class MtiResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+        """
         return HistoryResourceWithStreamingResponse(self._mti.history)
 
 
@@ -714,4 +737,7 @@ class AsyncMtiResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._mti.history)

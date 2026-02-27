@@ -31,8 +31,15 @@ __all__ = ["AttitudeDataResource", "AsyncAttitudeDataResource"]
 
 
 class AttitudeDataResource(SyncAPIResource):
+    """
+    These services provide operations for the posting and querying of satellite Ephemeris Point data. Each point contains a position and velocity vector and optionally, an acceleration vector and/or covariance matrix at a specified time. ECI J2K is the preferred reference frame for ephemeris and covariance, however, several user specified reference frames are accommodated. The EphemerisSet ID (esId) identifies the 'EphemerisSet' record which contains details of the underlying data and models used in the generation of the ephemeris as well as a collection of ephemeris points. Points must be retrieved by first identifying a desired EphemerisSet and pulling its points by that EphemerisSet 'esId'.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for the posting and querying of satellite Ephemeris Point data. Each point contains a position and velocity vector and optionally, an acceleration vector and/or covariance matrix at a specified time. ECI J2K is the preferred reference frame for ephemeris and covariance, however, several user specified reference frames are accommodated. The EphemerisSet ID (esId) identifies the 'EphemerisSet' record which contains details of the underlying data and models used in the generation of the ephemeris as well as a collection of ephemeris points. Points must be retrieved by first identifying a desired EphemerisSet and pulling its points by that EphemerisSet 'esId'.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -157,8 +164,15 @@ class AttitudeDataResource(SyncAPIResource):
 
 
 class AsyncAttitudeDataResource(AsyncAPIResource):
+    """
+    These services provide operations for the posting and querying of satellite Ephemeris Point data. Each point contains a position and velocity vector and optionally, an acceleration vector and/or covariance matrix at a specified time. ECI J2K is the preferred reference frame for ephemeris and covariance, however, several user specified reference frames are accommodated. The EphemerisSet ID (esId) identifies the 'EphemerisSet' record which contains details of the underlying data and models used in the generation of the ephemeris as well as a collection of ephemeris points. Points must be retrieved by first identifying a desired EphemerisSet and pulling its points by that EphemerisSet 'esId'.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for the posting and querying of satellite Ephemeris Point data. Each point contains a position and velocity vector and optionally, an acceleration vector and/or covariance matrix at a specified time. ECI J2K is the preferred reference frame for ephemeris and covariance, however, several user specified reference frames are accommodated. The EphemerisSet ID (esId) identifies the 'EphemerisSet' record which contains details of the underlying data and models used in the generation of the ephemeris as well as a collection of ephemeris points. Points must be retrieved by first identifying a desired EphemerisSet and pulling its points by that EphemerisSet 'esId'.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -295,6 +309,9 @@ class AttitudeDataResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for the posting and querying of satellite Ephemeris Point data. Each point contains a position and velocity vector and optionally, an acceleration vector and/or covariance matrix at a specified time. ECI J2K is the preferred reference frame for ephemeris and covariance, however, several user specified reference frames are accommodated. The EphemerisSet ID (esId) identifies the 'EphemerisSet' record which contains details of the underlying data and models used in the generation of the ephemeris as well as a collection of ephemeris points. Points must be retrieved by first identifying a desired EphemerisSet and pulling its points by that EphemerisSet 'esId'.
+        """
         return HistoryResourceWithRawResponse(self._attitude_data.history)
 
 
@@ -311,6 +328,9 @@ class AsyncAttitudeDataResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for the posting and querying of satellite Ephemeris Point data. Each point contains a position and velocity vector and optionally, an acceleration vector and/or covariance matrix at a specified time. ECI J2K is the preferred reference frame for ephemeris and covariance, however, several user specified reference frames are accommodated. The EphemerisSet ID (esId) identifies the 'EphemerisSet' record which contains details of the underlying data and models used in the generation of the ephemeris as well as a collection of ephemeris points. Points must be retrieved by first identifying a desired EphemerisSet and pulling its points by that EphemerisSet 'esId'.
+        """
         return AsyncHistoryResourceWithRawResponse(self._attitude_data.history)
 
 
@@ -327,6 +347,9 @@ class AttitudeDataResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for the posting and querying of satellite Ephemeris Point data. Each point contains a position and velocity vector and optionally, an acceleration vector and/or covariance matrix at a specified time. ECI J2K is the preferred reference frame for ephemeris and covariance, however, several user specified reference frames are accommodated. The EphemerisSet ID (esId) identifies the 'EphemerisSet' record which contains details of the underlying data and models used in the generation of the ephemeris as well as a collection of ephemeris points. Points must be retrieved by first identifying a desired EphemerisSet and pulling its points by that EphemerisSet 'esId'.
+        """
         return HistoryResourceWithStreamingResponse(self._attitude_data.history)
 
 
@@ -343,4 +366,7 @@ class AsyncAttitudeDataResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for the posting and querying of satellite Ephemeris Point data. Each point contains a position and velocity vector and optionally, an acceleration vector and/or covariance matrix at a specified time. ECI J2K is the preferred reference frame for ephemeris and covariance, however, several user specified reference frames are accommodated. The EphemerisSet ID (esId) identifies the 'EphemerisSet' record which contains details of the underlying data and models used in the generation of the ephemeris as well as a collection of ephemeris points. Points must be retrieved by first identifying a desired EphemerisSet and pulling its points by that EphemerisSet 'esId'.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._attitude_data.history)

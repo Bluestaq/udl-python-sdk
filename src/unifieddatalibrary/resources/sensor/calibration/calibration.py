@@ -46,8 +46,17 @@ __all__ = ["CalibrationResource", "AsyncCalibrationResource"]
 
 
 class CalibrationResource(SyncAPIResource):
+    """This service provides operations for querying and manipulation of sensor data.
+
+    Sensors are terrestrial or on-orbit equipment capable of taking measurements or 'observations' of on-orbit objects via several phenomenologies such as Electro-Optical (EO), Radar, and Radio Frequency (RF). This collection of operations includes 'SensorMaintenance' schedules which define known/planned future maintenance and associated operational impact of sensors as well as 'SensorCalibration' records which contains data about a sensor's overall accuracy and is used to adjust sensor settings.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """This service provides operations for querying and manipulation of sensor data.
+
+        Sensors are terrestrial or on-orbit equipment capable of taking measurements or 'observations' of on-orbit objects via several phenomenologies such as Electro-Optical (EO), Radar, and Radio Frequency (RF). This collection of operations includes 'SensorMaintenance' schedules which define known/planned future maintenance and associated operational impact of sensors as well as 'SensorCalibration' records which contains data about a sensor's overall accuracy and is used to adjust sensor settings.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -681,8 +690,17 @@ class CalibrationResource(SyncAPIResource):
 
 
 class AsyncCalibrationResource(AsyncAPIResource):
+    """This service provides operations for querying and manipulation of sensor data.
+
+    Sensors are terrestrial or on-orbit equipment capable of taking measurements or 'observations' of on-orbit objects via several phenomenologies such as Electro-Optical (EO), Radar, and Radio Frequency (RF). This collection of operations includes 'SensorMaintenance' schedules which define known/planned future maintenance and associated operational impact of sensors as well as 'SensorCalibration' records which contains data about a sensor's overall accuracy and is used to adjust sensor settings.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """This service provides operations for querying and manipulation of sensor data.
+
+        Sensors are terrestrial or on-orbit equipment capable of taking measurements or 'observations' of on-orbit objects via several phenomenologies such as Electro-Optical (EO), Radar, and Radio Frequency (RF). This collection of operations includes 'SensorMaintenance' schedules which define known/planned future maintenance and associated operational impact of sensors as well as 'SensorCalibration' records which contains data about a sensor's overall accuracy and is used to adjust sensor settings.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1346,6 +1364,10 @@ class CalibrationResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """This service provides operations for querying and manipulation of sensor data.
+
+        Sensors are terrestrial or on-orbit equipment capable of taking measurements or 'observations' of on-orbit objects via several phenomenologies such as Electro-Optical (EO), Radar, and Radio Frequency (RF). This collection of operations includes 'SensorMaintenance' schedules which define known/planned future maintenance and associated operational impact of sensors as well as 'SensorCalibration' records which contains data about a sensor's overall accuracy and is used to adjust sensor settings.
+        """
         return HistoryResourceWithRawResponse(self._calibration.history)
 
 
@@ -1380,6 +1402,10 @@ class AsyncCalibrationResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """This service provides operations for querying and manipulation of sensor data.
+
+        Sensors are terrestrial or on-orbit equipment capable of taking measurements or 'observations' of on-orbit objects via several phenomenologies such as Electro-Optical (EO), Radar, and Radio Frequency (RF). This collection of operations includes 'SensorMaintenance' schedules which define known/planned future maintenance and associated operational impact of sensors as well as 'SensorCalibration' records which contains data about a sensor's overall accuracy and is used to adjust sensor settings.
+        """
         return AsyncHistoryResourceWithRawResponse(self._calibration.history)
 
 
@@ -1414,6 +1440,10 @@ class CalibrationResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """This service provides operations for querying and manipulation of sensor data.
+
+        Sensors are terrestrial or on-orbit equipment capable of taking measurements or 'observations' of on-orbit objects via several phenomenologies such as Electro-Optical (EO), Radar, and Radio Frequency (RF). This collection of operations includes 'SensorMaintenance' schedules which define known/planned future maintenance and associated operational impact of sensors as well as 'SensorCalibration' records which contains data about a sensor's overall accuracy and is used to adjust sensor settings.
+        """
         return HistoryResourceWithStreamingResponse(self._calibration.history)
 
 
@@ -1448,4 +1478,8 @@ class AsyncCalibrationResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """This service provides operations for querying and manipulation of sensor data.
+
+        Sensors are terrestrial or on-orbit equipment capable of taking measurements or 'observations' of on-orbit objects via several phenomenologies such as Electro-Optical (EO), Radar, and Radio Frequency (RF). This collection of operations includes 'SensorMaintenance' schedules which define known/planned future maintenance and associated operational impact of sensors as well as 'SensorCalibration' records which contains data about a sensor's overall accuracy and is used to adjust sensor settings.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._calibration.history)

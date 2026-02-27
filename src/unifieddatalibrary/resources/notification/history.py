@@ -26,6 +26,10 @@ __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
 
 class HistoryResource(SyncAPIResource):
+    """
+    A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+    """
+
     @cached_property
     def with_raw_response(self) -> HistoryResourceWithRawResponse:
         """
@@ -228,6 +232,10 @@ class HistoryResource(SyncAPIResource):
 
 
 class AsyncHistoryResource(AsyncAPIResource):
+    """
+    A Notification Service allowing the broadcast of generic messages to the community. Users can send free-form messages, publish lists, and notify the community about events or alerts across various domains. Notifications and alerts are categorized by a 'msgType' field and are accessible via the UDL Secure Messaging API and REST API services.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
         """

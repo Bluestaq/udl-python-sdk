@@ -38,6 +38,10 @@ __all__ = ["EntitiesResource", "AsyncEntitiesResource"]
 
 
 class EntitiesResource(SyncAPIResource):
+    """
+    Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> EntitiesResourceWithRawResponse:
         """
@@ -641,6 +645,10 @@ class EntitiesResource(SyncAPIResource):
 
 
 class AsyncEntitiesResource(AsyncAPIResource):
+    """
+    Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncEntitiesResourceWithRawResponse:
         """

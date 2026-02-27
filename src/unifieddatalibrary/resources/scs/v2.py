@@ -51,6 +51,10 @@ __all__ = ["V2Resource", "AsyncV2Resource"]
 
 
 class V2Resource(SyncAPIResource):
+    """
+    These services provide CRUD and search operations for files and folders in the Secure Content Store.
+    """
+
     @cached_property
     def with_raw_response(self) -> V2ResourceWithRawResponse:
         """
@@ -686,6 +690,10 @@ class V2Resource(SyncAPIResource):
 
 
 class AsyncV2Resource(AsyncAPIResource):
+    """
+    These services provide CRUD and search operations for files and folders in the Secure Content Store.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncV2ResourceWithRawResponse:
         """

@@ -26,6 +26,10 @@ __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
 
 class HistoryResource(SyncAPIResource):
+    """
+    These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+    """
+
     @cached_property
     def with_raw_response(self) -> HistoryResourceWithRawResponse:
         """
@@ -228,6 +232,10 @@ class HistoryResource(SyncAPIResource):
 
 
 class AsyncHistoryResource(AsyncAPIResource):
+    """
+    These services provide operations for posting and querying Moving Target Indicator (MTI) STANAG 4607 data. Detailed MTI data supports activities such as targeting or less detailed data for applications such as situational awareness used/derived by exploitation systems.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
         """

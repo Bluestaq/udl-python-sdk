@@ -44,8 +44,15 @@ __all__ = ["LaseremitterResource", "AsyncLaseremitterResource"]
 
 
 class LaseremitterResource(SyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+    """
+
     @cached_property
     def staging(self) -> StagingResource:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return StagingResource(self._client)
 
     @cached_property
@@ -660,8 +667,15 @@ class LaseremitterResource(SyncAPIResource):
 
 
 class AsyncLaseremitterResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+    """
+
     @cached_property
     def staging(self) -> AsyncStagingResource:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return AsyncStagingResource(self._client)
 
     @cached_property
@@ -1306,6 +1320,9 @@ class LaseremitterResourceWithRawResponse:
 
     @cached_property
     def staging(self) -> StagingResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return StagingResourceWithRawResponse(self._laseremitter.staging)
 
 
@@ -1340,6 +1357,9 @@ class AsyncLaseremitterResourceWithRawResponse:
 
     @cached_property
     def staging(self) -> AsyncStagingResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return AsyncStagingResourceWithRawResponse(self._laseremitter.staging)
 
 
@@ -1374,6 +1394,9 @@ class LaseremitterResourceWithStreamingResponse:
 
     @cached_property
     def staging(self) -> StagingResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return StagingResourceWithStreamingResponse(self._laseremitter.staging)
 
 
@@ -1408,4 +1431,7 @@ class AsyncLaseremitterResourceWithStreamingResponse:
 
     @cached_property
     def staging(self) -> AsyncStagingResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return AsyncStagingResourceWithStreamingResponse(self._laseremitter.staging)
