@@ -167,6 +167,15 @@ class Body(TypedDict, total=False):
     triangle values from top left down to bottom right, in order.
     """
 
+    cov_reference_frame: Annotated[
+        Literal["ENU", "ECR/ECEF", "LOCAL", "LAT-LONG", "LAT-LONG-ALT"], PropertyInfo(alias="covReferenceFrame")
+    ]
+    """
+    The reference frame of the covariance matrix elements (ENU, ECR/ECEF, LOCAL,
+    LAT-LONG, LAT-LONG-ALT). If the covReferenceFrame is null it is assumed to be
+    ECR/ECEF.
+    """
+
     ecef_acc: Annotated[Iterable[float], PropertyInfo(alias="ecefAcc")]
     """
     Array of the track object acceleration, [x'', y'', z''], in meters per second
@@ -239,6 +248,9 @@ class Body(TypedDict, total=False):
     orientation (degrees)]. When provided, array must always contain 3 values.
     """
 
+    grnd_spd: Annotated[float, PropertyInfo(alias="grndSpd")]
+    """Target ground speed, as opposed to air speed, in meters per second."""
+
     hdng: float
     """
     The track object heading, in degrees clockwise from true North at the object
@@ -297,8 +309,8 @@ class Body(TypedDict, total=False):
 
     lcs: Iterable[float]
     """
-    x, y, and z-axis rotations (degrees) about ECEF that define a local cartesian
-    system. When provided, array must always contain 3 values.
+    The x, y, and z-axis rotations (degrees) about ECEF that define a local
+    cartesian system. When provided, array must always contain 3 values.
     """
 
     lc_vel: Annotated[Iterable[float], PropertyInfo(alias="lcVel")]
@@ -478,7 +490,10 @@ class Body(TypedDict, total=False):
     """Sensor quality."""
 
     spd: float
-    """Track object speed, in meters per second."""
+    """Track object speed, in its environment, in meters per second.
+
+    For example, this would be air speed for an aircraft.
+    """
 
     src_ids: Annotated[SequenceNotStr[str], PropertyInfo(alias="srcIds")]
     """

@@ -162,6 +162,15 @@ class TrackFull(BaseModel):
     triangle values from top left down to bottom right, in order.
     """
 
+    cov_reference_frame: Optional[Literal["ENU", "ECR/ECEF", "LOCAL", "LAT-LONG", "LAT-LONG-ALT"]] = FieldInfo(
+        alias="covReferenceFrame", default=None
+    )
+    """
+    The reference frame of the covariance matrix elements (ENU, ECR/ECEF, LOCAL,
+    LAT-LONG, LAT-LONG-ALT). If the covReferenceFrame is null it is assumed to be
+    ECR/ECEF.
+    """
+
     created_at: Optional[datetime] = FieldInfo(alias="createdAt", default=None)
     """Time the row was created in the database, auto-populated by the system."""
 
@@ -243,6 +252,9 @@ class TrackFull(BaseModel):
     orientation (degrees)]. When provided, array must always contain 3 values.
     """
 
+    grnd_spd: Optional[float] = FieldInfo(alias="grndSpd", default=None)
+    """Target ground speed, as opposed to air speed, in meters per second."""
+
     hdng: Optional[float] = None
     """
     The track object heading, in degrees clockwise from true North at the object
@@ -301,8 +313,8 @@ class TrackFull(BaseModel):
 
     lcs: Optional[List[float]] = None
     """
-    x, y, and z-axis rotations (degrees) about ECEF that define a local cartesian
-    system. When provided, array must always contain 3 values.
+    The x, y, and z-axis rotations (degrees) about ECEF that define a local
+    cartesian system. When provided, array must always contain 3 values.
     """
 
     lc_vel: Optional[List[float]] = FieldInfo(alias="lcVel", default=None)
@@ -495,7 +507,10 @@ class TrackFull(BaseModel):
     """
 
     spd: Optional[float] = None
-    """Track object speed, in meters per second."""
+    """Track object speed, in its environment, in meters per second.
+
+    For example, this would be air speed for an aircraft.
+    """
 
     src_ids: Optional[List[str]] = FieldInfo(alias="srcIds", default=None)
     """

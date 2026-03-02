@@ -5008,7 +5008,7 @@ from unifieddatalibrary.types import (
 Methods:
 
 - <code title="post /udl/starcatalog">client.star_catalog.<a href="./src/unifieddatalibrary/resources/star_catalog/star_catalog.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/star_catalog_create_params.py">params</a>) -> None</code>
-- <code title="put /udl/starcatalog/{id}">client.star_catalog.<a href="./src/unifieddatalibrary/resources/star_catalog/star_catalog.py">update</a>(path_id, \*\*<a href="src/unifieddatalibrary/types/star_catalog_update_params.py">params</a>) -> None</code>
+- <code title="put /udl/starcatalog/{id}">client.star_catalog.<a href="./src/unifieddatalibrary/resources/star_catalog/star_catalog.py">update</a>(id, \*\*<a href="src/unifieddatalibrary/types/star_catalog_update_params.py">params</a>) -> None</code>
 - <code title="get /udl/starcatalog">client.star_catalog.<a href="./src/unifieddatalibrary/resources/star_catalog/star_catalog.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/star_catalog_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/star_catalog_list_response.py">SyncOffsetPage[StarCatalogListResponse]</a></code>
 - <code title="delete /udl/starcatalog/{id}">client.star_catalog.<a href="./src/unifieddatalibrary/resources/star_catalog/star_catalog.py">delete</a>(id) -> None</code>
 - <code title="get /udl/starcatalog/count">client.star_catalog.<a href="./src/unifieddatalibrary/resources/star_catalog/star_catalog.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/star_catalog_count_params.py">params</a>) -> str</code>
