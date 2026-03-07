@@ -257,7 +257,7 @@ class TestScs:
     def test_method_file_upload(self, client: Unifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             sc = client.scs.file_upload(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 classification_marking="classificationMarking",
                 file_name="fileName",
                 path="path",
@@ -269,7 +269,7 @@ class TestScs:
     def test_method_file_upload_with_all_params(self, client: Unifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             sc = client.scs.file_upload(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 classification_marking="classificationMarking",
                 file_name="fileName",
                 path="path",
@@ -286,7 +286,7 @@ class TestScs:
     def test_raw_response_file_upload(self, client: Unifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             response = client.scs.with_raw_response.file_upload(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 classification_marking="classificationMarking",
                 file_name="fileName",
                 path="path",
@@ -301,7 +301,7 @@ class TestScs:
     def test_streaming_response_file_upload(self, client: Unifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             with client.scs.with_streaming_response.file_upload(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 classification_marking="classificationMarking",
                 file_name="fileName",
                 path="path",
@@ -720,7 +720,7 @@ class TestAsyncScs:
     async def test_method_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             sc = await async_client.scs.file_upload(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 classification_marking="classificationMarking",
                 file_name="fileName",
                 path="path",
@@ -732,7 +732,7 @@ class TestAsyncScs:
     async def test_method_file_upload_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             sc = await async_client.scs.file_upload(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 classification_marking="classificationMarking",
                 file_name="fileName",
                 path="path",
@@ -749,7 +749,7 @@ class TestAsyncScs:
     async def test_raw_response_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             response = await async_client.scs.with_raw_response.file_upload(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 classification_marking="classificationMarking",
                 file_name="fileName",
                 path="path",
@@ -764,7 +764,7 @@ class TestAsyncScs:
     async def test_streaming_response_file_upload(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             async with async_client.scs.with_streaming_response.file_upload(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 classification_marking="classificationMarking",
                 file_name="fileName",
                 path="path",

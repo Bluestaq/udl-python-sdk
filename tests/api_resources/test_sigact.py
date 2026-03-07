@@ -227,14 +227,14 @@ class TestSigact:
     @parametrize
     def test_method_upload_zip(self, client: Unifieddatalibrary) -> None:
         sigact = client.sigact.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert sigact is None
 
     @parametrize
     def test_raw_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         response = client.sigact.with_raw_response.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -245,7 +245,7 @@ class TestSigact:
     @parametrize
     def test_streaming_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         with client.sigact.with_streaming_response.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -465,14 +465,14 @@ class TestAsyncSigact:
     @parametrize
     async def test_method_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         sigact = await async_client.sigact.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert sigact is None
 
     @parametrize
     async def test_raw_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.sigact.with_raw_response.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -483,7 +483,7 @@ class TestAsyncSigact:
     @parametrize
     async def test_streaming_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.sigact.with_streaming_response.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

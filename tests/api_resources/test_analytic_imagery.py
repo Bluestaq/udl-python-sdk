@@ -295,14 +295,14 @@ class TestAnalyticImagery:
     @parametrize
     def test_method_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
         analytic_imagery = client.analytic_imagery.unvalidated_publish(
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert analytic_imagery is None
 
     @parametrize
     def test_raw_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
         response = client.analytic_imagery.with_raw_response.unvalidated_publish(
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -313,7 +313,7 @@ class TestAnalyticImagery:
     @parametrize
     def test_streaming_response_unvalidated_publish(self, client: Unifieddatalibrary) -> None:
         with client.analytic_imagery.with_streaming_response.unvalidated_publish(
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -596,14 +596,14 @@ class TestAsyncAnalyticImagery:
     @parametrize
     async def test_method_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
         analytic_imagery = await async_client.analytic_imagery.unvalidated_publish(
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert analytic_imagery is None
 
     @parametrize
     async def test_raw_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.analytic_imagery.with_raw_response.unvalidated_publish(
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -614,7 +614,7 @@ class TestAsyncAnalyticImagery:
     @parametrize
     async def test_streaming_response_unvalidated_publish(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.analytic_imagery.with_streaming_response.unvalidated_publish(
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
