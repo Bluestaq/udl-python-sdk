@@ -295,14 +295,14 @@ class TestGnssRawIf:
     @parametrize
     def test_method_upload_zip(self, client: Unifieddatalibrary) -> None:
         gnss_raw_if = client.gnss_raw_if.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert gnss_raw_if is None
 
     @parametrize
     def test_raw_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         response = client.gnss_raw_if.with_raw_response.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -313,7 +313,7 @@ class TestGnssRawIf:
     @parametrize
     def test_streaming_response_upload_zip(self, client: Unifieddatalibrary) -> None:
         with client.gnss_raw_if.with_streaming_response.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -596,14 +596,14 @@ class TestAsyncGnssRawIf:
     @parametrize
     async def test_method_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         gnss_raw_if = await async_client.gnss_raw_if.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         )
         assert gnss_raw_if is None
 
     @parametrize
     async def test_raw_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.gnss_raw_if.with_raw_response.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         )
 
         assert response.is_closed is True
@@ -614,7 +614,7 @@ class TestAsyncGnssRawIf:
     @parametrize
     async def test_streaming_response_upload_zip(self, async_client: AsyncUnifieddatalibrary) -> None:
         async with async_client.gnss_raw_if.with_streaming_response.upload_zip(
-            file=b"raw file contents",
+            file=b"Example data",
         ) as response:
             assert not response.is_closed
             assert response.http_request.headers.get("X-Stainless-Lang") == "python"

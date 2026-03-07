@@ -22,7 +22,7 @@ class TestPaths:
     def test_method_create_with_file(self, client: Unifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             path = client.scs.paths.create_with_file(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 id="id",
                 classification_marking="classificationMarking",
             )
@@ -33,7 +33,7 @@ class TestPaths:
     def test_method_create_with_file_with_all_params(self, client: Unifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             path = client.scs.paths.create_with_file(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 id="id",
                 classification_marking="classificationMarking",
                 delete_after="deleteAfter",
@@ -49,7 +49,7 @@ class TestPaths:
     def test_raw_response_create_with_file(self, client: Unifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             response = client.scs.paths.with_raw_response.create_with_file(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 id="id",
                 classification_marking="classificationMarking",
             )
@@ -63,7 +63,7 @@ class TestPaths:
     def test_streaming_response_create_with_file(self, client: Unifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             with client.scs.paths.with_streaming_response.create_with_file(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 id="id",
                 classification_marking="classificationMarking",
             ) as response:
@@ -85,7 +85,7 @@ class TestAsyncPaths:
     async def test_method_create_with_file(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             path = await async_client.scs.paths.create_with_file(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 id="id",
                 classification_marking="classificationMarking",
             )
@@ -96,7 +96,7 @@ class TestAsyncPaths:
     async def test_method_create_with_file_with_all_params(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             path = await async_client.scs.paths.create_with_file(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 id="id",
                 classification_marking="classificationMarking",
                 delete_after="deleteAfter",
@@ -112,7 +112,7 @@ class TestAsyncPaths:
     async def test_raw_response_create_with_file(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             response = await async_client.scs.paths.with_raw_response.create_with_file(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 id="id",
                 classification_marking="classificationMarking",
             )
@@ -126,7 +126,7 @@ class TestAsyncPaths:
     async def test_streaming_response_create_with_file(self, async_client: AsyncUnifieddatalibrary) -> None:
         with pytest.warns(DeprecationWarning):
             async with async_client.scs.paths.with_streaming_response.create_with_file(
-                file_content=b"raw file contents",
+                file_content=b"Example data",
                 id="id",
                 classification_marking="classificationMarking",
             ) as response:

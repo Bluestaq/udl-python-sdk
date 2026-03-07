@@ -672,7 +672,7 @@ class TestConjunctions:
     @parametrize
     def test_method_upload_conjunction_data_message(self, client: Unifieddatalibrary) -> None:
         conjunction = client.conjunctions.upload_conjunction_data_message(
-            file_content=b"raw file contents",
+            file_content=b"Example data",
             classification="classification",
             data_mode="REAL",
             filename="filename",
@@ -683,7 +683,7 @@ class TestConjunctions:
     @parametrize
     def test_method_upload_conjunction_data_message_with_all_params(self, client: Unifieddatalibrary) -> None:
         conjunction = client.conjunctions.upload_conjunction_data_message(
-            file_content=b"raw file contents",
+            file_content=b"Example data",
             classification="classification",
             data_mode="REAL",
             filename="filename",
@@ -695,7 +695,7 @@ class TestConjunctions:
     @parametrize
     def test_raw_response_upload_conjunction_data_message(self, client: Unifieddatalibrary) -> None:
         response = client.conjunctions.with_raw_response.upload_conjunction_data_message(
-            file_content=b"raw file contents",
+            file_content=b"Example data",
             classification="classification",
             data_mode="REAL",
             filename="filename",
@@ -710,7 +710,7 @@ class TestConjunctions:
     @parametrize
     def test_streaming_response_upload_conjunction_data_message(self, client: Unifieddatalibrary) -> None:
         with client.conjunctions.with_streaming_response.upload_conjunction_data_message(
-            file_content=b"raw file contents",
+            file_content=b"Example data",
             classification="classification",
             data_mode="REAL",
             filename="filename",
@@ -1377,7 +1377,7 @@ class TestAsyncConjunctions:
     @parametrize
     async def test_method_upload_conjunction_data_message(self, async_client: AsyncUnifieddatalibrary) -> None:
         conjunction = await async_client.conjunctions.upload_conjunction_data_message(
-            file_content=b"raw file contents",
+            file_content=b"Example data",
             classification="classification",
             data_mode="REAL",
             filename="filename",
@@ -1390,7 +1390,7 @@ class TestAsyncConjunctions:
         self, async_client: AsyncUnifieddatalibrary
     ) -> None:
         conjunction = await async_client.conjunctions.upload_conjunction_data_message(
-            file_content=b"raw file contents",
+            file_content=b"Example data",
             classification="classification",
             data_mode="REAL",
             filename="filename",
@@ -1402,7 +1402,7 @@ class TestAsyncConjunctions:
     @parametrize
     async def test_raw_response_upload_conjunction_data_message(self, async_client: AsyncUnifieddatalibrary) -> None:
         response = await async_client.conjunctions.with_raw_response.upload_conjunction_data_message(
-            file_content=b"raw file contents",
+            file_content=b"Example data",
             classification="classification",
             data_mode="REAL",
             filename="filename",
@@ -1419,7 +1419,7 @@ class TestAsyncConjunctions:
         self, async_client: AsyncUnifieddatalibrary
     ) -> None:
         async with async_client.conjunctions.with_streaming_response.upload_conjunction_data_message(
-            file_content=b"raw file contents",
+            file_content=b"Example data",
             classification="classification",
             data_mode="REAL",
             filename="filename",
