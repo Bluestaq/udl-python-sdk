@@ -10,7 +10,7 @@ from ..types import (
     secure_messaging_get_latest_offset_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -78,7 +78,7 @@ class SecureMessagingResource(SyncAPIResource):
         if not topic:
             raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
         return self._get(
-            f"/sm/describeTopic/{topic}",
+            path_template("/sm/describeTopic/{topic}", topic=topic),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -124,7 +124,7 @@ class SecureMessagingResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
-            f"/sm/getLatestOffset/{topic}",
+            path_template("/sm/getLatestOffset/{topic}", topic=topic),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -173,7 +173,7 @@ class SecureMessagingResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._get(
-            f"/sm/getMessages/{topic}/{offset}",
+            path_template("/sm/getMessages/{topic}/{offset}", topic=topic, offset=offset),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -262,7 +262,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
         if not topic:
             raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
         return await self._get(
-            f"/sm/describeTopic/{topic}",
+            path_template("/sm/describeTopic/{topic}", topic=topic),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -308,7 +308,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
-            f"/sm/getLatestOffset/{topic}",
+            path_template("/sm/getLatestOffset/{topic}", topic=topic),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -357,7 +357,7 @@ class AsyncSecureMessagingResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `topic` but received {topic!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._get(
-            f"/sm/getMessages/{topic}/{offset}",
+            path_template("/sm/getMessages/{topic}/{offset}", topic=topic, offset=offset),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
