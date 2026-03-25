@@ -46,8 +46,15 @@ __all__ = ["EmireportResource", "AsyncEmireportResource"]
 
 
 class EmireportResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -767,8 +774,15 @@ class EmireportResource(SyncAPIResource):
 
 
 class AsyncEmireportResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1518,6 +1532,9 @@ class EmireportResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResourceWithRawResponse(self._emireport.history)
 
 
@@ -1552,6 +1569,9 @@ class AsyncEmireportResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResourceWithRawResponse(self._emireport.history)
 
 
@@ -1586,6 +1606,9 @@ class EmireportResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResourceWithStreamingResponse(self._emireport.history)
 
 
@@ -1620,4 +1643,7 @@ class AsyncEmireportResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._emireport.history)

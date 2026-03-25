@@ -45,8 +45,15 @@ __all__ = ["LaserdeconflictrequestResource", "AsyncLaserdeconflictrequestResourc
 
 
 class LaserdeconflictrequestResource(SyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -831,8 +838,15 @@ class LaserdeconflictrequestResource(SyncAPIResource):
 
 
 class AsyncLaserdeconflictrequestResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1644,6 +1658,9 @@ class LaserdeconflictrequestResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return HistoryResourceWithRawResponse(self._laserdeconflictrequest.history)
 
 
@@ -1675,6 +1692,9 @@ class AsyncLaserdeconflictrequestResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return AsyncHistoryResourceWithRawResponse(self._laserdeconflictrequest.history)
 
 
@@ -1706,6 +1726,9 @@ class LaserdeconflictrequestResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return HistoryResourceWithStreamingResponse(self._laserdeconflictrequest.history)
 
 
@@ -1737,4 +1760,7 @@ class AsyncLaserdeconflictrequestResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._laserdeconflictrequest.history)

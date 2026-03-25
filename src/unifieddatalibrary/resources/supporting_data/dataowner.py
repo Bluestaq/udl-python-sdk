@@ -34,6 +34,10 @@ __all__ = ["DataownerResource", "AsyncDataownerResource"]
 
 
 class DataownerResource(SyncAPIResource):
+    """
+    Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> DataownerResourceWithRawResponse:
         """
@@ -246,6 +250,10 @@ class DataownerResource(SyncAPIResource):
 
 
 class AsyncDataownerResource(AsyncAPIResource):
+    """
+    Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncDataownerResourceWithRawResponse:
         """

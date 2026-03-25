@@ -54,6 +54,8 @@ class TestEcpedr:
                     "chan_type": "INTEGRAL",
                     "chan_unit": "keV",
                     "msg_number": 21,
+                    "ob_quality": "BAD",
+                    "ob_quality_indicator": "DATA SPIKE",
                     "ob_value": 31473.9,
                     "species": "ELECTRON",
                 }
@@ -443,6 +445,8 @@ class TestAsyncEcpedr:
                     "chan_type": "INTEGRAL",
                     "chan_unit": "keV",
                     "msg_number": 21,
+                    "ob_quality": "BAD",
+                    "ob_quality_indicator": "DATA SPIKE",
                     "ob_value": 31473.9,
                     "species": "ELECTRON",
                 }

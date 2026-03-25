@@ -64,8 +64,15 @@ __all__ = ["ConjunctionsResource", "AsyncConjunctionsResource"]
 
 
 class ConjunctionsResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of conjunctions.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of conjunctions.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -903,8 +910,15 @@ class ConjunctionsResource(SyncAPIResource):
 
 
 class AsyncConjunctionsResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of conjunctions.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of conjunctions.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1780,6 +1794,9 @@ class ConjunctionsResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of conjunctions.
+        """
         return HistoryResourceWithRawResponse(self._conjunctions.history)
 
 
@@ -1820,6 +1837,9 @@ class AsyncConjunctionsResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of conjunctions.
+        """
         return AsyncHistoryResourceWithRawResponse(self._conjunctions.history)
 
 
@@ -1860,6 +1880,9 @@ class ConjunctionsResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of conjunctions.
+        """
         return HistoryResourceWithStreamingResponse(self._conjunctions.history)
 
 
@@ -1900,4 +1923,7 @@ class AsyncConjunctionsResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of conjunctions.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._conjunctions.history)

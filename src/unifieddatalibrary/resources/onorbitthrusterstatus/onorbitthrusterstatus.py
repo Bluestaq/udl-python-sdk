@@ -45,8 +45,15 @@ __all__ = ["OnorbitthrusterstatusResource", "AsyncOnorbitthrusterstatusResource"
 
 
 class OnorbitthrusterstatusResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -548,8 +555,15 @@ class OnorbitthrusterstatusResource(SyncAPIResource):
 
 
 class AsyncOnorbitthrusterstatusResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1081,6 +1095,9 @@ class OnorbitthrusterstatusResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return HistoryResourceWithRawResponse(self._onorbitthrusterstatus.history)
 
 
@@ -1115,6 +1132,9 @@ class AsyncOnorbitthrusterstatusResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncHistoryResourceWithRawResponse(self._onorbitthrusterstatus.history)
 
 
@@ -1149,6 +1169,9 @@ class OnorbitthrusterstatusResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return HistoryResourceWithStreamingResponse(self._onorbitthrusterstatus.history)
 
 
@@ -1183,4 +1206,7 @@ class AsyncOnorbitthrusterstatusResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._onorbitthrusterstatus.history)

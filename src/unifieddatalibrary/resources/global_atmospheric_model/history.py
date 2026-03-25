@@ -26,6 +26,10 @@ __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
 
 class HistoryResource(SyncAPIResource):
+    """
+    Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+    """
+
     @cached_property
     def with_raw_response(self) -> HistoryResourceWithRawResponse:
         """
@@ -231,6 +235,10 @@ class HistoryResource(SyncAPIResource):
 
 
 class AsyncHistoryResource(AsyncAPIResource):
+    """
+    Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
         """

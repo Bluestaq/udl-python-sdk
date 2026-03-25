@@ -42,8 +42,15 @@ __all__ = ["GnssObservationsetResource", "AsyncGnssObservationsetResource"]
 
 
 class GnssObservationsetResource(SyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of electro-optical (EO), radar, radio frequency (RF), Global Navigation Satellite Systems (GNSS), Ionospheric (IONO), Infrared (SWIR), and Space Environment observation data. The J2000 coordinate frame is the preferred frame for all observations, as applicable, but in some cases observations may be in an alternate frame depending on the provider and/or datatype.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This collection of services provides operations for querying and manipulation of electro-optical (EO), radar, radio frequency (RF), Global Navigation Satellite Systems (GNSS), Ionospheric (IONO), Infrared (SWIR), and Space Environment observation data. The J2000 coordinate frame is the preferred frame for all observations, as applicable, but in some cases observations may be in an alternate frame depending on the provider and/or datatype.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -329,8 +336,15 @@ class GnssObservationsetResource(SyncAPIResource):
 
 
 class AsyncGnssObservationsetResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of electro-optical (EO), radar, radio frequency (RF), Global Navigation Satellite Systems (GNSS), Ionospheric (IONO), Infrared (SWIR), and Space Environment observation data. The J2000 coordinate frame is the preferred frame for all observations, as applicable, but in some cases observations may be in an alternate frame depending on the provider and/or datatype.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This collection of services provides operations for querying and manipulation of electro-optical (EO), radar, radio frequency (RF), Global Navigation Satellite Systems (GNSS), Ionospheric (IONO), Infrared (SWIR), and Space Environment observation data. The J2000 coordinate frame is the preferred frame for all observations, as applicable, but in some cases observations may be in an alternate frame depending on the provider and/or datatype.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -640,6 +654,9 @@ class GnssObservationsetResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of electro-optical (EO), radar, radio frequency (RF), Global Navigation Satellite Systems (GNSS), Ionospheric (IONO), Infrared (SWIR), and Space Environment observation data. The J2000 coordinate frame is the preferred frame for all observations, as applicable, but in some cases observations may be in an alternate frame depending on the provider and/or datatype.
+        """
         return HistoryResourceWithRawResponse(self._gnss_observationset.history)
 
 
@@ -668,6 +685,9 @@ class AsyncGnssObservationsetResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of electro-optical (EO), radar, radio frequency (RF), Global Navigation Satellite Systems (GNSS), Ionospheric (IONO), Infrared (SWIR), and Space Environment observation data. The J2000 coordinate frame is the preferred frame for all observations, as applicable, but in some cases observations may be in an alternate frame depending on the provider and/or datatype.
+        """
         return AsyncHistoryResourceWithRawResponse(self._gnss_observationset.history)
 
 
@@ -696,6 +716,9 @@ class GnssObservationsetResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of electro-optical (EO), radar, radio frequency (RF), Global Navigation Satellite Systems (GNSS), Ionospheric (IONO), Infrared (SWIR), and Space Environment observation data. The J2000 coordinate frame is the preferred frame for all observations, as applicable, but in some cases observations may be in an alternate frame depending on the provider and/or datatype.
+        """
         return HistoryResourceWithStreamingResponse(self._gnss_observationset.history)
 
 
@@ -724,4 +747,7 @@ class AsyncGnssObservationsetResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of electro-optical (EO), radar, radio frequency (RF), Global Navigation Satellite Systems (GNSS), Ionospheric (IONO), Infrared (SWIR), and Space Environment observation data. The J2000 coordinate frame is the preferred frame for all observations, as applicable, but in some cases observations may be in an alternate frame depending on the provider and/or datatype.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._gnss_observationset.history)

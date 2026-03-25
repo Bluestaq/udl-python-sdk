@@ -46,8 +46,11 @@ __all__ = ["SensorPlanResource", "AsyncSensorPlanResource"]
 
 
 class SensorPlanResource(SyncAPIResource):
+    """These services provide operations for posting and querying Sensor Tasking data."""
+
     @cached_property
     def history(self) -> HistoryResource:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResource(self._client)
 
     @cached_property
@@ -628,8 +631,11 @@ class SensorPlanResource(SyncAPIResource):
 
 
 class AsyncSensorPlanResource(AsyncAPIResource):
+    """These services provide operations for posting and querying Sensor Tasking data."""
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1240,6 +1246,7 @@ class SensorPlanResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResourceWithRawResponse(self._sensor_plan.history)
 
 
@@ -1274,6 +1281,7 @@ class AsyncSensorPlanResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResourceWithRawResponse(self._sensor_plan.history)
 
 
@@ -1308,6 +1316,7 @@ class SensorPlanResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return HistoryResourceWithStreamingResponse(self._sensor_plan.history)
 
 
@@ -1342,4 +1351,5 @@ class AsyncSensorPlanResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Sensor Tasking data."""
         return AsyncHistoryResourceWithStreamingResponse(self._sensor_plan.history)

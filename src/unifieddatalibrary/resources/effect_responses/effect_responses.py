@@ -46,8 +46,15 @@ __all__ = ["EffectResponsesResource", "AsyncEffectResponsesResource"]
 
 
 class EffectResponsesResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Mission Ops information.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -528,8 +535,15 @@ class EffectResponsesResource(SyncAPIResource):
 
 
 class AsyncEffectResponsesResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Mission Ops information.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1040,6 +1054,9 @@ class EffectResponsesResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResourceWithRawResponse(self._effect_responses.history)
 
 
@@ -1074,6 +1091,9 @@ class AsyncEffectResponsesResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResourceWithRawResponse(self._effect_responses.history)
 
 
@@ -1108,6 +1128,9 @@ class EffectResponsesResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResourceWithStreamingResponse(self._effect_responses.history)
 
 
@@ -1142,4 +1165,7 @@ class AsyncEffectResponsesResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._effect_responses.history)

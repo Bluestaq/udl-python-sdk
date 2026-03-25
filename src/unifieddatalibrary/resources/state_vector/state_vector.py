@@ -53,12 +53,22 @@ __all__ = ["StateVectorResource", "AsyncStateVectorResource"]
 
 
 class StateVectorResource(SyncAPIResource):
+    """
+    This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     @cached_property
     def current(self) -> CurrentResource:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return CurrentResource(self._client)
 
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -1026,12 +1036,22 @@ class StateVectorResource(SyncAPIResource):
 
 
 class AsyncStateVectorResource(AsyncAPIResource):
+    """
+    This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+    """
+
     @cached_property
     def current(self) -> AsyncCurrentResource:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return AsyncCurrentResource(self._client)
 
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -2029,10 +2049,16 @@ class StateVectorResourceWithRawResponse:
 
     @cached_property
     def current(self) -> CurrentResourceWithRawResponse:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return CurrentResourceWithRawResponse(self._state_vector.current)
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return HistoryResourceWithRawResponse(self._state_vector.history)
 
 
@@ -2067,10 +2093,16 @@ class AsyncStateVectorResourceWithRawResponse:
 
     @cached_property
     def current(self) -> AsyncCurrentResourceWithRawResponse:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return AsyncCurrentResourceWithRawResponse(self._state_vector.current)
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return AsyncHistoryResourceWithRawResponse(self._state_vector.history)
 
 
@@ -2105,10 +2137,16 @@ class StateVectorResourceWithStreamingResponse:
 
     @cached_property
     def current(self) -> CurrentResourceWithStreamingResponse:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return CurrentResourceWithStreamingResponse(self._state_vector.current)
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return HistoryResourceWithStreamingResponse(self._state_vector.history)
 
 
@@ -2143,8 +2181,14 @@ class AsyncStateVectorResourceWithStreamingResponse:
 
     @cached_property
     def current(self) -> AsyncCurrentResourceWithStreamingResponse:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return AsyncCurrentResourceWithStreamingResponse(self._state_vector.current)
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This service provides operations for querying and manipulation of state vectors for On-orbit objects. State vectors are cartesian vectors of position (r) and velocity (v) that together with their time (epoch) (t) uniquely determine the trajectory of the orbiting body in space. J2000 is the preferred coordinate frame for all state vector positions/velocities in UDL, but in some cases data may be in another frame depending on the provider and/or datatype. Please see the 'Discover' tab in the storefront to confirm coordinate frames by data provider.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._state_vector.history)

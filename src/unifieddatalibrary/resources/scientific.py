@@ -36,6 +36,10 @@ __all__ = ["ScientificResource", "AsyncScientificResource"]
 
 
 class ScientificResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit payloads.
+    """
+
     @cached_property
     def with_raw_response(self) -> ScientificResourceWithRawResponse:
         """
@@ -539,6 +543,10 @@ class ScientificResource(SyncAPIResource):
 
 
 class AsyncScientificResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit payloads.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncScientificResourceWithRawResponse:
         """

@@ -53,8 +53,15 @@ __all__ = ["GlobalAtmosphericModelResource", "AsyncGlobalAtmosphericModelResourc
 
 
 class GlobalAtmosphericModelResource(SyncAPIResource):
+    """
+    Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -533,8 +540,15 @@ class GlobalAtmosphericModelResource(SyncAPIResource):
 
 
 class AsyncGlobalAtmosphericModelResource(AsyncAPIResource):
+    """
+    Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1041,6 +1055,9 @@ class GlobalAtmosphericModelResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+        """
         return HistoryResourceWithRawResponse(self._global_atmospheric_model.history)
 
 
@@ -1073,6 +1090,9 @@ class AsyncGlobalAtmosphericModelResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+        """
         return AsyncHistoryResourceWithRawResponse(self._global_atmospheric_model.history)
 
 
@@ -1105,6 +1125,9 @@ class GlobalAtmosphericModelResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+        """
         return HistoryResourceWithStreamingResponse(self._global_atmospheric_model.history)
 
 
@@ -1137,4 +1160,7 @@ class AsyncGlobalAtmosphericModelResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        Models and Simulations is a collection of services that allow consumers to interact with data products representing independent models of various phenomenon, artificial intelligence models and predictions, or of mathematical parameters meant to feed mod and sim tools to produce estimates of environmental entities such as atmospheric models and heat maps.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._global_atmospheric_model.history)

@@ -52,12 +52,22 @@ __all__ = ["RfEmitterResource", "AsyncRfEmitterResource"]
 
 
 class RfEmitterResource(SyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+    """
+
     @cached_property
     def staging(self) -> StagingResource:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return StagingResource(self._client)
 
     @cached_property
     def details(self) -> DetailsResource:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return DetailsResource(self._client)
 
     @cached_property
@@ -542,12 +552,22 @@ class RfEmitterResource(SyncAPIResource):
 
 
 class AsyncRfEmitterResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+    """
+
     @cached_property
     def staging(self) -> AsyncStagingResource:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return AsyncStagingResource(self._client)
 
     @cached_property
     def details(self) -> AsyncDetailsResource:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return AsyncDetailsResource(self._client)
 
     @cached_property
@@ -1062,10 +1082,16 @@ class RfEmitterResourceWithRawResponse:
 
     @cached_property
     def staging(self) -> StagingResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return StagingResourceWithRawResponse(self._rf_emitter.staging)
 
     @cached_property
     def details(self) -> DetailsResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return DetailsResourceWithRawResponse(self._rf_emitter.details)
 
 
@@ -1100,10 +1126,16 @@ class AsyncRfEmitterResourceWithRawResponse:
 
     @cached_property
     def staging(self) -> AsyncStagingResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return AsyncStagingResourceWithRawResponse(self._rf_emitter.staging)
 
     @cached_property
     def details(self) -> AsyncDetailsResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return AsyncDetailsResourceWithRawResponse(self._rf_emitter.details)
 
 
@@ -1138,10 +1170,16 @@ class RfEmitterResourceWithStreamingResponse:
 
     @cached_property
     def staging(self) -> StagingResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return StagingResourceWithStreamingResponse(self._rf_emitter.staging)
 
     @cached_property
     def details(self) -> DetailsResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return DetailsResourceWithStreamingResponse(self._rf_emitter.details)
 
 
@@ -1176,8 +1214,14 @@ class AsyncRfEmitterResourceWithStreamingResponse:
 
     @cached_property
     def staging(self) -> AsyncStagingResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return AsyncStagingResourceWithStreamingResponse(self._rf_emitter.staging)
 
     @cached_property
     def details(self) -> AsyncDetailsResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+        """
         return AsyncDetailsResourceWithStreamingResponse(self._rf_emitter.details)

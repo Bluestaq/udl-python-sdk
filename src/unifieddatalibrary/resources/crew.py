@@ -38,6 +38,11 @@ __all__ = ["CrewResource", "AsyncCrewResource"]
 
 
 class CrewResource(SyncAPIResource):
+    """These services provide operations for posting and querying crew data.
+
+    Crew data contains information about its members and their assignments.
+    """
+
     @cached_property
     def with_raw_response(self) -> CrewResourceWithRawResponse:
         """
@@ -967,6 +972,11 @@ class CrewResource(SyncAPIResource):
 
 
 class AsyncCrewResource(AsyncAPIResource):
+    """These services provide operations for posting and querying crew data.
+
+    Crew data contains information about its members and their assignments.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncCrewResourceWithRawResponse:
         """

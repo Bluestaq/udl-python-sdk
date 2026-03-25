@@ -45,8 +45,15 @@ __all__ = ["AirfieldStatusResource", "AsyncAirfieldStatusResource"]
 
 
 class AirfieldStatusResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -803,8 +810,15 @@ class AirfieldStatusResource(SyncAPIResource):
 
 
 class AsyncAirfieldStatusResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1591,6 +1605,9 @@ class AirfieldStatusResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return HistoryResourceWithRawResponse(self._airfield_status.history)
 
 
@@ -1625,6 +1642,9 @@ class AsyncAirfieldStatusResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncHistoryResourceWithRawResponse(self._airfield_status.history)
 
 
@@ -1659,6 +1679,9 @@ class AirfieldStatusResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return HistoryResourceWithStreamingResponse(self._airfield_status.history)
 
 
@@ -1693,4 +1716,7 @@ class AsyncAirfieldStatusResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._airfield_status.history)

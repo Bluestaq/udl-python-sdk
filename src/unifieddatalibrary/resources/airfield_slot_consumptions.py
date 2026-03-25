@@ -37,6 +37,10 @@ __all__ = ["AirfieldSlotConsumptionsResource", "AsyncAirfieldSlotConsumptionsRes
 
 
 class AirfieldSlotConsumptionsResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> AirfieldSlotConsumptionsResourceWithRawResponse:
         """
@@ -727,6 +731,10 @@ class AirfieldSlotConsumptionsResource(SyncAPIResource):
 
 
 class AsyncAirfieldSlotConsumptionsResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncAirfieldSlotConsumptionsResourceWithRawResponse:
         """

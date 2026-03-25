@@ -26,6 +26,10 @@ __all__ = ["HistoryResource", "AsyncHistoryResource"]
 
 
 class HistoryResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+    """
+
     @cached_property
     def with_raw_response(self) -> HistoryResourceWithRawResponse:
         """
@@ -231,6 +235,10 @@ class HistoryResource(SyncAPIResource):
 
 
 class AsyncHistoryResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncHistoryResourceWithRawResponse:
         """

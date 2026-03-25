@@ -26,6 +26,8 @@ __all__ = ["TupleResource", "AsyncTupleResource"]
 
 
 class TupleResource(SyncAPIResource):
+    """These services provide operations for posting and querying Sensor Tasking data."""
+
     @cached_property
     def with_raw_response(self) -> TupleResourceWithRawResponse:
         """
@@ -109,6 +111,8 @@ class TupleResource(SyncAPIResource):
 
 
 class AsyncTupleResource(AsyncAPIResource):
+    """These services provide operations for posting and querying Sensor Tasking data."""
+
     @cached_property
     def with_raw_response(self) -> AsyncTupleResourceWithRawResponse:
         """

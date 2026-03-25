@@ -20,6 +20,10 @@ __all__ = ["OffsetResource", "AsyncOffsetResource"]
 
 
 class OffsetResource(SyncAPIResource):
+    """
+    These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+    """
+
     @cached_property
     def with_raw_response(self) -> OffsetResourceWithRawResponse:
         """
@@ -80,6 +84,10 @@ class OffsetResource(SyncAPIResource):
 
 
 class AsyncOffsetResource(AsyncAPIResource):
+    """
+    These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncOffsetResourceWithRawResponse:
         """

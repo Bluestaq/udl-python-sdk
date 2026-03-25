@@ -37,6 +37,10 @@ __all__ = ["PortResource", "AsyncPortResource"]
 
 
 class PortResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> PortResourceWithRawResponse:
         """
@@ -645,6 +649,10 @@ class PortResource(SyncAPIResource):
 
 
 class AsyncPortResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncPortResourceWithRawResponse:
         """

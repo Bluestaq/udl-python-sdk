@@ -110,26 +110,44 @@ __all__ = ["ScsResource", "AsyncScsResource"]
 class ScsResource(SyncAPIResource):
     @cached_property
     def notifications(self) -> NotificationsResource:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return NotificationsResource(self._client)
 
     @cached_property
     def file(self) -> FileResource:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return FileResource(self._client)
 
     @cached_property
     def folders(self) -> FoldersResource:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return FoldersResource(self._client)
 
     @cached_property
     def paths(self) -> PathsResource:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return PathsResource(self._client)
 
     @cached_property
     def view(self) -> ViewResource:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return ViewResource(self._client)
 
     @cached_property
     def v2(self) -> V2Resource:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return V2Resource(self._client)
 
     @cached_property
@@ -651,26 +669,44 @@ class ScsResource(SyncAPIResource):
 class AsyncScsResource(AsyncAPIResource):
     @cached_property
     def notifications(self) -> AsyncNotificationsResource:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return AsyncNotificationsResource(self._client)
 
     @cached_property
     def file(self) -> AsyncFileResource:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncFileResource(self._client)
 
     @cached_property
     def folders(self) -> AsyncFoldersResource:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncFoldersResource(self._client)
 
     @cached_property
     def paths(self) -> AsyncPathsResource:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncPathsResource(self._client)
 
     @cached_property
     def view(self) -> AsyncViewResource:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return AsyncViewResource(self._client)
 
     @cached_property
     def v2(self) -> AsyncV2Resource:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return AsyncV2Resource(self._client)
 
     @cached_property
@@ -1245,26 +1281,44 @@ class ScsResourceWithRawResponse:
 
     @cached_property
     def notifications(self) -> NotificationsResourceWithRawResponse:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return NotificationsResourceWithRawResponse(self._scs.notifications)
 
     @cached_property
     def file(self) -> FileResourceWithRawResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return FileResourceWithRawResponse(self._scs.file)
 
     @cached_property
     def folders(self) -> FoldersResourceWithRawResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return FoldersResourceWithRawResponse(self._scs.folders)
 
     @cached_property
     def paths(self) -> PathsResourceWithRawResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return PathsResourceWithRawResponse(self._scs.paths)
 
     @cached_property
     def view(self) -> ViewResourceWithRawResponse:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return ViewResourceWithRawResponse(self._scs.view)
 
     @cached_property
     def v2(self) -> V2ResourceWithRawResponse:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return V2ResourceWithRawResponse(self._scs.v2)
 
 
@@ -1322,26 +1376,44 @@ class AsyncScsResourceWithRawResponse:
 
     @cached_property
     def notifications(self) -> AsyncNotificationsResourceWithRawResponse:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return AsyncNotificationsResourceWithRawResponse(self._scs.notifications)
 
     @cached_property
     def file(self) -> AsyncFileResourceWithRawResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncFileResourceWithRawResponse(self._scs.file)
 
     @cached_property
     def folders(self) -> AsyncFoldersResourceWithRawResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncFoldersResourceWithRawResponse(self._scs.folders)
 
     @cached_property
     def paths(self) -> AsyncPathsResourceWithRawResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncPathsResourceWithRawResponse(self._scs.paths)
 
     @cached_property
     def view(self) -> AsyncViewResourceWithRawResponse:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return AsyncViewResourceWithRawResponse(self._scs.view)
 
     @cached_property
     def v2(self) -> AsyncV2ResourceWithRawResponse:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return AsyncV2ResourceWithRawResponse(self._scs.v2)
 
 
@@ -1399,26 +1471,44 @@ class ScsResourceWithStreamingResponse:
 
     @cached_property
     def notifications(self) -> NotificationsResourceWithStreamingResponse:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return NotificationsResourceWithStreamingResponse(self._scs.notifications)
 
     @cached_property
     def file(self) -> FileResourceWithStreamingResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return FileResourceWithStreamingResponse(self._scs.file)
 
     @cached_property
     def folders(self) -> FoldersResourceWithStreamingResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return FoldersResourceWithStreamingResponse(self._scs.folders)
 
     @cached_property
     def paths(self) -> PathsResourceWithStreamingResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return PathsResourceWithStreamingResponse(self._scs.paths)
 
     @cached_property
     def view(self) -> ViewResourceWithStreamingResponse:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return ViewResourceWithStreamingResponse(self._scs.view)
 
     @cached_property
     def v2(self) -> V2ResourceWithStreamingResponse:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return V2ResourceWithStreamingResponse(self._scs.v2)
 
 
@@ -1476,24 +1566,42 @@ class AsyncScsResourceWithStreamingResponse:
 
     @cached_property
     def notifications(self) -> AsyncNotificationsResourceWithStreamingResponse:
+        """
+        These endpoints provide the ability to subscribe to SCS Event Notifications for file upload/update and folder creation events within a specific folder in the Secure Content Store. A user must be authorized to view the file/folder for which a notification was created in order to retrieve that notification.
+        """
         return AsyncNotificationsResourceWithStreamingResponse(self._scs.notifications)
 
     @cached_property
     def file(self) -> AsyncFileResourceWithStreamingResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncFileResourceWithStreamingResponse(self._scs.file)
 
     @cached_property
     def folders(self) -> AsyncFoldersResourceWithStreamingResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncFoldersResourceWithStreamingResponse(self._scs.folders)
 
     @cached_property
     def paths(self) -> AsyncPathsResourceWithStreamingResponse:
+        """
+        These services provide soon-to-be-deprecated CRUD and Search operations for files and folders in the Secure Content Store. This documentation is provided only for backwards compatibility, please refer to SCS V2 for new SCS integrations.
+        """
         return AsyncPathsResourceWithStreamingResponse(self._scs.paths)
 
     @cached_property
     def view(self) -> AsyncViewResourceWithStreamingResponse:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return AsyncViewResourceWithStreamingResponse(self._scs.view)
 
     @cached_property
     def v2(self) -> AsyncV2ResourceWithStreamingResponse:
+        """
+        These services provide CRUD and search operations for files and folders in the Secure Content Store.
+        """
         return AsyncV2ResourceWithStreamingResponse(self._scs.v2)

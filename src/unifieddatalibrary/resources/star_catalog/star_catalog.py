@@ -46,8 +46,17 @@ __all__ = ["StarCatalogResource", "AsyncStarCatalogResource"]
 
 
 class StarCatalogResource(SyncAPIResource):
+    """These services provide operations for posting and querying Star Catalog data.
+
+    The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -72,46 +81,77 @@ class StarCatalogResource(SyncAPIResource):
     def create(
         self,
         *,
-        astrometry_origin: Literal["GAIADR3", "HIPPARCOS", "USNOBSC"],
+        astrometry_origin: str,
         classification_marking: str,
         cs_id: int,
-        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        data_mode: Literal["REAL", "TEST", "EXERCISE", "SIMULATED"],
         dec: float,
         ra: float,
         source: str,
         star_epoch: float,
-        id: str | Omit = omit,
+        aavso_vsx_id: int | Omit = omit,
+        abgmag: float | Omit = omit,
+        abgmag_origin: str | Omit = omit,
+        abgmag_unc: float | Omit = omit,
+        abimag: float | Omit = omit,
+        abimag_origin: str | Omit = omit,
+        abimag_unc: float | Omit = omit,
+        abrmag: float | Omit = omit,
+        abrmag_origin: str | Omit = omit,
+        abrmag_unc: float | Omit = omit,
+        abymag: float | Omit = omit,
+        abymag_origin: str | Omit = omit,
+        abymag_unc: float | Omit = omit,
+        abzmag: float | Omit = omit,
+        abzmag_origin: str | Omit = omit,
+        abzmag_unc: float | Omit = omit,
+        all_wis_ecc_ind: str | Omit = omit,
         all_wise_id: str | Omit = omit,
-        all_wisew1_mag: float | Omit = omit,
-        all_wisew1_mag_unc: float | Omit = omit,
-        all_wisew2_mag: float | Omit = omit,
-        all_wisew2_mag_unc: float | Omit = omit,
-        all_wisew3_mag: float | Omit = omit,
-        all_wisew3_mag_unc: float | Omit = omit,
-        all_wisew4_mag: float | Omit = omit,
-        all_wisew4_mag_unc: float | Omit = omit,
+        all_wis_ena_ind: int | Omit = omit,
+        all_wis_eph_qual_ind: str | Omit = omit,
+        apass_id: str | Omit = omit,
+        astrometric_excess_noise: float | Omit = omit,
+        astrometric_excess_noise_sig: float | Omit = omit,
+        bmag: float | Omit = omit,
+        bmag_origin: str | Omit = omit,
+        bmag_unc: float | Omit = omit,
         bpmag: float | Omit = omit,
         bpmag_unc: float | Omit = omit,
+        carrasco_cat_id: int | Omit = omit,
         cat_version: str | Omit = omit,
+        cat_wise2020_id: str | Omit = omit,
         dec_unc: float | Omit = omit,
+        ducati_cat_id: str | Omit = omit,
         gaiadr3_cat_id: int | Omit = omit,
         gmag: float | Omit = omit,
         gmag_unc: float | Omit = omit,
         gnc_cat_id: int | Omit = omit,
+        healpix_index: int | Omit = omit,
         hip_cat_id: int | Omit = omit,
         hmag: float | Omit = omit,
+        hmag_origin: str | Omit = omit,
         hmag_unc: float | Omit = omit,
+        imag: float | Omit = omit,
+        imag_origin: str | Omit = omit,
+        imag_unc: float | Omit = omit,
         jmag: float | Omit = omit,
+        jmag_origin: str | Omit = omit,
         jmag_unc: float | Omit = omit,
         kmag: float | Omit = omit,
+        kmag_origin: str | Omit = omit,
         kmag_unc: float | Omit = omit,
+        morphology_ind: int | Omit = omit,
         mult_flag: bool | Omit = omit,
         multiplicity: str | Omit = omit,
+        neighbor_dec: float | Omit = omit,
         neighbor_distance: float | Omit = omit,
         neighbor_flag: bool | Omit = omit,
         neighbor_id: int | Omit = omit,
+        neighbor_ra: float | Omit = omit,
         non_single_star: str | Omit = omit,
+        num_neighbors: int | Omit = omit,
         origin: str | Omit = omit,
+        pan_starrs_id: int | Omit = omit,
         parallax: float | Omit = omit,
         parallax_unc: float | Omit = omit,
         pmdec: float | Omit = omit,
@@ -120,16 +160,56 @@ class StarCatalogResource(SyncAPIResource):
         pmra_unc: float | Omit = omit,
         pm_unc_flag: bool | Omit = omit,
         pos_unc_flag: bool | Omit = omit,
+        ps1astrometry_correction_flag: int | Omit = omit,
+        ps1_obj_info_flag: int | Omit = omit,
+        ps1_quality_flag: int | Omit = omit,
         ra_unc: float | Omit = omit,
+        rmag: float | Omit = omit,
+        rmag_origin: str | Omit = omit,
+        rmag_unc: float | Omit = omit,
         rpmag: float | Omit = omit,
         rpmag_unc: float | Omit = omit,
+        ruwe: float | Omit = omit,
+        sda_cat_id: int | Omit = omit,
+        sgmag: float | Omit = omit,
+        sgmag_unc: float | Omit = omit,
         shift: float | Omit = omit,
         shift_flag: bool | Omit = omit,
         shift_fwhm1: float | Omit = omit,
         shift_fwhm6: float | Omit = omit,
+        sky_mapper_id: int | Omit = omit,
         two_mass_id: str | Omit = omit,
+        two_mass_ph_qual_ind: str | Omit = omit,
+        two_mass_read_flag: str | Omit = omit,
+        two_mass_xsc_id: str | Omit = omit,
+        tycho_dsc_id: int | Omit = omit,
+        uhs_id: int | Omit = omit,
+        ukidss_gcs_id: int | Omit = omit,
+        ukidss_gps_id: int | Omit = omit,
+        ukidss_las_id: int | Omit = omit,
         var_flag: bool | Omit = omit,
         variability: str | Omit = omit,
+        vhs_id: int | Omit = omit,
+        vmag: float | Omit = omit,
+        vmag_origin: str | Omit = omit,
+        vmag_unc: float | Omit = omit,
+        w1mag: float | Omit = omit,
+        w1mag_origin: str | Omit = omit,
+        w1mag_unc: float | Omit = omit,
+        w1sat: float | Omit = omit,
+        w2mag: float | Omit = omit,
+        w2mag_origin: str | Omit = omit,
+        w2mag_unc: float | Omit = omit,
+        w2sat: float | Omit = omit,
+        w3mag: float | Omit = omit,
+        w3mag_origin: str | Omit = omit,
+        w3mag_unc: float | Omit = omit,
+        w3sat: float | Omit = omit,
+        w4mag: float | Omit = omit,
+        w4mag_origin: str | Omit = omit,
+        w4mag_unc: float | Omit = omit,
+        w4sat: float | Omit = omit,
+        wds_cat_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -143,12 +223,14 @@ class StarCatalogResource(SyncAPIResource):
         operation. Please contact the UDL team for assistance.
 
         Args:
-          astrometry_origin: Originating astrometric catalog for this object. Enum: [GAIADR3, HIPPARCOS,
-              USNOBSC].
+          astrometry_origin: Originating astrometric catalog for this object (GA (GAIA), HI (HIPPARCOS), UB
+              (USNOBSC), AL, AP, CA, CR, DU, FK6_I, FK6_III, PS, SK, TD, TP, TX, UC, UL, UH,
+              UP, VH, VS, WD).
 
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          cs_id: The ID of this object in the specific catalog associated with this record.
+          cs_id: The ID of this object in the specific catalog associated with this record. This
+              field will either contain the value in the gncCatId or sdaCatId field.
 
           data_mode:
               Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
@@ -177,76 +259,132 @@ class StarCatalogResource(SyncAPIResource):
           star_epoch: Reference epoch to which the astrometric source parameters are referred,
               expressed as Julian Year in Barycentric Coordinate Time (TCB).
 
-          id: Unique identifier of the record, auto-generated by the system.
+          aavso_vsx_id: The American Association of Variable Star Observers (AAVSO) Variable Star Index
+              (VSX) (VX) object ID of this object.
 
-          all_wise_id: The ID of this object in the All Wide-field Infrared Survey Explorer (AllWISE)
-              catalog.
+          abgmag: Optical AB g magnitude.
 
-          all_wisew1_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W1-band (3.4 microns) magnitude in the Vega system.
+          abgmag_origin: Catalog of origin of optical AB g magnitude.
 
-          all_wisew1_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W1-band (3.4 microns) magnitude uncertainty in the Vega system.
+          abgmag_unc: Uncertainty of optical AB g magnitude.
 
-          all_wisew2_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W2-band (4.6 microns) magnitude in the Vega system.
+          abimag: Optical AB i magnitude.
 
-          all_wisew2_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W2-band (4.6 microns) magnitude uncertainty in the Vega system.
+          abimag_origin: Catalog of origin of optical AB i magnitude.
 
-          all_wisew3_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W3-band (12 microns) magnitude in the Vega system.
+          abimag_unc: Uncertainty of optical AB i magnitude.
 
-          all_wisew3_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W3-band (12 microns) magnitude uncertainty in the Vega system.
+          abrmag: Optical AB r magnitude.
 
-          all_wisew4_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W4-band (22 microns) magnitude in the Vega system.
+          abrmag_origin: Catalog of origin of optical AB r magnitude.
 
-          all_wisew4_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W4-band (22 microns) magnitude uncertainty in the Vega system.
+          abrmag_unc: Uncertainty of optical AB r magnitude.
 
-          bpmag: Gaia DR3 optical photometric Bp-band magnitude in the Vega scale.
+          abymag: Optical AB y magnitude.
 
-          bpmag_unc: Gaia DR3 optical Bp-band magnitude uncertainty in the Vega scale.
+          abymag_origin: Catalog of origin of optical AB y magnitude.
+
+          abymag_unc: Uncertainty of optical AB y magnitude.
+
+          abzmag: Optical AB z magnitude.
+
+          abzmag_origin: Catalog of origin of optical AB z magnitude.
+
+          abzmag_unc: Uncertainty of optical AB z magnitude.
+
+          all_wis_ecc_ind: Contamination and confusion indicator in AllWISE.
+
+          all_wise_id: The designation of this object in the All Wide-field Infrared Survey Explorer
+              (AllWISE) catalog (AL).
+
+          all_wis_ena_ind: Active deblending indicator in AllWISE.
+
+          all_wis_eph_qual_ind: Photometric quality indicator in AllWISE.
+
+          apass_id: The American Association of Variable Star Observers (AAVSO) Photometric All-Sky
+              Survey (APASS) (AP) name of this object.
+
+          astrometric_excess_noise: Astrometric excess noise in the Gaia catalog measured in milliarcseconds.
+
+          astrometric_excess_noise_sig: Astrometric excess noise sigma in Gaia.
+
+          bmag: Optical Johnson B magnitude measured in magnitudes.
+
+          bmag_origin: Catalog of origin of optical Johnson B magnitude (AP, CR, HI).
+
+          bmag_unc: Uncertainty of optical Johnson B magnitude measured in magnitudes.
+
+          bpmag: Gaia optical photometric Bp-band in the Vega scale measured in magnitudes.
+
+          bpmag_unc: Gaia optical Bp-band uncertainty in the Vega scale measured in magnitudes.
+
+          carrasco_cat_id: The Carrasco catalog (CR) identifier of this object.
 
           cat_version: The version of the catalog associated with this object.
+
+          cat_wise2020_id: The CatWISE2020 (CA) catalog source ID of this object.
 
           dec_unc: Uncertainty of the declination of the source, in milliarcseconds, at the
               reference epoch.
 
-          gaiadr3_cat_id: The ID of this object in the Gaia DR3 Catalog.
+          ducati_cat_id: The Ducati catalog (DU) name of this object.
 
-          gmag: Gaia DR3 optical photometric G-band magnitude in the Vega scale.
+          gaiadr3_cat_id: The source ID of this object in the Gaia DR3 Catalog (GA).
 
-          gmag_unc: Gaia DR3 optical photometric G-band magnitude uncertainty in the Vega scale.
+          gmag: Gaia optical photometric G-band in the Vega scale measured in magnitudes.
 
-          gnc_cat_id: The ID of this object in the Guidance and Navagation Control (GNC) Catalog.
+          gmag_unc: Gaia optical photometric G-band uncertainty in the Vega scale measured in
+              magnitudes.
 
-          hip_cat_id: The ID of this object in the Hipparcos Catalog.
+          gnc_cat_id: The ID of this object in the Guidance and Navigation Control (GNC) Catalog. If
+              this field is populated it shall match the csId field.
 
-          hmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric H-band magnitude in the Vega scale.
+          healpix_index: The Healpix index. Consumers should contact the provider for details on the
+              indexing scheme.
 
-          hmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric H-band magnitude uncertainty in the Vega scale.
+          hip_cat_id: The HIP ID of this object in the Hipparcos Catalog (HI).
 
-          jmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric J-band magnitude in the Vega scale.
+          hmag: Near-infrared photometric H-band magnitude in the Vega scale measured in
+              magnitudes.
 
-          jmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric J-band magnitude uncertainty in the Vega scale.
+          hmag_origin: Near-infrared photometric H-band catalog of origin in the Vega scale (TP, UC,
+              UL, UP, VH).
 
-          kmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric K-band magnitude in the Vega scale.
+          hmag_unc: Near-infrared photometric H-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
 
-          kmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric K-band magnitude uncertainty in the Vega scale.
+          imag: Optical Johnson I magnitude measured in magnitudes.
+
+          imag_origin: Catalog of origin of optical Johnson I magnitude (CR, GA, HI).
+
+          imag_unc: Uncertainty of optical Johnson I magnitude measured in magnitudes.
+
+          jmag: Near-infrared photometric J-band magnitude in the Vega scale measured in
+              magnitudes.
+
+          jmag_origin: Near-infrared photometric J-band catalog of origin in the Vega scale (TP, UH,
+              UL, UP, VH).
+
+          jmag_unc: Near-infrared photometric J-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
+
+          kmag: Near-infrared photometric K-band magnitude in the Vega scale measured in
+              magnitudes.
+
+          kmag_origin: Near-infrared photometric K-band catalog of origin in the Vega scale (TP, UC,
+              UH, UL, UP, VH).
+
+          kmag_unc: Near-infrared photometric K-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
+
+          morphology_ind: Morphology indicator.
 
           mult_flag: Flag indicating that this is a multiple object source.
 
           multiplicity: Identifier indicating multiplicity is detected. Consumers should contact the
               provider for details on the specifications.
+
+          neighbor_dec: Dec of nearest neighbor measured in degrees.
 
           neighbor_distance: Distance between source and nearest neighbor, in arcseconds.
 
@@ -254,41 +392,72 @@ class StarCatalogResource(SyncAPIResource):
 
           neighbor_id: The catalog ID of the nearest neighbor to this source.
 
+          neighbor_ra: RA of nearest neighbor measured in degrees.
+
           non_single_star: Identifier indicating the source is a non-single star and additional information
               is available in non-single star tables. Consumers should contact the provider
               for details on the specifications.
+
+          num_neighbors: Number of neighbors.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
+          pan_starrs_id: The Panoramic Survey Telescope and Rapid Response System (Pan-STARRS) (PS)
+              object ID.
+
           parallax: Absolute stellar parallax of the source, in milliarcseconds.
 
           parallax_unc: Uncertainty of the stellar parallax, in milliarcseconds.
 
-          pmdec: Proper motion in declination of the source, in milliarcseconds/year, at the
+          pmdec: Proper motion in declination of the source, in milliarcseconds per year, at the
               reference epoch.
 
-          pmdec_unc: Uncertainty of proper motion in declination, in milliarcseconds/year.
+          pmdec_unc: Uncertainty of proper motion in declination, in milliarcseconds per year.
 
-          pmra: Proper motion in right ascension of the source, in milliarcseconds/year, at the
-              reference epoch.
+          pmra: Proper motion in right ascension of the source, in milliarcseconds per year, at
+              the reference epoch.
 
-          pmra_unc: Uncertainty of proper motion in right ascension, in milliarcseconds/year.
+          pmra_unc: Uncertainty of proper motion in right ascension, in milliarcseconds per year.
 
           pm_unc_flag: Flag indicating that the proper motion uncertainty in either ra or dec is
-              greater than 10 milliarcseconds/year.
+              greater than 10 milliarcseconds per year.
 
           pos_unc_flag: Flag indicating that the position uncertainty in either ra or dec is greater
               than 100 milliarcseconds.
 
+          ps1astrometry_correction_flag: Astrometry correction flag in Pan-STARRS.
+
+          ps1_obj_info_flag: Object information flag in Pan-STARRS.
+
+          ps1_quality_flag: Quality flag in Pan-STARRS.
+
           ra_unc: Uncertainty of the right ascension of the source, in milliarcseconds, at the
               reference epoch.
 
-          rpmag: Gaia DR3 optical Rp-band magnitude in the Vega scale.
+          rmag: Optical Johnson R magnitude measured in magnitudes.
 
-          rpmag_unc: Gaia DR3 optical photometric Rp-band magnitude uncertainty in the Vega scale.
+          rmag_origin: Catalog of origin of the Optical Johnson R magnitude (CR, GA).
+
+          rmag_unc: Uncertainty of the Optical Johnson R magnitude measured in magnitudes.
+
+          rpmag: Gaia optical Rp-band in the Vega scale measured in magnitudes.
+
+          rpmag_unc: Gaia optical photometric Rp-band uncertainty in the Vega scale measured in
+              magnitudes.
+
+          ruwe: RUWE in Gaia.
+
+          sda_cat_id: The ID of this object in the Space Domain Awareness (SDA) Catalog. If this field
+              is populated it shall match the csId field.
+
+          sgmag: Original G magnitude if the source is in Gaia, otherwise the magnitude is
+              converted from other photometric passbands, when possible, measured in
+              magnitudes.
+
+          sgmag_unc: Uncertainty of sgmag measured in magnitudes.
 
           shift: Photocentric shift caused by neighbors, in arcseconds.
 
@@ -302,13 +471,96 @@ class StarCatalogResource(SyncAPIResource):
               to a Point Spread Function (PSF) with Full Width at Half Maximum (FWHM) of six
               arcseconds.
 
-          two_mass_id: The ID of this object in the Two Micron All Sky Survey (2MASS) Point Source
-              Catalog (PSC).
+          sky_mapper_id: The SkyMapper (SK) catalog object ID.
+
+          two_mass_id: The designation of this object in the Two Micron All Sky Survey (2MASS) Point
+              Source Catalog (TP).
+
+          two_mass_ph_qual_ind: Photometric (PH) quality indicator in 2MASS PSC.
+
+          two_mass_read_flag: Read flag in 2MASS PSC.
+
+          two_mass_xsc_id: The Two Micron All Sky Survey (2MASS) Extended Source Catalog (XSC) (TX)
+              designation of this object.
+
+          tycho_dsc_id: The Tycho Double Star Catalog (TD) identifier (specified as Tycho-2 ID) of this
+              object.
+
+          uhs_id: The United Kingdom Infrared Telescope (UKIRT) Hemispheric Survey (UHS) (UH)
+              source ID of this object.
+
+          ukidss_gcs_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Galactic Clusters Survey
+              (GCS) (UC) source ID of this object.
+
+          ukidss_gps_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Galactic Plane Survey (GPS)
+              (UP) source ID of this object.
+
+          ukidss_las_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Large Area Survey (LAS)
+              (UL) source ID of this object.
 
           var_flag: Flag indicating that the source exhibits variable magnitude.
 
           variability: Identifier indicating variability is present in the photometric data. Consumers
               should contact the provider for details on the specifications.
+
+          vhs_id: The Visible and Infrared Survey Telescope for Astronomy (VISTA) Hemisphere
+              Survey (VHS) (VS) source ID of this object.
+
+          vmag: Optical Johnson V magnitude measured in magnitudes.
+
+          vmag_origin: Catalog of origin of Optical Johnson V magnitude (AP, CR, DU, GA, HI).
+
+          vmag_unc: Uncertainty of the Optical Johnson V magnitude measured in magnitudes.
+
+          w1mag: Mid-infrared photometric W1-band (3.4 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w1mag_origin: Mid-infrared photometric W1-band (3.4 microns) catalog of origin in the Vega
+              system (AL, CA).
+
+          w1mag_unc: Mid-infrared photometric W1-band (3.4 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w1sat: Mid-infrared photometric W1-band (3.4 microns) saturated pixel fraction in the
+              Vega system measured in magnitudes.
+
+          w2mag: Mid-infrared photometric W2-band (4.6 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w2mag_origin: Mid-infrared photometric W2-band (4.6 microns) catalog of origin in the Vega
+              system (AL, CA).
+
+          w2mag_unc: Mid-infrared photometric W2-band (4.6 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w2sat: Mid-infrared photometric W2-band (4.6 microns) saturated pixel fraction in the
+              Vega system.
+
+          w3mag: Mid-infrared photometric W3-band (12 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w3mag_origin: Mid-infrared photometric W3-band (12 microns) catalog of origin in the Vega
+              system (AL).
+
+          w3mag_unc: Mid-infrared photometric W3-band (12 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w3sat: Mid-infrared photometric W3-band (12 microns) saturated pixel fraction in the
+              Vega system.
+
+          w4mag: Mid-infrared photometric W4-band (22 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w4mag_origin: Mid-infrared photometric W4-band (22 microns) catalog of origin in the Vega
+              system (AL).
+
+          w4mag_unc: Mid-infrared photometric W4-band (22 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w4sat: Mid-infrared photometric W4-band (22 microns) saturated pixel fraction in the
+              Vega system.
+
+          wds_cat_id: The Washington Double Star Catalog (WD) identifier of this object.
 
           extra_headers: Send extra headers
 
@@ -331,38 +583,69 @@ class StarCatalogResource(SyncAPIResource):
                     "ra": ra,
                     "source": source,
                     "star_epoch": star_epoch,
-                    "id": id,
+                    "aavso_vsx_id": aavso_vsx_id,
+                    "abgmag": abgmag,
+                    "abgmag_origin": abgmag_origin,
+                    "abgmag_unc": abgmag_unc,
+                    "abimag": abimag,
+                    "abimag_origin": abimag_origin,
+                    "abimag_unc": abimag_unc,
+                    "abrmag": abrmag,
+                    "abrmag_origin": abrmag_origin,
+                    "abrmag_unc": abrmag_unc,
+                    "abymag": abymag,
+                    "abymag_origin": abymag_origin,
+                    "abymag_unc": abymag_unc,
+                    "abzmag": abzmag,
+                    "abzmag_origin": abzmag_origin,
+                    "abzmag_unc": abzmag_unc,
+                    "all_wis_ecc_ind": all_wis_ecc_ind,
                     "all_wise_id": all_wise_id,
-                    "all_wisew1_mag": all_wisew1_mag,
-                    "all_wisew1_mag_unc": all_wisew1_mag_unc,
-                    "all_wisew2_mag": all_wisew2_mag,
-                    "all_wisew2_mag_unc": all_wisew2_mag_unc,
-                    "all_wisew3_mag": all_wisew3_mag,
-                    "all_wisew3_mag_unc": all_wisew3_mag_unc,
-                    "all_wisew4_mag": all_wisew4_mag,
-                    "all_wisew4_mag_unc": all_wisew4_mag_unc,
+                    "all_wis_ena_ind": all_wis_ena_ind,
+                    "all_wis_eph_qual_ind": all_wis_eph_qual_ind,
+                    "apass_id": apass_id,
+                    "astrometric_excess_noise": astrometric_excess_noise,
+                    "astrometric_excess_noise_sig": astrometric_excess_noise_sig,
+                    "bmag": bmag,
+                    "bmag_origin": bmag_origin,
+                    "bmag_unc": bmag_unc,
                     "bpmag": bpmag,
                     "bpmag_unc": bpmag_unc,
+                    "carrasco_cat_id": carrasco_cat_id,
                     "cat_version": cat_version,
+                    "cat_wise2020_id": cat_wise2020_id,
                     "dec_unc": dec_unc,
+                    "ducati_cat_id": ducati_cat_id,
                     "gaiadr3_cat_id": gaiadr3_cat_id,
                     "gmag": gmag,
                     "gmag_unc": gmag_unc,
                     "gnc_cat_id": gnc_cat_id,
+                    "healpix_index": healpix_index,
                     "hip_cat_id": hip_cat_id,
                     "hmag": hmag,
+                    "hmag_origin": hmag_origin,
                     "hmag_unc": hmag_unc,
+                    "imag": imag,
+                    "imag_origin": imag_origin,
+                    "imag_unc": imag_unc,
                     "jmag": jmag,
+                    "jmag_origin": jmag_origin,
                     "jmag_unc": jmag_unc,
                     "kmag": kmag,
+                    "kmag_origin": kmag_origin,
                     "kmag_unc": kmag_unc,
+                    "morphology_ind": morphology_ind,
                     "mult_flag": mult_flag,
                     "multiplicity": multiplicity,
+                    "neighbor_dec": neighbor_dec,
                     "neighbor_distance": neighbor_distance,
                     "neighbor_flag": neighbor_flag,
                     "neighbor_id": neighbor_id,
+                    "neighbor_ra": neighbor_ra,
                     "non_single_star": non_single_star,
+                    "num_neighbors": num_neighbors,
                     "origin": origin,
+                    "pan_starrs_id": pan_starrs_id,
                     "parallax": parallax,
                     "parallax_unc": parallax_unc,
                     "pmdec": pmdec,
@@ -371,16 +654,56 @@ class StarCatalogResource(SyncAPIResource):
                     "pmra_unc": pmra_unc,
                     "pm_unc_flag": pm_unc_flag,
                     "pos_unc_flag": pos_unc_flag,
+                    "ps1astrometry_correction_flag": ps1astrometry_correction_flag,
+                    "ps1_obj_info_flag": ps1_obj_info_flag,
+                    "ps1_quality_flag": ps1_quality_flag,
                     "ra_unc": ra_unc,
+                    "rmag": rmag,
+                    "rmag_origin": rmag_origin,
+                    "rmag_unc": rmag_unc,
                     "rpmag": rpmag,
                     "rpmag_unc": rpmag_unc,
+                    "ruwe": ruwe,
+                    "sda_cat_id": sda_cat_id,
+                    "sgmag": sgmag,
+                    "sgmag_unc": sgmag_unc,
                     "shift": shift,
                     "shift_flag": shift_flag,
                     "shift_fwhm1": shift_fwhm1,
                     "shift_fwhm6": shift_fwhm6,
+                    "sky_mapper_id": sky_mapper_id,
                     "two_mass_id": two_mass_id,
+                    "two_mass_ph_qual_ind": two_mass_ph_qual_ind,
+                    "two_mass_read_flag": two_mass_read_flag,
+                    "two_mass_xsc_id": two_mass_xsc_id,
+                    "tycho_dsc_id": tycho_dsc_id,
+                    "uhs_id": uhs_id,
+                    "ukidss_gcs_id": ukidss_gcs_id,
+                    "ukidss_gps_id": ukidss_gps_id,
+                    "ukidss_las_id": ukidss_las_id,
                     "var_flag": var_flag,
                     "variability": variability,
+                    "vhs_id": vhs_id,
+                    "vmag": vmag,
+                    "vmag_origin": vmag_origin,
+                    "vmag_unc": vmag_unc,
+                    "w1mag": w1mag,
+                    "w1mag_origin": w1mag_origin,
+                    "w1mag_unc": w1mag_unc,
+                    "w1sat": w1sat,
+                    "w2mag": w2mag,
+                    "w2mag_origin": w2mag_origin,
+                    "w2mag_unc": w2mag_unc,
+                    "w2sat": w2sat,
+                    "w3mag": w3mag,
+                    "w3mag_origin": w3mag_origin,
+                    "w3mag_unc": w3mag_unc,
+                    "w3sat": w3sat,
+                    "w4mag": w4mag,
+                    "w4mag_origin": w4mag_origin,
+                    "w4mag_unc": w4mag_unc,
+                    "w4sat": w4sat,
+                    "wds_cat_id": wds_cat_id,
                 },
                 star_catalog_create_params.StarCatalogCreateParams,
             ),
@@ -392,48 +715,79 @@ class StarCatalogResource(SyncAPIResource):
 
     def update(
         self,
-        path_id: str,
+        id: str,
         *,
-        astrometry_origin: Literal["GAIADR3", "HIPPARCOS", "USNOBSC"],
+        astrometry_origin: str,
         classification_marking: str,
         cs_id: int,
-        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        data_mode: Literal["REAL", "TEST", "EXERCISE", "SIMULATED"],
         dec: float,
         ra: float,
         source: str,
         star_epoch: float,
-        body_id: str | Omit = omit,
+        aavso_vsx_id: int | Omit = omit,
+        abgmag: float | Omit = omit,
+        abgmag_origin: str | Omit = omit,
+        abgmag_unc: float | Omit = omit,
+        abimag: float | Omit = omit,
+        abimag_origin: str | Omit = omit,
+        abimag_unc: float | Omit = omit,
+        abrmag: float | Omit = omit,
+        abrmag_origin: str | Omit = omit,
+        abrmag_unc: float | Omit = omit,
+        abymag: float | Omit = omit,
+        abymag_origin: str | Omit = omit,
+        abymag_unc: float | Omit = omit,
+        abzmag: float | Omit = omit,
+        abzmag_origin: str | Omit = omit,
+        abzmag_unc: float | Omit = omit,
+        all_wis_ecc_ind: str | Omit = omit,
         all_wise_id: str | Omit = omit,
-        all_wisew1_mag: float | Omit = omit,
-        all_wisew1_mag_unc: float | Omit = omit,
-        all_wisew2_mag: float | Omit = omit,
-        all_wisew2_mag_unc: float | Omit = omit,
-        all_wisew3_mag: float | Omit = omit,
-        all_wisew3_mag_unc: float | Omit = omit,
-        all_wisew4_mag: float | Omit = omit,
-        all_wisew4_mag_unc: float | Omit = omit,
+        all_wis_ena_ind: int | Omit = omit,
+        all_wis_eph_qual_ind: str | Omit = omit,
+        apass_id: str | Omit = omit,
+        astrometric_excess_noise: float | Omit = omit,
+        astrometric_excess_noise_sig: float | Omit = omit,
+        bmag: float | Omit = omit,
+        bmag_origin: str | Omit = omit,
+        bmag_unc: float | Omit = omit,
         bpmag: float | Omit = omit,
         bpmag_unc: float | Omit = omit,
+        carrasco_cat_id: int | Omit = omit,
         cat_version: str | Omit = omit,
+        cat_wise2020_id: str | Omit = omit,
         dec_unc: float | Omit = omit,
+        ducati_cat_id: str | Omit = omit,
         gaiadr3_cat_id: int | Omit = omit,
         gmag: float | Omit = omit,
         gmag_unc: float | Omit = omit,
         gnc_cat_id: int | Omit = omit,
+        healpix_index: int | Omit = omit,
         hip_cat_id: int | Omit = omit,
         hmag: float | Omit = omit,
+        hmag_origin: str | Omit = omit,
         hmag_unc: float | Omit = omit,
+        imag: float | Omit = omit,
+        imag_origin: str | Omit = omit,
+        imag_unc: float | Omit = omit,
         jmag: float | Omit = omit,
+        jmag_origin: str | Omit = omit,
         jmag_unc: float | Omit = omit,
         kmag: float | Omit = omit,
+        kmag_origin: str | Omit = omit,
         kmag_unc: float | Omit = omit,
+        morphology_ind: int | Omit = omit,
         mult_flag: bool | Omit = omit,
         multiplicity: str | Omit = omit,
+        neighbor_dec: float | Omit = omit,
         neighbor_distance: float | Omit = omit,
         neighbor_flag: bool | Omit = omit,
         neighbor_id: int | Omit = omit,
+        neighbor_ra: float | Omit = omit,
         non_single_star: str | Omit = omit,
+        num_neighbors: int | Omit = omit,
         origin: str | Omit = omit,
+        pan_starrs_id: int | Omit = omit,
         parallax: float | Omit = omit,
         parallax_unc: float | Omit = omit,
         pmdec: float | Omit = omit,
@@ -442,16 +796,56 @@ class StarCatalogResource(SyncAPIResource):
         pmra_unc: float | Omit = omit,
         pm_unc_flag: bool | Omit = omit,
         pos_unc_flag: bool | Omit = omit,
+        ps1astrometry_correction_flag: int | Omit = omit,
+        ps1_obj_info_flag: int | Omit = omit,
+        ps1_quality_flag: int | Omit = omit,
         ra_unc: float | Omit = omit,
+        rmag: float | Omit = omit,
+        rmag_origin: str | Omit = omit,
+        rmag_unc: float | Omit = omit,
         rpmag: float | Omit = omit,
         rpmag_unc: float | Omit = omit,
+        ruwe: float | Omit = omit,
+        sda_cat_id: int | Omit = omit,
+        sgmag: float | Omit = omit,
+        sgmag_unc: float | Omit = omit,
         shift: float | Omit = omit,
         shift_flag: bool | Omit = omit,
         shift_fwhm1: float | Omit = omit,
         shift_fwhm6: float | Omit = omit,
+        sky_mapper_id: int | Omit = omit,
         two_mass_id: str | Omit = omit,
+        two_mass_ph_qual_ind: str | Omit = omit,
+        two_mass_read_flag: str | Omit = omit,
+        two_mass_xsc_id: str | Omit = omit,
+        tycho_dsc_id: int | Omit = omit,
+        uhs_id: int | Omit = omit,
+        ukidss_gcs_id: int | Omit = omit,
+        ukidss_gps_id: int | Omit = omit,
+        ukidss_las_id: int | Omit = omit,
         var_flag: bool | Omit = omit,
         variability: str | Omit = omit,
+        vhs_id: int | Omit = omit,
+        vmag: float | Omit = omit,
+        vmag_origin: str | Omit = omit,
+        vmag_unc: float | Omit = omit,
+        w1mag: float | Omit = omit,
+        w1mag_origin: str | Omit = omit,
+        w1mag_unc: float | Omit = omit,
+        w1sat: float | Omit = omit,
+        w2mag: float | Omit = omit,
+        w2mag_origin: str | Omit = omit,
+        w2mag_unc: float | Omit = omit,
+        w2sat: float | Omit = omit,
+        w3mag: float | Omit = omit,
+        w3mag_origin: str | Omit = omit,
+        w3mag_unc: float | Omit = omit,
+        w3sat: float | Omit = omit,
+        w4mag: float | Omit = omit,
+        w4mag_origin: str | Omit = omit,
+        w4mag_unc: float | Omit = omit,
+        w4sat: float | Omit = omit,
+        wds_cat_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -466,12 +860,14 @@ class StarCatalogResource(SyncAPIResource):
         assistance.
 
         Args:
-          astrometry_origin: Originating astrometric catalog for this object. Enum: [GAIADR3, HIPPARCOS,
-              USNOBSC].
+          astrometry_origin: Originating astrometric catalog for this object (GA (GAIA), HI (HIPPARCOS), UB
+              (USNOBSC), AL, AP, CA, CR, DU, FK6_I, FK6_III, PS, SK, TD, TP, TX, UC, UL, UH,
+              UP, VH, VS, WD).
 
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          cs_id: The ID of this object in the specific catalog associated with this record.
+          cs_id: The ID of this object in the specific catalog associated with this record. This
+              field will either contain the value in the gncCatId or sdaCatId field.
 
           data_mode:
               Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
@@ -500,76 +896,132 @@ class StarCatalogResource(SyncAPIResource):
           star_epoch: Reference epoch to which the astrometric source parameters are referred,
               expressed as Julian Year in Barycentric Coordinate Time (TCB).
 
-          body_id: Unique identifier of the record, auto-generated by the system.
+          aavso_vsx_id: The American Association of Variable Star Observers (AAVSO) Variable Star Index
+              (VSX) (VX) object ID of this object.
 
-          all_wise_id: The ID of this object in the All Wide-field Infrared Survey Explorer (AllWISE)
-              catalog.
+          abgmag: Optical AB g magnitude.
 
-          all_wisew1_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W1-band (3.4 microns) magnitude in the Vega system.
+          abgmag_origin: Catalog of origin of optical AB g magnitude.
 
-          all_wisew1_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W1-band (3.4 microns) magnitude uncertainty in the Vega system.
+          abgmag_unc: Uncertainty of optical AB g magnitude.
 
-          all_wisew2_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W2-band (4.6 microns) magnitude in the Vega system.
+          abimag: Optical AB i magnitude.
 
-          all_wisew2_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W2-band (4.6 microns) magnitude uncertainty in the Vega system.
+          abimag_origin: Catalog of origin of optical AB i magnitude.
 
-          all_wisew3_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W3-band (12 microns) magnitude in the Vega system.
+          abimag_unc: Uncertainty of optical AB i magnitude.
 
-          all_wisew3_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W3-band (12 microns) magnitude uncertainty in the Vega system.
+          abrmag: Optical AB r magnitude.
 
-          all_wisew4_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W4-band (22 microns) magnitude in the Vega system.
+          abrmag_origin: Catalog of origin of optical AB r magnitude.
 
-          all_wisew4_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W4-band (22 microns) magnitude uncertainty in the Vega system.
+          abrmag_unc: Uncertainty of optical AB r magnitude.
 
-          bpmag: Gaia DR3 optical photometric Bp-band magnitude in the Vega scale.
+          abymag: Optical AB y magnitude.
 
-          bpmag_unc: Gaia DR3 optical Bp-band magnitude uncertainty in the Vega scale.
+          abymag_origin: Catalog of origin of optical AB y magnitude.
+
+          abymag_unc: Uncertainty of optical AB y magnitude.
+
+          abzmag: Optical AB z magnitude.
+
+          abzmag_origin: Catalog of origin of optical AB z magnitude.
+
+          abzmag_unc: Uncertainty of optical AB z magnitude.
+
+          all_wis_ecc_ind: Contamination and confusion indicator in AllWISE.
+
+          all_wise_id: The designation of this object in the All Wide-field Infrared Survey Explorer
+              (AllWISE) catalog (AL).
+
+          all_wis_ena_ind: Active deblending indicator in AllWISE.
+
+          all_wis_eph_qual_ind: Photometric quality indicator in AllWISE.
+
+          apass_id: The American Association of Variable Star Observers (AAVSO) Photometric All-Sky
+              Survey (APASS) (AP) name of this object.
+
+          astrometric_excess_noise: Astrometric excess noise in the Gaia catalog measured in milliarcseconds.
+
+          astrometric_excess_noise_sig: Astrometric excess noise sigma in Gaia.
+
+          bmag: Optical Johnson B magnitude measured in magnitudes.
+
+          bmag_origin: Catalog of origin of optical Johnson B magnitude (AP, CR, HI).
+
+          bmag_unc: Uncertainty of optical Johnson B magnitude measured in magnitudes.
+
+          bpmag: Gaia optical photometric Bp-band in the Vega scale measured in magnitudes.
+
+          bpmag_unc: Gaia optical Bp-band uncertainty in the Vega scale measured in magnitudes.
+
+          carrasco_cat_id: The Carrasco catalog (CR) identifier of this object.
 
           cat_version: The version of the catalog associated with this object.
+
+          cat_wise2020_id: The CatWISE2020 (CA) catalog source ID of this object.
 
           dec_unc: Uncertainty of the declination of the source, in milliarcseconds, at the
               reference epoch.
 
-          gaiadr3_cat_id: The ID of this object in the Gaia DR3 Catalog.
+          ducati_cat_id: The Ducati catalog (DU) name of this object.
 
-          gmag: Gaia DR3 optical photometric G-band magnitude in the Vega scale.
+          gaiadr3_cat_id: The source ID of this object in the Gaia DR3 Catalog (GA).
 
-          gmag_unc: Gaia DR3 optical photometric G-band magnitude uncertainty in the Vega scale.
+          gmag: Gaia optical photometric G-band in the Vega scale measured in magnitudes.
 
-          gnc_cat_id: The ID of this object in the Guidance and Navagation Control (GNC) Catalog.
+          gmag_unc: Gaia optical photometric G-band uncertainty in the Vega scale measured in
+              magnitudes.
 
-          hip_cat_id: The ID of this object in the Hipparcos Catalog.
+          gnc_cat_id: The ID of this object in the Guidance and Navigation Control (GNC) Catalog. If
+              this field is populated it shall match the csId field.
 
-          hmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric H-band magnitude in the Vega scale.
+          healpix_index: The Healpix index. Consumers should contact the provider for details on the
+              indexing scheme.
 
-          hmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric H-band magnitude uncertainty in the Vega scale.
+          hip_cat_id: The HIP ID of this object in the Hipparcos Catalog (HI).
 
-          jmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric J-band magnitude in the Vega scale.
+          hmag: Near-infrared photometric H-band magnitude in the Vega scale measured in
+              magnitudes.
 
-          jmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric J-band magnitude uncertainty in the Vega scale.
+          hmag_origin: Near-infrared photometric H-band catalog of origin in the Vega scale (TP, UC,
+              UL, UP, VH).
 
-          kmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric K-band magnitude in the Vega scale.
+          hmag_unc: Near-infrared photometric H-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
 
-          kmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric K-band magnitude uncertainty in the Vega scale.
+          imag: Optical Johnson I magnitude measured in magnitudes.
+
+          imag_origin: Catalog of origin of optical Johnson I magnitude (CR, GA, HI).
+
+          imag_unc: Uncertainty of optical Johnson I magnitude measured in magnitudes.
+
+          jmag: Near-infrared photometric J-band magnitude in the Vega scale measured in
+              magnitudes.
+
+          jmag_origin: Near-infrared photometric J-band catalog of origin in the Vega scale (TP, UH,
+              UL, UP, VH).
+
+          jmag_unc: Near-infrared photometric J-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
+
+          kmag: Near-infrared photometric K-band magnitude in the Vega scale measured in
+              magnitudes.
+
+          kmag_origin: Near-infrared photometric K-band catalog of origin in the Vega scale (TP, UC,
+              UH, UL, UP, VH).
+
+          kmag_unc: Near-infrared photometric K-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
+
+          morphology_ind: Morphology indicator.
 
           mult_flag: Flag indicating that this is a multiple object source.
 
           multiplicity: Identifier indicating multiplicity is detected. Consumers should contact the
               provider for details on the specifications.
+
+          neighbor_dec: Dec of nearest neighbor measured in degrees.
 
           neighbor_distance: Distance between source and nearest neighbor, in arcseconds.
 
@@ -577,41 +1029,72 @@ class StarCatalogResource(SyncAPIResource):
 
           neighbor_id: The catalog ID of the nearest neighbor to this source.
 
+          neighbor_ra: RA of nearest neighbor measured in degrees.
+
           non_single_star: Identifier indicating the source is a non-single star and additional information
               is available in non-single star tables. Consumers should contact the provider
               for details on the specifications.
+
+          num_neighbors: Number of neighbors.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
+          pan_starrs_id: The Panoramic Survey Telescope and Rapid Response System (Pan-STARRS) (PS)
+              object ID.
+
           parallax: Absolute stellar parallax of the source, in milliarcseconds.
 
           parallax_unc: Uncertainty of the stellar parallax, in milliarcseconds.
 
-          pmdec: Proper motion in declination of the source, in milliarcseconds/year, at the
+          pmdec: Proper motion in declination of the source, in milliarcseconds per year, at the
               reference epoch.
 
-          pmdec_unc: Uncertainty of proper motion in declination, in milliarcseconds/year.
+          pmdec_unc: Uncertainty of proper motion in declination, in milliarcseconds per year.
 
-          pmra: Proper motion in right ascension of the source, in milliarcseconds/year, at the
-              reference epoch.
+          pmra: Proper motion in right ascension of the source, in milliarcseconds per year, at
+              the reference epoch.
 
-          pmra_unc: Uncertainty of proper motion in right ascension, in milliarcseconds/year.
+          pmra_unc: Uncertainty of proper motion in right ascension, in milliarcseconds per year.
 
           pm_unc_flag: Flag indicating that the proper motion uncertainty in either ra or dec is
-              greater than 10 milliarcseconds/year.
+              greater than 10 milliarcseconds per year.
 
           pos_unc_flag: Flag indicating that the position uncertainty in either ra or dec is greater
               than 100 milliarcseconds.
 
+          ps1astrometry_correction_flag: Astrometry correction flag in Pan-STARRS.
+
+          ps1_obj_info_flag: Object information flag in Pan-STARRS.
+
+          ps1_quality_flag: Quality flag in Pan-STARRS.
+
           ra_unc: Uncertainty of the right ascension of the source, in milliarcseconds, at the
               reference epoch.
 
-          rpmag: Gaia DR3 optical Rp-band magnitude in the Vega scale.
+          rmag: Optical Johnson R magnitude measured in magnitudes.
 
-          rpmag_unc: Gaia DR3 optical photometric Rp-band magnitude uncertainty in the Vega scale.
+          rmag_origin: Catalog of origin of the Optical Johnson R magnitude (CR, GA).
+
+          rmag_unc: Uncertainty of the Optical Johnson R magnitude measured in magnitudes.
+
+          rpmag: Gaia optical Rp-band in the Vega scale measured in magnitudes.
+
+          rpmag_unc: Gaia optical photometric Rp-band uncertainty in the Vega scale measured in
+              magnitudes.
+
+          ruwe: RUWE in Gaia.
+
+          sda_cat_id: The ID of this object in the Space Domain Awareness (SDA) Catalog. If this field
+              is populated it shall match the csId field.
+
+          sgmag: Original G magnitude if the source is in Gaia, otherwise the magnitude is
+              converted from other photometric passbands, when possible, measured in
+              magnitudes.
+
+          sgmag_unc: Uncertainty of sgmag measured in magnitudes.
 
           shift: Photocentric shift caused by neighbors, in arcseconds.
 
@@ -625,13 +1108,96 @@ class StarCatalogResource(SyncAPIResource):
               to a Point Spread Function (PSF) with Full Width at Half Maximum (FWHM) of six
               arcseconds.
 
-          two_mass_id: The ID of this object in the Two Micron All Sky Survey (2MASS) Point Source
-              Catalog (PSC).
+          sky_mapper_id: The SkyMapper (SK) catalog object ID.
+
+          two_mass_id: The designation of this object in the Two Micron All Sky Survey (2MASS) Point
+              Source Catalog (TP).
+
+          two_mass_ph_qual_ind: Photometric (PH) quality indicator in 2MASS PSC.
+
+          two_mass_read_flag: Read flag in 2MASS PSC.
+
+          two_mass_xsc_id: The Two Micron All Sky Survey (2MASS) Extended Source Catalog (XSC) (TX)
+              designation of this object.
+
+          tycho_dsc_id: The Tycho Double Star Catalog (TD) identifier (specified as Tycho-2 ID) of this
+              object.
+
+          uhs_id: The United Kingdom Infrared Telescope (UKIRT) Hemispheric Survey (UHS) (UH)
+              source ID of this object.
+
+          ukidss_gcs_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Galactic Clusters Survey
+              (GCS) (UC) source ID of this object.
+
+          ukidss_gps_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Galactic Plane Survey (GPS)
+              (UP) source ID of this object.
+
+          ukidss_las_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Large Area Survey (LAS)
+              (UL) source ID of this object.
 
           var_flag: Flag indicating that the source exhibits variable magnitude.
 
           variability: Identifier indicating variability is present in the photometric data. Consumers
               should contact the provider for details on the specifications.
+
+          vhs_id: The Visible and Infrared Survey Telescope for Astronomy (VISTA) Hemisphere
+              Survey (VHS) (VS) source ID of this object.
+
+          vmag: Optical Johnson V magnitude measured in magnitudes.
+
+          vmag_origin: Catalog of origin of Optical Johnson V magnitude (AP, CR, DU, GA, HI).
+
+          vmag_unc: Uncertainty of the Optical Johnson V magnitude measured in magnitudes.
+
+          w1mag: Mid-infrared photometric W1-band (3.4 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w1mag_origin: Mid-infrared photometric W1-band (3.4 microns) catalog of origin in the Vega
+              system (AL, CA).
+
+          w1mag_unc: Mid-infrared photometric W1-band (3.4 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w1sat: Mid-infrared photometric W1-band (3.4 microns) saturated pixel fraction in the
+              Vega system measured in magnitudes.
+
+          w2mag: Mid-infrared photometric W2-band (4.6 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w2mag_origin: Mid-infrared photometric W2-band (4.6 microns) catalog of origin in the Vega
+              system (AL, CA).
+
+          w2mag_unc: Mid-infrared photometric W2-band (4.6 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w2sat: Mid-infrared photometric W2-band (4.6 microns) saturated pixel fraction in the
+              Vega system.
+
+          w3mag: Mid-infrared photometric W3-band (12 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w3mag_origin: Mid-infrared photometric W3-band (12 microns) catalog of origin in the Vega
+              system (AL).
+
+          w3mag_unc: Mid-infrared photometric W3-band (12 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w3sat: Mid-infrared photometric W3-band (12 microns) saturated pixel fraction in the
+              Vega system.
+
+          w4mag: Mid-infrared photometric W4-band (22 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w4mag_origin: Mid-infrared photometric W4-band (22 microns) catalog of origin in the Vega
+              system (AL).
+
+          w4mag_unc: Mid-infrared photometric W4-band (22 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w4sat: Mid-infrared photometric W4-band (22 microns) saturated pixel fraction in the
+              Vega system.
+
+          wds_cat_id: The Washington Double Star Catalog (WD) identifier of this object.
 
           extra_headers: Send extra headers
 
@@ -641,11 +1207,11 @@ class StarCatalogResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_id:
-            raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/udl/starcatalog/{path_id}",
+            f"/udl/starcatalog/{id}",
             body=maybe_transform(
                 {
                     "astrometry_origin": astrometry_origin,
@@ -656,38 +1222,69 @@ class StarCatalogResource(SyncAPIResource):
                     "ra": ra,
                     "source": source,
                     "star_epoch": star_epoch,
-                    "body_id": body_id,
+                    "aavso_vsx_id": aavso_vsx_id,
+                    "abgmag": abgmag,
+                    "abgmag_origin": abgmag_origin,
+                    "abgmag_unc": abgmag_unc,
+                    "abimag": abimag,
+                    "abimag_origin": abimag_origin,
+                    "abimag_unc": abimag_unc,
+                    "abrmag": abrmag,
+                    "abrmag_origin": abrmag_origin,
+                    "abrmag_unc": abrmag_unc,
+                    "abymag": abymag,
+                    "abymag_origin": abymag_origin,
+                    "abymag_unc": abymag_unc,
+                    "abzmag": abzmag,
+                    "abzmag_origin": abzmag_origin,
+                    "abzmag_unc": abzmag_unc,
+                    "all_wis_ecc_ind": all_wis_ecc_ind,
                     "all_wise_id": all_wise_id,
-                    "all_wisew1_mag": all_wisew1_mag,
-                    "all_wisew1_mag_unc": all_wisew1_mag_unc,
-                    "all_wisew2_mag": all_wisew2_mag,
-                    "all_wisew2_mag_unc": all_wisew2_mag_unc,
-                    "all_wisew3_mag": all_wisew3_mag,
-                    "all_wisew3_mag_unc": all_wisew3_mag_unc,
-                    "all_wisew4_mag": all_wisew4_mag,
-                    "all_wisew4_mag_unc": all_wisew4_mag_unc,
+                    "all_wis_ena_ind": all_wis_ena_ind,
+                    "all_wis_eph_qual_ind": all_wis_eph_qual_ind,
+                    "apass_id": apass_id,
+                    "astrometric_excess_noise": astrometric_excess_noise,
+                    "astrometric_excess_noise_sig": astrometric_excess_noise_sig,
+                    "bmag": bmag,
+                    "bmag_origin": bmag_origin,
+                    "bmag_unc": bmag_unc,
                     "bpmag": bpmag,
                     "bpmag_unc": bpmag_unc,
+                    "carrasco_cat_id": carrasco_cat_id,
                     "cat_version": cat_version,
+                    "cat_wise2020_id": cat_wise2020_id,
                     "dec_unc": dec_unc,
+                    "ducati_cat_id": ducati_cat_id,
                     "gaiadr3_cat_id": gaiadr3_cat_id,
                     "gmag": gmag,
                     "gmag_unc": gmag_unc,
                     "gnc_cat_id": gnc_cat_id,
+                    "healpix_index": healpix_index,
                     "hip_cat_id": hip_cat_id,
                     "hmag": hmag,
+                    "hmag_origin": hmag_origin,
                     "hmag_unc": hmag_unc,
+                    "imag": imag,
+                    "imag_origin": imag_origin,
+                    "imag_unc": imag_unc,
                     "jmag": jmag,
+                    "jmag_origin": jmag_origin,
                     "jmag_unc": jmag_unc,
                     "kmag": kmag,
+                    "kmag_origin": kmag_origin,
                     "kmag_unc": kmag_unc,
+                    "morphology_ind": morphology_ind,
                     "mult_flag": mult_flag,
                     "multiplicity": multiplicity,
+                    "neighbor_dec": neighbor_dec,
                     "neighbor_distance": neighbor_distance,
                     "neighbor_flag": neighbor_flag,
                     "neighbor_id": neighbor_id,
+                    "neighbor_ra": neighbor_ra,
                     "non_single_star": non_single_star,
+                    "num_neighbors": num_neighbors,
                     "origin": origin,
+                    "pan_starrs_id": pan_starrs_id,
                     "parallax": parallax,
                     "parallax_unc": parallax_unc,
                     "pmdec": pmdec,
@@ -696,16 +1293,56 @@ class StarCatalogResource(SyncAPIResource):
                     "pmra_unc": pmra_unc,
                     "pm_unc_flag": pm_unc_flag,
                     "pos_unc_flag": pos_unc_flag,
+                    "ps1astrometry_correction_flag": ps1astrometry_correction_flag,
+                    "ps1_obj_info_flag": ps1_obj_info_flag,
+                    "ps1_quality_flag": ps1_quality_flag,
                     "ra_unc": ra_unc,
+                    "rmag": rmag,
+                    "rmag_origin": rmag_origin,
+                    "rmag_unc": rmag_unc,
                     "rpmag": rpmag,
                     "rpmag_unc": rpmag_unc,
+                    "ruwe": ruwe,
+                    "sda_cat_id": sda_cat_id,
+                    "sgmag": sgmag,
+                    "sgmag_unc": sgmag_unc,
                     "shift": shift,
                     "shift_flag": shift_flag,
                     "shift_fwhm1": shift_fwhm1,
                     "shift_fwhm6": shift_fwhm6,
+                    "sky_mapper_id": sky_mapper_id,
                     "two_mass_id": two_mass_id,
+                    "two_mass_ph_qual_ind": two_mass_ph_qual_ind,
+                    "two_mass_read_flag": two_mass_read_flag,
+                    "two_mass_xsc_id": two_mass_xsc_id,
+                    "tycho_dsc_id": tycho_dsc_id,
+                    "uhs_id": uhs_id,
+                    "ukidss_gcs_id": ukidss_gcs_id,
+                    "ukidss_gps_id": ukidss_gps_id,
+                    "ukidss_las_id": ukidss_las_id,
                     "var_flag": var_flag,
                     "variability": variability,
+                    "vhs_id": vhs_id,
+                    "vmag": vmag,
+                    "vmag_origin": vmag_origin,
+                    "vmag_unc": vmag_unc,
+                    "w1mag": w1mag,
+                    "w1mag_origin": w1mag_origin,
+                    "w1mag_unc": w1mag_unc,
+                    "w1sat": w1sat,
+                    "w2mag": w2mag,
+                    "w2mag_origin": w2mag_origin,
+                    "w2mag_unc": w2mag_unc,
+                    "w2sat": w2sat,
+                    "w3mag": w3mag,
+                    "w3mag_origin": w3mag_origin,
+                    "w3mag_unc": w3mag_unc,
+                    "w3sat": w3sat,
+                    "w4mag": w4mag,
+                    "w4mag_origin": w4mag_origin,
+                    "w4mag_unc": w4mag_unc,
+                    "w4sat": w4sat,
+                    "wds_cat_id": wds_cat_id,
                 },
                 star_catalog_update_params.StarCatalogUpdateParams,
             ),
@@ -1079,8 +1716,17 @@ class StarCatalogResource(SyncAPIResource):
 
 
 class AsyncStarCatalogResource(AsyncAPIResource):
+    """These services provide operations for posting and querying Star Catalog data.
+
+    The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1105,46 +1751,77 @@ class AsyncStarCatalogResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        astrometry_origin: Literal["GAIADR3", "HIPPARCOS", "USNOBSC"],
+        astrometry_origin: str,
         classification_marking: str,
         cs_id: int,
-        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        data_mode: Literal["REAL", "TEST", "EXERCISE", "SIMULATED"],
         dec: float,
         ra: float,
         source: str,
         star_epoch: float,
-        id: str | Omit = omit,
+        aavso_vsx_id: int | Omit = omit,
+        abgmag: float | Omit = omit,
+        abgmag_origin: str | Omit = omit,
+        abgmag_unc: float | Omit = omit,
+        abimag: float | Omit = omit,
+        abimag_origin: str | Omit = omit,
+        abimag_unc: float | Omit = omit,
+        abrmag: float | Omit = omit,
+        abrmag_origin: str | Omit = omit,
+        abrmag_unc: float | Omit = omit,
+        abymag: float | Omit = omit,
+        abymag_origin: str | Omit = omit,
+        abymag_unc: float | Omit = omit,
+        abzmag: float | Omit = omit,
+        abzmag_origin: str | Omit = omit,
+        abzmag_unc: float | Omit = omit,
+        all_wis_ecc_ind: str | Omit = omit,
         all_wise_id: str | Omit = omit,
-        all_wisew1_mag: float | Omit = omit,
-        all_wisew1_mag_unc: float | Omit = omit,
-        all_wisew2_mag: float | Omit = omit,
-        all_wisew2_mag_unc: float | Omit = omit,
-        all_wisew3_mag: float | Omit = omit,
-        all_wisew3_mag_unc: float | Omit = omit,
-        all_wisew4_mag: float | Omit = omit,
-        all_wisew4_mag_unc: float | Omit = omit,
+        all_wis_ena_ind: int | Omit = omit,
+        all_wis_eph_qual_ind: str | Omit = omit,
+        apass_id: str | Omit = omit,
+        astrometric_excess_noise: float | Omit = omit,
+        astrometric_excess_noise_sig: float | Omit = omit,
+        bmag: float | Omit = omit,
+        bmag_origin: str | Omit = omit,
+        bmag_unc: float | Omit = omit,
         bpmag: float | Omit = omit,
         bpmag_unc: float | Omit = omit,
+        carrasco_cat_id: int | Omit = omit,
         cat_version: str | Omit = omit,
+        cat_wise2020_id: str | Omit = omit,
         dec_unc: float | Omit = omit,
+        ducati_cat_id: str | Omit = omit,
         gaiadr3_cat_id: int | Omit = omit,
         gmag: float | Omit = omit,
         gmag_unc: float | Omit = omit,
         gnc_cat_id: int | Omit = omit,
+        healpix_index: int | Omit = omit,
         hip_cat_id: int | Omit = omit,
         hmag: float | Omit = omit,
+        hmag_origin: str | Omit = omit,
         hmag_unc: float | Omit = omit,
+        imag: float | Omit = omit,
+        imag_origin: str | Omit = omit,
+        imag_unc: float | Omit = omit,
         jmag: float | Omit = omit,
+        jmag_origin: str | Omit = omit,
         jmag_unc: float | Omit = omit,
         kmag: float | Omit = omit,
+        kmag_origin: str | Omit = omit,
         kmag_unc: float | Omit = omit,
+        morphology_ind: int | Omit = omit,
         mult_flag: bool | Omit = omit,
         multiplicity: str | Omit = omit,
+        neighbor_dec: float | Omit = omit,
         neighbor_distance: float | Omit = omit,
         neighbor_flag: bool | Omit = omit,
         neighbor_id: int | Omit = omit,
+        neighbor_ra: float | Omit = omit,
         non_single_star: str | Omit = omit,
+        num_neighbors: int | Omit = omit,
         origin: str | Omit = omit,
+        pan_starrs_id: int | Omit = omit,
         parallax: float | Omit = omit,
         parallax_unc: float | Omit = omit,
         pmdec: float | Omit = omit,
@@ -1153,16 +1830,56 @@ class AsyncStarCatalogResource(AsyncAPIResource):
         pmra_unc: float | Omit = omit,
         pm_unc_flag: bool | Omit = omit,
         pos_unc_flag: bool | Omit = omit,
+        ps1astrometry_correction_flag: int | Omit = omit,
+        ps1_obj_info_flag: int | Omit = omit,
+        ps1_quality_flag: int | Omit = omit,
         ra_unc: float | Omit = omit,
+        rmag: float | Omit = omit,
+        rmag_origin: str | Omit = omit,
+        rmag_unc: float | Omit = omit,
         rpmag: float | Omit = omit,
         rpmag_unc: float | Omit = omit,
+        ruwe: float | Omit = omit,
+        sda_cat_id: int | Omit = omit,
+        sgmag: float | Omit = omit,
+        sgmag_unc: float | Omit = omit,
         shift: float | Omit = omit,
         shift_flag: bool | Omit = omit,
         shift_fwhm1: float | Omit = omit,
         shift_fwhm6: float | Omit = omit,
+        sky_mapper_id: int | Omit = omit,
         two_mass_id: str | Omit = omit,
+        two_mass_ph_qual_ind: str | Omit = omit,
+        two_mass_read_flag: str | Omit = omit,
+        two_mass_xsc_id: str | Omit = omit,
+        tycho_dsc_id: int | Omit = omit,
+        uhs_id: int | Omit = omit,
+        ukidss_gcs_id: int | Omit = omit,
+        ukidss_gps_id: int | Omit = omit,
+        ukidss_las_id: int | Omit = omit,
         var_flag: bool | Omit = omit,
         variability: str | Omit = omit,
+        vhs_id: int | Omit = omit,
+        vmag: float | Omit = omit,
+        vmag_origin: str | Omit = omit,
+        vmag_unc: float | Omit = omit,
+        w1mag: float | Omit = omit,
+        w1mag_origin: str | Omit = omit,
+        w1mag_unc: float | Omit = omit,
+        w1sat: float | Omit = omit,
+        w2mag: float | Omit = omit,
+        w2mag_origin: str | Omit = omit,
+        w2mag_unc: float | Omit = omit,
+        w2sat: float | Omit = omit,
+        w3mag: float | Omit = omit,
+        w3mag_origin: str | Omit = omit,
+        w3mag_unc: float | Omit = omit,
+        w3sat: float | Omit = omit,
+        w4mag: float | Omit = omit,
+        w4mag_origin: str | Omit = omit,
+        w4mag_unc: float | Omit = omit,
+        w4sat: float | Omit = omit,
+        wds_cat_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1176,12 +1893,14 @@ class AsyncStarCatalogResource(AsyncAPIResource):
         operation. Please contact the UDL team for assistance.
 
         Args:
-          astrometry_origin: Originating astrometric catalog for this object. Enum: [GAIADR3, HIPPARCOS,
-              USNOBSC].
+          astrometry_origin: Originating astrometric catalog for this object (GA (GAIA), HI (HIPPARCOS), UB
+              (USNOBSC), AL, AP, CA, CR, DU, FK6_I, FK6_III, PS, SK, TD, TP, TX, UC, UL, UH,
+              UP, VH, VS, WD).
 
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          cs_id: The ID of this object in the specific catalog associated with this record.
+          cs_id: The ID of this object in the specific catalog associated with this record. This
+              field will either contain the value in the gncCatId or sdaCatId field.
 
           data_mode:
               Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
@@ -1210,76 +1929,132 @@ class AsyncStarCatalogResource(AsyncAPIResource):
           star_epoch: Reference epoch to which the astrometric source parameters are referred,
               expressed as Julian Year in Barycentric Coordinate Time (TCB).
 
-          id: Unique identifier of the record, auto-generated by the system.
+          aavso_vsx_id: The American Association of Variable Star Observers (AAVSO) Variable Star Index
+              (VSX) (VX) object ID of this object.
 
-          all_wise_id: The ID of this object in the All Wide-field Infrared Survey Explorer (AllWISE)
-              catalog.
+          abgmag: Optical AB g magnitude.
 
-          all_wisew1_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W1-band (3.4 microns) magnitude in the Vega system.
+          abgmag_origin: Catalog of origin of optical AB g magnitude.
 
-          all_wisew1_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W1-band (3.4 microns) magnitude uncertainty in the Vega system.
+          abgmag_unc: Uncertainty of optical AB g magnitude.
 
-          all_wisew2_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W2-band (4.6 microns) magnitude in the Vega system.
+          abimag: Optical AB i magnitude.
 
-          all_wisew2_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W2-band (4.6 microns) magnitude uncertainty in the Vega system.
+          abimag_origin: Catalog of origin of optical AB i magnitude.
 
-          all_wisew3_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W3-band (12 microns) magnitude in the Vega system.
+          abimag_unc: Uncertainty of optical AB i magnitude.
 
-          all_wisew3_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W3-band (12 microns) magnitude uncertainty in the Vega system.
+          abrmag: Optical AB r magnitude.
 
-          all_wisew4_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W4-band (22 microns) magnitude in the Vega system.
+          abrmag_origin: Catalog of origin of optical AB r magnitude.
 
-          all_wisew4_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W4-band (22 microns) magnitude uncertainty in the Vega system.
+          abrmag_unc: Uncertainty of optical AB r magnitude.
 
-          bpmag: Gaia DR3 optical photometric Bp-band magnitude in the Vega scale.
+          abymag: Optical AB y magnitude.
 
-          bpmag_unc: Gaia DR3 optical Bp-band magnitude uncertainty in the Vega scale.
+          abymag_origin: Catalog of origin of optical AB y magnitude.
+
+          abymag_unc: Uncertainty of optical AB y magnitude.
+
+          abzmag: Optical AB z magnitude.
+
+          abzmag_origin: Catalog of origin of optical AB z magnitude.
+
+          abzmag_unc: Uncertainty of optical AB z magnitude.
+
+          all_wis_ecc_ind: Contamination and confusion indicator in AllWISE.
+
+          all_wise_id: The designation of this object in the All Wide-field Infrared Survey Explorer
+              (AllWISE) catalog (AL).
+
+          all_wis_ena_ind: Active deblending indicator in AllWISE.
+
+          all_wis_eph_qual_ind: Photometric quality indicator in AllWISE.
+
+          apass_id: The American Association of Variable Star Observers (AAVSO) Photometric All-Sky
+              Survey (APASS) (AP) name of this object.
+
+          astrometric_excess_noise: Astrometric excess noise in the Gaia catalog measured in milliarcseconds.
+
+          astrometric_excess_noise_sig: Astrometric excess noise sigma in Gaia.
+
+          bmag: Optical Johnson B magnitude measured in magnitudes.
+
+          bmag_origin: Catalog of origin of optical Johnson B magnitude (AP, CR, HI).
+
+          bmag_unc: Uncertainty of optical Johnson B magnitude measured in magnitudes.
+
+          bpmag: Gaia optical photometric Bp-band in the Vega scale measured in magnitudes.
+
+          bpmag_unc: Gaia optical Bp-band uncertainty in the Vega scale measured in magnitudes.
+
+          carrasco_cat_id: The Carrasco catalog (CR) identifier of this object.
 
           cat_version: The version of the catalog associated with this object.
+
+          cat_wise2020_id: The CatWISE2020 (CA) catalog source ID of this object.
 
           dec_unc: Uncertainty of the declination of the source, in milliarcseconds, at the
               reference epoch.
 
-          gaiadr3_cat_id: The ID of this object in the Gaia DR3 Catalog.
+          ducati_cat_id: The Ducati catalog (DU) name of this object.
 
-          gmag: Gaia DR3 optical photometric G-band magnitude in the Vega scale.
+          gaiadr3_cat_id: The source ID of this object in the Gaia DR3 Catalog (GA).
 
-          gmag_unc: Gaia DR3 optical photometric G-band magnitude uncertainty in the Vega scale.
+          gmag: Gaia optical photometric G-band in the Vega scale measured in magnitudes.
 
-          gnc_cat_id: The ID of this object in the Guidance and Navagation Control (GNC) Catalog.
+          gmag_unc: Gaia optical photometric G-band uncertainty in the Vega scale measured in
+              magnitudes.
 
-          hip_cat_id: The ID of this object in the Hipparcos Catalog.
+          gnc_cat_id: The ID of this object in the Guidance and Navigation Control (GNC) Catalog. If
+              this field is populated it shall match the csId field.
 
-          hmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric H-band magnitude in the Vega scale.
+          healpix_index: The Healpix index. Consumers should contact the provider for details on the
+              indexing scheme.
 
-          hmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric H-band magnitude uncertainty in the Vega scale.
+          hip_cat_id: The HIP ID of this object in the Hipparcos Catalog (HI).
 
-          jmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric J-band magnitude in the Vega scale.
+          hmag: Near-infrared photometric H-band magnitude in the Vega scale measured in
+              magnitudes.
 
-          jmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric J-band magnitude uncertainty in the Vega scale.
+          hmag_origin: Near-infrared photometric H-band catalog of origin in the Vega scale (TP, UC,
+              UL, UP, VH).
 
-          kmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric K-band magnitude in the Vega scale.
+          hmag_unc: Near-infrared photometric H-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
 
-          kmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric K-band magnitude uncertainty in the Vega scale.
+          imag: Optical Johnson I magnitude measured in magnitudes.
+
+          imag_origin: Catalog of origin of optical Johnson I magnitude (CR, GA, HI).
+
+          imag_unc: Uncertainty of optical Johnson I magnitude measured in magnitudes.
+
+          jmag: Near-infrared photometric J-band magnitude in the Vega scale measured in
+              magnitudes.
+
+          jmag_origin: Near-infrared photometric J-band catalog of origin in the Vega scale (TP, UH,
+              UL, UP, VH).
+
+          jmag_unc: Near-infrared photometric J-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
+
+          kmag: Near-infrared photometric K-band magnitude in the Vega scale measured in
+              magnitudes.
+
+          kmag_origin: Near-infrared photometric K-band catalog of origin in the Vega scale (TP, UC,
+              UH, UL, UP, VH).
+
+          kmag_unc: Near-infrared photometric K-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
+
+          morphology_ind: Morphology indicator.
 
           mult_flag: Flag indicating that this is a multiple object source.
 
           multiplicity: Identifier indicating multiplicity is detected. Consumers should contact the
               provider for details on the specifications.
+
+          neighbor_dec: Dec of nearest neighbor measured in degrees.
 
           neighbor_distance: Distance between source and nearest neighbor, in arcseconds.
 
@@ -1287,41 +2062,72 @@ class AsyncStarCatalogResource(AsyncAPIResource):
 
           neighbor_id: The catalog ID of the nearest neighbor to this source.
 
+          neighbor_ra: RA of nearest neighbor measured in degrees.
+
           non_single_star: Identifier indicating the source is a non-single star and additional information
               is available in non-single star tables. Consumers should contact the provider
               for details on the specifications.
+
+          num_neighbors: Number of neighbors.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
+          pan_starrs_id: The Panoramic Survey Telescope and Rapid Response System (Pan-STARRS) (PS)
+              object ID.
+
           parallax: Absolute stellar parallax of the source, in milliarcseconds.
 
           parallax_unc: Uncertainty of the stellar parallax, in milliarcseconds.
 
-          pmdec: Proper motion in declination of the source, in milliarcseconds/year, at the
+          pmdec: Proper motion in declination of the source, in milliarcseconds per year, at the
               reference epoch.
 
-          pmdec_unc: Uncertainty of proper motion in declination, in milliarcseconds/year.
+          pmdec_unc: Uncertainty of proper motion in declination, in milliarcseconds per year.
 
-          pmra: Proper motion in right ascension of the source, in milliarcseconds/year, at the
-              reference epoch.
+          pmra: Proper motion in right ascension of the source, in milliarcseconds per year, at
+              the reference epoch.
 
-          pmra_unc: Uncertainty of proper motion in right ascension, in milliarcseconds/year.
+          pmra_unc: Uncertainty of proper motion in right ascension, in milliarcseconds per year.
 
           pm_unc_flag: Flag indicating that the proper motion uncertainty in either ra or dec is
-              greater than 10 milliarcseconds/year.
+              greater than 10 milliarcseconds per year.
 
           pos_unc_flag: Flag indicating that the position uncertainty in either ra or dec is greater
               than 100 milliarcseconds.
 
+          ps1astrometry_correction_flag: Astrometry correction flag in Pan-STARRS.
+
+          ps1_obj_info_flag: Object information flag in Pan-STARRS.
+
+          ps1_quality_flag: Quality flag in Pan-STARRS.
+
           ra_unc: Uncertainty of the right ascension of the source, in milliarcseconds, at the
               reference epoch.
 
-          rpmag: Gaia DR3 optical Rp-band magnitude in the Vega scale.
+          rmag: Optical Johnson R magnitude measured in magnitudes.
 
-          rpmag_unc: Gaia DR3 optical photometric Rp-band magnitude uncertainty in the Vega scale.
+          rmag_origin: Catalog of origin of the Optical Johnson R magnitude (CR, GA).
+
+          rmag_unc: Uncertainty of the Optical Johnson R magnitude measured in magnitudes.
+
+          rpmag: Gaia optical Rp-band in the Vega scale measured in magnitudes.
+
+          rpmag_unc: Gaia optical photometric Rp-band uncertainty in the Vega scale measured in
+              magnitudes.
+
+          ruwe: RUWE in Gaia.
+
+          sda_cat_id: The ID of this object in the Space Domain Awareness (SDA) Catalog. If this field
+              is populated it shall match the csId field.
+
+          sgmag: Original G magnitude if the source is in Gaia, otherwise the magnitude is
+              converted from other photometric passbands, when possible, measured in
+              magnitudes.
+
+          sgmag_unc: Uncertainty of sgmag measured in magnitudes.
 
           shift: Photocentric shift caused by neighbors, in arcseconds.
 
@@ -1335,13 +2141,96 @@ class AsyncStarCatalogResource(AsyncAPIResource):
               to a Point Spread Function (PSF) with Full Width at Half Maximum (FWHM) of six
               arcseconds.
 
-          two_mass_id: The ID of this object in the Two Micron All Sky Survey (2MASS) Point Source
-              Catalog (PSC).
+          sky_mapper_id: The SkyMapper (SK) catalog object ID.
+
+          two_mass_id: The designation of this object in the Two Micron All Sky Survey (2MASS) Point
+              Source Catalog (TP).
+
+          two_mass_ph_qual_ind: Photometric (PH) quality indicator in 2MASS PSC.
+
+          two_mass_read_flag: Read flag in 2MASS PSC.
+
+          two_mass_xsc_id: The Two Micron All Sky Survey (2MASS) Extended Source Catalog (XSC) (TX)
+              designation of this object.
+
+          tycho_dsc_id: The Tycho Double Star Catalog (TD) identifier (specified as Tycho-2 ID) of this
+              object.
+
+          uhs_id: The United Kingdom Infrared Telescope (UKIRT) Hemispheric Survey (UHS) (UH)
+              source ID of this object.
+
+          ukidss_gcs_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Galactic Clusters Survey
+              (GCS) (UC) source ID of this object.
+
+          ukidss_gps_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Galactic Plane Survey (GPS)
+              (UP) source ID of this object.
+
+          ukidss_las_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Large Area Survey (LAS)
+              (UL) source ID of this object.
 
           var_flag: Flag indicating that the source exhibits variable magnitude.
 
           variability: Identifier indicating variability is present in the photometric data. Consumers
               should contact the provider for details on the specifications.
+
+          vhs_id: The Visible and Infrared Survey Telescope for Astronomy (VISTA) Hemisphere
+              Survey (VHS) (VS) source ID of this object.
+
+          vmag: Optical Johnson V magnitude measured in magnitudes.
+
+          vmag_origin: Catalog of origin of Optical Johnson V magnitude (AP, CR, DU, GA, HI).
+
+          vmag_unc: Uncertainty of the Optical Johnson V magnitude measured in magnitudes.
+
+          w1mag: Mid-infrared photometric W1-band (3.4 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w1mag_origin: Mid-infrared photometric W1-band (3.4 microns) catalog of origin in the Vega
+              system (AL, CA).
+
+          w1mag_unc: Mid-infrared photometric W1-band (3.4 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w1sat: Mid-infrared photometric W1-band (3.4 microns) saturated pixel fraction in the
+              Vega system measured in magnitudes.
+
+          w2mag: Mid-infrared photometric W2-band (4.6 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w2mag_origin: Mid-infrared photometric W2-band (4.6 microns) catalog of origin in the Vega
+              system (AL, CA).
+
+          w2mag_unc: Mid-infrared photometric W2-band (4.6 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w2sat: Mid-infrared photometric W2-band (4.6 microns) saturated pixel fraction in the
+              Vega system.
+
+          w3mag: Mid-infrared photometric W3-band (12 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w3mag_origin: Mid-infrared photometric W3-band (12 microns) catalog of origin in the Vega
+              system (AL).
+
+          w3mag_unc: Mid-infrared photometric W3-band (12 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w3sat: Mid-infrared photometric W3-band (12 microns) saturated pixel fraction in the
+              Vega system.
+
+          w4mag: Mid-infrared photometric W4-band (22 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w4mag_origin: Mid-infrared photometric W4-band (22 microns) catalog of origin in the Vega
+              system (AL).
+
+          w4mag_unc: Mid-infrared photometric W4-band (22 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w4sat: Mid-infrared photometric W4-band (22 microns) saturated pixel fraction in the
+              Vega system.
+
+          wds_cat_id: The Washington Double Star Catalog (WD) identifier of this object.
 
           extra_headers: Send extra headers
 
@@ -1364,38 +2253,69 @@ class AsyncStarCatalogResource(AsyncAPIResource):
                     "ra": ra,
                     "source": source,
                     "star_epoch": star_epoch,
-                    "id": id,
+                    "aavso_vsx_id": aavso_vsx_id,
+                    "abgmag": abgmag,
+                    "abgmag_origin": abgmag_origin,
+                    "abgmag_unc": abgmag_unc,
+                    "abimag": abimag,
+                    "abimag_origin": abimag_origin,
+                    "abimag_unc": abimag_unc,
+                    "abrmag": abrmag,
+                    "abrmag_origin": abrmag_origin,
+                    "abrmag_unc": abrmag_unc,
+                    "abymag": abymag,
+                    "abymag_origin": abymag_origin,
+                    "abymag_unc": abymag_unc,
+                    "abzmag": abzmag,
+                    "abzmag_origin": abzmag_origin,
+                    "abzmag_unc": abzmag_unc,
+                    "all_wis_ecc_ind": all_wis_ecc_ind,
                     "all_wise_id": all_wise_id,
-                    "all_wisew1_mag": all_wisew1_mag,
-                    "all_wisew1_mag_unc": all_wisew1_mag_unc,
-                    "all_wisew2_mag": all_wisew2_mag,
-                    "all_wisew2_mag_unc": all_wisew2_mag_unc,
-                    "all_wisew3_mag": all_wisew3_mag,
-                    "all_wisew3_mag_unc": all_wisew3_mag_unc,
-                    "all_wisew4_mag": all_wisew4_mag,
-                    "all_wisew4_mag_unc": all_wisew4_mag_unc,
+                    "all_wis_ena_ind": all_wis_ena_ind,
+                    "all_wis_eph_qual_ind": all_wis_eph_qual_ind,
+                    "apass_id": apass_id,
+                    "astrometric_excess_noise": astrometric_excess_noise,
+                    "astrometric_excess_noise_sig": astrometric_excess_noise_sig,
+                    "bmag": bmag,
+                    "bmag_origin": bmag_origin,
+                    "bmag_unc": bmag_unc,
                     "bpmag": bpmag,
                     "bpmag_unc": bpmag_unc,
+                    "carrasco_cat_id": carrasco_cat_id,
                     "cat_version": cat_version,
+                    "cat_wise2020_id": cat_wise2020_id,
                     "dec_unc": dec_unc,
+                    "ducati_cat_id": ducati_cat_id,
                     "gaiadr3_cat_id": gaiadr3_cat_id,
                     "gmag": gmag,
                     "gmag_unc": gmag_unc,
                     "gnc_cat_id": gnc_cat_id,
+                    "healpix_index": healpix_index,
                     "hip_cat_id": hip_cat_id,
                     "hmag": hmag,
+                    "hmag_origin": hmag_origin,
                     "hmag_unc": hmag_unc,
+                    "imag": imag,
+                    "imag_origin": imag_origin,
+                    "imag_unc": imag_unc,
                     "jmag": jmag,
+                    "jmag_origin": jmag_origin,
                     "jmag_unc": jmag_unc,
                     "kmag": kmag,
+                    "kmag_origin": kmag_origin,
                     "kmag_unc": kmag_unc,
+                    "morphology_ind": morphology_ind,
                     "mult_flag": mult_flag,
                     "multiplicity": multiplicity,
+                    "neighbor_dec": neighbor_dec,
                     "neighbor_distance": neighbor_distance,
                     "neighbor_flag": neighbor_flag,
                     "neighbor_id": neighbor_id,
+                    "neighbor_ra": neighbor_ra,
                     "non_single_star": non_single_star,
+                    "num_neighbors": num_neighbors,
                     "origin": origin,
+                    "pan_starrs_id": pan_starrs_id,
                     "parallax": parallax,
                     "parallax_unc": parallax_unc,
                     "pmdec": pmdec,
@@ -1404,16 +2324,56 @@ class AsyncStarCatalogResource(AsyncAPIResource):
                     "pmra_unc": pmra_unc,
                     "pm_unc_flag": pm_unc_flag,
                     "pos_unc_flag": pos_unc_flag,
+                    "ps1astrometry_correction_flag": ps1astrometry_correction_flag,
+                    "ps1_obj_info_flag": ps1_obj_info_flag,
+                    "ps1_quality_flag": ps1_quality_flag,
                     "ra_unc": ra_unc,
+                    "rmag": rmag,
+                    "rmag_origin": rmag_origin,
+                    "rmag_unc": rmag_unc,
                     "rpmag": rpmag,
                     "rpmag_unc": rpmag_unc,
+                    "ruwe": ruwe,
+                    "sda_cat_id": sda_cat_id,
+                    "sgmag": sgmag,
+                    "sgmag_unc": sgmag_unc,
                     "shift": shift,
                     "shift_flag": shift_flag,
                     "shift_fwhm1": shift_fwhm1,
                     "shift_fwhm6": shift_fwhm6,
+                    "sky_mapper_id": sky_mapper_id,
                     "two_mass_id": two_mass_id,
+                    "two_mass_ph_qual_ind": two_mass_ph_qual_ind,
+                    "two_mass_read_flag": two_mass_read_flag,
+                    "two_mass_xsc_id": two_mass_xsc_id,
+                    "tycho_dsc_id": tycho_dsc_id,
+                    "uhs_id": uhs_id,
+                    "ukidss_gcs_id": ukidss_gcs_id,
+                    "ukidss_gps_id": ukidss_gps_id,
+                    "ukidss_las_id": ukidss_las_id,
                     "var_flag": var_flag,
                     "variability": variability,
+                    "vhs_id": vhs_id,
+                    "vmag": vmag,
+                    "vmag_origin": vmag_origin,
+                    "vmag_unc": vmag_unc,
+                    "w1mag": w1mag,
+                    "w1mag_origin": w1mag_origin,
+                    "w1mag_unc": w1mag_unc,
+                    "w1sat": w1sat,
+                    "w2mag": w2mag,
+                    "w2mag_origin": w2mag_origin,
+                    "w2mag_unc": w2mag_unc,
+                    "w2sat": w2sat,
+                    "w3mag": w3mag,
+                    "w3mag_origin": w3mag_origin,
+                    "w3mag_unc": w3mag_unc,
+                    "w3sat": w3sat,
+                    "w4mag": w4mag,
+                    "w4mag_origin": w4mag_origin,
+                    "w4mag_unc": w4mag_unc,
+                    "w4sat": w4sat,
+                    "wds_cat_id": wds_cat_id,
                 },
                 star_catalog_create_params.StarCatalogCreateParams,
             ),
@@ -1425,48 +2385,79 @@ class AsyncStarCatalogResource(AsyncAPIResource):
 
     async def update(
         self,
-        path_id: str,
+        id: str,
         *,
-        astrometry_origin: Literal["GAIADR3", "HIPPARCOS", "USNOBSC"],
+        astrometry_origin: str,
         classification_marking: str,
         cs_id: int,
-        data_mode: Literal["REAL", "TEST", "SIMULATED", "EXERCISE"],
+        data_mode: Literal["REAL", "TEST", "EXERCISE", "SIMULATED"],
         dec: float,
         ra: float,
         source: str,
         star_epoch: float,
-        body_id: str | Omit = omit,
+        aavso_vsx_id: int | Omit = omit,
+        abgmag: float | Omit = omit,
+        abgmag_origin: str | Omit = omit,
+        abgmag_unc: float | Omit = omit,
+        abimag: float | Omit = omit,
+        abimag_origin: str | Omit = omit,
+        abimag_unc: float | Omit = omit,
+        abrmag: float | Omit = omit,
+        abrmag_origin: str | Omit = omit,
+        abrmag_unc: float | Omit = omit,
+        abymag: float | Omit = omit,
+        abymag_origin: str | Omit = omit,
+        abymag_unc: float | Omit = omit,
+        abzmag: float | Omit = omit,
+        abzmag_origin: str | Omit = omit,
+        abzmag_unc: float | Omit = omit,
+        all_wis_ecc_ind: str | Omit = omit,
         all_wise_id: str | Omit = omit,
-        all_wisew1_mag: float | Omit = omit,
-        all_wisew1_mag_unc: float | Omit = omit,
-        all_wisew2_mag: float | Omit = omit,
-        all_wisew2_mag_unc: float | Omit = omit,
-        all_wisew3_mag: float | Omit = omit,
-        all_wisew3_mag_unc: float | Omit = omit,
-        all_wisew4_mag: float | Omit = omit,
-        all_wisew4_mag_unc: float | Omit = omit,
+        all_wis_ena_ind: int | Omit = omit,
+        all_wis_eph_qual_ind: str | Omit = omit,
+        apass_id: str | Omit = omit,
+        astrometric_excess_noise: float | Omit = omit,
+        astrometric_excess_noise_sig: float | Omit = omit,
+        bmag: float | Omit = omit,
+        bmag_origin: str | Omit = omit,
+        bmag_unc: float | Omit = omit,
         bpmag: float | Omit = omit,
         bpmag_unc: float | Omit = omit,
+        carrasco_cat_id: int | Omit = omit,
         cat_version: str | Omit = omit,
+        cat_wise2020_id: str | Omit = omit,
         dec_unc: float | Omit = omit,
+        ducati_cat_id: str | Omit = omit,
         gaiadr3_cat_id: int | Omit = omit,
         gmag: float | Omit = omit,
         gmag_unc: float | Omit = omit,
         gnc_cat_id: int | Omit = omit,
+        healpix_index: int | Omit = omit,
         hip_cat_id: int | Omit = omit,
         hmag: float | Omit = omit,
+        hmag_origin: str | Omit = omit,
         hmag_unc: float | Omit = omit,
+        imag: float | Omit = omit,
+        imag_origin: str | Omit = omit,
+        imag_unc: float | Omit = omit,
         jmag: float | Omit = omit,
+        jmag_origin: str | Omit = omit,
         jmag_unc: float | Omit = omit,
         kmag: float | Omit = omit,
+        kmag_origin: str | Omit = omit,
         kmag_unc: float | Omit = omit,
+        morphology_ind: int | Omit = omit,
         mult_flag: bool | Omit = omit,
         multiplicity: str | Omit = omit,
+        neighbor_dec: float | Omit = omit,
         neighbor_distance: float | Omit = omit,
         neighbor_flag: bool | Omit = omit,
         neighbor_id: int | Omit = omit,
+        neighbor_ra: float | Omit = omit,
         non_single_star: str | Omit = omit,
+        num_neighbors: int | Omit = omit,
         origin: str | Omit = omit,
+        pan_starrs_id: int | Omit = omit,
         parallax: float | Omit = omit,
         parallax_unc: float | Omit = omit,
         pmdec: float | Omit = omit,
@@ -1475,16 +2466,56 @@ class AsyncStarCatalogResource(AsyncAPIResource):
         pmra_unc: float | Omit = omit,
         pm_unc_flag: bool | Omit = omit,
         pos_unc_flag: bool | Omit = omit,
+        ps1astrometry_correction_flag: int | Omit = omit,
+        ps1_obj_info_flag: int | Omit = omit,
+        ps1_quality_flag: int | Omit = omit,
         ra_unc: float | Omit = omit,
+        rmag: float | Omit = omit,
+        rmag_origin: str | Omit = omit,
+        rmag_unc: float | Omit = omit,
         rpmag: float | Omit = omit,
         rpmag_unc: float | Omit = omit,
+        ruwe: float | Omit = omit,
+        sda_cat_id: int | Omit = omit,
+        sgmag: float | Omit = omit,
+        sgmag_unc: float | Omit = omit,
         shift: float | Omit = omit,
         shift_flag: bool | Omit = omit,
         shift_fwhm1: float | Omit = omit,
         shift_fwhm6: float | Omit = omit,
+        sky_mapper_id: int | Omit = omit,
         two_mass_id: str | Omit = omit,
+        two_mass_ph_qual_ind: str | Omit = omit,
+        two_mass_read_flag: str | Omit = omit,
+        two_mass_xsc_id: str | Omit = omit,
+        tycho_dsc_id: int | Omit = omit,
+        uhs_id: int | Omit = omit,
+        ukidss_gcs_id: int | Omit = omit,
+        ukidss_gps_id: int | Omit = omit,
+        ukidss_las_id: int | Omit = omit,
         var_flag: bool | Omit = omit,
         variability: str | Omit = omit,
+        vhs_id: int | Omit = omit,
+        vmag: float | Omit = omit,
+        vmag_origin: str | Omit = omit,
+        vmag_unc: float | Omit = omit,
+        w1mag: float | Omit = omit,
+        w1mag_origin: str | Omit = omit,
+        w1mag_unc: float | Omit = omit,
+        w1sat: float | Omit = omit,
+        w2mag: float | Omit = omit,
+        w2mag_origin: str | Omit = omit,
+        w2mag_unc: float | Omit = omit,
+        w2sat: float | Omit = omit,
+        w3mag: float | Omit = omit,
+        w3mag_origin: str | Omit = omit,
+        w3mag_unc: float | Omit = omit,
+        w3sat: float | Omit = omit,
+        w4mag: float | Omit = omit,
+        w4mag_origin: str | Omit = omit,
+        w4mag_unc: float | Omit = omit,
+        w4sat: float | Omit = omit,
+        wds_cat_id: str | Omit = omit,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -1499,12 +2530,14 @@ class AsyncStarCatalogResource(AsyncAPIResource):
         assistance.
 
         Args:
-          astrometry_origin: Originating astrometric catalog for this object. Enum: [GAIADR3, HIPPARCOS,
-              USNOBSC].
+          astrometry_origin: Originating astrometric catalog for this object (GA (GAIA), HI (HIPPARCOS), UB
+              (USNOBSC), AL, AP, CA, CR, DU, FK6_I, FK6_III, PS, SK, TD, TP, TX, UC, UL, UH,
+              UP, VH, VS, WD).
 
           classification_marking: Classification marking of the data in IC/CAPCO Portion-marked format.
 
-          cs_id: The ID of this object in the specific catalog associated with this record.
+          cs_id: The ID of this object in the specific catalog associated with this record. This
+              field will either contain the value in the gncCatId or sdaCatId field.
 
           data_mode:
               Indicator of whether the data is REAL, TEST, EXERCISE, or SIMULATED data:
@@ -1533,76 +2566,132 @@ class AsyncStarCatalogResource(AsyncAPIResource):
           star_epoch: Reference epoch to which the astrometric source parameters are referred,
               expressed as Julian Year in Barycentric Coordinate Time (TCB).
 
-          body_id: Unique identifier of the record, auto-generated by the system.
+          aavso_vsx_id: The American Association of Variable Star Observers (AAVSO) Variable Star Index
+              (VSX) (VX) object ID of this object.
 
-          all_wise_id: The ID of this object in the All Wide-field Infrared Survey Explorer (AllWISE)
-              catalog.
+          abgmag: Optical AB g magnitude.
 
-          all_wisew1_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W1-band (3.4 microns) magnitude in the Vega system.
+          abgmag_origin: Catalog of origin of optical AB g magnitude.
 
-          all_wisew1_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W1-band (3.4 microns) magnitude uncertainty in the Vega system.
+          abgmag_unc: Uncertainty of optical AB g magnitude.
 
-          all_wisew2_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W2-band (4.6 microns) magnitude in the Vega system.
+          abimag: Optical AB i magnitude.
 
-          all_wisew2_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W2-band (4.6 microns) magnitude uncertainty in the Vega system.
+          abimag_origin: Catalog of origin of optical AB i magnitude.
 
-          all_wisew3_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W3-band (12 microns) magnitude in the Vega system.
+          abimag_unc: Uncertainty of optical AB i magnitude.
 
-          all_wisew3_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W3-band (12 microns) magnitude uncertainty in the Vega system.
+          abrmag: Optical AB r magnitude.
 
-          all_wisew4_mag: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W4-band (22 microns) magnitude in the Vega system.
+          abrmag_origin: Catalog of origin of optical AB r magnitude.
 
-          all_wisew4_mag_unc: The All Wide-field Infrared Survey Explorer (AllWISE) mid-infrared photometric
-              W4-band (22 microns) magnitude uncertainty in the Vega system.
+          abrmag_unc: Uncertainty of optical AB r magnitude.
 
-          bpmag: Gaia DR3 optical photometric Bp-band magnitude in the Vega scale.
+          abymag: Optical AB y magnitude.
 
-          bpmag_unc: Gaia DR3 optical Bp-band magnitude uncertainty in the Vega scale.
+          abymag_origin: Catalog of origin of optical AB y magnitude.
+
+          abymag_unc: Uncertainty of optical AB y magnitude.
+
+          abzmag: Optical AB z magnitude.
+
+          abzmag_origin: Catalog of origin of optical AB z magnitude.
+
+          abzmag_unc: Uncertainty of optical AB z magnitude.
+
+          all_wis_ecc_ind: Contamination and confusion indicator in AllWISE.
+
+          all_wise_id: The designation of this object in the All Wide-field Infrared Survey Explorer
+              (AllWISE) catalog (AL).
+
+          all_wis_ena_ind: Active deblending indicator in AllWISE.
+
+          all_wis_eph_qual_ind: Photometric quality indicator in AllWISE.
+
+          apass_id: The American Association of Variable Star Observers (AAVSO) Photometric All-Sky
+              Survey (APASS) (AP) name of this object.
+
+          astrometric_excess_noise: Astrometric excess noise in the Gaia catalog measured in milliarcseconds.
+
+          astrometric_excess_noise_sig: Astrometric excess noise sigma in Gaia.
+
+          bmag: Optical Johnson B magnitude measured in magnitudes.
+
+          bmag_origin: Catalog of origin of optical Johnson B magnitude (AP, CR, HI).
+
+          bmag_unc: Uncertainty of optical Johnson B magnitude measured in magnitudes.
+
+          bpmag: Gaia optical photometric Bp-band in the Vega scale measured in magnitudes.
+
+          bpmag_unc: Gaia optical Bp-band uncertainty in the Vega scale measured in magnitudes.
+
+          carrasco_cat_id: The Carrasco catalog (CR) identifier of this object.
 
           cat_version: The version of the catalog associated with this object.
+
+          cat_wise2020_id: The CatWISE2020 (CA) catalog source ID of this object.
 
           dec_unc: Uncertainty of the declination of the source, in milliarcseconds, at the
               reference epoch.
 
-          gaiadr3_cat_id: The ID of this object in the Gaia DR3 Catalog.
+          ducati_cat_id: The Ducati catalog (DU) name of this object.
 
-          gmag: Gaia DR3 optical photometric G-band magnitude in the Vega scale.
+          gaiadr3_cat_id: The source ID of this object in the Gaia DR3 Catalog (GA).
 
-          gmag_unc: Gaia DR3 optical photometric G-band magnitude uncertainty in the Vega scale.
+          gmag: Gaia optical photometric G-band in the Vega scale measured in magnitudes.
 
-          gnc_cat_id: The ID of this object in the Guidance and Navagation Control (GNC) Catalog.
+          gmag_unc: Gaia optical photometric G-band uncertainty in the Vega scale measured in
+              magnitudes.
 
-          hip_cat_id: The ID of this object in the Hipparcos Catalog.
+          gnc_cat_id: The ID of this object in the Guidance and Navigation Control (GNC) Catalog. If
+              this field is populated it shall match the csId field.
 
-          hmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric H-band magnitude in the Vega scale.
+          healpix_index: The Healpix index. Consumers should contact the provider for details on the
+              indexing scheme.
 
-          hmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric H-band magnitude uncertainty in the Vega scale.
+          hip_cat_id: The HIP ID of this object in the Hipparcos Catalog (HI).
 
-          jmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric J-band magnitude in the Vega scale.
+          hmag: Near-infrared photometric H-band magnitude in the Vega scale measured in
+              magnitudes.
 
-          jmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric J-band magnitude uncertainty in the Vega scale.
+          hmag_origin: Near-infrared photometric H-band catalog of origin in the Vega scale (TP, UC,
+              UL, UP, VH).
 
-          kmag: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric K-band magnitude in the Vega scale.
+          hmag_unc: Near-infrared photometric H-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
 
-          kmag_unc: Two Micron All Sky Survey (2MASS) Point Source Catalog (PSC) near-infrared
-              photometric K-band magnitude uncertainty in the Vega scale.
+          imag: Optical Johnson I magnitude measured in magnitudes.
+
+          imag_origin: Catalog of origin of optical Johnson I magnitude (CR, GA, HI).
+
+          imag_unc: Uncertainty of optical Johnson I magnitude measured in magnitudes.
+
+          jmag: Near-infrared photometric J-band magnitude in the Vega scale measured in
+              magnitudes.
+
+          jmag_origin: Near-infrared photometric J-band catalog of origin in the Vega scale (TP, UH,
+              UL, UP, VH).
+
+          jmag_unc: Near-infrared photometric J-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
+
+          kmag: Near-infrared photometric K-band magnitude in the Vega scale measured in
+              magnitudes.
+
+          kmag_origin: Near-infrared photometric K-band catalog of origin in the Vega scale (TP, UC,
+              UH, UL, UP, VH).
+
+          kmag_unc: Near-infrared photometric K-band magnitude uncertainty in the Vega scale
+              measured in magnitudes.
+
+          morphology_ind: Morphology indicator.
 
           mult_flag: Flag indicating that this is a multiple object source.
 
           multiplicity: Identifier indicating multiplicity is detected. Consumers should contact the
               provider for details on the specifications.
+
+          neighbor_dec: Dec of nearest neighbor measured in degrees.
 
           neighbor_distance: Distance between source and nearest neighbor, in arcseconds.
 
@@ -1610,41 +2699,72 @@ class AsyncStarCatalogResource(AsyncAPIResource):
 
           neighbor_id: The catalog ID of the nearest neighbor to this source.
 
+          neighbor_ra: RA of nearest neighbor measured in degrees.
+
           non_single_star: Identifier indicating the source is a non-single star and additional information
               is available in non-single star tables. Consumers should contact the provider
               for details on the specifications.
+
+          num_neighbors: Number of neighbors.
 
           origin: Originating system or organization which produced the data, if different from
               the source. The origin may be different than the source if the source was a
               mediating system which forwarded the data on behalf of the origin system. If
               null, the source may be assumed to be the origin.
 
+          pan_starrs_id: The Panoramic Survey Telescope and Rapid Response System (Pan-STARRS) (PS)
+              object ID.
+
           parallax: Absolute stellar parallax of the source, in milliarcseconds.
 
           parallax_unc: Uncertainty of the stellar parallax, in milliarcseconds.
 
-          pmdec: Proper motion in declination of the source, in milliarcseconds/year, at the
+          pmdec: Proper motion in declination of the source, in milliarcseconds per year, at the
               reference epoch.
 
-          pmdec_unc: Uncertainty of proper motion in declination, in milliarcseconds/year.
+          pmdec_unc: Uncertainty of proper motion in declination, in milliarcseconds per year.
 
-          pmra: Proper motion in right ascension of the source, in milliarcseconds/year, at the
-              reference epoch.
+          pmra: Proper motion in right ascension of the source, in milliarcseconds per year, at
+              the reference epoch.
 
-          pmra_unc: Uncertainty of proper motion in right ascension, in milliarcseconds/year.
+          pmra_unc: Uncertainty of proper motion in right ascension, in milliarcseconds per year.
 
           pm_unc_flag: Flag indicating that the proper motion uncertainty in either ra or dec is
-              greater than 10 milliarcseconds/year.
+              greater than 10 milliarcseconds per year.
 
           pos_unc_flag: Flag indicating that the position uncertainty in either ra or dec is greater
               than 100 milliarcseconds.
 
+          ps1astrometry_correction_flag: Astrometry correction flag in Pan-STARRS.
+
+          ps1_obj_info_flag: Object information flag in Pan-STARRS.
+
+          ps1_quality_flag: Quality flag in Pan-STARRS.
+
           ra_unc: Uncertainty of the right ascension of the source, in milliarcseconds, at the
               reference epoch.
 
-          rpmag: Gaia DR3 optical Rp-band magnitude in the Vega scale.
+          rmag: Optical Johnson R magnitude measured in magnitudes.
 
-          rpmag_unc: Gaia DR3 optical photometric Rp-band magnitude uncertainty in the Vega scale.
+          rmag_origin: Catalog of origin of the Optical Johnson R magnitude (CR, GA).
+
+          rmag_unc: Uncertainty of the Optical Johnson R magnitude measured in magnitudes.
+
+          rpmag: Gaia optical Rp-band in the Vega scale measured in magnitudes.
+
+          rpmag_unc: Gaia optical photometric Rp-band uncertainty in the Vega scale measured in
+              magnitudes.
+
+          ruwe: RUWE in Gaia.
+
+          sda_cat_id: The ID of this object in the Space Domain Awareness (SDA) Catalog. If this field
+              is populated it shall match the csId field.
+
+          sgmag: Original G magnitude if the source is in Gaia, otherwise the magnitude is
+              converted from other photometric passbands, when possible, measured in
+              magnitudes.
+
+          sgmag_unc: Uncertainty of sgmag measured in magnitudes.
 
           shift: Photocentric shift caused by neighbors, in arcseconds.
 
@@ -1658,13 +2778,96 @@ class AsyncStarCatalogResource(AsyncAPIResource):
               to a Point Spread Function (PSF) with Full Width at Half Maximum (FWHM) of six
               arcseconds.
 
-          two_mass_id: The ID of this object in the Two Micron All Sky Survey (2MASS) Point Source
-              Catalog (PSC).
+          sky_mapper_id: The SkyMapper (SK) catalog object ID.
+
+          two_mass_id: The designation of this object in the Two Micron All Sky Survey (2MASS) Point
+              Source Catalog (TP).
+
+          two_mass_ph_qual_ind: Photometric (PH) quality indicator in 2MASS PSC.
+
+          two_mass_read_flag: Read flag in 2MASS PSC.
+
+          two_mass_xsc_id: The Two Micron All Sky Survey (2MASS) Extended Source Catalog (XSC) (TX)
+              designation of this object.
+
+          tycho_dsc_id: The Tycho Double Star Catalog (TD) identifier (specified as Tycho-2 ID) of this
+              object.
+
+          uhs_id: The United Kingdom Infrared Telescope (UKIRT) Hemispheric Survey (UHS) (UH)
+              source ID of this object.
+
+          ukidss_gcs_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Galactic Clusters Survey
+              (GCS) (UC) source ID of this object.
+
+          ukidss_gps_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Galactic Plane Survey (GPS)
+              (UP) source ID of this object.
+
+          ukidss_las_id: The United Kingdom Infrared Deep Sky Survey (UKIDSS) Large Area Survey (LAS)
+              (UL) source ID of this object.
 
           var_flag: Flag indicating that the source exhibits variable magnitude.
 
           variability: Identifier indicating variability is present in the photometric data. Consumers
               should contact the provider for details on the specifications.
+
+          vhs_id: The Visible and Infrared Survey Telescope for Astronomy (VISTA) Hemisphere
+              Survey (VHS) (VS) source ID of this object.
+
+          vmag: Optical Johnson V magnitude measured in magnitudes.
+
+          vmag_origin: Catalog of origin of Optical Johnson V magnitude (AP, CR, DU, GA, HI).
+
+          vmag_unc: Uncertainty of the Optical Johnson V magnitude measured in magnitudes.
+
+          w1mag: Mid-infrared photometric W1-band (3.4 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w1mag_origin: Mid-infrared photometric W1-band (3.4 microns) catalog of origin in the Vega
+              system (AL, CA).
+
+          w1mag_unc: Mid-infrared photometric W1-band (3.4 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w1sat: Mid-infrared photometric W1-band (3.4 microns) saturated pixel fraction in the
+              Vega system measured in magnitudes.
+
+          w2mag: Mid-infrared photometric W2-band (4.6 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w2mag_origin: Mid-infrared photometric W2-band (4.6 microns) catalog of origin in the Vega
+              system (AL, CA).
+
+          w2mag_unc: Mid-infrared photometric W2-band (4.6 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w2sat: Mid-infrared photometric W2-band (4.6 microns) saturated pixel fraction in the
+              Vega system.
+
+          w3mag: Mid-infrared photometric W3-band (12 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w3mag_origin: Mid-infrared photometric W3-band (12 microns) catalog of origin in the Vega
+              system (AL).
+
+          w3mag_unc: Mid-infrared photometric W3-band (12 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w3sat: Mid-infrared photometric W3-band (12 microns) saturated pixel fraction in the
+              Vega system.
+
+          w4mag: Mid-infrared photometric W4-band (22 microns) magnitude in the Vega system
+              measured in magnitudes.
+
+          w4mag_origin: Mid-infrared photometric W4-band (22 microns) catalog of origin in the Vega
+              system (AL).
+
+          w4mag_unc: Mid-infrared photometric W4-band (22 microns) magnitude uncertainty in the Vega
+              system measured in magnitudes.
+
+          w4sat: Mid-infrared photometric W4-band (22 microns) saturated pixel fraction in the
+              Vega system.
+
+          wds_cat_id: The Washington Double Star Catalog (WD) identifier of this object.
 
           extra_headers: Send extra headers
 
@@ -1674,11 +2877,11 @@ class AsyncStarCatalogResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_id:
-            raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
+        if not id:
+            raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/udl/starcatalog/{path_id}",
+            f"/udl/starcatalog/{id}",
             body=await async_maybe_transform(
                 {
                     "astrometry_origin": astrometry_origin,
@@ -1689,38 +2892,69 @@ class AsyncStarCatalogResource(AsyncAPIResource):
                     "ra": ra,
                     "source": source,
                     "star_epoch": star_epoch,
-                    "body_id": body_id,
+                    "aavso_vsx_id": aavso_vsx_id,
+                    "abgmag": abgmag,
+                    "abgmag_origin": abgmag_origin,
+                    "abgmag_unc": abgmag_unc,
+                    "abimag": abimag,
+                    "abimag_origin": abimag_origin,
+                    "abimag_unc": abimag_unc,
+                    "abrmag": abrmag,
+                    "abrmag_origin": abrmag_origin,
+                    "abrmag_unc": abrmag_unc,
+                    "abymag": abymag,
+                    "abymag_origin": abymag_origin,
+                    "abymag_unc": abymag_unc,
+                    "abzmag": abzmag,
+                    "abzmag_origin": abzmag_origin,
+                    "abzmag_unc": abzmag_unc,
+                    "all_wis_ecc_ind": all_wis_ecc_ind,
                     "all_wise_id": all_wise_id,
-                    "all_wisew1_mag": all_wisew1_mag,
-                    "all_wisew1_mag_unc": all_wisew1_mag_unc,
-                    "all_wisew2_mag": all_wisew2_mag,
-                    "all_wisew2_mag_unc": all_wisew2_mag_unc,
-                    "all_wisew3_mag": all_wisew3_mag,
-                    "all_wisew3_mag_unc": all_wisew3_mag_unc,
-                    "all_wisew4_mag": all_wisew4_mag,
-                    "all_wisew4_mag_unc": all_wisew4_mag_unc,
+                    "all_wis_ena_ind": all_wis_ena_ind,
+                    "all_wis_eph_qual_ind": all_wis_eph_qual_ind,
+                    "apass_id": apass_id,
+                    "astrometric_excess_noise": astrometric_excess_noise,
+                    "astrometric_excess_noise_sig": astrometric_excess_noise_sig,
+                    "bmag": bmag,
+                    "bmag_origin": bmag_origin,
+                    "bmag_unc": bmag_unc,
                     "bpmag": bpmag,
                     "bpmag_unc": bpmag_unc,
+                    "carrasco_cat_id": carrasco_cat_id,
                     "cat_version": cat_version,
+                    "cat_wise2020_id": cat_wise2020_id,
                     "dec_unc": dec_unc,
+                    "ducati_cat_id": ducati_cat_id,
                     "gaiadr3_cat_id": gaiadr3_cat_id,
                     "gmag": gmag,
                     "gmag_unc": gmag_unc,
                     "gnc_cat_id": gnc_cat_id,
+                    "healpix_index": healpix_index,
                     "hip_cat_id": hip_cat_id,
                     "hmag": hmag,
+                    "hmag_origin": hmag_origin,
                     "hmag_unc": hmag_unc,
+                    "imag": imag,
+                    "imag_origin": imag_origin,
+                    "imag_unc": imag_unc,
                     "jmag": jmag,
+                    "jmag_origin": jmag_origin,
                     "jmag_unc": jmag_unc,
                     "kmag": kmag,
+                    "kmag_origin": kmag_origin,
                     "kmag_unc": kmag_unc,
+                    "morphology_ind": morphology_ind,
                     "mult_flag": mult_flag,
                     "multiplicity": multiplicity,
+                    "neighbor_dec": neighbor_dec,
                     "neighbor_distance": neighbor_distance,
                     "neighbor_flag": neighbor_flag,
                     "neighbor_id": neighbor_id,
+                    "neighbor_ra": neighbor_ra,
                     "non_single_star": non_single_star,
+                    "num_neighbors": num_neighbors,
                     "origin": origin,
+                    "pan_starrs_id": pan_starrs_id,
                     "parallax": parallax,
                     "parallax_unc": parallax_unc,
                     "pmdec": pmdec,
@@ -1729,16 +2963,56 @@ class AsyncStarCatalogResource(AsyncAPIResource):
                     "pmra_unc": pmra_unc,
                     "pm_unc_flag": pm_unc_flag,
                     "pos_unc_flag": pos_unc_flag,
+                    "ps1astrometry_correction_flag": ps1astrometry_correction_flag,
+                    "ps1_obj_info_flag": ps1_obj_info_flag,
+                    "ps1_quality_flag": ps1_quality_flag,
                     "ra_unc": ra_unc,
+                    "rmag": rmag,
+                    "rmag_origin": rmag_origin,
+                    "rmag_unc": rmag_unc,
                     "rpmag": rpmag,
                     "rpmag_unc": rpmag_unc,
+                    "ruwe": ruwe,
+                    "sda_cat_id": sda_cat_id,
+                    "sgmag": sgmag,
+                    "sgmag_unc": sgmag_unc,
                     "shift": shift,
                     "shift_flag": shift_flag,
                     "shift_fwhm1": shift_fwhm1,
                     "shift_fwhm6": shift_fwhm6,
+                    "sky_mapper_id": sky_mapper_id,
                     "two_mass_id": two_mass_id,
+                    "two_mass_ph_qual_ind": two_mass_ph_qual_ind,
+                    "two_mass_read_flag": two_mass_read_flag,
+                    "two_mass_xsc_id": two_mass_xsc_id,
+                    "tycho_dsc_id": tycho_dsc_id,
+                    "uhs_id": uhs_id,
+                    "ukidss_gcs_id": ukidss_gcs_id,
+                    "ukidss_gps_id": ukidss_gps_id,
+                    "ukidss_las_id": ukidss_las_id,
                     "var_flag": var_flag,
                     "variability": variability,
+                    "vhs_id": vhs_id,
+                    "vmag": vmag,
+                    "vmag_origin": vmag_origin,
+                    "vmag_unc": vmag_unc,
+                    "w1mag": w1mag,
+                    "w1mag_origin": w1mag_origin,
+                    "w1mag_unc": w1mag_unc,
+                    "w1sat": w1sat,
+                    "w2mag": w2mag,
+                    "w2mag_origin": w2mag_origin,
+                    "w2mag_unc": w2mag_unc,
+                    "w2sat": w2sat,
+                    "w3mag": w3mag,
+                    "w3mag_origin": w3mag_origin,
+                    "w3mag_unc": w3mag_unc,
+                    "w3sat": w3sat,
+                    "w4mag": w4mag,
+                    "w4mag_origin": w4mag_origin,
+                    "w4mag_unc": w4mag_unc,
+                    "w4sat": w4sat,
+                    "wds_cat_id": wds_cat_id,
                 },
                 star_catalog_update_params.StarCatalogUpdateParams,
             ),
@@ -2148,6 +3422,10 @@ class StarCatalogResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return HistoryResourceWithRawResponse(self._star_catalog.history)
 
 
@@ -2188,6 +3466,10 @@ class AsyncStarCatalogResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return AsyncHistoryResourceWithRawResponse(self._star_catalog.history)
 
 
@@ -2228,6 +3510,10 @@ class StarCatalogResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return HistoryResourceWithStreamingResponse(self._star_catalog.history)
 
 
@@ -2268,4 +3554,8 @@ class AsyncStarCatalogResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """These services provide operations for posting and querying Star Catalog data.
+
+        The Star Catalog model is a representation of astronomical data and photometric data for stars. Astronomical data includes positional information, proper motions, parallaxes and their respective uncertainties. Photometric data contains optical and near-infrared magnitudes, and their uncertainties across multiple bandpasses. Note: Multiple source catalogs may contribute to a single record.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._star_catalog.history)

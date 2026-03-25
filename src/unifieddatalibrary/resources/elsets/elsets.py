@@ -56,12 +56,22 @@ __all__ = ["ElsetsResource", "AsyncElsetsResource"]
 
 
 class ElsetsResource(SyncAPIResource):
+    """
+    These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+    """
+
     @cached_property
     def current(self) -> CurrentResource:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return CurrentResource(self._client)
 
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -767,12 +777,22 @@ class ElsetsResource(SyncAPIResource):
 
 
 class AsyncElsetsResource(AsyncAPIResource):
+    """
+    These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+    """
+
     @cached_property
     def current(self) -> AsyncCurrentResource:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return AsyncCurrentResource(self._client)
 
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1516,10 +1536,16 @@ class ElsetsResourceWithRawResponse:
 
     @cached_property
     def current(self) -> CurrentResourceWithRawResponse:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return CurrentResourceWithRawResponse(self._elsets.current)
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return HistoryResourceWithRawResponse(self._elsets.history)
 
 
@@ -1560,10 +1586,16 @@ class AsyncElsetsResourceWithRawResponse:
 
     @cached_property
     def current(self) -> AsyncCurrentResourceWithRawResponse:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return AsyncCurrentResourceWithRawResponse(self._elsets.current)
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return AsyncHistoryResourceWithRawResponse(self._elsets.history)
 
 
@@ -1604,10 +1636,16 @@ class ElsetsResourceWithStreamingResponse:
 
     @cached_property
     def current(self) -> CurrentResourceWithStreamingResponse:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return CurrentResourceWithStreamingResponse(self._elsets.current)
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return HistoryResourceWithStreamingResponse(self._elsets.history)
 
 
@@ -1648,8 +1686,14 @@ class AsyncElsetsResourceWithStreamingResponse:
 
     @cached_property
     def current(self) -> AsyncCurrentResourceWithStreamingResponse:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return AsyncCurrentResourceWithStreamingResponse(self._elsets.current)
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for querying and manipulation of element set data describing orbital characteristics of on-orbit objects. An element set is a collection of parameters that are used, along with an orbit propagator, to predict the motion of a satellite. The element set, or elset for short, consists of identification data, the classical elements and drag parameters.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._elsets.history)

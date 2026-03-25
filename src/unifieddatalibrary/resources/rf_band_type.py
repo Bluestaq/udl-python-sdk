@@ -35,6 +35,10 @@ __all__ = ["RfBandTypeResource", "AsyncRfBandTypeResource"]
 
 
 class RfBandTypeResource(SyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+    """
+
     @cached_property
     def with_raw_response(self) -> RfBandTypeResourceWithRawResponse:
         """
@@ -486,6 +490,10 @@ class RfBandTypeResource(SyncAPIResource):
 
 
 class AsyncRfBandTypeResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of RF related information to include RFEmitters which could potentially interfere with communications/operations of space related entities, and RFBands commonly used by various space related entities.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncRfBandTypeResourceWithRawResponse:
         """

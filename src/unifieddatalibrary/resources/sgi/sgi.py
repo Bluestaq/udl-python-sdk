@@ -49,8 +49,15 @@ __all__ = ["SgiResource", "AsyncSgiResource"]
 
 
 class SgiResource(SyncAPIResource):
+    """
+    This service provides operations for manipulation and querying of space weather/solar, geomagnetic, and radiation belt index data.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This service provides operations for manipulation and querying of space weather/solar, geomagnetic, and radiation belt index data.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -1205,8 +1212,15 @@ class SgiResource(SyncAPIResource):
 
 
 class AsyncSgiResource(AsyncAPIResource):
+    """
+    This service provides operations for manipulation and querying of space weather/solar, geomagnetic, and radiation belt index data.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This service provides operations for manipulation and querying of space weather/solar, geomagnetic, and radiation belt index data.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -2400,6 +2414,9 @@ class SgiResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This service provides operations for manipulation and querying of space weather/solar, geomagnetic, and radiation belt index data.
+        """
         return HistoryResourceWithRawResponse(self._sgi.history)
 
 
@@ -2443,6 +2460,9 @@ class AsyncSgiResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This service provides operations for manipulation and querying of space weather/solar, geomagnetic, and radiation belt index data.
+        """
         return AsyncHistoryResourceWithRawResponse(self._sgi.history)
 
 
@@ -2486,6 +2506,9 @@ class SgiResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This service provides operations for manipulation and querying of space weather/solar, geomagnetic, and radiation belt index data.
+        """
         return HistoryResourceWithStreamingResponse(self._sgi.history)
 
 
@@ -2529,4 +2552,7 @@ class AsyncSgiResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This service provides operations for manipulation and querying of space weather/solar, geomagnetic, and radiation belt index data.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._sgi.history)

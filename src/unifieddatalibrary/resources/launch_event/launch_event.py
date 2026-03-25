@@ -46,8 +46,15 @@ __all__ = ["LaunchEventResource", "AsyncLaunchEventResource"]
 
 
 class LaunchEventResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of LaunchEvent data. Launch Event data are known space launches, either future or historic records containing items such as the launch site, launch epoch, and object.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of LaunchEvent data. Launch Event data are known space launches, either future or historic records containing items such as the launch site, launch epoch, and object.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -496,8 +503,15 @@ class LaunchEventResource(SyncAPIResource):
 
 
 class AsyncLaunchEventResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of LaunchEvent data. Launch Event data are known space launches, either future or historic records containing items such as the launch site, launch epoch, and object.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of LaunchEvent data. Launch Event data are known space launches, either future or historic records containing items such as the launch site, launch epoch, and object.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -976,6 +990,9 @@ class LaunchEventResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of LaunchEvent data. Launch Event data are known space launches, either future or historic records containing items such as the launch site, launch epoch, and object.
+        """
         return HistoryResourceWithRawResponse(self._launch_event.history)
 
 
@@ -1010,6 +1027,9 @@ class AsyncLaunchEventResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of LaunchEvent data. Launch Event data are known space launches, either future or historic records containing items such as the launch site, launch epoch, and object.
+        """
         return AsyncHistoryResourceWithRawResponse(self._launch_event.history)
 
 
@@ -1044,6 +1064,9 @@ class LaunchEventResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of LaunchEvent data. Launch Event data are known space launches, either future or historic records containing items such as the launch site, launch epoch, and object.
+        """
         return HistoryResourceWithStreamingResponse(self._launch_event.history)
 
 
@@ -1078,4 +1101,7 @@ class AsyncLaunchEventResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of LaunchEvent data. Launch Event data are known space launches, either future or historic records containing items such as the launch site, launch epoch, and object.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._launch_event.history)

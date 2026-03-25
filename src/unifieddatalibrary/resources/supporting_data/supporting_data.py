@@ -27,10 +27,16 @@ __all__ = ["SupportingDataResource", "AsyncSupportingDataResource"]
 class SupportingDataResource(SyncAPIResource):
     @cached_property
     def data_types(self) -> DataTypesResource:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return DataTypesResource(self._client)
 
     @cached_property
     def dataowner(self) -> DataownerResource:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return DataownerResource(self._client)
 
     @cached_property
@@ -56,10 +62,16 @@ class SupportingDataResource(SyncAPIResource):
 class AsyncSupportingDataResource(AsyncAPIResource):
     @cached_property
     def data_types(self) -> AsyncDataTypesResource:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return AsyncDataTypesResource(self._client)
 
     @cached_property
     def dataowner(self) -> AsyncDataownerResource:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return AsyncDataownerResource(self._client)
 
     @cached_property
@@ -88,10 +100,16 @@ class SupportingDataResourceWithRawResponse:
 
     @cached_property
     def data_types(self) -> DataTypesResourceWithRawResponse:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return DataTypesResourceWithRawResponse(self._supporting_data.data_types)
 
     @cached_property
     def dataowner(self) -> DataownerResourceWithRawResponse:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return DataownerResourceWithRawResponse(self._supporting_data.dataowner)
 
 
@@ -101,10 +119,16 @@ class AsyncSupportingDataResourceWithRawResponse:
 
     @cached_property
     def data_types(self) -> AsyncDataTypesResourceWithRawResponse:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return AsyncDataTypesResourceWithRawResponse(self._supporting_data.data_types)
 
     @cached_property
     def dataowner(self) -> AsyncDataownerResourceWithRawResponse:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return AsyncDataownerResourceWithRawResponse(self._supporting_data.dataowner)
 
 
@@ -114,10 +138,16 @@ class SupportingDataResourceWithStreamingResponse:
 
     @cached_property
     def data_types(self) -> DataTypesResourceWithStreamingResponse:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return DataTypesResourceWithStreamingResponse(self._supporting_data.data_types)
 
     @cached_property
     def dataowner(self) -> DataownerResourceWithStreamingResponse:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return DataownerResourceWithStreamingResponse(self._supporting_data.dataowner)
 
 
@@ -127,8 +157,14 @@ class AsyncSupportingDataResourceWithStreamingResponse:
 
     @cached_property
     def data_types(self) -> AsyncDataTypesResourceWithStreamingResponse:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return AsyncDataTypesResourceWithStreamingResponse(self._supporting_data.data_types)
 
     @cached_property
     def dataowner(self) -> AsyncDataownerResourceWithStreamingResponse:
+        """
+        Service operations for querying and manipulation of miscellaneous supporting data such as countries (which can represent countries, multi-national consortiums, and international organizations), data owners, locations, entities, organizations, etc.
+        """
         return AsyncDataownerResourceWithStreamingResponse(self._supporting_data.dataowner)

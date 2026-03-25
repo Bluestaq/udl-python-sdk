@@ -35,6 +35,10 @@ __all__ = ["AirfieldsResource", "AsyncAirfieldsResource"]
 
 
 class AirfieldsResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> AirfieldsResourceWithRawResponse:
         """
@@ -742,6 +746,10 @@ class AirfieldsResource(SyncAPIResource):
 
 
 class AsyncAirfieldsResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncAirfieldsResourceWithRawResponse:
         """

@@ -45,8 +45,15 @@ __all__ = ["HazardResource", "AsyncHazardResource"]
 
 
 class HazardResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -601,8 +608,15 @@ class HazardResource(SyncAPIResource):
 
 
 class AsyncHazardResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1184,6 +1198,9 @@ class HazardResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResourceWithRawResponse(self._hazard.history)
 
 
@@ -1215,6 +1232,9 @@ class AsyncHazardResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResourceWithRawResponse(self._hazard.history)
 
 
@@ -1246,6 +1266,9 @@ class HazardResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return HistoryResourceWithStreamingResponse(self._hazard.history)
 
 
@@ -1277,4 +1300,7 @@ class AsyncHazardResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._hazard.history)

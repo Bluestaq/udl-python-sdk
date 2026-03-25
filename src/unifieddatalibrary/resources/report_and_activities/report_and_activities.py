@@ -39,10 +39,16 @@ class ReportAndActivitiesResource(SyncAPIResource):
 
     @cached_property
     def udl_h3geo(self) -> UdlH3geoResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return UdlH3geoResource(self._client)
 
     @cached_property
     def udl_sigact(self) -> UdlSigactResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return UdlSigactResource(self._client)
 
     @cached_property
@@ -72,10 +78,16 @@ class AsyncReportAndActivitiesResource(AsyncAPIResource):
 
     @cached_property
     def udl_h3geo(self) -> AsyncUdlH3geoResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncUdlH3geoResource(self._client)
 
     @cached_property
     def udl_sigact(self) -> AsyncUdlSigactResource:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncUdlSigactResource(self._client)
 
     @cached_property
@@ -108,10 +120,16 @@ class ReportAndActivitiesResourceWithRawResponse:
 
     @cached_property
     def udl_h3geo(self) -> UdlH3geoResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return UdlH3geoResourceWithRawResponse(self._report_and_activities.udl_h3geo)
 
     @cached_property
     def udl_sigact(self) -> UdlSigactResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return UdlSigactResourceWithRawResponse(self._report_and_activities.udl_sigact)
 
 
@@ -125,10 +143,16 @@ class AsyncReportAndActivitiesResourceWithRawResponse:
 
     @cached_property
     def udl_h3geo(self) -> AsyncUdlH3geoResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncUdlH3geoResourceWithRawResponse(self._report_and_activities.udl_h3geo)
 
     @cached_property
     def udl_sigact(self) -> AsyncUdlSigactResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncUdlSigactResourceWithRawResponse(self._report_and_activities.udl_sigact)
 
 
@@ -142,10 +166,16 @@ class ReportAndActivitiesResourceWithStreamingResponse:
 
     @cached_property
     def udl_h3geo(self) -> UdlH3geoResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return UdlH3geoResourceWithStreamingResponse(self._report_and_activities.udl_h3geo)
 
     @cached_property
     def udl_sigact(self) -> UdlSigactResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return UdlSigactResourceWithStreamingResponse(self._report_and_activities.udl_sigact)
 
 
@@ -159,8 +189,14 @@ class AsyncReportAndActivitiesResourceWithStreamingResponse:
 
     @cached_property
     def udl_h3geo(self) -> AsyncUdlH3geoResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncUdlH3geoResourceWithStreamingResponse(self._report_and_activities.udl_h3geo)
 
     @cached_property
     def udl_sigact(self) -> AsyncUdlSigactResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+        """
         return AsyncUdlSigactResourceWithStreamingResponse(self._report_and_activities.udl_sigact)

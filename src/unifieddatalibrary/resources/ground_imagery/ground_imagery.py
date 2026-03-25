@@ -66,8 +66,15 @@ __all__ = ["GroundImageryResource", "AsyncGroundImageryResource"]
 
 
 class GroundImageryResource(SyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of ground imagery of terrestrial regions from on-orbit, air, and other sensors. Includes metadata on the image (time, region, source, etc) as well as binary content (typically GeoTIFF). Binary content must be downloaded individually by ID using the 'getFile' operation. Well-Known Text (WKT) and GeoJSON formats are used for GIS representation and query support (see https://www.opengeospatial.org/standards/wkt-crs and https://geojson.org/ for more information on these formats).
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        This collection of services provides operations for querying and manipulation of ground imagery of terrestrial regions from on-orbit, air, and other sensors. Includes metadata on the image (time, region, source, etc) as well as binary content (typically GeoTIFF). Binary content must be downloaded individually by ID using the 'getFile' operation. Well-Known Text (WKT) and GeoJSON formats are used for GIS representation and query support (see https://www.opengeospatial.org/standards/wkt-crs and https://geojson.org/ for more information on these formats).
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -673,8 +680,15 @@ class GroundImageryResource(SyncAPIResource):
 
 
 class AsyncGroundImageryResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of ground imagery of terrestrial regions from on-orbit, air, and other sensors. Includes metadata on the image (time, region, source, etc) as well as binary content (typically GeoTIFF). Binary content must be downloaded individually by ID using the 'getFile' operation. Well-Known Text (WKT) and GeoJSON formats are used for GIS representation and query support (see https://www.opengeospatial.org/standards/wkt-crs and https://geojson.org/ for more information on these formats).
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        This collection of services provides operations for querying and manipulation of ground imagery of terrestrial regions from on-orbit, air, and other sensors. Includes metadata on the image (time, region, source, etc) as well as binary content (typically GeoTIFF). Binary content must be downloaded individually by ID using the 'getFile' operation. Well-Known Text (WKT) and GeoJSON formats are used for GIS representation and query support (see https://www.opengeospatial.org/standards/wkt-crs and https://geojson.org/ for more information on these formats).
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1314,6 +1328,9 @@ class GroundImageryResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of ground imagery of terrestrial regions from on-orbit, air, and other sensors. Includes metadata on the image (time, region, source, etc) as well as binary content (typically GeoTIFF). Binary content must be downloaded individually by ID using the 'getFile' operation. Well-Known Text (WKT) and GeoJSON formats are used for GIS representation and query support (see https://www.opengeospatial.org/standards/wkt-crs and https://geojson.org/ for more information on these formats).
+        """
         return HistoryResourceWithRawResponse(self._ground_imagery.history)
 
 
@@ -1352,6 +1369,9 @@ class AsyncGroundImageryResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        This collection of services provides operations for querying and manipulation of ground imagery of terrestrial regions from on-orbit, air, and other sensors. Includes metadata on the image (time, region, source, etc) as well as binary content (typically GeoTIFF). Binary content must be downloaded individually by ID using the 'getFile' operation. Well-Known Text (WKT) and GeoJSON formats are used for GIS representation and query support (see https://www.opengeospatial.org/standards/wkt-crs and https://geojson.org/ for more information on these formats).
+        """
         return AsyncHistoryResourceWithRawResponse(self._ground_imagery.history)
 
 
@@ -1390,6 +1410,9 @@ class GroundImageryResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of ground imagery of terrestrial regions from on-orbit, air, and other sensors. Includes metadata on the image (time, region, source, etc) as well as binary content (typically GeoTIFF). Binary content must be downloaded individually by ID using the 'getFile' operation. Well-Known Text (WKT) and GeoJSON formats are used for GIS representation and query support (see https://www.opengeospatial.org/standards/wkt-crs and https://geojson.org/ for more information on these formats).
+        """
         return HistoryResourceWithStreamingResponse(self._ground_imagery.history)
 
 
@@ -1428,4 +1451,7 @@ class AsyncGroundImageryResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        This collection of services provides operations for querying and manipulation of ground imagery of terrestrial regions from on-orbit, air, and other sensors. Includes metadata on the image (time, region, source, etc) as well as binary content (typically GeoTIFF). Binary content must be downloaded individually by ID using the 'getFile' operation. Well-Known Text (WKT) and GeoJSON formats are used for GIS representation and query support (see https://www.opengeospatial.org/standards/wkt-crs and https://geojson.org/ for more information on these formats).
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._ground_imagery.history)

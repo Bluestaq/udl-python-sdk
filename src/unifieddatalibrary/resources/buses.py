@@ -36,6 +36,11 @@ __all__ = ["BusesResource", "AsyncBusesResource"]
 
 
 class BusesResource(SyncAPIResource):
+    """Services for querying and manipulation of satellite buses.
+
+    A bus is the physical and software infrastructure backbone to which on-orbit satellite payloads are attached for power, control, and other support functions.
+    """
+
     @cached_property
     def with_raw_response(self) -> BusesResourceWithRawResponse:
         """
@@ -885,6 +890,11 @@ class BusesResource(SyncAPIResource):
 
 
 class AsyncBusesResource(AsyncAPIResource):
+    """Services for querying and manipulation of satellite buses.
+
+    A bus is the physical and software infrastructure backbone to which on-orbit satellite payloads are attached for power, control, and other support functions.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncBusesResourceWithRawResponse:
         """

@@ -45,8 +45,15 @@ __all__ = ["GeoStatusResource", "AsyncGeoStatusResource"]
 
 
 class GeoStatusResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -494,8 +501,15 @@ class GeoStatusResource(SyncAPIResource):
 
 
 class AsyncGeoStatusResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -970,6 +984,9 @@ class GeoStatusResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return HistoryResourceWithRawResponse(self._geo_status.history)
 
 
@@ -1001,6 +1018,9 @@ class AsyncGeoStatusResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncHistoryResourceWithRawResponse(self._geo_status.history)
 
 
@@ -1032,6 +1052,9 @@ class GeoStatusResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return HistoryResourceWithStreamingResponse(self._geo_status.history)
 
 
@@ -1063,4 +1086,7 @@ class AsyncGeoStatusResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._geo_status.history)

@@ -35,6 +35,10 @@ __all__ = ["SurfaceResource", "AsyncSurfaceResource"]
 
 
 class SurfaceResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> SurfaceResourceWithRawResponse:
         """
@@ -1238,6 +1242,10 @@ class SurfaceResource(SyncAPIResource):
 
 
 class AsyncSurfaceResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of various site related data, including site status, site operations, and site type-specific records.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSurfaceResourceWithRawResponse:
         """

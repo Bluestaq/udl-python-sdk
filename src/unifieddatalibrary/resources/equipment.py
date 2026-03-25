@@ -38,6 +38,10 @@ __all__ = ["EquipmentResource", "AsyncEquipmentResource"]
 
 
 class EquipmentResource(SyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of equipment related data.
+    """
+
     @cached_property
     def with_raw_response(self) -> EquipmentResourceWithRawResponse:
         """
@@ -1247,6 +1251,10 @@ class EquipmentResource(SyncAPIResource):
 
 
 class AsyncEquipmentResource(AsyncAPIResource):
+    """
+    This collection of services provide operations for manipulating and querying of equipment related data.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncEquipmentResourceWithRawResponse:
         """

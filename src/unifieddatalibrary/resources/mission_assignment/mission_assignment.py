@@ -46,8 +46,15 @@ __all__ = ["MissionAssignmentResource", "AsyncMissionAssignmentResource"]
 
 
 class MissionAssignmentResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -996,8 +1003,15 @@ class MissionAssignmentResource(SyncAPIResource):
 
 
 class AsyncMissionAssignmentResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1979,6 +1993,9 @@ class MissionAssignmentResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+        """
         return HistoryResourceWithRawResponse(self._mission_assignment.history)
 
 
@@ -2016,6 +2033,9 @@ class AsyncMissionAssignmentResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+        """
         return AsyncHistoryResourceWithRawResponse(self._mission_assignment.history)
 
 
@@ -2053,6 +2073,9 @@ class MissionAssignmentResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+        """
         return HistoryResourceWithStreamingResponse(self._mission_assignment.history)
 
 
@@ -2090,4 +2113,7 @@ class AsyncMissionAssignmentResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of mission assignment objects. MissionAssignment is used by C2 JUs and, optionally, non-C2 JUs to assign missions, designate targets, and provide target information to non-C2 JU platforms. Provision is made for the non-C2 JU platforms to acknowledge the message through receipt/compliance action.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._mission_assignment.history)

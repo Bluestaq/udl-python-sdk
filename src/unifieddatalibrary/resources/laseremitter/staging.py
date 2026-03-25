@@ -33,6 +33,10 @@ __all__ = ["StagingResource", "AsyncStagingResource"]
 
 
 class StagingResource(SyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+    """
+
     @cached_property
     def with_raw_response(self) -> StagingResourceWithRawResponse:
         """
@@ -439,6 +443,10 @@ class StagingResource(SyncAPIResource):
 
 
 class AsyncStagingResource(AsyncAPIResource):
+    """
+    This collection of services provides operations for querying and manipulation of laser related information to include the laser emitters, the laser deconflict requests, and laser deconflict responses.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncStagingResourceWithRawResponse:
         """

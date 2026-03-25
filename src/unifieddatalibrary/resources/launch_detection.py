@@ -37,6 +37,10 @@ __all__ = ["LaunchDetectionResource", "AsyncLaunchDetectionResource"]
 
 
 class LaunchDetectionResource(SyncAPIResource):
+    """
+    Collection of launch related services which provide operations for querying and manipulation of launch site data and detailed information on launch vehicles including engines, stages, and manufacturers. Sites, engines, and stages can each have multiple 'detail' records which may be compiled by different sources.
+    """
+
     @cached_property
     def with_raw_response(self) -> LaunchDetectionResourceWithRawResponse:
         """
@@ -617,6 +621,10 @@ class LaunchDetectionResource(SyncAPIResource):
 
 
 class AsyncLaunchDetectionResource(AsyncAPIResource):
+    """
+    Collection of launch related services which provide operations for querying and manipulation of launch site data and detailed information on launch vehicles including engines, stages, and manufacturers. Sites, engines, and stages can each have multiple 'detail' records which may be compiled by different sources.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncLaunchDetectionResourceWithRawResponse:
         """

@@ -31,6 +31,10 @@ __all__ = ["SolarArrayDetailsResource", "AsyncSolarArrayDetailsResource"]
 
 
 class SolarArrayDetailsResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> SolarArrayDetailsResourceWithRawResponse:
         """
@@ -434,6 +438,10 @@ class SolarArrayDetailsResource(SyncAPIResource):
 
 
 class AsyncSolarArrayDetailsResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSolarArrayDetailsResourceWithRawResponse:
         """

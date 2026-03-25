@@ -35,6 +35,10 @@ __all__ = ["BatteriesResource", "AsyncBatteriesResource"]
 
 
 class BatteriesResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> BatteriesResourceWithRawResponse:
         """
@@ -462,6 +466,10 @@ class BatteriesResource(SyncAPIResource):
 
 
 class AsyncBatteriesResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncBatteriesResourceWithRawResponse:
         """

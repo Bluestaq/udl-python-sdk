@@ -46,8 +46,15 @@ __all__ = ["PersonnelrecoveryResource", "AsyncPersonnelrecoveryResource"]
 
 
 class PersonnelrecoveryResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Mission Ops information.
+    """
+
     @cached_property
     def history(self) -> HistoryResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResource(self._client)
 
     @cached_property
@@ -617,8 +624,15 @@ class PersonnelrecoveryResource(SyncAPIResource):
 
 
 class AsyncPersonnelrecoveryResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Mission Ops information.
+    """
+
     @cached_property
     def history(self) -> AsyncHistoryResource:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResource(self._client)
 
     @cached_property
@@ -1218,6 +1232,9 @@ class PersonnelrecoveryResourceWithRawResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResourceWithRawResponse(self._personnelrecovery.history)
 
 
@@ -1252,6 +1269,9 @@ class AsyncPersonnelrecoveryResourceWithRawResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithRawResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResourceWithRawResponse(self._personnelrecovery.history)
 
 
@@ -1286,6 +1306,9 @@ class PersonnelrecoveryResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> HistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return HistoryResourceWithStreamingResponse(self._personnelrecovery.history)
 
 
@@ -1320,4 +1343,7 @@ class AsyncPersonnelrecoveryResourceWithStreamingResponse:
 
     @cached_property
     def history(self) -> AsyncHistoryResourceWithStreamingResponse:
+        """
+        These services provide operations for manipulation and querying of Mission Ops information.
+        """
         return AsyncHistoryResourceWithStreamingResponse(self._personnelrecovery.history)

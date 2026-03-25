@@ -25,6 +25,10 @@ __all__ = ["H3GeoHexCellResource", "AsyncH3GeoHexCellResource"]
 
 
 class H3GeoHexCellResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def with_raw_response(self) -> H3GeoHexCellResourceWithRawResponse:
         """
@@ -229,6 +233,10 @@ class H3GeoHexCellResource(SyncAPIResource):
 
 
 class AsyncH3GeoHexCellResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of Report and Activity information. This information includes analytic reports, significant events, route statistics, EMI Reports, and other georeferenced reports and activities.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncH3GeoHexCellResourceWithRawResponse:
         """

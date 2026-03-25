@@ -39,6 +39,10 @@ __all__ = ["VesselResource", "AsyncVesselResource"]
 
 
 class VesselResource(SyncAPIResource):
+    """
+    This service provides operations for manipulation and querying of maritime Vessel and Vessel Status data. Vessel contains the static data of the specific vessel: mmsi, cruise speed, max speed, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> VesselResourceWithRawResponse:
         """
@@ -715,6 +719,10 @@ class VesselResource(SyncAPIResource):
 
 
 class AsyncVesselResource(AsyncAPIResource):
+    """
+    This service provides operations for manipulation and querying of maritime Vessel and Vessel Status data. Vessel contains the static data of the specific vessel: mmsi, cruise speed, max speed, etc.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncVesselResourceWithRawResponse:
         """

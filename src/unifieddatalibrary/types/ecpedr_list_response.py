@@ -48,6 +48,21 @@ class EcpedrMeasurement(BaseModel):
     msg_number: Optional[int] = FieldInfo(alias="msgNumber", default=None)
     """Designates a specific group of measurements made."""
 
+    ob_quality: Optional[str] = FieldInfo(alias="obQuality", default=None)
+    """The quality of this individual observation.
+
+    The observation quality indicator value may vary among providers and may be a
+    generalized statement (BAD, GOOD, UNCERTAIN, UNKNOWN) or a numeric value. Users
+    should consult the data provider to verify the usage of the observation.
+    """
+
+    ob_quality_indicator: Optional[str] = FieldInfo(alias="obQualityIndicator", default=None)
+    """The quality indicator of this individual observation.
+
+    The observation quality indicator value is a descriptive value indicating the
+    reason for the quality designation of the data.
+    """
+
     ob_value: Optional[float] = FieldInfo(alias="obValue", default=None)
     """A single observation value expressed in the specified unit of measure (obUoM)."""
 

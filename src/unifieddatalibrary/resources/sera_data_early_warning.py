@@ -35,6 +35,10 @@ __all__ = ["SeraDataEarlyWarningResource", "AsyncSeraDataEarlyWarningResource"]
 
 
 class SeraDataEarlyWarningResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit payloads.
+    """
+
     @cached_property
     def with_raw_response(self) -> SeraDataEarlyWarningResourceWithRawResponse:
         """
@@ -574,6 +578,10 @@ class SeraDataEarlyWarningResource(SyncAPIResource):
 
 
 class AsyncSeraDataEarlyWarningResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit payloads.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncSeraDataEarlyWarningResourceWithRawResponse:
         """

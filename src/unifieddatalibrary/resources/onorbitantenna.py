@@ -32,6 +32,10 @@ __all__ = ["OnorbitantennaResource", "AsyncOnorbitantennaResource"]
 
 
 class OnorbitantennaResource(SyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> OnorbitantennaResourceWithRawResponse:
         """
@@ -371,6 +375,10 @@ class OnorbitantennaResource(SyncAPIResource):
 
 
 class AsyncOnorbitantennaResource(AsyncAPIResource):
+    """
+    These services provide operations for manipulation and querying of on-orbit objects of interest, their components, and various lists and status of those objects.
+    """
+
     @cached_property
     def with_raw_response(self) -> AsyncOnorbitantennaResourceWithRawResponse:
         """
