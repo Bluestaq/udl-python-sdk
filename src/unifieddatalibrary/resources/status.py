@@ -19,7 +19,7 @@ from ..types import (
     status_get_by_entity_type_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -264,7 +264,7 @@ class StatusResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/udl/status/{path_id}",
+            path_template("/udl/status/{path_id}", path_id=path_id),
             body=maybe_transform(
                 {
                     "classification_marking": classification_marking,
@@ -365,7 +365,7 @@ class StatusResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/udl/status/{id}",
+            path_template("/udl/status/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -448,7 +448,7 @@ class StatusResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/udl/status/{id}",
+            path_template("/udl/status/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -493,7 +493,7 @@ class StatusResource(SyncAPIResource):
         if not id_entity:
             raise ValueError(f"Expected a non-empty value for `id_entity` but received {id_entity!r}")
         return self._get(
-            f"/udl/status/byIdEntity/{id_entity}",
+            path_template("/udl/status/byIdEntity/{id_entity}", id_entity=id_entity),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -538,7 +538,7 @@ class StatusResource(SyncAPIResource):
         if not entity_type:
             raise ValueError(f"Expected a non-empty value for `entity_type` but received {entity_type!r}")
         return self._get(
-            f"/udl/status/byEntityType/{entity_type}",
+            path_template("/udl/status/byEntityType/{entity_type}", entity_type=entity_type),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -857,7 +857,7 @@ class AsyncStatusResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/udl/status/{path_id}",
+            path_template("/udl/status/{path_id}", path_id=path_id),
             body=await async_maybe_transform(
                 {
                     "classification_marking": classification_marking,
@@ -958,7 +958,7 @@ class AsyncStatusResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/udl/status/{id}",
+            path_template("/udl/status/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -1041,7 +1041,7 @@ class AsyncStatusResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/udl/status/{id}",
+            path_template("/udl/status/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1086,7 +1086,7 @@ class AsyncStatusResource(AsyncAPIResource):
         if not id_entity:
             raise ValueError(f"Expected a non-empty value for `id_entity` but received {id_entity!r}")
         return await self._get(
-            f"/udl/status/byIdEntity/{id_entity}",
+            path_template("/udl/status/byIdEntity/{id_entity}", id_entity=id_entity),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -1131,7 +1131,7 @@ class AsyncStatusResource(AsyncAPIResource):
         if not entity_type:
             raise ValueError(f"Expected a non-empty value for `entity_type` but received {entity_type!r}")
         return await self._get(
-            f"/udl/status/byEntityType/{entity_type}",
+            path_template("/udl/status/byEntityType/{entity_type}", entity_type=entity_type),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,

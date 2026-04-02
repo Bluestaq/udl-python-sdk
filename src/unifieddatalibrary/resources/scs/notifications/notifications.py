@@ -13,7 +13,7 @@ from .offset import (
     AsyncOffsetResourceWithStreamingResponse,
 )
 from ...._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from ...._utils import maybe_transform
+from ...._utils import path_template, maybe_transform
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
@@ -93,7 +93,7 @@ class NotificationsResource(SyncAPIResource):
         if not offset:
             raise ValueError(f"Expected a non-empty value for `offset` but received {offset!r}")
         return self._get_api_list(
-            f"/scs/notifications/{offset}",
+            path_template("/scs/notifications/{offset}", offset=offset),
             page=SyncOffsetPage[NotificationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,
@@ -176,7 +176,7 @@ class AsyncNotificationsResource(AsyncAPIResource):
         if not offset:
             raise ValueError(f"Expected a non-empty value for `offset` but received {offset!r}")
         return self._get_api_list(
-            f"/scs/notifications/{offset}",
+            path_template("/scs/notifications/{offset}", offset=offset),
             page=AsyncOffsetPage[NotificationListResponse],
             options=make_request_options(
                 extra_headers=extra_headers,

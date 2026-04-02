@@ -13,7 +13,7 @@ from ..types import (
     onorbitbattery_update_params,
 )
 from .._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -224,7 +224,7 @@ class OnorbitbatteryResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/udl/onorbitbattery/{path_id}",
+            path_template("/udl/onorbitbattery/{path_id}", path_id=path_id),
             body=maybe_transform(
                 {
                     "classification_marking": classification_marking,
@@ -322,7 +322,7 @@ class OnorbitbatteryResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
-            f"/udl/onorbitbattery/{id}",
+            path_template("/udl/onorbitbattery/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -360,7 +360,7 @@ class OnorbitbatteryResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/udl/onorbitbattery/{id}",
+            path_template("/udl/onorbitbattery/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -571,7 +571,7 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `path_id` but received {path_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/udl/onorbitbattery/{path_id}",
+            path_template("/udl/onorbitbattery/{path_id}", path_id=path_id),
             body=await async_maybe_transform(
                 {
                     "classification_marking": classification_marking,
@@ -669,7 +669,7 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
-            f"/udl/onorbitbattery/{id}",
+            path_template("/udl/onorbitbattery/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -707,7 +707,7 @@ class AsyncOnorbitbatteryResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/udl/onorbitbattery/{id}",
+            path_template("/udl/onorbitbattery/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
