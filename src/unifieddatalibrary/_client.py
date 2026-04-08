@@ -54,7 +54,6 @@ if TYPE_CHECKING:
         buses,
         stage,
         track,
-        video,
         ecpedr,
         elsets,
         h3_geo,
@@ -252,7 +251,6 @@ if TYPE_CHECKING:
     from .resources.solar_array import SolarArrayResource, AsyncSolarArrayResource
     from .resources.track.track import TrackResource, AsyncTrackResource
     from .resources.transponder import TransponderResource, AsyncTransponderResource
-    from .resources.video.video import VideoResource, AsyncVideoResource
     from .resources.onorbitevent import OnorbiteventResource, AsyncOnorbiteventResource
     from .resources.organization import OrganizationResource, AsyncOrganizationResource
     from .resources.rf_band_type import RfBandTypeResource, AsyncRfBandTypeResource
@@ -1956,13 +1954,6 @@ class Unifieddatalibrary(SyncAPIClient):
         return VesselResource(self)
 
     @cached_property
-    def video(self) -> VideoResource:
-        """This collection of services provides operations for video streaming."""
-        from .resources.video import VideoResource
-
-        return VideoResource(self)
-
-    @cached_property
     def weather_data(self) -> WeatherDataResource:
         """
         These services provide for posting and querying terrestrial weather conditions over a target area or region and raw sensor data used to produce condition reports. Weather Reports describe current weather conditions over a target point or region to include general temperatures, pressures, and moisture accumulation, as well as navigational considerations such as altimeter settings, visibility, wind speeds, and cloud heights etc. Weather Data contains algorithmic parameters and dynamic, raw measurements collected by individual sensors such as signal power, noise level, etc., which are generally processed across multiple sensors to produce weather reports.
@@ -3647,13 +3638,6 @@ class AsyncUnifieddatalibrary(AsyncAPIClient):
         return AsyncVesselResource(self)
 
     @cached_property
-    def video(self) -> AsyncVideoResource:
-        """This collection of services provides operations for video streaming."""
-        from .resources.video import AsyncVideoResource
-
-        return AsyncVideoResource(self)
-
-    @cached_property
     def weather_data(self) -> AsyncWeatherDataResource:
         """
         These services provide for posting and querying terrestrial weather conditions over a target area or region and raw sensor data used to produce condition reports. Weather Reports describe current weather conditions over a target point or region to include general temperatures, pressures, and moisture accumulation, as well as navigational considerations such as altimeter settings, visibility, wind speeds, and cloud heights etc. Weather Data contains algorithmic parameters and dynamic, raw measurements collected by individual sensors such as signal power, noise level, etc., which are generally processed across multiple sensors to produce weather reports.
@@ -5279,13 +5263,6 @@ class UnifieddatalibraryWithRawResponse:
         return VesselResourceWithRawResponse(self._client.vessel)
 
     @cached_property
-    def video(self) -> video.VideoResourceWithRawResponse:
-        """This collection of services provides operations for video streaming."""
-        from .resources.video import VideoResourceWithRawResponse
-
-        return VideoResourceWithRawResponse(self._client.video)
-
-    @cached_property
     def weather_data(self) -> weather_data.WeatherDataResourceWithRawResponse:
         """
         These services provide for posting and querying terrestrial weather conditions over a target area or region and raw sensor data used to produce condition reports. Weather Reports describe current weather conditions over a target point or region to include general temperatures, pressures, and moisture accumulation, as well as navigational considerations such as altimeter settings, visibility, wind speeds, and cloud heights etc. Weather Data contains algorithmic parameters and dynamic, raw measurements collected by individual sensors such as signal power, noise level, etc., which are generally processed across multiple sensors to produce weather reports.
@@ -6770,13 +6747,6 @@ class AsyncUnifieddatalibraryWithRawResponse:
         return AsyncVesselResourceWithRawResponse(self._client.vessel)
 
     @cached_property
-    def video(self) -> video.AsyncVideoResourceWithRawResponse:
-        """This collection of services provides operations for video streaming."""
-        from .resources.video import AsyncVideoResourceWithRawResponse
-
-        return AsyncVideoResourceWithRawResponse(self._client.video)
-
-    @cached_property
     def weather_data(self) -> weather_data.AsyncWeatherDataResourceWithRawResponse:
         """
         These services provide for posting and querying terrestrial weather conditions over a target area or region and raw sensor data used to produce condition reports. Weather Reports describe current weather conditions over a target point or region to include general temperatures, pressures, and moisture accumulation, as well as navigational considerations such as altimeter settings, visibility, wind speeds, and cloud heights etc. Weather Data contains algorithmic parameters and dynamic, raw measurements collected by individual sensors such as signal power, noise level, etc., which are generally processed across multiple sensors to produce weather reports.
@@ -8259,13 +8229,6 @@ class UnifieddatalibraryWithStreamedResponse:
         from .resources.vessel import VesselResourceWithStreamingResponse
 
         return VesselResourceWithStreamingResponse(self._client.vessel)
-
-    @cached_property
-    def video(self) -> video.VideoResourceWithStreamingResponse:
-        """This collection of services provides operations for video streaming."""
-        from .resources.video import VideoResourceWithStreamingResponse
-
-        return VideoResourceWithStreamingResponse(self._client.video)
 
     @cached_property
     def weather_data(self) -> weather_data.WeatherDataResourceWithStreamingResponse:
@@ -9766,13 +9729,6 @@ class AsyncUnifieddatalibraryWithStreamedResponse:
         from .resources.vessel import AsyncVesselResourceWithStreamingResponse
 
         return AsyncVesselResourceWithStreamingResponse(self._client.vessel)
-
-    @cached_property
-    def video(self) -> video.AsyncVideoResourceWithStreamingResponse:
-        """This collection of services provides operations for video streaming."""
-        from .resources.video import AsyncVideoResourceWithStreamingResponse
-
-        return AsyncVideoResourceWithStreamingResponse(self._client.video)
 
     @cached_property
     def weather_data(self) -> weather_data.AsyncWeatherDataResourceWithStreamingResponse:
