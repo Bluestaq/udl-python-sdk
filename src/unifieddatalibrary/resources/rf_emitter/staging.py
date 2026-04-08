@@ -331,8 +331,8 @@ class StagingResource(SyncAPIResource):
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           extra_headers: Send extra headers
@@ -759,8 +759,8 @@ class AsyncStagingResource(AsyncAPIResource):
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           extra_headers: Send extra headers

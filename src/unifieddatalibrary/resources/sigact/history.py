@@ -66,14 +66,14 @@ class HistoryResource(SyncAPIResource):
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           report_date: Date of the report or filing. (YYYY-MM-DDTHH:MM:SS.sssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on valid
               query fields that can be selected.
 
           extra_headers: Send extra headers
@@ -122,7 +122,7 @@ class HistoryResource(SyncAPIResource):
         Service operation to return the count of records satisfying the specified query
         parameters. This operation is useful to determine how many records pass a
         particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on
         valid/required query parameter information.
 
         Args:
@@ -198,14 +198,14 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           report_date: Date of the report or filing. (YYYY-MM-DDTHH:MM:SS.sssZ)
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on valid
               query fields that can be selected.
 
           extra_headers: Send extra headers
@@ -254,7 +254,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         Service operation to return the count of records satisfying the specified query
         parameters. This operation is useful to determine how many records pass a
         particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on
         valid/required query parameter information.
 
         Args:

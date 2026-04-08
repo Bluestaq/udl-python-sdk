@@ -16,8 +16,8 @@ class HistoryAodrParams(TypedDict, total=False):
     """optional, fields for retrieval.
 
     When omitted, ALL fields are assumed. See the queryhelp operation
-    (/udl/&lt;datatype&gt;/queryhelp) for more details on valid query fields that
-    can be selected.
+    (`/udl/<datatype>/queryhelp`) for more details on valid query fields that can be
+    selected.
     """
 
     created_at: Annotated[Union[str, date], PropertyInfo(alias="createdAt", format="iso8601")]
