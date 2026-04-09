@@ -11,7 +11,7 @@ from ..types import (
     drift_history_retrieve_params,
 )
 from .._types import Body, Omit, Query, Headers, NotGiven, omit, not_given
-from .._utils import maybe_transform, async_maybe_transform
+from .._utils import path_template, maybe_transform, async_maybe_transform
 from .._compat import cached_property
 from .._resource import SyncAPIResource, AsyncAPIResource
 from .._response import (
@@ -84,7 +84,7 @@ class DriftHistoryResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/udl/drifthistory/{id}",
+            path_template("/udl/drifthistory/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -116,8 +116,8 @@ class DriftHistoryResource(SyncAPIResource):
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           extra_headers: Send extra headers
@@ -163,7 +163,7 @@ class DriftHistoryResource(SyncAPIResource):
         Service operation to return the count of records satisfying the specified query
         parameters. This operation is useful to determine how many records pass a
         particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on
         valid/required query parameter information.
 
         Args:
@@ -234,7 +234,7 @@ class DriftHistoryResource(SyncAPIResource):
         columns/fields. Requested columns are specified by the 'columns' query parameter
         and should be a comma separated list of valid fields for the specified data
         type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
         information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
         hours would return the satNo and period of elsets with an epoch greater than 5
         hours ago.
@@ -327,7 +327,7 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/udl/drifthistory/{id}",
+            path_template("/udl/drifthistory/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -359,8 +359,8 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           extra_headers: Send extra headers
@@ -406,7 +406,7 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
         Service operation to return the count of records satisfying the specified query
         parameters. This operation is useful to determine how many records pass a
         particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on
         valid/required query parameter information.
 
         Args:
@@ -477,7 +477,7 @@ class AsyncDriftHistoryResource(AsyncAPIResource):
         columns/fields. Requested columns are specified by the 'columns' query parameter
         and should be a comma separated list of valid fields for the specified data
         type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
         information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
         hours would return the satNo and period of elsets with an epoch greater than 5
         hours ago.

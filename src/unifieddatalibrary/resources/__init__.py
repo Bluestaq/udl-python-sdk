@@ -160,14 +160,6 @@ from .track import (
     TrackResourceWithStreamingResponse,
     AsyncTrackResourceWithStreamingResponse,
 )
-from .video import (
-    VideoResource,
-    AsyncVideoResource,
-    VideoResourceWithRawResponse,
-    AsyncVideoResourceWithRawResponse,
-    VideoResourceWithStreamingResponse,
-    AsyncVideoResourceWithStreamingResponse,
-)
 from .ecpedr import (
     EcpedrResource,
     AsyncEcpedrResource,
@@ -2322,12 +2314,6 @@ __all__ = [
     "AsyncVesselResourceWithRawResponse",
     "VesselResourceWithStreamingResponse",
     "AsyncVesselResourceWithStreamingResponse",
-    "VideoResource",
-    "AsyncVideoResource",
-    "VideoResourceWithRawResponse",
-    "AsyncVideoResourceWithRawResponse",
-    "VideoResourceWithStreamingResponse",
-    "AsyncVideoResourceWithStreamingResponse",
     "WeatherDataResource",
     "AsyncWeatherDataResource",
     "WeatherDataResourceWithRawResponse",

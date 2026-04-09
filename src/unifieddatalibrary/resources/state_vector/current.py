@@ -68,8 +68,8 @@ class CurrentResource(SyncAPIResource):
         'current' catalog for a particular provider. Default current state vector
         sources may vary by UDL environment. Please contact the UDL help desk for more
         information, or explicitly specify the desired source. See the queryhelp
-        operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required
-        query parameter information.
+        operation (`/udl/<datatype>/queryhelp`) for more details on valid/required query
+        parameter information.
 
         Args:
           extra_headers: Send extra headers
@@ -121,8 +121,8 @@ class CurrentResource(SyncAPIResource):
         'current' catalog for a particular provider. Default current state vector
         sources may vary by UDL environment. Please contact the UDL help desk for more
         information, or explicitly specify the desired source. See the queryhelp
-        operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required
-        query parameter information.
+        operation (`/udl/<datatype>/queryhelp`) for more details on valid/required query
+        parameter information.
 
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in
@@ -203,8 +203,8 @@ class AsyncCurrentResource(AsyncAPIResource):
         'current' catalog for a particular provider. Default current state vector
         sources may vary by UDL environment. Please contact the UDL help desk for more
         information, or explicitly specify the desired source. See the queryhelp
-        operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required
-        query parameter information.
+        operation (`/udl/<datatype>/queryhelp`) for more details on valid/required query
+        parameter information.
 
         Args:
           extra_headers: Send extra headers
@@ -256,8 +256,8 @@ class AsyncCurrentResource(AsyncAPIResource):
         'current' catalog for a particular provider. Default current state vector
         sources may vary by UDL environment. Please contact the UDL help desk for more
         information, or explicitly specify the desired source. See the queryhelp
-        operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required
-        query parameter information.
+        operation (`/udl/<datatype>/queryhelp`) for more details on valid/required query
+        parameter information.
 
         Args:
           columns: Comma-separated list of valid field names for this data type to be returned in

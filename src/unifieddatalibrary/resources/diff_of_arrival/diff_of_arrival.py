@@ -21,7 +21,7 @@ from .history import (
     AsyncHistoryResourceWithStreamingResponse,
 )
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, omit, not_given
-from ..._utils import maybe_transform, async_maybe_transform
+from ..._utils import path_template, maybe_transform, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -98,7 +98,7 @@ class DiffOfArrivalResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/udl/diffofarrival/{id}",
+            path_template("/udl/diffofarrival/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -156,7 +156,7 @@ class DiffOfArrivalResource(SyncAPIResource):
         columns/fields. Requested columns are specified by the 'columns' query parameter
         and should be a comma separated list of valid fields for the specified data
         type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
         information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
         hours would return the satNo and period of elsets with an epoch greater than 5
         hours ago.
@@ -295,7 +295,7 @@ class AsyncDiffOfArrivalResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/udl/diffofarrival/{id}",
+            path_template("/udl/diffofarrival/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -353,7 +353,7 @@ class AsyncDiffOfArrivalResource(AsyncAPIResource):
         columns/fields. Requested columns are specified by the 'columns' query parameter
         and should be a comma separated list of valid fields for the specified data
         type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
         information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
         hours would return the satNo and period of elsets with an epoch greater than 5
         hours ago.

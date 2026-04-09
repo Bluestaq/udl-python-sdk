@@ -23,8 +23,8 @@ class HistoryAodrParams(TypedDict, total=False):
     """optional, fields for retrieval.
 
     When omitted, ALL fields are assumed. See the queryhelp operation
-    (/udl/&lt;datatype&gt;/queryhelp) for more details on valid query fields that
-    can be selected.
+    (`/udl/<datatype>/queryhelp`) for more details on valid query fields that can be
+    selected.
     """
 
     first_result: Annotated[int, PropertyInfo(alias="firstResult")]

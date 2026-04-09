@@ -24,7 +24,7 @@ from .history import (
     AsyncHistoryResourceWithStreamingResponse,
 )
 from ..._types import Body, Omit, Query, Headers, NoneType, NotGiven, FileTypes, omit, not_given
-from ..._utils import extract_files, maybe_transform, deepcopy_minimal, async_maybe_transform
+from ..._utils import extract_files, path_template, maybe_transform, deepcopy_minimal, async_maybe_transform
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -112,7 +112,7 @@ class AnalyticImageryResource(SyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return self._get(
-            f"/udl/analyticimagery/{id}",
+            path_template("/udl/analyticimagery/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -145,8 +145,8 @@ class AnalyticImageryResource(SyncAPIResource):
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
@@ -197,7 +197,7 @@ class AnalyticImageryResource(SyncAPIResource):
         Service operation to return the count of records satisfying the specified query
         parameters. This operation is useful to determine how many records pass a
         particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on
         valid/required query parameter information.
 
         Args:
@@ -263,7 +263,7 @@ class AnalyticImageryResource(SyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return self._get(
-            f"/udl/analyticimagery/getFile/{id}",
+            path_template("/udl/analyticimagery/getFile/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -321,7 +321,7 @@ class AnalyticImageryResource(SyncAPIResource):
         columns/fields. Requested columns are specified by the 'columns' query parameter
         and should be a comma separated list of valid fields for the specified data
         type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
         information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
         hours would return the satNo and period of elsets with an epoch greater than 5
         hours ago.
@@ -487,7 +487,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         if not id:
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         return await self._get(
-            f"/udl/analyticimagery/{id}",
+            path_template("/udl/analyticimagery/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -520,8 +520,8 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         """
         Service operation to dynamically query data by a variety of query parameters not
         specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           msg_time: The message time of this image record, in ISO8601 UTC format with millisecond
@@ -572,7 +572,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         Service operation to return the count of records satisfying the specified query
         parameters. This operation is useful to determine how many records pass a
         particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on
         valid/required query parameter information.
 
         Args:
@@ -638,7 +638,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
             raise ValueError(f"Expected a non-empty value for `id` but received {id!r}")
         extra_headers = {"Accept": "application/octet-stream", **(extra_headers or {})}
         return await self._get(
-            f"/udl/analyticimagery/getFile/{id}",
+            path_template("/udl/analyticimagery/getFile/{id}", id=id),
             options=make_request_options(
                 extra_headers=extra_headers,
                 extra_query=extra_query,
@@ -696,7 +696,7 @@ class AsyncAnalyticImageryResource(AsyncAPIResource):
         columns/fields. Requested columns are specified by the 'columns' query parameter
         and should be a comma separated list of valid fields for the specified data
         type. classificationMarking is always returned. See the queryhelp operation
-        (/udl/<datatype>/queryhelp) for more details on valid/required query parameter
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
         information. An example URI: /udl/elset/tuple?columns=satNo,period&epoch=>now-5
         hours would return the satNo and period of elsets with an epoch greater than 5
         hours ago.

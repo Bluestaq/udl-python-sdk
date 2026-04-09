@@ -5496,47 +5496,6 @@ Methods:
 - <code title="get /udl/vessel/queryhelp">client.vessel.<a href="./src/unifieddatalibrary/resources/vessel.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/vessel_queryhelp_response.py">VesselQueryhelpResponse</a></code>
 - <code title="get /udl/vessel/tuple">client.vessel.<a href="./src/unifieddatalibrary/resources/vessel.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/vessel_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/vessel_tuple_response.py">VesselTupleResponse</a></code>
 
-# Video
-
-Types:
-
-```python
-from unifieddatalibrary.types import (
-    VideoListResponse,
-    VideoCountResponse,
-    VideoGetPlayerStreamingInfoResponse,
-    VideoGetPublisherStreamingInfoResponse,
-    VideoGetStreamFileResponse,
-    VideoQueryhelpResponse,
-    VideoTupleResponse,
-)
-```
-
-Methods:
-
-- <code title="post /udl/video">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">create</a>(\*\*<a href="src/unifieddatalibrary/types/video_create_params.py">params</a>) -> None</code>
-- <code title="get /udl/video">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/video_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/video_list_response.py">SyncOffsetPage[VideoListResponse]</a></code>
-- <code title="get /udl/video/count">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/video_count_params.py">params</a>) -> str</code>
-- <code title="get /udl/video/{id}">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">get</a>(id, \*\*<a href="src/unifieddatalibrary/types/video_get_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/video/video_streams_full.py">VideoStreamsFull</a></code>
-- <code title="get /udl/video/getPlayerStreamingInfo">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">get_player_streaming_info</a>(\*\*<a href="src/unifieddatalibrary/types/video_get_player_streaming_info_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/video_get_player_streaming_info_response.py">VideoGetPlayerStreamingInfoResponse</a></code>
-- <code title="get /udl/video/getPublisherStreamingInfo">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">get_publisher_streaming_info</a>(\*\*<a href="src/unifieddatalibrary/types/video_get_publisher_streaming_info_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/video_get_publisher_streaming_info_response.py">VideoGetPublisherStreamingInfoResponse</a></code>
-- <code title="get /udl/video/getStreamFile">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">get_stream_file</a>(\*\*<a href="src/unifieddatalibrary/types/video_get_stream_file_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/video_get_stream_file_response.py">VideoGetStreamFileResponse</a></code>
-- <code title="get /udl/video/queryhelp">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">queryhelp</a>() -> <a href="./src/unifieddatalibrary/types/video_queryhelp_response.py">VideoQueryhelpResponse</a></code>
-- <code title="get /udl/video/tuple">client.video.<a href="./src/unifieddatalibrary/resources/video/video.py">tuple</a>(\*\*<a href="src/unifieddatalibrary/types/video_tuple_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/video_tuple_response.py">VideoTupleResponse</a></code>
-
-## History
-
-Types:
-
-```python
-from unifieddatalibrary.types.video import VideoStreamsFull, HistoryCountResponse
-```
-
-Methods:
-
-- <code title="get /udl/video/history">client.video.history.<a href="./src/unifieddatalibrary/resources/video/history.py">list</a>(\*\*<a href="src/unifieddatalibrary/types/video/history_list_params.py">params</a>) -> <a href="./src/unifieddatalibrary/types/video/video_streams_full.py">SyncOffsetPage[VideoStreamsFull]</a></code>
-- <code title="get /udl/video/history/count">client.video.history.<a href="./src/unifieddatalibrary/resources/video/history.py">count</a>(\*\*<a href="src/unifieddatalibrary/types/video/history_count_params.py">params</a>) -> str</code>
-
 # WeatherData
 
 Types:

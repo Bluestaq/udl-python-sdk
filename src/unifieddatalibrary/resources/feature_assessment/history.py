@@ -63,15 +63,15 @@ class HistoryResource(SyncAPIResource):
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           id_analytic_imagery: Unique identifier of the Analytic Imagery associated with this Feature
               Assessment record.
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on valid
               query fields that can be selected.
 
           extra_headers: Send extra headers
@@ -123,16 +123,15 @@ class HistoryResource(SyncAPIResource):
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation, then write that data to the
-        Secure Content Store. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        Secure Content Store. See the queryhelp operation (`/udl/<datatype>/queryhelp`)
+        for more details on valid/required query parameter information.
 
         Args:
           id_analytic_imagery: Unique identifier of the Analytic Imagery associated with this Feature
               Assessment record.
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on valid
               query fields that can be selected.
 
           notification: optional, notification method for the created file link. When omitted, EMAIL is
@@ -195,7 +194,7 @@ class HistoryResource(SyncAPIResource):
         Service operation to return the count of records satisfying the specified query
         parameters. This operation is useful to determine how many records pass a
         particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on
         valid/required query parameter information.
 
         Args:
@@ -272,15 +271,15 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        (`/udl/<datatype>/queryhelp`) for more details on valid/required query parameter
+        information.
 
         Args:
           id_analytic_imagery: Unique identifier of the Analytic Imagery associated with this Feature
               Assessment record.
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on valid
               query fields that can be selected.
 
           extra_headers: Send extra headers
@@ -332,16 +331,15 @@ class AsyncHistoryResource(AsyncAPIResource):
         """
         Service operation to dynamically query historical data by a variety of query
         parameters not specified in this API documentation, then write that data to the
-        Secure Content Store. See the queryhelp operation
-        (/udl/&lt;datatype&gt;/queryhelp) for more details on valid/required query
-        parameter information.
+        Secure Content Store. See the queryhelp operation (`/udl/<datatype>/queryhelp`)
+        for more details on valid/required query parameter information.
 
         Args:
           id_analytic_imagery: Unique identifier of the Analytic Imagery associated with this Feature
               Assessment record.
 
           columns: optional, fields for retrieval. When omitted, ALL fields are assumed. See the
-              queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on valid
+              queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on valid
               query fields that can be selected.
 
           notification: optional, notification method for the created file link. When omitted, EMAIL is
@@ -404,7 +402,7 @@ class AsyncHistoryResource(AsyncAPIResource):
         Service operation to return the count of records satisfying the specified query
         parameters. This operation is useful to determine how many records pass a
         particular query criteria without retrieving large amounts of data. See the
-        queryhelp operation (/udl/&lt;datatype&gt;/queryhelp) for more details on
+        queryhelp operation (`/udl/<datatype>/queryhelp`) for more details on
         valid/required query parameter information.
 
         Args:
