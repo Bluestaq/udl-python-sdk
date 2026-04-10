@@ -1,5 +1,96 @@
 # Changelog
 
+## 0.1.0-alpha.38 (2026-04-10)
+
+Full Changelog: [v0.1.0-alpha.37...v0.1.0-alpha.38](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.37...v0.1.0-alpha.38)
+
+### Features
+
+* **api:** add pagination config and root security ([3d1a246](https://github.com/Bluestaq/udl-python-sdk/commit/3d1a24685c1b27a3b54ca95a6c5d463a2ec7d5e5))
+* **api:** Adding transformation hack for endpoints that don't really accept json payloads ([c89b25f](https://github.com/Bluestaq/udl-python-sdk/commit/c89b25f86fa650bd2d27fd9e3ab6e0daaf5d00da))
+* **api:** api update ([9f71fa3](https://github.com/Bluestaq/udl-python-sdk/commit/9f71fa3cd9c70cd4f32a82da8883ba2c66396813))
+* **api:** api update ([46f1948](https://github.com/Bluestaq/udl-python-sdk/commit/46f19485ee2c1869b50c11709ba678dde91bb4d7))
+* **api:** api update ([04586d6](https://github.com/Bluestaq/udl-python-sdk/commit/04586d63bbae4605c21ef454e550b033ed728f66))
+* **api:** api update ([fb8fe0b](https://github.com/Bluestaq/udl-python-sdk/commit/fb8fe0bdbd1daa69585faa4de27bbc26ae755314))
+* **api:** api update ([e01827e](https://github.com/Bluestaq/udl-python-sdk/commit/e01827e30b53f9867244a775773016e896d812a1))
+* **api:** Config update for rsivilli-bluestaq/dev ([6a01d62](https://github.com/Bluestaq/udl-python-sdk/commit/6a01d62a03b1ca7f75b858c8b1c68d9a4494b4fd))
+* **api:** manual updates ([0c213fd](https://github.com/Bluestaq/udl-python-sdk/commit/0c213fd8f5fc00f13510f10d39e77efcc6f1d3e8))
+* **api:** manual updates ([d0480d1](https://github.com/Bluestaq/udl-python-sdk/commit/d0480d1439dfd4941092f780e737bf477f3f23dd))
+* **api:** manual updates ([8330ba7](https://github.com/Bluestaq/udl-python-sdk/commit/8330ba75b4b63ea0caf4801fe8bc842278fed25e))
+* **api:** manual updates ([97f4aca](https://github.com/Bluestaq/udl-python-sdk/commit/97f4aca3cc01480a6199adc5282b806000dd0b1d))
+* **api:** manual updates ([e1be51a](https://github.com/Bluestaq/udl-python-sdk/commit/e1be51a4693f5ad90f4d91c11a49558239f331aa))
+* **api:** manual updates ([344025e](https://github.com/Bluestaq/udl-python-sdk/commit/344025e89c80f533546fa933ed687ca8bb655067))
+* **api:** removing historical flightplan ([e1779a0](https://github.com/Bluestaq/udl-python-sdk/commit/e1779a03d80d396d0109db1fa4ee1ffbd87af15d))
+* **api:** renaming create_bulk_v2 to be more accurate ([39f088f](https://github.com/Bluestaq/udl-python-sdk/commit/39f088fa884da126cb15988831c3ce9c464a59c2))
+* **api:** testing transforms ([2a2c279](https://github.com/Bluestaq/udl-python-sdk/commit/2a2c27996ca393e487effe042885fda39f3fe4ee))
+* **api:** update via SDK Studio ([0c46016](https://github.com/Bluestaq/udl-python-sdk/commit/0c4601684c4954896bdda1c9f3d21f04e41633dd))
+* **api:** update via SDK Studio ([680e2b1](https://github.com/Bluestaq/udl-python-sdk/commit/680e2b14f4d85437cf65fedf54a79de158f63c78))
+* **api:** updates to naming convention for filedrop ([d777d9b](https://github.com/Bluestaq/udl-python-sdk/commit/d777d9bbf4f6263a0760eef934a4f42ac9c58753))
+* **internal:** implement indices array format for query and form serialization ([092e3b2](https://github.com/Bluestaq/udl-python-sdk/commit/092e3b25ce975e692d97bf41a297ddfb0c33ef9c))
+
+
+### Bug Fixes
+
+* **api:** added security scheme ([030c946](https://github.com/Bluestaq/udl-python-sdk/commit/030c94617656d6b752da199cb72921fb2ec9e457))
+* **client:** preserve hardcoded query params when merging with user params ([83491d6](https://github.com/Bluestaq/udl-python-sdk/commit/83491d627ea8476e214c50350639ca3dc78aa676))
+* **deps:** bump minimum typing-extensions version ([7550132](https://github.com/Bluestaq/udl-python-sdk/commit/755013282ee4cc8f48ed4b9ca8e3dc583ed22f3d))
+* ensure file data are only sent as 1 parameter ([2d7da14](https://github.com/Bluestaq/udl-python-sdk/commit/2d7da143299f320e704a99b02f591872129be1c8))
+* improve names for conflicting params ([bf55657](https://github.com/Bluestaq/udl-python-sdk/commit/bf55657ea1fad8b7b6d1252f27ca92c5c41059de))
+* **perf:** optimize some hot paths ([c460c2f](https://github.com/Bluestaq/udl-python-sdk/commit/c460c2fbf27065310ae20d7ff8f695cd346487cf))
+* **perf:** skip traversing types for NotGiven values ([23d0315](https://github.com/Bluestaq/udl-python-sdk/commit/23d031502af76e2a6c887ba6c2f7d9dd0efbb85e))
+* **pydantic:** do not pass `by_alias` unless set ([ab6f251](https://github.com/Bluestaq/udl-python-sdk/commit/ab6f251cb2f2bd4dadb131ca176a8f89e1cf28eb))
+* sanitize endpoint path params ([6217ffa](https://github.com/Bluestaq/udl-python-sdk/commit/6217ffa28ec1086569665c24f390289f7dabfa61))
+
+
+### Chores
+
+* **ci:** skip lint on metadata-only changes ([8948c88](https://github.com/Bluestaq/udl-python-sdk/commit/8948c88eb299219dc8a504f201619b3356901e99))
+* **ci:** skip uploading artifacts on stainless-internal branches ([2b830dd](https://github.com/Bluestaq/udl-python-sdk/commit/2b830dd259494db760429bcde547067abc6c6d6d))
+* **client:** minor internal fixes ([1e18afb](https://github.com/Bluestaq/udl-python-sdk/commit/1e18afbe1c9fc802920c35c830694254e2d0edfe))
+* **docs:** add missing descriptions ([3843c3a](https://github.com/Bluestaq/udl-python-sdk/commit/3843c3aa9c6474cde7116483fe218b94af2a7bc2))
+* **docs:** update client docstring ([79b746e](https://github.com/Bluestaq/udl-python-sdk/commit/79b746e647bde40b02c6598fa938bacca1ca184d))
+* **internal:** add request options to SSE classes ([64c312e](https://github.com/Bluestaq/udl-python-sdk/commit/64c312ebf8d4a7f1766e47aaaeb5c6023b6eb8e7))
+* **internal:** change default timeout to an int ([18c48bc](https://github.com/Bluestaq/udl-python-sdk/commit/18c48bc464ff765ea9de5854f906b203af0eee90))
+* **internal:** codegen related update ([6614cd8](https://github.com/Bluestaq/udl-python-sdk/commit/6614cd8e9bc7cdbfe4e710d0b5edb3268e8ab497))
+* **internal:** codegen related update ([b406f88](https://github.com/Bluestaq/udl-python-sdk/commit/b406f884c9c3f16aa034ce28afa836ec5194b232))
+* **internal:** codegen related update ([682619a](https://github.com/Bluestaq/udl-python-sdk/commit/682619ad2fd07aa37ad5c2956079cdb71bbdd89a))
+* **internal:** codegen related update ([38d5f3c](https://github.com/Bluestaq/udl-python-sdk/commit/38d5f3c0d4fdafa3306e802def490e24b86d887d))
+* **internal:** codegen related update ([f891cf0](https://github.com/Bluestaq/udl-python-sdk/commit/f891cf09fc9664baa10d3974cba7e23e109e7384))
+* **internal:** codegen related update ([136a597](https://github.com/Bluestaq/udl-python-sdk/commit/136a59705cc835ad815772b87b6a84783cd29be4))
+* **internal:** codegen related update ([13cae24](https://github.com/Bluestaq/udl-python-sdk/commit/13cae24a2964cb7df668afba9ad56187869be13e))
+* **internal:** codegen related update ([dc2ccc3](https://github.com/Bluestaq/udl-python-sdk/commit/dc2ccc345ec2c233314804c27c081906a1007b15))
+* **internal:** codegen related update ([923ad87](https://github.com/Bluestaq/udl-python-sdk/commit/923ad878f35a79e666c87d87ed69d81d24106ea4))
+* **internal:** codegen related update ([acebb99](https://github.com/Bluestaq/udl-python-sdk/commit/acebb990a78c56ceae409c6eae1e74ec5be38203))
+* **internal:** expand CI branch coverage ([04d0b72](https://github.com/Bluestaq/udl-python-sdk/commit/04d0b72e5dfe37effae4c9a583874240bbfc5a77))
+* **internal:** make `test_proxy_environment_variables` more resilient ([104ffbf](https://github.com/Bluestaq/udl-python-sdk/commit/104ffbf3196a16fe82a05c2a1e0c27740cdab0df))
+* **internal:** make `test_proxy_environment_variables` more resilient to env ([4f18a39](https://github.com/Bluestaq/udl-python-sdk/commit/4f18a39394ad6331e0c259fed62bd6c03c8ccec3))
+* **internal:** reduce CI branch coverage ([7e361c2](https://github.com/Bluestaq/udl-python-sdk/commit/7e361c2d575e41a4593829a2dd239964c21d645b))
+* **internal:** remove unused http client options forwarding ([34699b5](https://github.com/Bluestaq/udl-python-sdk/commit/34699b5445c109ee1fbaee024619cfd706aad8a8))
+* **internal:** slight transform perf improvement ([64c3163](https://github.com/Bluestaq/udl-python-sdk/commit/64c3163dacfb67764f345d48f8d13b0ad5d893d0))
+* **internal:** tweak CI branches ([ae04764](https://github.com/Bluestaq/udl-python-sdk/commit/ae047640aeaad694c09f90595dce15e598f3871c))
+* **internal:** update gitignore ([af9bc14](https://github.com/Bluestaq/udl-python-sdk/commit/af9bc14e6ab07b880262053aec3e368ba3d46488))
+* **internal:** update pyright settings ([4962410](https://github.com/Bluestaq/udl-python-sdk/commit/4962410963eb9c7f82444c9d10bb2d22430c8de5))
+* **test:** do not count install time for mock server timeout ([d36b10a](https://github.com/Bluestaq/udl-python-sdk/commit/d36b10a43123da10426db62d04a1756f4f8452ab))
+* **tests:** bump steady to v0.19.4 ([96c51ce](https://github.com/Bluestaq/udl-python-sdk/commit/96c51ce0a3fe19eb78c6236634374f2cec2f24d2))
+* **tests:** bump steady to v0.19.5 ([2acaa71](https://github.com/Bluestaq/udl-python-sdk/commit/2acaa7127b21cab2e9b8b48a8abd6007280d6772))
+* **tests:** bump steady to v0.19.6 ([75d4b4d](https://github.com/Bluestaq/udl-python-sdk/commit/75d4b4d2125e79aea63f0496d0c2faf444143bfe))
+* **tests:** bump steady to v0.19.7 ([aac1175](https://github.com/Bluestaq/udl-python-sdk/commit/aac117514cd81667e38574aa50c6df26cd32f7fd))
+* **tests:** bump steady to v0.20.1 ([5b06e8b](https://github.com/Bluestaq/udl-python-sdk/commit/5b06e8b264946be11640957174d5fd37bfc036e9))
+* **tests:** bump steady to v0.20.2 ([08bc54c](https://github.com/Bluestaq/udl-python-sdk/commit/08bc54c27c5d5f2b55ecce867f2a29c136df4e77))
+* **tests:** improve enum examples ([2d36766](https://github.com/Bluestaq/udl-python-sdk/commit/2d367666c2e7d1e7662ce57fb74092320b34293d))
+* update mock server docs ([b97964e](https://github.com/Bluestaq/udl-python-sdk/commit/b97964e6161e41d23940744386b51c2c7e3629a3))
+* update placeholder string ([da214f7](https://github.com/Bluestaq/udl-python-sdk/commit/da214f78a1627c0fc016c2a5d1d10b3c25af94a5))
+
+
+### Documentation
+
+* remove private imports from datetime snippets ([1e91c09](https://github.com/Bluestaq/udl-python-sdk/commit/1e91c09e5209f8ac407574a37e9fcb2e975cc8f1))
+
+
+### Refactors
+
+* **tests:** switch from prism to steady ([188eee8](https://github.com/Bluestaq/udl-python-sdk/commit/188eee8ebf289b913be81f85345739275afcd45d))
+
 ## 0.1.0-alpha.37 (2026-04-09)
 
 Full Changelog: [v0.1.0-alpha.36...v0.1.0-alpha.37](https://github.com/Bluestaq/udl-python-sdk/compare/v0.1.0-alpha.36...v0.1.0-alpha.37)
