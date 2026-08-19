@@ -1,6 +1,6 @@
 [project]
 name = "udl-sdk"
-version = "0.1.0-alpha.37"
+version = "0.1.0-alpha.38"
 description = "The official Python library for the unifieddatalibrary API"
 dynamic = ["readme"]
 license = "Apache-2.0"
@@ -173,7 +173,7 @@ show_error_codes = true
 #
 # We also exclude our `tests` as mypy doesn't always infer
 # types correctly and Pyright will still catch any type errors.
-exclude = ['src/unifieddatalibrary/_files.py', '_dev/.*.py', 'tests/.*']
+exclude = ["src/unifieddatalibrary/_files.py", "_dev/.*.py", "tests/.*"]
 
 strict_equality = true
 implicit_reexport = true
